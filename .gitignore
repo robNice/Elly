@@ -1,1 +1,15 @@
+*.iml
+.gradle
+/local.properties
 /.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/.kotlin/
+/.claude/
+/_project_files/COMMIT_MSG.txt
+/CLAUDE.md
+/_project_files/

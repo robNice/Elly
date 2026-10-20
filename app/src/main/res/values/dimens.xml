@@ -1,0 +1,8 @@
+<resources>
+    <dimen name="page_padding">24dp</dimen>
+    <dimen name="page_title_spacing">16dp</dimen>
+
+    <dimen name="indicator_dot_size">8dp</dimen>
+    <dimen name="indicator_dot_spacing">8dp</dimen>
+    <dimen name="indicator_padding">16dp</dimen>
+</resources>

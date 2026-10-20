@@ -1,0 +1,66 @@
+name: Build APK and app bundle on v* tag
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+
+      - name: Decode keystore
+        run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > "${{ github.workspace }}/keystore.jks"
+
+      - name: Build release artifacts
+        env:
+          GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8"
+          KEYSTORE_PATH: ${{ github.workspace }}/keystore.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+        run: ./gradlew --no-daemon :app:assembleRelease :app:bundleRelease
+
+      - name: Rename artifacts to include tag
+        run: |
+          mv "app/build/outputs/apk/release/app-release.apk" "elgy-${{ github.ref_name }}.apk"
+          mv "app/build/outputs/bundle/release/app-release.aab" "elgy-${{ github.ref_name }}.aab"
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ github.ref_name }}
+          path: |
+            elgy-${{ github.ref_name }}.apk
+            elgy-${{ github.ref_name }}.aab
+          if-no-files-found: error
+
+      - name: Publish release artifacts to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: ${{ github.ref_name }}
+          generate_release_notes: true
+          files: |
+            elgy-${{ github.ref_name }}.apk
+            elgy-${{ github.ref_name }}.aab

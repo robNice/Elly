@@ -1,0 +1,9 @@
+<resources>
+    <string name="page_navigation">Navigation</string>
+    <string name="page_numbers">Zahlen</string>
+    <string name="page_media">Media &amp; Apps</string>
+    <string name="page_pointer">Zeiger</string>
+
+    <string name="page_placeholder">Folgt in Kürze</string>
+    <string name="page_indicator_description">Seite %1$d von %2$d</string>
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <!-- Remote body -->
+    <color name="remote_background">#FF0B0C0E</color>
+    <color name="remote_surface">#FF16181B</color>
+    <color name="remote_surface_highlight">#FF24272B</color>
+
+    <!-- Text and accents -->
+    <color name="remote_on_surface">#FFE6E8EB</color>
+    <color name="remote_on_surface_muted">#FF8A9097</color>
+    <color name="remote_accent">#FFD8D9DB</color>
+    <color name="remote_power">#FFE0262B</color>
+
+    <!-- Page indicator -->
+    <color name="indicator_active">#FFE6E8EB</color>
+    <color name="indicator_inactive">#FF3A3E44</color>
+
+    <!-- Launcher icon -->
+    <color name="ic_launcher_background">#FF16181B</color>
+</resources>
