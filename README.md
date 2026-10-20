@@ -19,7 +19,9 @@ Elgy turns your Android phone into a remote control for LG TVs running webOS. It
 - All keys of the LG Magic Remote: power, numbers, volume, channels, navigation pad with OK, home, settings, back, guide, input, Netflix, Prime Video, Movies, colour keys, play/pause and more.
 - Keys are arranged on several screens so that everything fits without scrolling. Swipe to switch between screens.
 - Pointer control via the phone's gyroscope: toggled by a dedicated key, switches off automatically after 5 seconds without movement.
+- Search for LG TVs in your network (or enter the IP address manually) and pair them with the app.
 - Dark design with realistic, three-dimensional keys.
+- Home screen widgets (planned).
 - Available in English and German.
 
 ## 2 Requirements

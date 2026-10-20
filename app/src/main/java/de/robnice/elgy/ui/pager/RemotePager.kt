@@ -28,9 +28,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import de.robnice.elgy.R
 
-/**
- * Hosts all [RemotePage]s side by side; the user switches between them by swiping.
- */
 @Composable
 fun RemotePager(modifier: Modifier = Modifier) {
     val pages = RemotePage.entries

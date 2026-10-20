@@ -6,9 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.colorResource
 import de.robnice.elgy.R
 
-/**
- * Dark-only theme of the remote. All color values live in res/values/colors.xml.
- */
 @Composable
 fun ElgyTheme(content: @Composable () -> Unit) {
     val colorScheme = darkColorScheme(

@@ -19,7 +19,9 @@ Elgy macht dein Android-Handy zur Fernbedienung für LG-Fernseher mit webOS. Die
 - Alle Tasten der LG Magic Remote: Ein/Aus, Zahlen, Lautstärke, Kanäle, Steuerkreuz mit OK, Home, Einstellungen, Zurück, Guide, Input, Netflix, Prime Video, Movies, Farbtasten, Play/Pause und mehr.
 - Die Tasten sind auf mehrere Screens verteilt, sodass alles ohne Scrollen sichtbar ist. Gewechselt wird per Swipe.
 - Zeigersteuerung über das Gyroskop des Handys: per eigener Taste ein- und ausschaltbar, schaltet sich nach 5 Sekunden ohne Bewegung automatisch ab.
+- LG-Fernseher im Netzwerk suchen (oder IP-Adresse manuell eingeben) und mit der App koppeln.
 - Dunkles Design mit realistisch wirkenden, dreidimensionalen Tasten.
+- Homescreen-Widgets (geplant).
 - Verfügbar auf Deutsch und Englisch.
 
 ## 2 Voraussetzungen
