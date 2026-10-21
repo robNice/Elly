@@ -29,7 +29,7 @@ fun RockerKey(
     bottomDescription: String,
     onTop: () -> Unit,
     onBottom: () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.size(dimensionResource(R.dimen.rocker_width), dimensionResource(R.dimen.rocker_height)),
     @DrawableRes labelIcon: Int? = null
 ) {
     val shape = RoundedCornerShape(percent = 50)
@@ -40,9 +40,7 @@ fun RockerKey(
     val bottomPressed by bottomInteraction.collectIsPressedAsState()
 
     Column(
-        modifier = modifier
-            .size(dimensionResource(R.dimen.rocker_width), dimensionResource(R.dimen.rocker_height))
-            .keyBody(shape, palette, pressed = false),
+        modifier = modifier.keyBody(shape, palette, pressed = false),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         RockerHalf(

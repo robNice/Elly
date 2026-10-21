@@ -2,6 +2,7 @@ package de.robnice.elgy
 
 import android.content.Context
 import de.robnice.elgy.data.AppIconCache
+import de.robnice.elgy.data.AppIconFiller
 import de.robnice.elgy.data.AppSlotsRepository
 import de.robnice.elgy.data.ScreenLayoutRepository
 import de.robnice.elgy.data.SettingsRepository
@@ -20,6 +21,7 @@ import de.robnice.elgy.tv.power.WakeOnLan
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -62,4 +64,10 @@ class AppContainer(context: Context) {
     val pairingService = PairingService(pairingManifest, connector)
 
     val remoteControl = RemoteControl(tvRepository, settingsRepository, connector, pairingManifest, WakeOnLan())
+
+    val appIconFiller = AppIconFiller(remoteControl, appSlotsRepository, screenLayoutRepository)
+
+    init {
+        applicationScope.launch { appSlotsRepository.clearLegacySlots() }
+    }
 }

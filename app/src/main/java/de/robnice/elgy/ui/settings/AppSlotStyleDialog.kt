@@ -1,5 +1,6 @@
 package de.robnice.elgy.ui.settings
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -38,10 +39,11 @@ import de.robnice.elgy.data.model.AppSlot
 
 @Composable
 fun AppSlotStyleDialog(
-    index: Int,
+    title: String,
     slot: AppSlot,
     onSave: (showIcon: Boolean, showText: Boolean, customText: String, textColor: Long?) -> Unit,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    @StringRes confirmLabel: Int = R.string.dialog_save
 ) {
     var showIcon by rememberSaveable { mutableStateOf(slot.showIcon) }
     var showText by rememberSaveable { mutableStateOf(slot.showText || !slot.showIcon) }
@@ -53,7 +55,7 @@ fun AppSlotStyleDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.app_style_title, index + 1)) },
+        title = { Text(title) },
         text = {
             Column(
                 modifier = Modifier.verticalScroll(rememberScrollState()),
@@ -106,7 +108,7 @@ fun AppSlotStyleDialog(
         },
         confirmButton = {
             TextButton(onClick = { onSave(showIcon, showText, customText, textColor) }) {
-                Text(stringResource(R.string.dialog_save))
+                Text(stringResource(confirmLabel))
             }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) } }

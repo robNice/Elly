@@ -44,33 +44,50 @@ import de.robnice.elgy.BuildConfig
 import de.robnice.elgy.R
 import de.robnice.elgy.remote.TvApp
 import de.robnice.elgy.ui.remote.messageRes
-import de.robnice.elgy.data.model.AppSlot
+import de.robnice.elgy.data.model.CustomScreen
 import de.robnice.elgy.data.model.MotionTuning
 import de.robnice.elgy.data.model.JoystickPlacement
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PairedTv
 import de.robnice.elgy.data.model.PointerMode
 import de.robnice.elgy.data.model.PointerSettings
+import de.robnice.elgy.data.model.RemoteScreen
 import de.robnice.elgy.data.model.TouchStyle
 
 @Composable
 fun SettingsScreen(viewModel: SettingsViewModel, onClose: () -> Unit, onOpenSetup: () -> Unit) {
     val demoMode by viewModel.demoMode.collectAsStateWithLifecycle()
     val keyHaptics by viewModel.keyHaptics.collectAsStateWithLifecycle()
-    val appSlots by viewModel.appSlots.collectAsStateWithLifecycle()
-    val appSlotsAvailable by viewModel.appSlotsAvailable.collectAsStateWithLifecycle()
-    val appPicker by viewModel.appPicker.collectAsStateWithLifecycle()
-    val styleEditor by viewModel.styleEditor.collectAsStateWithLifecycle()
+    val screensAvailable by viewModel.screensAvailable.collectAsStateWithLifecycle()
     val screenLayout by viewModel.screenLayout.collectAsStateWithLifecycle()
     val activeTv by viewModel.activeTv.collectAsStateWithLifecycle()
     val pointerSettings by viewModel.pointerSettings.collectAsStateWithLifecycle()
     var confirmDisconnect by rememberSaveable { mutableStateOf(false) }
     var showPrivacy by rememberSaveable { mutableStateOf(false) }
+    var editing by rememberSaveable { mutableStateOf<RemoteScreen?>(null) }
+    var confirmReset by rememberSaveable { mutableStateOf<RemoteScreen?>(null) }
+    val screens by viewModel.screens.collectAsStateWithLifecycle()
 
     BackHandler(onBack = onClose)
 
     if (showPrivacy) {
         PrivacyScreen(onClose = { showPrivacy = false })
+        return
+    }
+
+    editing?.let { target ->
+        CustomScreenEditor(
+            title = stringResource(target.titleRes()),
+            screen = screens[target] ?: CustomScreen.EMPTY,
+            onAdd = { type, key -> viewModel.addElement(target, type, key) },
+            onMove = { id, x, y -> viewModel.moveElement(target, id, x, y) },
+            onResize = { id, width, height -> viewModel.resizeElement(target, id, width, height) },
+            onRemove = { id -> viewModel.removeElement(target, id) },
+            onConfigureApp = { id -> viewModel.openAppConfig(target, id) },
+            onReset = { viewModel.resetScreen(target) },
+            onClose = { editing = null }
+        )
+        AppDialogs(viewModel)
         return
     }
 
@@ -99,11 +116,14 @@ fun SettingsScreen(viewModel: SettingsViewModel, onClose: () -> Unit, onOpenSetu
                 onOpenSetup = onOpenSetup,
                 onDisconnect = { confirmDisconnect = true }
             )
-            if (appSlotsAvailable) {
+            if (screensAvailable) {
                 ScreensSection(
                     layout = screenLayout,
+                    screens = screens,
                     onToggle = viewModel::toggleScreen,
-                    onReorder = viewModel::reorderScreens
+                    onReorder = viewModel::reorderScreens,
+                    onEdit = { editing = it },
+                    onReset = { confirmReset = it }
                 )
             }
             PointerSection(
@@ -116,14 +136,6 @@ fun SettingsScreen(viewModel: SettingsViewModel, onClose: () -> Unit, onOpenSetu
                 onSensitivityChange = viewModel::setMotionSensitivity,
                 onAccelerationChange = viewModel::setMotionAcceleration
             )
-            if (appSlotsAvailable) {
-                AppKeysSection(
-                    slots = appSlots,
-                    onToggle = viewModel::setAppSlotEnabled,
-                    onChoose = viewModel::openAppPicker,
-                    onStyle = viewModel::openStyleEditor
-                )
-            }
             SwitchSetting(
                 title = stringResource(R.string.settings_key_haptics),
                 description = stringResource(R.string.settings_key_haptics_description),
@@ -157,26 +169,22 @@ fun SettingsScreen(viewModel: SettingsViewModel, onClose: () -> Unit, onOpenSetu
         }
     }
 
-    appPicker?.let { picker ->
-        AppPickerDialog(
-            state = picker,
-            onSelect = viewModel::assignApp,
-            onClear = viewModel::clearAppSlot,
-            onDismiss = viewModel::dismissAppPicker
+    confirmReset?.let { target ->
+        val name = stringResource(target.titleRes())
+        AlertDialog(
+            onDismissRequest = { confirmReset = null },
+            title = { Text(stringResource(R.string.settings_screen_reset_title)) },
+            text = { Text(stringResource(R.string.settings_screen_reset_message, name)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    confirmReset = null
+                    viewModel.resetScreen(target)
+                }) { Text(stringResource(R.string.settings_screen_reset_confirm)) }
+            },
+            dismissButton = {
+                TextButton(onClick = { confirmReset = null }) { Text(stringResource(R.string.dialog_cancel)) }
+            }
         )
-    }
-
-    styleEditor?.let { index ->
-        appSlots.getOrNull(index)?.let { slot ->
-            AppSlotStyleDialog(
-                index = index,
-                slot = slot,
-                onSave = { showIcon, showText, customText, textColor ->
-                    viewModel.saveStyle(index, showIcon, showText, customText, textColor)
-                },
-                onDismiss = viewModel::dismissStyleEditor
-            )
-        }
     }
 
     val tvToDisconnect = activeTv
@@ -433,52 +441,38 @@ private fun ChoiceRow(
 }
 
 @Composable
-private fun AppKeysSection(
-    slots: List<AppSlot>,
-    onToggle: (Int, Boolean) -> Unit,
-    onChoose: (Int) -> Unit,
-    onStyle: (Int) -> Unit
-) {
-    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))) {
-        Text(text = stringResource(R.string.settings_app_keys), style = MaterialTheme.typography.titleMedium)
-        Text(
-            text = stringResource(R.string.settings_app_keys_description),
-            style = MaterialTheme.typography.bodySmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+private fun AppDialogs(viewModel: SettingsViewModel) {
+    val appDraft by viewModel.appDraft.collectAsStateWithLifecycle()
+    val appPicker by viewModel.appPicker.collectAsStateWithLifecycle()
+    val styleEditor by viewModel.styleEditor.collectAsStateWithLifecycle()
+    val draft = appDraft ?: return
+
+    CustomAppDialog(
+        app = draft.app,
+        onChooseApp = viewModel::openAppPicker,
+        onStyle = viewModel::openStyleEditor,
+        onConfirm = viewModel::confirmApp,
+        onDismiss = viewModel::dismissApp
+    )
+
+    appPicker?.let { picker ->
+        AppPickerDialog(
+            state = picker,
+            onSelect = viewModel::assignApp,
+            onClear = viewModel::clearApp,
+            onDismiss = viewModel::dismissAppPicker
         )
-        Card(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.padding(vertical = dimensionResource(R.dimen.setup_item_spacing))) {
-                slots.forEachIndexed { index, slot ->
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = dimensionResource(R.dimen.setup_card_padding)),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
-                                text = stringResource(R.string.settings_app_slot, index + 1),
-                                style = MaterialTheme.typography.labelMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                            Text(
-                                text = slot.label ?: stringResource(R.string.settings_app_slot_empty),
-                                style = MaterialTheme.typography.bodyLarge
-                            )
-                        }
-                        if (!slot.appId.isNullOrBlank()) {
-                            TextButton(onClick = { onStyle(index) }) { Text(stringResource(R.string.settings_app_style)) }
-                        }
-                        TextButton(onClick = { onChoose(index) }) { Text(stringResource(R.string.settings_app_choose)) }
-                        Switch(
-                            checked = slot.enabled,
-                            onCheckedChange = { onToggle(index, it) },
-                            enabled = !slot.appId.isNullOrBlank()
-                        )
-                    }
-                }
-            }
-        }
+    }
+
+    val slot = draft.app
+    if (styleEditor && slot != null) {
+        AppSlotStyleDialog(
+            title = stringResource(R.string.custom_app_style_title),
+            slot = slot,
+            onSave = viewModel::saveStyle,
+            onDismiss = viewModel::dismissStyleEditor,
+            confirmLabel = R.string.dialog_ok
+        )
     }
 }
 
@@ -491,7 +485,7 @@ private fun AppPickerDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.app_picker_title, state.slotIndex + 1)) },
+        title = { Text(stringResource(R.string.custom_app_picker_title)) },
         text = {
             when {
                 state.loading -> Row(verticalAlignment = Alignment.CenterVertically) {

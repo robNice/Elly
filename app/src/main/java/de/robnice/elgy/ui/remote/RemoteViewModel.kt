@@ -5,7 +5,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import de.robnice.elgy.AppContainer
-import de.robnice.elgy.data.model.AppSlot
+import de.robnice.elgy.data.AppIconFiller
+import de.robnice.elgy.data.model.CustomScreen
+import de.robnice.elgy.data.model.DefaultScreens
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PointerMode
 import de.robnice.elgy.data.model.PointerSettings
@@ -25,22 +27,25 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class RemoteViewModel(
     private val remoteControl: RemoteControl,
+    private val appIconFiller: AppIconFiller,
     pointerSettingsFlow: Flow<PointerSettings>,
     keyHapticsFlow: Flow<Boolean>,
-    appSlotsFlow: Flow<List<AppSlot>>,
-    screenLayoutFlow: Flow<ScreenLayout>
+    screenLayoutFlow: Flow<ScreenLayout>,
+    screensFlow: Flow<Map<RemoteScreen, CustomScreen>>
 ) : ViewModel() {
+
+    val screens: StateFlow<Map<RemoteScreen, CustomScreen>> =
+        screensFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), DefaultScreens.all())
 
     val screenLayout: StateFlow<ScreenLayout> =
         screenLayoutFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), ScreenLayout.DEFAULT)
-
-    val appSlots: StateFlow<List<AppSlot>> =
-        appSlotsFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), emptyList())
 
     val keyHaptics: StateFlow<Boolean> =
         keyHapticsFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), true)
@@ -69,6 +74,11 @@ class RemoteViewModel(
 
     init {
         viewModelScope.launch { forwardPointerMoves() }
+        viewModelScope.launch {
+            combine(connectionState, screens) { state, _ -> state }
+                .filter { it == ConnectionState.CONNECTED }
+                .collect { appIconFiller.fillMissing() }
+        }
     }
 
     suspend fun monitorConnection() {
@@ -177,10 +187,11 @@ class RemoteViewModel(
             initializer {
                 RemoteViewModel(
                     container.remoteControl,
+                    container.appIconFiller,
                     container.settingsRepository.pointerSettings,
                     container.settingsRepository.keyHaptics,
-                    container.appSlotsRepository.activeSlots,
-                    container.screenLayoutRepository.activeLayout
+                    container.screenLayoutRepository.activeLayout,
+                    container.screenLayoutRepository.activeScreens
                 )
             }
         }

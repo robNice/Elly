@@ -17,6 +17,13 @@
     <color name="status_checking">#FF6B7178</color>
     <color name="status_demo">#FFF2B233</color>
 
+    <!-- Custom screen editor -->
+    <color name="custom_editor_grid">#1AE6E8EB</color>
+    <color name="custom_editor_selection">#FF5AB4FF</color>
+    <color name="custom_editor_valid">#FF3DDC84</color>
+    <color name="custom_editor_invalid">#FFE0262B</color>
+    <color name="custom_editor_handle_icon">#FFFFFFFF</color>
+
     <!-- Page indicator -->
     <color name="indicator_active">#FFE6E8EB</color>
     <color name="indicator_inactive">#FF3A3E44</color>

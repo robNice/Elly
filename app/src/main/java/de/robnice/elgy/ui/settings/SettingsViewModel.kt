@@ -10,6 +10,10 @@ import de.robnice.elgy.data.ScreenLayoutRepository
 import de.robnice.elgy.data.SettingsRepository
 import de.robnice.elgy.data.TvRepository
 import de.robnice.elgy.data.model.AppSlot
+import de.robnice.elgy.data.model.AppSlots
+import de.robnice.elgy.data.model.CustomElementType
+import de.robnice.elgy.data.model.CustomScreen
+import de.robnice.elgy.data.model.DefaultScreens
 import de.robnice.elgy.data.model.JoystickPlacement
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PairedTv
@@ -19,6 +23,7 @@ import de.robnice.elgy.data.model.RemoteScreen
 import de.robnice.elgy.data.model.ScreenLayout
 import de.robnice.elgy.data.model.TouchStyle
 import de.robnice.elgy.remote.RemoteControl
+import de.robnice.elgy.remote.RemoteKey
 import de.robnice.elgy.remote.SendResult
 import de.robnice.elgy.remote.TvApp
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -40,10 +45,7 @@ class SettingsViewModel(
     val motionPointerAvailable: Boolean
 ) : ViewModel() {
 
-    val appSlots: StateFlow<List<AppSlot>> = appSlotsRepository.activeSlots
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), emptyList())
-
-    val appSlotsAvailable: StateFlow<Boolean> = appSlotsRepository.activeOwner
+    val screensAvailable: StateFlow<Boolean> = appSlotsRepository.activeOwner
         .map { it != null }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), false)
 
@@ -58,81 +60,127 @@ class SettingsViewModel(
         viewModelScope.launch { screenLayoutRepository.update { it.reorder(order) } }
     }
 
+    val screens: StateFlow<Map<RemoteScreen, CustomScreen>> = screenLayoutRepository.activeScreens
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), DefaultScreens.all())
+
+    fun addElement(screen: RemoteScreen, type: CustomElementType, key: RemoteKey?): Boolean {
+        if (screens.value[screen]?.add(type, key) == null) return false
+        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { it.add(type, key) ?: it } }
+        return true
+    }
+
+    fun moveElement(screen: RemoteScreen, id: Long, x: Int, y: Int) {
+        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { it.move(id, x, y) } }
+    }
+
+    fun resizeElement(screen: RemoteScreen, id: Long, width: Int, height: Int) {
+        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { it.resize(id, width, height) } }
+    }
+
+    fun removeElement(screen: RemoteScreen, id: Long) {
+        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { it.remove(id) } }
+    }
+
+    fun resetScreen(screen: RemoteScreen) {
+        viewModelScope.launch { screenLayoutRepository.resetScreen(screen) }
+    }
+
+    private val _appDraft = MutableStateFlow<AppDraft?>(null)
+    val appDraft: StateFlow<AppDraft?> = _appDraft.asStateFlow()
+
     private val _appPicker = MutableStateFlow<AppPickerState?>(null)
     val appPicker: StateFlow<AppPickerState?> = _appPicker.asStateFlow()
 
-    fun setAppSlotEnabled(index: Int, enabled: Boolean) {
-        val slot = appSlots.value.getOrNull(index) ?: return
-        viewModelScope.launch { appSlotsRepository.updateSlot(index, slot.copy(enabled = enabled)) }
+    private val _styleEditor = MutableStateFlow(false)
+    val styleEditor: StateFlow<Boolean> = _styleEditor.asStateFlow()
+
+    fun openAppConfig(screen: RemoteScreen, id: Long) {
+        val element = screens.value[screen]?.elements?.firstOrNull { it.id == id } ?: return
+        _appDraft.value = AppDraft(screen, id, element.app)
     }
 
-    fun openAppPicker(index: Int) {
-        _appPicker.value = AppPickerState(slotIndex = index, loading = true)
+    fun confirmApp() {
+        val draft = _appDraft.value ?: return
+        _appDraft.value = null
+        viewModelScope.launch { screenLayoutRepository.updateScreen(draft.screen) { it.updateApp(draft.id) { draft.app } } }
+    }
+
+    fun dismissApp() {
+        _appDraft.value = null
+    }
+
+    fun openAppPicker() {
+        if (_appDraft.value == null) return
+        _appPicker.value = AppPickerState(loading = true)
         viewModelScope.launch {
             val loaded = remoteControl.loadApps()
             _appPicker.update { current ->
-                if (current?.slotIndex != index) current
-                else if (loaded.result == SendResult.SENT || loaded.result == SendResult.DEMO) {
-                    current.copy(loading = false, apps = loaded.apps)
-                } else {
-                    current.copy(loading = false, error = loaded.result)
+                when {
+                    current == null -> null
+                    loaded.result == SendResult.SENT || loaded.result == SendResult.DEMO ->
+                        current.copy(loading = false, apps = loaded.apps)
+                    else -> current.copy(loading = false, error = loaded.result)
                 }
             }
         }
     }
 
     fun assignApp(app: TvApp) {
-        val index = _appPicker.value?.slotIndex ?: return
-        val previous = appSlots.value.getOrNull(index) ?: return
+        val draft = _appDraft.value ?: return
         _appPicker.value = null
+        updateDraft(draft) {
+            (it ?: AppSlots.EMPTY).copy(enabled = true, appId = app.id, title = app.title, iconPath = null, customText = null)
+        }
         viewModelScope.launch {
             val iconPath = app.iconUrl
                 ?.let { remoteControl.downloadAppIcon(it) }
                 ?.let { appSlotsRepository.storeIcon(app.id, it) }
-            appSlotsRepository.updateSlot(
-                index,
-                previous.copy(enabled = true, appId = app.id, title = app.title, iconPath = iconPath, customText = null)
-            )
+                ?: return@launch
+            val withIcon: (AppSlot?) -> AppSlot? = { current ->
+                current?.takeIf { it.appId == app.id }?.copy(iconPath = iconPath) ?: current
+            }
+            if (_appDraft.value?.isFor(draft) == true) {
+                updateDraft(draft, withIcon)
+            } else {
+                // Confirmed before the icon arrived: add it to the saved key instead of the closed draft.
+                screenLayoutRepository.updateScreen(draft.screen) { it.updateApp(draft.id, withIcon) }
+            }
         }
     }
 
-    private val _styleEditor = MutableStateFlow<Int?>(null)
-    val styleEditor: StateFlow<Int?> = _styleEditor.asStateFlow()
-
-    fun openStyleEditor(index: Int) {
-        _styleEditor.value = index
-    }
-
-    fun dismissStyleEditor() {
-        _styleEditor.value = null
-    }
-
-    fun saveStyle(index: Int, showIcon: Boolean, showText: Boolean, customText: String, textColor: Long?) {
-        val slot = appSlots.value.getOrNull(index) ?: return
-        _styleEditor.value = null
-        viewModelScope.launch {
-            appSlotsRepository.updateSlot(
-                index,
-                slot.copy(
-                    showIcon = showIcon,
-                    showText = showText || !showIcon,
-                    customText = customText.trim().ifBlank { null },
-                    textColor = textColor
-                )
-            )
-        }
-    }
-
-    fun clearAppSlot() {
-        val index = _appPicker.value?.slotIndex ?: return
+    fun clearApp() {
+        val draft = _appDraft.value ?: return
         _appPicker.value = null
-        viewModelScope.launch {
-            appSlotsRepository.updateSlot(index, AppSlot(enabled = false, appId = null, title = null))
-        }
+        updateDraft(draft) { null }
     }
 
     fun dismissAppPicker() {
         _appPicker.value = null
+    }
+
+    fun openStyleEditor() {
+        if (_appDraft.value?.app?.isUsable == true) _styleEditor.value = true
+    }
+
+    fun dismissStyleEditor() {
+        _styleEditor.value = false
+    }
+
+    fun saveStyle(showIcon: Boolean, showText: Boolean, customText: String, textColor: Long?) {
+        val draft = _appDraft.value ?: return
+        _styleEditor.value = false
+        updateDraft(draft) { slot ->
+            slot?.copy(
+                showIcon = showIcon,
+                showText = showText || !showIcon,
+                customText = customText.trim().ifBlank { null },
+                textColor = textColor
+            )
+        }
+    }
+
+    private fun updateDraft(target: AppDraft, transform: (AppSlot?) -> AppSlot?) {
+        _appDraft.update { draft -> if (draft?.isFor(target) == true) draft.copy(app = transform(draft.app)) else draft }
     }
 
     val demoMode: StateFlow<Boolean> = settingsRepository.demoMode
@@ -214,8 +262,11 @@ class SettingsViewModel(
     }
 }
 
+data class AppDraft(val screen: RemoteScreen, val id: Long, val app: AppSlot?) {
+    fun isFor(other: AppDraft): Boolean = screen == other.screen && id == other.id
+}
+
 data class AppPickerState(
-    val slotIndex: Int,
     val loading: Boolean,
     val apps: List<TvApp> = emptyList(),
     val error: SendResult? = null

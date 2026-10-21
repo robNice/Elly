@@ -1,6 +1,7 @@
 package de.robnice.elgy.tv.connection
 
 import android.util.Log
+import de.robnice.elgy.BuildConfig
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.withTimeout
@@ -30,8 +31,8 @@ class WebOsConnector(
 
     private suspend fun open(ipAddress: String, secure: Boolean, certificatePin: String?): WebOsConnection {
         val trustManager = if (secure) CertificatePinTrustManager(certificatePin, trustAllCertificates) else null
-        val client = clientFor(trustManager)
         val url = if (secure) "wss://$ipAddress:$SECURE_PORT" else "ws://$ipAddress:$PLAIN_PORT"
+        val client = clientFor(trustManager).withTiming(url)
         val connection = WebOsConnection(secure, trustManager)
         val opened = CompletableDeferred<Unit>()
 
@@ -71,7 +72,7 @@ class WebOsConnector(
         val pointerSocket = PointerSocket()
         val opened = CompletableDeferred<Unit>()
 
-        val socket = clientFor(trustManager).newWebSocket(Request.Builder().url(url).build(), object : WebSocketListener() {
+        val socket = clientFor(trustManager).withTiming(url).newWebSocket(Request.Builder().url(url).build(), object : WebSocketListener() {
             override fun onOpen(webSocket: WebSocket, response: Response) {
                 opened.complete(Unit)
             }
@@ -108,6 +109,9 @@ class WebOsConnector(
             .hostnameVerifier { _, _ -> true }
             .build()
     }
+
+    private fun OkHttpClient.withTiming(url: String): OkHttpClient =
+        if (BuildConfig.DEBUG) newBuilder().eventListener(ConnectionTimingLogger(url)).build() else this
 
     private fun mapFailure(throwable: Throwable): TvConnectionException {
         var cause: Throwable? = throwable

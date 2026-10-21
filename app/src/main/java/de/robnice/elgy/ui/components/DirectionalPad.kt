@@ -29,9 +29,10 @@ private const val ARROW_SIZE_FRACTION = 0.26f
 private const val ARROW_OFFSET_FRACTION = 0.355f
 
 @Composable
-fun DirectionalPad(onKey: (RemoteKey) -> Unit, modifier: Modifier = Modifier) {
+fun DirectionalPad(onKey: (RemoteKey) -> Unit, modifier: Modifier = Modifier, capped: Boolean = true) {
     BoxWithConstraints(modifier = modifier, contentAlignment = Alignment.Center) {
-        val padSize = min(min(maxWidth, maxHeight), dimensionResource(R.dimen.dpad_max_size))
+        val fitted = min(maxWidth, maxHeight)
+        val padSize = if (capped) min(fitted, dimensionResource(R.dimen.dpad_max_size)) else fitted
         val ringPalette = KeyStyle.DARK.palette().copy(
             top = colorResource(R.color.dpad_ring_top),
             bottom = colorResource(R.color.dpad_ring_bottom)

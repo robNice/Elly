@@ -1,5 +1,6 @@
 package de.robnice.elgy.ui.settings
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
 import androidx.compose.foundation.layout.Arrangement
@@ -9,9 +10,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,10 +35,11 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.zIndex
 import de.robnice.elgy.R
+import de.robnice.elgy.data.model.CustomScreen
 import de.robnice.elgy.data.model.RemoteScreen
 import de.robnice.elgy.data.model.ScreenLayout
 import java.util.Collections
@@ -44,8 +49,11 @@ private const val DRAG_SCALE = 1.06f
 @Composable
 fun ScreensSection(
     layout: ScreenLayout,
+    screens: Map<RemoteScreen, CustomScreen>,
     onToggle: (RemoteScreen) -> Unit,
-    onReorder: (List<RemoteScreen>) -> Unit
+    onReorder: (List<RemoteScreen>) -> Unit,
+    onEdit: (RemoteScreen) -> Unit,
+    onReset: (RemoteScreen) -> Unit
 ) {
     val entries = remember(layout) { layout.entries.toMutableStateList() }
     var dragging by remember { mutableStateOf<RemoteScreen?>(null) }
@@ -115,16 +123,22 @@ fun ScreensSection(
                                 .clickable { onToggle(entry.screen) },
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
-                            ScreenThumbnail(screen = entry.screen, enabled = entry.enabled, modifier = Modifier.fillMaxWidth())
-                            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.screen_thumbnail_checkbox_spacing)))
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Checkbox(checked = entry.enabled, onCheckedChange = null)
-                            }
-                            Text(
-                                text = stringResource(entry.screen.titleRes()),
-                                style = MaterialTheme.typography.labelMedium,
-                                textAlign = TextAlign.Center
+                            ScreenThumbnail(
+                                layout = screens[entry.screen] ?: CustomScreen.EMPTY,
+                                enabled = entry.enabled,
+                                modifier = Modifier.fillMaxWidth()
                             )
+                            Spacer(modifier = Modifier.height(dimensionResource(R.dimen.screen_thumbnail_checkbox_spacing)))
+                            Checkbox(checked = entry.enabled, onCheckedChange = null)
+                            val name = stringResource(entry.screen.titleRes())
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                ScreenAction(R.drawable.ic_edit, stringResource(R.string.settings_screen_edit, name)) {
+                                    onEdit(entry.screen)
+                                }
+                                ScreenAction(R.drawable.ic_restore, stringResource(R.string.settings_screen_reset, name)) {
+                                    onReset(entry.screen)
+                                }
+                            }
                         }
                     }
                 }
@@ -133,8 +147,20 @@ fun ScreensSection(
     }
 }
 
-private fun RemoteScreen.titleRes(): Int = when (this) {
+@Composable
+private fun ScreenAction(@DrawableRes icon: Int, description: String, onClick: () -> Unit) {
+    IconButton(onClick = onClick, modifier = Modifier.size(dimensionResource(R.dimen.screen_action_size))) {
+        Icon(
+            painter = painterResource(icon),
+            contentDescription = description,
+            modifier = Modifier.size(dimensionResource(R.dimen.screen_action_icon_size))
+        )
+    }
+}
+
+fun RemoteScreen.titleRes(): Int = when (this) {
     RemoteScreen.NAVIGATION -> R.string.page_navigation
     RemoteScreen.NUMBERS -> R.string.page_numbers
     RemoteScreen.MEDIA -> R.string.page_media
+    RemoteScreen.CUSTOM -> R.string.page_custom
 }

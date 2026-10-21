@@ -18,14 +18,7 @@ data class AppSlot(
 }
 
 object AppSlots {
-    const val COUNT = 9
     const val DEMO_OWNER = "demo"
 
     val EMPTY = AppSlot(enabled = false, appId = null, title = null)
-
-    val DEFAULT: List<AppSlot> = listOf(
-        AppSlot(enabled = true, appId = "netflix", title = "Netflix"),
-        AppSlot(enabled = true, appId = "amazon", title = "Prime Video"),
-        AppSlot(enabled = true, appId = "ui30", title = "Rakuten TV")
-    ) + List(COUNT - 3) { EMPTY }
 }

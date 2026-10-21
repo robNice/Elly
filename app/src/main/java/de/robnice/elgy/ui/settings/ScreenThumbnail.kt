@@ -19,7 +19,9 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import de.robnice.elgy.R
-import de.robnice.elgy.data.model.RemoteScreen
+import de.robnice.elgy.data.model.CustomElementType
+import de.robnice.elgy.data.model.CustomScreen
+import de.robnice.elgy.remote.RemoteKey
 
 private const val THUMBNAIL_ASPECT_RATIO = 0.5f
 private const val DISABLED_ALPHA = 0.3f
@@ -36,7 +38,7 @@ private data class ThumbnailColors(
 )
 
 @Composable
-fun ScreenThumbnail(screen: RemoteScreen, enabled: Boolean, modifier: Modifier = Modifier) {
+fun ScreenThumbnail(layout: CustomScreen, enabled: Boolean, modifier: Modifier = Modifier) {
     val shape = RoundedCornerShape(dimensionResource(R.dimen.screen_thumbnail_corner))
     val colors = ThumbnailColors(
         key = colorResource(R.color.key_body_top),
@@ -57,11 +59,7 @@ fun ScreenThumbnail(screen: RemoteScreen, enabled: Boolean, modifier: Modifier =
             .padding(dimensionResource(R.dimen.screen_thumbnail_padding))
     ) {
         Canvas(modifier = Modifier.fillMaxSize()) {
-            when (screen) {
-                RemoteScreen.NAVIGATION -> drawNavigation(colors)
-                RemoteScreen.NUMBERS -> drawNumbers(colors)
-                RemoteScreen.MEDIA -> drawMedia(colors)
-            }
+            drawLayout(colors, layout)
         }
     }
 }
@@ -81,38 +79,38 @@ private fun DrawScope.pill(color: Color, x: Float, y: Float, width: Float, heigh
     )
 }
 
-private fun DrawScope.drawNavigation(c: ThumbnailColors) {
-    listOf(0.14f, 0.38f, 0.62f, 0.86f).forEachIndexed { index, x ->
-        circle(if (index == 0) c.power else c.key, x, 0.08f, 0.09f)
+private fun DrawScope.drawLayout(c: ThumbnailColors, screen: CustomScreen) {
+    if (screen.elements.isEmpty()) {
+        pill(c.key, 0.5f, 0.5f, 0.36f, 0.035f)
+        pill(c.key, 0.5f, 0.5f, 0.07f, 0.18f)
+        return
     }
-    pill(c.key, 0.2f, 0.28f, 0.2f, 0.2f)
-    circle(c.key, 0.5f, 0.28f, 0.08f)
-    pill(c.key, 0.8f, 0.28f, 0.2f, 0.2f)
-    circle(c.keyHighlight, 0.5f, 0.6f, 0.4f)
-    circle(c.key, 0.5f, 0.6f, 0.16f)
-    circle(c.key, 0.32f, 0.9f, 0.09f)
-    circle(c.key, 0.68f, 0.9f, 0.09f)
+    val cellWidth = size.width / CustomScreen.COLUMNS
+    val cellHeight = size.height / CustomScreen.ROWS
+    val inset = cellWidth * CUSTOM_ELEMENT_INSET
+    screen.elements.forEach { element ->
+        val color = when (element.type) {
+            CustomElementType.DPAD -> c.keyHighlight
+            CustomElementType.APP -> c.light
+            CustomElementType.KEY -> when (element.key) {
+                RemoteKey.POWER -> c.power
+                RemoteKey.RED -> c.red
+                RemoteKey.GREEN -> c.green
+                RemoteKey.YELLOW -> c.yellow
+                RemoteKey.BLUE -> c.blue
+                else -> c.key
+            }
+            else -> c.key
+        }
+        val width = element.width * cellWidth - 2 * inset
+        val height = element.height * cellHeight - 2 * inset
+        drawRoundRect(
+            color = color,
+            topLeft = Offset(element.x * cellWidth + inset, element.y * cellHeight + inset),
+            size = Size(width, height),
+            cornerRadius = CornerRadius(minOf(width, height) / 2f)
+        )
+    }
 }
 
-private fun DrawScope.drawNumbers(c: ThumbnailColors) {
-    circle(c.key, 0.32f, 0.08f, 0.09f)
-    circle(c.key, 0.68f, 0.08f, 0.09f)
-    listOf(0.24f, 0.38f, 0.52f, 0.66f).forEach { y ->
-        listOf(0.17f, 0.5f, 0.83f).forEach { x -> pill(c.key, x, y, 0.28f, 0.07f) }
-    }
-    circle(c.key, 0.32f, 0.86f, 0.09f)
-    circle(c.key, 0.68f, 0.86f, 0.09f)
-}
-
-private fun DrawScope.drawMedia(c: ThumbnailColors) {
-    listOf(0.17f, 0.39f, 0.61f, 0.83f).forEach { x -> circle(c.key, x, 0.07f, 0.08f) }
-    circle(c.keyHighlight, 0.5f, 0.33f, 0.37f)
-    circle(c.key, 0.5f, 0.33f, 0.15f)
-    circle(c.key, 0.5f, 0.55f, 0.08f)
-    listOf(c.red to 0.14f, c.green to 0.38f, c.yellow to 0.62f, c.blue to 0.86f).forEach { (color, x) ->
-        pill(color, x, 0.72f, 0.18f, 0.035f)
-    }
-    listOf(0.82f, 0.92f).forEach { y ->
-        listOf(0.17f, 0.5f, 0.83f).forEach { x -> pill(c.light, x, y, 0.28f, 0.06f) }
-    }
-}
+private const val CUSTOM_ELEMENT_INSET = 0.12f

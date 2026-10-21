@@ -45,6 +45,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import de.robnice.elgy.R
+import de.robnice.elgy.data.model.DefaultScreens
 import de.robnice.elgy.remote.ConnectionState
 import de.robnice.elgy.remote.RemoteCommand
 import de.robnice.elgy.remote.RemoteKey
@@ -52,7 +53,7 @@ import de.robnice.elgy.remote.SendResult
 import de.robnice.elgy.remote.TvInput
 import de.robnice.elgy.ui.components.LocalKeyHapticsEnabled
 import de.robnice.elgy.ui.pointer.PointerOverlay
-import de.robnice.elgy.ui.remote.RemotePageContent
+import de.robnice.elgy.ui.remote.CustomPage
 import de.robnice.elgy.ui.remote.RemoteViewModel
 import de.robnice.elgy.ui.remote.messageRes
 import de.robnice.elgy.ui.settings.SettingsButton
@@ -67,10 +68,9 @@ fun RemotePager(
 ) {
     val layout by viewModel.screenLayout.collectAsStateWithLifecycle()
     val screens = layout.enabledScreens
-    val pages = screens.map { RemotePage.valueOf(it.name) }
     val pagerState = rememberPagerState(
         initialPage = screens.indexOf(viewModel.currentScreen).coerceAtLeast(0),
-        pageCount = { pages.size }
+        pageCount = { screens.size }
     )
     val pointerActive by viewModel.pointerActive.collectAsStateWithLifecycle()
     val connectionState by viewModel.connectionState.collectAsStateWithLifecycle()
@@ -78,7 +78,7 @@ fun RemotePager(
     val pointerSettings by viewModel.pointerSettings.collectAsStateWithLifecycle()
     val keyHaptics by viewModel.keyHaptics.collectAsStateWithLifecycle()
     val inputs by viewModel.inputs.collectAsStateWithLifecycle()
-    val appSlots by viewModel.appSlots.collectAsStateWithLifecycle()
+    val screenContents by viewModel.screens.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
     val onKey: (RemoteKey) -> Unit = { key ->
@@ -134,10 +134,9 @@ fun RemotePager(
             ) {
                 HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { index ->
                     CompositionLocalProvider(LocalKeyHapticsEnabled provides keyHaptics) {
-                        RemotePageContent(
-                            page = pages[index],
+                        CustomPage(
+                            screen = screenContents[screens[index]] ?: DefaultScreens.layout(screens[index]),
                             onKey = onKey,
-                            appSlots = appSlots,
                             onLaunchApp = viewModel::launchApp
                         )
                     }
@@ -154,7 +153,7 @@ fun RemotePager(
                     }
                 }
             }
-            if (pages.size > 1) PageIndicator(pagerState = pagerState)
+            if (screens.size > 1) PageIndicator(pagerState = pagerState)
         }
         SnackbarHost(hostState = snackbarHostState, modifier = Modifier.align(Alignment.BottomCenter))
     }

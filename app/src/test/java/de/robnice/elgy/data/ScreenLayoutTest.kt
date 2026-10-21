@@ -27,7 +27,7 @@ class ScreenLayoutTest {
     @Test
     fun reorder_changesOrderAndKeepsState() {
         val layout = ScreenLayout.DEFAULT.toggle(RemoteScreen.NUMBERS)
-            .reorder(listOf(RemoteScreen.MEDIA, RemoteScreen.NAVIGATION, RemoteScreen.NUMBERS))
+            .reorder(listOf(RemoteScreen.CUSTOM, RemoteScreen.MEDIA, RemoteScreen.NAVIGATION, RemoteScreen.NUMBERS))
 
         assertEquals(listOf(RemoteScreen.MEDIA, RemoteScreen.NAVIGATION), layout.enabledScreens)
         assertEquals(RemoteScreen.NUMBERS, layout.entries.last().screen)

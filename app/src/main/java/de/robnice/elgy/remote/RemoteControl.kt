@@ -218,12 +218,16 @@ class RemoteControl(
         }
         closeSession()
 
+        val started = System.nanoTime()
         val connection = connector.connect(tv.ipAddress, tv.certificatePin, allowInsecure = !tv.secure)
         try {
+            Log.d(TAG, "Socket open after ${elapsedMillis(started)} ms")
             connection.register(tv.clientKey, manifest.json) {
                 throw TvConnectionException.PairingRejected("client key not accepted")
             }
+            Log.d(TAG, "Registered after ${elapsedMillis(started)} ms")
             val pointer = openPointer(connection, tv)
+            Log.d(TAG, "Pointer socket open after ${elapsedMillis(started)} ms")
             return TvSession(tv, connection, pointer).also { session = it }
         } catch (e: Exception) {
             connection.close()
@@ -236,6 +240,8 @@ class RemoteControl(
         if (socketPath.isBlank()) throw TvConnectionException.RequestFailed("missing pointer socket")
         return connector.openPointerSocket(socketPath, tv.certificatePin)
     }
+
+    private fun elapsedMillis(since: Long): Long = (System.nanoTime() - since) / 1_000_000
 
     private fun closeSession() {
         session?.close()
