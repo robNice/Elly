@@ -6,6 +6,5 @@ import de.robnice.elgy.R
 enum class RemotePage(@param:StringRes val titleRes: Int) {
     NAVIGATION(R.string.page_navigation),
     NUMBERS(R.string.page_numbers),
-    MEDIA(R.string.page_media),
-    POINTER(R.string.page_pointer)
+    MEDIA(R.string.page_media)
 }

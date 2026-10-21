@@ -1,8 +1,55 @@
 <resources>
-    <dimen name="page_padding">24dp</dimen>
-    <dimen name="page_title_spacing">16dp</dimen>
 
     <dimen name="indicator_dot_size">8dp</dimen>
     <dimen name="indicator_dot_spacing">8dp</dimen>
     <dimen name="indicator_padding">16dp</dimen>
+
+    <dimen name="remote_page_padding">16dp</dimen>
+    <dimen name="remote_row_spacing">12dp</dimen>
+    <dimen name="key_size">60dp</dimen>
+    <dimen name="key_size_small">52dp</dimen>
+    <dimen name="key_size_transport">40dp</dimen>
+    <dimen name="transport_key_spacing">5dp</dimen>
+    <dimen name="key_icon_size">26dp</dimen>
+    <dimen name="key_wide_width">92dp</dimen>
+    <dimen name="key_wide_height">48dp</dimen>
+    <dimen name="key_color_width">64dp</dimen>
+    <dimen name="key_color_height">30dp</dimen>
+    <dimen name="key_app_label_padding">10dp</dimen>
+    <dimen name="app_keys_top_spacing">12dp</dimen>
+    <dimen name="app_key_content_spacing">6dp</dimen>
+    <dimen name="app_key_icon_size">30dp</dimen>
+    <dimen name="app_key_icon_size_small">22dp</dimen>
+    <dimen name="app_key_icon_corner">6dp</dimen>
+    <dimen name="color_swatch_size">32dp</dimen>
+    <dimen name="color_swatch_border">2dp</dimen>
+    <dimen name="key_app_height">40dp</dimen>
+    <dimen name="key_elevation">6dp</dimen>
+    <dimen name="key_elevation_pressed">1dp</dimen>
+    <dimen name="key_rim_width">1dp</dimen>
+    <dimen name="rocker_width">64dp</dimen>
+    <dimen name="rocker_height">150dp</dimen>
+    <dimen name="dpad_max_size">280dp</dimen>
+    <dimen name="top_bar_icon_size">24dp</dimen>
+
+    <dimen name="pointer_padding">24dp</dimen>
+    <dimen name="pointer_ok_size">170dp</dimen>
+    <dimen name="pointer_ok_bar_height">80dp</dimen>
+    <dimen name="pointer_area_corner">28dp</dimen>
+    <dimen name="pointer_scroll_height">140dp</dimen>
+    <dimen name="joystick_radius">110dp</dimen>
+    <dimen name="joystick_dead_zone">10dp</dimen>
+    <dimen name="joystick_knob_radius">28dp</dimen>
+    <dimen name="joystick_ring_width">2dp</dimen>
+
+    <dimen name="settings_sub_option_indent">24dp</dimen>
+    <dimen name="screen_thumbnail_corner">10dp</dimen>
+    <dimen name="screen_thumbnail_padding">6dp</dimen>
+    <dimen name="screen_thumbnail_checkbox_spacing">10dp</dimen>
+
+    <dimen name="setup_padding">24dp</dimen>
+    <dimen name="setup_section_spacing">24dp</dimen>
+    <dimen name="setup_item_spacing">8dp</dimen>
+    <dimen name="setup_card_padding">16dp</dimen>
+    <dimen name="setup_progress_size">24dp</dimen>
 </resources>

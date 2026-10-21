@@ -14,6 +14,42 @@
     <color name="indicator_active">#FFE6E8EB</color>
     <color name="indicator_inactive">#FF3A3E44</color>
 
+    <!-- Keys -->
+    <color name="key_body_top">#FF34373C</color>
+    <color name="key_body_bottom">#FF101113</color>
+    <color name="key_red_top">#FFEA3B3F</color>
+    <color name="key_red_bottom">#FF8F1215</color>
+    <color name="key_light_top">#FFF6F7F8</color>
+    <color name="key_light_bottom">#FFBFC3C8</color>
+    <color name="key_rim_light">#59FFFFFF</color>
+    <color name="key_rim_dark">#CC000000</color>
+    <color name="key_highlight">#26FFFFFF</color>
+    <color name="key_pressed_overlay">#40000000</color>
+    <color name="key_content">#FFE6E8EB</color>
+    <color name="key_content_on_light">#FF16181B</color>
+    <color name="key_color_red">#FFD7262B</color>
+    <color name="key_color_green">#FF1FA34A</color>
+    <color name="key_color_yellow">#FFE9C02B</color>
+    <color name="key_color_blue">#FF2C78D6</color>
+    <color name="brand_netflix">#FFE50914</color>
+    <color name="brand_prime_video">#FF1399FF</color>
+    <color name="app_label_dark">#FF16181B</color>
+    <color name="app_label_red">#FFD32F2F</color>
+    <color name="app_label_orange">#FFE65100</color>
+    <color name="app_label_green">#FF2E7D32</color>
+    <color name="app_label_teal">#FF00838F</color>
+    <color name="app_label_blue">#FF1565C0</color>
+    <color name="app_label_purple">#FF6A1B9A</color>
+    <color name="dpad_ring_top">#FF2A2D31</color>
+    <color name="dpad_ring_bottom">#FF0C0D0F</color>
+
+    <!-- Pointer overlay -->
+    <color name="pointer_scrim">#F20B0C0E</color>
+    <color name="pointer_area">#FF15171A</color>
+    <color name="pointer_area_border">#FF2A2D31</color>
+    <color name="joystick_ring">#59E6E8EB</color>
+    <color name="joystick_knob">#CCD8D9DB</color>
+
     <!-- Launcher icon -->
     <color name="ic_launcher_background">#FF16181B</color>
 </resources>
