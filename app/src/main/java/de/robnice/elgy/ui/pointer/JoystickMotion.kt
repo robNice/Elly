@@ -4,7 +4,7 @@ import kotlin.math.sqrt
 
 object JoystickMotion {
 
-    const val MAX_SPEED_PIXELS_PER_SECOND = 1800f
+    const val MAX_SPEED_PIXELS_PER_SECOND = 800f
 
     // Quadratic response: small deflections allow fine positioning, full deflection moves fast.
     fun velocity(offsetX: Float, offsetY: Float, deadZone: Float, radius: Float): Pair<Float, Float> {

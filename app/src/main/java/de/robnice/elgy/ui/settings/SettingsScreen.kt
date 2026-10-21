@@ -40,11 +40,13 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import de.robnice.elgy.BuildConfig
 import de.robnice.elgy.R
 import de.robnice.elgy.remote.TvApp
 import de.robnice.elgy.ui.remote.messageRes
 import de.robnice.elgy.data.model.AppSlot
 import de.robnice.elgy.data.model.MotionTuning
+import de.robnice.elgy.data.model.JoystickPlacement
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PairedTv
 import de.robnice.elgy.data.model.PointerMode
@@ -63,67 +65,96 @@ fun SettingsScreen(viewModel: SettingsViewModel, onClose: () -> Unit, onOpenSetu
     val activeTv by viewModel.activeTv.collectAsStateWithLifecycle()
     val pointerSettings by viewModel.pointerSettings.collectAsStateWithLifecycle()
     var confirmDisconnect by rememberSaveable { mutableStateOf(false) }
+    var showPrivacy by rememberSaveable { mutableStateOf(false) }
 
     BackHandler(onBack = onClose)
+
+    if (showPrivacy) {
+        PrivacyScreen(onClose = { showPrivacy = false })
+        return
+    }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .safeDrawingPadding()
-            .verticalScroll(rememberScrollState())
-            .padding(dimensionResource(R.dimen.setup_padding)),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_section_spacing))
     ) {
-        Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .verticalScroll(rememberScrollState())
+                .padding(dimensionResource(R.dimen.setup_padding)),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_section_spacing))
+        ) {
+            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(R.string.settings_title),
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.weight(1f)
+                )
+                TextButton(onClick = onClose) { Text(stringResource(R.string.setup_close)) }
+            }
+            TvSection(
+                activeTv = activeTv,
+                onOpenSetup = onOpenSetup,
+                onDisconnect = { confirmDisconnect = true }
+            )
+            if (appSlotsAvailable) {
+                ScreensSection(
+                    layout = screenLayout,
+                    onToggle = viewModel::toggleScreen,
+                    onReorder = viewModel::reorderScreens
+                )
+            }
+            PointerSection(
+                settings = pointerSettings,
+                motionAvailable = viewModel.motionPointerAvailable,
+                onModeChange = viewModel::setPointerMode,
+                onOkPositionChange = viewModel::setOkButtonPosition,
+                onTouchStyleChange = viewModel::setTouchStyle,
+                onJoystickPlacementChange = viewModel::setJoystickPlacement,
+                onSensitivityChange = viewModel::setMotionSensitivity,
+                onAccelerationChange = viewModel::setMotionAcceleration
+            )
+            if (appSlotsAvailable) {
+                AppKeysSection(
+                    slots = appSlots,
+                    onToggle = viewModel::setAppSlotEnabled,
+                    onChoose = viewModel::openAppPicker,
+                    onStyle = viewModel::openStyleEditor
+                )
+            }
+            SwitchSetting(
+                title = stringResource(R.string.settings_key_haptics),
+                description = stringResource(R.string.settings_key_haptics_description),
+                checked = keyHaptics,
+                onCheckedChange = viewModel::setKeyHaptics
+            )
+            // Demo mode stays the last entry of the settings screen.
+            SwitchSetting(
+                title = stringResource(R.string.settings_demo_mode),
+                description = stringResource(R.string.settings_demo_mode_description),
+                checked = demoMode,
+                onCheckedChange = viewModel::setDemoMode
+            )
+        }
+        HorizontalDivider()
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = dimensionResource(R.dimen.settings_footer_padding)),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Text(
-                text = stringResource(R.string.settings_title),
-                style = MaterialTheme.typography.headlineSmall,
+                text = stringResource(R.string.settings_version, BuildConfig.VERSION_NAME),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.weight(1f)
             )
-            TextButton(onClick = onClose) { Text(stringResource(R.string.setup_close)) }
+            TextButton(onClick = { showPrivacy = true }) {
+                Text(text = stringResource(R.string.settings_privacy), style = MaterialTheme.typography.labelSmall)
+            }
         }
-        TvSection(
-            activeTv = activeTv,
-            onOpenSetup = onOpenSetup,
-            onDisconnect = { confirmDisconnect = true }
-        )
-        if (appSlotsAvailable) {
-            ScreensSection(
-                layout = screenLayout,
-                onToggle = viewModel::toggleScreen,
-                onReorder = viewModel::reorderScreens
-            )
-        }
-        PointerSection(
-            settings = pointerSettings,
-            motionAvailable = viewModel.motionPointerAvailable,
-            onModeChange = viewModel::setPointerMode,
-            onOkPositionChange = viewModel::setOkButtonPosition,
-            onTouchStyleChange = viewModel::setTouchStyle,
-            onSensitivityChange = viewModel::setMotionSensitivity,
-            onAccelerationChange = viewModel::setMotionAcceleration
-        )
-        if (appSlotsAvailable) {
-            AppKeysSection(
-                slots = appSlots,
-                onToggle = viewModel::setAppSlotEnabled,
-                onChoose = viewModel::openAppPicker,
-                onStyle = viewModel::openStyleEditor
-            )
-        }
-        SwitchSetting(
-            title = stringResource(R.string.settings_key_haptics),
-            description = stringResource(R.string.settings_key_haptics_description),
-            checked = keyHaptics,
-            onCheckedChange = viewModel::setKeyHaptics
-        )
-        // Demo mode stays the last entry of the settings screen.
-        SwitchSetting(
-            title = stringResource(R.string.settings_demo_mode),
-            description = stringResource(R.string.settings_demo_mode_description),
-            checked = demoMode,
-            onCheckedChange = viewModel::setDemoMode
-        )
     }
 
     appPicker?.let { picker ->
@@ -232,6 +263,7 @@ private fun PointerSection(
     onModeChange: (PointerMode) -> Unit,
     onOkPositionChange: (OkButtonPosition) -> Unit,
     onTouchStyleChange: (TouchStyle) -> Unit,
+    onJoystickPlacementChange: (JoystickPlacement) -> Unit,
     onSensitivityChange: (Float) -> Unit,
     onAccelerationChange: (Float) -> Unit
 ) {
@@ -287,6 +319,23 @@ private fun PointerSection(
                             selected = settings.touchStyle == TouchStyle.JOYSTICK,
                             onSelect = { onTouchStyleChange(TouchStyle.JOYSTICK) }
                         )
+                        if (settings.touchStyle == TouchStyle.JOYSTICK) {
+                            Column(modifier = Modifier.padding(start = dimensionResource(R.dimen.settings_sub_option_indent))) {
+                                SettingCaption(stringResource(R.string.settings_joystick_placement))
+                                ChoiceRow(
+                                    title = stringResource(R.string.settings_joystick_placement_free),
+                                    description = stringResource(R.string.settings_joystick_placement_free_description),
+                                    selected = settings.joystickPlacement == JoystickPlacement.FREE,
+                                    onSelect = { onJoystickPlacementChange(JoystickPlacement.FREE) }
+                                )
+                                ChoiceRow(
+                                    title = stringResource(R.string.settings_joystick_placement_fixed),
+                                    description = stringResource(R.string.settings_joystick_placement_fixed_description),
+                                    selected = settings.joystickPlacement == JoystickPlacement.FIXED,
+                                    onSelect = { onJoystickPlacementChange(JoystickPlacement.FIXED) }
+                                )
+                            }
+                        }
                         SettingCaption(stringResource(R.string.settings_ok_position))
                         ChoiceRow(
                             title = stringResource(R.string.settings_ok_position_bottom),

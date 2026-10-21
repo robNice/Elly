@@ -37,8 +37,13 @@
     <dimen name="pointer_ok_bar_height">80dp</dimen>
     <dimen name="pointer_area_corner">28dp</dimen>
     <dimen name="pointer_scroll_height">140dp</dimen>
+    <dimen name="settings_footer_padding">12dp</dimen>
+    <dimen name="status_light_size">16dp</dimen>
+    <dimen name="status_light_spacing">8dp</dimen>
+    <dimen name="privacy_block_spacing">6dp</dimen>
+    <dimen name="privacy_heading_spacing">10dp</dimen>
     <dimen name="joystick_radius">110dp</dimen>
-    <dimen name="joystick_dead_zone">10dp</dimen>
+    <dimen name="joystick_dead_zone">18dp</dimen>
     <dimen name="joystick_knob_radius">28dp</dimen>
     <dimen name="joystick_ring_width">2dp</dimen>
 

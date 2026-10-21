@@ -11,11 +11,13 @@ import de.robnice.elgy.data.model.PointerMode
 import de.robnice.elgy.data.model.PointerSettings
 import de.robnice.elgy.data.model.RemoteScreen
 import de.robnice.elgy.data.model.ScreenLayout
+import de.robnice.elgy.remote.ConnectionState
 import de.robnice.elgy.remote.RemoteControl
 import de.robnice.elgy.remote.RemoteKey
 import de.robnice.elgy.remote.SendResult
 import de.robnice.elgy.remote.TvInput
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,6 +53,9 @@ class RemoteViewModel(
     private val _inputs = MutableStateFlow<List<TvInput>?>(null)
     val inputs: StateFlow<List<TvInput>?> = _inputs.asStateFlow()
 
+    val connectionState: StateFlow<ConnectionState> = remoteControl.connectionState
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), ConnectionState.CHECKING)
+
     private val _pointerActive = MutableStateFlow(false)
     val pointerActive: StateFlow<Boolean> = _pointerActive.asStateFlow()
 
@@ -60,10 +65,17 @@ class RemoteViewModel(
         PointerSettings(PointerMode.TOUCH, OkButtonPosition.BOTTOM)
     )
 
-    private val pointerMoves = Channel<Pair<Float, Float>>(Channel.UNLIMITED)
+    private val pointerEvents = Channel<PointerEvent>(Channel.UNLIMITED)
 
     init {
         viewModelScope.launch { forwardPointerMoves() }
+    }
+
+    suspend fun monitorConnection() {
+        while (true) {
+            remoteControl.checkConnection()
+            delay(CONNECTION_CHECK_INTERVAL_MILLIS)
+        }
     }
 
     fun press(key: RemoteKey) {
@@ -101,11 +113,11 @@ class RemoteViewModel(
     fun closePointer() {
         if (!_pointerActive.value) return
         _pointerActive.value = false
-        viewModelScope.launch { remoteControl.releasePointer() }
+        pointerEvents.trySend(PointerEvent.Release)
     }
 
     fun movePointer(dx: Float, dy: Float) {
-        pointerMoves.trySend(dx to dy)
+        if (_pointerActive.value) pointerEvents.trySend(PointerEvent.Move(dx, dy))
     }
 
     fun scrollPointer(steps: Int) {
@@ -119,20 +131,38 @@ class RemoteViewModel(
     private suspend fun forwardPointerMoves() {
         var restX = 0f
         var restY = 0f
-        for (move in pointerMoves) {
-            restX += move.first
-            restY += move.second
-            while (true) {
-                val next = pointerMoves.tryReceive().getOrNull() ?: break
-                restX += next.first
-                restY += next.second
+        for (event in pointerEvents) {
+            var release = event == PointerEvent.Release
+            if (event is PointerEvent.Move) {
+                restX += event.dx
+                restY += event.dy
+            }
+            while (!release) {
+                when (val next = pointerEvents.tryReceive().getOrNull() ?: break) {
+                    is PointerEvent.Move -> {
+                        restX += next.dx
+                        restY += next.dy
+                    }
+                    PointerEvent.Release -> release = true
+                }
             }
             val dx = restX.toInt()
             val dy = restY.toInt()
             restX -= dx
             restY -= dy
             if (dx != 0 || dy != 0) report(remoteControl.movePointer(dx, dy))
+            // Any move that reaches the TV after the hide key brings the cursor back in the screen center.
+            if (release) {
+                restX = 0f
+                restY = 0f
+                remoteControl.releasePointer()
+            }
         }
+    }
+
+    private sealed interface PointerEvent {
+        data class Move(val dx: Float, val dy: Float) : PointerEvent
+        data object Release : PointerEvent
     }
 
     private suspend fun report(result: SendResult) {
@@ -141,6 +171,7 @@ class RemoteViewModel(
 
     companion object {
         private const val STOP_TIMEOUT_MILLIS = 5_000L
+        private const val CONNECTION_CHECK_INTERVAL_MILLIS = 10_000L
 
         fun factory(container: AppContainer) = viewModelFactory {
             initializer {

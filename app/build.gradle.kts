@@ -15,8 +15,8 @@ android {
         applicationId = "de.robnice.elgy"
         minSdk = 28
         targetSdk = 36
-        versionCode = 3017
-        versionName = "0.3.17"
+        versionCode = 3030
+        versionName = "0.3.30"
     }
 
     androidResources {

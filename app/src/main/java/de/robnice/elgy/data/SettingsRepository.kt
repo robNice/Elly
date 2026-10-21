@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.floatPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import de.robnice.elgy.data.model.MotionTuning
+import de.robnice.elgy.data.model.JoystickPlacement
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PointerMode
 import de.robnice.elgy.data.model.PointerSettings
@@ -36,6 +37,9 @@ class SettingsRepository(context: Context, private val motionAvailable: Boolean)
             touchStyle = preferences[TOUCH_STYLE]
                 ?.let { runCatching { TouchStyle.valueOf(it) }.getOrNull() }
                 ?: TouchStyle.SWIPE,
+            joystickPlacement = preferences[JOYSTICK_PLACEMENT]
+                ?.let { runCatching { JoystickPlacement.valueOf(it) }.getOrNull() }
+                ?: JoystickPlacement.FREE,
             motionSensitivity = (preferences[MOTION_SENSITIVITY] ?: MotionTuning.DEFAULT_SENSITIVITY)
                 .coerceIn(MotionTuning.SENSITIVITY_RANGE),
             motionAcceleration = (preferences[MOTION_ACCELERATION] ?: MotionTuning.DEFAULT_ACCELERATION)
@@ -63,6 +67,10 @@ class SettingsRepository(context: Context, private val motionAvailable: Boolean)
         dataStore.edit { it[TOUCH_STYLE] = style.name }
     }
 
+    suspend fun setJoystickPlacement(placement: JoystickPlacement) {
+        dataStore.edit { it[JOYSTICK_PLACEMENT] = placement.name }
+    }
+
     suspend fun setMotionSensitivity(value: Float) {
         dataStore.edit { it[MOTION_SENSITIVITY] = value.coerceIn(MotionTuning.SENSITIVITY_RANGE) }
     }
@@ -77,6 +85,7 @@ class SettingsRepository(context: Context, private val motionAvailable: Boolean)
         private val POINTER_MODE = stringPreferencesKey("pointer_mode")
         private val OK_BUTTON_POSITION = stringPreferencesKey("ok_button_position")
         private val TOUCH_STYLE = stringPreferencesKey("touch_style")
+        private val JOYSTICK_PLACEMENT = stringPreferencesKey("joystick_placement")
         private val MOTION_SENSITIVITY = floatPreferencesKey("motion_sensitivity")
         private val MOTION_ACCELERATION = floatPreferencesKey("motion_acceleration")
 

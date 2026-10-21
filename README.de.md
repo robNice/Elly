@@ -151,7 +151,7 @@ Ein Verdrehen des Handys um die Zeigerichtung wird bewusst ignoriert, weil es be
 Der Zeiger wird über die Touch-Fläche gesteuert. Ein Tippen auf die Fläche ohne Wischen klickt wie OK. Zwei Eingabearten stehen zur Wahl:
 
 - **Wischen** – der Zeiger folgt dem Finger wie auf dem Touchpad eines Laptops.
-- **Joystick** – wie ein analoger Stick: Ausgehend vom ersten Berührungspunkt bewegt sich der Zeiger umso schneller, je weiter man in eine Richtung zieht.
+- **Joystick** – wie ein analoger Stick: Der Zeiger bewegt sich umso schneller, je weiter man in eine Richtung zieht. *Frei positionierbar*: Der Stick beginnt am ersten Berührungspunkt. *Fixiert*: Der Stick ist immer sichtbar in der Mitte der Fläche, die Deadzone ist eingezeichnet.
 
 Der OK-Button lässt sich unten (Standard) oder oben platzieren.
 
@@ -178,7 +178,7 @@ Die Auswahl wird pro Fernseher gespeichert.
 <img src="docs/de/settings_pointer.png" width="270" alt="Einstellungen: Zeiger">
 
 - **Bewegung** – mit den Unteroptionen *Empfindlichkeit* (0,3× bis 3,0×) und *Beschleunigung* (0× bis 4×; 0 = keine Beschleunigung). Nur verfügbar, wenn das Handy ein Gyroskop hat.
-- **Touchpad** – mit den Unteroptionen *Touch-Eingabe* (Wischen oder Joystick) und *OK-Button* (unten oder oben).
+- **Touchpad** – mit den Unteroptionen *Touch-Eingabe* (Wischen oder Joystick, beim Joystick mit *Joystick-Position* frei positionierbar oder fixiert) und *OK-Button* (unten oder oben).
 
 ### 6.4 App-Tasten
 

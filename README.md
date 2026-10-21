@@ -151,7 +151,7 @@ Twisting the phone around the aiming axis is ignored on purpose because it happe
 The pointer is controlled with the touch area. A tap on the area without swiping clicks like OK. Two input styles are available:
 
 - **Swipe** – the pointer follows your finger like on a laptop touchpad.
-- **Joystick** – like an analog stick: starting from the first touch point, the further you pull in a direction, the faster the pointer moves.
+- **Joystick** – like an analog stick: the further you pull in a direction, the faster the pointer moves. *Free*: the stick starts at the first touch point. *Fixed*: the stick is always visible in the middle of the area, with the dead zone marked.
 
 The OK button can be placed at the bottom (default) or at the top.
 
@@ -178,7 +178,7 @@ The selection is stored per TV.
 <img src="docs/en/settings_pointer.png" width="270" alt="Settings: pointer">
 
 - **Motion** – with the sub-options *Sensitivity* (0.3× to 3.0×) and *Acceleration* (0× to 4×; 0 = no acceleration). Only available if the phone has a gyroscope.
-- **Touchpad** – with the sub-options *Touch input* (swipe or joystick) and *OK button* (bottom or top).
+- **Touchpad** – with the sub-options *Touch input* (swipe or joystick, joystick with *Joystick position* free or fixed) and *OK button* (bottom or top).
 
 ### 6.4 App keys
 

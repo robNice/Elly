@@ -6,10 +6,13 @@ enum class OkButtonPosition { TOP, BOTTOM }
 
 enum class TouchStyle { SWIPE, JOYSTICK }
 
+enum class JoystickPlacement { FREE, FIXED }
+
 data class PointerSettings(
     val mode: PointerMode,
     val okButtonPosition: OkButtonPosition,
     val touchStyle: TouchStyle = TouchStyle.SWIPE,
+    val joystickPlacement: JoystickPlacement = JoystickPlacement.FREE,
     val motionSensitivity: Float = MotionTuning.DEFAULT_SENSITIVITY,
     val motionAcceleration: Float = MotionTuning.DEFAULT_ACCELERATION
 )

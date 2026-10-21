@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
@@ -30,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -37,8 +40,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.repeatOnLifecycle
 import de.robnice.elgy.R
+import de.robnice.elgy.remote.ConnectionState
 import de.robnice.elgy.remote.RemoteCommand
 import de.robnice.elgy.remote.RemoteKey
 import de.robnice.elgy.remote.SendResult
@@ -66,6 +73,8 @@ fun RemotePager(
         pageCount = { pages.size }
     )
     val pointerActive by viewModel.pointerActive.collectAsStateWithLifecycle()
+    val connectionState by viewModel.connectionState.collectAsStateWithLifecycle()
+    val lifecycleOwner = LocalLifecycleOwner.current
     val pointerSettings by viewModel.pointerSettings.collectAsStateWithLifecycle()
     val keyHaptics by viewModel.keyHaptics.collectAsStateWithLifecycle()
     val inputs by viewModel.inputs.collectAsStateWithLifecycle()
@@ -84,6 +93,10 @@ fun RemotePager(
         snapshotFlow { pagerState.currentPage }.collect { viewModel.currentScreen = screens.getOrNull(it) }
     }
 
+    LaunchedEffect(viewModel, lifecycleOwner) {
+        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) { viewModel.monitorConnection() }
+    }
+
     LaunchedEffect(viewModel) {
         viewModel.results.collect { result ->
             result.messageRes()?.let { snackbarHostState.showSnackbar(context.getString(it)) }
@@ -99,13 +112,16 @@ fun RemotePager(
         Column(modifier = Modifier.fillMaxSize()) {
             Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 TextButton(onClick = onOpenSetup, modifier = Modifier.weight(1f)) {
+                    StatusLight(connectionState)
+                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.status_light_spacing)))
                     Text(text = activeTvName, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
                 IconButton(onClick = viewModel::openPointer) {
                     Icon(
                         painter = painterResource(R.drawable.ic_pointer),
                         contentDescription = stringResource(R.string.key_pointer),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        tint = if (pointerActive) colorResource(R.color.top_bar_icon_active)
+                        else MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.size(dimensionResource(R.dimen.top_bar_icon_size))
                     )
                 }
@@ -215,3 +231,27 @@ private fun PageIndicator(pagerState: PagerState) {
         }
     }
 }
+
+@Composable
+private fun StatusLight(state: ConnectionState) {
+    val (colorRes, descriptionRes) = when (state) {
+        ConnectionState.CONNECTED -> R.color.status_connected to R.string.status_connected
+        ConnectionState.DISCONNECTED -> R.color.status_disconnected to R.string.status_disconnected
+        ConnectionState.CHECKING -> R.color.status_checking to R.string.status_checking
+        ConnectionState.DEMO -> R.color.status_demo to R.string.status_demo
+    }
+    val color = colorResource(colorRes)
+    val description = stringResource(descriptionRes)
+    Box(
+        modifier = Modifier
+            .size(dimensionResource(R.dimen.status_light_size))
+            .semantics { contentDescription = description }
+            .drawBehind {
+                drawCircle(color.copy(alpha = STATUS_GLOW_ALPHA))
+                drawCircle(color, radius = size.minDimension * STATUS_CORE_RATIO)
+            }
+    )
+}
+
+private const val STATUS_GLOW_ALPHA = 0.3f
+private const val STATUS_CORE_RATIO = 0.3f

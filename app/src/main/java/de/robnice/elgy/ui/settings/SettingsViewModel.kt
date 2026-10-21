@@ -10,6 +10,7 @@ import de.robnice.elgy.data.ScreenLayoutRepository
 import de.robnice.elgy.data.SettingsRepository
 import de.robnice.elgy.data.TvRepository
 import de.robnice.elgy.data.model.AppSlot
+import de.robnice.elgy.data.model.JoystickPlacement
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PairedTv
 import de.robnice.elgy.data.model.PointerMode
@@ -163,6 +164,10 @@ class SettingsViewModel(
 
     fun setTouchStyle(style: TouchStyle) {
         viewModelScope.launch { settingsRepository.setTouchStyle(style) }
+    }
+
+    fun setJoystickPlacement(placement: JoystickPlacement) {
+        viewModelScope.launch { settingsRepository.setJoystickPlacement(placement) }
     }
 
     fun setMotionSensitivity(value: Float) {

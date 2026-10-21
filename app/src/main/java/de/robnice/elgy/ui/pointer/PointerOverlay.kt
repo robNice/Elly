@@ -42,6 +42,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
@@ -52,6 +53,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.compose.LifecycleStartEffect
 import de.robnice.elgy.R
+import de.robnice.elgy.data.model.JoystickPlacement
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PointerMode
 import de.robnice.elgy.data.model.PointerSettings
@@ -71,6 +73,8 @@ private const val SCROLL_PIXELS_PER_STEP = 40f
 private const val BACKGROUND_PAD_ALPHA = 0.06f
 private const val MOTION_ACTIVITY_THRESHOLD = 0.5f
 private const val NANOS_PER_SECOND = 1_000_000_000f
+private const val NANOS_PER_MILLI = 1_000_000L
+private const val FIXED_JOYSTICK_TAP_MILLIS = 150L
 
 @Composable
 fun PointerOverlay(
@@ -124,7 +128,7 @@ fun PointerOverlay(
         ) {
             when (settings.mode) {
                 PointerMode.MOTION -> MotionLayout(settings, onMove, onScroll, click, markActivity)
-                PointerMode.TOUCH -> TouchLayout(settings.okButtonPosition, settings.touchStyle, onMove, click, markActivity)
+                PointerMode.TOUCH -> TouchLayout(settings.okButtonPosition, settings.touchStyle, settings.joystickPlacement, onMove, click, markActivity)
             }
         }
     }
@@ -166,6 +170,7 @@ private fun MotionLayout(
 private fun TouchLayout(
     okPosition: OkButtonPosition,
     touchStyle: TouchStyle,
+    joystickPlacement: JoystickPlacement,
     onMove: (Float, Float) -> Unit,
     onOk: () -> Unit,
     markActivity: () -> Unit
@@ -186,7 +191,7 @@ private fun TouchLayout(
         if (okPosition == OkButtonPosition.TOP) okBar()
         when (touchStyle) {
             TouchStyle.SWIPE -> TouchArea(onMove, onOk, markActivity)
-            TouchStyle.JOYSTICK -> JoystickArea(onMove, onOk, markActivity)
+            TouchStyle.JOYSTICK -> JoystickArea(joystickPlacement, onMove, onOk, markActivity)
         }
         if (okPosition == OkButtonPosition.BOTTOM) okBar()
     }
@@ -230,7 +235,13 @@ private fun ColumnScope.TouchArea(onMove: (Float, Float) -> Unit, onTap: () -> U
 }
 
 @Composable
-private fun ColumnScope.JoystickArea(onMove: (Float, Float) -> Unit, onTap: () -> Unit, markActivity: () -> Unit) {
+private fun ColumnScope.JoystickArea(
+    placement: JoystickPlacement,
+    onMove: (Float, Float) -> Unit,
+    onTap: () -> Unit,
+    markActivity: () -> Unit
+) {
+    val fixed = placement == JoystickPlacement.FIXED
     val vibrate = rememberKeyHaptic()
     val shape = RoundedCornerShape(dimensionResource(R.dimen.pointer_area_corner))
     val density = LocalDensity.current
@@ -240,22 +251,30 @@ private fun ColumnScope.JoystickArea(onMove: (Float, Float) -> Unit, onTap: () -
     val ringWidth = with(density) { dimensionResource(R.dimen.joystick_ring_width).toPx() }
     val ringColor = colorResource(R.color.joystick_ring)
     val knobColor = colorResource(R.color.joystick_knob)
+    val deadZoneColor = colorResource(R.color.joystick_dead_zone)
     val currentOnMove by rememberUpdatedState(onMove)
     val currentMarkActivity by rememberUpdatedState(markActivity)
     var origin by remember { mutableStateOf<Offset?>(null) }
     var position by remember { mutableStateOf(Offset.Zero) }
+    var dragged by remember { mutableStateOf(false) }
+    var stickCenter by remember { mutableStateOf(Offset.Zero) }
     val active = origin != null
 
     LaunchedEffect(active) {
         if (!active) return@LaunchedEffect
-        var lastFrame = withFrameNanos { it }
+        val firstFrame = withFrameNanos { it }
+        var lastFrame = firstFrame
         while (true) {
             val frame = withFrameNanos { it }
             val seconds = (frame - lastFrame) / NANOS_PER_SECOND
             lastFrame = frame
             val start = origin ?: break
-            val (vx, vy) = JoystickMotion.velocity(position.x - start.x, position.y - start.y, deadZone, radius)
-            if (vx != 0f || vy != 0f) currentOnMove(vx * seconds, vy * seconds)
+            // A fixed stick is usually touched off-center, so a short delay keeps taps from moving the cursor.
+            val steering = !fixed || dragged || frame - firstFrame >= FIXED_JOYSTICK_TAP_MILLIS * NANOS_PER_MILLI
+            if (steering) {
+                val (vx, vy) = JoystickMotion.velocity(position.x - start.x, position.y - start.y, deadZone, radius)
+                if (vx != 0f || vy != 0f) currentOnMove(vx * seconds, vy * seconds)
+            }
             currentMarkActivity()
         }
     }
@@ -266,35 +285,64 @@ private fun ColumnScope.JoystickArea(onMove: (Float, Float) -> Unit, onTap: () -
             .weight(1f)
             .background(colorResource(R.color.pointer_area), shape)
             .border(dimensionResource(R.dimen.key_rim_width), colorResource(R.color.pointer_area_border), shape)
-            .pointerInput(vibrate) {
+            .onSizeChanged { stickCenter = Offset(it.width / 2f, it.height / 2f) }
+            .pointerInput(vibrate, fixed) {
                 awaitEachGesture {
                     val down = awaitFirstDown()
-                    origin = down.position
+                    dragged = false
                     position = down.position
-                    var dragged = false
+                    origin = if (fixed) stickCenter else down.position
+                    var releasedAt = down.uptimeMillis
                     while (true) {
                         val change = awaitPointerEvent().changes.firstOrNull { it.id == down.id } ?: break
+                        releasedAt = change.uptimeMillis
                         if (!change.pressed) break
                         position = change.position
                         if ((position - down.position).getDistance() > viewConfiguration.touchSlop) dragged = true
                         change.consume()
                     }
                     origin = null
-                    if (!dragged) {
+                    val quick = !fixed || releasedAt - down.uptimeMillis < FIXED_JOYSTICK_TAP_MILLIS
+                    if (!dragged && quick) {
                         vibrate()
                         onTap()
                     }
                 }
             }
             .drawBehind {
-                val start = origin ?: return@drawBehind
-                drawCircle(ringColor, radius, start, style = Stroke(ringWidth))
+                // While the knob stays inside the inner circle, its center is within the dead zone.
+                fun drawStick(center: Offset) {
+                    drawCircle(deadZoneColor, deadZone + knobRadius, center)
+                    drawCircle(ringColor, deadZone + knobRadius, center, style = Stroke(ringWidth))
+                    drawCircle(ringColor, radius, center, style = Stroke(ringWidth))
+                }
+                val start = origin
+                if (start == null) {
+                    if (fixed) {
+                        drawStick(stickCenter)
+                        drawCircle(knobColor, knobRadius, stickCenter)
+                    }
+                    return@drawBehind
+                }
+                drawStick(start)
                 val (kx, ky) = JoystickMotion.clampToRadius(position.x - start.x, position.y - start.y, radius)
                 drawCircle(knobColor, knobRadius, Offset(start.x + kx, start.y + ky))
             },
         contentAlignment = Alignment.Center
     ) {
-        if (!active) Hint(stringResource(R.string.pointer_joystick_hint))
+        if (fixed) {
+            if (!active) {
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(dimensionResource(R.dimen.pointer_padding))
+                ) {
+                    Hint(stringResource(R.string.pointer_joystick_fixed_hint))
+                }
+            }
+        } else if (!active) {
+            Hint(stringResource(R.string.pointer_joystick_hint))
+        }
     }
 }
 

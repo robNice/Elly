@@ -117,6 +117,7 @@
     <string name="pointer_touch_hint">Swipe to move the pointer, tap to click.</string>
     <string name="pointer_scroll_area">Scroll</string>
     <string name="pointer_close">Close pointer</string>
+    <string name="pointer_joystick_fixed_hint">Pull the stick in a direction – the further you pull, the faster the pointer moves. Tap to click.</string>
     <string name="pointer_joystick_hint">Touch and pull in a direction – the further you pull, the faster the pointer moves. Tap to click.</string>
 
     <string name="settings_pointer">Pointer</string>
@@ -134,7 +135,20 @@
     <string name="settings_touch_style_swipe">Swipe</string>
     <string name="settings_touch_style_swipe_description">The pointer follows your finger like on a touchpad.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
-    <string name="settings_touch_style_joystick_description">Like an analog stick: the further you pull from the first touch point, the faster the pointer moves.</string>
+    <string name="settings_touch_style_joystick_description">Like an analog stick: the further you pull, the faster the pointer moves.</string>
+    <string name="status_connected">Connected to the TV</string>
+    <string name="status_disconnected">TV not reachable</string>
+    <string name="status_checking">Checking connection</string>
+    <string name="status_demo">Demo mode</string>
+    <string name="settings_version">Version %1$s</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="privacy_title">Privacy policy</string>
+    <string name="privacy_bullet">•  %1$s</string>
+    <string name="settings_joystick_placement">Joystick position</string>
+    <string name="settings_joystick_placement_free">Free</string>
+    <string name="settings_joystick_placement_free_description">The joystick appears where you first touch the area.</string>
+    <string name="settings_joystick_placement_fixed">Fixed</string>
+    <string name="settings_joystick_placement_fixed_description">The joystick is always visible in the middle of the area, with the dead zone marked.</string>
     <string name="settings_ok_position_top">Top</string>
     <string name="settings_ok_position_bottom">Bottom</string>
 

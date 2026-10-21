@@ -10,6 +10,13 @@
     <color name="remote_accent">#FFD8D9DB</color>
     <color name="remote_power">#FFE0262B</color>
 
+    <!-- Top bar -->
+    <color name="top_bar_icon_active">#FF5AB4FF</color>
+    <color name="status_connected">#FF3DDC84</color>
+    <color name="status_disconnected">#FFE0262B</color>
+    <color name="status_checking">#FF6B7178</color>
+    <color name="status_demo">#FFF2B233</color>
+
     <!-- Page indicator -->
     <color name="indicator_active">#FFE6E8EB</color>
     <color name="indicator_inactive">#FF3A3E44</color>
@@ -49,6 +56,7 @@
     <color name="pointer_area_border">#FF2A2D31</color>
     <color name="joystick_ring">#59E6E8EB</color>
     <color name="joystick_knob">#CCD8D9DB</color>
+    <color name="joystick_dead_zone">#26E6E8EB</color>
 
     <!-- Launcher icon -->
     <color name="ic_launcher_background">#FF16181B</color>

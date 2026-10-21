@@ -12,6 +12,9 @@ import de.robnice.elgy.tv.pairing.PairingManifest
 import de.robnice.elgy.tv.power.WakeOnLan
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -29,6 +32,11 @@ class RemoteControl(
 
     private val mutex = Mutex()
     private var session: TvSession? = null
+    private val state = MutableStateFlow(ConnectionState.CHECKING)
+
+    val connectionState: Flow<ConnectionState> = combine(settingsRepository.demoMode, state) { demo, current ->
+        if (demo) ConnectionState.DEMO else current
+    }
 
     suspend fun send(key: RemoteKey): SendResult {
         val command = key.command
@@ -118,7 +126,45 @@ class RemoteControl(
     }
 
     suspend fun disconnect() {
-        mutex.withLock { closeSession() }
+        mutex.withLock {
+            closeSession()
+            state.value = ConnectionState.CHECKING
+        }
+    }
+
+    // Retries like a command, but takes the lock per attempt and skips while a command holds it,
+    // so a check never delays a key press by more than one attempt.
+    suspend fun checkConnection() {
+        repeat(ATTEMPTS) {
+            when (checkOnce() ?: return) {
+                ConnectionState.CONNECTED -> {
+                    state.value = ConnectionState.CONNECTED
+                    return
+                }
+                else -> Unit
+            }
+        }
+        state.value = ConnectionState.DISCONNECTED
+    }
+
+    private suspend fun checkOnce(): ConnectionState? {
+        if (settingsRepository.demoMode.first()) return null
+        val tv = tvRepository.activeTv.first() ?: return ConnectionState.DISCONNECTED
+        if (!mutex.tryLock()) return null
+        return try {
+            sessionFor(tv).connection.request(CONNECTION_CHECK)
+            ConnectionState.CONNECTED
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: TvConnectionException.RequestFailed) {
+            ConnectionState.CONNECTED
+        } catch (e: TvConnectionException) {
+            Log.w(TAG, "Connection check failed: ${e.message}")
+            closeSession()
+            ConnectionState.DISCONNECTED
+        } finally {
+            mutex.unlock()
+        }
     }
 
     private suspend fun pointerAction(action: (TvSession) -> Boolean): SendResult {
@@ -140,24 +186,28 @@ class RemoteControl(
 
     private suspend fun withSession(tv: PairedTv, action: suspend (TvSession) -> SendResult): SendResult =
         mutex.withLock {
-            repeat(ATTEMPTS) { attempt ->
-                try {
-                    return action(sessionFor(tv))
-                } catch (e: CancellationException) {
-                    throw e
-                } catch (e: TvConnectionException) {
-                    Log.w(TAG, "Attempt ${attempt + 1} failed: ${e.message}")
-                    closeSession()
-                    when (e) {
-                        is TvConnectionException.CertificateChanged,
-                        is TvConnectionException.PairingRejected -> return SendResult.PAIRING_REQUIRED
-                        is TvConnectionException.RequestFailed -> return SendResult.FAILED
-                        else -> Unit
-                    }
+            runWithRetries(tv, action).also { result -> ConnectionState.after(result)?.let { state.value = it } }
+        }
+
+    private suspend fun runWithRetries(tv: PairedTv, action: suspend (TvSession) -> SendResult): SendResult {
+        repeat(ATTEMPTS) { attempt ->
+            try {
+                return action(sessionFor(tv))
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: TvConnectionException) {
+                Log.w(TAG, "Attempt ${attempt + 1} failed: ${e.message}")
+                closeSession()
+                when (e) {
+                    is TvConnectionException.CertificateChanged,
+                    is TvConnectionException.PairingRejected -> return SendResult.PAIRING_REQUIRED
+                    is TvConnectionException.RequestFailed -> return SendResult.FAILED
+                    else -> Unit
                 }
             }
-            SendResult.UNREACHABLE
         }
+        return SendResult.UNREACHABLE
+    }
 
     private suspend fun sessionFor(tv: PairedTv): TvSession {
         session?.let { current ->
@@ -214,5 +264,6 @@ class RemoteControl(
         const val SWITCH_INPUT = "ssap://tv/switchInput"
         val DEMO_INPUTS = (1..3).map { TvInput(id = "HDMI_$it", label = "HDMI $it", connected = it == 1) }
         const val GET_POINTER_SOCKET = "ssap://com.webos.service.networkinput/getPointerInputSocket"
+        const val CONNECTION_CHECK = "ssap://com.webos.applicationManager/getForegroundAppInfo"
     }
 }
