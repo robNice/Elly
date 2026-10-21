@@ -48,8 +48,7 @@ object DefaultScreens {
 
     private val MEDIA = screen(
         key(RemoteKey.RECORD, 0, 0, 3, 3),
-        key(RemoteKey.LIVE_STOP, 3, 0, 3, 3),
-        key(RemoteKey.LIVE_PLAY, 6, 0, 3, 3),
+        key(RemoteKey.STOP, 3, 0, 3, 3),
         key(RemoteKey.REWIND, 12, 0, 3, 3),
         key(RemoteKey.PAUSE, 15, 0, 3, 3),
         key(RemoteKey.PLAY, 18, 0, 3, 3),

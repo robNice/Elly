@@ -86,8 +86,7 @@
     <string name="key_pause">Pause</string>
     <string name="key_rewind">Zurückspulen</string>
     <string name="key_record">Aufnahme</string>
-    <string name="key_live_stop">Live Playback stoppen</string>
-    <string name="key_live_play">Live Playback starten</string>
+    <string name="key_stop">Stopp</string>
     <string name="key_fast_forward">Vorspulen</string>
     <string name="key_pointer">Zeiger</string>
 

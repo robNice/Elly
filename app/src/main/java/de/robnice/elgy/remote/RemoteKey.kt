@@ -44,7 +44,6 @@ enum class RemoteKey(val command: RemoteCommand) {
     PAUSE(RemoteCommand.Request("ssap://media.controls/pause")),
     REWIND(RemoteCommand.Request("ssap://media.controls/rewind")),
     FAST_FORWARD(RemoteCommand.Request("ssap://media.controls/fastForward")),
-    RECORD(RemoteCommand.Button("RECORD")),
-    LIVE_STOP(RemoteCommand.Button("STOP")),
-    LIVE_PLAY(RemoteCommand.Button("PLAY"))
+    STOP(RemoteCommand.Request("ssap://media.controls/stop")),
+    RECORD(RemoteCommand.Button("RECORD"))
 }

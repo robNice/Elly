@@ -88,8 +88,7 @@
     <string name="key_pause">Pause</string>
     <string name="key_rewind">Rewind</string>
     <string name="key_record">Record</string>
-    <string name="key_live_stop">Stop Live Playback</string>
-    <string name="key_live_play">Start Live Playback</string>
+    <string name="key_stop">Stop</string>
     <string name="key_fast_forward">Fast forward</string>
     <string name="key_pointer">Pointer</string>
     <string name="key_label_more" translatable="false">•••</string>

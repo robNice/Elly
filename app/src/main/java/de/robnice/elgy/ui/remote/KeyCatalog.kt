@@ -52,8 +52,7 @@ object KeyCatalog {
         RemoteKey.REWIND -> KeyVisual(R.string.key_rewind, R.drawable.ic_fast_rewind)
         RemoteKey.FAST_FORWARD -> KeyVisual(R.string.key_fast_forward, R.drawable.ic_fast_forward)
         RemoteKey.RECORD -> KeyVisual(R.string.key_record, R.drawable.ic_record, iconTint = R.color.key_color_red)
-        RemoteKey.LIVE_STOP -> KeyVisual(R.string.key_live_stop, R.drawable.ic_live_stop)
-        RemoteKey.LIVE_PLAY -> KeyVisual(R.string.key_live_play, R.drawable.ic_live_play)
+        RemoteKey.STOP -> KeyVisual(R.string.key_stop, R.drawable.ic_stop)
     }
 
     @Composable
