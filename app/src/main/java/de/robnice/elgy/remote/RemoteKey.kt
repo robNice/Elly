@@ -3,6 +3,20 @@ package de.robnice.elgy.remote
 enum class RemoteKey(val command: RemoteCommand) {
     POWER(RemoteCommand.Power),
 
+    // webOS 4 names the service differently.
+    SCREEN_OFF(
+        RemoteCommand.Request(
+            "ssap://com.webos.service.tvpower/power/turnOffScreen",
+            "ssap://com.webos.service.tv.power/turnOffScreen"
+        )
+    ),
+    SCREEN_ON(
+        RemoteCommand.Request(
+            "ssap://com.webos.service.tvpower/power/turnOnScreen",
+            "ssap://com.webos.service.tv.power/turnOnScreen"
+        )
+    ),
+
     DIGIT_0(RemoteCommand.Button("0")),
     DIGIT_1(RemoteCommand.Button("1")),
     DIGIT_2(RemoteCommand.Button("2")),
@@ -34,6 +48,7 @@ enum class RemoteKey(val command: RemoteCommand) {
     GUIDE(RemoteCommand.Button("GUIDE")),
 
     INPUT(RemoteCommand.InputPicker),
+    KEYBOARD(RemoteCommand.TextInput),
 
     RED(RemoteCommand.Button("RED")),
     GREEN(RemoteCommand.Button("GREEN")),

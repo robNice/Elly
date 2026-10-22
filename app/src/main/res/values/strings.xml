@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name" translatable="false">Elgy</string>
 
-    <string name="page_navigation">Navigation</string>
-    <string name="page_numbers">Numbers</string>
-    <string name="page_media">Media &amp; Apps</string>
 
     <string name="page_indicator_description">Page %1$d of %2$d</string>
 
@@ -36,6 +33,9 @@
     <string name="pairing_error_unknown">An unexpected error occurred. Please try again.</string>
 
     <string name="settings_title">Settings</string>
+    <string name="settings_tab_tv">TV</string>
+    <string name="settings_tab_screens">Appearance</string>
+    <string name="settings_tab_control">Controls</string>
     <string name="settings_screens">Screens</string>
     <string name="settings_screens_description">Tap a screen to show or hide it, touch and hold and drag it to change the order. Use the pencil to edit a screen, the arrow to reset it. Stored per TV. At least one screen stays active.</string>
     <string name="app_picker_loading">Loading apps from the TV…</string>
@@ -80,6 +80,9 @@
     <string name="key_back">Back</string>
     <string name="key_guide">Guide</string>
     <string name="key_input">Input</string>
+    <string name="key_keyboard">Keyboard</string>
+    <string name="text_input_hint">Text for the TV</string>
+    <string name="text_input_close">Close keyboard</string>
     <string name="key_red">Red</string>
     <string name="key_green">Green</string>
     <string name="key_yellow">Yellow</string>
@@ -89,6 +92,8 @@
     <string name="key_rewind">Rewind</string>
     <string name="key_record">Record</string>
     <string name="key_stop">Stop</string>
+    <string name="key_screen_off">Screen off</string>
+    <string name="key_screen_on">Screen on</string>
     <string name="key_fast_forward">Fast forward</string>
     <string name="key_pointer">Pointer</string>
     <string name="key_label_more" translatable="false">•••</string>
@@ -112,6 +117,28 @@
     <string name="pointer_joystick_hint">Touch and pull in a direction – the further you pull, the faster the pointer moves. Tap to click.</string>
 
     <string name="settings_pointer">Pointer</string>
+    <string name="settings_rounding">Rounding</string>
+    <string name="settings_palette">Color palette</string>
+    <string name="palette_graphite">Graphite</string>
+    <string name="palette_silver">Silver</string>
+    <string name="palette_ocean">Ocean</string>
+    <string name="palette_forest">Forest</string>
+    <string name="palette_copper">Copper</string>
+    <string name="palette_violet">Violet</string>
+    <string name="palette_petrol">Petrol</string>
+    <string name="palette_bordeaux">Bordeaux</string>
+    <string name="palette_sand">Sand</string>
+    <string name="palette_coral">Coral</string>
+    <string name="palette_midnight">Midnight</string>
+    <string name="palette_sage">Sage</string>
+    <string name="palette_ruby">Ruby</string>
+    <string name="palette_lagoon">Lagoon</string>
+    <string name="palette_amber">Amber</string>
+    <string name="settings_rounding_keys">Keys</string>
+    <string name="settings_rounding_dpad">Directional pad</string>
+    <string name="settings_rounding_value">%1$d %%</string>
+    <string name="settings_light_effect">Long summer nights</string>
+    <string name="settings_light_effect_description">Low light from the top left: keys cast long shadows and the background is lit from that corner.</string>
     <string name="settings_pointer_mode">Pointer control</string>
     <string name="settings_pointer_mode_motion">Motion</string>
     <string name="settings_pointer_mode_motion_description">The pointer follows the movements of your phone.</string>
@@ -125,22 +152,51 @@
     <string name="settings_touch_style">Touch input</string>
     <string name="settings_touch_style_swipe">Swipe</string>
     <string name="settings_touch_style_swipe_description">The pointer follows your finger like on a touchpad.</string>
+    <string name="settings_swipe_speed">Speed</string>
+    <string name="settings_shake_to_open">Open by shaking</string>
+    <string name="settings_shake_to_open_description">Shake the phone to open the pointer.</string>
+    <string name="settings_shake_sensitivity">Shake sensitivity</string>
+    <string name="settings_double_tap_to_open">Open by double tap</string>
+    <string name="settings_double_tap_to_open_description">Double tap an empty spot of the screen to open the pointer.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Like an analog stick: the further you pull, the faster the pointer moves.</string>
     <string name="status_connected">Connected to the TV</string>
     <string name="status_disconnected">TV not reachable</string>
     <string name="status_checking">Checking connection</string>
     <string name="status_demo">Demo mode</string>
-    <string name="page_custom">Custom</string>
     <string name="custom_screen_empty">This screen is empty. Add keys in the settings under “Screens” with the pencil button.</string>
     <string name="custom_editor_done">Done</string>
-    <string name="custom_editor_hint">Drag to move, drag onto the trash to remove. Tap to select, then drag the corner handle to resize. Hold an app key for 2 seconds to set it up.</string>
+    <string name="custom_editor_undo">Undo</string>
+    <string name="custom_editor_reset">Reset screen</string>
+    <string name="settings_background">Background</string>
+    <string name="background_none">None</string>
+    <string name="background_palette">Auto</string>
+    <string name="background_custom">Own image</string>
+    <string name="background_hills">Hills</string>
+    <string name="background_ocean">Ocean</string>
+    <string name="background_meadow">Meadow</string>
+    <string name="background_sky">Sky</string>
+    <string name="background_aurora">Aurora</string>
+    <string name="background_graphite">Graphite</string>
+    <string name="background_mountains">Mountains</string>
+    <string name="background_forest">Forest</string>
+    <string name="background_sea">Sea</string>
+    <string name="custom_editor_hint">Drag to move, drag onto the trash to remove. Tap to select, then drag the corner handle to resize. Draw a frame on an empty area to select several elements and move them together. Hold an app key for 2 seconds to set it up.</string>
     <string name="custom_editor_add">Add element</string>
     <string name="custom_editor_no_space">No free space for this element. Make room first.</string>
     <string name="custom_editor_remove">Remove</string>
     <string name="custom_editor_resize">Resize</string>
     <string name="custom_picker_elements">Controls</string>
     <string name="custom_picker_keys">Keys</string>
+    <string name="custom_picker_tab_single">Buttons</string>
+    <string name="custom_picker_tab_groups">Button groups</string>
+    <string name="group_numbers">Channel numbers</string>
+    <string name="group_apps">Apps</string>
+    <string name="group_playback">Playback</string>
+    <string name="group_colors">Color keys</string>
+    <string name="group_volume_channel">Volume + channel</string>
+    <string name="group_navigation">Directional pad + back/home</string>
+    <string name="group_power">Power + screen</string>
     <string name="custom_element_volume">Volume rocker</string>
     <string name="custom_element_channel">Channel rocker</string>
     <string name="custom_element_dpad">Directional pad</string>
@@ -152,12 +208,30 @@
     <string name="custom_app_picker_title">App for this key</string>
     <string name="custom_app_style_title">Style of this key</string>
     <string name="custom_app_none">No app chosen yet.</string>
-    <string name="settings_screen_edit">Edit %1$s</string>
-    <string name="settings_screen_reset">Reset %1$s</string>
+    <string name="settings_screen_edit">Edit screen %1$d</string>
+    <string name="settings_screen_reset">Reset screen %1$d</string>
     <string name="settings_screen_reset_title">Reset screen?</string>
-    <string name="settings_screen_reset_message">The layout of “%1$s” is set back to the factory layout. Your changes to this screen are lost.</string>
+    <string name="settings_screen_reset_message">The layout of this screen is set back to the factory layout. Your changes to this screen are lost.</string>
     <string name="settings_screen_reset_confirm">Reset</string>
     <string name="custom_editor_add_short">Element</string>
+    <string name="widget_volume_name">Elgy volume</string>
+    <string name="widget_volume_description">Volume rocker.</string>
+    <string name="widget_channel_name">Elgy channel</string>
+    <string name="widget_channel_description">Channel rocker.</string>
+    <string name="widget_media_name">Elgy playback</string>
+    <string name="widget_media_description">Rewind, play, pause, fast forward and stop.</string>
+    <string name="widget_power_name">Elgy power</string>
+    <string name="widget_power_description">Turns the TV on or off.</string>
+    <string name="widget_mute_name">Elgy mute</string>
+    <string name="widget_mute_description">Mutes the TV.</string>
+    <string name="widget_screen_name">Elgy screen</string>
+    <string name="widget_screen_description">Turns the TV screen off and on again, the sound keeps playing.</string>
+    <string name="widget_config_title">Which TV should this widget control?</string>
+    <string name="widget_config_no_tvs">No TV is connected yet. Open Elgy and connect a TV first.</string>
+    <string name="widget_config_open_app">Open Elgy</string>
+    <string name="widget_config_saving">Saving…</string>
+    <string name="widget_service_channel">Widget keys</string>
+    <string name="widget_service_sending">Sending to the TV</string>
     <string name="settings_version">Version %1$s</string>
     <string name="settings_privacy">Privacy</string>
     <string name="privacy_title">Privacy policy</string>
@@ -166,7 +240,7 @@
     <string name="settings_joystick_placement_free">Free</string>
     <string name="settings_joystick_placement_free_description">The joystick appears where you first touch the area.</string>
     <string name="settings_joystick_placement_fixed">Fixed</string>
-    <string name="settings_joystick_placement_fixed_description">The joystick is always visible in the middle of the area, with the dead zone marked.</string>
+    <string name="settings_joystick_placement_fixed_description">The joystick is always visible in the middle of the area.</string>
     <string name="settings_ok_position_top">Top</string>
     <string name="settings_ok_position_bottom">Bottom</string>
 

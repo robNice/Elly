@@ -8,14 +8,12 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,17 +31,18 @@ fun DirectionalPad(onKey: (RemoteKey) -> Unit, modifier: Modifier = Modifier, ca
     BoxWithConstraints(modifier = modifier, contentAlignment = Alignment.Center) {
         val fitted = min(maxWidth, maxHeight)
         val padSize = if (capped) min(fitted, dimensionResource(R.dimen.dpad_max_size)) else fitted
-        val ringPalette = KeyStyle.DARK.palette().copy(
-            top = colorResource(R.color.dpad_ring_top),
-            bottom = colorResource(R.color.dpad_ring_bottom)
-        )
+        val rounding = LocalDpadRounding.current
+        val shape = keyShape(rounding)
+        val colors = currentPaletteColors()
+        val ringPalette = KeyStyle.DARK.palette().copy(top = colors.ringTop, bottom = colors.ringBottom)
 
         Box(
             modifier = Modifier
                 .size(padSize)
-                .keyBody(CircleShape, ringPalette, pressed = false),
+                .keyBody(shape, ringPalette, pressed = false),
             contentAlignment = Alignment.Center
         ) {
+            OkKeyShadow(padSize * OK_SIZE_FRACTION, rounding, shape)
             val arrowSize = padSize * ARROW_SIZE_FRACTION
             val offset = padSize * ARROW_OFFSET_FRACTION
             PadArrow(R.drawable.ic_chevron_up, R.string.key_up, arrowSize, 0.dp(), -offset, ringPalette.content) { onKey(RemoteKey.UP) }
@@ -54,7 +53,8 @@ fun DirectionalPad(onKey: (RemoteKey) -> Unit, modifier: Modifier = Modifier, ca
             RemoteKeyButton(
                 contentDescription = stringResource(R.string.key_ok),
                 onPress = { onKey(RemoteKey.OK) },
-                modifier = Modifier.size(padSize * OK_SIZE_FRACTION)
+                modifier = Modifier.size(padSize * OK_SIZE_FRACTION),
+                shape = shape
             ) { color ->
                 KeyLabel(text = stringResource(R.string.key_ok), color = color, fontSize = 20, fontWeight = FontWeight.Bold)
             }

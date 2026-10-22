@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/widget_power"
+        android:layout_width="@dimen/widget_button_size"
+        android:layout_height="@dimen/widget_button_size"
+        android:layout_gravity="center"
+        android:background="@drawable/widget_circle_background"
+        android:contentDescription="@string/key_power"
+        android:padding="@dimen/widget_button_padding"
+        android:src="@drawable/ic_power"
+        android:tint="@color/widget_content" />
+</FrameLayout>

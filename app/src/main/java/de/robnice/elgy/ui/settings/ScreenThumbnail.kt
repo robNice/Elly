@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -22,6 +23,11 @@ import de.robnice.elgy.R
 import de.robnice.elgy.data.model.CustomElementType
 import de.robnice.elgy.data.model.CustomScreen
 import de.robnice.elgy.remote.RemoteKey
+import de.robnice.elgy.ui.components.LocalDpadRounding
+import de.robnice.elgy.ui.components.LocalKeyRounding
+import de.robnice.elgy.ui.components.currentPaletteColors
+import de.robnice.elgy.ui.remote.LocalAppBackground
+import de.robnice.elgy.ui.remote.ScreenBackgroundImage
 
 private const val THUMBNAIL_ASPECT_RATIO = 0.5f
 private const val DISABLED_ALPHA = 0.3f
@@ -40,11 +46,12 @@ private data class ThumbnailColors(
 @Composable
 fun ScreenThumbnail(layout: CustomScreen, enabled: Boolean, modifier: Modifier = Modifier) {
     val shape = RoundedCornerShape(dimensionResource(R.dimen.screen_thumbnail_corner))
+    val palette = currentPaletteColors()
     val colors = ThumbnailColors(
-        key = colorResource(R.color.key_body_top),
-        keyHighlight = colorResource(R.color.dpad_ring_top),
+        key = palette.keyTop,
+        keyHighlight = palette.ringTop,
         power = colorResource(R.color.key_red_top),
-        light = colorResource(R.color.key_light_top),
+        light = palette.lightTop,
         red = colorResource(R.color.key_color_red),
         green = colorResource(R.color.key_color_green),
         yellow = colorResource(R.color.key_color_yellow),
@@ -53,13 +60,23 @@ fun ScreenThumbnail(layout: CustomScreen, enabled: Boolean, modifier: Modifier =
     Box(
         modifier = modifier
             .aspectRatio(THUMBNAIL_ASPECT_RATIO)
+            .clip(shape)
             .background(colorResource(R.color.remote_background), shape)
             .border(dimensionResource(R.dimen.key_rim_width), colorResource(R.color.pointer_area_border), shape)
-            .alpha(if (enabled) 1f else DISABLED_ALPHA)
-            .padding(dimensionResource(R.dimen.screen_thumbnail_padding))
     ) {
-        Canvas(modifier = Modifier.fillMaxSize()) {
-            drawLayout(colors, layout)
+        val background = LocalAppBackground.current
+        ScreenBackgroundImage(background.type, background.image, Modifier.matchParentSize(), thumbnail = true)
+        Box(
+            modifier = Modifier
+                .matchParentSize()
+                .alpha(if (enabled) 1f else DISABLED_ALPHA)
+                .padding(dimensionResource(R.dimen.screen_thumbnail_padding))
+        ) {
+            val rounding = LocalKeyRounding.current
+            val dpadRounding = LocalDpadRounding.current
+            Canvas(modifier = Modifier.fillMaxSize()) {
+                drawLayout(colors, layout, rounding, dpadRounding)
+            }
         }
     }
 }
@@ -79,7 +96,7 @@ private fun DrawScope.pill(color: Color, x: Float, y: Float, width: Float, heigh
     )
 }
 
-private fun DrawScope.drawLayout(c: ThumbnailColors, screen: CustomScreen) {
+private fun DrawScope.drawLayout(c: ThumbnailColors, screen: CustomScreen, rounding: Float, dpadRounding: Float) {
     if (screen.elements.isEmpty()) {
         pill(c.key, 0.5f, 0.5f, 0.36f, 0.035f)
         pill(c.key, 0.5f, 0.5f, 0.07f, 0.18f)
@@ -108,7 +125,7 @@ private fun DrawScope.drawLayout(c: ThumbnailColors, screen: CustomScreen) {
             color = color,
             topLeft = Offset(element.x * cellWidth + inset, element.y * cellHeight + inset),
             size = Size(width, height),
-            cornerRadius = CornerRadius(minOf(width, height) / 2f)
+            cornerRadius = CornerRadius(minOf(width, height) / 2f * if (element.type == CustomElementType.DPAD) dpadRounding else rounding)
         )
     }
 }

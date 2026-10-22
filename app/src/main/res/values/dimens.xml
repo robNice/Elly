@@ -3,6 +3,8 @@
     <dimen name="indicator_dot_size">8dp</dimen>
     <dimen name="indicator_dot_spacing">8dp</dimen>
     <dimen name="indicator_padding">16dp</dimen>
+    <dimen name="text_input_padding">8dp</dimen>
+    <dimen name="text_input_elevation">6dp</dimen>
 
     <dimen name="remote_page_padding">16dp</dimen>
     <dimen name="key_size_small">52dp</dimen>
@@ -36,6 +38,7 @@
     <dimen name="custom_element_gap">1dp</dimen>
     <dimen name="custom_editor_grid_line">1dp</dimen>
     <dimen name="custom_editor_outline">2dp</dimen>
+    <dimen name="custom_editor_selected_outline">3dp</dimen>
     <dimen name="custom_editor_corner">12dp</dimen>
     <dimen name="custom_editor_handle_size">28dp</dimen>
     <dimen name="custom_editor_trash_size">48dp</dimen>
@@ -47,13 +50,39 @@
     <dimen name="custom_editor_handle_icon_size">16dp</dimen>
     <dimen name="custom_picker_item_padding">10dp</dimen>
     <dimen name="custom_picker_icon_size">24dp</dimen>
+    <dimen name="custom_picker_leading_width">44dp</dimen>
+    <dimen name="custom_picker_rocker_height">44dp</dimen>
+    <dimen name="light_shadow_softness">12dp</dimen>
+    <dimen name="light_shadow_margin_before">24dp</dimen>
+    <dimen name="light_shadow_margin_after">160dp</dimen>
+    <dimen name="custom_picker_color_size">16dp</dimen>
+    <dimen name="custom_picker_label_padding">5dp</dimen>
+    <dimen name="dialog_content_padding">24dp</dimen>
     <dimen name="custom_picker_max_height">420dp</dimen>
+    <dimen name="custom_group_preview_width">72dp</dimen>
+    <dimen name="custom_group_preview_height">40dp</dimen>
+    <dimen name="widget_key_size">32dp</dimen>
+    <dimen name="widget_key_padding">7dp</dimen>
+    <dimen name="widget_rocker_width">40dp</dimen>
+    <dimen name="widget_button_size">40dp</dimen>
+    <dimen name="widget_button_padding">10dp</dimen>
+    <dimen name="widget_bar_padding">4dp</dimen>
+    <dimen name="widget_pill_corner">100dp</dimen>
+    <dimen name="widget_rocker_icon_size">16dp</dimen>
+    <dimen name="widget_text_size">12sp</dimen>
     <dimen name="joystick_radius">110dp</dimen>
     <dimen name="joystick_dead_zone">18dp</dimen>
     <dimen name="joystick_knob_radius">28dp</dimen>
     <dimen name="joystick_ring_width">2dp</dimen>
 
     <dimen name="settings_sub_option_indent">24dp</dimen>
+    <dimen name="settings_rounding_preview_size">56dp</dimen>
+    <dimen name="settings_rounding_preview_inset">8dp</dimen>
+    <dimen name="settings_rounding_preview_key">112dp</dimen>
+    <dimen name="settings_palette_corner">12dp</dimen>
+    <dimen name="settings_palette_bar_height">26dp</dimen>
+    <dimen name="settings_palette_bar_corner">8dp</dimen>
+    <dimen name="settings_palette_label_spacing">6dp</dimen>
     <dimen name="screen_thumbnail_corner">10dp</dimen>
     <dimen name="screen_thumbnail_padding">6dp</dimen>
     <dimen name="screen_thumbnail_checkbox_spacing">10dp</dimen>

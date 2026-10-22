@@ -6,8 +6,11 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import de.robnice.elgy.AppContainer
 import de.robnice.elgy.data.AppIconFiller
+import de.robnice.elgy.data.model.AppBackground
+import de.robnice.elgy.data.model.ColorPalette
 import de.robnice.elgy.data.model.CustomScreen
 import de.robnice.elgy.data.model.DefaultScreens
+import de.robnice.elgy.data.model.KeyRounding
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PointerMode
 import de.robnice.elgy.data.model.PointerSettings
@@ -31,12 +34,19 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 
 class RemoteViewModel(
     private val remoteControl: RemoteControl,
     private val appIconFiller: AppIconFiller,
     pointerSettingsFlow: Flow<PointerSettings>,
     keyHapticsFlow: Flow<Boolean>,
+    keyRoundingFlow: Flow<Float>,
+    dpadRoundingFlow: Flow<Float>,
+    colorPaletteFlow: Flow<ColorPalette>,
+    backgroundFlow: Flow<AppBackground>,
+    lightEffectFlow: Flow<Boolean>,
     screenLayoutFlow: Flow<ScreenLayout>,
     screensFlow: Flow<Map<RemoteScreen, CustomScreen>>
 ) : ViewModel() {
@@ -49,6 +59,21 @@ class RemoteViewModel(
 
     val keyHaptics: StateFlow<Boolean> =
         keyHapticsFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), true)
+
+    val keyRounding: StateFlow<Float> =
+        keyRoundingFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), KeyRounding.DEFAULT)
+
+    val dpadRounding: StateFlow<Float> =
+        dpadRoundingFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), KeyRounding.DEFAULT)
+
+    val colorPalette: StateFlow<ColorPalette> =
+        colorPaletteFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), ColorPalette.GRAPHITE)
+
+    val background: StateFlow<AppBackground> =
+        backgroundFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), AppBackground())
+
+    val lightEffect: StateFlow<Boolean> =
+        lightEffectFlow.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), false)
 
     private val _results = MutableSharedFlow<SendResult>(extraBufferCapacity = 1)
     val results: SharedFlow<SendResult> = _results
@@ -72,8 +97,31 @@ class RemoteViewModel(
 
     private val pointerEvents = Channel<PointerEvent>(Channel.UNLIMITED)
 
+    // The text bar opens when the TV shows its keyboard or when the keyboard key is pressed.
+    // Closed by hand, it stays closed until the TV opens a text field again.
+    private val keyboardByKey = MutableStateFlow(false)
+    private val keyboardDismissed = MutableStateFlow(false)
+    val textInputOpen: StateFlow<Boolean> =
+        combine(remoteControl.keyboardVisible, keyboardByKey, keyboardDismissed) { tv, byKey, dismissed ->
+            byKey || (tv && !dismissed)
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), false)
+
+    private val textMutex = Mutex()
+    private var sentText = ""
+
+    // The text the bar starts with: the last sent text, if the TV field still holds that many
+    // characters; the TV does not tell its content.
+    var initialText = ""
+        private set
+
     init {
         viewModelScope.launch { forwardPointerMoves() }
+        viewModelScope.launch {
+            remoteControl.keyboardVisible.collect { visible ->
+                if (!visible) keyboardDismissed.value = false
+                if (visible) prepareText()
+            }
+        }
         viewModelScope.launch {
             combine(connectionState, screens) { state, _ -> state }
                 .filter { it == ConnectionState.CONNECTED }
@@ -110,6 +158,38 @@ class RemoteViewModel(
     fun selectInput(input: TvInput) {
         _inputs.value = null
         viewModelScope.launch { report(remoteControl.switchInput(input)) }
+    }
+
+    fun openKeyboard() {
+        prepareText()
+        keyboardByKey.value = true
+    }
+
+    // An unknown text in the TV field stands in as placeholders, so the first change deletes it
+    // and the field matches the bar from then on.
+    private fun prepareText() {
+        val length = remoteControl.keyboardTextLength.value
+        if (length != sentText.length) sentText = UNKNOWN_CHARACTER.toString().repeat(length)
+        initialText = if (UNKNOWN_CHARACTER in sentText) "" else sentText
+    }
+
+    fun closeKeyboard() {
+        keyboardByKey.value = false
+        keyboardDismissed.value = true
+    }
+
+    fun changeText(text: String) {
+        viewModelScope.launch {
+            textMutex.withLock {
+                val common = sentText.commonPrefixWith(text).length
+                val result = remoteControl.editText(sentText.length - common, text.substring(common))
+                if (result == SendResult.SENT || result == SendResult.DEMO) sentText = text else report(result)
+            }
+        }
+    }
+
+    fun sendEnter() {
+        viewModelScope.launch { textMutex.withLock { report(remoteControl.sendEnter()) } }
     }
 
     fun dismissInputPicker() {
@@ -181,6 +261,7 @@ class RemoteViewModel(
 
     companion object {
         private const val STOP_TIMEOUT_MILLIS = 5_000L
+        private const val UNKNOWN_CHARACTER = '\u0000'
         private const val CONNECTION_CHECK_INTERVAL_MILLIS = 10_000L
 
         fun factory(container: AppContainer) = viewModelFactory {
@@ -190,6 +271,11 @@ class RemoteViewModel(
                     container.appIconFiller,
                     container.settingsRepository.pointerSettings,
                     container.settingsRepository.keyHaptics,
+                    container.settingsRepository.keyRounding,
+                    container.settingsRepository.dpadRounding,
+                    container.settingsRepository.colorPalette,
+                    container.settingsRepository.background,
+                    container.settingsRepository.lightEffect,
                     container.screenLayoutRepository.activeLayout,
                     container.screenLayoutRepository.activeScreens
                 )

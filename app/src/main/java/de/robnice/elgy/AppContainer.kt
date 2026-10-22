@@ -3,6 +3,9 @@ package de.robnice.elgy
 import android.content.Context
 import de.robnice.elgy.data.AppIconCache
 import de.robnice.elgy.data.AppIconFiller
+import de.robnice.elgy.data.BackgroundImageStore
+import de.robnice.elgy.widget.WidgetController
+import de.robnice.elgy.widget.WidgetStore
 import de.robnice.elgy.data.AppSlotsRepository
 import de.robnice.elgy.data.ScreenLayoutRepository
 import de.robnice.elgy.data.SettingsRepository
@@ -56,6 +59,8 @@ class AppContainer(context: Context) {
 
     val screenLayoutRepository = ScreenLayoutRepository(appContext, appSlotsRepository.activeOwner)
 
+    val backgroundImageStore = BackgroundImageStore(appContext)
+
     val tvDiscovery = TvDiscovery(
         SsdpDiscovery(appContext, networkInterfaces),
         SubnetScanner(networkInterfaces)
@@ -66,6 +71,15 @@ class AppContainer(context: Context) {
     val remoteControl = RemoteControl(tvRepository, settingsRepository, connector, pairingManifest, WakeOnLan())
 
     val appIconFiller = AppIconFiller(remoteControl, appSlotsRepository, screenLayoutRepository)
+
+    val widgetController = WidgetController(
+        appContext,
+        applicationScope,
+        remoteControl,
+        tvRepository,
+        settingsRepository,
+        WidgetStore(appContext)
+    )
 
     init {
         applicationScope.launch { appSlotsRepository.clearLegacySlots() }

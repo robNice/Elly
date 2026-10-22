@@ -1,25 +1,33 @@
 package de.robnice.elgy.ui.settings
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import de.robnice.elgy.AppContainer
 import de.robnice.elgy.data.AppSlotsRepository
+import de.robnice.elgy.data.BackgroundImageStore
 import de.robnice.elgy.data.ScreenLayoutRepository
 import de.robnice.elgy.data.SettingsRepository
 import de.robnice.elgy.data.TvRepository
+import de.robnice.elgy.data.model.AppBackground
 import de.robnice.elgy.data.model.AppSlot
 import de.robnice.elgy.data.model.AppSlots
+import de.robnice.elgy.data.model.ButtonGroup
+import de.robnice.elgy.data.model.CellShape
+import de.robnice.elgy.data.model.ColorPalette
 import de.robnice.elgy.data.model.CustomElementType
 import de.robnice.elgy.data.model.CustomScreen
 import de.robnice.elgy.data.model.DefaultScreens
 import de.robnice.elgy.data.model.JoystickPlacement
+import de.robnice.elgy.data.model.KeyRounding
 import de.robnice.elgy.data.model.OkButtonPosition
 import de.robnice.elgy.data.model.PairedTv
 import de.robnice.elgy.data.model.PointerMode
 import de.robnice.elgy.data.model.PointerSettings
 import de.robnice.elgy.data.model.RemoteScreen
+import de.robnice.elgy.data.model.ScreenBackground
 import de.robnice.elgy.data.model.ScreenLayout
 import de.robnice.elgy.data.model.TouchStyle
 import de.robnice.elgy.remote.RemoteControl
@@ -41,6 +49,7 @@ class SettingsViewModel(
     private val tvRepository: TvRepository,
     private val appSlotsRepository: AppSlotsRepository,
     private val screenLayoutRepository: ScreenLayoutRepository,
+    private val backgroundImageStore: BackgroundImageStore,
     private val remoteControl: RemoteControl,
     val motionPointerAvailable: Boolean
 ) : ViewModel() {
@@ -63,25 +72,97 @@ class SettingsViewModel(
     val screens: StateFlow<Map<RemoteScreen, CustomScreen>> = screenLayoutRepository.activeScreens
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), DefaultScreens.all())
 
+    // Earlier states of the screen open in the editor, newest last.
+    private val history = MutableStateFlow<List<CustomScreen>>(emptyList())
+    val canUndo: StateFlow<Boolean> = history
+        .map { it.isNotEmpty() }
+        .stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
+    // Tabs shown when the settings or the add dialog open again, kept while the app runs.
+    var lastTab = 0
+    var lastPickerTab = 0
+
+    fun clearHistory() {
+        history.value = emptyList()
+    }
+
+    val background: StateFlow<AppBackground> = settingsRepository.background
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), AppBackground())
+
+    val lightEffectAvailable: Boolean = settingsRepository.lightEffectAvailable
+
+    val lightEffect: StateFlow<Boolean> = settingsRepository.lightEffect
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), false)
+
+    fun setLightEffect(enabled: Boolean) {
+        viewModelScope.launch { settingsRepository.setLightEffect(enabled) }
+    }
+
+    fun setBackground(type: ScreenBackground) {
+        viewModelScope.launch { settingsRepository.setBackground(type) }
+    }
+
+    // The previous own picture is replaced, so its copy is deleted afterwards.
+    fun setBackgroundImage(uri: Uri) {
+        viewModelScope.launch {
+            val path = backgroundImageStore.import(uri) ?: return@launch
+            settingsRepository.setBackgroundImage(path)
+            backgroundImageStore.deleteUnused(setOf(path))
+        }
+    }
+
+    fun undo(screen: RemoteScreen) {
+        val previous = history.value.lastOrNull() ?: return
+        history.update { it.dropLast(1) }
+        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { previous } }
+    }
+
+    private fun remember(state: CustomScreen) {
+        history.update { (it + state).takeLast(MAX_UNDO_STEPS) }
+    }
+
+    private fun editScreen(screen: RemoteScreen, transform: (CustomScreen) -> CustomScreen) {
+        viewModelScope.launch {
+            screenLayoutRepository.updateScreen(screen) { current ->
+                transform(current).also { if (it != current) remember(current) }
+            }
+        }
+    }
+
     fun addElement(screen: RemoteScreen, type: CustomElementType, key: RemoteKey?): Boolean {
         if (screens.value[screen]?.add(type, key) == null) return false
-        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { it.add(type, key) ?: it } }
+        editScreen(screen) { it.add(type, key) ?: it }
         return true
     }
 
-    fun moveElement(screen: RemoteScreen, id: Long, x: Int, y: Int) {
-        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { it.move(id, x, y) } }
+    fun addGroup(screen: RemoteScreen, group: ButtonGroup): Boolean {
+        if ((screens.value[screen] ?: DefaultScreens.layout(screen)).addGroup(group) == null) return false
+        editScreen(screen) { it.addGroup(group) ?: it }
+        return true
     }
 
-    fun resizeElement(screen: RemoteScreen, id: Long, width: Int, height: Int) {
-        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { it.resize(id, width, height) } }
+    fun moveElement(screen: RemoteScreen, id: Long, x: Int, y: Int, cells: CellShape) {
+        editScreen(screen) { it.move(id, x, y, cells) }
+    }
+
+    fun resizeElement(screen: RemoteScreen, id: Long, width: Int, height: Int, cells: CellShape) {
+        editScreen(screen) { it.resize(id, width, height, cells) }
     }
 
     fun removeElement(screen: RemoteScreen, id: Long) {
-        viewModelScope.launch { screenLayoutRepository.updateScreen(screen) { it.remove(id) } }
+        editScreen(screen) { it.remove(id) }
+    }
+
+    fun moveElements(screen: RemoteScreen, ids: Set<Long>, dx: Int, dy: Int, cells: CellShape) {
+        editScreen(screen) { it.moveAll(ids, dx, dy, cells) ?: it }
+    }
+
+    fun removeElements(screen: RemoteScreen, ids: Set<Long>) {
+        editScreen(screen) { screenState -> ids.fold(screenState) { current, id -> current.remove(id) } }
     }
 
     fun resetScreen(screen: RemoteScreen) {
+        screens.value[screen]?.let(::remember)
         viewModelScope.launch { screenLayoutRepository.resetScreen(screen) }
     }
 
@@ -102,7 +183,7 @@ class SettingsViewModel(
     fun confirmApp() {
         val draft = _appDraft.value ?: return
         _appDraft.value = null
-        viewModelScope.launch { screenLayoutRepository.updateScreen(draft.screen) { it.updateApp(draft.id) { draft.app } } }
+        editScreen(draft.screen) { it.updateApp(draft.id) { draft.app } }
     }
 
     fun dismissApp() {
@@ -189,6 +270,19 @@ class SettingsViewModel(
     val keyHaptics: StateFlow<Boolean> = settingsRepository.keyHaptics
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), true)
 
+    val keyRounding: StateFlow<Float> = settingsRepository.keyRounding
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), KeyRounding.DEFAULT)
+
+    val colorPalette: StateFlow<ColorPalette> = settingsRepository.colorPalette
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), ColorPalette.GRAPHITE)
+
+    fun setColorPalette(palette: ColorPalette) {
+        viewModelScope.launch { settingsRepository.setColorPalette(palette) }
+    }
+
+    val dpadRounding: StateFlow<Float> = settingsRepository.dpadRounding
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), KeyRounding.DEFAULT)
+
     val activeTv: StateFlow<PairedTv?> = tvRepository.activeTv
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), null)
 
@@ -222,12 +316,36 @@ class SettingsViewModel(
         viewModelScope.launch { settingsRepository.setMotionSensitivity(value) }
     }
 
+    fun setShakeToOpen(enabled: Boolean) {
+        viewModelScope.launch { settingsRepository.setShakeToOpen(enabled) }
+    }
+
+    fun setShakeSensitivity(value: Float) {
+        viewModelScope.launch { settingsRepository.setShakeSensitivity(value) }
+    }
+
+    fun setDoubleTapToOpen(enabled: Boolean) {
+        viewModelScope.launch { settingsRepository.setDoubleTapToOpen(enabled) }
+    }
+
+    fun setSwipeSpeed(value: Float) {
+        viewModelScope.launch { settingsRepository.setSwipeSpeed(value) }
+    }
+
     fun setMotionAcceleration(value: Float) {
         viewModelScope.launch { settingsRepository.setMotionAcceleration(value) }
     }
 
     fun setKeyHaptics(enabled: Boolean) {
         viewModelScope.launch { settingsRepository.setKeyHaptics(enabled) }
+    }
+
+    fun setKeyRounding(value: Float) {
+        viewModelScope.launch { settingsRepository.setKeyRounding(value) }
+    }
+
+    fun setDpadRounding(value: Float) {
+        viewModelScope.launch { settingsRepository.setDpadRounding(value) }
     }
 
     fun setDemoMode(enabled: Boolean) {
@@ -246,6 +364,7 @@ class SettingsViewModel(
 
     companion object {
         private const val STOP_TIMEOUT_MILLIS = 5_000L
+        private const val MAX_UNDO_STEPS = 50
 
         fun factory(container: AppContainer) = viewModelFactory {
             initializer {
@@ -254,6 +373,7 @@ class SettingsViewModel(
                     container.tvRepository,
                     container.appSlotsRepository,
                     container.screenLayoutRepository,
+                    container.backgroundImageStore,
                     container.remoteControl,
                     container.motionPointerAvailable
                 )

@@ -62,8 +62,10 @@ fun RemoteKeyButton(
 fun Modifier.keyBody(shape: Shape, palette: KeyPalette, pressed: Boolean): Modifier {
     val elevation = dimensionResource(if (pressed) R.dimen.key_elevation_pressed else R.dimen.key_elevation)
     val rimWidth = dimensionResource(R.dimen.key_rim_width)
+    // With the light effect the keys get their shadow from the light instead of all around.
+    val lit = LocalLightEffect.current
     return this
-        .shadow(elevation, shape, clip = false)
+        .then(if (lit) Modifier else Modifier.shadow(elevation, shape, clip = false))
         .drawBehind {
             val outline = shape.createOutline(size, layoutDirection, this)
             drawOutline(

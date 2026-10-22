@@ -9,13 +9,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import de.robnice.elgy.R
@@ -32,7 +32,8 @@ fun RockerKey(
     modifier: Modifier = Modifier.size(dimensionResource(R.dimen.rocker_width), dimensionResource(R.dimen.rocker_height)),
     @DrawableRes labelIcon: Int? = null
 ) {
-    val shape = RoundedCornerShape(percent = 50)
+    val rounding = LocalKeyRounding.current
+    val shape = keyShape(rounding)
     val palette = KeyStyle.DARK.palette()
     val topInteraction = remember { MutableInteractionSource() }
     val bottomInteraction = remember { MutableInteractionSource() }
@@ -50,7 +51,7 @@ fun RockerKey(
             pressed = topPressed,
             pressedColor = palette.pressedOverlay,
             contentColor = palette.content,
-            shape = RoundedCornerShape(topStartPercent = 50, topEndPercent = 50),
+            shape = rockerHalfShape(rounding, top = true),
             onPress = onTop
         )
         if (labelIcon != null) KeyIcon(icon = labelIcon, tint = palette.content)
@@ -62,7 +63,7 @@ fun RockerKey(
             pressed = bottomPressed,
             pressedColor = palette.pressedOverlay,
             contentColor = palette.content,
-            shape = RoundedCornerShape(bottomStartPercent = 50, bottomEndPercent = 50),
+            shape = rockerHalfShape(rounding, top = false),
             onPress = onBottom
         )
     }
@@ -76,7 +77,7 @@ private fun ColumnScope.RockerHalf(
     pressed: Boolean,
     pressedColor: Color,
     contentColor: Color,
-    shape: RoundedCornerShape,
+    shape: Shape,
     onPress: () -> Unit
 ) {
     Box(

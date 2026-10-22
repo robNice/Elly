@@ -1,5 +1,10 @@
 package de.robnice.elgy.ui.settings
 
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.IconButton
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.Spacer
@@ -19,7 +24,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
@@ -31,6 +35,8 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.PrimaryTabRow
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -39,18 +45,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalDensity
@@ -58,19 +71,32 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
 import de.robnice.elgy.R
+import de.robnice.elgy.data.model.ButtonGroup
+import de.robnice.elgy.data.model.CellShape
 import de.robnice.elgy.data.model.CustomElement
 import de.robnice.elgy.data.model.CustomElementType
 import de.robnice.elgy.data.model.CustomScreen
 import de.robnice.elgy.remote.RemoteKey
+import de.robnice.elgy.ui.components.KeyStyle
+import de.robnice.elgy.ui.components.LightOverlay
+import de.robnice.elgy.ui.components.RockerKey
+import de.robnice.elgy.ui.components.ShadowLayer
 import de.robnice.elgy.ui.remote.CustomElementView
 import de.robnice.elgy.ui.remote.CustomGrid
 import de.robnice.elgy.ui.remote.CustomGridMetrics
 import de.robnice.elgy.ui.remote.KeyCatalog
+import de.robnice.elgy.ui.remote.LocalAppBackground
 import de.robnice.elgy.ui.remote.RemotePageShape
+import de.robnice.elgy.ui.remote.ScreenBackgroundImage
 import de.robnice.elgy.ui.remote.cell
+import de.robnice.elgy.ui.remote.layer
+import de.robnice.elgy.ui.remote.rememberCellShape
 import kotlin.math.roundToInt
+import kotlinx.coroutines.launch
 
 // The hint says 2 s, but holding that long felt like 3 s in practice.
 private const val APP_MENU_HOLD_MILLIS = 1_000L
@@ -79,28 +105,48 @@ private const val DRAG_ALPHA = 0.7f
 private const val MAJOR_LINE_STEP = 3
 private const val MINOR_LINE_ALPHA = 0.35f
 private const val TRASH_SCALE = 0.4f
+private const val MARQUEE_FILL_ALPHA = 0.15f
+private const val GROUP_CELL_ASPECT = 1.1f
+private const val GROUP_ELEMENT_INSET = 0.25f
 
 @Composable
 fun CustomScreenEditor(
-    title: String,
     screen: CustomScreen,
     onAdd: (CustomElementType, RemoteKey?) -> Boolean,
-    onMove: (Long, Int, Int) -> Unit,
-    onResize: (Long, Int, Int) -> Unit,
+    onAddGroup: (ButtonGroup) -> Boolean,
+    pickerTab: Int,
+    onPickerTab: (Int) -> Unit,
+    onMove: (Long, Int, Int, CellShape) -> Unit,
+    onResize: (Long, Int, Int, CellShape) -> Unit,
     onRemove: (Long) -> Unit,
+    onMoveAll: (Set<Long>, Int, Int, CellShape) -> Unit,
+    onRemoveAll: (Set<Long>) -> Unit,
     onConfigureApp: (Long) -> Unit,
     onReset: () -> Unit,
+    canUndo: Boolean,
+    onUndo: () -> Unit,
     onClose: () -> Unit
 ) {
-    var selected by remember { mutableStateOf<Long?>(null) }
+    var selected by remember { mutableStateOf(emptySet<Long>()) }
+    val groupDrag = remember { GroupDrag() }
+    var marquee by remember { mutableStateOf<Rect?>(null) }
     var showPicker by rememberSaveable { mutableStateOf(false) }
     var confirmReset by rememberSaveable { mutableStateOf(false) }
+    val background = LocalAppBackground.current
     val pageAspect = RemotePageShape.aspectRatio
     var trashBounds by remember { mutableStateOf<Rect?>(null) }
     var dragging by remember { mutableStateOf(false) }
     var overTrash by remember { mutableStateOf(false) }
     var noSpace by remember { mutableStateOf(false) }
     val padding = dimensionResource(R.dimen.setup_padding)
+
+    // Saving is asynchronous: keep dropped elements at their new spot until the updated layout arrives.
+    LaunchedEffect(screen) {
+        if (groupDrag.dropping) {
+            groupDrag.offset = null
+            groupDrag.dropping = false
+        }
+    }
 
     BackHandler(onBack = onClose)
 
@@ -115,11 +161,7 @@ fun CustomScreenEditor(
                 .padding(horizontal = padding),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.headlineSmall,
-                modifier = Modifier.weight(1f)
-            )
+            Spacer(modifier = Modifier.weight(1f))
             TextButton(onClick = onClose) { Text(stringResource(R.string.custom_editor_done)) }
         }
         Text(
@@ -138,15 +180,65 @@ fun CustomScreenEditor(
             CustomGrid(
                 modifier = if (pageAspect != null) Modifier.aspectRatio(pageAspect) else Modifier.fillMaxSize()
             ) { metrics ->
-                GridLines(onTap = { selected = null })
+                val density = LocalDensity.current
+                val cellWidth = with(density) { metrics.cellWidth.toPx() }
+                val cellHeight = with(density) { metrics.cellHeight.toPx() }
+                val cells = rememberCellShape(metrics)
+                val multiple = selected.size > 1
+                val members = screen.elements.filter { it.id in selected }
+                val groupDelta = groupDrag.offset?.takeIf { multiple && members.isNotEmpty() }?.let { offset ->
+                    val dx = (offset.x / cellWidth).roundToInt()
+                        .coerceIn(-members.minOf { it.x }, CustomScreen.COLUMNS - members.maxOf { it.x + it.width })
+                    val dy = (offset.y / cellHeight).roundToInt()
+                        .coerceIn(-members.minOf { it.y }, CustomScreen.ROWS - members.maxOf { it.y + it.height })
+                    dx to dy
+                }
+                val groupValid = groupDelta?.let { (dx, dy) -> screen.moveAll(selected, dx, dy, cells) != null } == true
+                ScreenBackgroundImage(background.type, background.image)
+                LightOverlay()
+                ShadowLayer(screen.elements, cells, metrics.cellHeight)
+                GridLines(
+                    onTap = { selected = emptySet() },
+                    onMarquee = { marquee = it },
+                    onMarqueeEnd = { area ->
+                        marquee = null
+                        selected = screen.elements.filter { element ->
+                            area.contains(
+                                Offset((element.x + element.width / 2f) * cellWidth, (element.y + element.height / 2f) * cellHeight)
+                            )
+                        }.map { it.id }.toSet()
+                    }
+                )
+                marquee?.let { Marquee(it) }
                 screen.elements.forEach { element ->
                     key(element.id) {
                         EditableElement(
                             element = element,
                             metrics = metrics,
                             screen = screen,
-                            selected = selected == element.id,
-                            onSelect = { selected = element.id },
+                            selected = element.id in selected,
+                            showHandle = !multiple,
+                            group = groupDrag.takeIf { multiple && element.id in selected },
+                            groupDelta = groupDelta,
+                            groupValid = groupValid,
+                            onGroupDrop = {
+                                val delta = groupDelta
+                                when {
+                                    groupDrag.overTrash -> {
+                                        groupDrag.offset = null
+                                        onRemoveAll(selected)
+                                        selected = emptySet()
+                                    }
+                                    delta != null && groupValid && delta != (0 to 0) -> {
+                                        groupDrag.offset = Offset(delta.first * cellWidth, delta.second * cellHeight)
+                                        groupDrag.dropping = true
+                                        onMoveAll(selected, delta.first, delta.second, cells)
+                                    }
+                                    else -> groupDrag.offset = null
+                                }
+                                groupDrag.overTrash = false
+                            },
+                            onSelect = { if (element.id !in selected || !multiple) selected = setOf(element.id) },
                             onLongPress = { if (element.type == CustomElementType.APP) onConfigureApp(element.id) },
                             onMove = onMove,
                             onResize = onResize,
@@ -156,7 +248,7 @@ fun CustomScreenEditor(
                                 overTrash = hovering
                             },
                             onRemove = {
-                                selected = null
+                                selected = emptySet()
                                 onRemove(element.id)
                             }
                         )
@@ -181,10 +273,19 @@ fun CustomScreenEditor(
                 Text(stringResource(R.string.custom_editor_add_short))
             }
             Spacer(modifier = Modifier.weight(1f))
+            IconButton(onClick = {
+                selected = emptySet()
+                onUndo()
+            }, enabled = canUndo) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_undo),
+                    contentDescription = stringResource(R.string.custom_editor_undo)
+                )
+            }
             IconButton(onClick = { confirmReset = true }) {
                 Icon(
                     painter = painterResource(R.drawable.ic_restore),
-                    contentDescription = stringResource(R.string.settings_screen_reset, title)
+                    contentDescription = stringResource(R.string.custom_editor_reset)
                 )
             }
             Trash(
@@ -199,11 +300,11 @@ fun CustomScreenEditor(
         AlertDialog(
             onDismissRequest = { confirmReset = false },
             title = { Text(stringResource(R.string.settings_screen_reset_title)) },
-            text = { Text(stringResource(R.string.settings_screen_reset_message, title)) },
+            text = { Text(stringResource(R.string.settings_screen_reset_message)) },
             confirmButton = {
                 TextButton(onClick = {
                     confirmReset = false
-                    selected = null
+                    selected = emptySet()
                     onReset()
                 }) { Text(stringResource(R.string.settings_screen_reset_confirm)) }
             },
@@ -213,9 +314,15 @@ fun CustomScreenEditor(
 
     if (showPicker) {
         ElementPickerDialog(
+            initialTab = pickerTab,
+            onTabChange = onPickerTab,
             onPick = { type, key ->
                 showPicker = false
                 noSpace = !onAdd(type, key)
+            },
+            onPickGroup = { group ->
+                showPicker = false
+                noSpace = !onAddGroup(group)
             },
             onDismiss = { showPicker = false }
         )
@@ -245,13 +352,36 @@ private fun Trash(dragging: Boolean, hovering: Boolean, modifier: Modifier) {
 }
 
 @Composable
-private fun GridLines(onTap: () -> Unit) {
+private fun GridLines(onTap: () -> Unit, onMarquee: (Rect) -> Unit, onMarqueeEnd: (Rect) -> Unit) {
     val color = colorResource(R.color.custom_editor_grid)
     val width = with(LocalDensity.current) { dimensionResource(R.dimen.custom_editor_grid_line).toPx() }
+    var start by remember { mutableStateOf(Offset.Zero) }
+    var area by remember { mutableStateOf(Rect.Zero) }
+    val currentOnTap by rememberUpdatedState(onTap)
+    val currentOnMarquee by rememberUpdatedState(onMarquee)
+    val currentOnMarqueeEnd by rememberUpdatedState(onMarqueeEnd)
     Canvas(
         modifier = Modifier
             .fillMaxSize()
-            .pointerInput(Unit) { detectTapGestures { onTap() } }
+            .pointerInput(Unit) { detectTapGestures { currentOnTap() } }
+            .pointerInput(Unit) {
+                detectDragGestures(
+                    onDragStart = {
+                        start = it
+                        area = Rect(it, it)
+                        currentOnMarquee(area)
+                    },
+                    onDragEnd = { currentOnMarqueeEnd(area) },
+                    onDragCancel = { currentOnMarqueeEnd(area) }
+                ) { change, _ ->
+                    change.consume()
+                    area = Rect(
+                        Offset(minOf(start.x, change.position.x), minOf(start.y, change.position.y)),
+                        Offset(maxOf(start.x, change.position.x), maxOf(start.y, change.position.y))
+                    )
+                    currentOnMarquee(area)
+                }
+            }
     ) {
         for (column in 0..CustomScreen.COLUMNS) {
             val x = size.width * column / CustomScreen.COLUMNS
@@ -267,15 +397,37 @@ private fun GridLines(onTap: () -> Unit) {
 }
 
 @Composable
+private fun Marquee(area: Rect) {
+    val color = colorResource(R.color.custom_editor_selection)
+    val stroke = with(LocalDensity.current) { dimensionResource(R.dimen.custom_editor_outline).toPx() }
+    Canvas(modifier = Modifier.fillMaxSize().zIndex(3f)) {
+        drawRect(color.copy(alpha = MARQUEE_FILL_ALPHA), area.topLeft, area.size)
+        drawRect(color, area.topLeft, area.size, style = Stroke(stroke))
+    }
+}
+
+// Shared state while several selected elements are dragged together.
+private class GroupDrag {
+    var offset by mutableStateOf<Offset?>(null)
+    var overTrash by mutableStateOf(false)
+    var dropping by mutableStateOf(false)
+}
+
+@Composable
 private fun EditableElement(
     element: CustomElement,
     metrics: CustomGridMetrics,
     screen: CustomScreen,
     selected: Boolean,
+    showHandle: Boolean,
+    group: GroupDrag?,
+    groupDelta: Pair<Int, Int>?,
+    groupValid: Boolean,
+    onGroupDrop: () -> Unit,
     onSelect: () -> Unit,
     onLongPress: () -> Unit,
-    onMove: (Long, Int, Int) -> Unit,
-    onResize: (Long, Int, Int) -> Unit,
+    onMove: (Long, Int, Int, CellShape) -> Unit,
+    onResize: (Long, Int, Int, CellShape) -> Unit,
     isOverTrash: (Offset) -> Boolean,
     onDragState: (dragging: Boolean, overTrash: Boolean) -> Unit,
     onRemove: () -> Unit
@@ -294,14 +446,21 @@ private fun EditableElement(
     val outlineWidth = dimensionResource(R.dimen.custom_editor_outline)
     val haptics = LocalHapticFeedback.current
 
+    val cells = rememberCellShape(metrics)
+    // The gesture handlers outlive recompositions, so they read the latest selection through these.
+    val currentGroup by rememberUpdatedState(group)
+    val currentOnSelect by rememberUpdatedState(onSelect)
+    val currentOnGroupDrop by rememberUpdatedState(onGroupDrop)
+
+    // The target stops at the edge, so an element can be slid along it without landing outside.
     fun moved(offset: Offset) = element.copy(
-        x = element.x + (offset.x / cellWidth).roundToInt(),
-        y = element.y + (offset.y / cellHeight).roundToInt()
+        x = (element.x + (offset.x / cellWidth).roundToInt()).coerceIn(0, CustomScreen.COLUMNS - element.width),
+        y = (element.y + (offset.y / cellHeight).roundToInt()).coerceIn(0, CustomScreen.ROWS - element.height)
     )
 
     fun resized(offset: Offset) = element.copy(
-        width = element.width + (offset.x / cellWidth).roundToInt(),
-        height = element.height + (offset.y / cellHeight).roundToInt()
+        width = (element.width + (offset.x / cellWidth).roundToInt()).coerceIn(element.minWidth, CustomScreen.COLUMNS - element.x),
+        height = (element.height + (offset.y / cellHeight).roundToInt()).coerceIn(element.minHeight, CustomScreen.ROWS - element.y)
     )
 
     // Saving is asynchronous: keep a dropped element at its new spot until the updated layout arrives.
@@ -312,15 +471,23 @@ private fun EditableElement(
         }
     }
 
-    val target = if (overTrash || dropping) null else drag?.let(::moved) ?: resize?.let(::resized)
+    val shownDrag = if (group != null) group.offset else drag
+    val trashed = if (group != null) group.overTrash else overTrash
+    val target = when {
+        group != null -> groupDelta?.takeIf { !group.overTrash && !group.dropping }
+            ?.let { (dx, dy) -> element.copy(x = element.x + dx, y = element.y + dy) }
+        overTrash || dropping -> null
+        else -> drag?.let(::moved) ?: resize?.let(::resized)
+    }
     if (target != null) {
+        val valid = if (group != null) groupValid else screen.canPlace(target, cells)
         Box(
             modifier = Modifier
                 .cell(target, metrics)
                 .zIndex(2f)
                 .border(
                     outlineWidth,
-                    colorResource(if (screen.canPlace(target)) R.color.custom_editor_valid else R.color.custom_editor_invalid),
+                    colorResource(if (valid) R.color.custom_editor_valid else R.color.custom_editor_invalid),
                     shape
                 )
         )
@@ -329,17 +496,17 @@ private fun EditableElement(
     Box(
         modifier = Modifier
             .cell(element, metrics)
-            .zIndex(if (drag != null || selected) 1f else 0f)
+            .zIndex(if (shownDrag != null || selected) 1f else element.layer)
             .graphicsLayer {
-                translationX = drag?.x ?: 0f
-                translationY = drag?.y ?: 0f
+                translationX = shownDrag?.x ?: 0f
+                translationY = shownDrag?.y ?: 0f
                 alpha = when {
                     removed -> 0f
-                    drag != null && !dropping -> DRAG_ALPHA
+                    shownDrag != null && !(dropping || group?.dropping == true) -> DRAG_ALPHA
                     else -> 1f
                 }
-                scaleX = if (overTrash) TRASH_SCALE else 1f
-                scaleY = if (overTrash) TRASH_SCALE else 1f
+                scaleX = if (trashed) TRASH_SCALE else 1f
+                scaleY = if (trashed) TRASH_SCALE else 1f
             }
     ) {
         CustomElementView(element = element, onKey = {}, onLaunchApp = {}, editing = true)
@@ -348,7 +515,7 @@ private fun EditableElement(
                 .matchParentSize()
                 .onGloballyPositioned { coordinates = it }
                 .then(if (selected) Modifier.border(outlineWidth, colorResource(R.color.custom_editor_selection), shape) else Modifier)
-                .pointerInput(element.id) { detectTapGestures { onSelect() } }
+                .pointerInput(element.id) { detectTapGestures { currentOnSelect() } }
                 .pointerInput(element.id) {
                     awaitEachGesture {
                         val down = awaitFirstDown(requireUnconsumed = false)
@@ -368,22 +535,27 @@ private fun EditableElement(
                 .pointerInput(element) {
                     detectDragGestures(
                         onDragStart = { position ->
-                            onSelect()
+                            currentOnSelect()
                             dragOrigin = coordinates?.localToRoot(position) ?: Offset.Zero
-                            drag = Offset.Zero
+                            currentGroup.let { if (it != null) it.offset = Offset.Zero else drag = Offset.Zero }
                             onDragState(true, false)
                         },
                         onDragEnd = {
+                            if (currentGroup != null) {
+                                currentOnGroupDrop()
+                                onDragState(false, false)
+                                return@detectDragGestures
+                            }
                             val dropped = drag?.let(::moved)
                             when {
                                 overTrash -> {
                                     removed = true
                                     onRemove()
                                 }
-                                dropped != null && dropped != element && screen.canPlace(dropped) -> {
+                                dropped != null && dropped != element && screen.canPlace(dropped, cells) -> {
                                     drag = Offset((dropped.x - element.x) * cellWidth, (dropped.y - element.y) * cellHeight)
                                     dropping = true
-                                    onMove(element.id, dropped.x, dropped.y)
+                                    onMove(element.id, dropped.x, dropped.y, cells)
                                 }
                                 else -> drag = null
                             }
@@ -393,19 +565,28 @@ private fun EditableElement(
                         onDragCancel = {
                             drag = null
                             overTrash = false
+                            currentGroup?.offset = null
+                            currentGroup?.overTrash = false
                             onDragState(false, false)
                         }
                     ) { change, _ ->
                         change.consume()
                         // This box moves with the drag, so work with screen positions instead of summed local deltas.
                         val finger = coordinates?.localToRoot(change.position) ?: return@detectDragGestures
-                        drag = finger - dragOrigin
-                        overTrash = isOverTrash(finger)
-                        onDragState(true, overTrash)
+                        val hovering = isOverTrash(finger)
+                        val active = currentGroup
+                        if (active != null) {
+                            active.offset = finger - dragOrigin
+                            active.overTrash = hovering
+                        } else {
+                            drag = finger - dragOrigin
+                            overTrash = hovering
+                        }
+                        onDragState(true, hovering)
                     }
                 }
         )
-        if (selected && drag == null) {
+        if (selected && showHandle && drag == null) {
             Handle(
                 icon = R.drawable.ic_resize,
                 description = R.string.custom_editor_resize,
@@ -416,7 +597,7 @@ private fun EditableElement(
                         detectDragGestures(
                             onDragStart = { resize = Offset.Zero },
                             onDragEnd = {
-                                resize?.let { resized(it) }?.let { onResize(element.id, it.width, it.height) }
+                                resize?.let { resized(it) }?.let { onResize(element.id, it.width, it.height, cells) }
                                 resize = null
                             },
                             onDragCancel = { resize = null }
@@ -455,7 +636,10 @@ private sealed interface PickerItem {
 
 @Composable
 private fun ElementPickerDialog(
+    initialTab: Int,
+    onTabChange: (Int) -> Unit,
     onPick: (CustomElementType, RemoteKey?) -> Unit,
+    onPickGroup: (ButtonGroup) -> Unit,
     onDismiss: () -> Unit
 ) {
     val items = buildList {
@@ -469,25 +653,46 @@ private fun ElementPickerDialog(
     }
     val itemPadding = dimensionResource(R.dimen.custom_picker_item_padding)
 
+    val pagerState = rememberPagerState(initialPage = initialTab) { PICKER_TABS.size }
+    val scope = rememberCoroutineScope()
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.currentPage }.collect(onTabChange)
+    }
+    val dialogPadding = dimensionResource(R.dimen.dialog_content_padding)
+
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(stringResource(R.string.custom_editor_add)) },
         text = {
-            LazyColumn(modifier = Modifier.heightIn(max = dimensionResource(R.dimen.custom_picker_max_height))) {
-                items(items) { item ->
-                    when (item) {
-                        is PickerItem.Header -> Text(
-                            text = stringResource(item.title),
-                            style = MaterialTheme.typography.titleSmall,
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(top = itemPadding, bottom = itemPadding / 2)
+            Column {
+                PrimaryTabRow(
+                    selectedTabIndex = pagerState.currentPage,
+                    // The dialog pads its content; the tab bar reaches out to both edges.
+                    modifier = Modifier.layout { measurable, constraints ->
+                        val extra = dialogPadding.roundToPx() * 2
+                        val placeable = measurable.measure(
+                            constraints.copy(minWidth = constraints.maxWidth + extra, maxWidth = constraints.maxWidth + extra)
                         )
-                        is PickerItem.Element -> PickerRow(stringResource(item.title), null) {
-                            onPick(item.type, null)
-                        }
-                        is PickerItem.Key -> PickerRow(KeyCatalog.name(item.key), KeyCatalog.visual(item.key).icon) {
-                            onPick(CustomElementType.KEY, item.key)
-                        }
+                        layout(constraints.maxWidth, placeable.height) { placeable.place(-extra / 2, 0) }
+                    }
+                ) {
+                    PICKER_TABS.forEachIndexed { index, title ->
+                        Tab(
+                            selected = pagerState.currentPage == index,
+                            onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
+                            text = { Text(stringResource(title)) }
+                        )
+                    }
+                }
+                HorizontalPager(
+                    state = pagerState,
+                    modifier = Modifier.height(dimensionResource(R.dimen.custom_picker_max_height)),
+                    verticalAlignment = Alignment.Top
+                ) { page ->
+                    if (page == 0) {
+                        SinglePicker(items, itemPadding, onPick)
+                    } else {
+                        GroupPicker(onPickGroup)
                     }
                 }
             }
@@ -498,7 +703,93 @@ private fun ElementPickerDialog(
 }
 
 @Composable
-private fun PickerRow(title: String, icon: Int?, onClick: () -> Unit) {
+private fun SinglePicker(items: List<PickerItem>, itemPadding: Dp, onPick: (CustomElementType, RemoteKey?) -> Unit) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(items) { item ->
+            when (item) {
+                is PickerItem.Header -> Text(
+                    text = stringResource(item.title),
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.padding(top = itemPadding, bottom = itemPadding / 2)
+                )
+                is PickerItem.Element -> PickerRow(
+                    title = stringResource(item.title),
+                    leading = { ElementLeading(item.type) { onPick(item.type, null) } },
+                    onClick = { onPick(item.type, null) }
+                )
+                is PickerItem.Key -> PickerRow(
+                    title = KeyCatalog.name(item.key),
+                    leading = { KeyLeading(item.key) },
+                    onClick = { onPick(CustomElementType.KEY, item.key) }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun GroupPicker(onPick: (ButtonGroup) -> Unit) {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(ButtonGroup.entries) { group ->
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onPick(group) }
+                    .padding(vertical = dimensionResource(R.dimen.custom_picker_item_padding)),
+                horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.custom_picker_item_padding)),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                GroupPreview(
+                    group = group,
+                    modifier = Modifier.size(
+                        dimensionResource(R.dimen.custom_group_preview_width),
+                        dimensionResource(R.dimen.custom_group_preview_height)
+                    )
+                )
+                Text(text = stringResource(group.title()), style = MaterialTheme.typography.bodyLarge)
+            }
+        }
+    }
+}
+
+// The group's layout scaled into the preview box, each element as a rounded block.
+@Composable
+private fun GroupPreview(group: ButtonGroup, modifier: Modifier) {
+    val color = MaterialTheme.colorScheme.onSurfaceVariant
+    Canvas(modifier = modifier) {
+        val cell = minOf(size.width / (group.width * GROUP_CELL_ASPECT), size.height / group.height)
+        val cellWidth = cell * GROUP_CELL_ASPECT
+        val left = (size.width - group.width * cellWidth) / 2
+        val top = (size.height - group.height * cell) / 2
+        val inset = cell * GROUP_ELEMENT_INSET
+        group.elements.forEach { item ->
+            val width = item.width * cellWidth - 2 * inset
+            val height = item.height * cell - 2 * inset
+            drawRoundRect(
+                color = color,
+                topLeft = Offset(left + item.x * cellWidth + inset, top + item.y * cell + inset),
+                size = Size(width, height),
+                cornerRadius = CornerRadius(minOf(width, height) / 2)
+            )
+        }
+    }
+}
+
+private fun ButtonGroup.title(): Int = when (this) {
+    ButtonGroup.NUMBERS -> R.string.group_numbers
+    ButtonGroup.APPS -> R.string.group_apps
+    ButtonGroup.PLAYBACK -> R.string.group_playback
+    ButtonGroup.COLORS -> R.string.group_colors
+    ButtonGroup.VOLUME_CHANNEL -> R.string.group_volume_channel
+    ButtonGroup.NAVIGATION -> R.string.group_navigation
+    ButtonGroup.POWER -> R.string.group_power
+}
+
+private val PICKER_TABS = listOf(R.string.custom_picker_tab_single, R.string.custom_picker_tab_groups)
+
+@Composable
+private fun PickerRow(title: String, leading: @Composable () -> Unit, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -507,15 +798,112 @@ private fun PickerRow(title: String, icon: Int?, onClick: () -> Unit) {
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.custom_picker_item_padding)),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Box(modifier = Modifier.size(dimensionResource(R.dimen.custom_picker_icon_size)), contentAlignment = Alignment.Center) {
-            if (icon != null) {
-                Icon(
-                    painter = painterResource(icon),
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+        Box(
+            modifier = Modifier
+                .width(dimensionResource(R.dimen.custom_picker_leading_width))
+                .heightIn(min = dimensionResource(R.dimen.custom_picker_icon_size)),
+            contentAlignment = Alignment.Center
+        ) { leading() }
+        Text(text = title, style = MaterialTheme.typography.bodyLarge)
+    }
+}
+
+@Composable
+private fun ElementLeading(type: CustomElementType, onClick: () -> Unit) {
+    when (type) {
+        CustomElementType.VOLUME -> RockerPreview(volume = true, onClick = onClick)
+        CustomElementType.CHANNEL -> RockerPreview(volume = false, onClick = onClick)
+        CustomElementType.DPAD -> PickerIcon(R.drawable.ic_dpad_background)
+        CustomElementType.APP -> PickerIcon(R.drawable.ic_apps)
+        CustomElementType.KEY -> Unit
+    }
+}
+
+// The real rocker drawn at its normal size and scaled down, so it follows palette and rounding.
+@Composable
+private fun RockerPreview(volume: Boolean, onClick: () -> Unit) {
+    val width = dimensionResource(R.dimen.rocker_width)
+    val height = dimensionResource(R.dimen.rocker_height)
+    val previewHeight = dimensionResource(R.dimen.custom_picker_rocker_height)
+    val scale = previewHeight / height
+    Box(
+        modifier = Modifier
+            .size(width * scale, previewHeight)
+            .clearAndSetSemantics { },
+        contentAlignment = Alignment.Center
+    ) {
+        RockerKey(
+            label = if (volume) null else stringResource(R.string.key_channel),
+            labelIcon = if (volume) R.drawable.ic_volume else null,
+            topIcon = if (volume) R.drawable.ic_plus else R.drawable.ic_chevron_up,
+            bottomIcon = if (volume) R.drawable.ic_minus else R.drawable.ic_chevron_down,
+            topDescription = "",
+            bottomDescription = "",
+            onTop = {},
+            onBottom = {},
+            modifier = Modifier
+                .requiredSize(width, height)
+                .graphicsLayer {
+                    scaleX = scale
+                    scaleY = scale
+                }
+        )
+        // Taps add the element instead of pressing the preview's keys.
+        Box(
+            modifier = Modifier
+                .matchParentSize()
+                .clickable(interactionSource = null, indication = null, onClick = onClick)
+        )
+    }
+}
+
+// Icon of the key, or its label drawn like a small key, or the color of a color key.
+@Composable
+private fun KeyLeading(key: RemoteKey) {
+    val visual = KeyCatalog.visual(key)
+    val icon = visual.icon
+    val label = visual.label?.let { stringResource(it) } ?: visual.text
+    when {
+        icon != null -> PickerIcon(icon, visual.iconTint?.let { colorResource(it) })
+        label != null -> PickerLabel(label)
+        else -> {
+            val color = when (visual.style) {
+                KeyStyle.RED -> R.color.key_color_red
+                KeyStyle.GREEN -> R.color.key_color_green
+                KeyStyle.YELLOW -> R.color.key_color_yellow
+                KeyStyle.BLUE -> R.color.key_color_blue
+                else -> null
+            }
+            if (color != null) {
+                Box(
+                    modifier = Modifier
+                        .size(dimensionResource(R.dimen.custom_picker_color_size))
+                        .background(colorResource(color), CircleShape)
                 )
             }
         }
-        Text(text = title, style = MaterialTheme.typography.bodyLarge)
+    }
+}
+
+@Composable
+private fun PickerIcon(icon: Int, tint: Color? = null) {
+    Icon(
+        painter = painterResource(icon),
+        contentDescription = null,
+        tint = tint ?: MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.size(dimensionResource(R.dimen.custom_picker_icon_size))
+    )
+}
+
+@Composable
+private fun PickerLabel(text: String) {
+    val color = MaterialTheme.colorScheme.onSurfaceVariant
+    Box(
+        modifier = Modifier
+            .border(dimensionResource(R.dimen.custom_editor_outline), color, RoundedCornerShape(percent = 50))
+            .padding(horizontal = dimensionResource(R.dimen.custom_picker_label_padding)),
+        contentAlignment = Alignment.Center
+    ) {
+        FittedLabel(text = text, color = color)
     }
 }

@@ -130,12 +130,12 @@ fun ScreensSection(
                             )
                             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.screen_thumbnail_checkbox_spacing)))
                             Checkbox(checked = entry.enabled, onCheckedChange = null)
-                            val name = stringResource(entry.screen.titleRes())
+                            val number = entries.indexOf(entry) + 1
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                ScreenAction(R.drawable.ic_edit, stringResource(R.string.settings_screen_edit, name)) {
+                                ScreenAction(R.drawable.ic_edit, stringResource(R.string.settings_screen_edit, number)) {
                                     onEdit(entry.screen)
                                 }
-                                ScreenAction(R.drawable.ic_restore, stringResource(R.string.settings_screen_reset, name)) {
+                                ScreenAction(R.drawable.ic_restore, stringResource(R.string.settings_screen_reset, number)) {
                                     onReset(entry.screen)
                                 }
                             }
@@ -156,11 +156,4 @@ private fun ScreenAction(@DrawableRes icon: Int, description: String, onClick: (
             modifier = Modifier.size(dimensionResource(R.dimen.screen_action_icon_size))
         )
     }
-}
-
-fun RemoteScreen.titleRes(): Int = when (this) {
-    RemoteScreen.NAVIGATION -> R.string.page_navigation
-    RemoteScreen.NUMBERS -> R.string.page_numbers
-    RemoteScreen.MEDIA -> R.string.page_media
-    RemoteScreen.CUSTOM -> R.string.page_custom
 }

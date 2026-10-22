@@ -17,7 +17,8 @@ The following data is stored locally on your device:
 
 - Name, model, IP address and MAC address of paired TVs
 - Pairing key and certificate fingerprint of the TV
-- App settings (screens, app keys, pointer, vibration, demo mode)
+- App settings (screens, design, app keys, pointer, vibration, demo mode)
+- copies of the pictures you choose as screen backgrounds; the app only receives the pictures you select in the Android photo picker
 - App icons loaded from the TV
 
 This data remains exclusively on your device, is excluded from Android backups and is deleted when the app is uninstalled.
@@ -29,6 +30,8 @@ In the pointer's motion mode, the app uses your device's gyroscope. The sensor d
 - Internet: connection to the TV on the local network (Android requires this permission for any network connection)
 - Network and Wi-Fi state: determining the local network for the search
 - Wi-Fi multicast: receiving the responses when searching for TVs
+- Vibration: short feedback when a key on a home screen widget is pressed
+- Foreground service: sending a key pressed on a home screen widget to the TV, also while the app is in the background
 
 No other permissions are used, in particular no access to location, microphone, camera or contacts.
 

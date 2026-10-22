@@ -5,16 +5,24 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberOverscrollEffect
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
@@ -28,11 +36,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -41,20 +52,29 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import de.robnice.elgy.R
 import de.robnice.elgy.data.model.DefaultScreens
+import de.robnice.elgy.data.model.PointerMode
 import de.robnice.elgy.remote.ConnectionState
 import de.robnice.elgy.remote.RemoteCommand
 import de.robnice.elgy.remote.RemoteKey
-import de.robnice.elgy.remote.SendResult
 import de.robnice.elgy.remote.TvInput
+import de.robnice.elgy.sensor.ShakeDetector
+import de.robnice.elgy.ui.components.LightOverlay
+import de.robnice.elgy.ui.components.LocalColorPalette
+import de.robnice.elgy.ui.components.LocalDpadRounding
 import de.robnice.elgy.ui.components.LocalKeyHapticsEnabled
+import de.robnice.elgy.ui.components.LocalKeyRounding
+import de.robnice.elgy.ui.components.LocalLightEffect
 import de.robnice.elgy.ui.pointer.PointerOverlay
 import de.robnice.elgy.ui.remote.CustomPage
 import de.robnice.elgy.ui.remote.RemoteViewModel
+import de.robnice.elgy.ui.remote.ScreenBackgroundImage
+import de.robnice.elgy.ui.remote.TextInputBar
 import de.robnice.elgy.ui.remote.messageRes
 import de.robnice.elgy.ui.settings.SettingsButton
 
@@ -77,15 +97,33 @@ fun RemotePager(
     val lifecycleOwner = LocalLifecycleOwner.current
     val pointerSettings by viewModel.pointerSettings.collectAsStateWithLifecycle()
     val keyHaptics by viewModel.keyHaptics.collectAsStateWithLifecycle()
+    val keyRounding by viewModel.keyRounding.collectAsStateWithLifecycle()
+    val dpadRounding by viewModel.dpadRounding.collectAsStateWithLifecycle()
+    val colorPalette by viewModel.colorPalette.collectAsStateWithLifecycle()
+    val background by viewModel.background.collectAsStateWithLifecycle()
+    val lightEffect by viewModel.lightEffect.collectAsStateWithLifecycle()
     val inputs by viewModel.inputs.collectAsStateWithLifecycle()
+    val textInputOpen by viewModel.textInputOpen.collectAsStateWithLifecycle()
     val screenContents by viewModel.screens.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
     val onKey: (RemoteKey) -> Unit = { key ->
-        if (key.command == RemoteCommand.InputPicker) {
-            viewModel.openInputPicker()
-        } else {
-            viewModel.press(key)
+        when (key.command) {
+            RemoteCommand.InputPicker -> viewModel.openInputPicker()
+            RemoteCommand.TextInput -> viewModel.openKeyboard()
+            else -> viewModel.press(key)
+        }
+    }
+
+    // Shaking opens the motion pointer; the sensor only runs while the remote is visible. The
+    // detector is kept across opening and closing, so its pause after a shake still applies.
+    val shakeDetector = remember(context) { ShakeDetector(context) { viewModel.openPointer() } }
+    shakeDetector.sensitivity = pointerSettings.shakeSensitivity
+    if (pointerSettings.mode == PointerMode.MOTION && pointerSettings.shakeToOpen && !pointerActive) {
+        val detector = shakeDetector
+        LifecycleStartEffect(detector) {
+            detector.start()
+            onStopOrDispose { detector.stop() }
         }
     }
 
@@ -103,59 +141,102 @@ fun RemotePager(
         }
     }
 
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-            .safeDrawingPadding()
-    ) {
-        Column(modifier = Modifier.fillMaxSize()) {
-            Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                TextButton(onClick = onOpenSetup, modifier = Modifier.weight(1f)) {
-                    StatusLight(connectionState)
-                    Spacer(modifier = Modifier.width(dimensionResource(R.dimen.status_light_spacing)))
-                    Text(text = activeTvName, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-                IconButton(onClick = viewModel::openPointer) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_pointer),
-                        contentDescription = stringResource(R.string.key_pointer),
-                        tint = if (pointerActive) colorResource(R.color.top_bar_icon_active)
-                        else MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.size(dimensionResource(R.dimen.top_bar_icon_size))
-                    )
-                }
-                SettingsButton(onClick = onOpenSettings)
-            }
-            Box(
+    CompositionLocalProvider(LocalColorPalette provides colorPalette, LocalLightEffect provides lightEffect) {
+        Box(
+            modifier = modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
+        ) {
+            ScreenBackgroundImage(background.type, background.image)
+            LightOverlay()
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
+                    .fillMaxSize()
+                    .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom))
             ) {
-                HorizontalPager(state = pagerState, modifier = Modifier.fillMaxSize()) { index ->
-                    CompositionLocalProvider(LocalKeyHapticsEnabled provides keyHaptics) {
-                        CustomPage(
-                            screen = screenContents[screens[index]] ?: DefaultScreens.layout(screens[index]),
-                            onKey = onKey,
-                            onLaunchApp = viewModel::launchApp
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(colorResource(R.color.top_bar_background))
+                        .windowInsetsPadding(WindowInsets.safeDrawing.only(WindowInsetsSides.Top)),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    TextButton(onClick = onOpenSetup, modifier = Modifier.weight(1f)) {
+                        StatusLight(connectionState)
+                        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.status_light_spacing)))
+                        Text(text = activeTvName, color = colorResource(R.color.top_bar_content))
+                    }
+                    IconButton(onClick = viewModel::openPointer) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_pointer),
+                            contentDescription = stringResource(R.string.key_pointer),
+                            tint = if (pointerActive) colorResource(R.color.top_bar_icon_active)
+                            else colorResource(R.color.top_bar_content),
+                            modifier = Modifier.size(dimensionResource(R.dimen.top_bar_icon_size))
                         )
                     }
+                    SettingsButton(onClick = onOpenSettings, tint = colorResource(R.color.top_bar_content))
                 }
-                if (pointerActive) {
-                    CompositionLocalProvider(LocalKeyHapticsEnabled provides keyHaptics) {
-                        PointerOverlay(
-                        settings = pointerSettings,
-                        onMove = viewModel::movePointer,
-                        onScroll = viewModel::scrollPointer,
-                        onOk = viewModel::clickPointer,
-                            onClose = viewModel::closePointer
-                        )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                ) {
+                    // The stretch at the ends draws the page into its own layer, where the soft-light
+                    // shadows would have nothing to blend with and turn black.
+                    HorizontalPager(
+                        state = pagerState,
+                        modifier = Modifier.fillMaxSize(),
+                        overscrollEffect = if (lightEffect) null else rememberOverscrollEffect()
+                    ) { index ->
+                        CompositionLocalProvider(
+                            LocalKeyHapticsEnabled provides keyHaptics,
+                            LocalKeyRounding provides keyRounding,
+                            LocalDpadRounding provides dpadRounding
+                        ) {
+                            CustomPage(
+                                screen = screenContents[screens[index]] ?: DefaultScreens.layout(screens[index]),
+                                onKey = onKey,
+                                onLaunchApp = viewModel::launchApp,
+                                onDoubleTap = viewModel::openPointer.takeIf {
+                                    pointerSettings.mode == PointerMode.TOUCH && pointerSettings.doubleTapToOpen && !pointerActive
+                                }
+                            )
+                        }
+                    }
+                    if (pointerActive) {
+                        CompositionLocalProvider(LocalKeyHapticsEnabled provides keyHaptics, LocalKeyRounding provides keyRounding) {
+                            PointerOverlay(
+                            settings = pointerSettings,
+                            onMove = viewModel::movePointer,
+                            onScroll = viewModel::scrollPointer,
+                            onOk = viewModel::clickPointer,
+                                onClose = viewModel::closePointer
+                            )
+                        }
                     }
                 }
+                if (screens.size > 1) PageIndicator(pagerState = pagerState)
             }
-            if (screens.size > 1) PageIndicator(pagerState = pagerState)
+            SnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .safeDrawingPadding()
+            )
+            if (textInputOpen) {
+                TextInputBar(
+                    initialText = viewModel.initialText,
+                    onTextChange = viewModel::changeText,
+                    onEnter = viewModel::sendEnter,
+                    onClose = viewModel::closeKeyboard,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .imePadding()
+                        .navigationBarsPadding()
+                )
+            }
         }
-        SnackbarHost(hostState = snackbarHostState, modifier = Modifier.align(Alignment.BottomCenter))
     }
 
     inputs?.let { list ->
@@ -216,6 +297,7 @@ private fun PageIndicator(pagerState: PagerState) {
             Alignment.CenterHorizontally
         )
     ) {
+        val halo = colorResource(R.color.indicator_halo)
         repeat(pagerState.pageCount) { index ->
             val color = if (index == pagerState.currentPage) {
                 colorResource(R.color.indicator_active)
@@ -225,6 +307,10 @@ private fun PageIndicator(pagerState: PagerState) {
             Box(
                 modifier = Modifier
                     .size(dimensionResource(R.dimen.indicator_dot_size))
+                    .drawBehind {
+                        val radius = size.minDimension / 2 * INDICATOR_HALO_RATIO
+                        drawCircle(Brush.radialGradient(listOf(halo, Color.Transparent), center, radius), radius)
+                    }
                     .background(color, CircleShape)
             )
         }
@@ -252,5 +338,6 @@ private fun StatusLight(state: ConnectionState) {
     )
 }
 
+private const val INDICATOR_HALO_RATIO = 2.2f
 private const val STATUS_GLOW_ALPHA = 0.3f
 private const val STATUS_CORE_RATIO = 0.3f

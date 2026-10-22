@@ -28,7 +28,9 @@ import androidx.compose.ui.unit.sp
 import de.robnice.elgy.R
 import de.robnice.elgy.data.model.AppSlot
 import de.robnice.elgy.ui.components.KeyStyle
+import de.robnice.elgy.ui.components.LocalKeyRounding
 import de.robnice.elgy.ui.components.RemoteKeyButton
+import de.robnice.elgy.ui.components.keyShape
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -48,7 +50,7 @@ fun AppKey(slot: AppSlot, onPress: () -> Unit, modifier: Modifier = Modifier) {
         contentDescription = label,
         onPress = onPress,
         modifier = modifier.height(dimensionResource(R.dimen.key_app_height)),
-        shape = RoundedCornerShape(percent = 50),
+        shape = keyShape(LocalKeyRounding.current),
         style = KeyStyle.LIGHT
     ) {
         Row(

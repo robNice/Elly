@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -39,7 +38,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
@@ -61,7 +59,9 @@ import de.robnice.elgy.data.model.TouchStyle
 import de.robnice.elgy.sensor.MotionPointerSensor
 import de.robnice.elgy.ui.components.KeyIcon
 import de.robnice.elgy.ui.components.KeyLabel
+import de.robnice.elgy.ui.components.LocalKeyRounding
 import de.robnice.elgy.ui.components.RemoteKeyButton
+import de.robnice.elgy.ui.components.keyShape
 import de.robnice.elgy.ui.components.rememberKeyHaptic
 import kotlinx.coroutines.delay
 import kotlin.math.abs
@@ -118,7 +118,8 @@ fun PointerOverlay(
             RemoteKeyButton(
                 contentDescription = stringResource(R.string.pointer_close),
                 onPress = onClose,
-                modifier = Modifier.size(dimensionResource(R.dimen.key_size_small))
+                modifier = Modifier.size(dimensionResource(R.dimen.key_size_small)),
+                shape = keyShape(LocalKeyRounding.current)
             ) { color -> KeyIcon(icon = R.drawable.ic_close, tint = color) }
         }
         Box(
@@ -128,7 +129,15 @@ fun PointerOverlay(
         ) {
             when (settings.mode) {
                 PointerMode.MOTION -> MotionLayout(settings, onMove, onScroll, click, markActivity)
-                PointerMode.TOUCH -> TouchLayout(settings.okButtonPosition, settings.touchStyle, settings.joystickPlacement, onMove, click, markActivity)
+                PointerMode.TOUCH -> TouchLayout(
+                    settings.okButtonPosition,
+                    settings.touchStyle,
+                    settings.joystickPlacement,
+                    settings.swipeSpeed,
+                    onMove,
+                    click,
+                    markActivity
+                )
             }
         }
     }
@@ -171,6 +180,7 @@ private fun TouchLayout(
     okPosition: OkButtonPosition,
     touchStyle: TouchStyle,
     joystickPlacement: JoystickPlacement,
+    swipeSpeed: Float,
     onMove: (Float, Float) -> Unit,
     onOk: () -> Unit,
     markActivity: () -> Unit
@@ -180,8 +190,7 @@ private fun TouchLayout(
             onOk,
             Modifier
                 .fillMaxWidth()
-                .height(dimensionResource(R.dimen.pointer_ok_bar_height)),
-            shape = RoundedCornerShape(percent = 50)
+                .height(dimensionResource(R.dimen.pointer_ok_bar_height))
         )
     }
     Column(
@@ -190,7 +199,7 @@ private fun TouchLayout(
     ) {
         if (okPosition == OkButtonPosition.TOP) okBar()
         when (touchStyle) {
-            TouchStyle.SWIPE -> TouchArea(onMove, onOk, markActivity)
+            TouchStyle.SWIPE -> TouchArea(swipeSpeed, onMove, onOk, markActivity)
             TouchStyle.JOYSTICK -> JoystickArea(joystickPlacement, onMove, onOk, markActivity)
         }
         if (okPosition == OkButtonPosition.BOTTOM) okBar()
@@ -198,8 +207,9 @@ private fun TouchLayout(
 }
 
 @Composable
-private fun ColumnScope.TouchArea(onMove: (Float, Float) -> Unit, onTap: () -> Unit, markActivity: () -> Unit) {
+private fun ColumnScope.TouchArea(speed: Float, onMove: (Float, Float) -> Unit, onTap: () -> Unit, markActivity: () -> Unit) {
     val vibrate = rememberKeyHaptic()
+    val gain by rememberUpdatedState(TOUCH_GAIN * speed)
     val shape = RoundedCornerShape(dimensionResource(R.dimen.pointer_area_corner))
     Box(
         modifier = Modifier
@@ -217,7 +227,7 @@ private fun ColumnScope.TouchArea(onMove: (Float, Float) -> Unit, onTap: () -> U
                 detectDragGestures { change, dragAmount ->
                     change.consume()
                     markActivity()
-                    onMove(dragAmount.x * TOUCH_GAIN, dragAmount.y * TOUCH_GAIN)
+                    onMove(dragAmount.x * gain, dragAmount.y * gain)
                 }
             },
         contentAlignment = Alignment.Center
@@ -391,16 +401,12 @@ private fun ScrollArea(onScroll: (Int) -> Unit, markActivity: () -> Unit) {
 }
 
 @Composable
-private fun OkButton(
-    onOk: () -> Unit,
-    modifier: Modifier,
-    shape: Shape = CircleShape
-) {
+private fun OkButton(onOk: () -> Unit, modifier: Modifier) {
     RemoteKeyButton(
         contentDescription = stringResource(R.string.key_ok),
         onPress = onOk,
         modifier = modifier,
-        shape = shape
+        shape = keyShape(LocalKeyRounding.current)
     ) { color ->
         KeyLabel(text = stringResource(R.string.key_ok), color = color, fontSize = 28, fontWeight = FontWeight.Bold)
     }

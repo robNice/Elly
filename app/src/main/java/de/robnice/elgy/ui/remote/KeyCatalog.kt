@@ -41,8 +41,9 @@ object KeyCatalog {
         RemoteKey.RIGHT -> KeyVisual(R.string.key_right, R.drawable.ic_chevron_right, repeatOnHold = true)
         RemoteKey.OK -> KeyVisual(R.string.key_ok, label = R.string.key_ok)
         RemoteKey.BACK -> KeyVisual(R.string.key_back, R.drawable.ic_back)
-        RemoteKey.GUIDE -> KeyVisual(R.string.key_guide, R.drawable.ic_guide, label = R.string.key_label_guide)
+        RemoteKey.GUIDE -> KeyVisual(R.string.key_guide, label = R.string.key_label_guide)
         RemoteKey.INPUT -> KeyVisual(R.string.key_input, R.drawable.ic_input)
+        RemoteKey.KEYBOARD -> KeyVisual(R.string.key_keyboard, R.drawable.ic_keyboard)
         RemoteKey.RED -> KeyVisual(R.string.key_red, style = KeyStyle.RED)
         RemoteKey.GREEN -> KeyVisual(R.string.key_green, style = KeyStyle.GREEN)
         RemoteKey.YELLOW -> KeyVisual(R.string.key_yellow, style = KeyStyle.YELLOW)
@@ -53,6 +54,8 @@ object KeyCatalog {
         RemoteKey.FAST_FORWARD -> KeyVisual(R.string.key_fast_forward, R.drawable.ic_fast_forward)
         RemoteKey.RECORD -> KeyVisual(R.string.key_record, R.drawable.ic_record, iconTint = R.color.key_color_red)
         RemoteKey.STOP -> KeyVisual(R.string.key_stop, R.drawable.ic_stop)
+        RemoteKey.SCREEN_OFF -> KeyVisual(R.string.key_screen_off, R.drawable.ic_screen_off)
+        RemoteKey.SCREEN_ON -> KeyVisual(R.string.key_screen_on, R.drawable.ic_screen_on)
     }
 
     @Composable

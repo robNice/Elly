@@ -18,6 +18,7 @@ class WebOsConnection internal constructor(
     private lateinit var webSocket: WebSocket
     private val nextId = AtomicInteger()
     private val pending = ConcurrentHashMap<String, Channel<JSONObject>>()
+    private val subscriptions = ConcurrentHashMap<String, (JSONObject) -> Unit>()
 
     @Volatile
     var isOpen: Boolean = true
@@ -36,13 +37,16 @@ class WebOsConnection internal constructor(
         } catch (_: Exception) {
             return
         }
-        pending[message.optString(ID)]?.trySend(message)
+        val id = message.optString(ID)
+        pending[id]?.trySend(message)
+        subscriptions[id]?.let { handler -> message.optJSONObject(PAYLOAD)?.let(handler) }
     }
 
     internal fun onClosed() {
         isOpen = false
         pending.values.forEach { it.close() }
         pending.clear()
+        subscriptions.clear()
     }
 
     suspend fun register(clientKey: String?, manifest: JSONObject, onPrompt: () -> Unit): String {
@@ -72,6 +76,17 @@ class WebOsConnection internal constructor(
             }
             message.optJSONObject(PAYLOAD) ?: JSONObject()
         }
+
+    // The TV keeps sending updates for this uri until the connection closes.
+    fun subscribe(uri: String, onUpdate: (JSONObject) -> Unit) {
+        val id = "${TYPE_SUBSCRIBE}_${nextId.incrementAndGet()}"
+        subscriptions[id] = onUpdate
+        val message = JSONObject().put(TYPE, TYPE_SUBSCRIBE).put(ID, id).put("uri", uri)
+        if (!webSocket.send(message.toString())) {
+            subscriptions.remove(id)
+            throw TvConnectionException.ConnectionLost()
+        }
+    }
 
     private suspend fun <T : Any> exchange(
         type: String,
@@ -117,6 +132,7 @@ class WebOsConnection internal constructor(
         const val TYPE_REGISTER = "register"
         const val TYPE_REGISTERED = "registered"
         const val TYPE_REQUEST = "request"
+        const val TYPE_SUBSCRIBE = "subscribe"
         const val TYPE_ERROR = "error"
         const val NORMAL_CLOSURE = 1000
         const val PAIRING_TIMEOUT_MILLIS = 60_000L

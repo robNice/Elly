@@ -17,7 +17,8 @@ Folgende Daten werden lokal auf Ihrem Gerät gespeichert:
 
 - Name, Modell, IP-Adresse und MAC-Adresse gekoppelter Fernseher
 - Pairing-Schlüssel und Zertifikats-Fingerabdruck des Fernsehers
-- Einstellungen der App (Screens, App-Tasten, Zeiger, Vibration, Demo-Modus)
+- Einstellungen der App (Screens, Design, App-Tasten, Zeiger, Vibration, Demo-Modus)
+- Kopien der Bilder, die Sie als Screen-Hintergrund wählen; die App erhält nur die Bilder, die Sie in der Android-Fotoauswahl auswählen
 - vom Fernseher geladene App-Symbole
 
 Diese Daten verbleiben ausschließlich auf Ihrem Gerät, sind von der Android-Datensicherung ausgeschlossen und werden beim Deinstallieren der App gelöscht.
@@ -29,6 +30,8 @@ Im Bewegungsmodus des Zeigers nutzt die App das Gyroskop Ihres Geräts. Die Sens
 - Internet: Verbindung zum Fernseher im lokalen Netzwerk (Android verlangt diese Berechtigung für jede Netzwerkverbindung)
 - Netzwerk- und WLAN-Status: Ermitteln des lokalen Netzes für die Suche
 - WLAN-Multicast: Empfang der Antworten bei der Suche nach Fernsehern
+- Vibration: kurze Rückmeldung beim Drücken einer Taste in einem Homescreen-Widget
+- Vordergrunddienst: Senden einer Taste, die in einem Homescreen-Widget gedrückt wurde, an den TV, auch wenn die App im Hintergrund ist
 
 Es werden keine weiteren Berechtigungen verwendet, insbesondere kein Zugriff auf Standort, Mikrofon, Kamera oder Kontakte.
 

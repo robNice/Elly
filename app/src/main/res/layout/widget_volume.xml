@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="@dimen/widget_rocker_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/widget_pill_background"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/widget_volume_up"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/key_volume_up"
+            android:padding="@dimen/widget_key_padding"
+            android:src="@drawable/ic_plus"
+            android:tint="@color/widget_content" />
+
+        <ImageView
+            android:layout_width="@dimen/widget_rocker_icon_size"
+            android:layout_height="@dimen/widget_rocker_icon_size"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_volume"
+            android:tint="@color/widget_content" />
+
+        <ImageView
+            android:id="@+id/widget_volume_down"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/key_volume_down"
+            android:padding="@dimen/widget_key_padding"
+            android:src="@drawable/ic_minus"
+            android:tint="@color/widget_content" />
+    </LinearLayout>
+</FrameLayout>

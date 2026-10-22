@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/widget_button_size"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/widget_pill_background"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/widget_bar_padding">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/widget_rewind"
+                android:layout_width="@dimen/widget_key_size"
+                android:layout_height="@dimen/widget_key_size"
+                android:layout_gravity="center"
+                android:background="@drawable/widget_key_background"
+                android:contentDescription="@string/key_rewind"
+                android:padding="@dimen/widget_key_padding"
+                android:src="@drawable/ic_fast_rewind"
+                android:tint="@color/widget_content" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/widget_play"
+                android:layout_width="@dimen/widget_key_size"
+                android:layout_height="@dimen/widget_key_size"
+                android:layout_gravity="center"
+                android:background="@drawable/widget_key_background"
+                android:contentDescription="@string/key_play"
+                android:padding="@dimen/widget_key_padding"
+                android:src="@drawable/ic_play"
+                android:tint="@color/widget_content" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/widget_pause"
+                android:layout_width="@dimen/widget_key_size"
+                android:layout_height="@dimen/widget_key_size"
+                android:layout_gravity="center"
+                android:background="@drawable/widget_key_background"
+                android:contentDescription="@string/key_pause"
+                android:padding="@dimen/widget_key_padding"
+                android:src="@drawable/ic_pause"
+                android:tint="@color/widget_content" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/widget_fast_forward"
+                android:layout_width="@dimen/widget_key_size"
+                android:layout_height="@dimen/widget_key_size"
+                android:layout_gravity="center"
+                android:background="@drawable/widget_key_background"
+                android:contentDescription="@string/key_fast_forward"
+                android:padding="@dimen/widget_key_padding"
+                android:src="@drawable/ic_fast_forward"
+                android:tint="@color/widget_content" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/widget_stop"
+                android:layout_width="@dimen/widget_key_size"
+                android:layout_height="@dimen/widget_key_size"
+                android:layout_gravity="center"
+                android:background="@drawable/widget_key_background"
+                android:contentDescription="@string/key_stop"
+                android:padding="@dimen/widget_key_padding"
+                android:src="@drawable/ic_stop"
+                android:tint="@color/widget_content" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>
