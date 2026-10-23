@@ -1,5 +1,5 @@
 ## 1. Allgemeines
-Elgy dient als Fernbedienung für LG-Fernseher mit webOS im lokalen Netzwerk.
+Elly dient als Fernbedienung für LG-Fernseher mit webOS im lokalen Netzwerk.
 
 Der Entwickler dieser App erhebt, speichert oder verarbeitet keine personenbezogenen Daten. Die App benötigt kein Benutzerkonto.
 
@@ -44,4 +44,4 @@ Diese Datenschutzerklärung kann bei Bedarf aktualisiert werden, um Änderungen 
 ## 8. Kontakt
 Bei Fragen zum Datenschutz können Sie den Entwickler kontaktieren.
 
-E-Mail: elgy@robnice.de
+E-Mail: elly@robnice.de

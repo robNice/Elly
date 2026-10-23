@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="100dp"
+    android:viewportWidth="180"
+    android:viewportHeight="100">
+    <group
+        android:pivotY="100"
+        android:scaleX="1.2"
+        android:scaleY="1.2">
+        <path
+            android:fillColor="@color/elly_remote_black"
+            android:pathData="M74,47.5h10a1.8,1.8 0,0 1,1.8 1.8v1.6a1.8,1.8 0,0 1,-1.8 1.8h-10a1.8,1.8 0,0 1,-1.8 -1.8v-1.6a1.8,1.8 0,0 1,1.8 -1.8z" />
+        <path
+            android:fillColor="@color/elly_comb"
+            android:pathData="M84,50.1m-0.9,0a0.9,0.9 0,1 1,1.8,0a0.9,0.9 0,1 1,-1.8,0" />
+        <path
+            android:fillColor="@color/elly_body_shade"
+            android:pathData="M38,56C44,52 56,50 66,49C70,48.5 74,47 76,48.5C78,50 77.5,52.5 75,53.5C70,55.5 60,58 50,60C43,61.5 36,60 38,56Z" />
+    </group>
+</vector>

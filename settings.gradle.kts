@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Elgy"
+rootProject.name = "Elly"
 include(":app")

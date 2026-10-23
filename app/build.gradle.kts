@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "de.robnice.elgy"
+    namespace = "de.robnice.elly"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -12,11 +12,11 @@ android {
     }
 
     defaultConfig {
-        applicationId = "de.robnice.elgy"
+        applicationId = "de.robnice.elly"
         minSdk = 28
         targetSdk = 36
-        versionCode = 4067
-        versionName = "0.4.67"
+        versionCode = 9999001
+        versionName = "1.0.0-rc1"
     }
 
     androidResources {

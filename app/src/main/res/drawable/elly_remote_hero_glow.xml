@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_glow"
+        android:pathData="M84.0,22.7 L96.0,22.7 L95.4,26.8 L83.9,23.5Z M82.0,27.2 L91.8,34.3 L88.9,37.3 L81.5,27.9Z M77.8,29.8 L81.5,41.2 L77.4,42.0 L77.0,29.9Z M72.9,29.4 L69.2,40.8 L65.4,39.0 L72.1,29.0Z M69.1,26.1 L59.4,33.2 L57.5,29.5 L68.7,25.4Z M68.0,21.3 L56.0,21.3 L56.6,17.2 L68.1,20.5Z M70.0,16.8 L60.2,9.7 L63.1,6.7 L70.5,16.1Z M74.2,14.2 L70.5,2.8 L74.6,2.0 L75.0,14.1Z M79.1,14.6 L82.8,3.2 L86.6,5.0 L79.9,15.0Z M82.9,17.9 L92.6,10.8 L94.5,14.5 L83.3,18.6Z" />
+    <path
+        android:fillColor="@color/elly_glow"
+        android:pathData="M76,22m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+</vector>

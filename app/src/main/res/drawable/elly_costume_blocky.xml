@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_beak"
+        android:pathData="M38,90h4v6h-4z M58,90h4v6h-4z M34,95h12v3h-12z M54,95h12v3h-12z" />
+    <path
+        android:fillColor="@color/elly_comb"
+        android:pathData="M36,16h8v8h-8z M46,10h8v14h-8z M56,16h8v8h-8z" />
+    <path
+        android:fillColor="@color/elly_body_shade"
+        android:pathData="M12,56h8v22h-8z M80,56h8v22h-8z" />
+    <path
+        android:fillColor="@color/elly_body"
+        android:pathData="M20,24h60v68h-60z" />
+    <path
+        android:fillColor="@color/elly_body_shade"
+        android:pathData="M20,84h60v8h-60z M28,30h4v4h-4z M68,36h4v4h-4z M24,72h4v4h-4z M72,76h4v4h-4z M60,28h4v4h-4z M36,80h4v4h-4z" />
+    <path
+        android:fillColor="@color/elly_cheek"
+        android:pathData="M26,58h8v4h-8z M66,58h8v4h-8z" />
+    <path
+        android:fillColor="@color/elly_eye"
+        android:pathData="M36,46h8v8h-8z M56,46h8v8h-8z" />
+    <path
+        android:fillColor="@color/elly_eye_highlight"
+        android:pathData="M38,47h3v3h-3z M58,47h3v3h-3z" />
+    <path
+        android:fillColor="@color/elly_comb"
+        android:pathData="M48,66h4v8h-4z" />
+    <path
+        android:fillColor="@color/elly_beak"
+        android:pathData="M44,56h12v4h-12z M46,60h8v4h-8z M48,64h4v3h-4z" />
+</vector>

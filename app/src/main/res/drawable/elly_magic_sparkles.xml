@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="150dp"
+    android:height="100dp"
+    android:viewportWidth="150"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_gold"
+        android:pathData="M101,53L101.84,55.16L104,56L101.84,56.84L101,59L100.16,56.84L98,56L100.16,55.16Z M134,48.5L134.98,51.02L137.5,52L134.98,52.98L134,55.5L133.02,52.98L130.5,52L133.02,51.02Z M129,21.5L129.7,23.3L131.5,24L129.7,24.7L129,26.5L128.3,24.7L126.5,24L128.3,23.3Z M104,24L104.56,25.44L106,26L104.56,26.56L104,28L103.44,26.56L102,26L103.44,25.44Z" />
+</vector>

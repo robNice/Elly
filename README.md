@@ -1,261 +1,305 @@
-# Elgy
+<p align="center">
+  <img src="docs/elly.png" width="140" alt="Elly the chicken">
+</p>
 
-Elgy turns your Android phone into a remote control for LG TVs running webOS. It recreates the keys and functions of the original LG Magic Remote, including the pointer, which can be controlled with your phone's motion sensors or a touch area.
+# Elly
 
-> **Status:** early development – searching for and pairing TVs, the remote keys, the pointer, freely configurable screens and home screen widgets work; some key assignments still need to be verified on more TVs.
+Elly turns your Android phone into a remote control for LG TVs running webOS. It recreates the keys and functions of the original LG Magic Remote – including the pointer, which you control with your phone's motion sensors or a touch area. Elly, a chicken with a remote under her wing, guides you through the app.
+
+> **Status:** early development – searching and pairing, all keys, the pointer, freely configurable screens, widgets and the help work; some key assignments still need to be verified on more TVs.
+
+> Elly is an independent project and is not affiliated with LG Electronics. “LG”, “webOS” and “Magic Remote” are trademarks of their respective owners.
 
 [Deutsche Version](README.de.md)
 
 <p>
-  <img src="docs/en/remote_navigation.png" width="200" alt="Navigation screen">
+  <img src="docs/en/remote_screen1.png" width="200" alt="Screen 1">
   &nbsp;
-  <img src="docs/en/remote_numbers.png" width="200" alt="Numbers screen">
+  <img src="docs/en/remote_screen2.png" width="200" alt="Screen 2">
   &nbsp;
-  <img src="docs/en/remote_media.png" width="200" alt="Media &amp; Apps screen">
+  <img src="docs/en/remote_screen3.png" width="200" alt="Screen 3">
 </p>
 
 ## Contents
 
 1. [Features at a glance](#1-features-at-a-glance)
 2. [Requirements](#2-requirements)
-3. [Connecting a TV](#3-connecting-a-tv)
-4. [The screens](#4-the-screens)
-   - [4.1 Header](#41-header)
-   - [4.2 Navigation](#42-navigation)
-   - [4.3 Numbers](#43-numbers)
-   - [4.4 Media and apps](#44-media-and-apps)
-   - [4.5 Custom screen](#45-custom-screen)
+3. [Getting started](#3-getting-started)
+   - [3.1 Quick start](#31-quick-start)
+   - [3.2 Connecting a TV](#32-connecting-a-tv)
+4. [The remote](#4-the-remote)
+   - [4.1 Top bar](#41-top-bar)
+   - [4.2 Screen 1](#42-screen-1)
+   - [4.3 Screen 2](#43-screen-2)
+   - [4.4 Screen 3](#44-screen-3)
+   - [4.5 Screen 4](#45-screen-4)
+   - [4.6 Text input](#46-text-input)
 5. [Pointer](#5-pointer)
    - [5.1 Motion mode](#51-motion-mode)
    - [5.2 Touchpad mode](#52-touchpad-mode)
 6. [Editing screens](#6-editing-screens)
    - [6.1 Editor](#61-editor)
-   - [6.2 App keys](#62-app-keys)
-7. [Widgets](#7-widgets)
-8. [Settings](#8-settings)
-   - [8.1 TV](#81-tv)
-   - [8.2 Screens](#82-screens)
-   - [8.3 Pointer](#83-pointer)
-   - [8.4 Vibration and demo mode](#84-vibration-and-demo-mode)
-   - [8.5 Version and privacy](#85-version-and-privacy)
-9. [Building](#9-building)
-10. [Releases](#10-releases)
+   - [6.2 Button groups](#62-button-groups)
+   - [6.3 App keys](#63-app-keys)
+7. [Appearance](#7-appearance)
+8. [Widgets](#8-widgets)
+9. [Settings](#9-settings)
+10. [Help](#10-help)
+11. [Privacy](#11-privacy)
+12. [Building](#12-building)
+13. [Releases](#13-releases)
+14. [License](#14-license)
 
 ## 1 Features at a glance
 
-- Keys of the LG Magic Remote on up to four screens that fit without scrolling – swipe to switch between them.
-- All screens freely configurable: place, move and resize keys, rockers, the directional pad and app keys in the editor; every screen can be reset to its default layout.
-- Dark design with three-dimensional keys and optional vibration feedback.
-- Status light in the header that shows whether the TV is reachable.
-- Pointer like the Magic Remote: controlled by moving the phone or via a touch area (touchpad or analog joystick).
-- App keys that open an app on the TV, with the app's icon loaded from the TV.
-- Input picker that lists the inputs reported by the TV.
-- Switch the TV screen off and on again while the sound keeps playing.
-- Six small home screen widgets that can be combined freely.
-- Searching for TVs in the network, pairing, switching on via Wake-on-LAN.
-- Demo mode to try the app without an LG TV.
+- The keys of the LG Magic Remote on up to four screens that need no scrolling – swipe to switch.
+- All screens are freely configurable: place, move and resize keys, rockers, the direction pad and app keys in the editor, insert whole button groups and undo step by step.
+- Pointer like the Magic Remote: control it by moving your phone or with a touch area (swipe or joystick), optionally opened by shaking or a double tap.
+- Text input: when an input field is active on the TV, a text field opens on your phone automatically.
+- App keys that open an app on the TV, with the app icon loaded from the TV.
+- Input selection with the inputs the TV reports.
+- Turn the TV screen off and on again while the sound keeps playing.
+- 15 color palettes, twelve backgrounds (including your own photo), adjustable rounding and the “Long summer evenings” light effect.
+- Seven home screen widgets, including “Elly remote” with freely selectable keys and its own look.
+- Status light in the top bar that shows whether the TV can be reached.
+- Quick start on first launch and an extensive help with search – explained by Elly.
+- Find TVs on the network, pair them, switch them on via Wake-on-LAN.
+- Demo mode for trying everything without an LG TV.
 - Available in English and German.
 
 ## 2 Requirements
 
-- Android 9 (API 28) or newer. From Android 12, the widgets take on the colours of the wallpaper (Material You).
-- LG TV with webOS in the same network as the phone.
-- For switching the TV on: the option "Turn on via Wi-Fi" (on some models "Mobile TV On") must be enabled on the TV.
+- Android 9 (API 28) or newer. From Android 12 the widgets take on the colors of your wallpaper (Material You); the light effect is available from Android 12.
+- An LG TV running webOS on the same network as the phone.
+- To switch the TV on: the option “Turn on via Wi-Fi” (“Mobile TV On” on some models) must be enabled on the TV.
 
-## 3 Connecting a TV
+## 3 Getting started
 
-On first start, Elgy opens the connection screen:
+### 3.1 Quick start
 
-1. **Search** – Elgy looks for LG TVs in the local network. Found TVs are listed with name, model and IP address.
-2. **Enter IP address** – if the search finds nothing, enter the TV's IP address manually.
-3. **Pair** – select a TV and accept the connection request on the TV. Elgy remembers the TV, so this is only needed once.
+<img src="docs/en/onboarding.png" width="270" alt="Quick start">
 
-Several TVs can be paired; the active TV is selected in the list. Elgy also remembers the TV's network address (MAC) to be able to switch it on later.
+On first launch Elly introduces herself and shows the essentials in six short pages: connecting the TV, screens and top bar, settings and your own screens, and the pointer. **Skip** gets you going right away. You can restart the quick start any time from the [help](#10-help).
 
-## 4 The screens
+### 3.2 Connecting a TV
 
-The following sections describe the default layout. Every screen can be rearranged freely in the [editor](#61-editor).
+<img src="docs/en/settings_tv.png" width="270" alt="Settings, TV tab">
 
-### 4.1 Header
+If no TV is paired yet, Elly opens the settings on the **TV** tab and immediately searches the local network:
 
-The header is visible on every screen:
+1. **Search** – found TVs are listed with name, model and IP address. **Search again** runs the search once more.
+2. **Enter IP address** – if the search finds nothing, you can enter the TV's IP address manually.
+3. **Pair** – tap the TV and accept the connection request on the TV. This is only needed once; Elly confirms the pairing and switches to the remote.
 
-- **Status light and TV name** – the light shows the connection state: green connected, red not reachable, grey checking, yellow demo mode. While the app is visible, the connection is checked every 10 seconds and after every command. Tapping the name opens the connection screen (search, pair, switch TV).
-- **Pointer key** (mouse symbol) – opens the pointer, see [Pointer](#5-pointer). The symbol is tinted while the pointer is active.
-- **Gear** – opens the app settings.
+You can pair several TVs. They are listed at the top of the tab under **Paired TVs**: tap one to make it the active TV, **Remove** unpairs it after asking. Elly also remembers the TV's network address (MAC) so it can switch the TV on later. You can reach the **TV** tab any time by tapping the TV name in the top bar. While demo mode is on, the tab only shows the demo mode switch.
 
-The dots at the bottom show the current screen. Swipe left or right to switch. Keys only fire when the finger is lifted, so a swipe that starts on a key does not send anything. Volume, channel and the directional pad repeat while held.
+## 4 The remote
 
-### 4.2 Navigation
+The following sections describe the default layout. Every screen can be redesigned in the [editor](#61-editor).
 
-<img src="docs/en/remote_navigation.png" width="270" alt="Navigation screen">
+### 4.1 Top bar
+
+The top bar is visible on every screen:
+
+- **Status light and TV name** – the light shows the connection state: green connected, red not reachable, grey checking, yellow demo mode. While the app is visible, the connection is checked every 10 seconds and after every command. Tapping the name opens the settings on the **TV** tab.
+- **Pointer key** (mouse symbol) – opens the [pointer](#5-pointer). While it is active, the symbol is blue.
+- **Gear** – opens the [settings](#9-settings).
+- **Elly** at the far right – opens the [help](#10-help). At Christmas (24 Dec to 6 Jan), Easter (Palm Sunday to the Sunday after Easter) and before Halloween (24 to 31 Oct) she wears a matching costume.
+
+The dots at the bottom show the current screen; swipe left or right to switch. Keys only trigger when you lift your finger – a swipe that starts on a key sends nothing. Volume, channel and the direction pad repeat while held.
+
+### 4.2 Screen 1
+
+<img src="docs/en/remote_screen1.png" width="270" alt="Screen 1">
 
 | Key | Function |
 |---|---|
-| Power (red) | Switches the TV off; if the TV is not reachable, it is switched on via Wake-on-LAN. |
-| Home | webOS home screen. |
+| Power (red) | Turns the TV off; if it cannot be reached, it is switched on via Wake-on-LAN. |
+| Screen off / on | Turns only the screen off or on again, the sound keeps playing. |
 | Gear | TV settings. |
-| Live TV (TV with antenna) | Switches to live TV (antenna, cable, satellite). |
-| Volume rocker | Volume up / down. |
-| Mute | Mutes / unmutes the sound. |
+| GUIDE | Program guide. |
+| Home | webOS home screen. |
+| Volume rocker, mute | Louder / quieter, sound off / on. |
 | CH rocker | Channel up / down. |
-| Directional pad and OK | Navigation and confirm. |
+| Direction pad and OK | Navigate and confirm. |
+| Live TV | Switches to TV reception (antenna, cable, satellite). |
 | Back | One step back. |
-| Screen off / on | Switches only the TV screen off or on again; the sound keeps playing. |
-| Guide | Programme guide. |
+| Color keys | Red, green, yellow, blue. |
 
-### 4.3 Numbers
+### 4.3 Screen 2
 
-<img src="docs/en/remote_numbers.png" width="270" alt="Numbers screen">
+<p>
+  <img src="docs/en/remote_screen2.png" width="270" alt="Screen 2">
+  &nbsp;
+  <img src="docs/en/input_picker.png" width="270" alt="Input selection">
+</p>
 
 | Key | Function |
 |---|---|
-| Input | Opens a list of the TV's inputs (e.g. HDMI 1, HDMI 2) and switches to the selected one. Inputs without a connected device are marked. |
-| Live TV | Switches to live TV. |
 | 0–9 | Number keys, e.g. for channel numbers. |
-| GUIDE | Programme guide. |
-| ••• | Opens the TV menu "More actions". |
-| Back, OK | One step back / confirm. |
+| Mute, Live TV | Sound off / on, TV reception. |
+| Volume and CH rocker | Louder / quieter, channel up / down. |
+| GUIDE | Program guide. |
+| ••• | Opens the TV's “More actions” menu. |
+| Direction pad, Back | Navigation as on screen 1. |
+| Input | Opens a list of the TV's inputs (e.g. HDMI 1, HDMI 2) and switches to the selected one. Inputs without a connected device are marked. |
+| Color keys | Red, green, yellow, blue. |
 
-<img src="docs/en/input_picker.png" width="270" alt="Input picker">
+### 4.4 Screen 3
 
-### 4.4 Media and apps
-
-<img src="docs/en/remote_media.png" width="270" alt="Media &amp; Apps screen">
+<img src="docs/en/remote_screen3.png" width="270" alt="Screen 3">
 
 | Key | Function |
 |---|---|
-| Record (red dot) | Starts a recording (if supported by the TV). |
-| Stop | Stops playback. |
+| Record (red dot), Stop | Starts a recording (if the TV supports it) or stops playback. |
 | Rewind, Pause, Play, Fast forward | Playback control. |
-| Directional pad, OK, Back | Navigation as on the first screen. |
-| Colour keys | Red, green, yellow, blue. |
-| App keys | Open an app on the TV, preset with Netflix, Prime Video and Rakuten TV, see [App keys](#62-app-keys). |
+| Direction pad, Back | Navigation as on screen 1. |
+| Color keys | Red, green, yellow, blue. |
+| App keys | Open an app on the TV, preset with Netflix, Prime Video and Rakuten TV, see [app keys](#63-app-keys). |
 
-### 4.5 Custom screen
+### 4.5 Screen 4
 
-The fourth screen starts empty and hidden. Show it in the settings under [Screens](#82-screens) and fill it in the [editor](#61-editor).
+The fourth screen starts empty and hidden. Show it in the settings under **Appearance → Screens** and fill it in the [editor](#61-editor).
+
+### 4.6 Text input
+
+When an input field is active on the TV (e.g. a search), a text field with your phone's keyboard opens automatically. The text is sent while you type, the send key works like Enter. The **Keyboard** key, which you can place on a screen in the editor, opens the text field manually. Apps with their own on-screen keyboard (e.g. some streaming apps) do not accept text from the phone.
 
 ## 5 Pointer
 
-The pointer key in the header opens an overlay above the current screen. In both modes:
+The pointer key in the top bar opens an overlay on the current screen – the Magic Remote cursor appears on the TV. In both modes:
 
-- **OK** clicks at the pointer position – several clicks in a row are possible.
-- The **close button** (×) at the top right or the back gesture ends pointer mode; the cursor on the TV disappears.
-- After 5 seconds without activity, pointer mode ends automatically.
+- **OK** clicks at the pointer position, several clicks in a row are possible.
+- The **×** at the top right or the back gesture closes the pointer; the cursor on the TV disappears.
+- After 5 seconds without activity the pointer closes automatically.
+
+Choose the mode and all fine-tuning in the settings on the **Controls** tab.
+
+<img src="docs/en/settings_controls.png" width="270" alt="Settings, Controls tab">
 
 ### 5.1 Motion mode
 
 <img src="docs/en/pointer_motion.png" width="270" alt="Pointer in motion mode">
 
-The pointer follows the movements of your phone – like aiming with the Magic Remote. Two ways of holding the phone are supported and recognised automatically:
+The pointer follows the movements of your phone – just like aiming with the Magic Remote. Two ways of holding it are detected automatically:
 
-- **Like a remote** (screen facing up, top edge pointing at the TV): swing left/right, tilt the top edge up/down.
-- **Upright in front of you** (back facing the TV): turn left/right around the vertical axis, tilt forwards/backwards.
+- **Like a remote** (screen facing up, top edge pointing at the TV): pan left/right, tilt the top edge up/down.
+- **Upright in front of you** (back facing the TV): turn left/right, tilt forward/backward.
 
-Twisting the phone around the aiming axis is ignored on purpose because it happens unintentionally while aiming. Sensor data is smoothed; quick swings move the pointer further than slow movements. Swipe up or down on the **scroll area** to scroll.
+Twisting the phone around the pointing direction is ignored so the cursor stays steady. *Sensitivity* (0.3× to 3.0×) and *acceleration* (0× to 4×) are adjustable. Swipe up or down on the **scroll area** to scroll. With **Open by shaking**, a short shake opens the pointer; the shake sensitivity is adjustable. Motion mode needs a gyroscope in the phone.
 
 ### 5.2 Touchpad mode
 
-<p>
-  <img src="docs/en/pointer_touch_swipe.png" width="270" alt="Pointer in touchpad mode (swipe)">
-  &nbsp;
-  <img src="docs/en/pointer_touch_joystick.png" width="270" alt="Pointer in touchpad mode (joystick)">
-</p>
+<img src="docs/en/pointer_joystick.png" width="270" alt="Pointer in touchpad mode with fixed joystick">
 
-The pointer is controlled with the touch area. A tap on the area without swiping clicks like OK. Two input styles are available:
+The pointer is controlled with a touch area, a short tap clicks. Two input styles are available:
 
-- **Swipe** – the pointer follows your finger like on a laptop touchpad.
-- **Joystick** – like an analog stick: the further you pull in a direction, the faster the pointer moves. *Free*: the stick starts at the first touch point. *Fixed*: the stick is always visible in the middle of the area. In both cases the dead zone is drawn as an inner circle; inside it, the pointer does not move.
+- **Swipe** – the pointer follows your finger like on a laptop touchpad; the *speed* (0.3× to 3.0×) is adjustable.
+- **Joystick** – like an analog stick: the further you pull, the faster the pointer moves. *Free*: the stick starts where you first touch. *Fixed*: the stick is always visible in the middle. The inner circle is the dead zone.
 
-The OK button can be placed at the bottom (default) or at the top.
+The OK button can sit at the bottom (default) or at the top. With **Open by double tap**, a double tap on a free spot of a screen opens the pointer.
 
 ## 6 Editing screens
 
+<img src="docs/en/settings_appearance.png" width="270" alt="Settings, Appearance tab with the screens">
+
+In the settings under **Appearance → Screens** the four screens are shown as previews of their layout:
+
+- **Tap** shows or hides a screen; at least one stays active. With only one active screen the page dots disappear.
+- **Long-press and drag** changes the order.
+- The **pencil** opens the [editor](#61-editor), the **arrow** resets the screen to its default layout after asking.
+
+The selection and layouts are saved per TV; demo mode has its own.
+
 ### 6.1 Editor
 
-The editor is opened in the settings under [Screens](#82-screens) with a screen's pencil. It shows the screen's grid (24 × 48 cells) in the proportions of the remote screen.
+<img src="docs/en/editor.png" width="270" alt="Editor with the direction pad selected">
 
-- **Element** (at the bottom) adds an element: volume rocker, channel rocker, directional pad, app key or any key of the remote. The element is placed on the first free spot.
-- **Drag** to move an element.
-- **Tap** to select an element; then drag the corner handle to resize it.
-- **Drag onto the trash bin** to remove an element.
-- **Reset** restores the screen's default layout after a confirmation.
-- **Done** saves and closes the editor.
+The editor shows the screen's grid (24 × 48 cells) in the proportions of the remote screen.
 
-The layout is saved per TV.
+- **Element** adds a single key, a rocker, the direction pad, an app key or a [button group](#62-button-groups); it lands on the first free spot.
+- **Drag** moves an element, **dragging it onto the bin** removes it.
+- **Tap** selects an element; the handle at its corner then changes the size.
+- **Drawing a frame** on an empty area selects several elements, which can be moved or removed together.
+- **Undo** reverts adding, moving, resizing, removing, app key changes and resetting step by step (up to 50 steps; the history starts anew each time you open the editor).
+- **Reset** restores the default layout after asking, **Done** saves and closes.
 
-### 6.2 App keys
+### 6.2 Button groups
 
-<p>
-  <img src="docs/en/settings_app_picker.png" width="270" alt="Choose an app">
-  &nbsp;
-  <img src="docs/en/settings_app_style.png" width="270" alt="Style of an app key">
-</p>
+<img src="docs/en/editor_groups.png" width="270" alt="Add element, Button groups tab">
 
-App keys are placed in the editor. **Holding an app key for 2 seconds** opens the "App key" window with a preview:
+The **Button groups** tab inserts several keys at once: number keys, apps, playback, color keys, volume + channel, direction pad + back/home, and power + screen. The keys have the size of single keys, end up as single elements on the screen and can be centered.
 
-- **Choose app** – loads the apps installed on the TV and assigns one of them. The app icon is loaded from the TV and stored on the phone so it is shown even without a connection. *Remove app* clears the key.
-- **Style** – show the app icon and/or text, enter your own text (prefilled with the app name) and pick a text colour. With icon and text, the icon is on the left and the text follows. The text shrinks automatically so it always fits the key.
+### 6.3 App keys
 
-Changes are applied with OK. If an app key has no icon yet, Elgy loads it as soon as the TV is connected – also after a screen has been reset.
+<img src="docs/en/app_key.png" width="270" alt="App key window">
 
-## 7 Widgets
+**Hold an app key in the editor for 2 seconds** to open the “App key” window with a preview:
 
-Elgy comes with six small home screen widgets that can be combined freely:
+- **Choose app** – loads the apps installed on the TV and assigns one. The app icon is loaded from the TV and stored on the phone.
+- **Appearance** – app icon and/or text, your own text and a text color. The text shrinks automatically to fit the key.
+
+If an app key lacks its icon, Elly fetches it as soon as the TV is connected.
+
+## 7 Appearance
+
+<img src="docs/en/settings_appearance_more.png" width="270" alt="Backgrounds, rounding and light effect">
+
+On the **Appearance** tab of the settings:
+
+- **Color palette** – 15 palettes color keys, rockers, the direction pad and app keys: Graphite, Silver, Ocean, Forest, Copper, Violet, Petrol, Bordeaux, Sand, Coral, Midnight, Sage, Ruby, Lagoon and Amber. Power and the color keys keep their colors.
+- **Background** – applies to all screens: None, Auto (matching the palette), your own image from the photo picker (scaled proportionally and cropped) or one of the motifs Hills, Ocean, Meadow, Sky, Aurora, Graphite, Mountains, Forest and Sea.
+- **Rounding** – two sliders with a corner preview: “Keys” applies to keys, rockers and app keys, “Directional pad” to the ring and the OK key.
+- **Long summer evenings** – low light from the top left; the keys cast long, soft shadows to the bottom right and the background brightens from that corner (Android 12 and later).
+
+## 8 Widgets
+
+<img src="docs/en/widgets.png" width="270" alt="Home screen with Elly widgets">
+
+Elly comes with seven home screen widgets:
 
 | Widget | Size | Keys |
 |---|---|---|
-| Elgy volume | 1 × 2, height adjustable | Volume up / down |
-| Elgy channel | 1 × 2, height adjustable | Channel up / down |
-| Elgy playback | 3 × 1, width adjustable | Rewind, Play, Pause, Fast forward, Stop |
-| Elgy power | 1 × 1 | Power |
-| Elgy mute | 1 × 1 | Mute |
-| Elgy screen | 2 × 1, width adjustable | Screen off / on |
+| Elly volume | 1 × 2, height adjustable | Louder / quieter |
+| Elly channel | 1 × 2, height adjustable | Channel up / down |
+| Elly playback | 3 × 1, width adjustable | Rewind, play, pause, fast forward, stop |
+| Elly power | 1 × 1 | Power |
+| Elly mute | 1 × 1 | Mute |
+| Elly screen | 2 × 1, width adjustable | Screen off / on |
+| Elly remote | 4 × 2, freely adjustable | All keys of the other widgets |
 
-- A widget controls the TV that is active in the app. Via **widget settings** (long-press the widget) it can be bound to a specific TV.
-- The app does not have to be open. A key press vibrates if [Vibrate on key press](#84-vibration-and-demo-mode) is on; if the TV is not reachable, a message is shown.
-- From Android 12, the widgets take on the colours of the wallpaper and follow the light and dark theme.
+- When you add a widget, Elly asks which TV it should control; change it later in the **widget settings** (long-press the widget).
+- **Elly remote** has its own widget settings as well: which keys appear, keys per row (2 to 8), show the TV name, row backgrounds, and color and opacity of the panel behind the rows. The layout rearranges itself depending on the active keys: groups stay together, small groups share a row.
+- The app does not need to be open. A key press vibrates if vibration is enabled; if the TV cannot be reached, a message appears.
+- From Android 12 the widgets take on the colors of your wallpaper and follow light and dark mode.
 
-## 8 Settings
+## 9 Settings
 
-### 8.1 TV
+The gear in the top bar opens the settings. They have three tabs, which you can also swipe between; Elly remembers the last one.
 
-<img src="docs/en/settings_top.png" width="270" alt="Settings: TV and screens">
+- **TV** – paired TVs, search, IP address and **demo mode**: it simulates a connected TV (“Demo TV”, yellow status light), all screens can be used without an LG TV and no commands are sent. See [connecting a TV](#32-connecting-a-tv).
+- **Appearance** – screens, color palette, background, rounding, light effect. See [editing screens](#6-editing-screens) and [appearance](#7-appearance).
+- **Controls** – pointer (see [pointer](#5-pointer)) and **vibrate on key press**.
 
-Shows the active TV. **Connect another TV** opens the connection screen, **Disconnect** removes the active TV after confirmation.
+The bottom edge always shows the version number and the links **Licenses** (all open source components used) and **Privacy**. Elly at the top right opens the help.
 
-### 8.2 Screens
+## 10 Help
 
-The four screens are shown as previews of their current layout:
+<img src="docs/en/help.png" width="270" alt="Help with table of contents">
 
-- **Tap** to show or hide a screen.
-- **Long-press and drag** to change the order.
-- **Pencil** opens the [editor](#61-editor).
-- **Arrow** resets the screen to its default layout after a confirmation.
-- At least one screen always stays active. If only one screen is active, the page dots disappear.
+Elly at the far right of the top bar opens the help. It offers:
 
-The selection is saved per TV.
+- a **full-text search** with highlighted matches,
+- the **quick start**, which shows the first-launch tour again,
+- nine chapters with more than 50 topics, many of them with screenshots.
 
-### 8.3 Pointer
+Swipe between the overview and the chapters or use the fixed footer (previous chapter, overview, next chapter). Every chapter greets you with its own animated Elly scene – from reading a book to the painter at the easel and the judge in the privacy chapter. Mentions of the privacy policy are links.
 
-<img src="docs/en/settings_pointer.png" width="270" alt="Settings: pointer">
+## 11 Privacy
 
-- **Motion** – with the sub-options *Sensitivity* (0.3× to 3.0×) and *Acceleration* (0× to 4×; 0 = no acceleration). Only available if the phone has a gyroscope.
-- **Touchpad** – with the sub-options *Touch input* (swipe or joystick, for the joystick with *Joystick position* free or fixed) and *OK button* (bottom or top).
+Elly only talks to your TV on the local network; no data is sent to external servers. Paired TVs, settings, screen layouts and app icons stay on the phone and are deleted when you uninstall the app. The full privacy policy is in the app under **Settings → Privacy**.
 
-### 8.4 Vibration and demo mode
-
-<img src="docs/en/settings_bottom.png" width="270" alt="Settings: vibration and demo mode">
-
-- **Vibrate on key press** – short vibration when a key is pressed (also when clicking in touchpad mode and on the widgets).
-- **Demo mode** – simulates a connected TV ("Demo TV", yellow status light). All screens can be used without an LG TV, no commands are sent. Demo mode has its own screen layouts and its own screen selection.
-
-### 8.5 Version and privacy
-
-The bottom of the settings always shows the version number (left) and the **Privacy** link (right), which opens the privacy policy.
-
-## 9 Building
+## 12 Building
 
 ```
 ./gradlew :app:assembleDebug
@@ -263,9 +307,13 @@ The bottom of the settings always shows the version number (left) and the **Priv
 
 Requires JDK 17 or newer and the Android SDK.
 
-## 10 Releases
+## 13 Releases
 
 APKs are built automatically on GitHub:
 
 - Tag `v*` → signed release APK and app bundle, published as a GitHub release.
 - Tag `devbuild` → signed APK as a build artifact.
+
+## 14 License
+
+Elly is released under the [MIT License](LICENSE). The [Fredoka](https://github.com/hafontia/Fredoka-One) font is licensed under the SIL Open Font License 1.1; AndroidX, Jetpack Compose, Kotlin, kotlinx.coroutines and OkHttp are licensed under the Apache License 2.0. All license texts are available in the app under **Settings → Licenses**.

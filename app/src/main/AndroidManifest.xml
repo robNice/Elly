@@ -9,14 +9,14 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name=".ElgyApplication"
+        android:name=".EllyApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Elgy">
+        android:theme="@style/Theme.Elly">
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
@@ -32,7 +32,7 @@
             android:exported="true"
             android:excludeFromRecents="true"
             android:taskAffinity=""
-            android:theme="@style/Theme.Elgy">
+            android:theme="@style/Theme.Elly">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
@@ -103,6 +103,17 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_screen_info" />
+        </receiver>
+        <receiver
+            android:name=".widget.AllWidget"
+            android:exported="false"
+            android:label="@string/widget_all_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_all_info" />
         </receiver>
         <service
             android:name=".widget.WidgetKeyService"

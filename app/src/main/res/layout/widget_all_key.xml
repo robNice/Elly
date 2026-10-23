@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+
+    <ImageView
+        android:id="@+id/widget_all_key"
+        android:layout_width="@dimen/widget_key_size"
+        android:layout_height="@dimen/widget_key_size"
+        android:layout_gravity="center"
+        android:background="@drawable/widget_key_background"
+        android:contentDescription="@null"
+        android:padding="@dimen/widget_key_padding"
+        android:tint="@color/widget_content" />
+</FrameLayout>

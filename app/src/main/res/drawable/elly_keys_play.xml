@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="150dp"
+    android:height="100dp"
+    android:viewportWidth="150"
+    android:viewportHeight="100">
+    <group
+        android:scaleX="1.1"
+        android:scaleY="1.1"
+        android:translateX="57.8"
+        android:translateY="1.5">
+        <path
+            android:fillColor="@color/elly_question"
+            android:pathData="M67.5,16.5L74,20.5L67.5,24.5Z" />
+    </group>
+</vector>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="100dp"
+    android:viewportWidth="180"
+    android:viewportHeight="100">
+    <group
+        android:pivotY="100"
+        android:scaleX="1.2"
+        android:scaleY="1.2">
+        <path
+            android:fillColor="@color/elly_chair"
+            android:pathData="M30,60h36a5,5 0,0 1,5 5v1a5,5 0,0 1,-5 5h-36a5,5 0,0 1,-5 -5v-1a5,5 0,0 1,5 -5z" />
+        <path
+            android:fillColor="@color/elly_chair_shade"
+            android:pathData="M25,66h46v0a5,5 0,0 1,-5 5h-36a5,5 0,0 1,-5 -5z" />
+        <path
+            android:fillColor="@color/elly_chair_shade"
+            android:pathData="M60,71h6v11h-6z M29,71h6v11h-6z" />
+    </group>
+    <path
+        android:fillColor="@color/elly_remote_key"
+        android:pathData="M149,38L136,17 M149,38L163,15"
+        android:strokeWidth="1.4"
+        android:strokeColor="@color/elly_remote_key"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="@color/elly_remote_key"
+        android:pathData="M136,17m-1.8,0a1.8,1.8 0,1 1,3.6,0a1.8,1.8 0,1 1,-3.6,0 M163,15m-1.8,0a1.8,1.8 0,1 1,3.6,0a1.8,1.8 0,1 1,-3.6,0" />
+    <path
+        android:fillColor="@color/elly_wood_shade"
+        android:pathData="M140,30h18a3,3 0,0 1,3 3v5h-24v-5a3,3 0,0 1,3 -3z" />
+    <path
+        android:fillColor="@color/elly_wood"
+        android:pathData="M130,82L126,94 M168,82L172,94"
+        android:strokeWidth="2.6"
+        android:strokeColor="@color/elly_wood"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="@color/elly_wood"
+        android:pathData="M129,37h40a5,5 0,0 1,5 5v36a5,5 0,0 1,-5 5h-40a5,5 0,0 1,-5 -5v-36a5,5 0,0 1,5 -5z" />
+    <path
+        android:fillColor="@color/elly_wood_shade"
+        android:pathData="M124,76h50v2a5,5 0,0 1,-5 5h-40a5,5 0,0 1,-5 -5z" />
+    <path
+        android:fillColor="@color/elly_tv_screen"
+        android:pathData="M136,43h21C161,43 162,45 162,48v24C162,75 161,77 157,77h-21C132,77 131,75 131,72v-24C131,45 132,43 136,43z"
+        android:strokeWidth="1.2"
+        android:strokeColor="@color/elly_wood_shade"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="@color/elly_tv_glare"
+        android:pathData="M136,46.5C141,45.5 147,45.5 151,46C147,47 141,48.5 136.5,51C135,50 135,47.5 136,46.5z" />
+    <path
+        android:fillColor="@color/elly_wood_shade"
+        android:pathData="M167.5,49m-2.6,0a2.6,2.6 0,1 1,5.2,0a2.6,2.6 0,1 1,-5.2,0 M167.5,58m-2.6,0a2.6,2.6 0,1 1,5.2,0a2.6,2.6 0,1 1,-5.2,0" />
+    <path
+        android:fillColor="@color/elly_remote_key"
+        android:pathData="M165,65h5 M165,68h5 M165,71h5 M165,74h5"
+        android:strokeWidth="1"
+        android:strokeColor="@color/elly_wood_shade"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

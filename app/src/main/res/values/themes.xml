@@ -1,5 +1,5 @@
 <resources>
-    <style name="Theme.Elgy" parent="android:Theme.Material.NoActionBar">
+    <style name="Theme.Elly" parent="android:Theme.Material.NoActionBar">
         <item name="android:windowBackground">@color/remote_background</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>

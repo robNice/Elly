@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="150dp"
+    android:height="100dp"
+    android:viewportWidth="150"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_body_shade"
+        android:pathData="M71.5,62C75.5,59.8 80.5,58.6 86,59.5C89,60 91,61 90.5,63C90,65 88,66 85,66C80.5,66.2 76.5,67.2 73.5,68.3C70.5,69.4 68.8,63.8 71.5,62Z" />
+</vector>

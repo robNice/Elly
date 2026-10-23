@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name" translatable="false">Elgy</string>
+    <string name="app_name" translatable="false">Elly</string>
 
 
     <string name="page_indicator_description">Page %1$d of %2$d</string>
 
-    <string name="setup_title">Connect TV</string>
     <string name="setup_close">Close</string>
     <string name="setup_emulator_hint">Emulator: the network search cannot reach your home network. Enter the IP address of your TV manually.</string>
     <string name="setup_found_tvs">TVs in your network</string>
@@ -24,7 +23,7 @@
     <string name="pairing_connecting">Connecting to %1$s…</string>
     <string name="pairing_confirm_on_tv">Please accept the connection request on your TV.</string>
     <string name="pairing_success_title">Connected</string>
-    <string name="pairing_success_message">Elgy is now connected to %1$s.</string>
+    <string name="pairing_success_message">Elly is now connected to %1$s.</string>
     <string name="pairing_failed_title">Connection failed</string>
     <string name="pairing_error_unreachable">The TV could not be reached. Make sure it is switched on and connected to the same network. On some models, \"LG Connect Apps\" must be enabled in the network settings.</string>
     <string name="pairing_error_certificate_changed">The security certificate of the TV has changed. Remove the TV from the list and pair it again.</string>
@@ -51,11 +50,8 @@
     <string name="settings_key_haptics_description">Short vibration when a key is pressed.</string>
     <string name="settings_demo_mode">Demo mode</string>
     <string name="settings_demo_mode_description">Simulates a connected TV. All remote screens can be used without an LG TV; no commands are sent.</string>
+    <string name="settings_demo_active_hint">Demo mode is on, so no TV is connected. Switch it off to pair a TV or switch between your TVs.</string>
     <string name="demo_tv_name">Demo TV</string>
-    <string name="settings_tv">TV</string>
-    <string name="settings_no_tv">No TV connected</string>
-    <string name="settings_connect_tv">Connect TV</string>
-    <string name="settings_connect_other_tv">Connect another TV</string>
     <string name="settings_disconnect">Disconnect</string>
     <string name="settings_disconnect_title">Disconnect TV?</string>
     <string name="settings_disconnect_message">The connection to %1$s will be removed. To use it again, the TV has to be paired again.</string>
@@ -137,7 +133,7 @@
     <string name="settings_rounding_keys">Keys</string>
     <string name="settings_rounding_dpad">Directional pad</string>
     <string name="settings_rounding_value">%1$d %%</string>
-    <string name="settings_light_effect">Long summer nights</string>
+    <string name="settings_light_effect">Long summer evenings</string>
     <string name="settings_light_effect_description">Low light from the top left: keys cast long shadows and the background is lit from that corner.</string>
     <string name="settings_pointer_mode">Pointer control</string>
     <string name="settings_pointer_mode_motion">Motion</string>
@@ -214,21 +210,43 @@
     <string name="settings_screen_reset_message">The layout of this screen is set back to the factory layout. Your changes to this screen are lost.</string>
     <string name="settings_screen_reset_confirm">Reset</string>
     <string name="custom_editor_add_short">Element</string>
-    <string name="widget_volume_name">Elgy volume</string>
+    <string name="widget_volume_name">Elly volume</string>
     <string name="widget_volume_description">Volume rocker.</string>
-    <string name="widget_channel_name">Elgy channel</string>
+    <string name="widget_channel_name">Elly channel</string>
     <string name="widget_channel_description">Channel rocker.</string>
-    <string name="widget_media_name">Elgy playback</string>
+    <string name="widget_media_name">Elly playback</string>
     <string name="widget_media_description">Rewind, play, pause, fast forward and stop.</string>
-    <string name="widget_power_name">Elgy power</string>
+    <string name="widget_power_name">Elly power</string>
     <string name="widget_power_description">Turns the TV on or off.</string>
-    <string name="widget_mute_name">Elgy mute</string>
+    <string name="widget_mute_name">Elly mute</string>
     <string name="widget_mute_description">Mutes the TV.</string>
-    <string name="widget_screen_name">Elgy screen</string>
+    <string name="widget_screen_name">Elly screen</string>
     <string name="widget_screen_description">Turns the TV screen off and on again, the sound keeps playing.</string>
+    <string name="widget_all_name">Elly remote</string>
+    <string name="widget_all_description">All widget keys in one. You choose the keys in the widget settings.</string>
+    <string name="widget_config_keys">Which keys should the widget show?</string>
+    <string name="widget_config_group_power">Power and screen</string>
+    <string name="widget_config_group_volume">Volume and channel</string>
+    <string name="widget_config_group_media">Playback</string>
+    <string name="widget_config_done">Done</string>
+    <string name="widget_config_columns">Keys per row</string>
+    <string name="widget_config_show_name">Show TV name</string>
+    <string name="widget_config_look">Appearance</string>
+    <string name="widget_config_row_background">Row backgrounds</string>
+    <string name="widget_config_panel_color">Panel color</string>
+    <string name="widget_config_panel_opacity">Panel opacity</string>
+    <string name="widget_color_system">System</string>
+    <string name="widget_color_black">Black</string>
+    <string name="widget_color_white">White</string>
+    <string name="widget_color_cream">Cream</string>
+    <string name="widget_color_orange">Orange</string>
+    <string name="widget_color_blue">Blue</string>
+    <string name="widget_color_green">Green</string>
+    <string name="widget_color_red">Red</string>
+    <string name="widget_config_percent" translatable="false">%1$d %%</string>
     <string name="widget_config_title">Which TV should this widget control?</string>
-    <string name="widget_config_no_tvs">No TV is connected yet. Open Elgy and connect a TV first.</string>
-    <string name="widget_config_open_app">Open Elgy</string>
+    <string name="widget_config_no_tvs">No TV is connected yet. Open Elly and connect a TV first.</string>
+    <string name="widget_config_open_app">Open Elly</string>
     <string name="widget_config_saving">Saving…</string>
     <string name="widget_service_channel">Widget keys</string>
     <string name="widget_service_sending">Sending to the TV</string>
@@ -236,6 +254,24 @@
     <string name="settings_privacy">Privacy</string>
     <string name="privacy_title">Privacy policy</string>
     <string name="privacy_bullet">•  %1$s</string>
+    <string name="settings_licenses">Licenses</string>
+    <string name="licenses_title">Open source licenses</string>
+    <string name="licenses_intro">Elly is free software and uses these open source components.</string>
+    <string name="licenses_show">Show license text</string>
+    <string name="licenses_hide">Hide license text</string>
+    <string name="license_line" translatable="false">%1$s · %2$s</string>
+    <string name="license_mit" translatable="false">MIT License</string>
+    <string name="license_ofl" translatable="false">SIL Open Font License 1.1</string>
+    <string name="license_apache" translatable="false">Apache License 2.0</string>
+    <string name="license_copyright_elly" translatable="false">© 2026 Roberto Cornice</string>
+    <string name="license_name_fredoka" translatable="false">Fredoka</string>
+    <string name="license_copyright_fredoka" translatable="false">© 2016 The Fredoka Project Authors</string>
+    <string name="license_name_androidx" translatable="false">AndroidX / Jetpack Compose</string>
+    <string name="license_copyright_androidx" translatable="false">© The Android Open Source Project</string>
+    <string name="license_name_kotlin" translatable="false">Kotlin / kotlinx.coroutines</string>
+    <string name="license_copyright_kotlin" translatable="false">© JetBrains s.r.o. and Kotlin Programming Language contributors</string>
+    <string name="license_name_okhttp" translatable="false">OkHttp</string>
+    <string name="license_copyright_okhttp" translatable="false">© Square, Inc.</string>
     <string name="settings_joystick_placement">Joystick position</string>
     <string name="settings_joystick_placement_free">Free</string>
     <string name="settings_joystick_placement_free_description">The joystick appears where you first touch the area.</string>
@@ -247,4 +283,204 @@
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_save">Save</string>
+
+    <string name="onboarding_help">Help</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_finish">Let\'s go</string>
+    <string name="onboarding_mascot">Elly the chicken</string>
+
+    <string name="onboarding_welcome_title">Hi, I\'m Elly!</string>
+    <string name="onboarding_welcome_text">I\'ll show you in a few steps how to control your LG TV with your phone.</string>
+    <string name="onboarding_welcome_connect">Connect your TV</string>
+    <string name="onboarding_welcome_screens">Screens and top bar</string>
+    <string name="onboarding_welcome_settings">Settings and your own screens</string>
+    <string name="onboarding_welcome_pointer">The pointer</string>
+
+    <string name="onboarding_connect_title">Connect your TV</string>
+    <string name="onboarding_connect_text">I only need to find your TV once. After that I remember it.</string>
+    <string name="onboarding_connect_network">Your phone and your TV must be on the same Wi-Fi network, and the TV must be switched on.</string>
+    <string name="onboarding_connect_search">I search the network for TVs automatically. If I can\'t find yours, enter the IP address of the TV.</string>
+    <string name="onboarding_connect_pair">Select your TV and accept the request on the TV screen. That\'s only needed once.</string>
+    <string name="onboarding_connect_power">To let me switch the TV on, enable switching on via Wi-Fi in the network settings of the TV.</string>
+    <string name="onboarding_connect_demo">No LG TV at hand? Try everything with the demo mode in the settings.</string>
+
+    <string name="onboarding_screens_title">Screens and top bar</string>
+    <string name="onboarding_screens_text">The keys are spread across up to four screens, so everything fits without scrolling.</string>
+    <string name="onboarding_screens_swipe">Swipe left or right to switch screens. The dots at the bottom show where you are.</string>
+    <string name="onboarding_screens_status">The light in front of the TV name shows the connection: green connected, red not reachable, grey checking, yellow demo mode.</string>
+    <string name="onboarding_screens_tv">Tap the TV name to search for, pair or switch TVs.</string>
+    <string name="onboarding_screens_pointer">Opens the pointer.</string>
+    <string name="onboarding_screens_settings">Opens the settings.</string>
+    <string name="onboarding_screens_help">Elly at the far right opens the help with search and quick start.</string>
+    <string name="onboarding_screens_keyboard">When a text field is active on the TV, the keyboard opens automatically.</string>
+
+    <string name="onboarding_settings_title">Settings</string>
+    <string name="onboarding_settings_text">You can adjust almost everything to your liking. The settings have three tabs.</string>
+    <string name="onboarding_settings_tv">TV: switch or remove the active TV, demo mode.</string>
+    <string name="onboarding_settings_look">Appearance: screens, color palette, background, rounding and light effect.</string>
+    <string name="onboarding_settings_control">Controls: pointer control and vibration.</string>
+    <string name="onboarding_settings_screens">Tap a screen preview to show or hide it, hold and drag it to change the order.</string>
+    <string name="onboarding_settings_edit">The pen opens the editor: move keys, change their size, add elements, drag them onto the bin to remove them.</string>
+    <string name="onboarding_settings_apps">Hold an app key in the editor for 2 seconds to assign an app from your TV.</string>
+    <string name="onboarding_settings_reset">The arrow resets a screen to its original layout.</string>
+
+    <string name="onboarding_pointer_title">The pointer</string>
+    <string name="onboarding_pointer_text">Just like the Magic Remote: the pointer key at the top opens the pointer on the TV. Under Controls in the settings you choose how to steer it.</string>
+    <string name="onboarding_pointer_motion">Motion: the pointer follows your phone. Hold it like a remote or upright in front of you and move it. The big OK button clicks, swipe on the scroll area to scroll.</string>
+    <string name="onboarding_pointer_touch">Touchpad: swipe across the area to move the pointer, tap to click. As a joystick: the further you drag, the faster it moves.</string>
+    <string name="onboarding_pointer_close">Close it with the X at the top right, with the back gesture or automatically after 5 seconds without activity.</string>
+    <string name="onboarding_pointer_quick">Open it even faster by shaking your phone (motion) or double-tapping a free spot (touchpad), if enabled under Controls.</string>
+
+    <string name="onboarding_done_title">That\'s it!</string>
+    <string name="onboarding_done_text">Have fun with your TV. If you want to look something up, you\'ll find me any time behind my picture at the top right.</string>
+
+    <!-- Help -->
+    <string name="help_title">Help</string>
+    <string name="help_elly_home">How can I help you? Search for a keyword or pick a chapter.</string>
+    <string name="help_elly_no_results">Sorry, I couldn\'t find anything for that. Try another word.</string>
+    <string name="help_search_hint">Search help</string>
+    <string name="help_search_clear">Clear search</string>
+    <string name="help_quick_title">Quick start</string>
+    <string name="help_quick_text">The short tour with me through the most important features.</string>
+    <string name="help_contents">Contents</string>
+    <string name="help_chapter_number">%1$d. %2$s</string>
+    <string name="help_next_chapter">Next: %1$s</string>
+    <string name="help_nav_previous">Previous chapter</string>
+    <string name="help_nav_home">Help overview</string>
+    <string name="help_nav_next">Next chapter</string>
+    <plurals name="help_elly_results">
+        <item quantity="one">I found one match.</item>
+        <item quantity="other">I found %d matches.</item>
+    </plurals>
+
+    <string name="help_start_title">Getting started</string>
+    <string name="help_start_elly">Here I explain how to find your TV and connect it to me.</string>
+    <string name="help_start_requirements_title">What you need</string>
+    <string name="help_start_requirements_body">Elly works with LG TVs running webOS.\n• Android 9 or newer on your phone.\n• Phone and TV on the same network (Wi-Fi or a network cable on the TV).\n• The TV must be switched on when you connect it for the first time.</string>
+    <string name="help_start_search_title">Searching for TVs</string>
+    <string name="help_start_search_body">On first start, the settings open on the “TV” tab after the quick start, and Elly immediately looks for LG TVs on the local network. Found TVs are listed with name, model and IP address.\nThe search takes a few seconds. “Search again” starts it once more.</string>
+    <string name="help_start_ip_title">Entering the IP address</string>
+    <string name="help_start_ip_body">If the search doesn\'t find your TV, enter its address under “Enter IP address” (e.g. 192.168.0.10) and tap “Connect”.\nYou\'ll find the IP address in the network settings of the TV or in the device list of your router.</string>
+    <string name="help_start_pair_title">Pairing</string>
+    <string name="help_start_pair_body">Select a TV. A connection request appears on the TV – accept it with the TV\'s own remote. After that Elly remembers the TV, so this is only needed once.\nWhile pairing, Elly also remembers the network address (MAC) of the TV to be able to switch it on later.</string>
+    <string name="help_start_multiple_title">Several TVs</string>
+    <string name="help_start_multiple_body">You can pair several TVs. The “TV” tab of the settings lists them under “Paired TVs”; tap one to make it the active TV. “Remove” deletes a TV together with its screen layout after asking.\nYou can open the “TV” tab any time by tapping the TV name in the top bar.</string>
+    <string name="help_start_poweron_title">Switching the TV on</string>
+    <string name="help_start_poweron_body">If the TV is off, the power key sends a wake-up signal over the network (Wake-on-LAN). For this to work, the option “Turn on via Wi-Fi” (on some models “Mobile TV On”) must be enabled on the TV.\nSwitching off always works as long as the TV is connected.</string>
+    <string name="help_start_problems_title">If the connection fails</string>
+    <string name="help_start_problems_body">• Not reachable: check that the TV is switched on and on the same network. On some models “LG Connect Apps” must be enabled in the network settings.\n• Rejected: the request was declined on the TV. Select the TV again and accept the request.\n• Timeout: the TV didn\'t answer in time. Please try again.\n• Certificate changed: after a software update of the TV its security certificate can change. Remove the TV and pair it again.</string>
+    <string name="help_start_demo_title">Trying it without a TV</string>
+    <string name="help_start_demo_body">The demo mode (Settings → tab “TV”) simulates a connected TV. All screens can be used, no commands are sent. The status light is yellow and the top bar shows “Demo TV”.\nThe demo mode has its own screen layout. Switch it off to control your TV again.</string>
+
+    <string name="help_remote_title">The remote</string>
+    <string name="help_remote_elly">This is how the remote is organised: top bar, screens and how the keys react.</string>
+    <string name="help_remote_topbar_title">The top bar</string>
+    <string name="help_remote_topbar_body">The top bar is visible on every screen:\n• TV name with status light: opens the settings on the “TV” tab.\n• Pointer key (mouse symbol): opens the pointer. While it is active, the symbol is blue.\n• Gear: opens the settings of Elly.\n• Elly at the far right: opens this help.</string>
+    <string name="help_remote_status_title">The status light</string>
+    <string name="help_remote_status_body">• Green: connected.\n• Red: TV not reachable.\n• Grey: checking the connection.\n• Yellow: demo mode.\nWhile Elly is visible, the connection is checked every 10 seconds and after every key press. When the app goes to the background, the connection is closed.</string>
+    <string name="help_remote_screens_title">Switching screens</string>
+    <string name="help_remote_screens_body">The keys are spread across up to four screens, so everything fits without scrolling. Swipe left or right to switch. The dots at the bottom show which screen you are on; with only one active screen they disappear.\nElly remembers the screen you used last. Which screens are shown and in which order is set in the settings.</string>
+    <string name="help_remote_keys_title">Using the keys</string>
+    <string name="help_remote_keys_body">• Keys trigger when you lift your finger. A swipe that starts on a key therefore sends nothing.\n• Volume, channel and the direction pad repeat while you hold them.\n• If you like, the phone vibrates on every key press (Settings → “Controls”).\n• If a key isn\'t available or the TV can\'t be reached, a message appears at the bottom.</string>
+    <string name="help_remote_defaults_title">Default layout</string>
+    <string name="help_remote_defaults_body">• Screen 1: power, screen off/on, TV settings, guide, home, direction pad, volume and channel rockers, mute, live TV, back and color keys.\n• Screen 2: number keys, guide, •••, mute, live TV, rockers, direction pad, back, input and color keys.\n• Screen 3: record, stop, rewind, pause, play, fast forward, direction pad, back, color keys and app keys (Netflix, Prime Video, Rakuten TV).\n• Screen 4: empty and hidden, for your own layout.\nYou can rearrange every screen freely and reset it at any time.</string>
+    <string name="help_remote_text_title">Entering text</string>
+    <string name="help_remote_text_body">When a text field is active on the TV (e.g. a search), a text bar opens automatically at the bottom. What you type is sent to the TV live; the send key works like Enter.\nWith the “Keyboard” key (can be added in the editor) you open the text bar by hand. Apps with their own on-screen keyboard sometimes don\'t accept the text.</string>
+
+    <string name="help_keys_title">The keys</string>
+    <string name="help_keys_elly">Here you\'ll find every key and what it does on the TV.</string>
+    <string name="help_keys_power_title">Power</string>
+    <string name="help_keys_power_body">Switches the TV off. If it can\'t be reached, Elly sends a wake-up signal (see “Switching the TV on”).</string>
+    <string name="help_keys_screen_title">Screen off / on</string>
+    <string name="help_keys_screen_body">Switches only the TV screen off or back on, the sound keeps playing – handy for music or audio books.</string>
+    <string name="help_keys_volume_title">Volume, mute and channel</string>
+    <string name="help_keys_volume_body">• Volume rocker: louder / quieter.\n• Mute: sound off / on.\n• Channel rocker (CH): channel up / down.</string>
+    <string name="help_keys_nav_title">Direction pad, OK, back and home</string>
+    <string name="help_keys_nav_body">• Direction pad: navigate through menus, OK in the middle confirms.\n• Back: one step back.\n• Home: webOS home screen.</string>
+    <string name="help_keys_menus_title">TV settings, guide, live TV and •••</string>
+    <string name="help_keys_menus_body">• Gear on the screen: settings of the TV (not of Elly).\n• Guide (GUIDE): the TV program guide.\n• Live TV (TV with antenna): switches to TV reception via antenna, cable or satellite.\n• •••: opens the “More actions” menu of the TV.</string>
+    <string name="help_keys_digits_title">Number keys</string>
+    <string name="help_keys_digits_body">0 to 9, e.g. for channel numbers.</string>
+    <string name="help_keys_input_title">Input</string>
+    <string name="help_keys_input_body">Opens a list of the inputs the TV reports (e.g. HDMI 1, HDMI 2) and switches to the one you choose. Inputs without a connected device are marked “Nothing connected”.</string>
+    <string name="help_keys_media_title">Playback and recording</string>
+    <string name="help_keys_media_body">Rewind, pause, play, fast forward and stop control the current playback. Record starts a recording if the TV supports it. How well the keys work depends on the app on the TV.</string>
+    <string name="help_keys_colors_title">Color keys</string>
+    <string name="help_keys_colors_body">Red, green, yellow and blue – e.g. for teletext or for functions an app on the TV offers.</string>
+    <string name="help_keys_apps_title">App keys</string>
+    <string name="help_keys_apps_body">An app key opens an app on the TV, e.g. Netflix. It shows the app icon from the TV and/or a text. How to set up app keys is described under “Setting up app keys”.</string>
+
+    <string name="help_pointer_title">The pointer</string>
+    <string name="help_pointer_elly">With the pointer you click your way through the TV – by moving your phone or with the touchpad.</string>
+    <string name="help_pointer_open_title">Opening and closing the pointer</string>
+    <string name="help_pointer_open_body">The pointer key in the top bar opens the pointer – just like with the Magic Remote, a cursor appears on the TV. In both modes:\n• OK clicks at the pointer position, several clicks in a row are possible.\n• The X at the top right or the back gesture closes the pointer, the cursor on the TV disappears.\n• After 5 seconds without activity the pointer closes automatically.\nWhether you steer with motion or the touchpad is chosen in the settings (gear in the top bar) on the “Controls” tab. All other options in this chapter are there too.</string>
+    <string name="help_pointer_motion_title">Motion mode</string>
+    <string name="help_pointer_motion_body">The pointer follows the movements of your phone. Two ways of holding it are recognised automatically:\n• Like a remote (screen facing up, top edge pointing to the TV): swing left/right, tilt the top edge up/down.\n• Upright in front of you (back facing the TV): turn left/right, tilt forward/back.\nTwisting around the pointing direction is ignored so the cursor stays steady. Swipe up or down on the scroll area to scroll. Motion mode needs a gyroscope in the phone.</string>
+    <string name="help_pointer_tuning_title">Sensitivity and acceleration</string>
+    <string name="help_pointer_tuning_body">• Sensitivity (0.3× to 3.0×): how far the pointer moves per movement.\n• Acceleration (0× to 4×): fast swings move the pointer disproportionately far, slow ones stay precise. 0 switches acceleration off.</string>
+    <string name="help_pointer_swipe_title">Touchpad: swipe</string>
+    <string name="help_pointer_swipe_body">The pointer follows your finger like on a laptop touchpad. A short tap without swiping clicks. “Speed” (0.3× to 3.0×) sets how far the pointer moves per swipe.</string>
+    <string name="help_pointer_joystick_title">Touchpad: joystick</string>
+    <string name="help_pointer_joystick_body">Like an analog stick: the further you drag in a direction, the faster the pointer moves.\n• Free position: the stick starts where you first touch the area.\n• Fixed: the stick is always visible in the middle; a short tap clicks.\nThe inner circle is the dead zone: as long as the knob stays inside, the pointer doesn\'t move.</string>
+    <string name="help_pointer_okpos_title">OK button at the top or bottom</string>
+    <string name="help_pointer_okpos_body">In touchpad mode the OK button sits at the bottom (default) or at the top – whichever suits the way you hold your phone.</string>
+    <string name="help_pointer_quick_title">Opening it faster</string>
+    <string name="help_pointer_quick_body">• Open by shaking (motion mode): a short shake of the phone opens the pointer. The shake sensitivity can be adjusted.\n• Open by double tap (touchpad mode): tap twice on a free spot of a screen.\nBoth are enabled in the settings under “Controls”.</string>
+
+    <string name="help_edit_title">Editing screens</string>
+    <string name="help_edit_elly">You decide which keys go where. Here I show you the editor.</string>
+    <string name="help_edit_manage_title">Showing and hiding screens</string>
+    <string name="help_edit_manage_body">Under Settings → “Appearance” → “Screens” you see previews of your four screens.\n• Tap to show or hide a screen. At least one stays active.\n• Hold and drag to change the order.\n• The pen opens the editor, the arrow resets the screen after asking.\nEverything is saved per TV.</string>
+    <string name="help_edit_editor_title">The editor</string>
+    <string name="help_edit_editor_body">The editor shows the screen as a grid (24 × 48 cells) in the proportions of the real screen. Elements always cover whole cells. Keys become round if their area is nearly square, otherwise oblong.\n“Done” saves and closes the editor.</string>
+    <string name="help_edit_add_title">Adding elements</string>
+    <string name="help_edit_add_body">“+ Element” opens a selection with two tabs:\n• Keys: every single key, volume and channel rocker, direction pad and app key.\n• Key groups: e.g. number keys, video controls, color keys or volume + channel. Groups are inserted as single keys.\nNew elements go to the first free spot, made a little smaller if necessary.</string>
+    <string name="help_edit_move_title">Moving, resizing, removing</string>
+    <string name="help_edit_move_body">• Drag to move an element.\n• Tap to select it; the handle at the corner changes its size.\n• Drag it onto the bin to remove it.</string>
+    <string name="help_edit_multi_title">Several elements at once</string>
+    <string name="help_edit_multi_body">Drag a frame on a free area to select several elements. Move the selection together or drag it onto the bin together.</string>
+    <string name="help_edit_undo_title">Undo and reset</string>
+    <string name="help_edit_undo_body">Undo takes back the last steps (up to 50): adding, moving, resizing, removing, app keys and resetting. The history starts anew each time you open the editor.\nReset restores the default layout of the screen after asking.</string>
+    <string name="help_edit_apps_title">Setting up app keys</string>
+    <string name="help_edit_apps_body">Hold an app key in the editor for 2 seconds. The “App key” window opens with a preview:\n• Choose app: loads the apps from the TV and assigns one. The icon is saved on the phone and visible even without a connection.\n• Appearance: icon and/or text, your own text and text color. The text shrinks automatically to fit the key.\nChanges only apply with OK. If an icon is missing, Elly loads it as soon as the TV is connected.</string>
+
+    <string name="help_look_title">Appearance</string>
+    <string name="help_look_elly">Make me pretty! Colors, background and shapes are set in the settings.</string>
+    <string name="help_look_open_title">Where to find it</string>
+    <string name="help_look_open_body">Tap the gear in the top bar and choose the “Appearance” tab in the settings. Everything in this chapter is there. Changes apply to all screens right away.</string>
+    <string name="help_look_palette_title">Color palette</string>
+    <string name="help_look_palette_body">15 palettes color keys, rockers, direction pad and app keys: Graphite, Silver, Ocean, Forest, Copper, Violet, Petrol, Bordeaux, Sand, Coral, Midnight, Sage, Ruby, Lagoon and Amber. Power and the color keys keep their colors.</string>
+    <string name="help_look_background_title">Background</string>
+    <string name="help_look_background_body">The background applies to all screens:\n• None: plain dark.\n• Auto: matching the color palette.\n• Own image: from your photo picker, scaled proportionally and cropped.\n• Motifs: hills, ocean, meadow, sky, aurora, graphite, mountains, forest and sea.</string>
+    <string name="help_look_rounding_title">Rounding</string>
+    <string name="help_look_rounding_body">Two sliders set how round the corners are: “Keys” applies to keys, rockers and app keys, “Direction pad” to the ring and the OK key. The preview shows the result right away.</string>
+    <string name="help_look_light_title">Long summer evenings</string>
+    <string name="help_look_light_body">A light effect: low light from the top left, the keys cast long, soft shadows to the bottom right and the background brightens from that corner. Available from Android 12.</string>
+
+    <string name="help_widgets_title">Widgets</string>
+    <string name="help_widgets_elly">With the widgets you control your TV straight from the home screen.</string>
+    <string name="help_widgets_overview_title">The widgets</string>
+    <string name="help_widgets_overview_body">• Elly volume: louder / quieter.\n• Elly channel: channel up / down.\n• Elly playback: rewind, play, pause, fast forward, stop.\n• Elly power.\n• Elly mute.\n• Elly screen: screen off / on.\n• Elly remote: all of these keys in one widget. In its widget settings you choose which keys it shows; the layout rearranges itself.\nAdd them like any other widget: long-press a free spot on the home screen and choose “Widgets”.</string>
+    <string name="help_widgets_tv_title">Which TV?</string>
+    <string name="help_widgets_tv_body">When you add a widget, Elly asks which TV it should control. You can change this later in the widget settings (hold the widget).</string>
+    <string name="help_widgets_hints_title">Good to know</string>
+    <string name="help_widgets_hints_body">• The app doesn\'t need to be open.\n• With vibration enabled (settings, “Controls” tab), the widget vibrates too.\n• If the TV can\'t be reached, a message appears.\n• From Android 12 the widgets take on the colors of your wallpaper.</string>
+
+    <string name="help_settings_title">Settings</string>
+    <string name="help_settings_elly">Let\'s tinker with the settings. I\'ll show you where to find what.</string>
+    <string name="help_settings_tabs_title">How the settings are organised</string>
+    <string name="help_settings_tabs_body">The gear in the top bar opens the settings. They have three tabs, which you can also swipe between; Elly remembers the one you opened last.\n• TV: paired TVs, search, IP address, demo mode.\n• Appearance: screens, color palette, background, rounding, light effect.\n• Controls: pointer and vibration.</string>
+    <string name="help_settings_tv_title">Switching or removing a TV</string>
+    <string name="help_settings_tv_body">The “TV” tab lists your paired TVs at the top: tap one to make it active. “Remove” unpairs it after asking; to use the TV again you have to pair it again.\nBelow, you can search for more TVs or enter an IP address.\nWhile demo mode is on, the tab only shows its switch; turn it off to pair or switch TVs.</string>
+    <string name="help_settings_haptics_title">Vibrate on key press</string>
+    <string name="help_settings_haptics_body">A short vibration on every key press, also when clicking in touchpad mode and on the widgets.</string>
+    <string name="help_privacy_title">Privacy</string>
+    <string name="help_privacy_elly">Your data belongs to you. That is my verdict, and it is final!</string>
+    <string name="help_privacy_data_title">What happens to your data</string>
+    <string name="help_privacy_data_body">Elly only talks to your TV on the local network, no data is sent to external servers. Paired TVs, settings, screen layouts and app icons stay on your phone and are deleted when you uninstall the app.</string>
+    <string name="help_privacy_policy_title">Privacy policy</string>
+    <string name="help_privacy_policy_body">The full privacy policy is opened via “Privacy” at the bottom of the settings, next to the version number.</string>
+    <string name="help_privacy_link">privacy policy</string>
 </resources>

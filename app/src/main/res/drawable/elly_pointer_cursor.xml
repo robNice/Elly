@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="100dp"
+    android:viewportWidth="180"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_eye_highlight"
+        android:pathData="M144,55L144,66L146.8,63.4L148.8,67.8L150.6,67L148.6,62.7L152.4,62.4Z"
+        android:strokeWidth="0.6"
+        android:strokeColor="@color/elly_eye"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

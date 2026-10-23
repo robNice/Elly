@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:pathData="M40,91v5 M40,95l-3.5,2.5 M40,95l3.5,2.5 M60,91v5 M60,95l-3.5,2.5 M60,95l3.5,2.5"
+        android:strokeWidth="2.4"
+        android:strokeColor="@color/elly_beak"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="@color/elly_body_shade"
+        android:pathData="M21,55C10,59 9,74 21,79C26,72 26,62 21,55Z" />
+    <path
+        android:fillColor="@color/elly_body"
+        android:pathData="M50,21C70,21 84,40 84,62C84,80 69,92 50,92C31,92 16,80 16,62C16,40 30,21 50,21Z" />
+    <path
+        android:fillColor="@color/elly_body_shade"
+        android:pathData="M50,92C69,92 84,80 84,62C80,76 67,85 50,85C33,85 20,76 16,62C16,80 31,92 50,92Z" />
+    <path
+        android:fillColor="@color/elly_gold"
+        android:pathData="M33,70L34.6,73.4L38.3,73.8L35.5,76.3L36.3,80L33,78.1L29.7,80L30.5,76.3L27.7,73.8L31.4,73.4Z" />
+    <path
+        android:pathData="M78,58L91,67L80,77"
+        android:strokeWidth="7"
+        android:strokeColor="@color/elly_body_shade"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="@color/elly_cheek"
+        android:pathData="M32,61m-4.5,0a4.5,3.5 0,1 1,9.0,0a4.5,3.5 0,1 1,-9.0,0 M68,61m-4.5,0a4.5,3.5 0,1 1,9.0,0a4.5,3.5 0,1 1,-9.0,0" />
+    <path
+        android:pathData="M35.5,52C37.5,48.5 42.5,48.5 44.5,52 M55.5,52C57.5,48.5 62.5,48.5 64.5,52"
+        android:strokeWidth="2"
+        android:strokeColor="@color/elly_eye"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="@color/elly_comb"
+        android:pathData="M50,67m-2.8,0a2.8,3.4 0,1 1,5.6 0a2.8,3.4 0,1 1,-5.6 0" />
+    <path
+        android:fillColor="@color/elly_beak"
+        android:pathData="M44,57.5h12c0.9,0 1.4,1 0.8,1.7l-6,6.6c-0.4,0.4 -1.1,0.4 -1.5,0l-6,-6.6c-0.6,-0.7 -0.1,-1.7 0.7,-1.7z" />
+    <path
+        android:fillColor="@color/elly_police"
+        android:pathData="M30,24C30,11 70,11 70,24L68,28L32,28Z" />
+    <path
+        android:fillColor="@color/elly_remote_black"
+        android:pathData="M32,25.5h36v4h-36z" />
+    <path
+        android:fillColor="@color/elly_remote_black"
+        android:pathData="M30,29.5C38,35 62,35 70,29.5L66,28.5L34,28.5Z" />
+    <path
+        android:fillColor="@color/elly_gold"
+        android:pathData="M50,19.5m-3,0a3,3 0,1 1,6,0a3,3 0,1 1,-6,0" />
+</vector>

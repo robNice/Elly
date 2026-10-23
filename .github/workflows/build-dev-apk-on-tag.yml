@@ -43,12 +43,12 @@ jobs:
 
       - name: Rename artifact to include tag
         run: |
-          mv "app/build/outputs/apk/release/app-release.apk" "elgy-${{ github.ref_name }}.apk"
+          mv "app/build/outputs/apk/release/app-release.apk" "elly-${{ github.ref_name }}.apk"
 
       - name: Upload release artifact
         uses: actions/upload-artifact@v4
         with:
           name: release-${{ github.ref_name }}
           path: |
-            elgy-${{ github.ref_name }}.apk
+            elly-${{ github.ref_name }}.apk
           if-no-files-found: error

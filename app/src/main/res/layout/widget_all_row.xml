@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_all_row"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/widget_button_size"
+    android:layout_marginVertical="@dimen/widget_row_spacing"
+    android:background="@drawable/widget_pill_background"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/widget_bar_padding" />

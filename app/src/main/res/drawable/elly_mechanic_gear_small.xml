@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="150dp"
+    android:height="100dp"
+    android:viewportWidth="150"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_metal"
+        android:pathData="M113.90,64.00 L116.46,64.70 L116.13,66.17 L113.51,65.69 L112.43,67.05 L113.48,69.49 L112.12,70.14 L110.87,67.80 L109.13,67.80 L107.88,70.14 L106.52,69.49 L107.57,67.05 L106.49,65.69 L103.87,66.17 L103.54,64.70 L106.10,64.00 L106.49,62.31 L104.48,60.57 L105.42,59.38 L107.57,60.95 L109.13,60.20 L109.24,57.54 L110.76,57.54 L110.87,60.20 L112.43,60.95 L114.58,59.38 L115.52,60.57 L113.51,62.31Z" />
+    <path
+        android:fillColor="@color/elly_machine_shade"
+        android:pathData="M111.91,65.10 L110.00,66.20 L108.09,65.10 L108.09,62.90 L110.00,61.80 L111.91,62.90Z" />
+</vector>

@@ -43,16 +43,16 @@ jobs:
 
       - name: Rename artifacts to include tag
         run: |
-          mv "app/build/outputs/apk/release/app-release.apk" "elgy-${{ github.ref_name }}.apk"
-          mv "app/build/outputs/bundle/release/app-release.aab" "elgy-${{ github.ref_name }}.aab"
+          mv "app/build/outputs/apk/release/app-release.apk" "elly-${{ github.ref_name }}.apk"
+          mv "app/build/outputs/bundle/release/app-release.aab" "elly-${{ github.ref_name }}.aab"
 
       - name: Upload release artifacts
         uses: actions/upload-artifact@v4
         with:
           name: release-${{ github.ref_name }}
           path: |
-            elgy-${{ github.ref_name }}.apk
-            elgy-${{ github.ref_name }}.aab
+            elly-${{ github.ref_name }}.apk
+            elly-${{ github.ref_name }}.aab
           if-no-files-found: error
 
       - name: Publish release artifacts to GitHub Release
@@ -62,5 +62,5 @@ jobs:
           name: ${{ github.ref_name }}
           generate_release_notes: true
           files: |
-            elgy-${{ github.ref_name }}.apk
-            elgy-${{ github.ref_name }}.aab
+            elly-${{ github.ref_name }}.apk
+            elly-${{ github.ref_name }}.aab

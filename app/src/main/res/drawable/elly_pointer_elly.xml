@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="100dp"
+    android:viewportWidth="180"
+    android:viewportHeight="100">
+    <group
+        android:pivotY="100"
+        android:scaleX="1.2"
+        android:scaleY="1.2">
+        <path
+            android:fillColor="@color/elly_beak"
+            android:pathData="M52,69L71,75 M71,75L75,71.5 M71,75L76.5,75.5 M71,75L74,79"
+            android:strokeWidth="2.2"
+            android:strokeColor="@color/elly_beak"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+        <path
+            android:fillColor="@color/elly_comb"
+            android:pathData="M35,26m-5,0a5,5 0,1 1,10,0a5,5 0,1 1,-10,0 M41.5,22.5m-6,0a6,6 0,1 1,12,0a6,6 0,1 1,-12,0 M48,26m-5,0a5,5 0,1 1,10,0a5,5 0,1 1,-10,0" />
+        <path
+            android:fillColor="@color/elly_body"
+            android:pathData="M42,25C56,25 62,36 62,48C62,62 56,72 42,72C28,72 20,64 20,50C20,35 29,25 42,25Z" />
+        <path
+            android:fillColor="@color/elly_body_shade"
+            android:pathData="M20,50C20,64 28,72 42,72C56,72 62,62 62,52C58,63 50,67 42,67C32,67 23,61 20,50Z" />
+        <path
+            android:fillColor="@color/elly_cheek"
+            android:pathData="M50,49m-3.5,0a3.5,2.6 0,1 1,7.0,0a3.5,2.6 0,1 1,-7.0,0" />
+        <path
+            android:fillColor="@color/elly_eye"
+            android:pathData="M53,41m-3.2,0a3.2,3.2 0,1 1,6.4,0a3.2,3.2 0,1 1,-6.4,0" />
+        <path
+            android:fillColor="@color/elly_eye_highlight"
+            android:pathData="M54.2,40.2m-1.1,0a1.1,1.1 0,1 1,2.2,0a1.1,1.1 0,1 1,-2.2,0" />
+        <path
+            android:fillColor="@color/elly_comb"
+            android:pathData="M62,52.5m-2,0a2,2.6 0,1 1,4,0a2,2.6 0,1 1,-4,0" />
+        <path
+            android:fillColor="@color/elly_beak"
+            android:pathData="M61,43.5L68,47.2C68.7,47.6 68.7,48.4 68,48.8L61,52Z" />
+    </group>
+</vector>

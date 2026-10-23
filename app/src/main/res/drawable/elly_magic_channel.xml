@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="150dp"
+    android:height="100dp"
+    android:viewportWidth="150"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_widget"
+        android:pathData="M112,30h10a4,4 0,0 1,4 4v10a4,4 0,0 1,-4 4h-10a4,4 0,0 1,-4 -4v-10a4,4 0,0 1,4 -4z" />
+    <path
+        android:pathData="M112.5,37L117,32.5L121.5,37 M112.5,41L117,45.5L121.5,41"
+        android:strokeWidth="2"
+        android:strokeColor="@color/elly_fur"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

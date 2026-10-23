@@ -1,5 +1,5 @@
 ## 1. General
-Elgy is a remote control for LG TVs with webOS on the local network.
+Elly is a remote control for LG TVs with webOS on the local network.
 
 The developer of this app does not collect, store or process any personal data. The app does not require a user account.
 
@@ -44,4 +44,4 @@ This privacy policy may be updated if necessary to reflect changes to the app or
 ## 8. Contact
 If you have any questions about privacy, you can contact the developer.
 
-E-mail: elgy@robnice.de
+E-mail: elly@robnice.de

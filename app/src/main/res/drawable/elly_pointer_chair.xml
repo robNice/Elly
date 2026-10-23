@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="100dp"
+    android:viewportWidth="180"
+    android:viewportHeight="100">
+    <group
+        android:pivotY="100"
+        android:scaleX="1.2"
+        android:scaleY="1.2">
+        <path
+            android:fillColor="@color/elly_shadow"
+            android:pathData="M38,95m-34,0a34,3 0,1 1,68,0a34,3 0,1 1,-68,0" />
+        <path
+            android:fillColor="@color/elly_wood"
+            android:pathData="M14,86h4v8a1.5,1.5 0,0 1,-3 0z M60,86h4v8a1.5,1.5 0,0 1,-3 0z" />
+        <path
+            android:fillColor="@color/elly_chair_shade"
+            android:pathData="M6,34C6,22 24,22 25,33L27,72L10,84C7,84 5,82 5,79Z" />
+        <path
+            android:fillColor="@color/elly_chair"
+            android:pathData="M12,70h50a6,6 0,0 1,6 6v6a6,6 0,0 1,-6 6h-50a6,6 0,0 1,-6 -6v-6a6,6 0,0 1,6 -6z" />
+        <path
+            android:fillColor="@color/elly_chair_shade"
+            android:pathData="M6,80h62v2a6,6 0,0 1,-6 6h-50a6,6 0,0 1,-6 -6z" />
+    </group>
+</vector>
