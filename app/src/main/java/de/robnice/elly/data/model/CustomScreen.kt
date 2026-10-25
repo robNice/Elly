@@ -11,7 +11,8 @@ enum class CustomElementType(val defaultWidth: Int, val defaultHeight: Int, val 
     VOLUME(4, 10, 3, 6),
     CHANNEL(4, 10, 3, 6),
     DPAD(18, 18, 10, 10),
-    APP(8, 3, 5, 2)
+    APP(8, 3, 5, 2),
+    EPG(24, 24, 12, 12)
 }
 
 // Proportions of one grid cell on screen: width per height, the gap by which every element is
@@ -33,7 +34,8 @@ data class CustomElement(
     val width: Int,
     val height: Int,
     val key: RemoteKey? = null,
-    val app: AppSlot? = null
+    val app: AppSlot? = null,
+    val epg: EpgConfig? = null
 ) {
     private val iconOnly: Boolean
         get() = type == CustomElementType.APP && app != null && app.showIcon && !app.showText && app.iconPath != null
@@ -64,7 +66,8 @@ data class CustomElement(
         val rounding = if (type == CustomElementType.DPAD) cells.dpadRounding else cells.rounding
         val cx = x * cells.aspect + w / 2
         val cy = y + h / 2
-        return ElementOutline(cx - bw / 2, cy - bh / 2, cx + bw / 2, cy + bh / 2, rounding * min(bw, bh) / 2)
+        val radius = if (type == CustomElementType.EPG) EPG_CORNER else rounding * min(bw, bh) / 2
+        return ElementOutline(cx - bw / 2, cy - bh / 2, cx + bw / 2, cy + bh / 2, radius)
     }
 
     // The outline as a core rectangle widened by the corner radius.
@@ -87,6 +90,7 @@ data class CustomElement(
 
     companion object {
         val ROUND_KEY_RATIO = 0.7f..1.5f
+        const val EPG_CORNER = 0.6f
         private const val ICON_ONLY_MIN_SIZE = 2
         private const val TOUCH_TOLERANCE = 0.01f
     }
@@ -103,7 +107,7 @@ data class CustomScreen(val elements: List<CustomElement>) {
             candidate.x + candidate.width <= COLUMNS && candidate.y + candidate.height <= ROWS
 
     // Places the element at the first free spot, shrinking it towards its minimum size if needed.
-    fun add(type: CustomElementType, key: RemoteKey? = null): CustomScreen? {
+    fun add(type: CustomElementType, key: RemoteKey? = null, epg: EpgConfig? = null): CustomScreen? {
         val id = (elements.maxOfOrNull { it.id } ?: 0L) + 1
         val sizes = (type.minWidth..type.defaultWidth)
             .flatMap { width -> (type.minHeight..type.defaultHeight).map { height -> width to height } }
@@ -111,7 +115,7 @@ data class CustomScreen(val elements: List<CustomElement>) {
         for ((width, height) in sizes) {
             for (y in 0..ROWS - height) {
                 for (x in 0..COLUMNS - width) {
-                    val candidate = CustomElement(id, type, x, y, width, height, key)
+                    val candidate = CustomElement(id, type, x, y, width, height, key, epg = epg)
                     if (canPlace(candidate)) return copy(elements = elements + candidate)
                 }
             }
@@ -152,6 +156,11 @@ data class CustomScreen(val elements: List<CustomElement>) {
     fun updateApp(id: Long, transform: (AppSlot?) -> AppSlot?): CustomScreen =
         copy(elements = elements.map { if (it.id == id && it.type == CustomElementType.APP) it.copy(app = transform(it.app)) else it })
 
+    fun updateEpg(id: Long, epg: EpgConfig): CustomScreen =
+        copy(elements = elements.map { if (it.id == id && it.type == CustomElementType.EPG) it.copy(epg = epg) else it })
+
+    fun withoutEpg(): CustomScreen = copy(elements = elements.filterNot { it.type == CustomElementType.EPG })
+
     private fun update(id: Long, cells: CellShape?, transform: (CustomElement) -> CustomElement): CustomScreen {
         val current = elements.firstOrNull { it.id == id } ?: return this
         val changed = transform(current)
@@ -170,7 +179,8 @@ data class CustomScreen(val elements: List<CustomElement>) {
         // editor allows them as long as the visible shapes stay apart.
         fun normalize(elements: List<CustomElement>): CustomScreen =
             elements.fold(EMPTY) { screen, element ->
-                val valid = element.type != CustomElementType.KEY || element.key != null
+                val valid = (element.type != CustomElementType.KEY || element.key != null) &&
+                    (element.type != CustomElementType.EPG || element.epg != null)
                 if (valid && element.id !in screen.elements.map { it.id } && screen.fits(element)) {
                     screen.copy(elements = screen.elements + element)
                 } else {

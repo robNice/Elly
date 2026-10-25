@@ -8,6 +8,7 @@ import de.robnice.elly.AppContainer
 import de.robnice.elly.data.AppSlotsRepository
 import de.robnice.elly.data.ScreenLayoutRepository
 import de.robnice.elly.data.TvRepository
+import de.robnice.elly.epg.EpgRepository
 import de.robnice.elly.platform.DevicePlatform
 import de.robnice.elly.tv.connection.TvConnectionException
 import de.robnice.elly.tv.discovery.DiscoveredTv
@@ -32,6 +33,7 @@ class SetupViewModel(
     private val discovery: TvDiscovery,
     private val pairingService: PairingService,
     private val rootAccessService: RootAccessService,
+    private val epgRepository: EpgRepository,
     showEmulatorHint: Boolean
 ) : ViewModel() {
 
@@ -127,6 +129,7 @@ class SetupViewModel(
             appSlotsRepository.removeOwner(id)
             screenLayoutRepository.removeOwner(id)
             rootAccessService.forget(id)
+            epgRepository.removeOwner(id)
         }
     }
 
@@ -150,6 +153,7 @@ class SetupViewModel(
                     discovery = container.tvDiscovery,
                     pairingService = container.pairingService,
                     rootAccessService = container.rootAccessService,
+                    epgRepository = container.epgRepository,
                     showEmulatorHint = DevicePlatform.isDebugEmulator
                 )
             }

@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import de.robnice.elly.R
+import de.robnice.elly.data.model.CustomElement
 import de.robnice.elly.data.model.CustomElementType
 import de.robnice.elly.data.model.CustomScreen
 import de.robnice.elly.remote.RemoteKey
@@ -108,7 +109,7 @@ private fun DrawScope.drawLayout(c: ThumbnailColors, screen: CustomScreen, round
     screen.elements.forEach { element ->
         val color = when (element.type) {
             CustomElementType.DPAD -> c.keyHighlight
-            CustomElementType.APP -> c.light
+            CustomElementType.APP, CustomElementType.EPG -> c.light
             CustomElementType.KEY -> when (element.key) {
                 RemoteKey.POWER -> c.power
                 RemoteKey.RED -> c.red
@@ -125,7 +126,11 @@ private fun DrawScope.drawLayout(c: ThumbnailColors, screen: CustomScreen, round
             color = color,
             topLeft = Offset(element.x * cellWidth + inset, element.y * cellHeight + inset),
             size = Size(width, height),
-            cornerRadius = CornerRadius(minOf(width, height) / 2f * if (element.type == CustomElementType.DPAD) dpadRounding else rounding)
+            cornerRadius = if (element.type == CustomElementType.EPG) {
+                CornerRadius(cellHeight * CustomElement.EPG_CORNER)
+            } else {
+                CornerRadius(minOf(width, height) / 2f * if (element.type == CustomElementType.DPAD) dpadRounding else rounding)
+            }
         )
     }
 }

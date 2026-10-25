@@ -121,7 +121,8 @@ fun CustomScreenEditor(
     onRemove: (Long) -> Unit,
     onMoveAll: (Set<Long>, Int, Int, CellShape) -> Unit,
     onRemoveAll: (Set<Long>) -> Unit,
-    onConfigureApp: (Long) -> Unit,
+    onConfigureElement: (Long) -> Unit,
+    epgAvailable: Boolean,
     onReset: () -> Unit,
     canUndo: Boolean,
     onUndo: () -> Unit,
@@ -239,7 +240,9 @@ fun CustomScreenEditor(
                                 groupDrag.overTrash = false
                             },
                             onSelect = { if (element.id !in selected || !multiple) selected = setOf(element.id) },
-                            onLongPress = { if (element.type == CustomElementType.APP) onConfigureApp(element.id) },
+                            onLongPress = {
+                                if (element.type == CustomElementType.APP || element.type == CustomElementType.EPG) onConfigureElement(element.id)
+                            },
                             onMove = onMove,
                             onResize = onResize,
                             isOverTrash = { position -> trashBounds?.contains(position) == true },
@@ -314,6 +317,7 @@ fun CustomScreenEditor(
 
     if (showPicker) {
         ElementPickerDialog(
+            epgAvailable = epgAvailable,
             initialTab = pickerTab,
             onTabChange = onPickerTab,
             onPick = { type, key ->
@@ -636,6 +640,7 @@ private sealed interface PickerItem {
 
 @Composable
 private fun ElementPickerDialog(
+    epgAvailable: Boolean,
     initialTab: Int,
     onTabChange: (Int) -> Unit,
     onPick: (CustomElementType, RemoteKey?) -> Unit,
@@ -648,6 +653,7 @@ private fun ElementPickerDialog(
         add(PickerItem.Element(CustomElementType.CHANNEL, R.string.custom_element_channel))
         add(PickerItem.Element(CustomElementType.DPAD, R.string.custom_element_dpad))
         add(PickerItem.Element(CustomElementType.APP, R.string.custom_element_app))
+        if (epgAvailable) add(PickerItem.Element(CustomElementType.EPG, R.string.custom_element_epg))
         add(PickerItem.Header(R.string.custom_picker_keys))
         RemoteKey.entries.forEach { add(PickerItem.Key(it)) }
     }
@@ -815,6 +821,7 @@ private fun ElementLeading(type: CustomElementType, onClick: () -> Unit) {
         CustomElementType.CHANNEL -> RockerPreview(volume = false, onClick = onClick)
         CustomElementType.DPAD -> PickerIcon(R.drawable.ic_dpad_background)
         CustomElementType.APP -> PickerIcon(R.drawable.ic_apps)
+        CustomElementType.EPG -> PickerIcon(R.drawable.ic_epg)
         CustomElementType.KEY -> Unit
     }
 }

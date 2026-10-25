@@ -215,6 +215,66 @@
     <string name="custom_element_channel">Kanal-Wippe</string>
     <string name="custom_element_dpad">Steuerkreuz</string>
     <string name="custom_element_app">App-Taste</string>
+    <string name="custom_element_epg">Programmübersicht</string>
+    <string name="epg_title_with_list">Programmübersicht · %1$s</string>
+    <string name="epg_editor_hint">Halten, um die Favoritenliste zu ändern</string>
+    <string name="epg_unavailable_hint">Auf dem Screen ausgeblendet, bis SSH für diesen Fernseher eingerichtet ist</string>
+    <string name="epg_list_title">Favoritenliste wählen</string>
+    <string name="epg_list_failed">Die Favoritenlisten konnten nicht geladen werden. Prüfe die SSH-Verbindung im Reiter „TV“.</string>
+    <string name="epg_list_empty">Der Fernseher hat keine Favoritenlisten.</string>
+    <string name="epg_status_failed">Programmübersicht konnte nicht geladen werden.</string>
+    <string name="epg_status_empty">Noch keine Programmdaten.</string>
+    <string name="epg_now">Jetzt</string>
+    <string name="epg_today">Heute</string>
+    <string name="epg_tomorrow">Morgen</string>
+    <string name="epg_yesterday">Gestern</string>
+    <string name="epg_demo_list_main">Favoriten</string>
+    <string name="epg_demo_list_kids">Kinder</string>
+    <string name="epg_demo_description">Erfundene Sendung für den Demo-Modus. Mit gerootetem Fernseher und eingerichtetem SSH zeigt die Übersicht das echte Programm deines Fernsehers.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly Eins</item>
+        <item>Stall TV</item>
+        <item>Hühnerhof Nachrichten</item>
+        <item>Scheunen Sport</item>
+        <item>Feder Kino</item>
+        <item>Nest Doku</item>
+        <item>Hahn Musik</item>
+        <item>Goldenes Ei</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Küken TV</item>
+        <item>Kleiner Piep</item>
+        <item>Schlüpfling</item>
+        <item>Sonnenküken</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Morgen im Stall</item>
+        <item>Die große Eiersuche</item>
+        <item>Federn &amp; Fakten</item>
+        <item>Nachrichten vom Hühnerhof</item>
+        <item>Hahn Rock Live</item>
+        <item>Stallküche</item>
+        <item>Die Nacht des Fuchses</item>
+        <item>Flügel über dem Tal</item>
+        <item>Die Wetterhenne</item>
+        <item>Kommissar Pick</item>
+        <item>Weidegeschichten</item>
+        <item>Spätes Gegacker</item>
+        <item>Körnerquiz</item>
+        <item>Scheunenfußball</item>
+        <item>Hühner auf Reisen</item>
+        <item>Die lange Stange</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Piep und Freunde</item>
+        <item>Kleine Flügel</item>
+        <item>Das kleine Ei</item>
+        <item>Kükenabenteuer</item>
+        <item>Geschichtennest</item>
+        <item>Körner zählen</item>
+        <item>Müde Küken</item>
+        <item>Gelber Flaum</item>
+    </string-array>
     <string name="custom_app_hold">2 Sek. halten</string>
     <string name="custom_app_menu_title">App-Taste</string>
     <string name="custom_app_menu_choose">App auswählen</string>

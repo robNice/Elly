@@ -33,6 +33,8 @@ import de.robnice.elly.R
 import de.robnice.elly.data.model.CellShape
 import de.robnice.elly.data.model.CustomElement
 import de.robnice.elly.data.model.CustomElementType
+import de.robnice.elly.ui.epg.EpgElement
+import de.robnice.elly.ui.epg.epgBleed
 import de.robnice.elly.data.model.CustomScreen
 import de.robnice.elly.remote.RemoteKey
 import de.robnice.elly.ui.components.DirectionalPad
@@ -174,6 +176,20 @@ fun CustomElementView(
                 modifier = Modifier.fillMaxSize()
             )
             CustomElementType.DPAD -> DirectionalPad(onKey = onKey, modifier = Modifier.fillMaxSize(), capped = false)
+            CustomElementType.EPG -> EpgElement(
+                config = element.epg,
+                editing = editing,
+                modifier = if (editing) {
+                    Modifier
+                } else {
+                    Modifier.epgBleed(
+                        left = element.x == 0,
+                        top = element.y == 0,
+                        right = element.x + element.width == CustomScreen.COLUMNS,
+                        bottom = element.y + element.height == CustomScreen.ROWS
+                    )
+                }
+            )
             CustomElementType.APP -> {
                 val slot = element.app
                 val appId = slot?.appId

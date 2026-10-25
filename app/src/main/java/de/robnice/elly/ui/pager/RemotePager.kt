@@ -65,6 +65,8 @@ import de.robnice.elly.remote.RemoteKey
 import de.robnice.elly.remote.TvInput
 import de.robnice.elly.sensor.ShakeDetector
 import de.robnice.elly.ui.components.LightOverlay
+import de.robnice.elly.ui.epg.EpgGuides
+import de.robnice.elly.ui.epg.LocalEpgGuides
 import de.robnice.elly.ui.components.LocalColorPalette
 import de.robnice.elly.ui.components.LocalDpadRounding
 import de.robnice.elly.ui.components.LocalKeyHapticsEnabled
@@ -137,6 +139,12 @@ fun RemotePager(
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) { viewModel.monitorConnection() }
     }
 
+    LaunchedEffect(viewModel, lifecycleOwner) {
+        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) { viewModel.keepGuideFresh() }
+    }
+
+    val guides = remember(viewModel) { EpgGuides(viewModel::guide, viewModel.guideRefreshing, viewModel.guideFailed, viewModel.currentChannel) }
+
     LaunchedEffect(viewModel) {
         viewModel.results.collect { result ->
             result.messageRes()?.let { snackbarHostState.showSnackbar(context.getString(it)) }
@@ -195,7 +203,8 @@ fun RemotePager(
                         CompositionLocalProvider(
                             LocalKeyHapticsEnabled provides keyHaptics,
                             LocalKeyRounding provides keyRounding,
-                            LocalDpadRounding provides dpadRounding
+                            LocalDpadRounding provides dpadRounding,
+                            LocalEpgGuides provides guides
                         ) {
                             CustomPage(
                                 screen = screenContents[screens[index]] ?: DefaultScreens.layout(screens[index]),

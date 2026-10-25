@@ -219,6 +219,66 @@
     <string name="custom_element_channel">Channel rocker</string>
     <string name="custom_element_dpad">Directional pad</string>
     <string name="custom_element_app">App key</string>
+    <string name="custom_element_epg">Program guide</string>
+    <string name="epg_title_with_list">Program guide · %1$s</string>
+    <string name="epg_editor_hint">Hold to change the favorite list</string>
+    <string name="epg_unavailable_hint">Hidden on the screen until SSH is set up for this TV</string>
+    <string name="epg_list_title">Choose favorite list</string>
+    <string name="epg_list_failed">The favorite lists could not be loaded. Check the SSH connection in the TV tab.</string>
+    <string name="epg_list_empty">The TV has no favorite lists.</string>
+    <string name="epg_status_failed">Program guide could not be loaded.</string>
+    <string name="epg_status_empty">No program data yet.</string>
+    <string name="epg_now">Now</string>
+    <string name="epg_today">Today</string>
+    <string name="epg_tomorrow">Tomorrow</string>
+    <string name="epg_yesterday">Yesterday</string>
+    <string name="epg_demo_list_main">Favorites</string>
+    <string name="epg_demo_list_kids">Kids</string>
+    <string name="epg_demo_description">Invented program for demo mode. With a rooted TV and SSH set up, the guide shows the real program of your TV.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly One</item>
+        <item>Coop TV</item>
+        <item>Henhouse News</item>
+        <item>Barnyard Sports</item>
+        <item>Feather Movies</item>
+        <item>Nest Docs</item>
+        <item>Rooster Music</item>
+        <item>Golden Egg</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Chick TV</item>
+        <item>Little Peep</item>
+        <item>Hatchling</item>
+        <item>Sunny Chicks</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Morning in the Barn</item>
+        <item>The Great Egg Hunt</item>
+        <item>Feathers &amp; Facts</item>
+        <item>News at the Henhouse</item>
+        <item>Rooster Rock Live</item>
+        <item>Coop Kitchen</item>
+        <item>Night of the Fox</item>
+        <item>Wings over the Valley</item>
+        <item>The Weather Hen</item>
+        <item>Detective Pecker</item>
+        <item>Pasture Stories</item>
+        <item>Late Night Clucking</item>
+        <item>Grain Quiz</item>
+        <item>Barnyard Football</item>
+        <item>Hens on Tour</item>
+        <item>The Long Roost</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Peep and Friends</item>
+        <item>Tiny Wings</item>
+        <item>The Little Egg</item>
+        <item>Chick Adventures</item>
+        <item>Story Nest</item>
+        <item>Counting Grains</item>
+        <item>Sleepy Chicks</item>
+        <item>Yellow Fluff</item>
+    </string-array>
     <string name="custom_app_hold">Hold 2 s</string>
     <string name="custom_app_menu_title">App key</string>
     <string name="custom_app_menu_choose">Choose app</string>

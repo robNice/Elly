@@ -8,6 +8,7 @@ import de.robnice.elly.AppContainer
 import de.robnice.elly.data.AppIconFiller
 import de.robnice.elly.data.model.AppBackground
 import de.robnice.elly.data.model.ColorPalette
+import de.robnice.elly.data.model.CustomElementType
 import de.robnice.elly.data.model.CustomScreen
 import de.robnice.elly.data.model.DefaultScreens
 import de.robnice.elly.data.model.KeyRounding
@@ -16,12 +17,15 @@ import de.robnice.elly.data.model.PointerMode
 import de.robnice.elly.data.model.PointerSettings
 import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenLayout
+import de.robnice.elly.epg.EpgGuide
+import de.robnice.elly.epg.EpgRepository
 import de.robnice.elly.remote.ConnectionState
 import de.robnice.elly.remote.RemoteControl
 import de.robnice.elly.remote.RemoteKey
 import de.robnice.elly.remote.SendResult
 import de.robnice.elly.remote.TvInput
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -30,6 +34,9 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.stateIn
@@ -40,6 +47,7 @@ import kotlinx.coroutines.sync.withLock
 class RemoteViewModel(
     private val remoteControl: RemoteControl,
     private val appIconFiller: AppIconFiller,
+    private val epgRepository: EpgRepository,
     pointerSettingsFlow: Flow<PointerSettings>,
     keyHapticsFlow: Flow<Boolean>,
     keyRoundingFlow: Flow<Float>,
@@ -135,6 +143,42 @@ class RemoteViewModel(
             delay(CONNECTION_CHECK_INTERVAL_MILLIS)
         }
     }
+
+    // Refreshes the favorite lists shown by guide elements while the remote is visible.
+    suspend fun keepGuideFresh() {
+        screens
+            .map { all ->
+                all.values.flatMap { it.elements }
+                    .filter { it.type == CustomElementType.EPG }
+                    .mapNotNull { it.epg?.listId }
+                    .toSet()
+            }
+            .distinctUntilChanged()
+            .collectLatest { lists ->
+                if (lists.isEmpty()) return@collectLatest
+                coroutineScope {
+                    launch {
+                        while (true) {
+                            _currentChannel.value = remoteControl.currentChannelId()
+                            delay(CURRENT_CHANNEL_INTERVAL_MILLIS)
+                        }
+                    }
+                    while (true) {
+                        epgRepository.refresh(lists)
+                        delay(GUIDE_REFRESH_INTERVAL_MILLIS)
+                    }
+                }
+            }
+    }
+
+    private val _currentChannel = MutableStateFlow<String?>(null)
+    val currentChannel: StateFlow<String?> = _currentChannel.asStateFlow()
+
+    fun guide(listId: String): Flow<EpgGuide?> = epgRepository.guide(listId)
+
+    val guideRefreshing: StateFlow<Boolean> = epgRepository.refreshing
+
+    val guideFailed: StateFlow<Boolean> = epgRepository.failed
 
     fun press(key: RemoteKey) {
         viewModelScope.launch { report(remoteControl.send(key)) }
@@ -263,12 +307,15 @@ class RemoteViewModel(
         private const val STOP_TIMEOUT_MILLIS = 5_000L
         private const val UNKNOWN_CHARACTER = '\u0000'
         private const val CONNECTION_CHECK_INTERVAL_MILLIS = 10_000L
+        private const val GUIDE_REFRESH_INTERVAL_MILLIS = 15 * 60_000L
+        private const val CURRENT_CHANNEL_INTERVAL_MILLIS = 10_000L
 
         fun factory(container: AppContainer) = viewModelFactory {
             initializer {
                 RemoteViewModel(
                     container.remoteControl,
                     container.appIconFiller,
+                    container.epgRepository,
                     container.settingsRepository.pointerSettings,
                     container.settingsRepository.keyHaptics,
                     container.settingsRepository.keyRounding,
@@ -277,7 +324,10 @@ class RemoteViewModel(
                     container.settingsRepository.background,
                     container.settingsRepository.lightEffect,
                     container.screenLayoutRepository.activeLayout,
-                    container.screenLayoutRepository.activeScreens
+                    // Without SSH access the program guide has no data, so its elements are left out.
+                    combine(container.screenLayoutRepository.activeScreens, container.epgAccess.available) { screens, epg ->
+                        if (epg) screens else screens.mapValues { it.value.withoutEpg() }
+                    }
                 )
             }
         }

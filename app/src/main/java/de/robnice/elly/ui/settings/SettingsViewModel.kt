@@ -19,6 +19,7 @@ import de.robnice.elly.data.model.ColorPalette
 import de.robnice.elly.data.model.CustomElementType
 import de.robnice.elly.data.model.CustomScreen
 import de.robnice.elly.data.model.DefaultScreens
+import de.robnice.elly.data.model.EpgConfig
 import de.robnice.elly.data.model.JoystickPlacement
 import de.robnice.elly.data.model.KeyRounding
 import de.robnice.elly.data.model.OkButtonPosition
@@ -28,10 +29,13 @@ import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenBackground
 import de.robnice.elly.data.model.ScreenLayout
 import de.robnice.elly.data.model.TouchStyle
+import de.robnice.elly.epg.EpgAccess
+import de.robnice.elly.epg.FavoriteList
 import de.robnice.elly.remote.RemoteControl
 import de.robnice.elly.remote.RemoteKey
 import de.robnice.elly.remote.SendResult
 import de.robnice.elly.remote.TvApp
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -47,8 +51,15 @@ class SettingsViewModel(
     private val screenLayoutRepository: ScreenLayoutRepository,
     private val backgroundImageStore: BackgroundImageStore,
     private val remoteControl: RemoteControl,
+    private val epgAccess: EpgAccess,
     val motionPointerAvailable: Boolean
 ) : ViewModel() {
+
+    val epgAvailable: StateFlow<Boolean> = epgAccess.available
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS), false)
+
+    private val _epgPicker = MutableStateFlow<EpgPickerState?>(null)
+    val epgPicker: StateFlow<EpgPickerState?> = _epgPicker.asStateFlow()
 
     val screensAvailable: StateFlow<Boolean> = appSlotsRepository.activeOwner
         .map { it != null }
@@ -125,7 +136,13 @@ class SettingsViewModel(
         }
     }
 
+    // The program guide asks for its favorite list first; here it is only checked that it would fit.
     fun addElement(screen: RemoteScreen, type: CustomElementType, key: RemoteKey?): Boolean {
+        if (type == CustomElementType.EPG) {
+            if (screens.value[screen]?.add(type, epg = PLACEHOLDER_EPG) == null) return false
+            openEpgPicker(screen, null)
+            return true
+        }
         if (screens.value[screen]?.add(type, key) == null) return false
         editScreen(screen) { it.add(type, key) ?: it }
         return true
@@ -171,9 +188,46 @@ class SettingsViewModel(
     private val _styleEditor = MutableStateFlow(false)
     val styleEditor: StateFlow<Boolean> = _styleEditor.asStateFlow()
 
-    fun openAppConfig(screen: RemoteScreen, id: Long) {
+    fun configureElement(screen: RemoteScreen, id: Long) {
         val element = screens.value[screen]?.elements?.firstOrNull { it.id == id } ?: return
-        _appDraft.value = AppDraft(screen, id, element.app)
+        when (element.type) {
+            CustomElementType.APP -> _appDraft.value = AppDraft(screen, id, element.app)
+            CustomElementType.EPG -> openEpgPicker(screen, id, element.epg?.listId)
+            else -> Unit
+        }
+    }
+
+    private fun openEpgPicker(screen: RemoteScreen, id: Long?, current: String? = null) {
+        val request = EpgPickerState(screen, id, current, loading = true)
+        _epgPicker.value = request
+        viewModelScope.launch {
+            val lists = try {
+                epgAccess.source()?.favoriteLists()
+            } catch (e: CancellationException) {
+                throw e
+            } catch (_: Exception) {
+                null
+            }
+            _epgPicker.update { state ->
+                if (state != request) state else state.copy(loading = false, lists = lists.orEmpty(), failed = lists == null)
+            }
+        }
+    }
+
+    fun pickEpgList(list: FavoriteList) {
+        val picker = _epgPicker.value ?: return
+        _epgPicker.value = null
+        val config = EpgConfig(list.id, list.name)
+        val id = picker.elementId
+        if (id == null) {
+            editScreen(picker.screen) { it.add(CustomElementType.EPG, epg = config) ?: it }
+        } else {
+            editScreen(picker.screen) { it.updateEpg(id, config) }
+        }
+    }
+
+    fun dismissEpgPicker() {
+        _epgPicker.value = null
     }
 
     fun confirmApp() {
@@ -348,6 +402,7 @@ class SettingsViewModel(
     companion object {
         private const val STOP_TIMEOUT_MILLIS = 5_000L
         private const val MAX_UNDO_STEPS = 50
+        private val PLACEHOLDER_EPG = EpgConfig("", "")
 
         fun factory(container: AppContainer) = viewModelFactory {
             initializer {
@@ -357,6 +412,7 @@ class SettingsViewModel(
                     container.screenLayoutRepository,
                     container.backgroundImageStore,
                     container.remoteControl,
+                    container.epgAccess,
                     container.motionPointerAvailable
                 )
             }
@@ -367,6 +423,15 @@ class SettingsViewModel(
 data class AppDraft(val screen: RemoteScreen, val id: Long, val app: AppSlot?) {
     fun isFor(other: AppDraft): Boolean = screen == other.screen && id == other.id
 }
+
+data class EpgPickerState(
+    val screen: RemoteScreen,
+    val elementId: Long?,
+    val current: String?,
+    val loading: Boolean,
+    val lists: List<FavoriteList> = emptyList(),
+    val failed: Boolean = false
+)
 
 data class AppPickerState(
     val loading: Boolean,

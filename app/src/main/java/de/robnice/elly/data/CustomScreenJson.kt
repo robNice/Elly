@@ -3,6 +3,7 @@ package de.robnice.elly.data
 import de.robnice.elly.data.model.CustomElement
 import de.robnice.elly.data.model.CustomElementType
 import de.robnice.elly.data.model.CustomScreen
+import de.robnice.elly.data.model.EpgConfig
 import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.remote.RemoteKey
 import org.json.JSONArray
@@ -18,6 +19,9 @@ object CustomScreenJson {
     private const val HEIGHT = "h"
     private const val KEY = "key"
     private const val APP = "app"
+    private const val EPG = "epg"
+    private const val EPG_LIST = "list"
+    private const val EPG_NAME = "name"
     private const val COLUMNS = "columns"
     private const val ROWS = "rows"
     private const val ELEMENTS = "elements"
@@ -81,6 +85,7 @@ object CustomScreenJson {
                 .put(HEIGHT, element.height)
             element.key?.let { item.put(KEY, it.name) }
             element.app?.let { item.put(APP, AppSlotsJson.encodeSlot(it)) }
+            element.epg?.let { item.put(EPG, JSONObject().put(EPG_LIST, it.listId).put(EPG_NAME, it.listName)) }
             array.put(item)
         }
         return array
@@ -102,9 +107,15 @@ object CustomScreenJson {
                 height = json.optInt(HEIGHT),
                 key = json.optString(KEY).takeIf { it.isNotEmpty() }
                     ?.let { runCatching { RemoteKey.valueOf(it) }.getOrNull() },
-                app = json.optJSONObject(APP)?.let { AppSlotsJson.decodeSlot(it) }
+                app = json.optJSONObject(APP)?.let { AppSlotsJson.decodeSlot(it) },
+                epg = json.optJSONObject(EPG)?.let { decodeEpg(it) }
             ).scaled(scaleX, scaleY)
         }
         return CustomScreen.normalize(elements)
+    }
+
+    private fun decodeEpg(json: JSONObject): EpgConfig? {
+        val list = json.optString(EPG_LIST).takeIf { it.isNotBlank() } ?: return null
+        return EpgConfig(list, json.optString(EPG_NAME))
     }
 }

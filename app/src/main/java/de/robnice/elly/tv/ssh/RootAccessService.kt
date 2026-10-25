@@ -46,6 +46,11 @@ class RootAccessService(
         return removedOnTv
     }
 
+    suspend fun <T> withLuna(tv: PairedTv, block: suspend (TvLuna) -> T): T {
+        val access = repository.get(tv.id) ?: throw TvShellException.AuthFailed()
+        return shell.session(target(tv, access), SshAuth.Key(keys.identity(tv.id))) { session -> block(TvLuna(session)) }
+    }
+
     suspend fun forget(tvId: String) {
         repository.remove(tvId)
         keys.delete(tvId)

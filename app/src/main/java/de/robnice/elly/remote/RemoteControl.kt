@@ -133,6 +133,27 @@ class RemoteControl(
         }
     }
 
+    // Null when the TV shows no channel (another input or an app) or cannot be reached.
+    suspend fun currentChannelId(): String? {
+        if (settingsRepository.demoMode.first()) return null
+        val tv = tvRepository.activeTv.first() ?: return null
+        var channelId: String? = null
+        withSession(tv, report = false) {
+            channelId = it.connection.request(GET_CURRENT_CHANNEL).optString("channelId").takeIf { id -> id.isNotBlank() }
+            SendResult.SENT
+        }
+        return channelId
+    }
+
+    suspend fun openChannel(channelId: String): SendResult {
+        if (settingsRepository.demoMode.first()) return SendResult.DEMO
+        val tv = tvRepository.activeTv.first() ?: return SendResult.NO_TV
+        return withSession(tv) {
+            it.connection.request(OPEN_CHANNEL, JSONObject().put("channelId", channelId))
+            SendResult.SENT
+        }
+    }
+
     // Edits the focused text field on the TV: delete characters before the cursor, then insert text.
     suspend fun editText(delete: Int, insert: String): SendResult {
         if (settingsRepository.demoMode.first()) return SendResult.DEMO
@@ -328,6 +349,8 @@ class RemoteControl(
             TvApp("youtube.leanback.v4", "YouTube")
         )
         const val SWITCH_INPUT = "ssap://tv/switchInput"
+        const val OPEN_CHANNEL = "ssap://tv/openChannel"
+        const val GET_CURRENT_CHANNEL = "ssap://tv/getCurrentChannel"
         val DEMO_INPUTS = (1..3).map { TvInput(id = "HDMI_$it", label = "HDMI $it", connected = it == 1) }
         const val GET_POINTER_SOCKET = "ssap://com.webos.service.networkinput/getPointerInputSocket"
         const val CONNECTION_CHECK = "ssap://com.webos.applicationManager/getForegroundAppInfo"

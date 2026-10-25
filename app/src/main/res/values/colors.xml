@@ -3,6 +3,7 @@
     <color name="remote_background">#FF0B0C0E</color>
     <color name="remote_surface">#FF16181B</color>
     <color name="remote_surface_highlight">#FF24272B</color>
+    <color name="epg_now_line">#FFF29A2E</color>
 
     <!-- Text and accents -->
     <color name="remote_on_surface">#FFE6E8EB</color>

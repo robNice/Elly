@@ -11,6 +11,9 @@ import de.robnice.elly.data.AppSlotsRepository
 import de.robnice.elly.data.ScreenLayoutRepository
 import de.robnice.elly.data.SettingsRepository
 import de.robnice.elly.data.TvRepository
+import de.robnice.elly.epg.EpgAccess
+import de.robnice.elly.epg.EpgFiles
+import de.robnice.elly.epg.EpgRepository
 import de.robnice.elly.platform.DevicePlatform
 import de.robnice.elly.remote.RemoteControl
 import de.robnice.elly.sensor.MotionPointerSensor
@@ -75,6 +78,15 @@ class AppContainer(context: Context) {
     val rootAccessRepository = RootAccessRepository(appContext)
 
     val rootAccessService = RootAccessService(TvShell(), SshKeyStore(), rootAccessRepository)
+
+    private val logoHttpClient = httpClient.newBuilder()
+        .readTimeout(10, TimeUnit.SECONDS)
+        .pingInterval(0, TimeUnit.SECONDS)
+        .build()
+
+    val epgAccess = EpgAccess(appContext, tvRepository, settingsRepository, rootAccessRepository, rootAccessService, logoHttpClient)
+
+    val epgRepository = EpgRepository(EpgFiles(appContext), epgAccess, appSlotsRepository.activeOwner)
 
     val remoteControl = RemoteControl(tvRepository, settingsRepository, connector, pairingManifest, WakeOnLan())
 

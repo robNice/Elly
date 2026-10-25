@@ -75,6 +75,8 @@ import de.robnice.elly.ui.components.colors
 import de.robnice.elly.ui.components.keyBody
 import de.robnice.elly.ui.components.keyShape
 import de.robnice.elly.ui.components.palette
+import de.robnice.elly.ui.epg.EpgListDialog
+import de.robnice.elly.ui.epg.LocalEpgAvailable
 import de.robnice.elly.ui.remote.LocalAppBackground
 import de.robnice.elly.ui.remote.messageRes
 import de.robnice.elly.data.model.CustomScreen
@@ -130,6 +132,7 @@ fun SettingsScreen(
     var confirmReset by rememberSaveable { mutableStateOf<RemoteScreen?>(null) }
     val screens by viewModel.screens.collectAsStateWithLifecycle()
     val canUndo by viewModel.canUndo.collectAsStateWithLifecycle()
+    val epgAvailable by viewModel.epgAvailable.collectAsStateWithLifecycle()
 
     if (onClose != null) BackHandler(onBack = onClose)
 
@@ -148,7 +151,8 @@ fun SettingsScreen(
             LocalDpadRounding provides dpadRounding,
             LocalColorPalette provides colorPalette,
             LocalAppBackground provides background,
-            LocalLightEffect provides lightEffect
+            LocalLightEffect provides lightEffect,
+            LocalEpgAvailable provides epgAvailable
         ) {
             CustomScreenEditor(
                 screen = screens[target] ?: CustomScreen.EMPTY,
@@ -161,7 +165,8 @@ fun SettingsScreen(
                 onRemove = { id -> viewModel.removeElement(target, id) },
                 onMoveAll = { ids, dx, dy, cells -> viewModel.moveElements(target, ids, dx, dy, cells) },
                 onRemoveAll = { ids -> viewModel.removeElements(target, ids) },
-                onConfigureApp = { id -> viewModel.openAppConfig(target, id) },
+                onConfigureElement = { id -> viewModel.configureElement(target, id) },
+                epgAvailable = epgAvailable,
                 onReset = { viewModel.resetScreen(target) },
                 canUndo = canUndo,
                 onUndo = { viewModel.undo(target) },
@@ -171,6 +176,7 @@ fun SettingsScreen(
                 }
             )
             AppDialogs(viewModel)
+            EpgDialogs(viewModel)
         }
         return
     }
@@ -770,6 +776,12 @@ private fun ChoiceRow(
             }
         }
     }
+}
+
+@Composable
+private fun EpgDialogs(viewModel: SettingsViewModel) {
+    val picker by viewModel.epgPicker.collectAsStateWithLifecycle()
+    picker?.let { EpgListDialog(state = it, onPick = viewModel::pickEpgList, onDismiss = viewModel::dismissEpgPicker) }
 }
 
 @Composable
