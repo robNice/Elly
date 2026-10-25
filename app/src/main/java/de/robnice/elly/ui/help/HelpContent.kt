@@ -33,7 +33,9 @@ object HelpContent {
                 HelpTopic(R.string.help_remote_screens_title, R.string.help_remote_screens_body),
                 HelpTopic(R.string.help_remote_keys_title, R.string.help_remote_keys_body),
                 HelpTopic(R.string.help_remote_defaults_title, R.string.help_remote_defaults_body),
-                HelpTopic(R.string.help_remote_text_title, R.string.help_remote_text_body)
+                HelpTopic(R.string.help_remote_text_title, R.string.help_remote_text_body),
+                HelpTopic(R.string.help_remote_guide_title, R.string.help_remote_guide_body),
+                HelpTopic(R.string.help_remote_guide_info_title, R.string.help_remote_guide_info_body)
             )
         ),
         HelpChapter(
@@ -81,7 +83,8 @@ object HelpContent {
                 HelpTopic(R.string.help_edit_move_title, R.string.help_edit_move_body),
                 HelpTopic(R.string.help_edit_multi_title, R.string.help_edit_multi_body),
                 HelpTopic(R.string.help_edit_undo_title, R.string.help_edit_undo_body),
-                HelpTopic(R.string.help_edit_apps_title, R.string.help_edit_apps_body, R.drawable.help_img_app_key)
+                HelpTopic(R.string.help_edit_apps_title, R.string.help_edit_apps_body, R.drawable.help_img_app_key),
+                HelpTopic(R.string.help_edit_guide_title, R.string.help_edit_guide_body)
             )
         ),
         HelpChapter(
@@ -116,6 +119,7 @@ object HelpContent {
             topics = listOf(
                 HelpTopic(R.string.help_settings_tabs_title, R.string.help_settings_tabs_body),
                 HelpTopic(R.string.help_settings_tv_title, R.string.help_settings_tv_body, R.drawable.help_img_settings_tv),
+                HelpTopic(R.string.help_settings_root_title, R.string.help_settings_root_body),
                 HelpTopic(R.string.help_settings_haptics_title, R.string.help_settings_haptics_body)
             )
         ),

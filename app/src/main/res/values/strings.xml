@@ -229,17 +229,25 @@
     <string name="epg_status_failed">Program guide could not be loaded.</string>
     <string name="epg_status_empty">No program data yet.</string>
     <string name="epg_now">Now</string>
-    <string name="epg_info_when">%1$s · %2$s · %3$s – %4$s (%5$d min)</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min)</string>
+    <string name="epg_info_remaining">%1$d min left</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Subtitles</string>
+    <string name="epg_badge_audio_description">Audio description</string>
+    <string name="epg_badge_sign_language">Sign language</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
     <string name="epg_info_switch">Switch to channel</string>
     <string name="epg_info_close">Close</string>
     <string name="epg_remind">Remind me</string>
     <string name="epg_remind_cancel">Delete reminder</string>
     <string name="epg_record">Record</string>
     <string name="epg_record_cancel">Delete recording</string>
+    <string name="epg_record_stop">Stop recording</string>
     <string name="epg_reminder_set">Reminder set</string>
     <string name="epg_record_no_storage">Recording needs a storage device on the TV chosen for recordings.</string>
     <string name="epg_record_no_data">The TV has no recording data for this program.</string>
     <string name="epg_action_failed">The TV did not accept this.</string>
+    <string name="epg_action_conflict">This overlaps with a reminder or recording already planned on the TV.</string>
     <string name="epg_demo_list_main">Favorites</string>
     <string name="epg_demo_list_kids">Kids</string>
     <string name="epg_demo_description">Invented program for demo mode. With a rooted TV and SSH set up, the guide shows the real program of your TV.</string>
@@ -474,13 +482,17 @@
     <string name="help_remote_status_title">The status light</string>
     <string name="help_remote_status_body">• Green: connected.\n• Red: TV not reachable.\n• Grey: checking the connection.\n• Yellow: demo mode.\nWhile Elly is visible, the connection is checked every 10 seconds and after every key press. When the app goes to the background, the connection is closed.</string>
     <string name="help_remote_screens_title">Switching screens</string>
-    <string name="help_remote_screens_body">The keys are spread across up to four screens, so everything fits without scrolling. Swipe left or right to switch. The dots at the bottom show which screen you are on; with only one active screen they disappear.\nElly remembers the screen you used last. Which screens are shown and in which order is set in the settings.</string>
+    <string name="help_remote_screens_body">The keys are spread across up to four screens, so everything fits without scrolling. Swipe left or right to switch. The dots at the bottom show which screen you are on; with only one active screen they disappear.\nElly remembers the screen you used last. Which screens are shown and in which order is set in the settings. If an element such as the program guide fills the screen, swipe across the dots at the bottom.</string>
     <string name="help_remote_keys_title">Using the keys</string>
     <string name="help_remote_keys_body">• Keys trigger when you lift your finger. A swipe that starts on a key therefore sends nothing.\n• Volume, channel and the direction pad repeat while you hold them.\n• If you like, the phone vibrates on every key press (Settings → “Controls”).\n• If a key isn\'t available or the TV can\'t be reached, a message appears at the bottom.</string>
     <string name="help_remote_defaults_title">Default layout</string>
     <string name="help_remote_defaults_body">• Screen 1: power, screen off/on, TV settings, guide, home, direction pad, volume and channel rockers, mute, live TV, back and color keys.\n• Screen 2: number keys, guide, •••, mute, live TV, rockers, direction pad, back, input and color keys.\n• Screen 3: record, stop, rewind, pause, play, fast forward, direction pad, back, color keys and app keys (Netflix, Prime Video, Rakuten TV).\n• Screen 4: empty and hidden, for your own layout.\nYou can rearrange every screen freely and reset it at any time.</string>
     <string name="help_remote_text_title">Entering text</string>
     <string name="help_remote_text_body">When a text field is active on the TV (e.g. a search), a text bar opens automatically at the bottom. What you type is sent to the TV live; the send key works like Enter.\nWith the “Keyboard” key (can be added in the editor) you open the text bar by hand. Apps with their own on-screen keyboard sometimes don\'t accept the text.</string>
+    <string name="help_remote_guide_title">Program guide</string>
+    <string name="help_remote_guide_body">With a rooted TV (or in demo mode) a screen can show the program guide, like the guide on the TV: times along the top, the channels of your favorite list on the left, the programs on the right.\n• Swipe in any direction: back up to 24 hours, ahead as far as the TV has data (at most 14 days). The date stands at the left of the time bar, every new day starts with a line.\n• The orange line marks the current time; “Now” in the top left corner jumps back to it. The row of the channel currently on the TV is highlighted in orange.\n• Tap a channel to switch to it.\nSwiping in the guide never changes the screen; swipe across the dots at the bottom instead. Elly keeps the data on the phone and refreshes it every 15 minutes while the remote is open; a small circle turns in the top left corner while it loads.</string>
+    <string name="help_remote_guide_info_title">Programs, reminders and recordings</string>
+    <string name="help_remote_guide_info_body">Tap a program to see its details: channel, day, time, duration, genre and description. “Switch to channel” switches the TV to it.\n• Remind me: the TV reminds you when the program starts, even when the phone is off. Planned reminders show a bell.\n• Record: the TV records to the storage chosen on the TV for recordings. Planned recordings show a red dot.\nBoth can be removed again (“Delete …”). Reminders and recordings you set up on the TV show up in Elly too. If the TV refuses, for example because recordings overlap, its message appears in the window.</string>
 
     <string name="help_keys_title">The keys</string>
     <string name="help_keys_elly">Here you\'ll find every key and what it does on the TV.</string>
@@ -538,6 +550,8 @@
     <string name="help_edit_undo_body">Undo takes back the last steps (up to 50): adding, moving, resizing, removing, app keys and resetting. The history starts anew each time you open the editor.\nReset restores the default layout of the screen after asking.</string>
     <string name="help_edit_apps_title">Setting up app keys</string>
     <string name="help_edit_apps_body">Hold an app key in the editor for 2 seconds. The “App key” window opens with a preview:\n• Choose app: loads the apps from the TV and assigns one. The icon is saved on the phone and visible even without a connection.\n• Appearance: icon and/or text, your own text and text color. The text shrinks automatically to fit the key.\nChanges only apply with OK. If an icon is missing, Elly loads it as soon as the TV is connected.</string>
+    <string name="help_edit_guide_title">Adding the program guide</string>
+    <string name="help_edit_guide_body">“+ Element” offers the program guide once SSH is set up for the TV (see Settings) or demo mode is on. Before it is placed, you choose the TV favorite list whose channels it shows. Hold the element for 2 seconds to change the list.\nThe guide starts as wide as the screen and half as high; like other elements it can be moved and resized. Several guides with different lists are possible. Without SSH access the element stays saved but is not shown on the screen.</string>
 
     <string name="help_look_title">Appearance</string>
     <string name="help_look_elly">Make me pretty! Colors, background and shapes are set in the settings.</string>
@@ -567,6 +581,8 @@
     <string name="help_settings_tabs_body">The gear in the top bar opens the settings. They have three tabs, which you can also swipe between; Elly remembers the one you opened last.\n• TV: paired TVs, search, IP address, demo mode.\n• Appearance: screens, color palette, background, rounding, light effect.\n• Controls: pointer and vibration.</string>
     <string name="help_settings_tv_title">Switching or removing a TV</string>
     <string name="help_settings_tv_body">The “TV” tab lists your paired TVs at the top: tap one to make it active. “Remove” unpairs it after asking; to use the TV again you have to pair it again.\nBelow, you can search for more TVs or enter an IP address.\nWhile demo mode is on, the tab only shows its switch; turn it off to pair or switch TVs.</string>
+    <string name="help_settings_root_title">Root access and SSH</string>
+    <string name="help_settings_root_body">The program guide needs access to the TV that LG only allows with root. If your TV is rooted (Homebrew Channel) and its SSH server is switched on there, turn on “Root access and SSH set up?” in the “TV” tab.\nEnter user (usually root), port (usually 22) and the root password. Elly logs in once and stores its own key on the TV; the password is not saved. “Check” tests the connection.\nSwitching it off removes the key from the TV again after asking. The setting applies per TV.</string>
     <string name="help_settings_haptics_title">Vibrate on key press</string>
     <string name="help_settings_haptics_body">A short vibration on every key press, also when clicking in touchpad mode and on the widgets.</string>
     <string name="help_privacy_title">Privacy</string>

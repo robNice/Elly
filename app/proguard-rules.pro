@@ -22,3 +22,9 @@
 
 # JSch instantiates its algorithms by class name.
 -keep class com.jcraft.jsch.** { *; }
+# Optional JSch features Elly does not use: Windows agents, Kerberos, Unix sockets, external loggers.
+-dontwarn com.sun.jna.**
+-dontwarn org.apache.logging.log4j.**
+-dontwarn org.ietf.jgss.**
+-dontwarn org.newsclub.net.unix.**
+-dontwarn org.slf4j.**

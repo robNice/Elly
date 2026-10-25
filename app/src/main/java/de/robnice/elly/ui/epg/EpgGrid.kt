@@ -40,6 +40,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
@@ -94,12 +95,14 @@ fun EpgGrid(
 ) {
     val colors = epgColors(currentPaletteColors())
     val haptic = rememberKeyHaptic()
-    val planned = remember(reservations) { reservations.groupBy { it.signalId to it.start } }
+    val planned = remember(reservations) { reservations.groupBy { it.signalId } }
+    fun marksOf(program: EpgProgram) = planned[program.signalId].orEmpty().filter { it.belongsTo(program) }
     var selected by remember { mutableStateOf<Pair<EpgChannel, EpgProgram>?>(null) }
     selected?.let { (channel, program) ->
-        val marks = planned[program.signalId to program.start].orEmpty()
+        val marks = marksOf(program)
         EpgProgramDialog(
             channel = channel,
+            logoPath = guide.logos[channel.id],
             program = program,
             reminder = marks.firstOrNull { it.type == ReservationType.REMINDER },
             recording = marks.firstOrNull { it.type == ReservationType.RECORDING },
@@ -224,7 +227,7 @@ fun EpgGrid(
                                             now = now,
                                             zone = zone,
                                             colors = colors,
-                                            marks = planned[program.signalId to program.start].orEmpty().map { it.type },
+                                            marks = marksOf(program).map { it.type },
                                             hiddenStart = with(density) { (left - x0).coerceAtLeast(0f).toDp() },
                                             modifier = Modifier
                                                 .offset(with(density) { x0.toDp() }, rowHeight * row)
@@ -447,7 +450,7 @@ private fun ProgramCell(
                     Icon(
                         painter = painterResource(R.drawable.ic_reminder),
                         contentDescription = stringResource(R.string.epg_reminder_set),
-                        tint = colors.text,
+                        tint = colors.reminder,
                         modifier = Modifier
                             .padding(end = dimensionResource(R.dimen.epg_mark_spacing))
                             .size(dimensionResource(R.dimen.epg_mark_icon))
@@ -473,9 +476,12 @@ class EpgColors(
     val running: Color,
     val line: Color,
     val text: Color,
-    val muted: Color
+    val muted: Color,
+    val reminder: Color
 )
 
+// Light palettes have dark text on light keys; there a deeper yellow keeps the reminder bell visible.
+@Composable
 fun epgColors(palette: PaletteColors) = EpgColors(
     panel = palette.keyBottom.copy(alpha = PANEL_ALPHA),
     channel = palette.keyTop.copy(alpha = CHANNEL_ALPHA),
@@ -484,7 +490,8 @@ fun epgColors(palette: PaletteColors) = EpgColors(
     running = palette.ringTop,
     line = palette.content.copy(alpha = LINE_ALPHA),
     text = palette.content,
-    muted = palette.content.copy(alpha = MUTED_ALPHA)
+    muted = palette.content.copy(alpha = MUTED_ALPHA),
+    reminder = colorResource(if (palette.content.luminance() < LIGHT_PALETTE_TEXT) R.color.epg_reminder_on_light else R.color.epg_reminder)
 )
 
 @Composable
@@ -506,7 +513,7 @@ private fun rememberNow() = produceState(System.currentTimeMillis()) {
 }
 
 @Composable
-private fun rememberLogo(path: String?) = produceState<ImageBitmap?>(null, path) {
+internal fun rememberLogo(path: String?) = produceState<ImageBitmap?>(null, path) {
     value = path?.let { withContext(Dispatchers.IO) { runCatching { BitmapFactory.decodeFile(it)?.asImageBitmap() }.getOrNull() } }
 }
 
@@ -542,3 +549,4 @@ private const val PAST_ALPHA = 0.3f
 private const val LINE_ALPHA = 0.3f
 private const val MUTED_ALPHA = 0.6f
 private const val ACTIVE_ROW_ALPHA = 0.28f
+private const val LIGHT_PALETTE_TEXT = 0.5f

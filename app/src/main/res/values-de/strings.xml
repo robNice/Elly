@@ -225,17 +225,25 @@
     <string name="epg_status_failed">Programmübersicht konnte nicht geladen werden.</string>
     <string name="epg_status_empty">Noch keine Programmdaten.</string>
     <string name="epg_now">Jetzt</string>
-    <string name="epg_info_when">%1$s · %2$s · %3$s – %4$s (%5$d Min.)</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d Min.)</string>
+    <string name="epg_info_remaining">noch %1$d Min.</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Untertitel</string>
+    <string name="epg_badge_audio_description">Audiodeskription</string>
+    <string name="epg_badge_sign_language">Gebärdensprache</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
     <string name="epg_info_switch">Umschalten</string>
     <string name="epg_info_close">Schließen</string>
     <string name="epg_remind">Erinnern</string>
     <string name="epg_remind_cancel">Erinnerung löschen</string>
     <string name="epg_record">Aufnehmen</string>
     <string name="epg_record_cancel">Aufnahme löschen</string>
+    <string name="epg_record_stop">Aufnahme beenden</string>
     <string name="epg_reminder_set">Erinnerung geplant</string>
     <string name="epg_record_no_storage">Zum Aufnehmen braucht der Fernseher einen Speicher, der dort für Aufnahmen gewählt ist.</string>
     <string name="epg_record_no_data">Für diese Sendung fehlen dem Fernseher die Daten zum Aufnehmen.</string>
     <string name="epg_action_failed">Der Fernseher hat das nicht angenommen.</string>
+    <string name="epg_action_conflict">Das überschneidet sich mit einer Erinnerung oder Aufnahme, die am Fernseher schon geplant ist.</string>
     <string name="epg_demo_list_main">Favoriten</string>
     <string name="epg_demo_list_kids">Kinder</string>
     <string name="epg_demo_description">Erfundene Sendung für den Demo-Modus. Mit gerootetem Fernseher und eingerichtetem SSH zeigt die Übersicht das echte Programm deines Fernsehers.</string>
@@ -453,13 +461,17 @@
     <string name="help_remote_status_title">Die Statusleuchte</string>
     <string name="help_remote_status_body">• Grün: verbunden.\n• Rot: Fernseher nicht erreichbar.\n• Grau: Verbindung wird geprüft.\n• Gelb: Demo-Modus.\nSolange Elly sichtbar ist, wird die Verbindung alle 10 Sekunden und nach jedem Tastendruck geprüft. Geht die App in den Hintergrund, wird die Verbindung getrennt.</string>
     <string name="help_remote_screens_title">Screens wechseln</string>
-    <string name="help_remote_screens_body">Die Tasten sind auf bis zu vier Screens verteilt, damit alles ohne Scrollen passt. Wische nach links oder rechts, um zu wechseln. Die Punkte unten zeigen, auf welchem Screen du bist; ist nur ein Screen aktiv, fallen sie weg.\nElly merkt sich den zuletzt benutzten Screen. Welche Screens angezeigt werden und in welcher Reihenfolge, legst du in den Einstellungen fest.</string>
+    <string name="help_remote_screens_body">Die Tasten sind auf bis zu vier Screens verteilt, damit alles ohne Scrollen passt. Wische nach links oder rechts, um zu wechseln. Die Punkte unten zeigen, auf welchem Screen du bist; ist nur ein Screen aktiv, fallen sie weg.\nElly merkt sich den zuletzt benutzten Screen. Welche Screens angezeigt werden und in welcher Reihenfolge, legst du in den Einstellungen fest. Füllt ein Element wie die Programmübersicht den Screen, wischst du über die Punkte unten.</string>
     <string name="help_remote_keys_title">Tasten bedienen</string>
     <string name="help_remote_keys_body">• Tasten lösen beim Loslassen aus. Ein Wisch, der auf einer Taste beginnt, sendet also nichts.\n• Lautstärke, Kanal und Steuerkreuz wiederholen, solange du sie gedrückt hältst.\n• Auf Wunsch vibriert das Handy bei jedem Tastendruck (Einstellungen → „Bedienung“).\n• Ist eine Taste nicht verfügbar oder der Fernseher nicht erreichbar, erscheint unten ein Hinweis.</string>
     <string name="help_remote_defaults_title">Standardbelegung</string>
     <string name="help_remote_defaults_body">• Screen 1: Ein/Aus, Bildschirm aus/an, TV-Einstellungen, Programmführer, Home, Steuerkreuz, Lautstärke- und Kanalwippe, Stumm, Live-TV, Zurück und Farbtasten.\n• Screen 2: Zifferntasten, Programmführer, •••, Stumm, Live-TV, Wippen, Steuerkreuz, Zurück, Eingang und Farbtasten.\n• Screen 3: Aufnahme, Stopp, Zurückspulen, Pause, Wiedergabe, Vorspulen, Steuerkreuz, Zurück, Farbtasten und App-Tasten (Netflix, Prime Video, Rakuten TV).\n• Screen 4: leer und ausgeblendet, für deine eigene Belegung.\nJeden Screen kannst du frei umgestalten und jederzeit zurücksetzen.</string>
     <string name="help_remote_text_title">Text eingeben</string>
     <string name="help_remote_text_body">Ist am Fernseher ein Eingabefeld aktiv (z. B. eine Suche), öffnet sich unten automatisch eine Textleiste. Was du tippst, wird live an den Fernseher übertragen; die Senden-Taste wirkt wie Enter.\nMit der Taste „Tastatur“ (im Editor hinzufügbar) öffnest du die Textleiste auch von Hand. Apps mit eigener Bildschirmtastatur nehmen den Text manchmal nicht an.</string>
+    <string name="help_remote_guide_title">Programmübersicht</string>
+    <string name="help_remote_guide_body">Mit gerootetem Fernseher (oder im Demo-Modus) kann ein Screen die Programmübersicht zeigen, wie der Guide am Fernseher: oben die Uhrzeiten, links die Sender deiner Favoritenliste, rechts die Sendungen.\n• Wische in alle Richtungen: zurück bis zu 24 Stunden, voraus so weit, wie der Fernseher Daten hat (höchstens 14 Tage). Links in der Zeitleiste steht das Datum, jeder neue Tag beginnt mit einer Linie.\n• Die orange Linie zeigt die aktuelle Uhrzeit, „Jetzt“ oben links springt zu ihr zurück. Die Zeile des Senders, der gerade am Fernseher läuft, ist orange hinterlegt.\n• Tippe auf einen Sender, um umzuschalten.\nWischen in der Übersicht wechselt nie den Screen; dafür wischst du über die Punkte unten. Elly speichert die Daten auf dem Handy und aktualisiert sie alle 15 Minuten, solange die Fernbedienung offen ist; beim Laden dreht sich oben links ein kleiner Kreis.</string>
+    <string name="help_remote_guide_info_title">Sendungen, Erinnern und Aufnehmen</string>
+    <string name="help_remote_guide_info_body">Tippe auf eine Sendung, um ihre Infos zu sehen: Sender, Tag, Uhrzeit, Dauer, Genre und Beschreibung. „Umschalten“ schaltet den Fernseher auf den Sender.\n• Erinnern: Der Fernseher erinnert dich zu Beginn der Sendung, auch wenn das Handy aus ist. Geplante Erinnerungen tragen eine Glocke.\n• Aufnehmen: Der Fernseher nimmt auf den Speicher auf, den du am Fernseher für Aufnahmen gewählt hast. Geplante Aufnahmen tragen einen roten Punkt.\nBeides lässt sich wieder löschen („… löschen“). Erinnerungen und Aufnahmen, die du am Fernseher anlegst, zeigt Elly ebenfalls. Lehnt der Fernseher etwas ab, z. B. bei einer Überschneidung, steht seine Meldung im Fenster.</string>
 
     <string name="help_keys_title">Die Tasten</string>
     <string name="help_keys_elly">Hier findest du jede Taste und was sie am Fernseher macht.</string>
@@ -517,6 +529,8 @@
     <string name="help_edit_undo_body">Rückgängig nimmt die letzten Schritte zurück (bis zu 50): Hinzufügen, Verschieben, Größe, Entfernen, App-Tasten und Zurücksetzen. Der Verlauf beginnt bei jedem Öffnen des Editors neu.\nZurücksetzen stellt nach einer Rückfrage die Standardbelegung des Screens wieder her.</string>
     <string name="help_edit_apps_title">App-Tasten einrichten</string>
     <string name="help_edit_apps_body">Halte im Editor eine App-Taste 2 Sekunden gedrückt. Es öffnet sich das Fenster „App-Taste“ mit Vorschau:\n• App auswählen: lädt die Apps vom Fernseher und weist eine zu. Das Icon wird auf dem Handy gespeichert und ist auch ohne Verbindung sichtbar.\n• Darstellung: Icon und/oder Text, eigener Text und Textfarbe. Der Text verkleinert sich automatisch, damit er in die Taste passt.\nÄnderungen gelten erst mit OK. Fehlt ein Icon, lädt Elly es nach, sobald der Fernseher verbunden ist.</string>
+    <string name="help_edit_guide_title">Programmübersicht einfügen</string>
+    <string name="help_edit_guide_body">„+ Element“ bietet die Programmübersicht an, sobald SSH für den Fernseher eingerichtet ist (siehe Einstellungen) oder der Demo-Modus läuft. Vor dem Einsetzen wählst du die Favoritenliste des Fernsehers, deren Sender gezeigt werden. Halte das Element 2 Sekunden gedrückt, um die Liste zu ändern.\nDie Programmübersicht ist anfangs so breit wie der Screen und halb so hoch; wie andere Elemente lässt sie sich verschieben und in der Größe ändern. Mehrere Programmübersichten mit verschiedenen Listen sind möglich. Ohne SSH-Zugang bleibt das Element gespeichert, erscheint aber nicht auf dem Screen.</string>
 
     <string name="help_look_title">Darstellung</string>
     <string name="help_look_elly">Mach mich hübsch! Farben, Hintergrund und Formen stellst du in den Einstellungen ein.</string>
@@ -546,6 +560,8 @@
     <string name="help_settings_tabs_body">Das Zahnrad in der Kopfleiste öffnet die Einstellungen. Sie haben drei Reiter, zwischen denen du auch wischen kannst; Elly merkt sich den zuletzt geöffneten.\n• TV: gekoppelte Fernseher, Suche, IP-Adresse, Demo-Modus.\n• Darstellung: Screens, Farbpalette, Hintergrund, Rundung, Lichteffekt.\n• Bedienung: Zeiger und Vibration.</string>
     <string name="help_settings_tv_title">Fernseher wechseln oder entfernen</string>
     <string name="help_settings_tv_body">Im Reiter „TV“ stehen oben deine gekoppelten Fernseher: Tippe auf einen, um ihn zu aktivieren. „Entfernen“ löst die Kopplung nach einer Rückfrage; um den Fernseher wieder zu nutzen, musst du ihn neu koppeln.\nDarunter suchst du nach weiteren Fernsehern oder gibst eine IP-Adresse ein.\nSolange der Demo-Modus an ist, zeigt der Reiter nur seinen Schalter; zum Koppeln oder Wechseln schaltest du ihn aus.</string>
+    <string name="help_settings_root_title">Root-Zugang und SSH</string>
+    <string name="help_settings_root_body">Die Programmübersicht braucht einen Zugriff auf den Fernseher, den LG nur mit Root erlaubt. Ist dein Fernseher gerootet (Homebrew Channel) und dort der SSH-Server eingeschaltet, schalte im Reiter „TV“ „Root-Zugang und SSH eingerichtet?“ ein.\nGib Benutzer (meist root), Port (meist 22) und das Root-Passwort ein. Elly meldet sich einmal an und hinterlegt auf dem Fernseher einen eigenen Schlüssel; das Passwort wird nicht gespeichert. „Prüfen“ testet die Verbindung.\nAusschalten entfernt den Schlüssel nach einer Rückfrage wieder vom Fernseher. Die Einstellung gilt pro Fernseher.</string>
     <string name="help_settings_haptics_title">Vibration bei Tastendruck</string>
     <string name="help_settings_haptics_body">Kurzes Vibrieren bei jedem Tastendruck, auch beim Klicken im Touchpad-Modus und bei den Widgets.</string>
     <string name="help_privacy_title">Datenschutz</string>

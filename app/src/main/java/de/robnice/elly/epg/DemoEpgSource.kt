@@ -76,6 +76,13 @@ class DemoEpgSource(private val context: Context) : EpgSource {
         synchronized(planned) { planned.removeAll { it.id == reservation.id } }
     }
 
+    override suspend fun stopRecording(channel: EpgChannel) {
+        val now = System.currentTimeMillis()
+        synchronized(planned) {
+            planned.removeAll { it.type == ReservationType.RECORDING && it.signalId == channel.signalId && it.start <= now }
+        }
+    }
+
     private fun plan(type: ReservationType, program: EpgProgram) {
         synchronized(planned) {
             planned += EpgReservation("${type.name}_${program.programId}", type, program.signalId, program.start, program.title)

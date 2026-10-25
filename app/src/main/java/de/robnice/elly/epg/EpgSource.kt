@@ -10,11 +10,14 @@ data class EpgChannel(
     val name: String,
     val logoPath: String? = null,
     val logoUrl: String? = null,
-    val channelCode: String? = null
+    val channelCode: String? = null,
+    val satellite: String? = null,
+    val frequency: Int? = null,
+    val hd: Boolean = false
 )
 
-// Times in milliseconds since 1970 (UTC). offlineProgramId is only set for programs received over the air,
-// which are the only ones the TV can record.
+// Times in milliseconds since 1970 (UTC). offlineProgramId is only set for programs received over the air;
+// the others are recorded via LG's channel code.
 data class EpgProgram(
     val signalId: String,
     val programId: String,
@@ -27,7 +30,10 @@ data class EpgProgram(
     val genre: String = "",
     val offlineProgramId: String? = null,
     val online: Boolean = false,
-    val imageUrl: String? = null
+    val imageUrl: String? = null,
+    val subtitles: Boolean = false,
+    val audioDescription: Boolean = false,
+    val signLanguage: Boolean = false
 )
 
 enum class ReservationType { REMINDER, RECORDING }
@@ -39,12 +45,23 @@ data class EpgReservation(
     val signalId: String,
     val start: Long,
     val title: String
-)
+) {
+    // The TV keeps reservation times without seconds, while programs may start at e.g. 22:01:49.
+    fun belongsTo(program: EpgProgram): Boolean {
+        val minute = program.start - Math.floorMod(program.start, MINUTE_MILLIS)
+        return signalId == program.signalId && start >= minute && start < minute + MINUTE_MILLIS
+    }
+
+    private companion object {
+        const val MINUTE_MILLIS = 60_000L
+    }
+}
 
 sealed class EpgAction {
     class Remind(val channel: EpgChannel, val program: EpgProgram) : EpgAction()
     class Record(val channel: EpgChannel, val program: EpgProgram) : EpgAction()
     class Cancel(val reservation: EpgReservation) : EpgAction()
+    class StopRecording(val channel: EpgChannel, val reservation: EpgReservation) : EpgAction()
 }
 
 // Thrown when the TV refuses a reminder or recording; reason is the TV's own text.
@@ -61,6 +78,9 @@ interface EpgSource {
     suspend fun record(channel: EpgChannel, program: EpgProgram)
 
     suspend fun cancel(reservation: EpgReservation)
+
+    // Ends a running recording of this channel and keeps what was recorded so far.
+    suspend fun stopRecording(channel: EpgChannel)
 
     suspend fun favoriteLists(): List<FavoriteList>
 

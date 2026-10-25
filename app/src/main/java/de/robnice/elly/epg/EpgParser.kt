@@ -36,6 +36,9 @@ object EpgParser {
         val name = column("channelName")
         val logo = column("imgUrl")
         val channelCode = column("chanCode")
+        val satellite = column("satelliteName")
+        val frequency = column("Frequency")
+        val hd = column("HDTV")
         val position = column("favoriteIdx$listId")
         if (id < 0 || signalId < 0 || name < 0) return emptyList()
         return (0 until rows.length()).mapNotNull { index ->
@@ -49,7 +52,10 @@ object EpgParser {
                 name = row.text(name).orEmpty(),
                 logoPath = logoPath,
                 logoUrl = if (logoPath != null && logoServer != null) "$logoServer/${logoPath.substringAfterLast('/')}" else null,
-                channelCode = row.text(channelCode)
+                channelCode = row.text(channelCode),
+                satellite = row.text(satellite),
+                frequency = if (frequency >= 0) row.optInt(frequency).takeIf { it > 0 } else null,
+                hd = hd >= 0 && row.optBoolean(hd)
             )
             channel to (if (position >= 0) row.optInt(position, Int.MAX_VALUE) else index)
         }.sortedBy { it.second }.map { it.first }
@@ -75,7 +81,10 @@ object EpgParser {
                 genre = item.optString("genre"),
                 offlineProgramId = item.optString("offlineProgramId").takeIf { it.isNotBlank() },
                 online = item.optInt("epgDataType", 1) != 1,
-                imageUrl = item.optString("imgUrl").ifBlank { item.optString("fepgImgUrl") }.takeIf { it.startsWith("http") }
+                imageUrl = item.optString("imgUrl").ifBlank { item.optString("fepgImgUrl") }.takeIf { it.startsWith("http") },
+                subtitles = item.optBoolean("isSubtitle"),
+                audioDescription = item.optBoolean("isAD"),
+                signLanguage = item.optBoolean("isSignLanguage")
             )
         }
     }

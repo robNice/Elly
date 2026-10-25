@@ -92,11 +92,25 @@ class EpgRepository(
     suspend fun perform(action: EpgAction) {
         val source = access.source() ?: throw EpgActionException(null)
         when (action) {
-            is EpgAction.Remind -> source.remind(action.channel, action.program)
-            is EpgAction.Record -> source.record(action.channel, action.program)
+            is EpgAction.Remind -> plan(source, action.program, ReservationType.REMINDER) { source.remind(action.channel, action.program) }
+            is EpgAction.Record -> plan(source, action.program, ReservationType.RECORDING) { source.record(action.channel, action.program) }
             is EpgAction.Cancel -> cancel(source, action.reservation)
+            is EpgAction.StopRecording -> {
+                source.stopRecording(action.channel)
+                _reservations.update { list -> list.filterNot { it.id == action.reservation.id } }
+            }
         }
         loadReservations(source, withStorage = false)
+    }
+
+    // If the TV refuses because the same reminder or recording already exists ("Crash schedule"), that counts as done.
+    private suspend fun plan(source: EpgSource, program: EpgProgram, type: ReservationType, add: suspend () -> Unit) {
+        try {
+            add()
+        } catch (e: EpgActionException) {
+            loadReservations(source, withStorage = false)
+            if (_reservations.value.none { it.type == type && it.belongsTo(program) }) throw e
+        }
     }
 
     // A reservation already gone from the TV counts as deleted; the TV then answers "Invalid schedule ID".

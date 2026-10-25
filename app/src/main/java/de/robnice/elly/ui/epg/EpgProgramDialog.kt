@@ -2,6 +2,17 @@ package de.robnice.elly.ui.epg
 
 import android.text.format.DateFormat
 import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedButton
@@ -40,6 +51,7 @@ import java.util.Locale
 @Composable
 fun EpgProgramDialog(
     channel: EpgChannel,
+    logoPath: String?,
     program: EpgProgram,
     reminder: EpgReservation?,
     recording: EpgReservation?,
@@ -52,6 +64,7 @@ fun EpgProgramDialog(
     var busy by remember(program) { mutableStateOf(false) }
     var error by remember(program) { mutableStateOf<String?>(null) }
     val failedText = stringResource(R.string.epg_action_failed)
+    val conflictText = stringResource(R.string.epg_action_conflict)
     fun act(action: EpgAction) {
         if (busy) return
         busy = true
@@ -62,7 +75,7 @@ fun EpgProgramDialog(
             } catch (e: CancellationException) {
                 throw e
             } catch (e: EpgActionException) {
-                error = e.reason ?: failedText
+                error = if (e.reason == TV_CONFLICT) conflictText else e.reason ?: failedText
             } catch (_: Exception) {
                 error = failedText
             } finally {
@@ -96,18 +109,24 @@ fun EpgProgramDialog(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))
             ) {
+                ChannelLine(channel, logoPath)
                 Text(
-                    text = stringResource(
-                        R.string.epg_info_when,
-                        channel.name,
-                        day.format(start),
-                        time.format(start),
-                        time.format(end),
-                        minutes
-                    ),
+                    text = stringResource(R.string.epg_info_when, day.format(start), time.format(start), time.format(end), minutes),
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.primary
                 )
+                if (program.start <= now && program.end > now) {
+                    LinearProgressIndicator(
+                        progress = { (now - program.start).toFloat() / (program.end - program.start) },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                    Text(
+                        text = stringResource(R.string.epg_info_remaining, ((program.end - now) / MINUTE_MILLIS).toInt() + 1),
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                Badges(channel, program)
                 if (program.end > now) {
                     if (program.start > now) {
                         OutlinedButton(
@@ -118,11 +137,31 @@ fun EpgProgramDialog(
                     }
                     val recordData = program.offlineProgramId != null || channel.channelCode != null
                     val recordable = canRecord && recordData
+                    // A recording already running is ended and kept; a planned one is deleted.
+                    val running = program.start <= now
                     OutlinedButton(
-                        onClick = { act(if (recording != null) EpgAction.Cancel(recording) else EpgAction.Record(channel, program)) },
+                        onClick = {
+                            act(
+                                when {
+                                    recording == null -> EpgAction.Record(channel, program)
+                                    running -> EpgAction.StopRecording(channel, recording)
+                                    else -> EpgAction.Cancel(recording)
+                                }
+                            )
+                        },
                         enabled = !busy && (recording != null || recordable),
                         modifier = Modifier.fillMaxWidth()
-                    ) { Text(stringResource(if (recording != null) R.string.epg_record_cancel else R.string.epg_record)) }
+                    ) {
+                        Text(
+                            stringResource(
+                                when {
+                                    recording == null -> R.string.epg_record
+                                    running -> R.string.epg_record_stop
+                                    else -> R.string.epg_record_cancel
+                                }
+                            )
+                        )
+                    }
                     when {
                         busy -> LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
                         error != null -> Text(
@@ -153,6 +192,65 @@ fun EpgProgramDialog(
     )
 }
 
+// Channel number, logo and name, as in the TV's info banner.
+@Composable
+private fun ChannelLine(channel: EpgChannel, logoPath: String?) {
+    val logo by rememberLogo(logoPath)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))
+    ) {
+        if (channel.number.isNotBlank()) {
+            Text(text = channel.number, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+        }
+        logo?.let {
+            Image(
+                bitmap = it,
+                contentDescription = null,
+                contentScale = ContentScale.Fit,
+                modifier = Modifier.height(dimensionResource(R.dimen.epg_info_logo_height))
+            )
+        }
+        Text(text = channel.name, style = MaterialTheme.typography.titleSmall)
+    }
+}
+
+// Small marks like on the TV: picture quality, access services and where the channel is received.
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun Badges(channel: EpgChannel, program: EpgProgram) {
+    val badges = buildList {
+        if (channel.hd) add(stringResource(R.string.epg_badge_hd))
+        if (program.subtitles) add(stringResource(R.string.epg_badge_subtitles))
+        if (program.audioDescription) add(stringResource(R.string.epg_badge_audio_description))
+        if (program.signLanguage) add(stringResource(R.string.epg_badge_sign_language))
+        channel.satellite?.let { satellite ->
+            add(channel.frequency?.let { stringResource(R.string.epg_badge_satellite, satellite, it) } ?: satellite)
+        }
+    }
+    if (badges.isEmpty()) return
+    val spacing = dimensionResource(R.dimen.epg_badge_spacing)
+    FlowRow(
+        horizontalArrangement = Arrangement.spacedBy(spacing),
+        verticalArrangement = Arrangement.spacedBy(spacing)
+    ) {
+        badges.forEach { badge ->
+            Text(
+                text = badge,
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier
+                    .border(
+                        dimensionResource(R.dimen.epg_panel_border),
+                        MaterialTheme.colorScheme.outline,
+                        RoundedCornerShape(dimensionResource(R.dimen.epg_cell_corner))
+                    )
+                    .padding(horizontal = dimensionResource(R.dimen.epg_badge_padding))
+            )
+        }
+    }
+}
+
 @Composable
 private fun Hint(@StringRes text: Int) {
     Text(
@@ -163,4 +261,7 @@ private fun Hint(@StringRes text: Int) {
 }
 
 private const val MINUTE_MILLIS = 60_000L
+
+// The TV's text when a new reminder or recording overlaps one already planned.
+private const val TV_CONFLICT = "Crash schedule"
 private const val DAY_PATTERN = "EEEEdMMMM"

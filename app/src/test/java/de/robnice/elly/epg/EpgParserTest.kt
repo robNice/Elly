@@ -129,6 +129,19 @@ class EpgParserTest {
     }
 
     @Test
+    fun reservationBelongsToProgramDespiteMissingSeconds() {
+        val start = Instant.parse("2026-10-25T21:01:49Z").toEpochMilli()
+        val program = EpgProgram("1017_61306_1", "p", start, start + 53 * 60_000L, "Criminal Minds")
+        val reservation = EpgReservation("id", ReservationType.REMINDER, "1017_61306_1", Instant.parse("2026-10-25T21:01:00Z").toEpochMilli(), "Criminal Minds")
+
+        assertTrue(reservation.belongsTo(program))
+        assertFalse(reservation.copy(signalId = "other").belongsTo(program))
+        assertFalse(reservation.copy(start = start - 120_000L).belongsTo(program))
+        val previous = EpgProgram("1017_61306_1", "q", start - 52 * 60_000L, start, "Criminal Minds")
+        assertFalse(reservation.belongsTo(previous))
+    }
+
+    @Test
     fun localTimeUsesTvFormat() {
         val millis = Instant.parse("2026-10-25T19:15:00Z").toEpochMilli()
 

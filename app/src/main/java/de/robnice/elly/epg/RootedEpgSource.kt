@@ -163,6 +163,19 @@ class RootedEpgSource(
         rootAccess.withLuna(tv) { luna -> luna.call(RESERVATION_DELETE, payload).requireAction() }
     }
 
+    // Recording IDs do not name the channel; the source list of each running recording does. With two tuners
+    // several recordings may run at once.
+    override suspend fun stopRecording(channel: EpgChannel) {
+        rootAccess.withLuna(tv) { luna ->
+            val ids = luna.call(RECORDING_IDS).optJSONArray("recordingIds") ?: throw EpgActionException(null)
+            val recordingId = (0 until ids.length()).map { ids.optString(it) }.firstOrNull { id ->
+                val sources = luna.call(RECORDING_SOURCES, JSONObject().put("recordingId", id)).optJSONArray("recordingSourceList")
+                sources != null && (0 until sources.length()).any { sources.optJSONObject(it)?.optString("sourceId") == channel.id }
+            } ?: throw EpgActionException(null)
+            luna.call(RECORDING_STOP, JSONObject().put("recordingId", recordingId).put("needSave", true)).requireAction()
+        }
+    }
+
     private fun schedule(type: String, channel: EpgChannel, program: EpgProgram): JSONObject = JSONObject()
         .put("scheduleType", type)
         .put("channelId", channel.id)
@@ -216,6 +229,9 @@ class RootedEpgSource(
         const val RECORD_ADD = "luna://com.webos.service.tvReservationAgent/record/epgProgram/add"
         const val RECORD_NETWORK_ADD = "luna://com.webos.service.tvReservationAgent/record/fullEpgProgram/add"
         const val RESERVATION_DELETE = "luna://com.webos.service.tvReservationAgent/delete"
+        const val RECORDING_IDS = "luna://com.webos.service.legacybroadcast.dvr/record/getRecordingIdList"
+        const val RECORDING_SOURCES = "luna://com.webos.service.legacybroadcast.dvr/record/getRecordingSourceList"
+        const val RECORDING_STOP = "luna://com.webos.service.legacybroadcast.dvr/record/stopRecord"
         const val SYSTEM_SETTINGS = "luna://com.lge.settingsservice/getSystemSettings"
         const val LIST_DEVICES = "luna://com.webos.service.attachedstoragemanager/listDevices"
         const val SCHEDULE_WATCHING = "watching"
