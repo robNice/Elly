@@ -27,6 +27,14 @@ class TvLuna internal constructor(private val session: ShellSession) {
         return runCatching { decode(result.output) }.getOrNull()?.takeIf { it.isNotEmpty() }
     }
 
+    // The TV downloads the file itself, so the phone only ever talks to the TV.
+    suspend fun download(url: String): ByteArray? {
+        if (!url.matches(SAFE_URL)) return null
+        val result = session.run("curl -s -f -m $DOWNLOAD_TIMEOUT_SECONDS '$url' | base64")
+        if (result.exitStatus != 0) return null
+        return runCatching { decode(result.output) }.getOrNull()?.takeIf { it.isNotEmpty() }
+    }
+
     private fun decode(output: String): ByteArray =
         Base64.getDecoder().decode(output.filter { it.isLetterOrDigit() || it == '+' || it == '/' || it == '=' })
 
@@ -35,5 +43,7 @@ class TvLuna internal constructor(private val session: ShellSession) {
         const val LONG_TIMEOUT_MILLIS = 60_000L
         const val MAX_ERROR_LENGTH = 200
         val SAFE_PATH = Regex("^/[A-Za-z0-9_./-]+$")
+        val SAFE_URL = Regex("^https://[A-Za-z0-9.-]+/[A-Za-z0-9_./?&=-]+$")
+        const val DOWNLOAD_TIMEOUT_SECONDS = 10
     }
 }

@@ -17,7 +17,9 @@ import de.robnice.elly.data.model.PointerMode
 import de.robnice.elly.data.model.PointerSettings
 import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenLayout
+import de.robnice.elly.epg.EpgAction
 import de.robnice.elly.epg.EpgGuide
+import de.robnice.elly.epg.EpgReservation
 import de.robnice.elly.epg.EpgRepository
 import de.robnice.elly.remote.ConnectionState
 import de.robnice.elly.remote.RemoteControl
@@ -25,6 +27,7 @@ import de.robnice.elly.remote.RemoteKey
 import de.robnice.elly.remote.SendResult
 import de.robnice.elly.remote.TvInput
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -179,6 +182,13 @@ class RemoteViewModel(
     val guideRefreshing: StateFlow<Boolean> = epgRepository.refreshing
 
     val guideFailed: StateFlow<Boolean> = epgRepository.failed
+
+    val guideReservations: StateFlow<List<EpgReservation>> = epgRepository.reservations
+
+    val guideCanRecord: StateFlow<Boolean> = epgRepository.canRecord
+
+    // Runs in the view model, so closing the info window does not stop a change the TV has already begun.
+    suspend fun performGuideAction(action: EpgAction) = viewModelScope.async { epgRepository.perform(action) }.await()
 
     fun press(key: RemoteKey) {
         viewModelScope.launch { report(remoteControl.send(key)) }

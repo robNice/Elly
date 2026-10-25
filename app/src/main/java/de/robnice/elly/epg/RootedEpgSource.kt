@@ -1,23 +1,18 @@
 package de.robnice.elly.epg
 
-import android.util.Log
 import de.robnice.elly.data.model.PairedTv
 import de.robnice.elly.tv.ssh.RootAccessService
 import de.robnice.elly.tv.ssh.TvLuna
 import de.robnice.elly.tv.ssh.TvShellException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import okhttp3.Request
 import org.json.JSONArray
 import org.json.JSONObject
+import java.time.Instant
 import java.time.ZoneId
 
 // Guide data from the TV's own guide service (luna://com.webos.service.iepg) over SSH.
 class RootedEpgSource(
     private val tv: PairedTv,
-    private val rootAccess: RootAccessService,
-    private val httpClient: OkHttpClient
+    private val rootAccess: RootAccessService
 ) : EpgSource {
 
     // The TV always reports eight favorite groups; empty ones are left out.
@@ -97,30 +92,96 @@ class RootedEpgSource(
         return EpgParser.programs(luna.callCompressed(EVENT_LIST, payload).requireSuccess())
     }
 
-    // The TV keeps many logos as files; missing ones it loads from LG's logo server, and so does the app.
-    override suspend fun logos(channels: List<EpgChannel>): Map<String, ByteArray> {
-        val withFile = channels.filter { it.logoPath != null }
-        val fromTv = if (withFile.isEmpty()) emptyMap() else runCatching {
-            rootAccess.withLuna(tv) { luna ->
-                withFile.mapNotNull { channel -> luna.readFile(channel.logoPath!!, LOGO_FOLDER)?.let { channel.id to it } }.toMap()
-            }
-        }.getOrDefault(emptyMap())
-        val fromServer = channels.filter { it.id !in fromTv }.mapNotNull { channel -> download(channel)?.let { channel.id to it } }
-        return fromTv + fromServer
+    // The TV keeps many logos as files; missing ones it loads from LG's logo server for its own guide,
+    // and here it does so on Elly's behalf, so the phone never contacts that server.
+    override suspend fun logos(channels: List<EpgChannel>): Map<String, ByteArray> = rootAccess.withLuna(tv) { luna ->
+        channels.mapNotNull { channel ->
+            val bytes = channel.logoPath?.let { luna.readFile(it, LOGO_FOLDER) } ?: channel.logoUrl?.let { luna.download(it) }
+            bytes?.let { channel.id to it }
+        }.toMap()
     }
 
-    private suspend fun download(channel: EpgChannel): ByteArray? {
-        val url = channel.logoUrl ?: return null
-        return withContext(Dispatchers.IO) {
-            try {
-                httpClient.newCall(Request.Builder().url(url).build()).execute().use { response ->
-                    response.body?.bytes()?.takeIf { response.isSuccessful && it.isNotEmpty() }
-                }
-            } catch (e: Exception) {
-                Log.w(TAG, "Logo download failed: ${e.message}")
-                null
-            }
+    override suspend fun reservations(channels: List<EpgChannel>, from: Long, to: Long): List<EpgReservation> {
+        if (channels.isEmpty()) return emptyList()
+        val zone = ZoneId.systemDefault()
+        val payload = JSONObject()
+            .put("channelId", JSONArray(channels.map { it.id }))
+            .put("localStartTime", EpgParser.localTime(from, zone))
+            .put("localEndTime", EpgParser.localTime(to, zone))
+        return rootAccess.withLuna(tv) { luna -> EpgParser.reservations(luna.call(RESERVATIONS, payload).requireSuccess(), zone) }
+    }
+
+    override suspend fun canRecord(): Boolean = rootAccess.withLuna(tv) { storage(it) != null }
+
+    // Same parameters as the TV's own scheduling app (com.webos.app.dvrpopup).
+    override suspend fun remind(channel: EpgChannel, program: EpgProgram) {
+        val payload = schedule(SCHEDULE_WATCHING, channel, program)
+            .put("programId", program.programId)
+            .put("programIdType", if (program.online) ID_ONLINE else ID_OFFLINE)
+        rootAccess.withLuna(tv) { luna -> luna.call(WATCH_ADD, payload).requireAction() }
+    }
+
+    // The TV only records programs received over the air; it rejects the IDs of online programs.
+    override suspend fun record(channel: EpgChannel, program: EpgProgram) {
+        val programId = program.offlineProgramId ?: throw EpgActionException(null)
+        rootAccess.withLuna(tv) { luna ->
+            val storage = storage(luna) ?: throw EpgActionException(null)
+            val payload = schedule(SCHEDULE_RECORDING, channel, program)
+                .put("programId", programId)
+                .put("programIdType", ID_OFFLINE)
+                .put("quality", RECORD_QUALITY)
+                .put("storagePath", storage.path)
+                .put("storageNumber", storage.number)
+                .put("storageId", storage.id)
+                .put("bUSBStick", storage.usbStick)
+                .put("includeCurrentRecording", true)
+                .put("dataType", 1)
+            luna.call(RECORD_ADD, payload).requireAction()
         }
+    }
+
+    override suspend fun cancel(reservation: EpgReservation) {
+        val payload = JSONObject().put("scheduleIdList", JSONArray().put(reservation.id))
+        rootAccess.withLuna(tv) { luna -> luna.call(RESERVATION_DELETE, payload).requireAction() }
+    }
+
+    private fun schedule(type: String, channel: EpgChannel, program: EpgProgram): JSONObject = JSONObject()
+        .put("scheduleType", type)
+        .put("channelId", channel.id)
+        .put("startTime", timeObject(program.start))
+        .put("endTime", timeObject(program.end))
+        .put("repeatType", REPEAT_ONCE)
+        .put("repeatedWeekday", 0)
+        .put("title", program.title)
+
+    private fun timeObject(millis: Long): JSONObject {
+        val time = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault())
+        return JSONObject()
+            .put("year", time.year)
+            .put("month", time.monthValue)
+            .put("day", time.dayOfMonth)
+            .put("hour", time.hour)
+            .put("minute", time.minute)
+            .put("second", time.second)
+    }
+
+    private class RecordStorage(val path: String, val number: Int, val id: String, val usbStick: Boolean)
+
+    // The storage chosen on the TV for recordings, if it is plugged in.
+    private suspend fun storage(luna: TvLuna): RecordStorage? {
+        val chosen = luna.call(SYSTEM_SETTINGS, JSONObject().put("category", "timemachine"))
+            .optJSONObject("settings")?.optJSONObject("recordStorageValue") ?: return null
+        val subDeviceId = chosen.optString("subDeviceId").takeIf { it.isNotBlank() } ?: return null
+        val deviceId = chosen.optString("deviceId")
+        val path = chosen.optString("devicePath").takeIf { it.isNotBlank() } ?: return null
+        val devices = luna.call(LIST_DEVICES).optJSONArray("devices") ?: return null
+        val device = (0 until devices.length()).mapNotNull { devices.optJSONObject(it) }
+            .firstOrNull { it.optString("deviceId") == deviceId } ?: return null
+        return RecordStorage(path, device.optInt("deviceNum"), subDeviceId, device.optString("physicalType") != PHYSICAL_HDD)
+    }
+
+    private fun JSONObject.requireAction() {
+        if (!optBoolean(RETURN_VALUE)) throw EpgActionException(optString(ERROR_TEXT).takeIf { it.isNotBlank() })
     }
 
     private fun JSONObject.requireSuccess(): JSONObject {
@@ -129,10 +190,22 @@ class RootedEpgSource(
     }
 
     private companion object {
-        const val TAG = "EllyEpg"
         const val CHANNEL_GROUPS = "luna://com.webos.service.iepg/getChannelGroupList"
         const val CHANNEL_LIST = "luna://com.webos.service.iepg/getChannelList"
         const val EVENT_LIST = "luna://com.webos.service.iepg/getEventList"
+        const val RESERVATIONS = "luna://com.webos.service.iepg/getReservationEventList"
+        const val WATCH_ADD = "luna://com.webos.service.tvReservationAgent/watch/epgProgram/add"
+        const val RECORD_ADD = "luna://com.webos.service.tvReservationAgent/record/epgProgram/add"
+        const val RESERVATION_DELETE = "luna://com.webos.service.tvReservationAgent/delete"
+        const val SYSTEM_SETTINGS = "luna://com.lge.settingsservice/getSystemSettings"
+        const val LIST_DEVICES = "luna://com.webos.service.attachedstoragemanager/listDevices"
+        const val SCHEDULE_WATCHING = "watching"
+        const val SCHEDULE_RECORDING = "recording"
+        const val ID_ONLINE = "online"
+        const val ID_OFFLINE = "offline"
+        const val REPEAT_ONCE = "once"
+        const val RECORD_QUALITY = "record_quality_high"
+        const val PHYSICAL_HDD = "HDD"
         const val LOGO_FOLDER = "/mnt/lg/cmn_data/channel_logo/"
         const val RETURN_VALUE = "returnValue"
         const val ERROR_TEXT = "errorText"

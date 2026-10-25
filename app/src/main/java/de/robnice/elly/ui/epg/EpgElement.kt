@@ -41,7 +41,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import de.robnice.elly.R
 import de.robnice.elly.data.model.EpgConfig
+import de.robnice.elly.epg.EpgAction
 import de.robnice.elly.epg.EpgGuide
+import de.robnice.elly.epg.EpgReservation
 import de.robnice.elly.epg.FavoriteList
 import de.robnice.elly.ui.settings.EpgPickerState
 import kotlinx.coroutines.flow.Flow
@@ -56,7 +58,10 @@ class EpgGuides(
     val refreshing: StateFlow<Boolean>,
     val failed: StateFlow<Boolean>,
     val currentChannel: StateFlow<String?>,
-    val switchChannel: (String) -> Unit
+    val switchChannel: (String) -> Unit,
+    val reservations: StateFlow<List<EpgReservation>>,
+    val canRecord: StateFlow<Boolean>,
+    val perform: suspend (EpgAction) -> Unit
 )
 
 val LocalEpgGuides = compositionLocalOf<EpgGuides?> { null }
@@ -70,6 +75,8 @@ fun EpgElement(config: EpgConfig?, editing: Boolean, modifier: Modifier = Modifi
         val guide by flow.collectAsState(initial = null)
         val refreshing by guides.refreshing.collectAsState()
         val currentChannel by guides.currentChannel.collectAsState()
+        val reservations by guides.reservations.collectAsState()
+        val canRecord by guides.canRecord.collectAsState()
         val current = guide
         if (current != null && current.channels.isNotEmpty()) {
             EpgGrid(
@@ -77,6 +84,9 @@ fun EpgElement(config: EpgConfig?, editing: Boolean, modifier: Modifier = Modifi
                 loading = refreshing,
                 currentChannelId = currentChannel,
                 onSwitch = guides.switchChannel,
+                reservations = reservations,
+                canRecord = canRecord,
+                onAction = guides.perform,
                 modifier = modifier
             )
             return

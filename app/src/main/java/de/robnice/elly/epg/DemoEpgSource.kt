@@ -50,7 +50,8 @@ class DemoEpgSource(private val context: Context) : EpgSource {
                 start = start,
                 end = start + length,
                 title = titles[random.nextInt(titles.size)],
-                description = description
+                description = description,
+                offlineProgramId = "${channel.id}_$start"
             )
             start += length
         }
@@ -58,6 +59,28 @@ class DemoEpgSource(private val context: Context) : EpgSource {
     }
 
     override suspend fun logos(channels: List<EpgChannel>): Map<String, ByteArray> = emptyMap()
+
+    // Demo reservations live only while the app runs.
+    private val planned = mutableListOf<EpgReservation>()
+
+    override suspend fun reservations(channels: List<EpgChannel>, from: Long, to: Long): List<EpgReservation> =
+        synchronized(planned) { planned.filter { it.start in from until to }.toList() }
+
+    override suspend fun canRecord(): Boolean = true
+
+    override suspend fun remind(channel: EpgChannel, program: EpgProgram) = plan(ReservationType.REMINDER, program)
+
+    override suspend fun record(channel: EpgChannel, program: EpgProgram) = plan(ReservationType.RECORDING, program)
+
+    override suspend fun cancel(reservation: EpgReservation) {
+        synchronized(planned) { planned.removeAll { it.id == reservation.id } }
+    }
+
+    private fun plan(type: ReservationType, program: EpgProgram) {
+        synchronized(planned) {
+            planned += EpgReservation("${type.name}_${program.programId}", type, program.signalId, program.start, program.title)
+        }
+    }
 
     private companion object {
         const val MAIN_LIST = "A"

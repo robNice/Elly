@@ -79,12 +79,7 @@ class AppContainer(context: Context) {
 
     val rootAccessService = RootAccessService(TvShell(), SshKeyStore(), rootAccessRepository)
 
-    private val logoHttpClient = httpClient.newBuilder()
-        .readTimeout(10, TimeUnit.SECONDS)
-        .pingInterval(0, TimeUnit.SECONDS)
-        .build()
-
-    val epgAccess = EpgAccess(appContext, tvRepository, settingsRepository, rootAccessRepository, rootAccessService, logoHttpClient)
+    val epgAccess = EpgAccess(appContext, tvRepository, settingsRepository, rootAccessRepository, rootAccessService)
 
     val epgRepository = EpgRepository(EpgFiles(appContext), epgAccess, appSlotsRepository.activeOwner)
 

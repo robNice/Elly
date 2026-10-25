@@ -78,6 +78,24 @@ object EpgParser {
         }
     }
 
+    // getReservationEventList: start times are local; reserveType 0 is a reminder, 1 a recording.
+    fun reservations(answer: JSONObject, zone: ZoneId): List<EpgReservation> {
+        val results = answer.optJSONArray("results") ?: return emptyList()
+        return (0 until results.length()).mapNotNull { index ->
+            val item = results.optJSONObject(index) ?: return@mapNotNull null
+            val start = runCatching {
+                LocalDateTime.parse(item.optString("startTime"), TV_TIME).atZone(zone).toInstant().toEpochMilli()
+            }.getOrNull() ?: return@mapNotNull null
+            EpgReservation(
+                id = item.optString("_id").takeIf { it.isNotBlank() } ?: return@mapNotNull null,
+                type = if (item.optInt("reserveType") == 1) ReservationType.RECORDING else ReservationType.REMINDER,
+                signalId = item.optString("signalChannelId").takeIf { it.isNotBlank() } ?: return@mapNotNull null,
+                start = start,
+                title = item.optString("title")
+            )
+        }
+    }
+
     fun localTime(millis: Long, zone: ZoneId): String =
         LocalDateTime.ofInstant(java.time.Instant.ofEpochMilli(millis), zone).format(TV_TIME)
 

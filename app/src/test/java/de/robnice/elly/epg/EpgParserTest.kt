@@ -106,6 +106,27 @@ class EpgParserTest {
     }
 
     @Test
+    fun reservationsUseLocalStartAndType() {
+        val answer = JSONObject(
+            """
+            {"returnValue":true,"count":2,"results":[
+             {"_id":"OTfPFJYRgFR","reserveType":0,"signalChannelId":"1057_61201_1","title":"Grenzenlos Genial Gekocht",
+              "startTime":"2026,10,25,20,15,00","endTime":"2026,10,25,23,20,00"},
+             {"_id":"OTfPU2XMxS7","reserveType":1,"signalChannelId":"1019_10301_1","title":"Tagesthemen",
+              "startTime":"2026,10,25,23,15,00","endTime":"2026,10,25,23,35,00"}
+            ]}
+            """
+        )
+
+        val reservations = EpgParser.reservations(answer, ZoneId.of("Europe/Berlin"))
+
+        assertEquals(listOf(ReservationType.REMINDER, ReservationType.RECORDING), reservations.map { it.type })
+        assertEquals(Instant.parse("2026-10-25T19:15:00Z").toEpochMilli(), reservations[0].start)
+        assertEquals("1019_10301_1", reservations[1].signalId)
+        assertEquals("OTfPU2XMxS7", reservations[1].id)
+    }
+
+    @Test
     fun localTimeUsesTvFormat() {
         val millis = Instant.parse("2026-10-25T19:15:00Z").toEpochMilli()
 

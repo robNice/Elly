@@ -61,7 +61,13 @@ import de.robnice.elly.ui.components.rememberKeyHaptic
 import de.robnice.elly.ui.components.currentPaletteColors
 import de.robnice.elly.epg.EpgChannel
 import de.robnice.elly.epg.EpgGuide
+import de.robnice.elly.epg.EpgAction
 import de.robnice.elly.epg.EpgProgram
+import de.robnice.elly.epg.EpgReservation
+import de.robnice.elly.epg.ReservationType
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Icon
+import androidx.compose.ui.res.painterResource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -81,15 +87,24 @@ fun EpgGrid(
     loading: Boolean,
     currentChannelId: String?,
     onSwitch: (String) -> Unit,
+    reservations: List<EpgReservation>,
+    canRecord: Boolean,
+    onAction: suspend (EpgAction) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val colors = epgColors(currentPaletteColors())
     val haptic = rememberKeyHaptic()
+    val planned = remember(reservations) { reservations.groupBy { it.signalId to it.start } }
     var selected by remember { mutableStateOf<Pair<EpgChannel, EpgProgram>?>(null) }
     selected?.let { (channel, program) ->
+        val marks = planned[program.signalId to program.start].orEmpty()
         EpgProgramDialog(
             channel = channel,
             program = program,
+            reminder = marks.firstOrNull { it.type == ReservationType.REMINDER },
+            recording = marks.firstOrNull { it.type == ReservationType.RECORDING },
+            canRecord = canRecord,
+            onAction = onAction,
             onSwitch = {
                 selected = null
                 haptic()
@@ -145,9 +160,7 @@ fun EpgGrid(
 
         Column(modifier = Modifier.fillMaxSize()) {
             Row(modifier = Modifier.height(headerHeight)) {
-                val visibleTime = origin + ((horizontal.value + viewportPx / 2) / minutePx).toLong() * MINUTE_MILLIS
-                DayCell(
-                    day = dayLabel(visibleTime, now, zone),
+                NowCell(
                     loading = loading,
                     colors = colors,
                     onNow = { scope.launch { horizontal.animateScrollTo((xOf(now) - viewportPx / NOW_POSITION).toInt().coerceAtLeast(0)) } },
@@ -211,6 +224,7 @@ fun EpgGrid(
                                             now = now,
                                             zone = zone,
                                             colors = colors,
+                                            marks = planned[program.signalId to program.start].orEmpty().map { it.type },
                                             hiddenStart = with(density) { (left - x0).coerceAtLeast(0f).toDp() },
                                             modifier = Modifier
                                                 .offset(with(density) { x0.toDp() }, rowHeight * row)
@@ -220,6 +234,17 @@ fun EpgGrid(
                                     }
                                 }
                             }
+                            val dayLine = colors.text.copy(alpha = DAY_LINE_ALPHA)
+                            midnights(origin + (left / minutePx).toLong() * MINUTE_MILLIS, origin + (right / minutePx).toLong() * MINUTE_MILLIS, zone)
+                                .forEach { midnight ->
+                                    Box(
+                                        modifier = Modifier
+                                            .offset(x = with(density) { xOf(midnight).toDp() })
+                                            .width(DAY_LINE_WIDTH.dp)
+                                            .fillMaxHeight()
+                                            .background(dayLine)
+                                    )
+                                }
                             NowLine(with(density) { xOf(now).toDp() }, Modifier.fillMaxHeight())
                         }
                     }
@@ -230,28 +255,21 @@ fun EpgGrid(
 }
 
 @Composable
-private fun DayCell(day: String, loading: Boolean, colors: EpgColors, onNow: () -> Unit, modifier: Modifier) {
+private fun NowCell(loading: Boolean, colors: EpgColors, onNow: () -> Unit, modifier: Modifier) {
     Row(
         modifier = modifier
             .clickable(onClick = onNow)
             .padding(horizontal = dimensionResource(R.dimen.epg_cell_padding)),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.Center) {
-            Text(
-                text = day,
-                style = MaterialTheme.typography.labelMedium,
-                color = colors.text,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Text(
-                text = stringResource(R.string.epg_now),
-                style = MaterialTheme.typography.labelSmall,
-                color = colorResource(R.color.epg_now_line),
-                maxLines = 1
-            )
-        }
+        Text(
+            text = stringResource(R.string.epg_now),
+            style = MaterialTheme.typography.labelMedium,
+            fontWeight = FontWeight.Bold,
+            color = colorResource(R.color.epg_now_line),
+            maxLines = 1,
+            modifier = Modifier.weight(1f)
+        )
         if (loading) {
             CircularProgressIndicator(
                 color = colors.text,
@@ -267,35 +285,93 @@ private fun TimeRuler(origin: Long, end: Long, minuteWidth: Dp, now: Long, scrol
     val formatter = remember { DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT) }
     val density = LocalDensity.current
     val slotWidth = minuteWidth * SLOT_MINUTES
+    val slotPx = with(density) { slotWidth.toPx() }
+    val minutePx = with(density) { minuteWidth.toPx() }
     val tickColor = colors.line
     val nowColor = colorResource(R.color.epg_now_line)
-    Box(modifier = modifier.horizontalScroll(scroll, enabled = false)) {
-        Box(modifier = Modifier.width(minuteWidth * ((end - origin) / MINUTE_MILLIS).toInt()).fillMaxHeight()) {
-            val viewLeft = scroll.value
-            val slotPx = with(density) { slotWidth.toPx() }
-            val first = (viewLeft / slotPx).toInt()
-            val count = (scroll.viewportSize / slotPx).toInt() + 2
-            for (slot in first until first + count) {
-                val time = origin + slot * SLOT_MINUTES * MINUTE_MILLIS
-                if (time >= end) break
-                Text(
-                    text = formatter.format(Instant.ofEpochMilli(time).atZone(zone)),
-                    style = MaterialTheme.typography.labelSmall,
-                    color = colors.muted,
-                    modifier = Modifier
-                        .offset(x = slotWidth * slot + dimensionResource(R.dimen.epg_cell_padding))
-                        .align(Alignment.CenterStart)
-                )
-            }
-            Canvas(modifier = Modifier.fillMaxSize()) {
+    val viewStart = origin + (scroll.value / minutePx).toLong() * MINUTE_MILLIS
+    val viewEnd = viewStart + (scroll.viewportSize / minutePx).toLong() * MINUTE_MILLIS
+    Box(modifier = modifier) {
+        Box(modifier = Modifier.fillMaxSize().horizontalScroll(scroll, enabled = false)) {
+            Box(modifier = Modifier.width(minuteWidth * ((end - origin) / MINUTE_MILLIS).toInt()).fillMaxHeight()) {
+                val first = (scroll.value / slotPx).toInt()
+                val count = (scroll.viewportSize / slotPx).toInt() + 2
                 for (slot in first until first + count) {
-                    val x = slot * slotPx
-                    drawLine(tickColor, Offset(x, size.height * TICK_START), Offset(x, size.height), strokeWidth = 1.dp.toPx())
+                    val time = origin + slot * SLOT_MINUTES * MINUTE_MILLIS
+                    if (time >= end) break
+                    Text(
+                        text = formatter.format(Instant.ofEpochMilli(time).atZone(zone)),
+                        style = MaterialTheme.typography.labelSmall,
+                        color = colors.muted,
+                        modifier = Modifier
+                            .offset(x = slotWidth * slot + dimensionResource(R.dimen.epg_cell_padding))
+                            .align(Alignment.CenterStart)
+                    )
                 }
-                val nowX = (now - origin) / MINUTE_MILLIS.toFloat() * minuteWidth.toPx()
-                drawLine(nowColor, Offset(nowX, 0f), Offset(nowX, size.height), strokeWidth = NOW_LINE_WIDTH.dp.toPx())
+                Canvas(modifier = Modifier.fillMaxSize()) {
+                    for (slot in first until first + count) {
+                        val x = slot * slotPx
+                        drawLine(tickColor, Offset(x, size.height * TICK_START), Offset(x, size.height), strokeWidth = 1.dp.toPx())
+                    }
+                    val nowX = (now - origin) / MINUTE_MILLIS.toFloat() * minutePx
+                    drawLine(nowColor, Offset(nowX, 0f), Offset(nowX, size.height), strokeWidth = NOW_LINE_WIDTH.dp.toPx())
+                }
+                // A new day starts with a line and its date.
+                midnights(viewStart, viewEnd, zone).forEach { midnight ->
+                    DayMark(
+                        midnight,
+                        zone,
+                        colors,
+                        Modifier.offset(x = minuteWidth * ((midnight - origin) / MINUTE_MILLIS).toInt()).fillMaxHeight()
+                    )
+                }
             }
         }
+        // The date of the left edge stays in place while the times scroll by.
+        Text(
+            text = shortDate(Instant.ofEpochMilli(viewStart).atZone(zone).toLocalDate()),
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
+            color = colors.text,
+            maxLines = 1,
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .background(colors.panel)
+                .padding(horizontal = dimensionResource(R.dimen.epg_cell_padding))
+        )
+    }
+}
+
+@Composable
+private fun DayMark(midnight: Long, zone: ZoneId, colors: EpgColors, modifier: Modifier) {
+    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
+        Box(
+            modifier = Modifier
+                .width(DAY_LINE_WIDTH.dp)
+                .fillMaxHeight()
+                .background(colors.text)
+        )
+        Text(
+            text = shortDate(Instant.ofEpochMilli(midnight).atZone(zone).toLocalDate()),
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
+            color = colors.text,
+            maxLines = 1,
+            modifier = Modifier
+                .background(colors.panel)
+                .padding(horizontal = dimensionResource(R.dimen.epg_cell_padding))
+        )
+    }
+}
+
+private fun midnights(from: Long, to: Long, zone: ZoneId): List<Long> {
+    var day = Instant.ofEpochMilli(from).atZone(zone).toLocalDate().plusDays(1)
+    val result = mutableListOf<Long>()
+    while (true) {
+        val midnight = day.atStartOfDay(zone).toInstant().toEpochMilli()
+        if (midnight > to) return result
+        result += midnight
+        day = day.plusDays(1)
     }
 }
 
@@ -325,7 +401,15 @@ private fun ChannelCell(channel: EpgChannel, logoPath: String?, colors: EpgColor
 }
 
 @Composable
-private fun ProgramCell(program: EpgProgram, now: Long, zone: ZoneId, colors: EpgColors, hiddenStart: Dp, modifier: Modifier) {
+private fun ProgramCell(
+    program: EpgProgram,
+    now: Long,
+    zone: ZoneId,
+    colors: EpgColors,
+    marks: List<ReservationType>,
+    hiddenStart: Dp,
+    modifier: Modifier
+) {
     val formatter = remember { DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT) }
     val color = when {
         program.end <= now -> colors.past
@@ -350,12 +434,32 @@ private fun ProgramCell(program: EpgProgram, now: Long, zone: ZoneId, colors: Ep
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Text(
-                text = formatter.format(Instant.ofEpochMilli(program.start).atZone(zone)),
-                style = MaterialTheme.typography.labelSmall,
-                color = colors.muted,
-                maxLines = 1
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (ReservationType.RECORDING in marks) {
+                    Box(
+                        modifier = Modifier
+                            .padding(end = dimensionResource(R.dimen.epg_mark_spacing))
+                            .size(dimensionResource(R.dimen.epg_record_dot))
+                            .background(colorResource(R.color.key_color_red), CircleShape)
+                    )
+                }
+                if (ReservationType.REMINDER in marks) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_reminder),
+                        contentDescription = stringResource(R.string.epg_reminder_set),
+                        tint = colors.text,
+                        modifier = Modifier
+                            .padding(end = dimensionResource(R.dimen.epg_mark_spacing))
+                            .size(dimensionResource(R.dimen.epg_mark_icon))
+                    )
+                }
+                Text(
+                    text = formatter.format(Instant.ofEpochMilli(program.start).atZone(zone)),
+                    style = MaterialTheme.typography.labelSmall,
+                    color = colors.muted,
+                    maxLines = 1
+                )
+            }
         }
     }
 }
@@ -406,18 +510,6 @@ private fun rememberLogo(path: String?) = produceState<ImageBitmap?>(null, path)
     value = path?.let { withContext(Dispatchers.IO) { runCatching { BitmapFactory.decodeFile(it)?.asImageBitmap() }.getOrNull() } }
 }
 
-@Composable
-private fun dayLabel(time: Long, now: Long, zone: ZoneId): String {
-    val day = Instant.ofEpochMilli(time).atZone(zone).toLocalDate()
-    val today = Instant.ofEpochMilli(now).atZone(zone).toLocalDate()
-    return when (day) {
-        today -> stringResource(R.string.epg_today)
-        today.plusDays(1) -> stringResource(R.string.epg_tomorrow)
-        today.minusDays(1) -> stringResource(R.string.epg_yesterday)
-        else -> shortDate(day)
-    }
-}
-
 private fun shortDate(day: LocalDate): String {
     val locale = Locale.getDefault()
     return DateTimeFormatter.ofPattern(DateFormat.getBestDateTimePattern(locale, DAY_PATTERN), locale).format(day)
@@ -440,7 +532,9 @@ private const val VISIBLE_ROWS = 6
 private const val NOW_POSITION = 3f
 private const val NOW_LINE_WIDTH = 2
 private const val TICK_START = 0.7f
-private const val DAY_PATTERN = "EEEdMMM"
+private const val DAY_PATTERN = "EEEdM"
+private const val DAY_LINE_WIDTH = 1
+private const val DAY_LINE_ALPHA = 0.5f
 private const val PANEL_ALPHA = 0.94f
 private const val CHANNEL_ALPHA = 0.45f
 private const val PROGRAM_ALPHA = 0.75f

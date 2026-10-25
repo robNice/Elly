@@ -150,7 +150,18 @@ fun RemotePager(
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) { viewModel.keepGuideFresh() }
     }
 
-    val guides = remember(viewModel) { EpgGuides(viewModel::guide, viewModel.guideRefreshing, viewModel.guideFailed, viewModel.currentChannel, viewModel::switchChannel) }
+    val guides = remember(viewModel) {
+        EpgGuides(
+            guide = viewModel::guide,
+            refreshing = viewModel.guideRefreshing,
+            failed = viewModel.guideFailed,
+            currentChannel = viewModel.currentChannel,
+            switchChannel = viewModel::switchChannel,
+            reservations = viewModel.guideReservations,
+            canRecord = viewModel.guideCanRecord,
+            perform = viewModel::performGuideAction
+        )
+    }
 
     LaunchedEffect(viewModel) {
         viewModel.results.collect { result ->

@@ -7,8 +7,9 @@ Der Entwickler dieser App erhebt, speichert oder verarbeitet keine personenbezog
 Die App kommuniziert ausschließlich innerhalb Ihres lokalen Netzwerks:
 
 - Suche nach Fernsehern: Anfrage per SSDP und Prüfung der Adressen Ihres lokalen Netzes auf die webOS-Ports 3000 und 3001.
-- Steuerung: verschlüsselte Verbindung zum gekoppelten Fernseher (ältere Fernseher ohne Verschlüsselung über Port 3000). Übertragen werden Steuerbefehle wie Tasten, Zeigerbewegungen, App-Starts und Eingangswechsel sowie Abfragen der installierten Apps, der Eingänge und der App-Symbole.
+- Steuerung: verschlüsselte Verbindung zum gekoppelten Fernseher (ältere Fernseher ohne Verschlüsselung über Port 3000). Übertragen werden Steuerbefehle wie Tasten, Zeigerbewegungen, App-Starts, Eingangs- und Senderwechsel sowie Abfragen der installierten Apps, der Eingänge und der App-Symbole.
 - Einschalten: Wake-on-LAN-Paket an die MAC-Adresse des Fernsehers.
+- Programmübersicht (optional, nur für Fernseher mit Root-Zugang, den Sie selbst einrichten): SSH-Verbindung zum Fernseher (Port 22). Die App liest Favoritenlisten, Sender, Programmdaten sowie geplante Erinnerungen und Aufnahmen des Fernsehers, legt Erinnerungen und Aufnahmen auf dem Fernseher an oder löscht sie und liest Senderlogos. Logos, die der Fernseher noch nicht hat, lädt der Fernseher selbst vom Logo-Server von LG, so wie für seine eigene Programmübersicht; Ihr Gerät stellt dabei keine Verbindung zu diesem Server her.
 
 Diese Kommunikation erfolgt direkt zwischen Ihrem Gerät und dem Fernseher. Es werden keine Daten an externe Server übertragen.
 
@@ -20,6 +21,7 @@ Folgende Daten werden lokal auf Ihrem Gerät gespeichert:
 - Einstellungen der App (Screens, Design, App-Tasten, Zeiger, Vibration, Demo-Modus)
 - Kopien der Bilder, die Sie als Screen-Hintergrund wählen; die App erhält nur die Bilder, die Sie in der Android-Fotoauswahl auswählen
 - vom Fernseher geladene App-Symbole
+- für die Programmübersicht: SSH-Benutzer, Port und Fingerabdruck des SSH-Schlüssels des Fernsehers; der SSH-Schlüssel der App, der im Android-Keystore liegt und nicht aus dem Gerät ausgelesen werden kann; die Programmdaten (Senderlisten und Sendungen der letzten 24 Stunden und bis zu 14 Tage im Voraus) und Senderlogos. Das Root-Passwort des Fernsehers wird nur einmal zum Einrichten des Zugangs verwendet und nicht gespeichert.
 
 Diese Daten verbleiben ausschließlich auf Ihrem Gerät, sind von der Android-Datensicherung ausgeschlossen und werden beim Deinstallieren der App gelöscht.
 

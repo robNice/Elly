@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import okhttp3.OkHttpClient
 
 // Decides whether the program guide can be used (demo mode or SSH set up for the active TV) and which source serves it.
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -22,9 +21,10 @@ class EpgAccess(
     private val tvRepository: TvRepository,
     private val settingsRepository: SettingsRepository,
     rootAccessRepository: RootAccessRepository,
-    private val rootAccessService: RootAccessService,
-    private val httpClient: OkHttpClient
+    private val rootAccessService: RootAccessService
 ) {
+
+    private val demo by lazy { DemoEpgSource(context) }
 
     private val rootAccessSet: Flow<Boolean> = tvRepository.activeTv
         .map { it?.id }
@@ -35,9 +35,9 @@ class EpgAccess(
         .distinctUntilChanged()
 
     suspend fun source(): EpgSource? {
-        if (settingsRepository.demoMode.first()) return DemoEpgSource(context)
+        if (settingsRepository.demoMode.first()) return demo
         if (!available.first()) return null
         val tv = tvRepository.activeTv.first() ?: return null
-        return RootedEpgSource(tv, rootAccessService, httpClient)
+        return RootedEpgSource(tv, rootAccessService)
     }
 }

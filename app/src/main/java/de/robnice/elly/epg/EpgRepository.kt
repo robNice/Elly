@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import java.time.Instant
@@ -79,6 +80,49 @@ class EpgRepository(
         }
     }
 
+    private val _reservations = MutableStateFlow<List<EpgReservation>>(emptyList())
+    val reservations: StateFlow<List<EpgReservation>> = _reservations.asStateFlow()
+
+    private val _canRecord = MutableStateFlow(false)
+    val canRecord: StateFlow<Boolean> = _canRecord.asStateFlow()
+
+    private var reservationChannels: List<EpgChannel> = emptyList()
+
+    // Plans or removes a reminder or recording on the TV and reloads the plan afterwards.
+    suspend fun perform(action: EpgAction) {
+        val source = access.source() ?: throw EpgActionException(null)
+        when (action) {
+            is EpgAction.Remind -> source.remind(action.channel, action.program)
+            is EpgAction.Record -> source.record(action.channel, action.program)
+            is EpgAction.Cancel -> cancel(source, action.reservation)
+        }
+        loadReservations(source, withStorage = false)
+    }
+
+    // A reservation already gone from the TV counts as deleted; the TV then answers "Invalid schedule ID".
+    private suspend fun cancel(source: EpgSource, reservation: EpgReservation) {
+        try {
+            source.cancel(reservation)
+        } catch (e: EpgActionException) {
+            loadReservations(source, withStorage = false)
+            if (_reservations.value.any { it.id == reservation.id }) throw e
+        }
+        _reservations.update { list -> list.filterNot { it.id == reservation.id } }
+    }
+
+    // Reservations and the recording storage are extras; failing to read them does not fail the guide.
+    private suspend fun loadReservations(source: EpgSource, withStorage: Boolean = true) {
+        val now = clock()
+        try {
+            _reservations.value = source.reservations(reservationChannels, now - EpgCache.DAY_MILLIS, now + EpgCache.KEEP_FUTURE_MILLIS)
+            if (withStorage) _canRecord.value = source.canRecord()
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            Log.w(TAG, "Reservations not loaded: ${e.message}")
+        }
+    }
+
     suspend fun removeOwner(owner: String) {
         loadMutex.withLock {
             if (loaded.value?.owner == owner) loaded.value = null
@@ -111,6 +155,9 @@ class EpgRepository(
             publish(owner, cache)
             files.save(owner, cache)
         }
+
+        reservationChannels = channels
+        loadReservations(source)
 
         if (newChannels || now - cache.farUpdated > FAR_MAX_AGE_MILLIS) {
             val limit = now + EpgCache.KEEP_FUTURE_MILLIS
