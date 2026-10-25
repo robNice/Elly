@@ -1,7 +1,9 @@
 package de.robnice.elly.ui.onboarding
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.animation.animateContentSize
+import androidx.compose.ui.graphics.lerp as lerpColor
+import androidx.compose.ui.unit.lerp
+import kotlin.math.abs
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -194,17 +196,19 @@ private fun PageDots(pagerState: PagerState) {
             .semantics { contentDescription = description },
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.onboarding_dot_spacing), Alignment.CenterHorizontally)
     ) {
+        // Width and color follow the swipe, so the pill moves from dot to dot and the row keeps its width.
+        val dot = dimensionResource(R.dimen.onboarding_dot_size)
+        val pill = dimensionResource(R.dimen.onboarding_dot_active_width)
+        val activeColor = colorResource(R.color.onboarding_dot_active)
+        val inactiveColor = colorResource(R.color.onboarding_dot_inactive)
+        val position = pagerState.currentPage + pagerState.currentPageOffsetFraction
         repeat(pagerState.pageCount) { index ->
-            val active = index == pagerState.currentPage
+            val share = (1f - abs(position - index)).coerceIn(0f, 1f)
             Box(
                 modifier = Modifier
-                    .animateContentSize()
-                    .height(dimensionResource(R.dimen.onboarding_dot_size))
-                    .width(dimensionResource(if (active) R.dimen.onboarding_dot_active_width else R.dimen.onboarding_dot_size))
-                    .background(
-                        colorResource(if (active) R.color.onboarding_dot_active else R.color.onboarding_dot_inactive),
-                        CircleShape
-                    )
+                    .height(dot)
+                    .width(lerp(dot, pill, share))
+                    .background(lerpColor(inactiveColor, activeColor, share), CircleShape)
             )
         }
     }

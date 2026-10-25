@@ -35,6 +35,7 @@ object EpgParser {
         val number = column("channelNumber")
         val name = column("channelName")
         val logo = column("imgUrl")
+        val channelCode = column("chanCode")
         val position = column("favoriteIdx$listId")
         if (id < 0 || signalId < 0 || name < 0) return emptyList()
         return (0 until rows.length()).mapNotNull { index ->
@@ -47,7 +48,8 @@ object EpgParser {
                 number = row.text(number).orEmpty(),
                 name = row.text(name).orEmpty(),
                 logoPath = logoPath,
-                logoUrl = if (logoPath != null && logoServer != null) "$logoServer/${logoPath.substringAfterLast('/')}" else null
+                logoUrl = if (logoPath != null && logoServer != null) "$logoServer/${logoPath.substringAfterLast('/')}" else null,
+                channelCode = row.text(channelCode)
             )
             channel to (if (position >= 0) row.optInt(position, Int.MAX_VALUE) else index)
         }.sortedBy { it.second }.map { it.first }

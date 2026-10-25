@@ -234,7 +234,7 @@
     <string name="epg_record_cancel">Aufnahme löschen</string>
     <string name="epg_reminder_set">Erinnerung geplant</string>
     <string name="epg_record_no_storage">Zum Aufnehmen braucht der Fernseher einen Speicher, der dort für Aufnahmen gewählt ist.</string>
-    <string name="epg_record_not_broadcast">Der Fernseher kann nur Sendungen aufnehmen, deren Daten er über den Empfang erhalten hat.</string>
+    <string name="epg_record_no_data">Für diese Sendung fehlen dem Fernseher die Daten zum Aufnehmen.</string>
     <string name="epg_action_failed">Der Fernseher hat das nicht angenommen.</string>
     <string name="epg_demo_list_main">Favoriten</string>
     <string name="epg_demo_list_kids">Kinder</string>

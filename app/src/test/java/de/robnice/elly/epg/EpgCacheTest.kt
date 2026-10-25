@@ -77,7 +77,7 @@ class EpgCacheTest {
 
     @Test
     fun jsonRoundTrip() {
-        val withLogo = EpgChannel("ch", "sig", "3", "RTL HD", "/mnt/lg/cmn_data/channel_logo/x.png", "https://logo/x.png")
+        val withLogo = EpgChannel("ch", "sig", "3", "RTL HD", "/mnt/lg/cmn_data/channel_logo/x.png", "https://logo/x.png", "251533369-04FC")
         val cache = EpgCache().withChannels("A", listOf(withLogo), now)
             .merge(
                 listOf(

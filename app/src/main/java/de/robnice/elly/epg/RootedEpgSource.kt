@@ -121,22 +121,40 @@ class RootedEpgSource(
         rootAccess.withLuna(tv) { luna -> luna.call(WATCH_ADD, payload).requireAction() }
     }
 
-    // The TV only records programs received over the air; it rejects the IDs of online programs.
+    // Programs received over the air are recorded by their broadcast ID. Programs the TV only knows from LG's
+    // online data need the network call with LG's channel code; with their ID the first call answers
+    // "Invalid program ID". Whether a tuner is free is left to the TV.
     override suspend fun record(channel: EpgChannel, program: EpgProgram) {
-        val programId = program.offlineProgramId ?: throw EpgActionException(null)
+        val offlineId = program.offlineProgramId
+        val channelCode = channel.channelCode
+        if (offlineId == null && channelCode == null) throw EpgActionException(null)
         rootAccess.withLuna(tv) { luna ->
             val storage = storage(luna) ?: throw EpgActionException(null)
             val payload = schedule(SCHEDULE_RECORDING, channel, program)
-                .put("programId", programId)
-                .put("programIdType", ID_OFFLINE)
                 .put("quality", RECORD_QUALITY)
                 .put("storagePath", storage.path)
                 .put("storageNumber", storage.number)
                 .put("storageId", storage.id)
                 .put("bUSBStick", storage.usbStick)
-                .put("includeCurrentRecording", true)
-                .put("dataType", 1)
-            luna.call(RECORD_ADD, payload).requireAction()
+            if (offlineId != null) {
+                payload
+                    .put("programId", offlineId)
+                    .put("programIdType", ID_OFFLINE)
+                    .put("includeCurrentRecording", true)
+                    .put("dataType", 1)
+                luna.call(RECORD_ADD, payload).requireAction()
+            } else {
+                payload
+                    .put("programId", program.programId)
+                    .put("channelCode", channelCode)
+                    .put("channelName", channel.name)
+                    .put("seriesGroupId", "")
+                    .put("seriesCRIDs", "")
+                    .put("posterImageUrl", "")
+                    .put("startPadding", 0)
+                    .put("endPadding", 0)
+                luna.call(RECORD_NETWORK_ADD, payload).requireAction()
+            }
         }
     }
 
@@ -196,6 +214,7 @@ class RootedEpgSource(
         const val RESERVATIONS = "luna://com.webos.service.iepg/getReservationEventList"
         const val WATCH_ADD = "luna://com.webos.service.tvReservationAgent/watch/epgProgram/add"
         const val RECORD_ADD = "luna://com.webos.service.tvReservationAgent/record/epgProgram/add"
+        const val RECORD_NETWORK_ADD = "luna://com.webos.service.tvReservationAgent/record/fullEpgProgram/add"
         const val RESERVATION_DELETE = "luna://com.webos.service.tvReservationAgent/delete"
         const val SYSTEM_SETTINGS = "luna://com.lge.settingsservice/getSystemSettings"
         const val LIST_DEVICES = "luna://com.webos.service.attachedstoragemanager/listDevices"

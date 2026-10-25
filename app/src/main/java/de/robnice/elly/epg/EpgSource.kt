@@ -9,7 +9,8 @@ data class EpgChannel(
     val number: String,
     val name: String,
     val logoPath: String? = null,
-    val logoUrl: String? = null
+    val logoUrl: String? = null,
+    val channelCode: String? = null
 )
 
 // Times in milliseconds since 1970 (UTC). offlineProgramId is only set for programs received over the air,

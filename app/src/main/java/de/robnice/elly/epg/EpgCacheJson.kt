@@ -8,7 +8,9 @@ object EpgCacheJson {
 
     private const val VERSION = "v"
     // 2: caches before it missed online programs after the data received over the air.
-    private const val CURRENT_VERSION = 2
+    // 3: channels carry LG's channel code; version 2 caches keep their programs but reload the channel lists.
+    private const val CURRENT_VERSION = 3
+    private const val WITHOUT_CHANNEL_CODES = 2
     private const val LISTS = "lists"
     private const val PROGRAMS = "programs"
     private const val CHANNELS_UPDATED = "channelsUpdated"
@@ -36,7 +38,8 @@ object EpgCacheJson {
         if (raw.isNullOrBlank()) return EpgCache()
         return try {
             val json = JSONObject(raw)
-            if (json.optInt(VERSION) != CURRENT_VERSION) return EpgCache()
+            val version = json.optInt(VERSION)
+            if (version != CURRENT_VERSION && version != WITHOUT_CHANNEL_CODES) return EpgCache()
             val lists = json.optJSONObject(LISTS)
             val programs = json.optJSONObject(PROGRAMS)
             val updated = json.optJSONObject(CHANNELS_UPDATED)
@@ -45,7 +48,11 @@ object EpgCacheJson {
                 programs = programs?.keys()?.asSequence()?.associateWith { signalId ->
                     programs.getJSONArray(signalId).objects().mapNotNull { program(signalId, it) }
                 }.orEmpty(),
-                channelsUpdated = updated?.keys()?.asSequence()?.associateWith { updated.getLong(it) }.orEmpty(),
+                channelsUpdated = if (version == WITHOUT_CHANNEL_CODES) {
+                    emptyMap()
+                } else {
+                    updated?.keys()?.asSequence()?.associateWith { updated.getLong(it) }.orEmpty()
+                },
                 nearUpdated = json.optLong(NEAR_UPDATED),
                 farUpdated = json.optLong(FAR_UPDATED)
             )
@@ -61,11 +68,12 @@ object EpgCacheJson {
         .put("t", channel.name)
         .putOpt("lp", channel.logoPath)
         .putOpt("lu", channel.logoUrl)
+        .putOpt("cc", channel.channelCode)
 
     private fun channel(json: JSONObject): EpgChannel? {
         val id = json.optString("i").takeIf { it.isNotEmpty() } ?: return null
         val signalId = json.optString("s").takeIf { it.isNotEmpty() } ?: return null
-        return EpgChannel(id, signalId, json.optString("n"), json.optString("t"), json.text("lp"), json.text("lu"))
+        return EpgChannel(id, signalId, json.optString("n"), json.optString("t"), json.text("lp"), json.text("lu"), json.text("cc"))
     }
 
     private fun program(program: EpgProgram) = JSONObject()

@@ -29,9 +29,9 @@ class EpgParserTest {
         """
         {"returnValue":true,"channelListCount":3,
          "channelLogoServerUrl":"https://eic-ngfts.tv.wiselg.com/gfts/v1/gftsDownload.lge?biz_code=IBS&func_code=GN_CHANNEL_IMG&file_path=/ibs/gn/channel_img",
-         "names":{"channelId":0,"signalChannelId":2,"channelNumber":8,"channelName":11,"imgUrl":18,"favoriteIdxA":39},
+         "names":{"channelId":0,"signalChannelId":2,"chanCode":3,"channelNumber":8,"channelName":11,"imgUrl":18,"favoriteIdxA":39},
          "values":[
-          ["7_2_7_6_1057_61201_1",null,"1057_61201_1",null,null,null,null,null,"7",null,null,"VOX HD",null,null,null,null,null,null,"/mnt/lg/cmn_data/channel_logo/major_logo_img/251533373-342aef452636dc6b26e129c090c74801_202307100811_h133x100.png",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,8],
+          ["7_2_7_6_1057_61201_1",null,"1057_61201_1","251533373-342AEF452636DC6B26E129C090C74801",null,null,null,null,"7",null,null,"VOX HD",null,null,null,null,null,null,"/mnt/lg/cmn_data/channel_logo/major_logo_img/251533373-342aef452636dc6b26e129c090c74801_202307100811_h133x100.png",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,8],
           ["7_16_1_1_1019_10301_1",null,"1019_10301_1",null,null,null,null,null,"1",null,null,"Das Erste HD",null,null,null,null,null,null,"",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0],
           ["7_3_3_1_1057_61200_1",null,"1057_61200_1",null,null,null,null,null,"3",null,null,"RTL HD",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2]
          ]}
@@ -80,6 +80,8 @@ class EpgParserTest {
         assertEquals("7_2_7_6_1057_61201_1", vox.id)
         assertEquals("1057_61201_1", vox.signalId)
         assertEquals("7", vox.number)
+        assertEquals("251533373-342AEF452636DC6B26E129C090C74801", vox.channelCode)
+        assertNull(channels.first().channelCode)
         assertTrue(vox.logoPath!!.startsWith("/mnt/lg/cmn_data/channel_logo/"))
         assertTrue(vox.logoUrl!!.endsWith("/channel_img/251533373-342aef452636dc6b26e129c090c74801_202307100811_h133x100.png"))
         assertNull(channels.first().logoPath)

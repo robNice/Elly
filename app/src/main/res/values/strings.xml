@@ -238,7 +238,7 @@
     <string name="epg_record_cancel">Delete recording</string>
     <string name="epg_reminder_set">Reminder set</string>
     <string name="epg_record_no_storage">Recording needs a storage device on the TV chosen for recordings.</string>
-    <string name="epg_record_not_broadcast">The TV can only record programs whose data it received over the air.</string>
+    <string name="epg_record_no_data">The TV has no recording data for this program.</string>
     <string name="epg_action_failed">The TV did not accept this.</string>
     <string name="epg_demo_list_main">Favorites</string>
     <string name="epg_demo_list_kids">Kids</string>

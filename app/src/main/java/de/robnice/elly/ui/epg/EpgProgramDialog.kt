@@ -116,7 +116,8 @@ fun EpgProgramDialog(
                             modifier = Modifier.fillMaxWidth()
                         ) { Text(stringResource(if (reminder != null) R.string.epg_remind_cancel else R.string.epg_remind)) }
                     }
-                    val recordable = canRecord && program.offlineProgramId != null
+                    val recordData = program.offlineProgramId != null || channel.channelCode != null
+                    val recordable = canRecord && recordData
                     OutlinedButton(
                         onClick = { act(if (recording != null) EpgAction.Cancel(recording) else EpgAction.Record(channel, program)) },
                         enabled = !busy && (recording != null || recordable),
@@ -130,7 +131,7 @@ fun EpgProgramDialog(
                             color = MaterialTheme.colorScheme.error
                         )
                         recording == null && !canRecord -> Hint(R.string.epg_record_no_storage)
-                        recording == null && program.offlineProgramId == null -> Hint(R.string.epg_record_not_broadcast)
+                        recording == null && !recordData -> Hint(R.string.epg_record_no_data)
                     }
                 }
                 if (program.genre.isNotBlank()) {
