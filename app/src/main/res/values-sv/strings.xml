@@ -362,7 +362,7 @@
     <string name="help_remote_status_title">Statuslampan</string>
     <string name="help_remote_status_body">• Grön: ansluten.\n• Röd: tv:n går inte att nå.\n• Grå: anslutningen kontrolleras.\n• Gul: demoläge.\nMedan Elly syns kontrolleras anslutningen var 10:e sekund och efter varje knapptryck. När appen hamnar i bakgrunden stängs anslutningen.</string>
     <string name="help_remote_screens_title">Byta skärm</string>
-    <string name="help_remote_screens_body">Knapparna är fördelade på upp till fyra skärmar, så allt får plats utan att du behöver rulla. Svep åt vänster eller höger för att byta. Prickarna längst ned visar vilken skärm du är på; med bara en aktiv skärm försvinner de.\nElly kommer ihåg skärmen du använde senast. Vilka skärmar som visas och i vilken ordning ställer du in i inställningarna.</string>
+    <string name="help_remote_screens_body">Knapparna är fördelade på upp till fyra skärmar, så allt får plats utan att du behöver rulla. Svep åt vänster eller höger för att byta. Prickarna längst ned visar vilken skärm du är på; med bara en aktiv skärm försvinner de.\nElly kommer ihåg skärmen du använde senast. Vilka skärmar som visas och i vilken ordning ställer du in i inställningarna. Fyller ett element som programguiden skärmen sveper du över prickarna längst ned.</string>
     <string name="help_remote_keys_title">Använda knapparna</string>
     <string name="help_remote_keys_body">• Knapparna reagerar när du lyfter fingret. Ett svep som börjar på en knapp skickar därför ingenting.\n• Volym, kanal och styrkorset upprepas medan du håller dem.\n• Om du vill vibrerar telefonen vid varje knapptryck (Inställningar → ”Styrning”).\n• Om en knapp inte är tillgänglig eller tv:n inte går att nå visas ett meddelande längst ned.</string>
     <string name="help_remote_defaults_title">Standardlayout</string>
@@ -460,8 +460,114 @@
     <string name="help_privacy_title">Integritet</string>
     <string name="help_privacy_elly">Dina data tillhör dig. Det är mitt beslut, och det står jag fast vid!</string>
     <string name="help_privacy_data_title">Vad som händer med dina data</string>
-    <string name="help_privacy_data_body">Elly pratar bara med din tv i det lokala nätverket, inga data skickas till externa servrar. Parkopplade tv-apparater, inställningar, skärmlayouter och appikoner stannar på telefonen och raderas när du avinstallerar appen.</string>
+    <string name="help_privacy_data_body">Elly pratar bara med din tv i det lokala nätverket, inga data skickas till externa servrar. Parkopplade tv-apparater, inställningar, skärmlayouter och appikoner stannar på telefonen och raderas när du avinstallerar appen. Även programguiden stannar på din telefon.</string>
     <string name="help_privacy_policy_title">Integritetspolicy</string>
     <string name="help_privacy_policy_body">Hela integritetspolicyn öppnas via ”Integritet” längst ned i inställningarna, bredvid versionsnumret.</string>
     <string name="help_privacy_link">integritetspolicy</string>
+    <string name="settings_root_ssh">Root-åtkomst och SSH konfigurerade?</string>
+    <string name="settings_root_ssh_description">För rootade tv-apparater med Homebrew Channel och SSH-servern påslagen. Behövs för programguiden.</string>
+    <string name="settings_root_ssh_check">Kontrollera</string>
+    <string name="settings_root_ssh_checking">Kontrollerar anslutningen …</string>
+    <string name="settings_root_ssh_ok">SSH-anslutningen fungerar.</string>
+    <string name="settings_root_ssh_removing">Tar bort SSH-åtkomst …</string>
+    <string name="settings_root_ssh_setup_title">Konfigurera SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly loggar in på tv:n en gång med root-lösenordet och sparar en egen nyckel där. Lösenordet sparas inte.</string>
+    <string name="settings_root_ssh_user">Användare</string>
+    <string name="settings_root_ssh_port">Port</string>
+    <string name="settings_root_ssh_password">Lösenord</string>
+    <string name="settings_root_ssh_setup_confirm">Konfigurera</string>
+    <string name="settings_root_ssh_error_unreachable">Tv:ns SSH-server går inte att nå. Är SSH påslaget i Homebrew Channel?</string>
+    <string name="settings_root_ssh_error_auth">Inloggningen nekades. Kontrollera användare och lösenord.</string>
+    <string name="settings_root_ssh_error_key">Tv:n godkänner inte längre Ellys nyckel. Stäng av inställningen och konfigurera SSH igen.</string>
+    <string name="settings_root_ssh_error_host_key">Tv:ns SSH-nyckel har ändrats. Om tv:n har rootats på nytt, stäng av inställningen och konfigurera SSH igen.</string>
+    <string name="settings_root_ssh_error_luna">Inloggad, men tv:ns systemkommandon är inte tillgängliga.</string>
+    <string name="settings_root_ssh_error_unknown">SSH-anslutningen misslyckades.</string>
+    <string name="settings_root_ssh_remove_title">Ta bort SSH-åtkomst?</string>
+    <string name="settings_root_ssh_remove_message">Elly raderar sin nyckel från tv:n och glömmer åtkomsten. Programguiden är sedan inte längre tillgänglig.</string>
+    <string name="settings_root_ssh_remove">Ta bort</string>
+    <string name="settings_root_ssh_removed_locally">Tv:n gick inte att nå, så Ellys nyckel finns fortfarande sparad där. Elly använder den inte längre. Om du vill kan du på tv:n radera raden som slutar på ”elly-app” i ~/.ssh/authorized_keys.</string>
+    <string name="custom_element_epg">Programguide</string>
+    <string name="epg_title_with_list">Programguide · %1$s</string>
+    <string name="epg_editor_hint">Håll in för att byta favoritlista</string>
+    <string name="epg_unavailable_hint">Dold på skärmen tills SSH är konfigurerat för den här tv:n</string>
+    <string name="epg_list_title">Välj favoritlista</string>
+    <string name="epg_list_failed">Favoritlistorna kunde inte läsas in. Kontrollera SSH-anslutningen på fliken Tv.</string>
+    <string name="epg_list_empty">Tv:n har inga favoritlistor.</string>
+    <string name="epg_status_failed">Programguiden kunde inte läsas in.</string>
+    <string name="epg_status_empty">Inga programdata ännu.</string>
+    <string name="epg_now">Nu</string>
+    <string name="epg_info_when">%1$s · %2$s–%3$s (%4$d min)</string>
+    <string name="epg_info_remaining">%1$d min kvar</string>
+    <string name="epg_info_switch">Byt till kanalen</string>
+    <string name="epg_info_close">Stäng</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Undertexter</string>
+    <string name="epg_badge_audio_description">Syntolkning</string>
+    <string name="epg_badge_sign_language">Teckenspråk</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_remind">Påminn mig</string>
+    <string name="epg_remind_cancel">Ta bort påminnelse</string>
+    <string name="epg_record">Spela in</string>
+    <string name="epg_record_cancel">Ta bort inspelning</string>
+    <string name="epg_record_stop">Stoppa inspelning</string>
+    <string name="epg_reminder_set">Påminnelse planerad</string>
+    <string name="epg_record_no_storage">För att spela in behöver tv:n en lagringsenhet som valts för inspelningar där.</string>
+    <string name="epg_record_no_data">Tv:n har inga inspelningsdata för det här programmet.</string>
+    <string name="epg_action_failed">Tv:n godtog inte detta.</string>
+    <string name="epg_action_conflict">Detta överlappar en påminnelse eller inspelning som redan är planerad på tv:n.</string>
+    <string name="epg_demo_list_main">Favoriter</string>
+    <string name="epg_demo_list_kids">Barn</string>
+    <string name="epg_demo_description">Påhittat program för demoläget. Med en rootad tv och konfigurerat SSH visar guiden det riktiga programmet på din tv.</string>
+    <string name="help_remote_guide_title">Programguide</string>
+    <string name="help_remote_guide_body">Med en rootad tv (eller i demoläget) kan en skärm visa programguiden, som guiden på tv:n: överst klockslagen, till vänster kanalerna i din favoritlista, till höger programmen.\n• Svep åt alla håll: bakåt upp till 24 timmar, framåt så långt tv:n har data (högst 14 dagar). Till vänster i tidslisten står datumet, och varje ny dag börjar med ett streck.\n• Det orange strecket visar aktuell tid; ”Nu” uppe till vänster hoppar tillbaka dit. Raden för kanalen som visas på tv:n just nu är markerad i orange.\n• Tryck på en kanal för att byta till den.\nSvep i guiden byter aldrig skärm; svep i stället över prickarna längst ned. Elly sparar data på telefonen och uppdaterar dem var 15:e minut medan fjärrkontrollen är öppen; medan den laddar snurrar en liten cirkel uppe till vänster.</string>
+    <string name="help_remote_guide_info_title">Program, påminnelser och inspelningar</string>
+    <string name="help_remote_guide_info_body">Tryck på ett program för att se detaljerna: kanal, dag, tid, längd, genre och beskrivning. ”Byt till kanalen” ställer tv:n på kanalen.\n• Påminn mig: tv:n påminner dig när programmet börjar, även när telefonen är avstängd. Planerade påminnelser har en klocka.\n• Spela in: tv:n spelar in till den lagringsenhet som valts för inspelningar där. Planerade inspelningar har en röd prick; pågående inspelningar kan stoppas.\nBåda kan tas bort igen. Elly visar även påminnelser och inspelningar som du har lagt in på tv:n. Om tv:n avvisar något, till exempel vid överlappning, visas dess meddelande i fönstret.</string>
+    <string name="help_edit_guide_title">Lägga till programguiden</string>
+    <string name="help_edit_guide_body">”+ Element” erbjuder programguiden så snart SSH är konfigurerat för tv:n (se Inställningar) eller demoläget är på. Innan den placeras väljer du den favoritlista på tv:n vars kanaler ska visas. Håll in elementet i 2 sekunder för att byta lista.\nGuiden är först lika bred som skärmen och hälften så hög; precis som andra element kan den flyttas och ändras i storlek. Flera guider med olika listor är möjliga. Utan SSH-åtkomst sparas elementet men visas inte på skärmen.</string>
+    <string name="help_settings_root_title">Root-åtkomst och SSH</string>
+    <string name="help_settings_root_body">Programguiden behöver en åtkomst till tv:n som LG bara tillåter med root. Om din tv är rootad (Homebrew Channel) och SSH-servern är påslagen där, slår du på ”Root-åtkomst och SSH konfigurerade?” på fliken Tv.\nAnge användare (oftast root), port (oftast 22) och root-lösenordet. Elly loggar in en gång och sparar en egen nyckel på tv:n; lösenordet sparas inte. ”Kontrollera” testar anslutningen.\nAtt stänga av tar bort nyckeln från tv:n igen efter en bekräftelse. Inställningen gäller per tv.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly Ett</item>
+        <item>Hönshus TV</item>
+        <item>Hönsgårdsnytt</item>
+        <item>Lada Sport</item>
+        <item>Fjäder Bio</item>
+        <item>Bo Dokumentär</item>
+        <item>Tupp Musik</item>
+        <item>Guldägget</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Kyckling TV</item>
+        <item>Lilla Pip</item>
+        <item>Nykläckt</item>
+        <item>Solkycklingar</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Morgon i ladan</item>
+        <item>Den stora äggjakten</item>
+        <item>Fjädrar och fakta</item>
+        <item>Nytt från hönshuset</item>
+        <item>Tupp Rock Live</item>
+        <item>Ladans kök</item>
+        <item>Rävens natt</item>
+        <item>Vingar över dalen</item>
+        <item>Väderhönan</item>
+        <item>Kommissarie Näbb</item>
+        <item>Berättelser från hagen</item>
+        <item>Sent kackel</item>
+        <item>Sädesquiz</item>
+        <item>Ladfotboll</item>
+        <item>Höns på resa</item>
+        <item>Den långa sittpinnen</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Pip och vänner</item>
+        <item>Små vingar</item>
+        <item>Det lilla ägget</item>
+        <item>Kycklingäventyr</item>
+        <item>Berättelseboet</item>
+        <item>Räkna korn</item>
+        <item>Sömniga kycklingar</item>
+        <item>Gult dun</item>
+    </string-array>
 </resources>

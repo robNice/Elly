@@ -466,4 +466,112 @@
     <string name="help_privacy_policy_title">Informativa sulla privacy</string>
     <string name="help_privacy_policy_body">L\'informativa sulla privacy completa si apre da «Privacy», in fondo alle impostazioni, accanto al numero di versione.</string>
     <string name="help_privacy_link">informativa sulla privacy</string>
+    <string name="settings_root_ssh">Accesso root e SSH configurati?</string>
+    <string name="settings_root_ssh_description">Per TV con root, Homebrew Channel e il relativo server SSH attivato. Necessario per la guida programmi.</string>
+    <string name="settings_root_ssh_check">Verifica</string>
+    <string name="settings_root_ssh_checking">Verifica della connessione…</string>
+    <string name="settings_root_ssh_ok">La connessione SSH funziona.</string>
+    <string name="settings_root_ssh_removing">Rimozione dell\'accesso SSH…</string>
+    <string name="settings_root_ssh_setup_title">Configura SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly accede una volta alla TV con la password di root e vi salva la propria chiave. La password non viene memorizzata.</string>
+    <string name="settings_root_ssh_user">Utente</string>
+    <string name="settings_root_ssh_port">Porta</string>
+    <string name="settings_root_ssh_password">Password</string>
+    <string name="settings_root_ssh_setup_confirm">Configura</string>
+    <string name="settings_root_ssh_error_unreachable">Il server SSH della TV non è raggiungibile. SSH è attivato in Homebrew Channel?</string>
+    <string name="settings_root_ssh_error_auth">Accesso rifiutato. Controlla utente e password.</string>
+    <string name="settings_root_ssh_error_key">La TV non accetta più la chiave di Elly. Disattiva l\'impostazione e configura nuovamente SSH.</string>
+    <string name="settings_root_ssh_error_host_key">La chiave SSH della TV è cambiata. Se la TV è stata nuovamente sottoposta a root, disattiva l\'impostazione e configura nuovamente SSH.</string>
+    <string name="settings_root_ssh_error_luna">Accesso eseguito, ma i comandi di sistema della TV non sono disponibili.</string>
+    <string name="settings_root_ssh_error_unknown">Connessione SSH non riuscita.</string>
+    <string name="settings_root_ssh_remove_title">Rimuovere l\'accesso SSH?</string>
+    <string name="settings_root_ssh_remove_message">Elly elimina la propria chiave dalla TV e dimentica l\'accesso. La guida programmi non sarà più disponibile.</string>
+    <string name="settings_root_ssh_remove">Rimuovi</string>
+    <string name="settings_root_ssh_removed_locally">Non è stato possibile raggiungere la TV, quindi la chiave di Elly è ancora memorizzata al suo interno. Elly non la usa più. Se vuoi, elimina dalla TV la riga che termina con «elly-app» nel file ~/.ssh/authorized_keys.</string>
+
+    <string name="custom_element_epg">Guida programmi</string>
+    <string name="epg_title_with_list">Guida programmi · %1$s</string>
+    <string name="epg_editor_hint">Tieni premuto per cambiare l\'elenco dei preferiti</string>
+    <string name="epg_unavailable_hint">Nascosta nella schermata finché SSH non viene configurato per questa TV</string>
+    <string name="epg_list_title">Scegli l\'elenco dei preferiti</string>
+    <string name="epg_list_failed">Impossibile caricare gli elenchi dei preferiti. Controlla la connessione SSH nella scheda TV.</string>
+    <string name="epg_list_empty">La TV non ha elenchi di preferiti.</string>
+    <string name="epg_status_failed">Impossibile caricare la guida programmi.</string>
+    <string name="epg_status_empty">Non ci sono ancora dati sui programmi.</string>
+    <string name="epg_now">Ora</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min)</string>
+    <string name="epg_info_remaining">%1$d min rimanenti</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Sottotitoli</string>
+    <string name="epg_badge_audio_description">Audiodescrizione</string>
+    <string name="epg_badge_sign_language">Lingua dei segni</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_info_switch">Passa al canale</string>
+    <string name="epg_info_close">Chiudi</string>
+    <string name="epg_remind">Ricordamelo</string>
+    <string name="epg_remind_cancel">Elimina promemoria</string>
+    <string name="epg_record">Registra</string>
+    <string name="epg_record_cancel">Elimina registrazione</string>
+    <string name="epg_record_stop">Interrompi registrazione</string>
+    <string name="epg_reminder_set">Promemoria impostato</string>
+    <string name="epg_record_no_storage">Per registrare è necessario selezionare sulla TV un dispositivo di archiviazione per le registrazioni.</string>
+    <string name="epg_record_no_data">La TV non dispone di dati di registrazione per questo programma.</string>
+    <string name="epg_action_failed">La TV non ha accettato questa azione.</string>
+    <string name="epg_action_conflict">Questo evento si sovrappone a un promemoria o a una registrazione già programmati sulla TV.</string>
+    <string name="epg_demo_list_main">Preferiti</string>
+    <string name="epg_demo_list_kids">Bambini</string>
+    <string name="epg_demo_description">Programma inventato per la modalità demo. Con una TV dotata di root e SSH configurato, la guida mostra i programmi reali della tua TV.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly Uno</item>
+        <item>TV Pollaio</item>
+        <item>Notizie dal Pollaio</item>
+        <item>Sport in Fattoria</item>
+        <item>Cinema Piumato</item>
+        <item>Documentari dal Nido</item>
+        <item>Musica del Gallo</item>
+        <item>L\'Uovo d\'Oro</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>TV Pulcino</item>
+        <item>Pio Pio</item>
+        <item>Appena Schiuso</item>
+        <item>Pulcini al Sole</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Mattina nel fienile</item>
+        <item>La grande caccia all\'uovo</item>
+        <item>Piume e fatti</item>
+        <item>Notizie dal pollaio</item>
+        <item>Rock del gallo dal vivo</item>
+        <item>La cucina del pollaio</item>
+        <item>La notte della volpe</item>
+        <item>Ali sulla valle</item>
+        <item>La gallina del meteo</item>
+        <item>Detective Picchio</item>
+        <item>Storie dal pascolo</item>
+        <item>Coccodè di mezzanotte</item>
+        <item>Quiz dei chicchi</item>
+        <item>Calcio in fattoria</item>
+        <item>Galline in tournée</item>
+        <item>Il lungo riposo</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Pio e gli amici</item>
+        <item>Piccole ali</item>
+        <item>Il piccolo uovo</item>
+        <item>Avventure di pulcini</item>
+        <item>Nido di storie</item>
+        <item>Contiamo i chicchi</item>
+        <item>Pulcini assonnati</item>
+        <item>Piumino giallo</item>
+    </string-array>
+
+    <string name="help_remote_guide_title">Guida programmi</string>
+    <string name="help_remote_guide_body">Con una TV dotata di root (o in modalità demo), una schermata può mostrare la guida programmi, come quella sulla TV: gli orari in alto, i canali del tuo elenco dei preferiti a sinistra e i programmi a destra.\n• Scorri in qualsiasi direzione: indietro fino a 24 ore e in avanti fin dove la TV dispone di dati (al massimo 14 giorni). La data compare a sinistra della barra degli orari e ogni nuovo giorno inizia con una linea.\n• La linea arancione indica l\'ora attuale; «Ora», in alto a sinistra, permette di tornarvi. La riga del canale attualmente visualizzato sulla TV è evidenziata in arancione.\n• Tocca un canale per passare a quel canale.\nScorrere nella guida non cambia mai schermata; per farlo, scorri sui puntini in basso. Elly conserva i dati sul telefono e li aggiorna ogni 15 minuti mentre il telecomando è aperto; durante il caricamento, in alto a sinistra gira un piccolo cerchio.</string>
+    <string name="help_remote_guide_info_title">Programmi, promemoria e registrazioni</string>
+    <string name="help_remote_guide_info_body">Tocca un programma per vederne i dettagli: canale, giorno, ora, durata, genere e descrizione. «Passa al canale» sintonizza la TV su quel canale.\n• Ricordamelo: la TV ti avvisa all\'inizio del programma, anche quando il telefono è spento. I promemoria pianificati mostrano una campanella.\n• Registra: la TV registra sul dispositivo di archiviazione scelto per le registrazioni. Le registrazioni pianificate mostrano un punto rosso.\nEntrambi possono essere eliminati («Elimina…»). Anche i promemoria e le registrazioni impostati sulla TV vengono mostrati in Elly. Se la TV rifiuta l\'operazione, ad esempio perché le registrazioni si sovrappongono, il suo messaggio viene visualizzato nella finestra.</string>
+    <string name="help_edit_guide_title">Aggiungere la guida programmi</string>
+    <string name="help_edit_guide_body">«+ Elemento» include la guida programmi non appena SSH è configurato per la TV (vedi Impostazioni) o la modalità demo è attiva. Prima di inserirla, scegli l\'elenco dei preferiti della TV di cui mostrare i canali. Tieni premuto l\'elemento per 2 secondi per cambiare elenco.\nInizialmente la guida occupa l\'intera larghezza della schermata e metà della sua altezza; come gli altri elementi, può essere spostata e ridimensionata. Puoi aggiungere più guide con elenchi diversi. Senza accesso SSH, l\'elemento rimane salvato ma non viene mostrato nella schermata.</string>
+    <string name="help_settings_root_title">Accesso root e SSH</string>
+    <string name="help_settings_root_body">La guida programmi richiede un accesso alla TV che LG consente solo con root. Se la tua TV è dotata di root (Homebrew Channel) e il suo server SSH è attivato, abilita «Accesso root e SSH configurati?» nella scheda «TV».\nInserisci l\'utente (di solito root), la porta (di solito 22) e la password di root. Elly accede una volta e salva la propria chiave sulla TV; la password non viene memorizzata. «Verifica» prova la connessione.\nDisattivando l\'opzione, la chiave viene rimossa dalla TV dopo una conferma. L\'impostazione vale per ogni TV.</string>
 </resources>

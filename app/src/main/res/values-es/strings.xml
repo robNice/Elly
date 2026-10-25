@@ -466,4 +466,112 @@
     <string name="help_privacy_policy_title">Política de privacidad</string>
     <string name="help_privacy_policy_body">La política de privacidad completa se abre desde «Privacidad», al final de los ajustes, junto al número de versión.</string>
     <string name="help_privacy_link">política de privacidad</string>
+    <string name="settings_root_ssh">¿Están configurados el acceso root y SSH?</string>
+    <string name="settings_root_ssh_description">Para TV rooteadas con Homebrew Channel y su servidor SSH activado. Necesario para la guía de programación.</string>
+    <string name="settings_root_ssh_check">Comprobar</string>
+    <string name="settings_root_ssh_checking">Comprobando conexión…</string>
+    <string name="settings_root_ssh_ok">La conexión SSH funciona.</string>
+    <string name="settings_root_ssh_removing">Eliminando acceso SSH…</string>
+    <string name="settings_root_ssh_setup_title">Configurar SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly inicia sesión una vez en la TV con la contraseña root y guarda allí su propia clave. La contraseña no se guarda.</string>
+    <string name="settings_root_ssh_user">Usuario</string>
+    <string name="settings_root_ssh_port">Puerto</string>
+    <string name="settings_root_ssh_password">Contraseña</string>
+    <string name="settings_root_ssh_setup_confirm">Configurar</string>
+    <string name="settings_root_ssh_error_unreachable">No se puede acceder al servidor SSH de la TV. ¿Está activado SSH en Homebrew Channel?</string>
+    <string name="settings_root_ssh_error_auth">Inicio de sesión rechazado. Comprueba el usuario y la contraseña.</string>
+    <string name="settings_root_ssh_error_key">La TV ya no acepta la clave de Elly. Desactiva el ajuste y vuelve a configurar SSH.</string>
+    <string name="settings_root_ssh_error_host_key">La clave SSH de la TV ha cambiado. Si se ha vuelto a rootear la TV, desactiva el ajuste y vuelve a configurar SSH.</string>
+    <string name="settings_root_ssh_error_luna">Se ha iniciado sesión, pero los comandos del sistema de la TV no están disponibles.</string>
+    <string name="settings_root_ssh_error_unknown">La conexión SSH ha fallado.</string>
+    <string name="settings_root_ssh_remove_title">¿Eliminar el acceso SSH?</string>
+    <string name="settings_root_ssh_remove_message">Elly elimina su clave de la TV y olvida el acceso. Después, la guía de programación dejará de estar disponible.</string>
+    <string name="settings_root_ssh_remove">Eliminar</string>
+    <string name="settings_root_ssh_removed_locally">No se ha podido acceder a la TV, así que la clave de Elly sigue guardada en ella. Elly ya no la utiliza. Si quieres, elimina de ~/.ssh/authorized_keys en la TV la línea que termina en «elly-app».</string>
+
+    <string name="custom_element_epg">Guía de programación</string>
+    <string name="epg_title_with_list">Guía de programación · %1$s</string>
+    <string name="epg_editor_hint">Mantén pulsado para cambiar la lista de favoritos</string>
+    <string name="epg_unavailable_hint">Oculta en la pantalla hasta que se configure SSH para esta TV</string>
+    <string name="epg_list_title">Elegir lista de favoritos</string>
+    <string name="epg_list_failed">No se han podido cargar las listas de favoritos. Comprueba la conexión SSH en la pestaña TV.</string>
+    <string name="epg_list_empty">La TV no tiene listas de favoritos.</string>
+    <string name="epg_status_failed">No se ha podido cargar la guía de programación.</string>
+    <string name="epg_status_empty">Aún no hay datos de programación.</string>
+    <string name="epg_now">Ahora</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min)</string>
+    <string name="epg_info_remaining">Quedan %1$d min</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Subtítulos</string>
+    <string name="epg_badge_audio_description">Audiodescripción</string>
+    <string name="epg_badge_sign_language">Lengua de signos</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_info_switch">Cambiar de canal</string>
+    <string name="epg_info_close">Cerrar</string>
+    <string name="epg_remind">Avisarme</string>
+    <string name="epg_remind_cancel">Eliminar recordatorio</string>
+    <string name="epg_record">Grabar</string>
+    <string name="epg_record_cancel">Eliminar grabación</string>
+    <string name="epg_record_stop">Detener grabación</string>
+    <string name="epg_reminder_set">Recordatorio programado</string>
+    <string name="epg_record_no_storage">Para grabar, debe haberse elegido en la TV un dispositivo de almacenamiento para las grabaciones.</string>
+    <string name="epg_record_no_data">La TV no tiene datos de grabación para este programa.</string>
+    <string name="epg_action_failed">La TV no ha aceptado esta acción.</string>
+    <string name="epg_action_conflict">Esto se solapa con un recordatorio o una grabación ya programados en la TV.</string>
+    <string name="epg_demo_list_main">Favoritos</string>
+    <string name="epg_demo_list_kids">Infantil</string>
+    <string name="epg_demo_description">Programa ficticio para el modo demo. Con una TV rooteada y SSH configurado, la guía muestra la programación real de tu TV.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly Uno</item>
+        <item>TV Gallinero</item>
+        <item>Noticias del Gallinero</item>
+        <item>Deportes de Granja</item>
+        <item>Cine con Plumas</item>
+        <item>Documentales del Nido</item>
+        <item>Música del Gallo</item>
+        <item>El Huevo de Oro</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>TV Pollito</item>
+        <item>Pío Pío</item>
+        <item>El Cascarón</item>
+        <item>Pollitos al Sol</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Mañana en el granero</item>
+        <item>La gran búsqueda del huevo</item>
+        <item>Plumas y datos</item>
+        <item>Noticias del gallinero</item>
+        <item>Rock del gallo en directo</item>
+        <item>Cocina del gallinero</item>
+        <item>La noche del zorro</item>
+        <item>Alas sobre el valle</item>
+        <item>La gallina del tiempo</item>
+        <item>Detective Picotazo</item>
+        <item>Historias del prado</item>
+        <item>Cacareo nocturno</item>
+        <item>Concurso de granos</item>
+        <item>Fútbol de granja</item>
+        <item>Gallinas de gira</item>
+        <item>El largo descanso</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Pío y sus amigos</item>
+        <item>Alitas</item>
+        <item>El huevito</item>
+        <item>Aventuras de pollitos</item>
+        <item>Nido de cuentos</item>
+        <item>Contando granos</item>
+        <item>Pollitos dormilones</item>
+        <item>Plumón amarillo</item>
+    </string-array>
+
+    <string name="help_remote_guide_title">Guía de programación</string>
+    <string name="help_remote_guide_body">Con una TV rooteada (o en modo demo), una pantalla puede mostrar la guía de programación, como la guía de la TV: las horas arriba, los canales de tu lista de favoritos a la izquierda y los programas a la derecha.\n• Desliza en cualquier dirección: hasta 24 horas hacia atrás y hacia delante mientras la TV tenga datos (como máximo, 14 días). La fecha aparece a la izquierda de la barra horaria y cada día nuevo empieza con una línea.\n• La línea naranja marca la hora actual; «Ahora», arriba a la izquierda, vuelve a ella. La fila del canal que se está viendo en la TV se resalta en naranja.\n• Toca un canal para cambiar a él.\nDeslizar por la guía nunca cambia de pantalla; para hacerlo, desliza sobre los puntos de abajo. Elly guarda los datos en el móvil y los actualiza cada 15 minutos mientras el mando está abierto; durante la carga gira un pequeño círculo arriba a la izquierda.</string>
+    <string name="help_remote_guide_info_title">Programas, recordatorios y grabaciones</string>
+    <string name="help_remote_guide_info_body">Toca un programa para ver sus detalles: canal, día, hora, duración, género y descripción. «Cambiar de canal» cambia la TV a ese canal.\n• Avisarme: la TV te avisa cuando empieza el programa, incluso si el móvil está apagado. Los recordatorios programados muestran una campana.\n• Grabar: la TV graba en el almacenamiento seleccionado en ella para las grabaciones. Las grabaciones programadas muestran un punto rojo.\nAmbos se pueden eliminar («Eliminar…»). Los recordatorios y las grabaciones que programes en la TV también aparecen en Elly. Si la TV rechaza la acción, por ejemplo porque las grabaciones se solapan, su mensaje aparece en la ventana.</string>
+    <string name="help_edit_guide_title">Añadir la guía de programación</string>
+    <string name="help_edit_guide_body">«+ Elemento» ofrece la guía de programación cuando SSH está configurado para la TV (consulta Ajustes) o el modo demo está activado. Antes de colocarla, eliges la lista de favoritos de la TV cuyos canales mostrará. Mantén pulsado el elemento durante 2 segundos para cambiar la lista.\nAl principio, la guía ocupa todo el ancho de la pantalla y la mitad de su altura; como los demás elementos, se puede mover y redimensionar. Se pueden añadir varias guías con listas diferentes. Sin acceso SSH, el elemento sigue guardado, pero no se muestra en la pantalla.</string>
+    <string name="help_settings_root_title">Acceso root y SSH</string>
+    <string name="help_settings_root_body">La guía de programación necesita un acceso a la TV que LG solo permite con root. Si tu TV está rooteada (Homebrew Channel) y su servidor SSH está activado allí, activa «¿Están configurados el acceso root y SSH?» en la pestaña «TV».\nIntroduce el usuario (normalmente root), el puerto (normalmente 22) y la contraseña root. Elly inicia sesión una vez y guarda su propia clave en la TV; la contraseña no se guarda. «Comprobar» prueba la conexión.\nAl desactivarlo, se elimina de nuevo la clave de la TV después de pedir confirmación. El ajuste se aplica a cada TV por separado.</string>
 </resources>

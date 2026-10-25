@@ -34,6 +34,7 @@ Elly macht dein Android-Handy zur Fernbedienung für LG-Fernseher mit webOS. Die
    - [4.4 Screen 3](#44-screen-3)
    - [4.5 Screen 4](#45-screen-4)
    - [4.6 Texteingabe](#46-texteingabe)
+   - [4.7 Programmübersicht](#47-programmuebersicht)
 5. [Zeiger](#5-zeiger)
    - [5.1 Bewegungsmodus](#51-bewegungsmodus)
    - [5.2 Touchpad-Modus](#52-touchpad-modus)
@@ -62,6 +63,7 @@ Elly macht dein Android-Handy zur Fernbedienung für LG-Fernseher mit webOS. Die
 - 15 Farbpaletten, zwölf Hintergründe (auch ein eigenes Foto), einstellbare Rundung und der Lichteffekt „Lange Sommerabende“.
 - Sieben Homescreen-Widgets, darunter „Elly Fernbedienung“ mit frei wählbaren Tasten und eigener Optik.
 - Statusleuchte in der Kopfleiste, die zeigt, ob der Fernseher erreichbar ist.
+- Programmübersicht wie am Fernseher für gerootete LG-Fernseher: Sender der eigenen Favoritenliste, umschalten, Sendungsinfos, Erinnern und Aufnehmen.
 - Schnelleinstieg beim ersten Start und eine ausführliche Hilfe mit Suche – erklärt von Elly.
 - Fernseher im Netzwerk suchen, koppeln, per Wake-on-LAN einschalten.
 - Demo-Modus zum Ausprobieren ohne LG-Fernseher.
@@ -164,6 +166,21 @@ Der vierte Screen ist zunächst leer und ausgeblendet. Er wird in den Einstellun
 ### 4.6 Texteingabe
 
 Ist am Fernseher ein Eingabefeld aktiv (z. B. eine Suche), öffnet sich auf dem Handy automatisch ein Textfeld mit der Tastatur des Handys. Der Text wird während des Tippens übertragen, die Senden-Taste wirkt wie Enter. Über die Taste **Tastatur**, die sich im Editor auf einen Screen legen lässt, öffnest du das Textfeld auch von Hand. Apps mit eigener Bildschirmtastatur (z. B. manche Streaming-Apps) nehmen keinen Text vom Handy an.
+
+### 4.7 Programmuebersicht
+
+<p>
+  <img src="docs/de/guide.png" width="270" alt="Screen mit Programmübersicht">
+  &nbsp;
+  <img src="docs/de/guide_info.png" width="270" alt="Infofenster einer Sendung">
+</p>
+
+Mit einem **gerooteten** LG-Fernseher kann ein Screen die Programmübersicht zeigen, aufgebaut wie der Guide am Fernseher. Voraussetzung ist der Homebrew Channel mit eingeschaltetem SSH-Server; eingerichtet wird der Zugang unter [Einstellungen → TV](#9-einstellungen). Im Demo-Modus zeigt Elly erfundene Sender und Sendungen.
+
+- **Einfügen:** Im [Editor](#61-editor) unter „+ Element“ → „Programmübersicht“, danach die Favoritenliste des Fernsehers wählen. Das Element ist anfangs so breit wie der Screen und halb so hoch und lässt sich wie jedes andere verschieben und skalieren; Gedrückthalten ändert die Liste. Mehrere Übersichten mit verschiedenen Listen sind möglich.
+- **Anzeige:** oben die Uhrzeiten im Halbstundentakt mit mitlaufendem Datum und einer Linie an jedem Tageswechsel, links die Senderlogos, rechts die Sendungen. Die orange Linie zeigt die aktuelle Uhrzeit, die Zeile des laufenden Senders ist orange hinterlegt, „Jetzt“ springt zurück. Gescrollt wird in alle Richtungen, zurück bis zu 24 Stunden, voraus so weit, wie der Fernseher Daten hat (höchstens 14 Tage).
+- **Bedienung:** Sender antippen schaltet um. Sendung antippen öffnet die Infos (Sender, Uhrzeit, Fortschritt, Kennzeichen wie HD oder Untertitel, Beschreibung) mit **Erinnern** und **Aufnehmen** – beides übernimmt der Fernseher selbst, auch wenn das Handy aus ist. Laufende Aufnahmen lassen sich beenden. Geplante Erinnerungen tragen eine Glocke, Aufnahmen einen roten Punkt.
+- **Daten:** Elly holt das Programm per SSH vom Fernseher, speichert es auf dem Handy und aktualisiert es, solange die Fernbedienung offen ist. Waagerechtes Wischen in der Übersicht wechselt nie den Screen; dafür wischst du über die Punkte unten.
 
 ## 5 Zeiger
 
@@ -277,7 +294,7 @@ Elly bringt sieben Homescreen-Widgets mit:
 
 Das Zahnrad in der Kopfleiste öffnet die Einstellungen. Sie haben drei Reiter, zwischen denen du auch wischen kannst; Elly merkt sich den zuletzt geöffneten.
 
-- **TV** – gekoppelte Fernseher, Suche, IP-Adresse und **Demo-Modus**: Er simuliert einen verbundenen Fernseher („Demo-TV“, gelbe Statusleuchte), alle Screens sind ohne LG-Fernseher nutzbar und es werden keine Befehle gesendet. Siehe [Fernseher verbinden](#32-fernseher-verbinden).
+- **TV** – gekoppelte Fernseher, Suche, IP-Adresse und **Demo-Modus**: Er simuliert einen verbundenen Fernseher („Demo-TV“, gelbe Statusleuchte), alle Screens sind ohne LG-Fernseher nutzbar und es werden keine Befehle gesendet. Siehe [Fernseher verbinden](#32-fernseher-verbinden). Für gerootete Fernseher richtet **Root-Zugang und SSH eingerichtet?** den Zugang für die [Programmübersicht](#47-programmuebersicht) ein: Benutzer, Port und einmal das Root-Passwort; Elly hinterlegt einen eigenen Schlüssel auf dem Fernseher, das Passwort wird nicht gespeichert.
 - **Darstellung** – Screens, Farbpalette, Hintergrund, Rundung, Lichteffekt. Siehe [Screens bearbeiten](#6-screens-bearbeiten) und [Darstellung](#7-darstellung).
 - **Bedienung** – Zeiger (siehe [Zeiger](#5-zeiger)) und **Vibration bei Tastendruck**.
 
@@ -297,7 +314,7 @@ Zwischen Übersicht und Kapiteln wechselst du per Wischen oder über die feste F
 
 ## 11 Datenschutz
 
-Elly spricht nur mit deinem Fernseher im lokalen Netzwerk; es werden keine Daten an externe Server übertragen. Gekoppelte Fernseher, Einstellungen, Screen-Belegungen und App-Icons bleiben auf dem Handy und werden beim Deinstallieren gelöscht. Die vollständige Datenschutzerklärung steht in der App unter **Einstellungen → Datenschutz**.
+Elly spricht nur mit deinem Fernseher im lokalen Netzwerk; es werden keine Daten an externe Server übertragen. Gekoppelte Fernseher, Einstellungen, Screen-Belegungen, App-Icons und die Programmübersicht bleiben auf dem Handy und werden beim Deinstallieren gelöscht. Die vollständige Datenschutzerklärung steht in der App unter **Einstellungen → Datenschutz**.
 
 ## 12 Bauen
 

@@ -7,8 +7,9 @@ Le développeur de cette appli ne collecte, n'enregistre ni ne traite aucune don
 L'appli communique exclusivement au sein de ton réseau local :
 
 - Recherche de TV : requête SSDP et vérification des adresses de ton réseau local pour les ports webOS 3000 et 3001.
-- Commande : connexion chiffrée avec la TV associée (TV plus anciennes sans chiffrement via le port 3000). L'appli transmet des commandes telles que les touches, les mouvements du pointeur, le lancement d'applis et le changement de source, et demande les applis installées, les sources et les icônes des applis.
+- Commande : connexion chiffrée avec la TV associée (TV plus anciennes sans chiffrement via le port 3000). L'appli transmet des commandes telles que les touches, les mouvements du pointeur, le lancement d'applis et les changements de source et de chaîne, et demande les applis installées, les sources et les icônes des applis.
 - Allumage : paquet Wake-on-LAN envoyé à l'adresse MAC de la TV.
+- Guide des programmes (facultatif, uniquement pour les TV avec un accès root que tu configures toi-même) : connexion SSH à la TV (port 22). L'appli lit les listes de favoris, les chaînes, le guide des programmes ainsi que les rappels et enregistrements programmés sur la TV, programme ou supprime des rappels et des enregistrements sur la TV et lit les logos des chaînes. Les logos que la TV ne possède pas encore sont téléchargés par la TV elle-même depuis le serveur de logos de LG, comme elle le fait pour son propre guide ; ton appareil ne contacte pas ce serveur.
 
 Cette communication a lieu directement entre ton appareil et la TV. Aucune donnée n'est transmise à des serveurs externes.
 
@@ -20,6 +21,7 @@ Les données suivantes sont enregistrées localement sur ton appareil :
 - Paramètres de l'appli (écrans, design, touches appli, pointeur, vibration, mode démo)
 - copies des images que tu choisis comme arrière-plans d'écran ; l'appli ne reçoit que les images que tu sélectionnes dans le sélecteur de photos d'Android
 - Icônes d'applis chargées depuis la TV
+- pour le guide des programmes : utilisateur SSH, port et empreinte de la clé SSH de la TV ; clé SSH de l'appli, conservée dans Android Keystore et impossible à extraire de l'appareil ; guide des programmes (listes de chaînes et programmes des dernières 24 heures et jusqu'à 14 jours à l'avance) et logos des chaînes. Le mot de passe root de la TV n'est utilisé qu'une seule fois pour configurer l'accès et n'est pas enregistré.
 
 Ces données restent exclusivement sur ton appareil, sont exclues des sauvegardes Android et sont supprimées lors de la désinstallation de l'appli.
 

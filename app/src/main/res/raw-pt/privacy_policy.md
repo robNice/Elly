@@ -9,6 +9,7 @@ A app comunica exclusivamente dentro da tua rede local:
 - Pesquisa de TVs: pedido SSDP e verificação dos endereços da tua rede local quanto às portas webOS 3000 e 3001.
 - Controlo: ligação encriptada à TV emparelhada (TVs mais antigas sem encriptação através da porta 3000). A app transmite comandos de controlo, como teclas, movimentos do ponteiro, abertura de apps e mudanças de entrada, e consulta as apps instaladas, as entradas e os ícones das apps.
 - Ligar: pacote Wake-on-LAN para o endereço MAC da TV.
+- Guia de programação (opcional, apenas para TVs com acesso root configurado por ti): ligação SSH à TV (porta 22). A aplicação lê listas de favoritos, canais, dados de programação e lembretes e gravações agendados da TV, agenda ou apaga lembretes e gravações na TV e lê logótipos de canais. Os logótipos que a TV ainda não tem são descarregados pela própria TV a partir do servidor de logótipos da LG, tal como para o seu próprio guia; o teu dispositivo não se liga a esse servidor.
 
 Esta comunicação ocorre diretamente entre o teu dispositivo e a TV. Não são transmitidos dados para servidores externos.
 
@@ -20,6 +21,7 @@ Os seguintes dados são guardados localmente no teu dispositivo:
 - Definições da app (ecrãs, design, teclas de app, ponteiro, vibração, modo de demonstração)
 - cópias das imagens que escolhes como fundo de ecrã; a app só recebe as imagens que selecionas no seletor de fotos do Android
 - Ícones das apps carregados a partir da TV
+- para o guia de programação: utilizador SSH, porta e impressão digital da chave SSH da TV; a chave SSH da aplicação, guardada no Android Keystore e que não pode ser lida para fora do dispositivo; os dados de programação (listas de canais e programas das últimas 24 horas e até 14 dias à frente) e logótipos de canais. A palavra-passe de root da TV é usada apenas uma vez para configurar o acesso e não é guardada.
 
 Estes dados permanecem exclusivamente no teu dispositivo, estão excluídos das cópias de segurança do Android e são apagados quando a app é desinstalada.
 

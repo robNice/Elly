@@ -9,6 +9,7 @@ Appen kommunicerar uteslutande inom ditt lokala nätverk:
 - Sökning efter tv-apparater: SSDP-förfrågan och en kontroll av adresserna i ditt lokala nätverk efter webOS-portarna 3000 och 3001.
 - Styrning: krypterad anslutning till den parkopplade tv:n (äldre tv-apparater utan kryptering via port 3000). Appen skickar styrkommandon som knapptryck, pekarrörelser, appstarter och byte av ingång, och hämtar de installerade apparna, ingångarna och appikonerna.
 - Påslagning: Wake-on-LAN-paket till tv:ns MAC-adress.
+- Programguide (valfritt, bara för tv-apparater med root-åtkomst som du själv konfigurerar): SSH-anslutning till tv:n (port 22). Appen läser tv:ns favoritlistor, kanaler, programdata och planerade påminnelser och inspelningar, planerar eller tar bort påminnelser och inspelningar på tv:n och läser kanallogotyper. Logotyper som tv:n ännu inte har laddar tv:n själv ned från LG:s logotypserver, precis som för sin egen guide; din enhet ansluter inte till den servern.
 
 Kommunikationen sker direkt mellan din enhet och tv:n. Inga data överförs till externa servrar.
 
@@ -20,6 +21,7 @@ Följande data lagras lokalt på din enhet:
 - Appinställningar (skärmar, utseende, appknappar, pekare, vibration, demoläge)
 - kopior av bilderna du väljer som skärmbakgrund; appen får bara de bilder du väljer i Androids bildväljare
 - Appikoner som hämtats från tv:n
+- för programguiden: SSH-användare, port och fingeravtryck för tv:ns SSH-nyckel; appens SSH-nyckel, som ligger i Android Keystore och inte kan läsas ut ur enheten; programdata (kanallistor och program från de senaste 24 timmarna och upp till 14 dagar framåt) och kanallogotyper. Tv:ns root-lösenord används bara en gång för att konfigurera åtkomsten och sparas inte.
 
 Dessa data stannar uteslutande på din enhet, undantas från Android-säkerhetskopior och raderas när appen avinstalleras.
 

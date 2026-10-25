@@ -465,4 +465,112 @@
     <string name="help_privacy_policy_title">Politique de confidentialité</string>
     <string name="help_privacy_policy_body">La politique de confidentialité complète s\'ouvre via « Confidentialité », en bas des paramètres, à côté du numéro de version.</string>
     <string name="help_privacy_link">politique de confidentialité</string>
+    <string name="settings_root_ssh">Accès root et SSH configurés ?</string>
+    <string name="settings_root_ssh_description">Pour les TV rootées équipées de Homebrew Channel avec son serveur SSH activé. Nécessaire pour le guide des programmes.</string>
+    <string name="settings_root_ssh_check">Vérifier</string>
+    <string name="settings_root_ssh_checking">Vérification de la connexion…</string>
+    <string name="settings_root_ssh_ok">La connexion SSH fonctionne.</string>
+    <string name="settings_root_ssh_removing">Suppression de l\'accès SSH…</string>
+    <string name="settings_root_ssh_setup_title">Configurer SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly se connecte une fois à la TV avec le mot de passe root et y enregistre sa propre clé. Le mot de passe n\'est pas enregistré.</string>
+    <string name="settings_root_ssh_user">Utilisateur</string>
+    <string name="settings_root_ssh_port">Port</string>
+    <string name="settings_root_ssh_password">Mot de passe</string>
+    <string name="settings_root_ssh_setup_confirm">Configurer</string>
+    <string name="settings_root_ssh_error_unreachable">Le serveur SSH de la TV est inaccessible. SSH est-il activé dans Homebrew Channel ?</string>
+    <string name="settings_root_ssh_error_auth">Connexion refusée. Vérifie l\'utilisateur et le mot de passe.</string>
+    <string name="settings_root_ssh_error_key">La TV n\'accepte plus la clé d\'Elly. Désactive ce paramètre, puis configure à nouveau SSH.</string>
+    <string name="settings_root_ssh_error_host_key">La clé SSH de la TV a changé. Si la TV a de nouveau été rootée, désactive ce paramètre, puis configure à nouveau SSH.</string>
+    <string name="settings_root_ssh_error_luna">Connexion réussie, mais les commandes système de la TV ne sont pas disponibles.</string>
+    <string name="settings_root_ssh_error_unknown">Échec de la connexion SSH.</string>
+    <string name="settings_root_ssh_remove_title">Supprimer l\'accès SSH ?</string>
+    <string name="settings_root_ssh_remove_message">Elly supprime sa clé de la TV et oublie l\'accès. Le guide des programmes ne sera alors plus disponible.</string>
+    <string name="settings_root_ssh_remove">Supprimer</string>
+    <string name="settings_root_ssh_removed_locally">La TV était inaccessible, la clé d\'Elly y est donc toujours enregistrée. Elly ne l\'utilise plus. Si tu le souhaites, supprime de ~/.ssh/authorized_keys sur la TV la ligne se terminant par « elly-app ».</string>
+
+    <string name="custom_element_epg">Guide des programmes</string>
+    <string name="epg_title_with_list">Guide des programmes · %1$s</string>
+    <string name="epg_editor_hint">Maintiens pour changer de liste de favoris</string>
+    <string name="epg_unavailable_hint">Masqué à l\'écran jusqu\'à ce que SSH soit configuré pour cette TV</string>
+    <string name="epg_list_title">Choisir une liste de favoris</string>
+    <string name="epg_list_failed">Impossible de charger les listes de favoris. Vérifie la connexion SSH dans l\'onglet TV.</string>
+    <string name="epg_list_empty">La TV n\'a aucune liste de favoris.</string>
+    <string name="epg_status_failed">Impossible de charger le guide des programmes.</string>
+    <string name="epg_status_empty">Aucune donnée de programme pour le moment.</string>
+    <string name="epg_now">Maintenant</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min)</string>
+    <string name="epg_info_remaining">Encore %1$d min</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Sous-titres</string>
+    <string name="epg_badge_audio_description">Audiodescription</string>
+    <string name="epg_badge_sign_language">Langue des signes</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_info_switch">Changer de chaîne</string>
+    <string name="epg_info_close">Fermer</string>
+    <string name="epg_remind">Me le rappeler</string>
+    <string name="epg_remind_cancel">Supprimer le rappel</string>
+    <string name="epg_record">Enregistrer</string>
+    <string name="epg_record_cancel">Supprimer l\'enregistrement</string>
+    <string name="epg_record_stop">Arrêter l\'enregistrement</string>
+    <string name="epg_reminder_set">Rappel programmé</string>
+    <string name="epg_record_no_storage">Pour enregistrer, un périphérique de stockage doit être sélectionné sur la TV pour les enregistrements.</string>
+    <string name="epg_record_no_data">La TV ne dispose d\'aucune donnée d\'enregistrement pour ce programme.</string>
+    <string name="epg_action_failed">La TV n\'a pas accepté cette action.</string>
+    <string name="epg_action_conflict">Ce programme chevauche un rappel ou un enregistrement déjà programmé sur la TV.</string>
+    <string name="epg_demo_list_main">Favoris</string>
+    <string name="epg_demo_list_kids">Enfants</string>
+    <string name="epg_demo_description">Programme fictif pour le mode démo. Avec une TV rootée et SSH configuré, le guide affiche les vrais programmes de ta TV.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly One</item>
+        <item>TV Poulailler</item>
+        <item>Infos du Poulailler</item>
+        <item>Sports de la Ferme</item>
+        <item>Cinéma à Plumes</item>
+        <item>Documentaires du Nid</item>
+        <item>Musique du Coq</item>
+        <item>L’Œuf d’or</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>TV Poussin</item>
+        <item>Petit Piou</item>
+        <item>Jeunes Poussins</item>
+        <item>Poussins au Soleil</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Matin à la ferme</item>
+        <item>La grande chasse aux œufs</item>
+        <item>Plumes et infos</item>
+        <item>Les infos du poulailler</item>
+        <item>Coq Rock en direct</item>
+        <item>Cuisine du poulailler</item>
+        <item>La nuit du renard</item>
+        <item>Des ailes sur la vallée</item>
+        <item>La poule météo</item>
+        <item>Détective Picvert</item>
+        <item>Histoires du pré</item>
+        <item>Caquètement de minuit</item>
+        <item>Quiz des graines</item>
+        <item>Football à la ferme</item>
+        <item>Poules en tournée</item>
+        <item>Le long perchoir</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Piou et ses amis</item>
+        <item>Petites ailes</item>
+        <item>Le petit œuf</item>
+        <item>Aventures de poussins</item>
+        <item>Le nid à histoires</item>
+        <item>Compter les graines</item>
+        <item>Poussins endormis</item>
+        <item>Duvet jaune</item>
+    </string-array>
+
+    <string name="help_remote_guide_title">Guide des programmes</string>
+    <string name="help_remote_guide_body">Avec une TV rootée (ou en mode démo), un écran peut afficher le guide des programmes, comme sur la TV : les horaires en haut, les chaînes de ta liste de favoris à gauche et les programmes à droite.\n• Balaie dans toutes les directions : jusqu\'à 24 heures en arrière et aussi loin que la TV dispose de données (14 jours au maximum). La date figure à gauche de la barre horaire et chaque nouveau jour commence par une ligne.\n• La ligne orange indique l\'heure actuelle ; « Maintenant », en haut à gauche, y revient. La ligne de la chaîne actuellement affichée sur la TV est surlignée en orange.\n• Touche une chaîne pour la regarder.\nBalayer dans le guide ne change jamais d\'écran ; balaie plutôt sur les points en bas. Elly conserve les données sur le téléphone et les actualise toutes les 15 minutes tant que la télécommande est ouverte ; un petit cercle tourne en haut à gauche pendant le chargement.</string>
+    <string name="help_remote_guide_info_title">Programmes, rappels et enregistrements</string>
+    <string name="help_remote_guide_info_body">Touche un programme pour voir ses détails : chaîne, jour, heure, durée, genre et description. « Changer de chaîne » fait passer la TV sur cette chaîne.\n• Me le rappeler : la TV te prévient au début du programme, même si le téléphone est éteint. Les rappels programmés affichent une cloche.\n• Enregistrer : la TV enregistre sur le support de stockage sélectionné pour les enregistrements. Les enregistrements programmés affichent un point rouge.\nLes deux peuvent être supprimés (« Supprimer… »). Les rappels et enregistrements que tu programmes sur la TV apparaissent aussi dans Elly. Si la TV refuse l\'action, par exemple parce que des enregistrements se chevauchent, son message s\'affiche dans la fenêtre.</string>
+    <string name="help_edit_guide_title">Ajouter le guide des programmes</string>
+    <string name="help_edit_guide_body">« + Élément » propose le guide des programmes dès que SSH est configuré pour la TV (voir Paramètres) ou que le mode démo est activé. Avant de l\'insérer, tu choisis la liste de favoris de la TV dont les chaînes seront affichées. Maintiens l\'élément pendant 2 secondes pour changer de liste.\nAu départ, le guide est aussi large que l\'écran et deux fois moins haut ; comme les autres éléments, tu peux le déplacer et le redimensionner. Plusieurs guides avec des listes différentes sont possibles. Sans accès SSH, l\'élément reste enregistré, mais n\'apparaît pas à l\'écran.</string>
+    <string name="help_settings_root_title">Accès root et SSH</string>
+    <string name="help_settings_root_body">Le guide des programmes a besoin d\'un accès à la TV que LG n\'autorise qu\'avec root. Si ta TV est rootée (Homebrew Channel) et que son serveur SSH y est activé, active « Accès root et SSH configurés ? » dans l\'onglet « TV ».\nSaisis l\'utilisateur (généralement root), le port (généralement 22) et le mot de passe root. Elly se connecte une fois et enregistre sa propre clé sur la TV ; le mot de passe n\'est pas enregistré. « Vérifier » teste la connexion.\nLa désactivation supprime à nouveau la clé de la TV après confirmation. Le réglage s\'applique séparément à chaque TV.</string>
 </resources>

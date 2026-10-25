@@ -366,7 +366,7 @@
     <string name="help_remote_status_title">Вогник стану</string>
     <string name="help_remote_status_body">• Зелений: підключено.\n• Червоний: телевізор недоступний.\n• Сірий: перевірка підключення.\n• Жовтий: демо-режим.\nПоки Elly на екрані, підключення перевіряється кожні 10 секунд і після кожного натискання кнопки. Коли застосунок переходить у фон, підключення закривається.</string>
     <string name="help_remote_screens_title">Перемикання екранів</string>
-    <string name="help_remote_screens_body">Кнопки розкладено щонайбільше на чотири екрани, тож усе вміщується без прокручування. Гортай ліворуч або праворуч, щоб перемикати їх. Крапки внизу показують, на якому екрані ти зараз; якщо активний лише один екран, вони зникають.\nElly запам\'ятовує останній відкритий екран. Які екрани показувати й у якому порядку, задається в налаштуваннях.</string>
+    <string name="help_remote_screens_body">Кнопки розкладено щонайбільше на чотири екрани, тож усе вміщується без прокручування. Гортай ліворуч або праворуч, щоб перемикати їх. Крапки внизу показують, на якому екрані ти зараз; якщо активний лише один екран, вони зникають.\nElly запам\'ятовує останній відкритий екран. Які екрани показувати й у якому порядку, задається в налаштуваннях. Якщо елемент на кшталт телепрограми заповнює екран, проведи по крапках унизу.</string>
     <string name="help_remote_keys_title">Як працюють кнопки</string>
     <string name="help_remote_keys_body">• Кнопки спрацьовують, коли ти відпускаєш палець. Тому свайп, що почався на кнопці, нічого не надсилає.\n• Гучність, канали й хрестовина повторюються, поки ти їх утримуєш.\n• За бажанням телефон вібрує при кожному натисканні (Налаштування → «Керування»).\n• Якщо кнопка недоступна або телевізор не відповідає, унизу з\'явиться повідомлення.</string>
     <string name="help_remote_defaults_title">Стандартна розкладка</string>
@@ -464,8 +464,114 @@
     <string name="help_privacy_title">Конфіденційність</string>
     <string name="help_privacy_elly">Твої дані належать тобі. Такий мій вердикт, і він остаточний!</string>
     <string name="help_privacy_data_title">Що відбувається з твоїми даними</string>
-    <string name="help_privacy_data_body">Elly спілкується лише з твоїм телевізором у локальній мережі, жодні дані не надсилаються на зовнішні сервери. Пов\'язані телевізори, налаштування, розкладки екранів і значки застосунків лишаються на твоєму телефоні й видаляються разом із застосунком.</string>
+    <string name="help_privacy_data_body">Elly спілкується лише з твоїм телевізором у локальній мережі, жодні дані не надсилаються на зовнішні сервери. Пов\'язані телевізори, налаштування, розкладки екранів і значки застосунків лишаються на твоєму телефоні й видаляються разом із застосунком. Телепрограма теж залишається на твоєму телефоні.</string>
     <string name="help_privacy_policy_title">Політика конфіденційності</string>
     <string name="help_privacy_policy_body">Повну політику конфіденційності можна відкрити через «Конфіденційність» унизу налаштувань, поруч із номером версії.</string>
     <string name="help_privacy_link">політика конфіденційності</string>
+    <string name="settings_root_ssh">Root-доступ і SSH налаштовано?</string>
+    <string name="settings_root_ssh_description">Для телевізорів із root-доступом, Homebrew Channel і ввімкненим SSH-сервером. Потрібно для телепрограми.</string>
+    <string name="settings_root_ssh_check">Перевірити</string>
+    <string name="settings_root_ssh_checking">Перевірка з\'єднання…</string>
+    <string name="settings_root_ssh_ok">SSH-з\'єднання працює.</string>
+    <string name="settings_root_ssh_removing">Видалення SSH-доступу…</string>
+    <string name="settings_root_ssh_setup_title">Налаштувати SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly один раз входить на телевізор із паролем root і зберігає там власний ключ. Пароль не зберігається.</string>
+    <string name="settings_root_ssh_user">Користувач</string>
+    <string name="settings_root_ssh_port">Порт</string>
+    <string name="settings_root_ssh_password">Пароль</string>
+    <string name="settings_root_ssh_setup_confirm">Налаштувати</string>
+    <string name="settings_root_ssh_error_unreachable">SSH-сервер телевізора недоступний. Чи ввімкнено SSH у Homebrew Channel?</string>
+    <string name="settings_root_ssh_error_auth">Вхід відхилено. Перевір користувача й пароль.</string>
+    <string name="settings_root_ssh_error_key">Телевізор більше не приймає ключ Elly. Вимкни налаштування й налаштуй SSH заново.</string>
+    <string name="settings_root_ssh_error_host_key">SSH-ключ телевізора змінився. Якщо root-доступ на телевізорі отримано заново, вимкни налаштування й налаштуй SSH заново.</string>
+    <string name="settings_root_ssh_error_luna">Вхід виконано, але системні команди телевізора недоступні.</string>
+    <string name="settings_root_ssh_error_unknown">Не вдалося встановити SSH-з\'єднання.</string>
+    <string name="settings_root_ssh_remove_title">Видалити SSH-доступ?</string>
+    <string name="settings_root_ssh_remove_message">Elly видалить свій ключ із телевізора й забуде доступ. Телепрограма після цього буде недоступна.</string>
+    <string name="settings_root_ssh_remove">Видалити</string>
+    <string name="settings_root_ssh_removed_locally">Телевізор був недоступний, тому ключ Elly досі збережено на ньому. Elly більше його не використовує. За бажання видали на телевізорі в ~/.ssh/authorized_keys рядок, що закінчується на «elly-app».</string>
+    <string name="custom_element_epg">Телепрограма</string>
+    <string name="epg_title_with_list">Телепрограма · %1$s</string>
+    <string name="epg_editor_hint">Утримуй, щоб змінити список обраного</string>
+    <string name="epg_unavailable_hint">Приховано на екрані, доки для цього телевізора не налаштовано SSH</string>
+    <string name="epg_list_title">Вибери список обраного</string>
+    <string name="epg_list_failed">Не вдалося завантажити списки обраного. Перевір SSH-з\'єднання на вкладці «ТБ».</string>
+    <string name="epg_list_empty">На телевізорі немає списків обраного.</string>
+    <string name="epg_status_failed">Не вдалося завантажити телепрограму.</string>
+    <string name="epg_status_empty">Даних про передачі ще немає.</string>
+    <string name="epg_now">Зараз</string>
+    <string name="epg_info_when">%1$s · %2$s–%3$s (%4$d хв)</string>
+    <string name="epg_info_remaining">залишилося %1$d хв</string>
+    <string name="epg_info_switch">Перемкнути канал</string>
+    <string name="epg_info_close">Закрити</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Субтитри</string>
+    <string name="epg_badge_audio_description">Аудіоопис</string>
+    <string name="epg_badge_sign_language">Жестова мова</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_remind">Нагадати</string>
+    <string name="epg_remind_cancel">Видалити нагадування</string>
+    <string name="epg_record">Записати</string>
+    <string name="epg_record_cancel">Видалити запис</string>
+    <string name="epg_record_stop">Зупинити запис</string>
+    <string name="epg_reminder_set">Нагадування заплановано</string>
+    <string name="epg_record_no_storage">Для запису телевізору потрібен накопичувач, вибраний на ньому для записів.</string>
+    <string name="epg_record_no_data">У телевізора немає даних для запису цієї передачі.</string>
+    <string name="epg_action_failed">Телевізор цього не прийняв.</string>
+    <string name="epg_action_conflict">Це перетинається з нагадуванням або записом, уже запланованими на телевізорі.</string>
+    <string name="epg_demo_list_main">Обране</string>
+    <string name="epg_demo_list_kids">Дітям</string>
+    <string name="epg_demo_description">Вигадана передача для демо-режиму. З телевізором із root-доступом і налаштованим SSH тут показується справжня програма твого телевізора.</string>
+    <string name="help_remote_guide_title">Телепрограма</string>
+    <string name="help_remote_guide_body">З телевізором із root-доступом (або в демо-режимі) екран може показувати телепрограму, як гід на телевізорі: угорі час, ліворуч канали твого списку обраного, праворуч передачі.\n• Гортай у будь-якому напрямку: назад до 24 годин, уперед — наскільки телевізор має дані (не більше 14 днів). Ліворуч на шкалі часу видно дату, кожен новий день починається з лінії.\n• Помаранчева лінія показує поточний час; «Зараз» у лівому верхньому куті повертає до нього. Рядок каналу, що зараз іде на телевізорі, виділено помаранчевим.\n• Натисни на канал, щоб перемкнутися на нього.\nГортання в телепрограмі ніколи не змінює екран; для цього проведи по крапках унизу. Elly зберігає дані на телефоні й оновлює їх кожні 15 хвилин, поки відкрито пульт; під час завантаження в лівому верхньому куті крутиться маленьке коло.</string>
+    <string name="help_remote_guide_info_title">Передачі, нагадування та записи</string>
+    <string name="help_remote_guide_info_body">Натисни на передачу, щоб побачити подробиці: канал, день, час, тривалість, жанр і опис. «Перемкнути канал» перемикає телевізор на цей канал.\n• Нагадати: телевізор нагадає про початок передачі, навіть якщо телефон вимкнено. Заплановані нагадування мають дзвіночок.\n• Записати: телевізор записує на накопичувач, вибраний на ньому для записів. Заплановані записи мають червону крапку; поточні записи можна зупинити.\nІ те, і те можна видалити. Elly показує й нагадування та записи, створені на телевізорі. Якщо телевізор щось відхилить, наприклад через перетин, його повідомлення з\'явиться у вікні.</string>
+    <string name="help_edit_guide_title">Додавання телепрограми</string>
+    <string name="help_edit_guide_body">«+ Елемент» пропонує телепрограму, щойно для телевізора налаштовано SSH (див. Налаштування) або ввімкнено демо-режим. Перед розміщенням ти вибираєш список обраного телевізора, канали якого буде показано. Утримуй елемент 2 секунди, щоб змінити список.\nСпочатку телепрограма завширшки на весь екран і заввишки в половину; як і інші елементи, її можна переміщувати й змінювати її розмір. Можна додати кілька телепрограм із різними списками. Без SSH-доступу елемент зберігається, але не показується на екрані.</string>
+    <string name="help_settings_root_title">Root-доступ і SSH</string>
+    <string name="help_settings_root_body">Телепрограмі потрібен доступ до телевізора, який LG дозволяє лише з root. Якщо твій телевізор має root (Homebrew Channel) і там увімкнено SSH-сервер, увімкни на вкладці «ТБ» «Root-доступ і SSH налаштовано?».\nВведи користувача (зазвичай root), порт (зазвичай 22) і пароль root. Elly один раз входить і зберігає на телевізорі власний ключ; пароль не зберігається. «Перевірити» тестує з\'єднання.\nВимкнення після підтвердження видаляє ключ із телевізора. Налаштування діє для кожного телевізора окремо.</string>
+    <string-array name="epg_demo_channels">
+        <item>Еллі Один</item>
+        <item>Курник ТБ</item>
+        <item>Новини курника</item>
+        <item>Комора Спорт</item>
+        <item>Пір\'я Кіно</item>
+        <item>Гніздо Док</item>
+        <item>Півень Музика</item>
+        <item>Золоте яйце</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Курча ТБ</item>
+        <item>Маленький Пі</item>
+        <item>Щойно вилупилось</item>
+        <item>Сонячні курчата</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Ранок у коморі</item>
+        <item>Велике полювання на яйця</item>
+        <item>Пір\'я і факти</item>
+        <item>Новини курника</item>
+        <item>Півень Рок наживо</item>
+        <item>Кухня комори</item>
+        <item>Ніч лиса</item>
+        <item>Крила над долиною</item>
+        <item>Курка погоди</item>
+        <item>Інспектор Дзьоб</item>
+        <item>Історії пасовища</item>
+        <item>Пізнє кудкудакання</item>
+        <item>Зернова вікторина</item>
+        <item>Футбол у коморі</item>
+        <item>Кури в дорозі</item>
+        <item>Довгий сідал</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Пі та друзі</item>
+        <item>Маленькі крила</item>
+        <item>Маленьке яйце</item>
+        <item>Пригоди курчат</item>
+        <item>Гніздо історій</item>
+        <item>Рахуємо зернятка</item>
+        <item>Сонні курчата</item>
+        <item>Жовтий пушок</item>
+    </string-array>
 </resources>

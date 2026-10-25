@@ -362,7 +362,7 @@
     <string name="help_remote_status_title">Tilavalo</string>
     <string name="help_remote_status_body">• Vihreä: yhdistetty.\n• Punainen: TV:tä ei tavoiteta.\n• Harmaa: yhteyttä tarkistetaan.\n• Keltainen: esittelytila.\nKun Elly on näkyvissä, yhteys tarkistetaan 10 sekunnin välein ja jokaisen painalluksen jälkeen. Kun sovellus siirtyy taustalle, yhteys suljetaan.</string>
     <string name="help_remote_screens_title">Näkymän vaihtaminen</string>
-    <string name="help_remote_screens_body">Painikkeet on jaettu enintään neljään näkymään, joten kaikki mahtuu esiin ilman vierittämistä. Vaihda pyyhkäisemällä vasemmalle tai oikealle. Alareunan pisteet näyttävät, missä näkymässä olet; jos käytössä on vain yksi näkymä, ne katoavat.\nElly muistaa viimeksi käyttämäsi näkymän. Asetuksissa määrität, mitkä näkymät näytetään ja missä järjestyksessä.</string>
+    <string name="help_remote_screens_body">Painikkeet on jaettu enintään neljään näkymään, joten kaikki mahtuu esiin ilman vierittämistä. Vaihda pyyhkäisemällä vasemmalle tai oikealle. Alareunan pisteet näyttävät, missä näkymässä olet; jos käytössä on vain yksi näkymä, ne katoavat.\nElly muistaa viimeksi käyttämäsi näkymän. Asetuksissa määrität, mitkä näkymät näytetään ja missä järjestyksessä. Jos elementti, kuten ohjelmaopas, täyttää näytön, pyyhkäise alareunan pisteiden päällä.</string>
     <string name="help_remote_keys_title">Painikkeiden käyttö</string>
     <string name="help_remote_keys_body">• Painikkeet toimivat, kun nostat sormen. Painikkeen päältä alkava pyyhkäisy ei siis lähetä mitään.\n• Äänenvoimakkuus, kanava ja suuntaohjain toistuvat, kun pidät niitä painettuna.\n• Halutessasi puhelin värisee jokaisella painalluksella (Asetukset → ”Ohjaus”).\n• Jos painike ei ole käytettävissä tai TV:tä ei tavoiteta, alareunaan tulee viesti.</string>
     <string name="help_remote_defaults_title">Oletusasettelu</string>
@@ -460,8 +460,114 @@
     <string name="help_privacy_title">Tietosuoja</string>
     <string name="help_privacy_elly">Tietosi kuuluvat sinulle. Se on minun tuomioni, eikä siitä kotkoteta!</string>
     <string name="help_privacy_data_title">Mitä tiedoillesi tapahtuu</string>
-    <string name="help_privacy_data_body">Elly keskustelee vain TV:si kanssa lähiverkossa, eikä tietoja lähetetä ulkoisille palvelimille. Yhdistetyt TV:t, asetukset, näkymäasettelut ja sovelluskuvakkeet pysyvät puhelimessasi ja poistetaan, kun poistat sovelluksen.</string>
+    <string name="help_privacy_data_body">Elly keskustelee vain TV:si kanssa lähiverkossa, eikä tietoja lähetetä ulkoisille palvelimille. Yhdistetyt TV:t, asetukset, näkymäasettelut ja sovelluskuvakkeet pysyvät puhelimessasi ja poistetaan, kun poistat sovelluksen. Myös ohjelmaopas pysyy puhelimessasi.</string>
     <string name="help_privacy_policy_title">Tietosuojaseloste</string>
     <string name="help_privacy_policy_body">Koko tietosuojaseloste avataan asetusten alareunasta kohdasta ”Tietosuoja” versionumeron vierestä.</string>
     <string name="help_privacy_link">tietosuojaseloste</string>
+    <string name="settings_root_ssh">Root-oikeudet ja SSH määritetty?</string>
+    <string name="settings_root_ssh_description">Rootatuille televisioille, joissa on Homebrew Channel ja SSH-palvelin päällä. Tarvitaan ohjelmaopasta varten.</string>
+    <string name="settings_root_ssh_check">Tarkista</string>
+    <string name="settings_root_ssh_checking">Yhteyttä tarkistetaan…</string>
+    <string name="settings_root_ssh_ok">SSH-yhteys toimii.</string>
+    <string name="settings_root_ssh_removing">SSH-yhteyttä poistetaan…</string>
+    <string name="settings_root_ssh_setup_title">Määritä SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly kirjautuu televisioon kerran root-salasanalla ja tallentaa sinne oman avaimensa. Salasanaa ei tallenneta.</string>
+    <string name="settings_root_ssh_user">Käyttäjä</string>
+    <string name="settings_root_ssh_port">Portti</string>
+    <string name="settings_root_ssh_password">Salasana</string>
+    <string name="settings_root_ssh_setup_confirm">Määritä</string>
+    <string name="settings_root_ssh_error_unreachable">Television SSH-palvelimeen ei saada yhteyttä. Onko SSH päällä Homebrew Channelissa?</string>
+    <string name="settings_root_ssh_error_auth">Kirjautuminen hylättiin. Tarkista käyttäjä ja salasana.</string>
+    <string name="settings_root_ssh_error_key">Televisio ei enää hyväksy Ellyn avainta. Kytke asetus pois ja määritä SSH uudelleen.</string>
+    <string name="settings_root_ssh_error_host_key">Television SSH-avain on muuttunut. Jos televisio on rootattu uudelleen, kytke asetus pois ja määritä SSH uudelleen.</string>
+    <string name="settings_root_ssh_error_luna">Kirjautuminen onnistui, mutta television järjestelmäkomennot eivät ole käytettävissä.</string>
+    <string name="settings_root_ssh_error_unknown">SSH-yhteys epäonnistui.</string>
+    <string name="settings_root_ssh_remove_title">Poistetaanko SSH-yhteys?</string>
+    <string name="settings_root_ssh_remove_message">Elly poistaa avaimensa televisiosta ja unohtaa yhteyden. Ohjelmaopas ei ole sen jälkeen enää käytettävissä.</string>
+    <string name="settings_root_ssh_remove">Poista</string>
+    <string name="settings_root_ssh_removed_locally">Televisioon ei saatu yhteyttä, joten Ellyn avain on yhä tallennettuna siihen. Elly ei enää käytä sitä. Halutessasi voit poistaa televisiosta tiedostosta ~/.ssh/authorized_keys rivin, joka päättyy ”elly-app”.</string>
+    <string name="custom_element_epg">Ohjelmaopas</string>
+    <string name="epg_title_with_list">Ohjelmaopas · %1$s</string>
+    <string name="epg_editor_hint">Pidä painettuna vaihtaaksesi suosikkilistaa</string>
+    <string name="epg_unavailable_hint">Piilotettu näytöltä, kunnes SSH on määritetty tälle TV:lle</string>
+    <string name="epg_list_title">Valitse suosikkilista</string>
+    <string name="epg_list_failed">Suosikkilistoja ei voitu ladata. Tarkista SSH-yhteys TV-välilehdellä.</string>
+    <string name="epg_list_empty">TV:ssä ei ole suosikkilistoja.</string>
+    <string name="epg_status_failed">Ohjelmaopasta ei voitu ladata.</string>
+    <string name="epg_status_empty">Ohjelmatietoja ei vielä ole.</string>
+    <string name="epg_now">Nyt</string>
+    <string name="epg_info_when">%1$s · %2$s–%3$s (%4$d min)</string>
+    <string name="epg_info_remaining">%1$d min jäljellä</string>
+    <string name="epg_info_switch">Vaihda kanavalle</string>
+    <string name="epg_info_close">Sulje</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Tekstitys</string>
+    <string name="epg_badge_audio_description">Kuvailutulkkaus</string>
+    <string name="epg_badge_sign_language">Viittomakieli</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_remind">Muistuta</string>
+    <string name="epg_remind_cancel">Poista muistutus</string>
+    <string name="epg_record">Tallenna</string>
+    <string name="epg_record_cancel">Poista tallennus</string>
+    <string name="epg_record_stop">Lopeta tallennus</string>
+    <string name="epg_reminder_set">Muistutus ajastettu</string>
+    <string name="epg_record_no_storage">Tallentaminen vaatii TV:ssä tallennuksille valitun tallennuslaitteen.</string>
+    <string name="epg_record_no_data">TV:llä ei ole tallennustietoja tälle ohjelmalle.</string>
+    <string name="epg_action_failed">TV ei hyväksynyt tätä.</string>
+    <string name="epg_action_conflict">Tämä menee päällekkäin TV:hen jo ajastetun muistutuksen tai tallennuksen kanssa.</string>
+    <string name="epg_demo_list_main">Suosikit</string>
+    <string name="epg_demo_list_kids">Lapset</string>
+    <string name="epg_demo_description">Keksitty ohjelma esittelytilaa varten. Rootatulla TV:llä ja määritetyllä SSH:lla opas näyttää TV:si oikean ohjelman.</string>
+    <string name="help_remote_guide_title">Ohjelmaopas</string>
+    <string name="help_remote_guide_body">Rootatulla TV:llä (tai esittelytilassa) näyttö voi näyttää ohjelmaoppaan kuten TV:n opas: ylhäällä kellonajat, vasemmalla suosikkilistasi kanavat, oikealla ohjelmat.\n• Pyyhkäise mihin suuntaan tahansa: taaksepäin enintään 24 tuntia, eteenpäin niin pitkälle kuin TV:llä on tietoja (enintään 14 päivää). Aikapalkin vasemmassa reunassa on päivämäärä, ja jokainen uusi päivä alkaa viivalla.\n• Oranssi viiva näyttää nykyisen ajan; vasemman yläkulman ”Nyt” palaa siihen. TV:ssä parhaillaan näkyvän kanavan rivi on korostettu oranssilla.\n• Napauta kanavaa vaihtaaksesi sille.\nPyyhkäisy oppaassa ei koskaan vaihda näyttöä; vaihda näyttöä pyyhkäisemällä alareunan pisteiden päällä. Elly tallentaa tiedot puhelimeen ja päivittää ne 15 minuutin välein, kun kaukosäädin on auki; latauksen aikana vasemmassa yläkulmassa pyörii pieni ympyrä.</string>
+    <string name="help_remote_guide_info_title">Ohjelmat, muistutukset ja tallennukset</string>
+    <string name="help_remote_guide_info_body">Napauta ohjelmaa nähdäksesi tiedot: kanava, päivä, aika, kesto, lajityyppi ja kuvaus. ”Vaihda kanavalle” vaihtaa TV:n kanavalle.\n• Muistuta: TV muistuttaa ohjelman alkaessa, vaikka puhelin olisi pois päältä. Ajastetuissa muistutuksissa on kello.\n• Tallenna: TV tallentaa siihen tallennuslaitteeseen, joka on valittu TV:ssä tallennuksille. Ajastetuissa tallennuksissa on punainen piste; käynnissä olevat tallennukset voi lopettaa.\nMolemmat voi poistaa. Elly näyttää myös TV:ssä luodut muistutukset ja tallennukset. Jos TV kieltäytyy, esimerkiksi päällekkäisyyden vuoksi, sen viesti näkyy ikkunassa.</string>
+    <string name="help_edit_guide_title">Ohjelmaoppaan lisääminen</string>
+    <string name="help_edit_guide_body">”+ Elementti” tarjoaa ohjelmaoppaan, kun SSH on määritetty TV:lle (katso Asetukset) tai esittelytila on päällä. Ennen sijoittamista valitset TV:n suosikkilistan, jonka kanavat näytetään. Pidä elementtiä painettuna 2 sekuntia vaihtaaksesi listaa.\nOpas on aluksi näytön levyinen ja puolet sen korkeudesta; muiden elementtien tapaan sitä voi siirtää ja sen kokoa muuttaa. Useita oppaita eri listoilla voi käyttää. Ilman SSH-yhteyttä elementti säilyy tallennettuna, mutta se ei näy näytöllä.</string>
+    <string name="help_settings_root_title">Root-oikeudet ja SSH</string>
+    <string name="help_settings_root_body">Ohjelmaopas tarvitsee pääsyn TV:hen, jonka LG sallii vain rootilla. Jos TV:si on rootattu (Homebrew Channel) ja sen SSH-palvelin on päällä, kytke TV-välilehdellä päälle ”Root-oikeudet ja SSH määritetty?”.\nAnna käyttäjä (yleensä root), portti (yleensä 22) ja root-salasana. Elly kirjautuu kerran ja tallentaa TV:hen oman avaimen; salasanaa ei tallenneta. ”Tarkista” testaa yhteyden.\nKytkeminen pois poistaa avaimen TV:stä vahvistuksen jälkeen. Asetus koskee yhtä TV:tä kerrallaan.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly Yksi</item>
+        <item>Kanala TV</item>
+        <item>Kanalan Uutiset</item>
+        <item>Navetta Urheilu</item>
+        <item>Höyhen Elokuvat</item>
+        <item>Pesä Dokumentit</item>
+        <item>Kukko Musiikki</item>
+        <item>Kultainen Muna</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Tipu TV</item>
+        <item>Pikku Piip</item>
+        <item>Kuoriutunut</item>
+        <item>Aurinkotiput</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Aamu navetassa</item>
+        <item>Suuri munajahti</item>
+        <item>Höyheniä ja faktoja</item>
+        <item>Kanalan uutiset</item>
+        <item>Kukko Rock Live</item>
+        <item>Navettakeittiö</item>
+        <item>Ketun yö</item>
+        <item>Siivet laakson yllä</item>
+        <item>Sääkana</item>
+        <item>Komisario Nokka</item>
+        <item>Laidunkertomuksia</item>
+        <item>Myöhäinen kotkotus</item>
+        <item>Jyvävisa</item>
+        <item>Navettajalkapallo</item>
+        <item>Kanat matkalla</item>
+        <item>Pitkä orsi</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Piip ja ystävät</item>
+        <item>Pienet siivet</item>
+        <item>Pieni muna</item>
+        <item>Tipuseikkailut</item>
+        <item>Tarinapesä</item>
+        <item>Jyviä laskemassa</item>
+        <item>Uniset tiput</item>
+        <item>Keltainen untuva</item>
+    </string-array>
 </resources>

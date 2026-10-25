@@ -65,6 +65,7 @@ import de.robnice.elly.epg.EpgGuide
 import de.robnice.elly.epg.EpgAction
 import de.robnice.elly.epg.EpgProgram
 import de.robnice.elly.epg.EpgReservation
+import de.robnice.elly.epg.EpgVideoInfo
 import de.robnice.elly.epg.ReservationType
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
@@ -91,6 +92,7 @@ fun EpgGrid(
     reservations: List<EpgReservation>,
     canRecord: Boolean,
     onAction: suspend (EpgAction) -> Unit,
+    loadVideoInfo: suspend (EpgChannel) -> EpgVideoInfo?,
     modifier: Modifier = Modifier
 ) {
     val colors = epgColors(currentPaletteColors())
@@ -108,6 +110,8 @@ fun EpgGrid(
             recording = marks.firstOrNull { it.type == ReservationType.RECORDING },
             canRecord = canRecord,
             onAction = onAction,
+            // Picture details come from the received signal, so only running programs ask; the TV then checks the channel.
+            loadVideoInfo = loadVideoInfo.takeIf { program.start <= System.currentTimeMillis() && program.end > System.currentTimeMillis() },
             onSwitch = {
                 selected = null
                 haptic()

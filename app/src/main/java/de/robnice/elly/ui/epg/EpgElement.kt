@@ -42,8 +42,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import de.robnice.elly.R
 import de.robnice.elly.data.model.EpgConfig
 import de.robnice.elly.epg.EpgAction
+import de.robnice.elly.epg.EpgChannel
 import de.robnice.elly.epg.EpgGuide
 import de.robnice.elly.epg.EpgReservation
+import de.robnice.elly.epg.EpgVideoInfo
 import de.robnice.elly.epg.FavoriteList
 import de.robnice.elly.ui.settings.EpgPickerState
 import kotlinx.coroutines.flow.Flow
@@ -61,7 +63,8 @@ class EpgGuides(
     val switchChannel: (String) -> Unit,
     val reservations: StateFlow<List<EpgReservation>>,
     val canRecord: StateFlow<Boolean>,
-    val perform: suspend (EpgAction) -> Unit
+    val perform: suspend (EpgAction) -> Unit,
+    val videoInfo: suspend (EpgChannel) -> EpgVideoInfo?
 )
 
 val LocalEpgGuides = compositionLocalOf<EpgGuides?> { null }
@@ -87,6 +90,7 @@ fun EpgElement(config: EpgConfig?, editing: Boolean, modifier: Modifier = Modifi
                 reservations = reservations,
                 canRecord = canRecord,
                 onAction = guides.perform,
+                loadVideoInfo = guides.videoInfo,
                 modifier = modifier
             )
             return

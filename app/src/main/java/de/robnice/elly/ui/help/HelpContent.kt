@@ -34,8 +34,8 @@ object HelpContent {
                 HelpTopic(R.string.help_remote_keys_title, R.string.help_remote_keys_body),
                 HelpTopic(R.string.help_remote_defaults_title, R.string.help_remote_defaults_body),
                 HelpTopic(R.string.help_remote_text_title, R.string.help_remote_text_body),
-                HelpTopic(R.string.help_remote_guide_title, R.string.help_remote_guide_body),
-                HelpTopic(R.string.help_remote_guide_info_title, R.string.help_remote_guide_info_body)
+                HelpTopic(R.string.help_remote_guide_title, R.string.help_remote_guide_body, R.drawable.help_img_guide),
+                HelpTopic(R.string.help_remote_guide_info_title, R.string.help_remote_guide_info_body, R.drawable.help_img_guide_info)
             )
         ),
         HelpChapter(

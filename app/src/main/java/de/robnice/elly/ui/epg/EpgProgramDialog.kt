@@ -23,6 +23,8 @@ import androidx.compose.runtime.setValue
 import de.robnice.elly.epg.EpgAction
 import de.robnice.elly.epg.EpgActionException
 import de.robnice.elly.epg.EpgReservation
+import de.robnice.elly.epg.EpgVideoInfo
+import androidx.compose.runtime.produceState
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.layout.Arrangement
@@ -57,6 +59,7 @@ fun EpgProgramDialog(
     recording: EpgReservation?,
     canRecord: Boolean,
     onAction: suspend (EpgAction) -> Unit,
+    loadVideoInfo: (suspend (EpgChannel) -> EpgVideoInfo?)?,
     onSwitch: () -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -126,7 +129,8 @@ fun EpgProgramDialog(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
-                Badges(channel, program)
+                val video by produceState<EpgVideoInfo?>(null, channel, program) { value = loadVideoInfo?.invoke(channel) }
+                Badges(channel, program, video)
                 if (program.end > now) {
                     if (program.start > now) {
                         OutlinedButton(
@@ -218,9 +222,12 @@ private fun ChannelLine(channel: EpgChannel, logoPath: String?) {
 // Small marks like on the TV: picture quality, access services and where the channel is received.
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun Badges(channel: EpgChannel, program: EpgProgram) {
+private fun Badges(channel: EpgChannel, program: EpgProgram, video: EpgVideoInfo?) {
     val badges = buildList {
         if (channel.hd) add(stringResource(R.string.epg_badge_hd))
+        video?.resolution?.let { add(it) }
+        video?.aspectRatio?.let { add(it) }
+        video?.hdr?.let { add(it) }
         if (program.subtitles) add(stringResource(R.string.epg_badge_subtitles))
         if (program.audioDescription) add(stringResource(R.string.epg_badge_audio_description))
         if (program.signLanguage) add(stringResource(R.string.epg_badge_sign_language))

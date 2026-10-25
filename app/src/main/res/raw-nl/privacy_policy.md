@@ -9,6 +9,7 @@ De app communiceert uitsluitend binnen je lokale netwerk:
 - Tv's zoeken: SSDP-verzoek en een controle van de adressen in je lokale netwerk op de webOS-poorten 3000 en 3001.
 - Bediening: versleutelde verbinding met de gekoppelde tv (oudere tv's zonder versleuteling via poort 3000). De app verstuurt bedieningsopdrachten zoals toetsen, aanwijzerbewegingen, het starten van apps en het wisselen van bron, en vraagt de geïnstalleerde apps, de bronnen en de app-pictogrammen op.
 - Inschakelen: Wake-on-LAN-pakket naar het MAC-adres van de tv.
+- Programmagids (optioneel, alleen voor tv's met roottoegang die je zelf instelt): SSH-verbinding met de tv (poort 22). De app leest favorietenlijsten, zenders, programmagegevens en geplande herinneringen en opnames van de tv, plant of verwijdert herinneringen en opnames op de tv en leest zenderlogo's. Logo's die de tv nog niet heeft, downloadt de tv zelf van de logoserver van LG, zoals voor zijn eigen gids; je apparaat maakt daarbij geen verbinding met die server.
 
 Deze communicatie vindt rechtstreeks plaats tussen je apparaat en de tv. Er worden geen gegevens naar externe servers verzonden.
 
@@ -20,6 +21,7 @@ De volgende gegevens worden lokaal op je apparaat opgeslagen:
 - App-instellingen (schermen, vormgeving, app-toetsen, aanwijzer, trillen, demomodus)
 - kopieën van de afbeeldingen die je als schermachtergrond kiest; de app ontvangt alleen de afbeeldingen die je in de Android-fotokiezer selecteert
 - App-pictogrammen die van de tv zijn geladen
+- voor de programmagids: SSH-gebruiker, poort en vingerafdruk van de SSH-sleutel van de tv; de SSH-sleutel van de app, die in de Android Keystore ligt en niet uit het apparaat kan worden gelezen; de programmagegevens (zenderlijsten en programma's van de afgelopen 24 uur en tot 14 dagen vooruit) en zenderlogo's. Het rootwachtwoord van de tv wordt alleen eenmalig gebruikt om de toegang in te stellen en wordt niet opgeslagen.
 
 Deze gegevens blijven uitsluitend op je apparaat, worden uitgesloten van Android-back-ups en worden verwijderd als de app wordt verwijderd.
 

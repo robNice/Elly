@@ -7,8 +7,9 @@ Lo sviluppatore di questa app non raccoglie, memorizza né elabora alcun dato pe
 L'app comunica esclusivamente all'interno della tua rete locale:
 
 - Ricerca delle TV: richiesta SSDP e verifica degli indirizzi della tua rete locale sulle porte webOS 3000 e 3001.
-- Controllo: connessione cifrata con la TV associata (le TV più vecchie senza cifratura tramite la porta 3000). L'app trasmette comandi di controllo come tasti, movimenti del puntatore, avvii di app e cambi di ingresso, e richiede le app installate, gli ingressi e le icone delle app.
+- Controllo: connessione cifrata con la TV associata (le TV più vecchie senza cifratura tramite la porta 3000). L'app trasmette comandi di controllo come tasti, movimenti del puntatore, avvii di app e cambi di ingresso e di canale, e richiede le app installate, gli ingressi e le icone delle app.
 - Accensione: pacchetto Wake-on-LAN all'indirizzo MAC della TV.
+- Guida programmi (facoltativa, solo per TV con accesso root configurato da te): connessione SSH alla TV (porta 22). L'app legge gli elenchi dei preferiti, i canali, la guida programmi e i promemoria e le registrazioni pianificati sulla TV, pianifica o elimina promemoria e registrazioni sulla TV e legge i loghi dei canali. I loghi che la TV non possiede ancora vengono scaricati dalla TV stessa dal server dei loghi di LG, come avviene per la sua guida; il tuo dispositivo non contatta tale server.
 
 Questa comunicazione avviene direttamente tra il tuo dispositivo e la TV. Nessun dato viene trasmesso a server esterni.
 
@@ -20,6 +21,7 @@ I seguenti dati vengono memorizzati localmente sul tuo dispositivo:
 - Impostazioni dell'app (schermate, design, tasti app, puntatore, vibrazione, modalità demo)
 - copie delle immagini che scegli come sfondo delle schermate; l'app riceve solo le immagini che selezioni nel selettore di foto di Android
 - Icone delle app caricate dalla TV
+- per la guida programmi: utente SSH, porta e impronta della chiave SSH della TV; la chiave SSH dell'app, conservata in Android Keystore e non estraibile dal dispositivo; la guida programmi (elenchi dei canali e programmi delle ultime 24 ore e fino a 14 giorni successivi) e i loghi dei canali. La password di root della TV viene utilizzata una sola volta per configurare l'accesso e non viene memorizzata.
 
 Questi dati restano esclusivamente sul tuo dispositivo, sono esclusi dai backup di Android e vengono eliminati quando l'app viene disinstallata.
 

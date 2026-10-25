@@ -34,6 +34,7 @@ Elly turns your Android phone into a remote control for LG TVs running webOS. It
    - [4.4 Screen 3](#44-screen-3)
    - [4.5 Screen 4](#45-screen-4)
    - [4.6 Text input](#46-text-input)
+   - [4.7 Program guide](#47-program-guide)
 5. [Pointer](#5-pointer)
    - [5.1 Motion mode](#51-motion-mode)
    - [5.2 Touchpad mode](#52-touchpad-mode)
@@ -62,6 +63,7 @@ Elly turns your Android phone into a remote control for LG TVs running webOS. It
 - 15 color palettes, twelve backgrounds (including your own photo), adjustable rounding and the “Long summer evenings” light effect.
 - Seven home screen widgets, including “Elly remote” with freely selectable keys and its own look.
 - Status light in the top bar that shows whether the TV can be reached.
+- Program guide like the TV's for rooted LG TVs: channels of your favorite list, switching, program details, reminders and recordings.
 - Quick start on first launch and an extensive help with search – explained by Elly.
 - Find TVs on the network, pair them, switch them on via Wake-on-LAN.
 - Demo mode for trying everything without an LG TV.
@@ -164,6 +166,21 @@ The fourth screen starts empty and hidden. Show it in the settings under **Appea
 ### 4.6 Text input
 
 When an input field is active on the TV (e.g. a search), a text field with your phone's keyboard opens automatically. The text is sent while you type, the send key works like Enter. The **Keyboard** key, which you can place on a screen in the editor, opens the text field manually. Apps with their own on-screen keyboard (e.g. some streaming apps) do not accept text from the phone.
+
+### 4.7 Program guide
+
+<p>
+  <img src="docs/en/guide.png" width="270" alt="Screen with program guide">
+  &nbsp;
+  <img src="docs/en/guide_info.png" width="270" alt="Program info window">
+</p>
+
+With a **rooted** LG TV a screen can show the program guide, laid out like the guide on the TV. It needs the Homebrew Channel with its SSH server switched on; the access is set up under [Settings → TV](#9-settings). In demo mode Elly shows invented channels and programs.
+
+- **Adding:** in the [editor](#61-editor) under “+ Element” → “Program guide”, then choose the TV favorite list. The element starts as wide as the screen and half as high and can be moved and resized like any other; holding it changes the list. Several guides with different lists are possible.
+- **Display:** times in half-hour steps along the top with the date kept in view and a line at each new day, channel logos on the left, programs on the right. The orange line marks the current time, the row of the channel on the TV is highlighted in orange, “Now” jumps back. Scroll in any direction, back up to 24 hours and ahead as far as the TV has data (at most 14 days).
+- **Use:** tap a channel to switch to it. Tap a program for its details (channel, time, progress, marks such as HD or subtitles, description) with **Remind me** and **Record** – the TV handles both itself, even when the phone is off. Running recordings can be stopped. Planned reminders show a bell, recordings a red dot.
+- **Data:** Elly reads the guide from the TV over SSH, keeps it on the phone and refreshes it while the remote is open. Swiping sideways in the guide never changes the screen; swipe across the dots at the bottom instead.
 
 ## 5 Pointer
 
@@ -277,7 +294,7 @@ Elly comes with seven home screen widgets:
 
 The gear in the top bar opens the settings. They have three tabs, which you can also swipe between; Elly remembers the last one.
 
-- **TV** – paired TVs, search, IP address and **demo mode**: it simulates a connected TV (“Demo TV”, yellow status light), all screens can be used without an LG TV and no commands are sent. See [connecting a TV](#32-connecting-a-tv).
+- **TV** – paired TVs, search, IP address and **demo mode**: it simulates a connected TV (“Demo TV”, yellow status light), all screens can be used without an LG TV and no commands are sent. See [connecting a TV](#32-connecting-a-tv). For rooted TVs, **Root access and SSH set up?** sets up the access for the [program guide](#47-program-guide): user, port and the root password once; Elly stores its own key on the TV and does not save the password.
 - **Appearance** – screens, color palette, background, rounding, light effect. See [editing screens](#6-editing-screens) and [appearance](#7-appearance).
 - **Controls** – pointer (see [pointer](#5-pointer)) and **vibrate on key press**.
 
@@ -297,7 +314,7 @@ Swipe between the overview and the chapters or use the fixed footer (previous ch
 
 ## 11 Privacy
 
-Elly only talks to your TV on the local network; no data is sent to external servers. Paired TVs, settings, screen layouts and app icons stay on the phone and are deleted when you uninstall the app. The full privacy policy is in the app under **Settings → Privacy**.
+Elly only talks to your TV on the local network; no data is sent to external servers. Paired TVs, settings, screen layouts, app icons and the program guide stay on the phone and are deleted when you uninstall the app. The full privacy policy is in the app under **Settings → Privacy**.
 
 ## 12 Building
 

@@ -469,4 +469,112 @@
     <string name="help_privacy_policy_title">سياسة الخصوصية</string>
     <string name="help_privacy_policy_body">تُفتح سياسة الخصوصية الكاملة عبر «الخصوصية» أسفل الإعدادات، بجانب رقم الإصدار.</string>
     <string name="help_privacy_link">سياسة الخصوصية</string>
+    <string name="settings_root_ssh">هل تم إعداد الوصول بصلاحيات الجذر وSSH؟</string>
+    <string name="settings_root_ssh_description">لأجهزة التلفاز التي مُنحت صلاحيات الجذر والمزوّدة بـ Homebrew Channel مع تشغيل خادم SSH فيه. مطلوب لدليل البرامج.</string>
+    <string name="settings_root_ssh_check">فحص</string>
+    <string name="settings_root_ssh_checking">جارٍ فحص الاتصال…</string>
+    <string name="settings_root_ssh_ok">اتصال SSH يعمل.</string>
+    <string name="settings_root_ssh_removing">جارٍ إزالة وصول SSH…</string>
+    <string name="settings_root_ssh_setup_title">إعداد SSH</string>
+    <string name="settings_root_ssh_setup_message">تسجّل Elly الدخول إلى التلفاز مرة واحدة باستخدام كلمة مرور الجذر وتخزّن مفتاحها الخاص عليه. لا تُحفَظ كلمة المرور.</string>
+    <string name="settings_root_ssh_user">المستخدم</string>
+    <string name="settings_root_ssh_port">المنفذ</string>
+    <string name="settings_root_ssh_password">كلمة المرور</string>
+    <string name="settings_root_ssh_setup_confirm">إعداد</string>
+    <string name="settings_root_ssh_error_unreachable">تعذّر الوصول إلى خادم SSH في التلفاز. هل SSH مفعّل في Homebrew Channel؟</string>
+    <string name="settings_root_ssh_error_auth">رُفض تسجيل الدخول. تحقق من المستخدم وكلمة المرور.</string>
+    <string name="settings_root_ssh_error_key">لم يعد التلفاز يقبل مفتاح Elly. أوقف الإعداد ثم أعد إعداد SSH.</string>
+    <string name="settings_root_ssh_error_host_key">تغيّر مفتاح SSH الخاص بالتلفاز. إذا مُنح التلفاز صلاحيات الجذر من جديد، فأوقف الإعداد ثم أعد إعداد SSH.</string>
+    <string name="settings_root_ssh_error_luna">تم تسجيل الدخول، لكن أوامر نظام التلفاز غير متاحة.</string>
+    <string name="settings_root_ssh_error_unknown">فشل اتصال SSH.</string>
+    <string name="settings_root_ssh_remove_title">إزالة وصول SSH؟</string>
+    <string name="settings_root_ssh_remove_message">تحذف Elly مفتاحها من التلفاز وتنسى بيانات الوصول. لن يعود دليل البرامج متاحًا بعد ذلك.</string>
+    <string name="settings_root_ssh_remove">إزالة</string>
+    <string name="settings_root_ssh_removed_locally">تعذّر الوصول إلى التلفاز، ولذلك ما زال مفتاح Elly مخزنًا عليه. لم تعد Elly تستخدمه. إذا أردت، فاحذف السطر المنتهي بـ «elly-app» من ~/.ssh/authorized_keys على التلفاز.</string>
+
+    <string name="custom_element_epg">دليل البرامج</string>
+    <string name="epg_title_with_list">دليل البرامج · %1$s</string>
+    <string name="epg_editor_hint">اضغط مطولًا لتغيير قائمة المفضلة</string>
+    <string name="epg_unavailable_hint">مخفي على الشاشة إلى أن يتم إعداد SSH لهذا التلفاز</string>
+    <string name="epg_list_title">اختر قائمة المفضلة</string>
+    <string name="epg_list_failed">تعذّر تحميل قوائم المفضلة. تحقق من اتصال SSH في علامة تبويب التلفاز.</string>
+    <string name="epg_list_empty">لا توجد قوائم مفضلة على التلفاز.</string>
+    <string name="epg_status_failed">تعذّر تحميل دليل البرامج.</string>
+    <string name="epg_status_empty">لا توجد بيانات برامج بعد.</string>
+    <string name="epg_now">الآن</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d دقيقة)</string>
+    <string name="epg_info_remaining">متبقٍ %1$d دقيقة</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">ترجمة</string>
+    <string name="epg_badge_audio_description">الوصف الصوتي</string>
+    <string name="epg_badge_sign_language">لغة الإشارة</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_info_switch">الانتقال إلى القناة</string>
+    <string name="epg_info_close">إغلاق</string>
+    <string name="epg_remind">ذكّرني</string>
+    <string name="epg_remind_cancel">حذف التذكير</string>
+    <string name="epg_record">تسجيل</string>
+    <string name="epg_record_cancel">حذف التسجيل</string>
+    <string name="epg_record_stop">إيقاف التسجيل</string>
+    <string name="epg_reminder_set">تم ضبط التذكير</string>
+    <string name="epg_record_no_storage">يتطلب التسجيل جهاز تخزين محددًا للتسجيلات على التلفاز.</string>
+    <string name="epg_record_no_data">لا توجد لدى التلفاز بيانات تسجيل لهذا البرنامج.</string>
+    <string name="epg_action_failed">لم يقبل التلفاز هذا الإجراء.</string>
+    <string name="epg_action_conflict">يتداخل هذا مع تذكير أو تسجيل مخطط له مسبقًا على التلفاز.</string>
+    <string name="epg_demo_list_main">المفضلة</string>
+    <string name="epg_demo_list_kids">الأطفال</string>
+    <string name="epg_demo_description">برنامج خيالي للوضع التجريبي. عند إعداد تلفاز بصلاحيات الجذر وSSH، يعرض الدليل البرامج الحقيقية على تلفازك.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly الأولى</item>
+        <item>تلفاز القنّ</item>
+        <item>أخبار حظيرة الدجاج</item>
+        <item>رياضة المزرعة</item>
+        <item>أفلام الريش</item>
+        <item>وثائقيات العش</item>
+        <item>موسيقى الديك</item>
+        <item>البيضة الذهبية</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>تلفاز الكتكوت</item>
+        <item>زقزوق الصغير</item>
+        <item>الفرخ</item>
+        <item>الكتاكيت المرحة</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>صباح في الحظيرة</item>
+        <item>مطاردة البيضة الكبرى</item>
+        <item>ريش وحقائق</item>
+        <item>أخبار حظيرة الدجاج</item>
+        <item>موسيقى الديك مباشرة</item>
+        <item>مطبخ القنّ</item>
+        <item>ليلة الثعلب</item>
+        <item>أجنحة فوق الوادي</item>
+        <item>دجاجة الطقس</item>
+        <item>المحقق نقّار</item>
+        <item>حكايات المرعى</item>
+        <item>نقنقة آخر الليل</item>
+        <item>مسابقة الحبوب</item>
+        <item>كرة قدم المزرعة</item>
+        <item>دجاجات في جولة</item>
+        <item>المبيت الطويل</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>زقزوق والأصدقاء</item>
+        <item>أجنحة صغيرة</item>
+        <item>البيضة الصغيرة</item>
+        <item>مغامرات الكتكوت</item>
+        <item>عش الحكايات</item>
+        <item>عدّ الحبوب</item>
+        <item>كتاكيت نعسانة</item>
+        <item>الزغب الأصفر</item>
+    </string-array>
+
+    <string name="help_remote_guide_title">دليل البرامج</string>
+    <string name="help_remote_guide_body">على تلفاز مزوّد بصلاحيات الجذر (أو في الوضع التجريبي)، يمكن لإحدى الشاشات عرض دليل البرامج كما يظهر على التلفاز: الأوقات في الأعلى، وقنوات قائمة المفضلة على اليسار، والبرامج على اليمين.\n• مرّر في أي اتجاه: إلى الوراء حتى 24 ساعة، وإلى الأمام بقدر البيانات المتاحة لدى التلفاز (14 يومًا كحد أقصى). يظهر التاريخ على يسار شريط الوقت، ويبدأ كل يوم جديد بخط.\n• يشير الخط البرتقالي إلى الوقت الحالي؛ ويعيدك «الآن» في أعلى اليسار إليه. يُبرز صف القناة المعروضة حاليًا على التلفاز باللون البرتقالي.\n• انقر على قناة للانتقال إليها.\nلا يؤدي التمرير داخل الدليل إلى تغيير الشاشة مطلقًا؛ مرّر بدلًا من ذلك فوق النقاط في الأسفل. تحتفظ Elly بالبيانات على الهاتف وتحدّثها كل 15 دقيقة ما دامت شاشة جهاز التحكم مفتوحة؛ وتدور دائرة صغيرة في أعلى اليسار أثناء التحميل.</string>
+    <string name="help_remote_guide_info_title">البرامج والتذكيرات والتسجيلات</string>
+    <string name="help_remote_guide_info_body">انقر على برنامج لعرض تفاصيله: القناة واليوم والوقت والمدة والنوع والوصف. ينقل «الانتقال إلى القناة» التلفاز إليها.\n• ذكّرني: يذكّرك التلفاز عند بدء البرنامج حتى لو كان الهاتف مغلقًا. تحمل التذكيرات المخطط لها رمز جرس.\n• تسجيل: يسجّل التلفاز على وحدة التخزين المحددة للتسجيلات فيه. تحمل التسجيلات المخطط لها نقطة حمراء.\nيمكن حذف كليهما من جديد («حذف …»). تظهر في Elly أيضًا التذكيرات والتسجيلات التي تنشئها على التلفاز. إذا رفض التلفاز الإجراء، مثلًا بسبب تداخل التسجيلات، تظهر رسالته في النافذة.</string>
+    <string name="help_edit_guide_title">إضافة دليل البرامج</string>
+    <string name="help_edit_guide_body">يتيح «+ عنصر» دليل البرامج بمجرد إعداد SSH للتلفاز (راجع الإعدادات) أو تشغيل الوضع التجريبي. قبل وضعه، اختر قائمة المفضلة في التلفاز التي ستُعرض قنواتها. اضغط على العنصر مطولًا لمدة ثانيتين لتغيير القائمة.\nيبدأ الدليل بعرض الشاشة ونصف ارتفاعها؛ ويمكن نقله وتغيير حجمه مثل العناصر الأخرى. يمكن إضافة عدة أدلة بقوائم مختلفة. من دون وصول SSH يظل العنصر محفوظًا، لكنه لا يظهر على الشاشة.</string>
+    <string name="help_settings_root_title">الوصول بصلاحيات الجذر وSSH</string>
+    <string name="help_settings_root_body">يحتاج دليل البرامج إلى وصول إلى التلفاز لا تسمح به LG إلا بصلاحيات الجذر. إذا كان تلفازك مزوّدًا بصلاحيات الجذر (Homebrew Channel) وخادم SSH مفعّلًا فيه، ففعّل «هل تم إعداد الوصول بصلاحيات الجذر وSSH؟» في علامة تبويب «التلفاز».\nأدخل المستخدم (عادةً root) والمنفذ (عادةً 22) وكلمة مرور الجذر. تسجّل Elly الدخول مرة واحدة وتخزّن مفتاحها الخاص على التلفاز؛ ولا تُحفَظ كلمة المرور. يختبر «فحص» الاتصال.\nيؤدي إيقافه إلى إزالة المفتاح من التلفاز بعد التأكيد. ينطبق الإعداد على كل تلفاز على حدة.</string>
 </resources>

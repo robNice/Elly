@@ -83,6 +83,8 @@ class DemoEpgSource(private val context: Context) : EpgSource {
         }
     }
 
+    override suspend fun videoInfo(channel: EpgChannel): EpgVideoInfo? = null
+
     private fun plan(type: ReservationType, program: EpgProgram) {
         synchronized(planned) {
             planned += EpgReservation("${type.name}_${program.programId}", type, program.signalId, program.start, program.title)

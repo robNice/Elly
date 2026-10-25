@@ -364,7 +364,7 @@
     <string name="help_remote_status_title">A luz de status</string>
     <string name="help_remote_status_body">• Verde: conectada.\n• Vermelha: TV inacessível.\n• Cinza: verificando a conexão.\n• Amarela: modo demo.\nEnquanto a Elly está visível, a conexão é verificada a cada 10 segundos e depois de cada toque em um botão. Quando o app vai para segundo plano, a conexão é encerrada.</string>
     <string name="help_remote_screens_title">Trocar de tela</string>
-    <string name="help_remote_screens_body">Os botões ficam distribuídos em até quatro telas, então tudo cabe sem precisar rolar. Deslize para a esquerda ou para a direita para trocar. Os pontinhos embaixo mostram em qual tela você está; com apenas uma tela ativa, eles somem.\nA Elly se lembra da última tela que você usou. Quais telas aparecem e em que ordem é definido nas configurações.</string>
+    <string name="help_remote_screens_body">Os botões ficam distribuídos em até quatro telas, então tudo cabe sem precisar rolar. Deslize para a esquerda ou para a direita para trocar. Os pontinhos embaixo mostram em qual tela você está; com apenas uma tela ativa, eles somem.\nA Elly se lembra da última tela que você usou. Quais telas aparecem e em que ordem é definido nas configurações. Se um elemento como o guia de programação ocupar a tela, deslize sobre os pontos embaixo.</string>
     <string name="help_remote_keys_title">Usar os botões</string>
     <string name="help_remote_keys_body">• Os botões disparam quando você levanta o dedo. Por isso, um deslize que começa em um botão não envia nada.\n• Volume, canal e o direcional repetem enquanto você os segura.\n• Se quiser, o celular vibra a cada toque em um botão (Configurações → “Controle”).\n• Se um botão não estiver disponível ou a TV estiver inacessível, aparece uma mensagem embaixo.</string>
     <string name="help_remote_defaults_title">Layout padrão</string>
@@ -462,8 +462,114 @@
     <string name="help_privacy_title">Privacidade</string>
     <string name="help_privacy_elly">Seus dados são seus. Palavra de galinha, e ponto final!</string>
     <string name="help_privacy_data_title">O que acontece com seus dados</string>
-    <string name="help_privacy_data_body">A Elly só conversa com sua TV na rede local; nenhum dado é enviado para servidores externos. TVs pareadas, configurações, layouts das telas e ícones dos apps ficam no seu celular e são excluídos quando você desinstala o app.</string>
+    <string name="help_privacy_data_body">A Elly só conversa com sua TV na rede local; nenhum dado é enviado para servidores externos. TVs pareadas, configurações, layouts das telas e ícones dos apps ficam no seu celular e são excluídos quando você desinstala o app. O guia de programação também fica no seu celular.</string>
     <string name="help_privacy_policy_title">Política de privacidade</string>
     <string name="help_privacy_policy_body">A política de privacidade completa é aberta em “Privacidade”, no fim das configurações, ao lado do número da versão.</string>
     <string name="help_privacy_link">política de privacidade</string>
+    <string name="settings_root_ssh">Acesso root e SSH configurados?</string>
+    <string name="settings_root_ssh_description">Para TVs com root, Homebrew Channel e o servidor SSH ativado. Necessário para o guia de programação.</string>
+    <string name="settings_root_ssh_check">Verificar</string>
+    <string name="settings_root_ssh_checking">Verificando a conexão…</string>
+    <string name="settings_root_ssh_ok">A conexão SSH funciona.</string>
+    <string name="settings_root_ssh_removing">Removendo o acesso SSH…</string>
+    <string name="settings_root_ssh_setup_title">Configurar SSH</string>
+    <string name="settings_root_ssh_setup_message">A Elly faz login uma vez na TV com a senha de root e salva lá a própria chave. A senha não é salva.</string>
+    <string name="settings_root_ssh_user">Usuário</string>
+    <string name="settings_root_ssh_port">Porta</string>
+    <string name="settings_root_ssh_password">Senha</string>
+    <string name="settings_root_ssh_setup_confirm">Configurar</string>
+    <string name="settings_root_ssh_error_unreachable">Não é possível acessar o servidor SSH da TV. O SSH está ativado no Homebrew Channel?</string>
+    <string name="settings_root_ssh_error_auth">Login recusado. Verifique o usuário e a senha.</string>
+    <string name="settings_root_ssh_error_key">A TV não aceita mais a chave da Elly. Desative a configuração e configure o SSH de novo.</string>
+    <string name="settings_root_ssh_error_host_key">A chave SSH da TV mudou. Se a TV recebeu root de novo, desative a configuração e configure o SSH de novo.</string>
+    <string name="settings_root_ssh_error_luna">Login feito, mas os comandos de sistema da TV não estão disponíveis.</string>
+    <string name="settings_root_ssh_error_unknown">A conexão SSH falhou.</string>
+    <string name="settings_root_ssh_remove_title">Remover o acesso SSH?</string>
+    <string name="settings_root_ssh_remove_message">A Elly apaga a chave dela da TV e esquece o acesso. O guia de programação não estará mais disponível.</string>
+    <string name="settings_root_ssh_remove">Remover</string>
+    <string name="settings_root_ssh_removed_locally">Não foi possível acessar a TV, por isso a chave da Elly continua salva nela. A Elly não a usa mais. Se quiser, apague na TV a linha que termina em “elly-app” em ~/.ssh/authorized_keys.</string>
+    <string name="custom_element_epg">Guia de programação</string>
+    <string name="epg_title_with_list">Guia de programação · %1$s</string>
+    <string name="epg_editor_hint">Toque e segure para mudar a lista de favoritos</string>
+    <string name="epg_unavailable_hint">Oculto na tela até o SSH ser configurado para esta TV</string>
+    <string name="epg_list_title">Escolher lista de favoritos</string>
+    <string name="epg_list_failed">Não foi possível carregar as listas de favoritos. Verifique a conexão SSH na aba “TV”.</string>
+    <string name="epg_list_empty">A TV não tem listas de favoritos.</string>
+    <string name="epg_status_failed">Não foi possível carregar o guia de programação.</string>
+    <string name="epg_status_empty">Ainda não há dados de programação.</string>
+    <string name="epg_now">Agora</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min)</string>
+    <string name="epg_info_remaining">faltam %1$d min</string>
+    <string name="epg_info_switch">Mudar de canal</string>
+    <string name="epg_info_close">Fechar</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Legendas</string>
+    <string name="epg_badge_audio_description">Audiodescrição</string>
+    <string name="epg_badge_sign_language">Libras</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_remind">Lembrar</string>
+    <string name="epg_remind_cancel">Apagar lembrete</string>
+    <string name="epg_record">Gravar</string>
+    <string name="epg_record_cancel">Apagar gravação</string>
+    <string name="epg_record_stop">Parar gravação</string>
+    <string name="epg_reminder_set">Lembrete agendado</string>
+    <string name="epg_record_no_storage">Para gravar, a TV precisa de um dispositivo de armazenamento escolhido para gravações.</string>
+    <string name="epg_record_no_data">A TV não tem dados de gravação para este programa.</string>
+    <string name="epg_action_failed">A TV não aceitou isso.</string>
+    <string name="epg_action_conflict">Isso se sobrepõe a um lembrete ou gravação já agendado na TV.</string>
+    <string name="epg_demo_list_main">Favoritos</string>
+    <string name="epg_demo_list_kids">Crianças</string>
+    <string name="epg_demo_description">Programa inventado para o modo demo. Com uma TV com root e SSH configurado, o guia mostra a programação real da sua TV.</string>
+    <string name="help_remote_guide_title">Guia de programação</string>
+    <string name="help_remote_guide_body">Com uma TV com root (ou no modo demo), uma tela pode mostrar o guia de programação, como o guia da TV: em cima os horários, à esquerda os canais da sua lista de favoritos, à direita os programas.\n• Deslize em todas as direções: para trás até 24 horas, para frente até onde a TV tiver dados (no máximo 14 dias). À esquerda na barra de horários fica a data; cada novo dia começa com uma linha.\n• A linha laranja mostra o horário atual; “Agora” no canto superior esquerdo volta para ele. A linha do canal que está passando na TV fica destacada em laranja.\n• Toque em um canal para mudar para ele.\nDeslizar no guia nunca muda de tela; para isso, deslize sobre os pontos embaixo. A Elly guarda os dados no celular e atualiza a cada 15 minutos enquanto o controle está aberto; durante o carregamento gira um pequeno círculo no canto superior esquerdo.</string>
+    <string name="help_remote_guide_info_title">Programas, lembretes e gravações</string>
+    <string name="help_remote_guide_info_body">Toque em um programa para ver os detalhes: canal, dia, horário, duração, gênero e descrição. “Mudar de canal” muda a TV para esse canal.\n• Lembrar: a TV lembra você quando o programa começa, mesmo com o celular desligado. Lembretes agendados mostram um sino.\n• Gravar: a TV grava no dispositivo escolhido na TV para gravações. Gravações agendadas mostram um ponto vermelho; gravações em andamento podem ser paradas.\nAmbos podem ser apagados. A Elly também mostra lembretes e gravações criados na TV. Se a TV recusar algo, por exemplo por sobreposição, a mensagem dela aparece na janela.</string>
+    <string name="help_edit_guide_title">Adicionar o guia de programação</string>
+    <string name="help_edit_guide_body">“+ Elemento” oferece o guia de programação assim que o SSH estiver configurado para a TV (veja Configurações) ou o modo demo estiver ativo. Antes de posicioná-lo, você escolhe a lista de favoritos da TV cujos canais são mostrados. Toque e segure o elemento por 2 segundos para mudar a lista.\nO guia começa com a largura da tela e metade da altura; como os outros elementos, pode ser movido e redimensionado. Vários guias com listas diferentes são possíveis. Sem acesso SSH, o elemento fica salvo, mas não aparece na tela.</string>
+    <string name="help_settings_root_title">Acesso root e SSH</string>
+    <string name="help_settings_root_body">O guia de programação precisa de um acesso à TV que a LG só permite com root. Se a sua TV tem root (Homebrew Channel) e o servidor SSH está ativado, ative “Acesso root e SSH configurados?” na aba “TV”.\nInforme o usuário (normalmente root), a porta (normalmente 22) e a senha de root. A Elly faz login uma vez e salva uma chave própria na TV; a senha não é salva. “Verificar” testa a conexão.\nDesativar remove a chave da TV depois de confirmar. A configuração vale por TV.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly Um</item>
+        <item>Galinheiro TV</item>
+        <item>Notícias do Galinheiro</item>
+        <item>Esporte do Celeiro</item>
+        <item>Penas Cinema</item>
+        <item>Ninho Docs</item>
+        <item>Galo Música</item>
+        <item>Ovo de Ouro</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Pintinho TV</item>
+        <item>Pequeno Piu</item>
+        <item>Recém-Chocado</item>
+        <item>Pintinhos ao Sol</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Manhã no celeiro</item>
+        <item>A grande caça aos ovos</item>
+        <item>Penas &amp; fatos</item>
+        <item>Notícias do galinheiro</item>
+        <item>Galo Rock ao Vivo</item>
+        <item>Cozinha do celeiro</item>
+        <item>A noite da raposa</item>
+        <item>Asas sobre o vale</item>
+        <item>A galinha do tempo</item>
+        <item>Inspetor Bicada</item>
+        <item>Histórias do pasto</item>
+        <item>Cacarejo noturno</item>
+        <item>Quiz dos grãos</item>
+        <item>Futebol do celeiro</item>
+        <item>Galinhas viajantes</item>
+        <item>O poleiro comprido</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Piu e amigos</item>
+        <item>Asinhas</item>
+        <item>O pequeno ovo</item>
+        <item>Aventuras dos pintinhos</item>
+        <item>Ninho de histórias</item>
+        <item>Contando grãos</item>
+        <item>Pintinhos com sono</item>
+        <item>Penugem amarela</item>
+    </string-array>
 </resources>

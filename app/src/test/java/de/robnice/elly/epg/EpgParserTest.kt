@@ -142,6 +142,22 @@ class EpgParserTest {
     }
 
     @Test
+    fun videoInfoGivesResolutionRatioAndHdr() {
+        val answer = JSONObject(
+            """
+            {"appId":"com.webos.app.livetv","returnValue":true,"videoInfo":{"video":{"width":1920,"frameRate":25.0,
+             "ratio":"DISPLAY_RATIO_16_9","IsBT2020":false,"scanType":"VIDEO_INTERLACED","height":1080,"hdrType":"none"},
+             "context":"x","content":"dtv"}}
+            """
+        )
+
+        assertEquals(EpgVideoInfo("1080i", "16:9", null), EpgParser.videoInfo(answer))
+        val uhd = JSONObject(answer.toString().replace("1080", "2160").replace("VIDEO_INTERLACED", "VIDEO_PROGRESSIVE").replace("\"none\"", "\"hlg\""))
+        assertEquals(EpgVideoInfo("2160p", "16:9", "HLG"), EpgParser.videoInfo(uhd))
+        assertNull(EpgParser.videoInfo(JSONObject("{\"returnValue\":false}")))
+    }
+
+    @Test
     fun localTimeUsesTvFormat() {
         val millis = Instant.parse("2026-10-25T19:15:00Z").toEpochMilli()
 

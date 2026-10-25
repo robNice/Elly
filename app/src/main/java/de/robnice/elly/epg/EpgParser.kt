@@ -107,6 +107,18 @@ object EpgParser {
         }
     }
 
+    // utp.broadcast/getCurrentVideoInfo: e.g. 1920 x 1080, VIDEO_INTERLACED, DISPLAY_RATIO_16_9, hdrType none.
+    fun videoInfo(answer: JSONObject): EpgVideoInfo? {
+        val video = answer.optJSONObject("videoInfo")?.optJSONObject("video") ?: return null
+        val height = video.optInt("height")
+        val scan = if (video.optString("scanType").contains("INTERLACED")) "i" else "p"
+        val ratio = video.optString("ratio").removePrefix("DISPLAY_RATIO_").takeIf { it.matches(RATIO) }?.replace('_', ':')
+        val hdr = video.optString("hdrType").takeIf { it.isNotBlank() && !it.equals("none", ignoreCase = true) }?.uppercase()
+        return EpgVideoInfo(if (height > 0) "$height$scan" else null, ratio, hdr)
+    }
+
+    private val RATIO = Regex("^\\d+_\\d+$")
+
     fun localTime(millis: Long, zone: ZoneId): String =
         LocalDateTime.ofInstant(java.time.Instant.ofEpochMilli(millis), zone).format(TV_TIME)
 

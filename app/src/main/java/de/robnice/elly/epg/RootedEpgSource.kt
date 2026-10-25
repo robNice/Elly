@@ -176,6 +176,12 @@ class RootedEpgSource(
         }
     }
 
+    // The banner's audio info would need the live TV app's own playback ID, so only the picture is read.
+    override suspend fun videoInfo(channel: EpgChannel): EpgVideoInfo? = rootAccess.withLuna(tv) { luna ->
+        val current = luna.call(CURRENT_CHANNEL).optString("channelId")
+        if (current != channel.id) null else EpgParser.videoInfo(luna.call(VIDEO_INFO))
+    }
+
     private fun schedule(type: String, channel: EpgChannel, program: EpgProgram): JSONObject = JSONObject()
         .put("scheduleType", type)
         .put("channelId", channel.id)
@@ -231,7 +237,9 @@ class RootedEpgSource(
         const val RESERVATION_DELETE = "luna://com.webos.service.tvReservationAgent/delete"
         const val RECORDING_IDS = "luna://com.webos.service.legacybroadcast.dvr/record/getRecordingIdList"
         const val RECORDING_SOURCES = "luna://com.webos.service.legacybroadcast.dvr/record/getRecordingSourceList"
-        const val RECORDING_STOP = "luna://com.webos.service.legacybroadcast.dvr/record/stopRecord"
+        const val CURRENT_CHANNEL = "luna://com.webos.service.apiadapter/tv/getCurrentChannel"
+        const val VIDEO_INFO = "luna://com.webos.service.utp.broadcast/getCurrentVideoInfo"
+        const val RECORDING_STOP ="luna://com.webos.service.legacybroadcast.dvr/record/stopRecord"
         const val SYSTEM_SETTINGS = "luna://com.lge.settingsservice/getSystemSettings"
         const val LIST_DEVICES = "luna://com.webos.service.attachedstoragemanager/listDevices"
         const val SCHEDULE_WATCHING = "watching"

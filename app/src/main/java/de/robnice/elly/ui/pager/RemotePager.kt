@@ -4,6 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
@@ -159,7 +165,8 @@ fun RemotePager(
             switchChannel = viewModel::switchChannel,
             reservations = viewModel.guideReservations,
             canRecord = viewModel.guideCanRecord,
-            perform = viewModel::performGuideAction
+            perform = viewModel::performGuideAction,
+            videoInfo = viewModel::guideVideoInfo
         )
     }
 
@@ -373,13 +380,25 @@ private fun StatusLight(state: ConnectionState) {
     }
     val color = colorResource(colorRes)
     val description = stringResource(descriptionRes)
+    // While the connection is being checked the light breathes gently, so a grey dot does not look broken.
+    val pulse = if (state == ConnectionState.CHECKING) {
+        val transition = rememberInfiniteTransition(label = "statusPulse")
+        transition.animateFloat(
+            initialValue = STATUS_PULSE_LOW,
+            targetValue = 1f,
+            animationSpec = infiniteRepeatable(tween(STATUS_PULSE_MILLIS, easing = FastOutSlowInEasing), RepeatMode.Reverse),
+            label = "statusPulse"
+        ).value
+    } else {
+        1f
+    }
     Box(
         modifier = Modifier
             .size(dimensionResource(R.dimen.status_light_size))
             .semantics { contentDescription = description }
             .drawBehind {
-                drawCircle(color.copy(alpha = STATUS_GLOW_ALPHA))
-                drawCircle(color, radius = size.minDimension * STATUS_CORE_RATIO)
+                drawCircle(color.copy(alpha = STATUS_GLOW_ALPHA * pulse), radius = size.minDimension / 2 * pulse)
+                drawCircle(color.copy(alpha = STATUS_CORE_LOW_ALPHA + (1f - STATUS_CORE_LOW_ALPHA) * pulse), radius = size.minDimension * STATUS_CORE_RATIO)
             }
     )
 }
@@ -387,3 +406,6 @@ private fun StatusLight(state: ConnectionState) {
 private const val INDICATOR_HALO_RATIO = 2.2f
 private const val STATUS_GLOW_ALPHA = 0.3f
 private const val STATUS_CORE_RATIO = 0.3f
+private const val STATUS_PULSE_LOW = 0.45f
+private const val STATUS_PULSE_MILLIS = 900
+private const val STATUS_CORE_LOW_ALPHA = 0.55f

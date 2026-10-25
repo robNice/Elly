@@ -364,7 +364,7 @@
     <string name="help_remote_status_title">Η λυχνία κατάστασης</string>
     <string name="help_remote_status_body">• Πράσινη: συνδεδεμένη.\n• Κόκκινη: η τηλεόραση δεν είναι προσβάσιμη.\n• Γκρι: έλεγχος της σύνδεσης.\n• Κίτρινη: λειτουργία επίδειξης.\nΌσο η Elly είναι ορατή, η σύνδεση ελέγχεται κάθε 10 δευτερόλεπτα και μετά από κάθε πάτημα πλήκτρου. Όταν η εφαρμογή περνά στο παρασκήνιο, η σύνδεση κλείνει.</string>
     <string name="help_remote_screens_title">Αλλαγή οθόνης</string>
-    <string name="help_remote_screens_body">Τα πλήκτρα μοιράζονται σε έως τέσσερις οθόνες, ώστε όλα να χωράνε χωρίς κύλιση. Σύρε αριστερά ή δεξιά για αλλαγή. Οι τελείες στο κάτω μέρος δείχνουν σε ποια οθόνη βρίσκεσαι· με μία μόνο ενεργή οθόνη εξαφανίζονται.\nΗ Elly θυμάται την οθόνη που χρησιμοποίησες τελευταία. Ποιες οθόνες εμφανίζονται και με ποια σειρά το ορίζεις στις ρυθμίσεις.</string>
+    <string name="help_remote_screens_body">Τα πλήκτρα μοιράζονται σε έως τέσσερις οθόνες, ώστε όλα να χωράνε χωρίς κύλιση. Σύρε αριστερά ή δεξιά για αλλαγή. Οι τελείες στο κάτω μέρος δείχνουν σε ποια οθόνη βρίσκεσαι· με μία μόνο ενεργή οθόνη εξαφανίζονται.\nΗ Elly θυμάται την οθόνη που χρησιμοποίησες τελευταία. Ποιες οθόνες εμφανίζονται και με ποια σειρά το ορίζεις στις ρυθμίσεις. Αν ένα στοιχείο όπως ο οδηγός προγράμματος γεμίζει την οθόνη, σύρε πάνω από τις τελείες κάτω.</string>
     <string name="help_remote_keys_title">Χρήση των πλήκτρων</string>
     <string name="help_remote_keys_body">• Τα πλήκτρα ενεργοποιούνται όταν σηκώνεις το δάχτυλο. Έτσι, ένα σύρσιμο που ξεκινά πάνω σε πλήκτρο δεν στέλνει τίποτα.\n• Η ένταση, το κανάλι και ο σταυρός κατεύθυνσης επαναλαμβάνονται όσο τα κρατάς πατημένα.\n• Αν θέλεις, το κινητό δονείται σε κάθε πάτημα πλήκτρου (Ρυθμίσεις → «Χειρισμός»).\n• Αν ένα πλήκτρο δεν είναι διαθέσιμο ή η τηλεόραση δεν είναι προσβάσιμη, εμφανίζεται ένα μήνυμα στο κάτω μέρος.</string>
     <string name="help_remote_defaults_title">Προεπιλεγμένη διάταξη</string>
@@ -462,8 +462,114 @@
     <string name="help_privacy_title">Απόρρητο</string>
     <string name="help_privacy_elly">Τα δεδομένα σου ανήκουν σε σένα. Αυτή είναι η ετυμηγορία μου, και είναι τελεσίδικη!</string>
     <string name="help_privacy_data_title">Τι γίνεται με τα δεδομένα σου</string>
-    <string name="help_privacy_data_body">Η Elly μιλά μόνο με την τηλεόρασή σου στο τοπικό δίκτυο, δεν αποστέλλονται δεδομένα σε εξωτερικούς διακομιστές. Οι συζευγμένες τηλεοράσεις, οι ρυθμίσεις, οι διατάξεις οθονών και τα εικονίδια εφαρμογών μένουν στο κινητό σου και διαγράφονται όταν απεγκαταστήσεις την εφαρμογή.</string>
+    <string name="help_privacy_data_body">Η Elly μιλά μόνο με την τηλεόρασή σου στο τοπικό δίκτυο, δεν αποστέλλονται δεδομένα σε εξωτερικούς διακομιστές. Οι συζευγμένες τηλεοράσεις, οι ρυθμίσεις, οι διατάξεις οθονών και τα εικονίδια εφαρμογών μένουν στο κινητό σου και διαγράφονται όταν απεγκαταστήσεις την εφαρμογή. Και ο οδηγός προγράμματος μένει στο κινητό σου.</string>
     <string name="help_privacy_policy_title">Πολιτική απορρήτου</string>
     <string name="help_privacy_policy_body">Την πλήρη πολιτική απορρήτου την ανοίγεις από το «Απόρρητο» στο κάτω μέρος των ρυθμίσεων, δίπλα στον αριθμό έκδοσης.</string>
     <string name="help_privacy_link">πολιτική απορρήτου</string>
+    <string name="settings_root_ssh">Πρόσβαση root και SSH ρυθμισμένα;</string>
+    <string name="settings_root_ssh_description">Για τηλεοράσεις με root, Homebrew Channel και ενεργό διακομιστή SSH. Απαιτείται για τον οδηγό προγράμματος.</string>
+    <string name="settings_root_ssh_check">Έλεγχος</string>
+    <string name="settings_root_ssh_checking">Έλεγχος σύνδεσης…</string>
+    <string name="settings_root_ssh_ok">Η σύνδεση SSH λειτουργεί.</string>
+    <string name="settings_root_ssh_removing">Αφαίρεση πρόσβασης SSH…</string>
+    <string name="settings_root_ssh_setup_title">Ρύθμιση SSH</string>
+    <string name="settings_root_ssh_setup_message">Η Elly συνδέεται μία φορά στην τηλεόραση με τον κωδικό root και αποθηκεύει εκεί το δικό της κλειδί. Ο κωδικός δεν αποθηκεύεται.</string>
+    <string name="settings_root_ssh_user">Χρήστης</string>
+    <string name="settings_root_ssh_port">Θύρα</string>
+    <string name="settings_root_ssh_password">Κωδικός</string>
+    <string name="settings_root_ssh_setup_confirm">Ρύθμιση</string>
+    <string name="settings_root_ssh_error_unreachable">Ο διακομιστής SSH της τηλεόρασης δεν είναι προσβάσιμος. Είναι ενεργό το SSH στο Homebrew Channel;</string>
+    <string name="settings_root_ssh_error_auth">Η σύνδεση απορρίφθηκε. Έλεγξε χρήστη και κωδικό.</string>
+    <string name="settings_root_ssh_error_key">Η τηλεόραση δεν δέχεται πλέον το κλειδί της Elly. Απενεργοποίησε τη ρύθμιση και ρύθμισε ξανά το SSH.</string>
+    <string name="settings_root_ssh_error_host_key">Το κλειδί SSH της τηλεόρασης άλλαξε. Αν η τηλεόραση έγινε ξανά root, απενεργοποίησε τη ρύθμιση και ρύθμισε ξανά το SSH.</string>
+    <string name="settings_root_ssh_error_luna">Η σύνδεση πέτυχε, αλλά οι εντολές συστήματος της τηλεόρασης δεν είναι διαθέσιμες.</string>
+    <string name="settings_root_ssh_error_unknown">Η σύνδεση SSH απέτυχε.</string>
+    <string name="settings_root_ssh_remove_title">Αφαίρεση πρόσβασης SSH;</string>
+    <string name="settings_root_ssh_remove_message">Η Elly διαγράφει το κλειδί της από την τηλεόραση και ξεχνά την πρόσβαση. Ο οδηγός προγράμματος δεν θα είναι πλέον διαθέσιμος.</string>
+    <string name="settings_root_ssh_remove">Αφαίρεση</string>
+    <string name="settings_root_ssh_removed_locally">Η τηλεόραση δεν ήταν προσβάσιμη, οπότε το κλειδί της Elly είναι ακόμη αποθηκευμένο εκεί. Η Elly δεν το χρησιμοποιεί πλέον. Αν θέλεις, διάγραψε στην τηλεόραση τη γραμμή που τελειώνει σε «elly-app» από το ~/.ssh/authorized_keys.</string>
+    <string name="custom_element_epg">Οδηγός προγράμματος</string>
+    <string name="epg_title_with_list">Οδηγός προγράμματος · %1$s</string>
+    <string name="epg_editor_hint">Κράτησε πατημένο για αλλαγή λίστας αγαπημένων</string>
+    <string name="epg_unavailable_hint">Κρυφό στην οθόνη μέχρι να ρυθμιστεί το SSH για αυτή την τηλεόραση</string>
+    <string name="epg_list_title">Επιλογή λίστας αγαπημένων</string>
+    <string name="epg_list_failed">Δεν ήταν δυνατή η φόρτωση των λιστών αγαπημένων. Έλεγξε τη σύνδεση SSH στην καρτέλα «Τηλεόραση».</string>
+    <string name="epg_list_empty">Η τηλεόραση δεν έχει λίστες αγαπημένων.</string>
+    <string name="epg_status_failed">Δεν ήταν δυνατή η φόρτωση του οδηγού προγράμματος.</string>
+    <string name="epg_status_empty">Δεν υπάρχουν ακόμη δεδομένα προγράμματος.</string>
+    <string name="epg_now">Τώρα</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d λεπ.)</string>
+    <string name="epg_info_remaining">απομένουν %1$d λεπ.</string>
+    <string name="epg_info_switch">Αλλαγή καναλιού</string>
+    <string name="epg_info_close">Κλείσιμο</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Υπότιτλοι</string>
+    <string name="epg_badge_audio_description">Ακουστική περιγραφή</string>
+    <string name="epg_badge_sign_language">Νοηματική</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_remind">Υπενθύμιση</string>
+    <string name="epg_remind_cancel">Διαγραφή υπενθύμισης</string>
+    <string name="epg_record">Εγγραφή</string>
+    <string name="epg_record_cancel">Διαγραφή εγγραφής</string>
+    <string name="epg_record_stop">Διακοπή εγγραφής</string>
+    <string name="epg_reminder_set">Υπενθύμιση προγραμματισμένη</string>
+    <string name="epg_record_no_storage">Για εγγραφή η τηλεόραση χρειάζεται μια συσκευή αποθήκευσης επιλεγμένη για εγγραφές.</string>
+    <string name="epg_record_no_data">Η τηλεόραση δεν έχει δεδομένα εγγραφής για αυτό το πρόγραμμα.</string>
+    <string name="epg_action_failed">Η τηλεόραση δεν το δέχτηκε.</string>
+    <string name="epg_action_conflict">Συμπίπτει με υπενθύμιση ή εγγραφή που έχει ήδη προγραμματιστεί στην τηλεόραση.</string>
+    <string name="epg_demo_list_main">Αγαπημένα</string>
+    <string name="epg_demo_list_kids">Παιδικά</string>
+    <string name="epg_demo_description">Φανταστικό πρόγραμμα για τη λειτουργία επίδειξης. Με τηλεόραση με root και ρυθμισμένο SSH, ο οδηγός δείχνει το πραγματικό πρόγραμμα της τηλεόρασής σου.</string>
+    <string name="help_remote_guide_title">Οδηγός προγράμματος</string>
+    <string name="help_remote_guide_body">Με τηλεόραση με root (ή στη λειτουργία επίδειξης) μια οθόνη μπορεί να δείξει τον οδηγό προγράμματος, όπως ο οδηγός της τηλεόρασης: επάνω οι ώρες, αριστερά τα κανάλια της λίστας αγαπημένων σου, δεξιά τα προγράμματα.\n• Σύρε προς κάθε κατεύθυνση: πίσω έως 24 ώρες, μπροστά όσο έχει δεδομένα η τηλεόραση (το πολύ 14 ημέρες). Αριστερά στη γραμμή ώρας φαίνεται η ημερομηνία, κάθε νέα ημέρα ξεκινά με μια γραμμή.\n• Η πορτοκαλί γραμμή δείχνει την τρέχουσα ώρα· το «Τώρα» πάνω αριστερά επιστρέφει σε αυτήν. Η σειρά του καναλιού που παίζει στην τηλεόραση επισημαίνεται με πορτοκαλί.\n• Πάτησε ένα κανάλι για να αλλάξεις σε αυτό.\nΤο σύρσιμο στον οδηγό δεν αλλάζει ποτέ οθόνη· για αυτό σύρε πάνω από τις τελείες κάτω. Η Elly κρατά τα δεδομένα στο κινητό και τα ανανεώνει κάθε 15 λεπτά όσο είναι ανοιχτό το τηλεχειριστήριο· κατά τη φόρτωση γυρίζει ένας μικρός κύκλος πάνω αριστερά.</string>
+    <string name="help_remote_guide_info_title">Προγράμματα, υπενθυμίσεις και εγγραφές</string>
+    <string name="help_remote_guide_info_body">Πάτησε ένα πρόγραμμα για τις λεπτομέρειες: κανάλι, ημέρα, ώρα, διάρκεια, είδος και περιγραφή. Η «Αλλαγή καναλιού» γυρίζει την τηλεόραση στο κανάλι.\n• Υπενθύμιση: η τηλεόραση σε ειδοποιεί όταν αρχίζει το πρόγραμμα, ακόμη κι αν το κινητό είναι κλειστό. Οι προγραμματισμένες υπενθυμίσεις έχουν ένα καμπανάκι.\n• Εγγραφή: η τηλεόραση γράφει στη συσκευή που έχει επιλεγεί σε αυτήν για εγγραφές. Οι προγραμματισμένες εγγραφές έχουν μια κόκκινη τελεία· τις εγγραφές σε εξέλιξη μπορείς να τις σταματήσεις.\nΚαι τα δύο διαγράφονται ξανά. Η Elly δείχνει και υπενθυμίσεις και εγγραφές που έφτιαξες στην τηλεόραση. Αν η τηλεόραση αρνηθεί κάτι, π.χ. λόγω επικάλυψης, το μήνυμά της εμφανίζεται στο παράθυρο.</string>
+    <string name="help_edit_guide_title">Προσθήκη οδηγού προγράμματος</string>
+    <string name="help_edit_guide_body">Το «+ Στοιχείο» προσφέρει τον οδηγό προγράμματος μόλις ρυθμιστεί το SSH για την τηλεόραση (δες Ρυθμίσεις) ή είναι ενεργή η λειτουργία επίδειξης. Πριν τον τοποθετήσεις, διαλέγεις τη λίστα αγαπημένων της τηλεόρασης της οποίας τα κανάλια θα εμφανίζονται. Κράτησε πατημένο το στοιχείο 2 δευτερόλεπτα για να αλλάξεις λίστα.\nΟ οδηγός ξεκινά όσο φαρδύς είναι η οθόνη και με το μισό ύψος· όπως τα άλλα στοιχεία, μετακινείται και αλλάζει μέγεθος. Μπορείς να έχεις πολλούς οδηγούς με διαφορετικές λίστες. Χωρίς πρόσβαση SSH το στοιχείο μένει αποθηκευμένο, αλλά δεν εμφανίζεται στην οθόνη.</string>
+    <string name="help_settings_root_title">Πρόσβαση root και SSH</string>
+    <string name="help_settings_root_body">Ο οδηγός προγράμματος χρειάζεται πρόσβαση στην τηλεόραση που η LG επιτρέπει μόνο με root. Αν η τηλεόρασή σου έχει root (Homebrew Channel) και εκεί είναι ενεργός ο διακομιστής SSH, ενεργοποίησε στην καρτέλα «Τηλεόραση» την επιλογή «Πρόσβαση root και SSH ρυθμισμένα;».\nΔώσε χρήστη (συνήθως root), θύρα (συνήθως 22) και τον κωδικό root. Η Elly συνδέεται μία φορά και αποθηκεύει δικό της κλειδί στην τηλεόραση· ο κωδικός δεν αποθηκεύεται. Ο «Έλεγχος» δοκιμάζει τη σύνδεση.\nΗ απενεργοποίηση αφαιρεί ξανά το κλειδί από την τηλεόραση μετά από επιβεβαίωση. Η ρύθμιση ισχύει ανά τηλεόραση.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly Ένα</item>
+        <item>Κοτέτσι TV</item>
+        <item>Ειδήσεις Κοτετσιού</item>
+        <item>Αχυρώνας Σπορ</item>
+        <item>Φτερά Σινεμά</item>
+        <item>Φωλιά Ντοκιμαντέρ</item>
+        <item>Πετεινός Μουσική</item>
+        <item>Χρυσό Αβγό</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Κοτοπουλάκι TV</item>
+        <item>Μικρό Πίου</item>
+        <item>Νεοσσός</item>
+        <item>Ηλιόλουστα Κοτοπουλάκια</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Πρωί στον αχυρώνα</item>
+        <item>Το μεγάλο κυνήγι αβγών</item>
+        <item>Φτερά και γεγονότα</item>
+        <item>Ειδήσεις από το κοτέτσι</item>
+        <item>Πετεινός Rock Live</item>
+        <item>Κουζίνα του αχυρώνα</item>
+        <item>Η νύχτα της αλεπούς</item>
+        <item>Φτερά πάνω από την κοιλάδα</item>
+        <item>Η κότα του καιρού</item>
+        <item>Επιθεωρητής Τσιμπίδας</item>
+        <item>Ιστορίες του λιβαδιού</item>
+        <item>Βραδινό κακάρισμα</item>
+        <item>Κουίζ σπόρων</item>
+        <item>Ποδόσφαιρο αχυρώνα</item>
+        <item>Κότες ταξιδεύουν</item>
+        <item>Το μακρύ κούρνιασμα</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Ο Πίου και οι φίλοι του</item>
+        <item>Μικρά φτερά</item>
+        <item>Το μικρό αβγό</item>
+        <item>Περιπέτειες κοτοπουλακιών</item>
+        <item>Φωλιά ιστοριών</item>
+        <item>Μετράμε σπόρους</item>
+        <item>Νυσταγμένα κοτοπουλάκια</item>
+        <item>Κίτρινο χνούδι</item>
+    </string-array>
 </resources>

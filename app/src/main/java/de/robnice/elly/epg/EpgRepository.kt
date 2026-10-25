@@ -88,6 +88,15 @@ class EpgRepository(
 
     private var reservationChannels: List<EpgChannel> = emptyList()
 
+    suspend fun videoInfo(channel: EpgChannel): EpgVideoInfo? = try {
+        access.source()?.videoInfo(channel)
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        Log.w(TAG, "Video info not loaded: ${e.message}")
+        null
+    }
+
     // Plans or removes a reminder or recording on the TV and reloads the plan afterwards.
     suspend fun perform(action: EpgAction) {
         val source = access.source() ?: throw EpgActionException(null)

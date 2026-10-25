@@ -366,7 +366,7 @@
     <string name="help_remote_status_title">Lampka stanu</string>
     <string name="help_remote_status_body">• Zielona: połączono.\n• Czerwona: telewizor nieosiągalny.\n• Szara: sprawdzanie połączenia.\n• Żółta: tryb demo.\nGdy Elly jest widoczna, połączenie jest sprawdzane co 10 sekund i po każdym naciśnięciu przycisku. Gdy aplikacja przechodzi w tło, połączenie zostaje zamknięte.</string>
     <string name="help_remote_screens_title">Przełączanie stron</string>
-    <string name="help_remote_screens_body">Przyciski są rozłożone na maksymalnie cztery strony, więc wszystko się mieści bez przewijania. Przesuń palcem w lewo lub w prawo, aby przełączyć. Kropki na dole pokazują, na której stronie jesteś; przy jednej aktywnej stronie znikają.\nElly zapamiętuje ostatnio używaną stronę. Które strony są widoczne i w jakiej kolejności, ustawiasz w ustawieniach.</string>
+    <string name="help_remote_screens_body">Przyciski są rozłożone na maksymalnie cztery strony, więc wszystko się mieści bez przewijania. Przesuń palcem w lewo lub w prawo, aby przełączyć. Kropki na dole pokazują, na której stronie jesteś; przy jednej aktywnej stronie znikają.\nElly zapamiętuje ostatnio używaną stronę. Które strony są widoczne i w jakiej kolejności, ustawiasz w ustawieniach. Jeśli element taki jak przewodnik po programach wypełnia ekran, przesuń palcem po kropkach na dole.</string>
     <string name="help_remote_keys_title">Używanie przycisków</string>
     <string name="help_remote_keys_body">• Przyciski reagują, gdy podnosisz palec. Przesunięcie palcem zaczęte na przycisku niczego więc nie wysyła.\n• Głośność, kanał i krzyżak powtarzają się, dopóki je przytrzymujesz.\n• Jeśli chcesz, telefon wibruje przy każdym naciśnięciu (Ustawienia → „Sterowanie”).\n• Jeśli przycisk jest niedostępny albo telewizor jest nieosiągalny, na dole pojawia się komunikat.</string>
     <string name="help_remote_defaults_title">Układ domyślny</string>
@@ -464,8 +464,114 @@
     <string name="help_privacy_title">Prywatność</string>
     <string name="help_privacy_elly">Twoje dane należą do Ciebie. Kura powiedziała – i koniec, kropka!</string>
     <string name="help_privacy_data_title">Co dzieje się z Twoimi danymi</string>
-    <string name="help_privacy_data_body">Elly rozmawia tylko z Twoim telewizorem w sieci lokalnej, żadne dane nie są wysyłane na zewnętrzne serwery. Sparowane telewizory, ustawienia, układy stron i ikony aplikacji zostają w telefonie i są usuwane po odinstalowaniu aplikacji.</string>
+    <string name="help_privacy_data_body">Elly rozmawia tylko z Twoim telewizorem w sieci lokalnej, żadne dane nie są wysyłane na zewnętrzne serwery. Sparowane telewizory, ustawienia, układy stron i ikony aplikacji zostają w telefonie i są usuwane po odinstalowaniu aplikacji. Przewodnik po programach również zostaje w twoim telefonie.</string>
     <string name="help_privacy_policy_title">Polityka prywatności</string>
     <string name="help_privacy_policy_body">Pełną politykę prywatności otworzysz przez „Prywatność” na dole ustawień, obok numeru wersji.</string>
     <string name="help_privacy_link">polityka prywatności</string>
+    <string name="settings_root_ssh">Dostęp root i SSH skonfigurowane?</string>
+    <string name="settings_root_ssh_description">Dla telewizorów z rootem, Homebrew Channel i włączonym serwerem SSH. Potrzebne do przewodnika po programach.</string>
+    <string name="settings_root_ssh_check">Sprawdź</string>
+    <string name="settings_root_ssh_checking">Sprawdzanie połączenia…</string>
+    <string name="settings_root_ssh_ok">Połączenie SSH działa.</string>
+    <string name="settings_root_ssh_removing">Usuwanie dostępu SSH…</string>
+    <string name="settings_root_ssh_setup_title">Skonfiguruj SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly loguje się jednorazowo do telewizora hasłem roota i zapisuje tam własny klucz. Hasło nie jest zapisywane.</string>
+    <string name="settings_root_ssh_user">Użytkownik</string>
+    <string name="settings_root_ssh_port">Port</string>
+    <string name="settings_root_ssh_password">Hasło</string>
+    <string name="settings_root_ssh_setup_confirm">Skonfiguruj</string>
+    <string name="settings_root_ssh_error_unreachable">Serwer SSH telewizora jest nieosiągalny. Czy SSH jest włączone w Homebrew Channel?</string>
+    <string name="settings_root_ssh_error_auth">Logowanie odrzucone. Sprawdź użytkownika i hasło.</string>
+    <string name="settings_root_ssh_error_key">Telewizor nie akceptuje już klucza Elly. Wyłącz to ustawienie i skonfiguruj SSH ponownie.</string>
+    <string name="settings_root_ssh_error_host_key">Klucz SSH telewizora się zmienił. Jeśli telewizor został ponownie zrootowany, wyłącz to ustawienie i skonfiguruj SSH ponownie.</string>
+    <string name="settings_root_ssh_error_luna">Zalogowano, ale polecenia systemowe telewizora są niedostępne.</string>
+    <string name="settings_root_ssh_error_unknown">Połączenie SSH nie powiodło się.</string>
+    <string name="settings_root_ssh_remove_title">Usunąć dostęp SSH?</string>
+    <string name="settings_root_ssh_remove_message">Elly usuwa swój klucz z telewizora i zapomina dostęp. Przewodnik po programach nie będzie już dostępny.</string>
+    <string name="settings_root_ssh_remove">Usuń</string>
+    <string name="settings_root_ssh_removed_locally">Telewizor był nieosiągalny, więc klucz Elly nadal jest na nim zapisany. Elly już go nie używa. Jeśli chcesz, usuń na telewizorze z pliku ~/.ssh/authorized_keys wiersz kończący się na „elly-app”.</string>
+    <string name="custom_element_epg">Przewodnik po programach</string>
+    <string name="epg_title_with_list">Przewodnik po programach · %1$s</string>
+    <string name="epg_editor_hint">Przytrzymaj, aby zmienić listę ulubionych</string>
+    <string name="epg_unavailable_hint">Ukryty na ekranie, dopóki SSH nie zostanie skonfigurowane dla tego telewizora</string>
+    <string name="epg_list_title">Wybierz listę ulubionych</string>
+    <string name="epg_list_failed">Nie udało się wczytać list ulubionych. Sprawdź połączenie SSH na karcie „TV”.</string>
+    <string name="epg_list_empty">Telewizor nie ma list ulubionych.</string>
+    <string name="epg_status_failed">Nie udało się wczytać przewodnika po programach.</string>
+    <string name="epg_status_empty">Brak jeszcze danych programu.</string>
+    <string name="epg_now">Teraz</string>
+    <string name="epg_info_when">%1$s · %2$s–%3$s (%4$d min)</string>
+    <string name="epg_info_remaining">zostało %1$d min</string>
+    <string name="epg_info_switch">Przełącz kanał</string>
+    <string name="epg_info_close">Zamknij</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Napisy</string>
+    <string name="epg_badge_audio_description">Audiodeskrypcja</string>
+    <string name="epg_badge_sign_language">Język migowy</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_remind">Przypomnij</string>
+    <string name="epg_remind_cancel">Usuń przypomnienie</string>
+    <string name="epg_record">Nagraj</string>
+    <string name="epg_record_cancel">Usuń nagranie</string>
+    <string name="epg_record_stop">Zatrzymaj nagrywanie</string>
+    <string name="epg_reminder_set">Przypomnienie zaplanowane</string>
+    <string name="epg_record_no_storage">Do nagrywania telewizor potrzebuje urządzenia pamięci wybranego w nim do nagrań.</string>
+    <string name="epg_record_no_data">Telewizor nie ma danych do nagrania tego programu.</string>
+    <string name="epg_action_failed">Telewizor tego nie przyjął.</string>
+    <string name="epg_action_conflict">To pokrywa się z przypomnieniem lub nagraniem już zaplanowanym w telewizorze.</string>
+    <string name="epg_demo_list_main">Ulubione</string>
+    <string name="epg_demo_list_kids">Dzieci</string>
+    <string name="epg_demo_description">Zmyślony program do trybu demo. Z telewizorem z rootem i skonfigurowanym SSH przewodnik pokazuje prawdziwy program twojego telewizora.</string>
+    <string name="help_remote_guide_title">Przewodnik po programach</string>
+    <string name="help_remote_guide_body">Z telewizorem z rootem (lub w trybie demo) ekran może pokazywać przewodnik po programach, jak przewodnik w telewizorze: u góry godziny, po lewej kanały z twojej listy ulubionych, po prawej programy.\n• Przesuwaj w dowolnym kierunku: wstecz do 24 godzin, do przodu tak daleko, jak telewizor ma dane (najwyżej 14 dni). Po lewej stronie paska czasu widać datę, a każdy nowy dzień zaczyna się linią.\n• Pomarańczowa linia pokazuje bieżącą godzinę; „Teraz” w lewym górnym rogu wraca do niej. Wiersz kanału, który właśnie leci w telewizorze, jest wyróżniony na pomarańczowo.\n• Dotknij kanału, aby na niego przełączyć.\nPrzesuwanie w przewodniku nigdy nie zmienia ekranu; do tego przesuń palcem po kropkach na dole. Elly przechowuje dane w telefonie i odświeża je co 15 minut, gdy pilot jest otwarty; podczas wczytywania w lewym górnym rogu kręci się małe kółko.</string>
+    <string name="help_remote_guide_info_title">Programy, przypomnienia i nagrania</string>
+    <string name="help_remote_guide_info_body">Dotknij programu, aby zobaczyć szczegóły: kanał, dzień, godzinę, czas trwania, gatunek i opis. „Przełącz kanał” przełącza telewizor na ten kanał.\n• Przypomnij: telewizor przypomni ci o początku programu, nawet gdy telefon jest wyłączony. Zaplanowane przypomnienia mają dzwonek.\n• Nagraj: telewizor nagrywa na urządzenie pamięci wybrane w nim do nagrań. Zaplanowane nagrania mają czerwoną kropkę; trwające nagrania można zatrzymać.\nOba można znów usunąć. Elly pokazuje też przypomnienia i nagrania ustawione w telewizorze. Jeśli telewizor coś odrzuci, np. z powodu nakładania się, jego komunikat pojawi się w oknie.</string>
+    <string name="help_edit_guide_title">Dodawanie przewodnika po programach</string>
+    <string name="help_edit_guide_body">„+ Element” oferuje przewodnik po programach, gdy tylko SSH jest skonfigurowane dla telewizora (zobacz Ustawienia) lub włączony jest tryb demo. Przed umieszczeniem wybierasz listę ulubionych telewizora, której kanały będą pokazywane. Przytrzymaj element przez 2 sekundy, aby zmienić listę.\nPrzewodnik ma na początku szerokość ekranu i połowę jego wysokości; jak inne elementy można go przesuwać i zmieniać jego rozmiar. Można mieć kilka przewodników z różnymi listami. Bez dostępu SSH element pozostaje zapisany, ale nie pojawia się na ekranie.</string>
+    <string name="help_settings_root_title">Dostęp root i SSH</string>
+    <string name="help_settings_root_body">Przewodnik po programach potrzebuje dostępu do telewizora, na który LG pozwala tylko z rootem. Jeśli twój telewizor ma root (Homebrew Channel) i jest w nim włączony serwer SSH, włącz na karcie „TV” opcję „Dostęp root i SSH skonfigurowane?”.\nPodaj użytkownika (zwykle root), port (zwykle 22) i hasło roota. Elly loguje się raz i zapisuje w telewizorze własny klucz; hasło nie jest zapisywane. „Sprawdź” testuje połączenie.\nWyłączenie po potwierdzeniu usuwa klucz z telewizora. Ustawienie dotyczy każdego telewizora osobno.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly Jeden</item>
+        <item>Kurnik TV</item>
+        <item>Wiadomości z Kurnika</item>
+        <item>Stodoła Sport</item>
+        <item>Pióra Kino</item>
+        <item>Gniazdo Dokument</item>
+        <item>Kogut Muzyka</item>
+        <item>Złote Jajo</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Kurczaczek TV</item>
+        <item>Mały Pip</item>
+        <item>Wykluty</item>
+        <item>Słoneczne Kurczaczki</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Poranek w stodole</item>
+        <item>Wielkie szukanie jajek</item>
+        <item>Pióra i fakty</item>
+        <item>Wiadomości z kurnika</item>
+        <item>Kogut Rock na żywo</item>
+        <item>Kuchnia w stodole</item>
+        <item>Noc lisa</item>
+        <item>Skrzydła nad doliną</item>
+        <item>Pogodowa kura</item>
+        <item>Komisarz Dziobek</item>
+        <item>Opowieści z pastwiska</item>
+        <item>Późne gdakanie</item>
+        <item>Quiz ziarnowy</item>
+        <item>Piłka w stodole</item>
+        <item>Kury w podróży</item>
+        <item>Długa grzęda</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Pip i przyjaciele</item>
+        <item>Małe skrzydła</item>
+        <item>Małe jajko</item>
+        <item>Przygody kurczaczków</item>
+        <item>Gniazdo opowieści</item>
+        <item>Liczymy ziarenka</item>
+        <item>Śpiące kurczaczki</item>
+        <item>Żółty puch</item>
+    </string-array>
 </resources>

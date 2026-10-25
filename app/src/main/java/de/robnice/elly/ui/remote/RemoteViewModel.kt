@@ -18,8 +18,10 @@ import de.robnice.elly.data.model.PointerSettings
 import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenLayout
 import de.robnice.elly.epg.EpgAction
+import de.robnice.elly.epg.EpgChannel
 import de.robnice.elly.epg.EpgGuide
 import de.robnice.elly.epg.EpgReservation
+import de.robnice.elly.epg.EpgVideoInfo
 import de.robnice.elly.epg.EpgRepository
 import de.robnice.elly.remote.ConnectionState
 import de.robnice.elly.remote.RemoteControl
@@ -186,6 +188,8 @@ class RemoteViewModel(
     val guideReservations: StateFlow<List<EpgReservation>> = epgRepository.reservations
 
     val guideCanRecord: StateFlow<Boolean> = epgRepository.canRecord
+
+    suspend fun guideVideoInfo(channel: EpgChannel): EpgVideoInfo? = epgRepository.videoInfo(channel)
 
     // Runs in the view model, so closing the info window does not stop a change the TV has already begun.
     suspend fun performGuideAction(action: EpgAction) = viewModelScope.async { epgRepository.perform(action) }.await()

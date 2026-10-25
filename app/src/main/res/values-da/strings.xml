@@ -465,4 +465,112 @@
     <string name="help_privacy_policy_title">Privatlivspolitik</string>
     <string name="help_privacy_policy_body">Den fulde privatlivspolitik åbnes via »Privatliv« nederst i indstillingerne ved siden af versionsnummeret.</string>
     <string name="help_privacy_link">privatlivspolitik</string>
+    <string name="settings_root_ssh">Rootadgang og SSH konfigureret?</string>
+    <string name="settings_root_ssh_description">Til rootede tv med Homebrew Channel og dens SSH-server slået til. Kræves til programguiden.</string>
+    <string name="settings_root_ssh_check">Kontrollér</string>
+    <string name="settings_root_ssh_checking">Kontrollerer forbindelsen…</string>
+    <string name="settings_root_ssh_ok">SSH-forbindelsen virker.</string>
+    <string name="settings_root_ssh_removing">Fjerner SSH-adgang…</string>
+    <string name="settings_root_ssh_setup_title">Konfigurer SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly logger én gang på tv\'et med rootadgangskoden og gemmer sin egen nøgle der. Adgangskoden gemmes ikke.</string>
+    <string name="settings_root_ssh_user">Bruger</string>
+    <string name="settings_root_ssh_port">Port</string>
+    <string name="settings_root_ssh_password">Adgangskode</string>
+    <string name="settings_root_ssh_setup_confirm">Konfigurer</string>
+    <string name="settings_root_ssh_error_unreachable">Der kan ikke oprettes forbindelse til tv\'ets SSH-server. Er SSH slået til i Homebrew Channel?</string>
+    <string name="settings_root_ssh_error_auth">Login blev afvist. Kontrollér bruger og adgangskode.</string>
+    <string name="settings_root_ssh_error_key">Tv\'et accepterer ikke længere Ellys nøgle. Slå indstillingen fra, og konfigurer SSH igen.</string>
+    <string name="settings_root_ssh_error_host_key">Tv\'ets SSH-nøgle er ændret. Hvis tv\'et er blevet rootet igen, skal du slå indstillingen fra og konfigurere SSH igen.</string>
+    <string name="settings_root_ssh_error_luna">Der blev logget ind, men tv\'ets systemkommandoer er ikke tilgængelige.</string>
+    <string name="settings_root_ssh_error_unknown">SSH-forbindelsen mislykkedes.</string>
+    <string name="settings_root_ssh_remove_title">Fjern SSH-adgang?</string>
+    <string name="settings_root_ssh_remove_message">Elly sletter sin nøgle fra tv\'et og glemmer adgangen. Programguiden vil derefter ikke længere være tilgængelig.</string>
+    <string name="settings_root_ssh_remove">Fjern</string>
+    <string name="settings_root_ssh_removed_locally">Tv\'et kunne ikke nås, så Ellys nøgle er stadig gemt på det. Elly bruger den ikke længere. Hvis du vil, kan du slette linjen, der slutter med »elly-app«, fra ~/.ssh/authorized_keys på tv\'et.</string>
+
+    <string name="custom_element_epg">Programguide</string>
+    <string name="epg_title_with_list">Programguide · %1$s</string>
+    <string name="epg_editor_hint">Hold nede for at skifte favoritliste</string>
+    <string name="epg_unavailable_hint">Skjult på skærmen, indtil SSH er konfigureret for dette tv</string>
+    <string name="epg_list_title">Vælg favoritliste</string>
+    <string name="epg_list_failed">Favoritlisterne kunne ikke indlæses. Kontrollér SSH-forbindelsen på fanen TV.</string>
+    <string name="epg_list_empty">Tv\'et har ingen favoritlister.</string>
+    <string name="epg_status_failed">Programguiden kunne ikke indlæses.</string>
+    <string name="epg_status_empty">Ingen programdata endnu.</string>
+    <string name="epg_now">Nu</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min.)</string>
+    <string name="epg_info_remaining">%1$d min. tilbage</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">Undertekster</string>
+    <string name="epg_badge_audio_description">Synstolkning</string>
+    <string name="epg_badge_sign_language">Tegnsprog</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_info_switch">Skift til kanal</string>
+    <string name="epg_info_close">Luk</string>
+    <string name="epg_remind">Påmind mig</string>
+    <string name="epg_remind_cancel">Slet påmindelse</string>
+    <string name="epg_record">Optag</string>
+    <string name="epg_record_cancel">Slet optagelse</string>
+    <string name="epg_record_stop">Stop optagelse</string>
+    <string name="epg_reminder_set">Påmindelse indstillet</string>
+    <string name="epg_record_no_storage">Optagelse kræver, at der er valgt en lagerenhed til optagelser på tv\'et.</string>
+    <string name="epg_record_no_data">Tv\'et har ingen optagelsesdata for dette program.</string>
+    <string name="epg_action_failed">Tv\'et accepterede ikke dette.</string>
+    <string name="epg_action_conflict">Dette overlapper med en påmindelse eller optagelse, der allerede er planlagt på tv\'et.</string>
+    <string name="epg_demo_list_main">Favoritter</string>
+    <string name="epg_demo_list_kids">Børn</string>
+    <string name="epg_demo_description">Opdigtet program til demotilstand. Med et rootet tv og SSH konfigureret viser guiden de rigtige programmer fra dit tv.</string>
+    <string-array name="epg_demo_channels">
+        <item>Elly One</item>
+        <item>Hønsehus TV</item>
+        <item>Hønsehusnyheder</item>
+        <item>Gårdsport</item>
+        <item>Fjerfilm</item>
+        <item>Rede-dokumentarer</item>
+        <item>Hanemusik</item>
+        <item>Det gyldne æg</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>Kylling TV</item>
+        <item>Lille Pip</item>
+        <item>Nyklækket</item>
+        <item>Solskinskyllinger</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>Morgen i stalden</item>
+        <item>Den store æggejagt</item>
+        <item>Fjer &amp; fakta</item>
+        <item>Nyheder fra hønsehuset</item>
+        <item>Hanerock live</item>
+        <item>Køkkenet i hønsehuset</item>
+        <item>Rævens nat</item>
+        <item>Vinger over dalen</item>
+        <item>Vejrhønen</item>
+        <item>Detektiv Spætte</item>
+        <item>Historier fra engen</item>
+        <item>Sen aftenkaglen</item>
+        <item>Kornquizzen</item>
+        <item>Gårdfodbold</item>
+        <item>Høns på tur</item>
+        <item>Den lange siddepind</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>Pip og vennerne</item>
+        <item>Små vinger</item>
+        <item>Det lille æg</item>
+        <item>Kyllingeeventyr</item>
+        <item>Historiereden</item>
+        <item>Tæl korn</item>
+        <item>Søvnige kyllinger</item>
+        <item>Gul dun</item>
+    </string-array>
+
+    <string name="help_remote_guide_title">Programguide</string>
+    <string name="help_remote_guide_body">Med et rootet tv (eller i demotilstand) kan en skærm vise programguiden ligesom guiden på tv\'et: tider øverst, kanalerne fra din favoritliste til venstre og programmerne til højre.\n• Stryg i alle retninger: op til 24 timer tilbage og så langt frem, som tv\'et har data (højst 14 dage). Datoen står til venstre på tidslinjen, og hver ny dag begynder med en linje.\n• Den orange linje markerer det aktuelle tidspunkt; »Nu« øverst til venstre springer tilbage til det. Rækken for den kanal, der vises på tv\'et, er fremhævet med orange.\n• Tryk på en kanal for at skifte til den.\nStryg i guiden skifter aldrig skærm; stryg i stedet hen over prikkerne nederst. Elly gemmer dataene på telefonen og opdaterer dem hvert 15. minut, mens fjernbetjeningen er åben; en lille cirkel drejer øverst til venstre under indlæsningen.</string>
+    <string name="help_remote_guide_info_title">Programmer, påmindelser og optagelser</string>
+    <string name="help_remote_guide_info_body">Tryk på et program for at se detaljer: kanal, dag, tidspunkt, varighed, genre og beskrivelse. »Skift til kanal« skifter tv\'et til den.\n• Påmind mig: Tv\'et minder dig om det, når programmet starter, selv når telefonen er slukket. Planlagte påmindelser vises med en klokke.\n• Optag: Tv\'et optager på det lager, der er valgt til optagelser på tv\'et. Planlagte optagelser vises med en rød prik.\nBegge kan slettes igen (»Slet …«). Påmindelser og optagelser, du opretter på tv\'et, vises også i Elly. Hvis tv\'et afviser handlingen, f.eks. fordi optagelser overlapper, vises dets besked i vinduet.</string>
+    <string name="help_edit_guide_title">Tilføj programguiden</string>
+    <string name="help_edit_guide_body">»+ Element« tilbyder programguiden, når SSH er konfigureret for tv\'et (se Indstillinger), eller demotilstand er slået til. Før den indsættes, vælger du den favoritliste på tv\'et, hvis kanaler skal vises. Hold elementet nede i 2 sekunder for at skifte liste.\nGuiden er fra start lige så bred som skærmen og halvt så høj; ligesom andre elementer kan den flyttes og få ændret størrelse. Du kan tilføje flere guider med forskellige lister. Uden SSH-adgang forbliver elementet gemt, men vises ikke på skærmen.</string>
+    <string name="help_settings_root_title">Rootadgang og SSH</string>
+    <string name="help_settings_root_body">Programguiden kræver adgang til tv\'et, som LG kun tillader med root. Hvis dit tv er rootet (Homebrew Channel), og dets SSH-server er slået til der, skal du aktivere »Rootadgang og SSH konfigureret?« på fanen »TV«.\nIndtast bruger (normalt root), port (normalt 22) og rootadgangskoden. Elly logger på én gang og gemmer sin egen nøgle på tv\'et; adgangskoden gemmes ikke. »Kontrollér« tester forbindelsen.\nNår indstillingen slås fra, fjernes nøglen fra tv\'et igen efter en bekræftelse. Indstillingen gælder separat for hvert tv.</string>
 </resources>

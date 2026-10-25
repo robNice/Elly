@@ -363,7 +363,7 @@
     <string name="help_remote_status_title">상태 표시등</string>
     <string name="help_remote_status_body">• 초록: 연결됨.\n• 빨강: TV에 연결할 수 없음.\n• 회색: 연결 확인 중.\n• 노랑: 데모 모드.\nElly가 화면에 보이는 동안에는 10초마다, 그리고 버튼을 누를 때마다 연결을 확인해요. 앱이 백그라운드로 가면 연결이 닫혀요.</string>
     <string name="help_remote_screens_title">화면 전환</string>
-    <string name="help_remote_screens_body">버튼은 최대 네 개의 화면에 나뉘어 있어서 스크롤 없이 모두 들어가요. 왼쪽이나 오른쪽으로 스와이프해서 전환하세요. 아래의 점이 지금 어느 화면인지 보여 주고, 활성화된 화면이 하나뿐이면 사라져요.\nElly는 마지막으로 사용한 화면을 기억해요. 어떤 화면을 어떤 순서로 보여 줄지는 설정에서 정해요.</string>
+    <string name="help_remote_screens_body">버튼은 최대 네 개의 화면에 나뉘어 있어서 스크롤 없이 모두 들어가요. 왼쪽이나 오른쪽으로 스와이프해서 전환하세요. 아래의 점이 지금 어느 화면인지 보여 주고, 활성화된 화면이 하나뿐이면 사라져요.\nElly는 마지막으로 사용한 화면을 기억해요. 어떤 화면을 어떤 순서로 보여 줄지는 설정에서 정해요. 프로그램 가이드 같은 요소가 화면을 채우면 아래의 점 위를 스와이프하세요.</string>
     <string name="help_remote_keys_title">버튼 사용하기</string>
     <string name="help_remote_keys_body">• 버튼은 손가락을 뗄 때 작동해요. 그래서 버튼 위에서 시작한 스와이프는 아무것도 보내지 않아요.\n• 볼륨, 채널, 방향 패드는 누르고 있는 동안 반복돼요.\n• 원하면 버튼을 누를 때마다 휴대폰이 진동하게 할 수 있어요(설정 → ‘조작’).\n• 버튼을 쓸 수 없거나 TV에 연결할 수 없으면 아래에 메시지가 나타나요.</string>
     <string name="help_remote_defaults_title">기본 레이아웃</string>
@@ -461,8 +461,114 @@
     <string name="help_privacy_title">개인정보 보호</string>
     <string name="help_privacy_elly">당신의 데이터는 당신 거예요. 이건 제 최종 판결이에요, 꼬꼬댁!</string>
     <string name="help_privacy_data_title">데이터는 어떻게 되나요</string>
-    <string name="help_privacy_data_body">Elly는 로컬 네트워크에서 TV와만 통신하고, 외부 서버로 데이터를 보내지 않아요. 페어링된 TV, 설정, 화면 레이아웃, 앱 아이콘은 휴대폰에만 저장되고, 앱을 삭제하면 함께 삭제돼요.</string>
+    <string name="help_privacy_data_body">Elly는 로컬 네트워크에서 TV와만 통신하고, 외부 서버로 데이터를 보내지 않아요. 페어링된 TV, 설정, 화면 레이아웃, 앱 아이콘은 휴대폰에만 저장되고, 앱을 삭제하면 함께 삭제돼요. 프로그램 가이드 정보도 휴대폰에만 저장돼요.</string>
     <string name="help_privacy_policy_title">개인정보 처리방침</string>
     <string name="help_privacy_policy_body">개인정보 처리방침 전문은 설정 맨 아래, 버전 번호 옆의 ‘개인정보 보호’에서 열 수 있어요.</string>
     <string name="help_privacy_link">개인정보 처리방침</string>
+    <string name="settings_root_ssh">루트 권한과 SSH가 설정되어 있나요?</string>
+    <string name="settings_root_ssh_description">Homebrew Channel이 설치되고 SSH 서버가 켜진 루팅된 TV용이에요. 프로그램 가이드에 필요해요.</string>
+    <string name="settings_root_ssh_check">확인</string>
+    <string name="settings_root_ssh_checking">연결을 확인하는 중…</string>
+    <string name="settings_root_ssh_ok">SSH 연결이 정상이에요.</string>
+    <string name="settings_root_ssh_removing">SSH 접근을 제거하는 중…</string>
+    <string name="settings_root_ssh_setup_title">SSH 설정</string>
+    <string name="settings_root_ssh_setup_message">Elly가 루트 비밀번호로 TV에 한 번 로그인하고 자체 키를 TV에 저장해요. 비밀번호는 저장되지 않아요.</string>
+    <string name="settings_root_ssh_user">사용자</string>
+    <string name="settings_root_ssh_port">포트</string>
+    <string name="settings_root_ssh_password">비밀번호</string>
+    <string name="settings_root_ssh_setup_confirm">설정</string>
+    <string name="settings_root_ssh_error_unreachable">TV의 SSH 서버에 연결할 수 없어요. Homebrew Channel에서 SSH가 켜져 있나요?</string>
+    <string name="settings_root_ssh_error_auth">로그인이 거부되었어요. 사용자와 비밀번호를 확인해 주세요.</string>
+    <string name="settings_root_ssh_error_key">TV가 더 이상 Elly의 키를 받아들이지 않아요. 설정을 끄고 SSH를 다시 설정해 주세요.</string>
+    <string name="settings_root_ssh_error_host_key">TV의 SSH 키가 바뀌었어요. TV를 다시 루팅했다면 설정을 끄고 SSH를 다시 설정해 주세요.</string>
+    <string name="settings_root_ssh_error_luna">로그인했지만 TV의 시스템 명령을 사용할 수 없어요.</string>
+    <string name="settings_root_ssh_error_unknown">SSH 연결에 실패했어요.</string>
+    <string name="settings_root_ssh_remove_title">SSH 접근을 제거할까요?</string>
+    <string name="settings_root_ssh_remove_message">Elly가 TV에서 자신의 키를 삭제하고 접근 정보를 지워요. 이후 프로그램 가이드를 사용할 수 없어요.</string>
+    <string name="settings_root_ssh_remove">제거</string>
+    <string name="settings_root_ssh_removed_locally">TV에 연결할 수 없어 Elly의 키가 아직 TV에 저장되어 있어요. Elly는 더 이상 이 키를 사용하지 않아요. 원하면 TV의 ~/.ssh/authorized_keys에서 ‘elly-app’으로 끝나는 줄을 삭제해 주세요.</string>
+    <string name="custom_element_epg">프로그램 가이드</string>
+    <string name="epg_title_with_list">프로그램 가이드 · %1$s</string>
+    <string name="epg_editor_hint">길게 눌러 즐겨찾기 목록 변경</string>
+    <string name="epg_unavailable_hint">이 TV에 SSH를 설정할 때까지 화면에 표시되지 않아요</string>
+    <string name="epg_list_title">즐겨찾기 목록 선택</string>
+    <string name="epg_list_failed">즐겨찾기 목록을 불러오지 못했어요. ‘TV’ 탭에서 SSH 연결을 확인해 주세요.</string>
+    <string name="epg_list_empty">TV에 즐겨찾기 목록이 없어요.</string>
+    <string name="epg_status_failed">프로그램 가이드를 불러오지 못했어요.</string>
+    <string name="epg_status_empty">아직 프로그램 정보가 없어요.</string>
+    <string name="epg_now">지금</string>
+    <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d분)</string>
+    <string name="epg_info_remaining">%1$d분 남음</string>
+    <string name="epg_info_switch">채널 전환</string>
+    <string name="epg_info_close">닫기</string>
+    <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_subtitles">자막</string>
+    <string name="epg_badge_audio_description">화면해설</string>
+    <string name="epg_badge_sign_language">수어</string>
+    <string name="epg_badge_satellite">%1$s · %2$d</string>
+    <string name="epg_remind">알림 설정</string>
+    <string name="epg_remind_cancel">알림 삭제</string>
+    <string name="epg_record">녹화</string>
+    <string name="epg_record_cancel">녹화 예약 삭제</string>
+    <string name="epg_record_stop">녹화 중지</string>
+    <string name="epg_reminder_set">알림 예약됨</string>
+    <string name="epg_record_no_storage">녹화하려면 TV에서 녹화용으로 선택한 저장 장치가 필요해요.</string>
+    <string name="epg_record_no_data">이 프로그램에는 녹화 정보가 없어요.</string>
+    <string name="epg_action_failed">TV가 받아들이지 않았어요.</string>
+    <string name="epg_action_conflict">TV에 이미 예약된 알림이나 녹화와 겹쳐요.</string>
+    <string name="epg_demo_list_main">즐겨찾기</string>
+    <string name="epg_demo_list_kids">어린이</string>
+    <string name="epg_demo_description">데모 모드용으로 만든 가상의 프로그램이에요. 루팅된 TV에 SSH를 설정하면 가이드에 TV의 실제 프로그램이 표시돼요.</string>
+    <string name="help_remote_guide_title">프로그램 가이드</string>
+    <string name="help_remote_guide_body">루팅된 TV(또는 데모 모드)에서는 화면에 TV의 가이드와 같은 프로그램 가이드를 표시할 수 있어요. 위에는 시간, 왼쪽에는 즐겨찾기 목록의 채널, 오른쪽에는 프로그램이 있어요.\n• 모든 방향으로 스와이프할 수 있어요. 과거는 최대 24시간, 미래는 TV에 정보가 있는 만큼(최대 14일) 볼 수 있어요. 시간 막대 왼쪽에 날짜가 있고, 날짜가 바뀌는 곳에는 선이 있어요.\n• 주황색 선은 현재 시각이에요. 왼쪽 위의 ‘지금’을 누르면 돌아가요. 지금 TV에서 나오는 채널의 줄은 주황색으로 강조돼요.\n• 채널을 탭하면 그 채널로 전환해요.\n가이드 안에서 스와이프해도 화면은 바뀌지 않아요. 화면을 바꾸려면 아래의 점 위를 스와이프하세요. Elly는 정보를 휴대폰에 저장하고, 리모컨이 열려 있는 동안 15분마다 업데이트해요. 불러오는 동안 왼쪽 위에서 작은 원이 돌아가요.</string>
+    <string name="help_remote_guide_info_title">프로그램, 알림, 녹화</string>
+    <string name="help_remote_guide_info_body">프로그램을 탭하면 채널, 날짜, 시간, 길이, 장르, 설명을 볼 수 있어요. ‘채널 전환’을 누르면 TV가 그 채널로 바뀌어요.\n• 알림 설정: 프로그램이 시작할 때 TV가 알려줘요. 휴대폰이 꺼져 있어도 돼요. 예약된 알림에는 종이 표시돼요.\n• 녹화: TV에서 녹화용으로 선택한 저장 장치에 녹화해요. 예약된 녹화에는 빨간 점이 표시되고, 진행 중인 녹화는 중지할 수 있어요.\n둘 다 다시 삭제할 수 있어요. TV에서 설정한 알림과 녹화도 Elly에 표시돼요. 겹치는 예약 등으로 TV가 거절하면 TV의 메시지가 창에 표시돼요.</string>
+    <string name="help_edit_guide_title">프로그램 가이드 추가</string>
+    <string name="help_edit_guide_body">TV에 SSH를 설정했거나(설정 참고) 데모 모드가 켜져 있으면 ‘+ 요소’에서 프로그램 가이드를 고를 수 있어요. 배치하기 전에 표시할 채널이 있는 TV의 즐겨찾기 목록을 선택해요. 요소를 2초 동안 길게 누르면 목록을 바꿀 수 있어요.\n가이드는 처음에 화면 너비만큼 넓고 절반 높이예요. 다른 요소처럼 옮기고 크기를 바꿀 수 있어요. 서로 다른 목록으로 가이드를 여러 개 둘 수도 있어요. SSH 접근이 없으면 요소는 저장되어 있지만 화면에는 표시되지 않아요.</string>
+    <string name="help_settings_root_title">루트 권한과 SSH</string>
+    <string name="help_settings_root_body">프로그램 가이드는 LG가 루팅된 경우에만 허용하는 TV 접근이 필요해요. TV가 루팅되어 있고(Homebrew Channel) 거기서 SSH 서버가 켜져 있다면 ‘TV’ 탭에서 ‘루트 권한과 SSH가 설정되어 있나요?’를 켜세요.\n사용자(보통 root), 포트(보통 22), 루트 비밀번호를 입력하세요. Elly가 한 번 로그인해서 자체 키를 TV에 저장해요. 비밀번호는 저장되지 않아요. ‘확인’으로 연결을 테스트할 수 있어요.\n끄면 확인 후 TV에서 키를 다시 삭제해요. 이 설정은 TV마다 따로 저장돼요.</string>
+    <string-array name="epg_demo_channels">
+        <item>엘리 원</item>
+        <item>닭장 TV</item>
+        <item>닭장 뉴스</item>
+        <item>헛간 스포츠</item>
+        <item>깃털 시네마</item>
+        <item>둥지 다큐</item>
+        <item>수탉 뮤직</item>
+        <item>황금알</item>
+    </string-array>
+    <string-array name="epg_demo_kids_channels">
+        <item>병아리 TV</item>
+        <item>꼬마 삐약</item>
+        <item>갓 부화</item>
+        <item>햇살 병아리</item>
+    </string-array>
+    <string-array name="epg_demo_titles">
+        <item>헛간의 아침</item>
+        <item>대형 달걀 찾기</item>
+        <item>깃털과 사실</item>
+        <item>닭장 뉴스</item>
+        <item>수탉 록 라이브</item>
+        <item>헛간 부엌</item>
+        <item>여우의 밤</item>
+        <item>골짜기 위의 날개</item>
+        <item>날씨 암탉</item>
+        <item>콕콕 형사</item>
+        <item>목장 이야기</item>
+        <item>늦은 밤 꼬꼬댁</item>
+        <item>곡식 퀴즈</item>
+        <item>헛간 축구</item>
+        <item>여행하는 암탉들</item>
+        <item>긴 횃대</item>
+    </string-array>
+    <string-array name="epg_demo_kids_titles">
+        <item>삐약이와 친구들</item>
+        <item>작은 날개</item>
+        <item>작은 달걀</item>
+        <item>병아리 모험</item>
+        <item>이야기 둥지</item>
+        <item>곡식 세기</item>
+        <item>졸린 병아리</item>
+        <item>노란 솜털</item>
+    </string-array>
 </resources>

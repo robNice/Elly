@@ -41,7 +41,8 @@ private data class ThumbnailColors(
     val red: Color,
     val green: Color,
     val yellow: Color,
-    val blue: Color
+    val blue: Color,
+    val nowLine: Color
 )
 
 @Composable
@@ -56,7 +57,8 @@ fun ScreenThumbnail(layout: CustomScreen, enabled: Boolean, modifier: Modifier =
         red = colorResource(R.color.key_color_red),
         green = colorResource(R.color.key_color_green),
         yellow = colorResource(R.color.key_color_yellow),
-        blue = colorResource(R.color.key_color_blue)
+        blue = colorResource(R.color.key_color_blue),
+        nowLine = colorResource(R.color.epg_now_line)
     )
     Box(
         modifier = modifier
@@ -107,9 +109,18 @@ private fun DrawScope.drawLayout(c: ThumbnailColors, screen: CustomScreen, round
     val cellHeight = size.height / CustomScreen.ROWS
     val inset = cellWidth * CUSTOM_ELEMENT_INSET
     screen.elements.forEach { element ->
+        if (element.type == CustomElementType.EPG) {
+            drawGuide(
+                c,
+                Offset(element.x * cellWidth + inset, element.y * cellHeight + inset),
+                Size(element.width * cellWidth - 2 * inset, element.height * cellHeight - 2 * inset),
+                cellHeight
+            )
+            return@forEach
+        }
         val color = when (element.type) {
             CustomElementType.DPAD -> c.keyHighlight
-            CustomElementType.APP, CustomElementType.EPG -> c.light
+            CustomElementType.APP -> c.light
             CustomElementType.KEY -> when (element.key) {
                 RemoteKey.POWER -> c.power
                 RemoteKey.RED -> c.red
@@ -126,13 +137,47 @@ private fun DrawScope.drawLayout(c: ThumbnailColors, screen: CustomScreen, round
             color = color,
             topLeft = Offset(element.x * cellWidth + inset, element.y * cellHeight + inset),
             size = Size(width, height),
-            cornerRadius = if (element.type == CustomElementType.EPG) {
-                CornerRadius(cellHeight * CustomElement.EPG_CORNER)
-            } else {
-                CornerRadius(minOf(width, height) / 2f * if (element.type == CustomElementType.DPAD) dpadRounding else rounding)
-            }
+            cornerRadius = CornerRadius(minOf(width, height) / 2f * if (element.type == CustomElementType.DPAD) dpadRounding else rounding)
         )
     }
 }
 
+// A miniature of the guide: logo squares on the left, program bars of varying length and the line for now.
+private fun DrawScope.drawGuide(c: ThumbnailColors, topLeft: Offset, area: Size, cellHeight: Float) {
+    drawRoundRect(c.key.copy(alpha = GUIDE_PANEL_ALPHA), topLeft, area, CornerRadius(cellHeight * CustomElement.EPG_CORNER))
+    val gap = cellHeight * GUIDE_GAP
+    val rowHeight = cellHeight * GUIDE_ROW_CELLS
+    val logoWidth = area.width * GUIDE_LOGO_SHARE
+    val programsLeft = topLeft.x + logoWidth + gap
+    val programsWidth = area.width - logoWidth - 2 * gap
+    val nowX = programsLeft + programsWidth * GUIDE_NOW
+    val rows = ((area.height - rowHeight * GUIDE_HEADER_ROWS) / rowHeight).toInt()
+    for (row in 0 until rows) {
+        val top = topLeft.y + rowHeight * (GUIDE_HEADER_ROWS + row) + gap / 2
+        val height = rowHeight - gap
+        drawRoundRect(c.key, Offset(topLeft.x + gap, top), Size(logoWidth - gap, height), CornerRadius(gap))
+        var x = programsLeft
+        GUIDE_PATTERN[row % GUIDE_PATTERN.size].forEach { share ->
+            val width = programsWidth * share - gap
+            val running = x <= nowX && nowX < x + width
+            drawRoundRect(if (running) c.keyHighlight else c.key, Offset(x, top), Size(width, height), CornerRadius(gap))
+            x += width + gap
+        }
+    }
+    drawRect(c.nowLine, Offset(nowX, topLeft.y + gap), Size(gap, area.height - 2 * gap))
+}
+
 private const val CUSTOM_ELEMENT_INSET = 0.12f
+private const val GUIDE_PANEL_ALPHA = 0.35f
+private const val GUIDE_GAP = 0.25f
+private const val GUIDE_ROW_CELLS = 2.4f
+private const val GUIDE_HEADER_ROWS = 0.6f
+private const val GUIDE_LOGO_SHARE = 0.16f
+private const val GUIDE_NOW = 0.3f
+private val GUIDE_PATTERN = listOf(
+    listOf(0.22f, 0.43f, 0.35f),
+    listOf(0.55f, 0.45f),
+    listOf(0.14f, 0.38f, 0.26f, 0.22f),
+    listOf(0.4f, 0.6f),
+    listOf(0.28f, 0.32f, 0.4f)
+)

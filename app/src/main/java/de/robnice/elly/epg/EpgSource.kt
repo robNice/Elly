@@ -36,6 +36,9 @@ data class EpgProgram(
     val signLanguage: Boolean = false
 )
 
+// Picture of the channel currently on the TV, from the received signal.
+data class EpgVideoInfo(val resolution: String?, val aspectRatio: String?, val hdr: String?)
+
 enum class ReservationType { REMINDER, RECORDING }
 
 // A reminder or recording planned on the TV; it belongs to the program of that channel starting at start.
@@ -81,6 +84,9 @@ interface EpgSource {
 
     // Ends a running recording of this channel and keeps what was recorded so far.
     suspend fun stopRecording(channel: EpgChannel)
+
+    // Null unless this channel is the one on the TV right now.
+    suspend fun videoInfo(channel: EpgChannel): EpgVideoInfo?
 
     suspend fun favoriteLists(): List<FavoriteList>
 
