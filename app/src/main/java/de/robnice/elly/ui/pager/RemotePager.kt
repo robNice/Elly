@@ -4,7 +4,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalDensity
+import kotlin.math.roundToInt
+import kotlinx.coroutines.launch
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
@@ -143,7 +150,7 @@ fun RemotePager(
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) { viewModel.keepGuideFresh() }
     }
 
-    val guides = remember(viewModel) { EpgGuides(viewModel::guide, viewModel.guideRefreshing, viewModel.guideFailed, viewModel.currentChannel) }
+    val guides = remember(viewModel) { EpgGuides(viewModel::guide, viewModel.guideRefreshing, viewModel.guideFailed, viewModel.currentChannel, viewModel::switchChannel) }
 
     LaunchedEffect(viewModel) {
         viewModel.results.collect { result ->
@@ -299,9 +306,25 @@ private fun PageIndicator(pagerState: PagerState) {
         pagerState.currentPage + 1,
         pagerState.pageCount
     )
+    // Elements filling the whole page, like a large program guide, leave no room to swipe, so the
+    // dots take swipes as well.
+    val scope = rememberCoroutineScope()
+    val flingVelocity = with(LocalDensity.current) { dimensionResource(R.dimen.indicator_fling_velocity).toPx() }
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .draggable(
+                orientation = Orientation.Horizontal,
+                state = rememberDraggableState { delta -> pagerState.dispatchRawDelta(-delta) },
+                onDragStopped = { velocity ->
+                    val target = when {
+                        velocity < -flingVelocity -> pagerState.currentPage + 1
+                        velocity > flingVelocity -> pagerState.currentPage - 1
+                        else -> pagerState.currentPage + pagerState.currentPageOffsetFraction.roundToInt()
+                    }.coerceIn(0, pagerState.pageCount - 1)
+                    scope.launch { pagerState.animateScrollToPage(target) }
+                }
+            )
             .padding(dimensionResource(R.dimen.indicator_padding))
             .semantics { contentDescription = description },
         horizontalArrangement = Arrangement.spacedBy(

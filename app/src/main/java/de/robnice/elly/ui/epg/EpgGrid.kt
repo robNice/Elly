@@ -57,6 +57,7 @@ import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import de.robnice.elly.R
 import de.robnice.elly.ui.components.PaletteColors
+import de.robnice.elly.ui.components.rememberKeyHaptic
 import de.robnice.elly.ui.components.currentPaletteColors
 import de.robnice.elly.epg.EpgChannel
 import de.robnice.elly.epg.EpgGuide
@@ -75,8 +76,28 @@ import java.util.Locale
 // Program guide like the TV's: times along the top, channels down the left, programs scroll in both directions.
 // Only the programs in view are composed; a week of a few dozen channels has thousands.
 @Composable
-fun EpgGrid(guide: EpgGuide, loading: Boolean, currentChannelId: String?, modifier: Modifier = Modifier) {
+fun EpgGrid(
+    guide: EpgGuide,
+    loading: Boolean,
+    currentChannelId: String?,
+    onSwitch: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
     val colors = epgColors(currentPaletteColors())
+    val haptic = rememberKeyHaptic()
+    var selected by remember { mutableStateOf<Pair<EpgChannel, EpgProgram>?>(null) }
+    selected?.let { (channel, program) ->
+        EpgProgramDialog(
+            channel = channel,
+            program = program,
+            onSwitch = {
+                selected = null
+                haptic()
+                onSwitch(channel.id)
+            },
+            onDismiss = { selected = null }
+        )
+    }
     val activeRow = colorResource(R.color.epg_now_line).copy(alpha = ACTIVE_ROW_ALPHA)
     val now by rememberNow()
     val zone = remember { ZoneId.systemDefault() }
@@ -147,7 +168,11 @@ fun EpgGrid(guide: EpgGuide, loading: Boolean, currentChannelId: String?, modifi
                             channel,
                             guide.logos[channel.id],
                             colors,
-                            if (channel.id == currentChannelId) rowModifier.background(activeRow) else rowModifier
+                            (if (channel.id == currentChannelId) rowModifier.background(activeRow) else rowModifier)
+                                .clickable {
+                                    haptic()
+                                    onSwitch(channel.id)
+                                }
                         )
                     }
                 }
@@ -175,7 +200,8 @@ fun EpgGrid(guide: EpgGuide, loading: Boolean, currentChannelId: String?, modifi
                                 )
                             }
                             for (row in firstRow..lastRow) {
-                                val programs = guide.programs[guide.channels[row].signalId].orEmpty()
+                                val rowChannel = guide.channels[row]
+                                val programs = guide.programs[rowChannel.signalId].orEmpty()
                                 programs.forEach { program ->
                                     val x0 = xOf(program.start)
                                     val x1 = xOf(program.end)
@@ -189,6 +215,7 @@ fun EpgGrid(guide: EpgGuide, loading: Boolean, currentChannelId: String?, modifi
                                             modifier = Modifier
                                                 .offset(with(density) { x0.toDp() }, rowHeight * row)
                                                 .size(with(density) { (x1 - x0).toDp() }, rowHeight)
+                                                .clickable { selected = rowChannel to program }
                                         )
                                     }
                                 }

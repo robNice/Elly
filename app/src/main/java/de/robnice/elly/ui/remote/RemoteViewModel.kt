@@ -184,6 +184,14 @@ class RemoteViewModel(
         viewModelScope.launch { report(remoteControl.send(key)) }
     }
 
+    fun switchChannel(channelId: String) {
+        viewModelScope.launch {
+            val result = remoteControl.openChannel(channelId)
+            if (result == SendResult.SENT || result == SendResult.DEMO) _currentChannel.value = channelId
+            report(result)
+        }
+    }
+
     fun launchApp(appId: String) {
         viewModelScope.launch { report(remoteControl.launchApp(appId)) }
     }

@@ -228,6 +228,9 @@
     <string name="epg_today">Heute</string>
     <string name="epg_tomorrow">Morgen</string>
     <string name="epg_yesterday">Gestern</string>
+    <string name="epg_info_when">%1$s · %2$s · %3$s – %4$s (%5$d Min.)</string>
+    <string name="epg_info_switch">Umschalten</string>
+    <string name="epg_info_close">Schließen</string>
     <string name="epg_demo_list_main">Favoriten</string>
     <string name="epg_demo_list_kids">Kinder</string>
     <string name="epg_demo_description">Erfundene Sendung für den Demo-Modus. Mit gerootetem Fernseher und eingerichtetem SSH zeigt die Übersicht das echte Programm deines Fernsehers.</string>

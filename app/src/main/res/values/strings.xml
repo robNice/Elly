@@ -232,6 +232,9 @@
     <string name="epg_today">Today</string>
     <string name="epg_tomorrow">Tomorrow</string>
     <string name="epg_yesterday">Yesterday</string>
+    <string name="epg_info_when">%1$s · %2$s · %3$s – %4$s (%5$d min)</string>
+    <string name="epg_info_switch">Switch to channel</string>
+    <string name="epg_info_close">Close</string>
     <string name="epg_demo_list_main">Favorites</string>
     <string name="epg_demo_list_kids">Kids</string>
     <string name="epg_demo_description">Invented program for demo mode. With a rooted TV and SSH set up, the guide shows the real program of your TV.</string>

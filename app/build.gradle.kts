@@ -15,8 +15,8 @@ android {
         applicationId = "de.robnice.elly"
         minSdk = 28
         targetSdk = 36
-        versionCode = 10001007
-        versionName = "1.1.7"
+        versionCode = 10001009
+        versionName = "1.1.9"
     }
 
     androidResources {

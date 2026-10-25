@@ -55,7 +55,8 @@ class EpgGuides(
     val guide: (String) -> Flow<EpgGuide?>,
     val refreshing: StateFlow<Boolean>,
     val failed: StateFlow<Boolean>,
-    val currentChannel: StateFlow<String?>
+    val currentChannel: StateFlow<String?>,
+    val switchChannel: (String) -> Unit
 )
 
 val LocalEpgGuides = compositionLocalOf<EpgGuides?> { null }
@@ -71,7 +72,13 @@ fun EpgElement(config: EpgConfig?, editing: Boolean, modifier: Modifier = Modifi
         val currentChannel by guides.currentChannel.collectAsState()
         val current = guide
         if (current != null && current.channels.isNotEmpty()) {
-            EpgGrid(current, loading = refreshing, currentChannelId = currentChannel, modifier = modifier)
+            EpgGrid(
+                current,
+                loading = refreshing,
+                currentChannelId = currentChannel,
+                onSwitch = guides.switchChannel,
+                modifier = modifier
+            )
             return
         }
     }
