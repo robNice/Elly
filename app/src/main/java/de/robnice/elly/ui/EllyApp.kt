@@ -23,6 +23,7 @@ import de.robnice.elly.ui.onboarding.OnboardingScreen
 import de.robnice.elly.ui.pager.RemotePager
 import de.robnice.elly.ui.remote.RemoteViewModel
 import de.robnice.elly.ui.settings.PrivacyScreen
+import de.robnice.elly.ui.settings.RootAccessViewModel
 import de.robnice.elly.ui.settings.SettingsScreen
 import de.robnice.elly.ui.settings.SettingsViewModel
 import de.robnice.elly.ui.setup.SetupViewModel
@@ -88,6 +89,7 @@ fun EllyApp(container: AppContainer) {
                 SettingsScreen(
                     viewModel = viewModel(factory = SettingsViewModel.factory(container)),
                     setupViewModel = viewModel(factory = SetupViewModel.factory(container)),
+                    rootAccessViewModel = viewModel(factory = RootAccessViewModel.factory(container)),
                     onClose = if (current == RootState.NoTv) null else ({ overlay = null }),
                     onOpenHelp = { helpOpen = true },
                     onPaired = { overlay = null },

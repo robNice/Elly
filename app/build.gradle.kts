@@ -15,8 +15,8 @@ android {
         applicationId = "de.robnice.elly"
         minSdk = 28
         targetSdk = 36
-        versionCode = 9999001
-        versionName = "1.0.0-rc1"
+        versionCode = 10001000
+        versionName = "1.1.0"
     }
 
     androidResources {
@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.jsch)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.okhttp)
 

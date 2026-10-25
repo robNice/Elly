@@ -19,3 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 -renamesourcefileattribute SourceFile
+
+# JSch instantiates its algorithms by class name.
+-keep class com.jcraft.jsch.** { *; }

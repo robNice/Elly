@@ -4,6 +4,7 @@ import android.content.Context
 import de.robnice.elly.data.AppIconCache
 import de.robnice.elly.data.AppIconFiller
 import de.robnice.elly.data.BackgroundImageStore
+import de.robnice.elly.data.RootAccessRepository
 import de.robnice.elly.widget.WidgetController
 import de.robnice.elly.widget.WidgetStore
 import de.robnice.elly.data.AppSlotsRepository
@@ -21,6 +22,9 @@ import de.robnice.elly.tv.discovery.TvDiscovery
 import de.robnice.elly.tv.pairing.PairingManifest
 import de.robnice.elly.tv.pairing.PairingService
 import de.robnice.elly.tv.power.WakeOnLan
+import de.robnice.elly.tv.ssh.RootAccessService
+import de.robnice.elly.tv.ssh.SshKeyStore
+import de.robnice.elly.tv.ssh.TvShell
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -67,6 +71,10 @@ class AppContainer(context: Context) {
     )
 
     val pairingService = PairingService(pairingManifest, connector)
+
+    val rootAccessRepository = RootAccessRepository(appContext)
+
+    val rootAccessService = RootAccessService(TvShell(), SshKeyStore(), rootAccessRepository)
 
     val remoteControl = RemoteControl(tvRepository, settingsRepository, connector, pairingManifest, WakeOnLan())
 

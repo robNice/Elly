@@ -102,6 +102,7 @@ private enum class SettingsTab(@StringRes val title: Int) {
 fun SettingsScreen(
     viewModel: SettingsViewModel,
     setupViewModel: SetupViewModel,
+    rootAccessViewModel: RootAccessViewModel,
     onClose: (() -> Unit)?,
     onOpenHelp: () -> Unit,
     onPaired: () -> Unit,
@@ -230,6 +231,7 @@ fun SettingsScreen(
                                 visible = pagerState.settledPage == SettingsTab.TV.ordinal,
                                 onPaired = onPaired
                             )
+                            RootAccessSection(rootAccessViewModel)
                         }
                         SwitchSetting(
                             title = stringResource(R.string.settings_demo_mode),
@@ -349,7 +351,7 @@ fun SettingsScreen(
 }
 
 @Composable
-private fun SwitchSetting(
+internal fun SwitchSetting(
     title: String,
     description: String,
     checked: Boolean,

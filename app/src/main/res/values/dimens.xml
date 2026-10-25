@@ -97,6 +97,8 @@
     <dimen name="setup_section_spacing">24dp</dimen>
     <dimen name="setup_item_spacing">8dp</dimen>
     <dimen name="setup_card_padding">16dp</dimen>
+    <dimen name="root_access_progress_size">18dp</dimen>
+    <dimen name="root_access_progress_stroke">2dp</dimen>
     <dimen name="setup_progress_size">24dp</dimen>
     <dimen name="onboarding_padding">24dp</dimen>
     <dimen name="onboarding_mascot_size">128dp</dimen>

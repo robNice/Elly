@@ -13,6 +13,7 @@ import de.robnice.elly.tv.connection.TvConnectionException
 import de.robnice.elly.tv.discovery.DiscoveredTv
 import de.robnice.elly.tv.discovery.TvDiscovery
 import de.robnice.elly.tv.pairing.PairingService
+import de.robnice.elly.tv.ssh.RootAccessService
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,6 +31,7 @@ class SetupViewModel(
     private val screenLayoutRepository: ScreenLayoutRepository,
     private val discovery: TvDiscovery,
     private val pairingService: PairingService,
+    private val rootAccessService: RootAccessService,
     showEmulatorHint: Boolean
 ) : ViewModel() {
 
@@ -124,6 +126,7 @@ class SetupViewModel(
             repository.remove(id)
             appSlotsRepository.removeOwner(id)
             screenLayoutRepository.removeOwner(id)
+            rootAccessService.forget(id)
         }
     }
 
@@ -146,6 +149,7 @@ class SetupViewModel(
                     screenLayoutRepository = container.screenLayoutRepository,
                     discovery = container.tvDiscovery,
                     pairingService = container.pairingService,
+                    rootAccessService = container.rootAccessService,
                     showEmulatorHint = DevicePlatform.isDebugEmulator
                 )
             }

@@ -51,6 +51,28 @@
     <string name="settings_demo_mode">Demo mode</string>
     <string name="settings_demo_mode_description">Simulates a connected TV. All remote screens can be used without an LG TV; no commands are sent.</string>
     <string name="settings_demo_active_hint">Demo mode is on, so no TV is connected. Switch it off to pair a TV or switch between your TVs.</string>
+    <string name="settings_root_ssh">Root access and SSH set up?</string>
+    <string name="settings_root_ssh_description">For rooted TVs with the Homebrew Channel and its SSH server switched on. Needed for the program guide.</string>
+    <string name="settings_root_ssh_check">Check</string>
+    <string name="settings_root_ssh_checking">Checking connection…</string>
+    <string name="settings_root_ssh_ok">SSH connection works.</string>
+    <string name="settings_root_ssh_removing">Removing SSH access…</string>
+    <string name="settings_root_ssh_setup_title">Set up SSH</string>
+    <string name="settings_root_ssh_setup_message">Elly logs in to the TV once with the root password and stores its own key there. The password is not saved.</string>
+    <string name="settings_root_ssh_user">User</string>
+    <string name="settings_root_ssh_port">Port</string>
+    <string name="settings_root_ssh_password">Password</string>
+    <string name="settings_root_ssh_setup_confirm">Set up</string>
+    <string name="settings_root_ssh_error_unreachable">The TV\'s SSH server cannot be reached. Is SSH switched on in the Homebrew Channel?</string>
+    <string name="settings_root_ssh_error_auth">Login rejected. Check user and password.</string>
+    <string name="settings_root_ssh_error_key">The TV no longer accepts Elly\'s key. Switch the setting off and set up SSH again.</string>
+    <string name="settings_root_ssh_error_host_key">The TV\'s SSH key has changed. If the TV was rooted again, switch the setting off and set up SSH again.</string>
+    <string name="settings_root_ssh_error_luna">Logged in, but the TV\'s system commands are not available.</string>
+    <string name="settings_root_ssh_error_unknown">The SSH connection failed.</string>
+    <string name="settings_root_ssh_remove_title">Remove SSH access?</string>
+    <string name="settings_root_ssh_remove_message">Elly deletes its key from the TV and forgets the access. The program guide will then no longer be available.</string>
+    <string name="settings_root_ssh_remove">Remove</string>
+    <string name="settings_root_ssh_removed_locally">The TV could not be reached, so Elly\'s key is still stored on it. Elly no longer uses it. If you like, delete the line ending in “elly-app” from ~/.ssh/authorized_keys on the TV.</string>
     <string name="demo_tv_name">Demo TV</string>
     <string name="settings_disconnect">Disconnect</string>
     <string name="settings_disconnect_title">Disconnect TV?</string>
@@ -263,6 +285,7 @@
     <string name="license_mit" translatable="false">MIT License</string>
     <string name="license_ofl" translatable="false">SIL Open Font License 1.1</string>
     <string name="license_apache" translatable="false">Apache License 2.0</string>
+    <string name="license_bsd" translatable="false">BSD 3-Clause License</string>
     <string name="license_copyright_elly" translatable="false">© 2026 Roberto Cornice</string>
     <string name="license_name_fredoka" translatable="false">Fredoka</string>
     <string name="license_copyright_fredoka" translatable="false">© 2016 The Fredoka Project Authors</string>
@@ -272,6 +295,8 @@
     <string name="license_copyright_kotlin" translatable="false">© JetBrains s.r.o. and Kotlin Programming Language contributors</string>
     <string name="license_name_okhttp" translatable="false">OkHttp</string>
     <string name="license_copyright_okhttp" translatable="false">© Square, Inc.</string>
+    <string name="license_name_jsch" translatable="false">JSch</string>
+    <string name="license_copyright_jsch" translatable="false">© Atsuhiko Yamanaka, JCraft, Inc. and contributors</string>
     <string name="settings_joystick_placement">Joystick position</string>
     <string name="settings_joystick_placement_free">Free</string>
     <string name="settings_joystick_placement_free_description">The joystick appears where you first touch the area.</string>

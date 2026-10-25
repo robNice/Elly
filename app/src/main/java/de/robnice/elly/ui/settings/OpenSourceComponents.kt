@@ -17,6 +17,7 @@ object OpenSourceComponents {
         OpenSourceComponent(R.string.license_name_fredoka, R.string.license_copyright_fredoka, R.string.license_ofl, R.raw.license_fredoka),
         OpenSourceComponent(R.string.license_name_androidx, R.string.license_copyright_androidx, R.string.license_apache, R.raw.license_apache_2_0),
         OpenSourceComponent(R.string.license_name_kotlin, R.string.license_copyright_kotlin, R.string.license_apache, R.raw.license_apache_2_0),
-        OpenSourceComponent(R.string.license_name_okhttp, R.string.license_copyright_okhttp, R.string.license_apache, R.raw.license_apache_2_0)
+        OpenSourceComponent(R.string.license_name_okhttp, R.string.license_copyright_okhttp, R.string.license_apache, R.raw.license_apache_2_0),
+        OpenSourceComponent(R.string.license_name_jsch, R.string.license_copyright_jsch, R.string.license_bsd, R.raw.license_jsch)
     )
 }
