@@ -60,7 +60,9 @@ object EllyPoses {
             R.drawable.elly_costume_headstand,
             R.drawable.elly_costume_martian,
             R.drawable.elly_costume_detective,
-            R.drawable.elly_costume_hockey
+            R.drawable.elly_costume_hockey,
+            R.drawable.elly_costume_mummy,
+            R.drawable.elly_costume_queen
         ).mapIndexed { index, image ->
             if (image == R.drawable.elly_costume_headstand) {
                 EllyLayer(image, EllyMotion.DRIFT, pivotY = 0.92f, frame = index)

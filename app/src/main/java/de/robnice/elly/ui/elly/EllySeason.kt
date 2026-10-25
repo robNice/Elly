@@ -9,7 +9,7 @@ enum class EllySeason(@DrawableRes val image: Int) {
     DEFAULT(R.drawable.elly),
     CHRISTMAS(R.drawable.elly_costume_santa),
     EASTER(R.drawable.elly_costume_bunny),
-    HALLOWEEN(R.drawable.elly_costume_zombie);
+    HALLOWEEN(R.drawable.elly_costume_mummy);
 
     companion object {
         fun of(date: LocalDate): EllySeason {

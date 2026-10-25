@@ -11,6 +11,7 @@ import de.robnice.elly.data.AppSlotsRepository
 import de.robnice.elly.data.ScreenLayoutRepository
 import de.robnice.elly.data.SettingsRepository
 import de.robnice.elly.data.TvRepository
+import de.robnice.elly.data.model.AppSlots
 import de.robnice.elly.epg.EpgAccess
 import de.robnice.elly.epg.EpgFiles
 import de.robnice.elly.epg.EpgRepository
@@ -31,6 +32,7 @@ import de.robnice.elly.tv.ssh.TvShell
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
@@ -81,7 +83,10 @@ class AppContainer(context: Context) {
 
     val epgAccess = EpgAccess(appContext, tvRepository, settingsRepository, rootAccessRepository, rootAccessService)
 
-    val epgRepository = EpgRepository(EpgFiles(appContext), epgAccess, appSlotsRepository.activeOwner)
+    // The demo guide is written in the app language, so each language keeps its own demo cache.
+    val epgRepository = EpgRepository(EpgFiles(appContext), epgAccess, appSlotsRepository.activeOwner.map { owner ->
+        if (owner == AppSlots.DEMO_OWNER) "${owner}_${appContext.resources.configuration.locales[0].toLanguageTag()}" else owner
+    })
 
     val remoteControl = RemoteControl(tvRepository, settingsRepository, connector, pairingManifest, WakeOnLan())
 

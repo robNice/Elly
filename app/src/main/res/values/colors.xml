@@ -301,6 +301,11 @@
     <color name="elly_fur">#FFFFFFFF</color>
     <color name="elly_sack">#FF9C7A4E</color>
     <color name="elly_bunny_inner">#FFF5A3B5</color>
+    <color name="elly_mummy">#FFEDE5D0</color>
+    <color name="elly_mummy_shade">#FFC9BC9C</color>
+    <color name="elly_royal">#FF7B3FB5</color>
+    <color name="elly_royal_shade">#FF5C2C8C</color>
+    <color name="elly_jewel">#FFD9304A</color>
 
     <!-- Onboarding -->
     <color name="onboarding_bubble">#FF24272B</color>

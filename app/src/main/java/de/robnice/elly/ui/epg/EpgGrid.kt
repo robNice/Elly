@@ -29,7 +29,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
@@ -47,6 +49,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
@@ -54,6 +57,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import de.robnice.elly.R
@@ -154,6 +158,8 @@ fun EpgGrid(
         val headerHeight = dimensionResource(R.dimen.epg_header_height)
         val rowHeight = ((maxHeight - headerHeight) / VISIBLE_ROWS)
             .coerceIn(dimensionResource(R.dimen.epg_row_min_height), dimensionResource(R.dimen.epg_row_max_height))
+            // Whole pixels, so the channel column and the programs stay in line row after row.
+            .let { with(density) { it.roundToPx().toDp() } }
         val viewportPx = with(density) { (maxWidth - channelWidth).toPx() }
 
         // Opens with now in the left third.
@@ -180,7 +186,7 @@ fun EpgGrid(
                     modifier = Modifier
                         .width(channelWidth)
                         .fillMaxHeight()
-                        .verticalScroll(vertical, enabled = false)
+                        .verticalScroll(vertical)
                 ) {
                     guide.channels.forEach { channel ->
                         val rowModifier = Modifier.height(rowHeight).fillMaxWidth()
@@ -199,6 +205,11 @@ fun EpgGrid(
                 BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxHeight()) {
                     val viewportHeightPx = with(density) { maxHeight.toPx() }
                     val rowPx = with(density) { rowHeight.toPx() }
+                    // Only a change of the visible rows recomposes the grid, not every scrolled pixel.
+                    val firstRow by remember(rowPx) { derivedStateOf { (vertical.value / rowPx).toInt().coerceAtLeast(0) } }
+                    val lastRow by remember(rowPx, viewportHeightPx, guide.channels.size) {
+                        derivedStateOf { ((vertical.value + viewportHeightPx) / rowPx).toInt().coerceAtMost(guide.channels.lastIndex) }
+                    }
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
@@ -208,8 +219,6 @@ fun EpgGrid(
                         Box(modifier = Modifier.size(contentWidth, rowHeight * guide.channels.size)) {
                             val left = horizontal.value.toFloat()
                             val right = left + viewportPx
-                            val firstRow = (vertical.value / rowPx).toInt().coerceAtLeast(0)
-                            val lastRow = ((vertical.value + viewportHeightPx) / rowPx).toInt().coerceAtMost(guide.channels.lastIndex)
                             val activeIndex = guide.channels.indexOfFirst { it.id == currentChannelId }
                             if (activeIndex >= 0) {
                                 Box(
@@ -298,6 +307,9 @@ private fun TimeRuler(origin: Long, end: Long, minuteWidth: Dp, now: Long, scrol
     val nowColor = colorResource(R.color.epg_now_line)
     val viewStart = origin + (scroll.value / minutePx).toLong() * MINUTE_MILLIS
     val viewEnd = viewStart + (scroll.viewportSize / minutePx).toLong() * MINUTE_MILLIS
+    var dateWidth by remember { mutableIntStateOf(0) }
+    // The next day's date pushes the fixed date out instead of sliding under it.
+    val nextDayX = midnights(viewStart, viewEnd, zone).firstOrNull()?.let { (it - origin) / MINUTE_MILLIS * minutePx - scroll.value }
     Box(modifier = modifier) {
         Box(modifier = Modifier.fillMaxSize().horizontalScroll(scroll, enabled = false)) {
             Box(modifier = Modifier.width(minuteWidth * ((end - origin) / MINUTE_MILLIS).toInt()).fillMaxHeight()) {
@@ -306,6 +318,8 @@ private fun TimeRuler(origin: Long, end: Long, minuteWidth: Dp, now: Long, scrol
                 for (slot in first until first + count) {
                     val time = origin + slot * SLOT_MINUTES * MINUTE_MILLIS
                     if (time >= end) break
+                    // Times starting under the fixed date would peek out behind it.
+                    if (slot * slotPx - scroll.value < dateWidth) continue
                     Text(
                         text = formatter.format(Instant.ofEpochMilli(time).atZone(zone)),
                         style = MaterialTheme.typography.labelSmall,
@@ -343,6 +357,8 @@ private fun TimeRuler(origin: Long, end: Long, minuteWidth: Dp, now: Long, scrol
             maxLines = 1,
             modifier = Modifier
                 .align(Alignment.CenterStart)
+                .offset { IntOffset(nextDayX?.let { minOf(0f, it - dateWidth).toInt() } ?: 0, 0) }
+                .onSizeChanged { dateWidth = it.width }
                 .background(colors.panel)
                 .padding(horizontal = dimensionResource(R.dimen.epg_cell_padding))
         )
