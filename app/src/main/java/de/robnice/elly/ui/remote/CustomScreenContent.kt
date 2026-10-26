@@ -6,6 +6,8 @@ import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
@@ -21,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.PointerInputScope
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -122,11 +125,13 @@ fun CustomPage(
                 )
             }
         } else {
+            // The page shrinks above an open keyboard; that shape must not reach the editor.
+            val keyboardOpen = WindowInsets.ime.getBottom(LocalDensity.current) > 0
             CustomGrid(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(dimensionResource(R.dimen.remote_page_padding))
-                    .onSizeChanged { if (it.height > 0) RemotePageShape.aspectRatio = it.width.toFloat() / it.height }
+                    .onSizeChanged { if (it.height > 0 && !keyboardOpen) RemotePageShape.aspectRatio = it.width.toFloat() / it.height }
             ) { metrics ->
                 ShadowLayer(screen.elements, rememberCellShape(metrics), metrics.cellHeight)
                 screen.elements.forEach { element ->

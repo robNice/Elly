@@ -23,15 +23,17 @@ object ScreenLayoutJson {
 
     fun encodeAll(layouts: Map<String, ScreenLayout>): String {
         val json = JSONObject()
-        layouts.forEach { (owner, layout) ->
-            val array = JSONArray()
-            layout.entries.forEach { array.put(JSONObject().put(SCREEN, it.screen.name).put(ENABLED, it.enabled)) }
-            json.put(owner, array)
-        }
+        layouts.forEach { (owner, layout) -> json.put(owner, encode(layout)) }
         return json.toString()
     }
 
-    private fun decode(array: JSONArray?): ScreenLayout {
+    fun encode(layout: ScreenLayout): JSONArray {
+        val array = JSONArray()
+        layout.entries.forEach { array.put(JSONObject().put(SCREEN, it.screen.name).put(ENABLED, it.enabled)) }
+        return array
+    }
+
+    fun decode(array: JSONArray?): ScreenLayout {
         if (array == null) return ScreenLayout.DEFAULT
         val entries = (0 until array.length()).mapNotNull { index ->
             val json = array.optJSONObject(index) ?: return@mapNotNull null

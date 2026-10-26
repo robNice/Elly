@@ -290,6 +290,7 @@ fun SettingsScreen(
                                 onCheckedChange = viewModel::setLightEffect
                             )
                         }
+                        BackupSection(viewModel, screensAvailable)
                     }
                     SettingsTab.CONTROL -> {
                         PointerSection(
@@ -337,6 +338,8 @@ fun SettingsScreen(
             }
         }
     }
+
+    BackupDialogs(viewModel)
 
     confirmReset?.let { target ->
         AlertDialog(

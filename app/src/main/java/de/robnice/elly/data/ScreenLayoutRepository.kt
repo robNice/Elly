@@ -63,6 +63,25 @@ class ScreenLayoutRepository(context: Context, private val activeOwner: Flow<Str
         }
     }
 
+    suspend fun activeBackup(): Backup.Screens? {
+        val owner = activeOwner.first() ?: return null
+        val preferences = dataStore.data.first()
+        return Backup.Screens(
+            layout = ScreenLayoutJson.decodeAll(preferences[LAYOUTS])[owner] ?: ScreenLayout.DEFAULT,
+            screens = CustomScreenJson.decodeAll(preferences[CUSTOM_SCREENS])[owner].orEmpty()
+        )
+    }
+
+    suspend fun restoreActive(backup: Backup.Screens): Boolean {
+        val owner = activeOwner.first() ?: return false
+        dataStore.edit { preferences ->
+            preferences[LAYOUTS] = ScreenLayoutJson.encodeAll(ScreenLayoutJson.decodeAll(preferences[LAYOUTS]) + (owner to backup.layout))
+            preferences[CUSTOM_SCREENS] =
+                CustomScreenJson.encodeAll(CustomScreenJson.decodeAll(preferences[CUSTOM_SCREENS]) + (owner to backup.screens))
+        }
+        return true
+    }
+
     suspend fun removeOwner(owner: String) {
         dataStore.edit { preferences ->
             val all = ScreenLayoutJson.decodeAll(preferences[LAYOUTS])

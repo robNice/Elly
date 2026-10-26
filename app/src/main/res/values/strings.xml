@@ -172,6 +172,23 @@
     <string name="settings_rounding_value">%1$d %%</string>
     <string name="settings_light_effect">Long summer evenings</string>
     <string name="settings_light_effect_description">Low light from the top left: keys cast long shadows and the background is lit from that corner.</string>
+    <string name="settings_backup">Back up and restore</string>
+    <string name="settings_backup_description">Screens and appearance are saved as separate files, so you can pass on your screens without the other person losing their own look. When restoring, Elly recognises which kind of file it is.</string>
+    <string name="settings_backup_screens">Back up screens</string>
+    <string name="settings_backup_appearance">Back up appearance</string>
+    <string name="settings_backup_restore">Restore from file</string>
+    <string name="settings_backup_screens_file" translatable="false">Elly-Screens</string>
+    <string name="settings_backup_appearance_file">Elly-Appearance</string>
+    <string name="settings_backup_restore_screens_title">Replace screens?</string>
+    <string name="settings_backup_restore_screens_message">The screens of the active TV are replaced by those in the file: order, shown screens and own layouts. The appearance stays as it is. App icons are loaded from the TV again; a program guide stays empty if the TV has no favorite list of that name.</string>
+    <string name="settings_backup_restore_appearance_title">Replace appearance?</string>
+    <string name="settings_backup_restore_appearance_message">Color palette, background, rounding and light effect are replaced by those in the file. Your screens stay as they are.</string>
+    <string name="settings_backup_restore_confirm">Replace</string>
+    <string name="settings_backup_saved">Backup saved.</string>
+    <string name="settings_backup_save_failed">The file could not be saved.</string>
+    <string name="settings_backup_restored">Restored.</string>
+    <string name="settings_backup_invalid">This file is not an Elly backup or is damaged.</string>
+    <string name="settings_backup_no_tv">Screens can only be restored once a TV is paired or demo mode is on.</string>
     <string name="settings_pointer_mode">Pointer control</string>
     <string name="settings_pointer_mode_motion">Motion</string>
     <string name="settings_pointer_mode_motion_description">The pointer follows the movements of your phone.</string>
@@ -595,7 +612,7 @@
     <string name="help_settings_title">Settings</string>
     <string name="help_settings_elly">Let\'s tinker with the settings. I\'ll show you where to find what.</string>
     <string name="help_settings_tabs_title">How the settings are organised</string>
-    <string name="help_settings_tabs_body">The gear in the top bar opens the settings. They have three tabs, which you can also swipe between; Elly remembers the one you opened last.\n• TV: paired TVs, search, IP address, demo mode.\n• Appearance: screens, color palette, background, rounding, light effect.\n• Controls: pointer and vibration.</string>
+    <string name="help_settings_tabs_body">The gear in the top bar opens the settings. They have three tabs, which you can also swipe between; Elly remembers the one you opened last.\n• TV: paired TVs, search, IP address, demo mode.\n• Appearance: screens, color palette, background, rounding, light effect, back up and restore.\n• Controls: pointer and vibration.</string>
     <string name="help_settings_tv_title">Switching or removing a TV</string>
     <string name="help_settings_tv_body">The “TV” tab lists your paired TVs at the top: tap one to make it active. “Remove” unpairs it after asking; to use the TV again you have to pair it again.\nBelow, you can search for more TVs or enter an IP address.\nWhile demo mode is on, the tab only shows its switch; turn it off to pair or switch TVs.</string>
     <string name="help_settings_root_title">Root access and SSH</string>

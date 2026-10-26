@@ -1,12 +1,16 @@
 package de.robnice.elly.ui.settings
 
+import android.content.ContentResolver
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import de.robnice.elly.AppContainer
+import de.robnice.elly.R
 import de.robnice.elly.data.AppSlotsRepository
+import de.robnice.elly.data.Backup
+import de.robnice.elly.data.BackupJson
 import de.robnice.elly.data.BackgroundImageStore
 import de.robnice.elly.data.ScreenLayoutRepository
 import de.robnice.elly.data.SettingsRepository
@@ -36,7 +40,9 @@ import de.robnice.elly.remote.RemoteKey
 import de.robnice.elly.remote.SendResult
 import de.robnice.elly.remote.TvApp
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -44,6 +50,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.ByteArrayOutputStream
+import java.io.InputStream
 
 class SettingsViewModel(
     private val settingsRepository: SettingsRepository,
@@ -116,6 +125,103 @@ class SettingsViewModel(
             settingsRepository.setBackgroundImage(path)
             backgroundImageStore.deleteUnused(setOf(path))
         }
+    }
+
+    private val _backupToRestore = MutableStateFlow<Backup?>(null)
+    val backupToRestore: StateFlow<Backup?> = _backupToRestore.asStateFlow()
+
+    private val _backupMessage = MutableStateFlow<Int?>(null)
+    val backupMessage: StateFlow<Int?> = _backupMessage.asStateFlow()
+
+    fun exportScreens(resolver: ContentResolver, uri: Uri) = export(resolver, uri) { screenLayoutRepository.activeBackup() }
+
+    // The own picture goes along only while it is the chosen background.
+    fun exportAppearance(resolver: ContentResolver, uri: Uri) = export(resolver, uri) {
+        val background = settingsRepository.background.first()
+        val image = background.image
+            ?.takeIf { background.type == ScreenBackground.CUSTOM }
+            ?.let { backgroundImageStore.read(it) }
+        Backup.Appearance(
+            palette = settingsRepository.colorPalette.first(),
+            background = if (background.type == ScreenBackground.CUSTOM && image == null) ScreenBackground.NONE else background.type,
+            image = image,
+            keyRounding = settingsRepository.keyRounding.first(),
+            dpadRounding = settingsRepository.dpadRounding.first(),
+            lightEffect = settingsRepository.lightEffect.first()
+        )
+    }
+
+    private fun export(resolver: ContentResolver, uri: Uri, create: suspend () -> Backup?) {
+        viewModelScope.launch {
+            val saved = try {
+                val text = BackupJson.encode(create() ?: throw IllegalStateException("nothing to back up"))
+                withContext(Dispatchers.IO) {
+                    resolver.openOutputStream(uri, "wt")?.use { it.write(text.toByteArray()) } ?: throw IllegalStateException("no stream")
+                }
+                true
+            } catch (e: CancellationException) {
+                throw e
+            } catch (_: Exception) {
+                false
+            }
+            _backupMessage.value = if (saved) R.string.settings_backup_saved else R.string.settings_backup_save_failed
+        }
+    }
+
+    fun readBackup(resolver: ContentResolver, uri: Uri) {
+        viewModelScope.launch {
+            val text = withContext(Dispatchers.IO) {
+                runCatching { resolver.openInputStream(uri)?.use { it.readBackupFile() } }.getOrNull()
+            }
+            val backup = text?.let { BackupJson.decode(it) }
+            when {
+                backup == null -> _backupMessage.value = R.string.settings_backup_invalid
+                backup is Backup.Screens && appSlotsRepository.activeOwner.first() == null ->
+                    _backupMessage.value = R.string.settings_backup_no_tv
+                else -> _backupToRestore.value = backup
+            }
+        }
+    }
+
+    fun confirmRestore() {
+        val backup = _backupToRestore.value ?: return
+        _backupToRestore.value = null
+        viewModelScope.launch {
+            when (backup) {
+                is Backup.Screens -> {
+                    screenLayoutRepository.restoreActive(backup)
+                    clearHistory()
+                }
+                is Backup.Appearance -> {
+                    val path = backup.image?.let { backgroundImageStore.import(it) }
+                    val type = if (backup.background == ScreenBackground.CUSTOM && path == null) ScreenBackground.NONE else backup.background
+                    settingsRepository.setAppearance(backup.palette, AppBackground(type, path), backup.keyRounding, backup.dpadRounding, backup.lightEffect)
+                    backgroundImageStore.deleteUnused(setOfNotNull(path))
+                }
+            }
+            _backupMessage.value = R.string.settings_backup_restored
+        }
+    }
+
+    fun dismissRestore() {
+        _backupToRestore.value = null
+    }
+
+    fun dismissBackupMessage() {
+        _backupMessage.value = null
+    }
+
+    // Backups hold settings and at most one picture; anything much larger is not one.
+    private fun InputStream.readBackupFile(): String? {
+        val out = ByteArrayOutputStream()
+        val buffer = ByteArray(BUFFER_BYTES)
+        while (true) {
+            val read = read(buffer)
+            if (read < 0) break
+            out.write(buffer, 0, read)
+            if (out.size() > MAX_BACKUP_BYTES) return null
+        }
+        return out.toString(Charsets.UTF_8.name())
     }
 
     fun undo(screen: RemoteScreen) {
@@ -402,6 +508,8 @@ class SettingsViewModel(
     companion object {
         private const val STOP_TIMEOUT_MILLIS = 5_000L
         private const val MAX_UNDO_STEPS = 50
+        private const val BUFFER_BYTES = 64 * 1024
+        private const val MAX_BACKUP_BYTES = 20 * 1024 * 1024
         private val PLACEHOLDER_EPG = EpgConfig("", "")
 
         fun factory(container: AppContainer) = viewModelFactory {

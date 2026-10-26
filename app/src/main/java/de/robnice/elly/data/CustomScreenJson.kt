@@ -44,18 +44,17 @@ object CustomScreenJson {
 
     fun encodeAll(screens: Map<String, Map<RemoteScreen, CustomScreen>>): String {
         val json = JSONObject()
-        screens.forEach { (owner, byScreen) ->
-            val encoded = JSONObject()
-            byScreen.forEach { (screen, layout) -> encoded.put(screen.name, encode(layout)) }
-            json.put(
-                owner,
-                JSONObject().put(COLUMNS, CustomScreen.COLUMNS).put(ROWS, CustomScreen.ROWS).put(SCREENS, encoded)
-            )
-        }
+        screens.forEach { (owner, byScreen) -> json.put(owner, encodeOwner(byScreen)) }
         return json.toString()
     }
 
-    private fun decodeOwner(value: Any?): Map<RemoteScreen, CustomScreen> = when (value) {
+    fun encodeOwner(byScreen: Map<RemoteScreen, CustomScreen>): JSONObject {
+        val encoded = JSONObject()
+        byScreen.forEach { (screen, layout) -> encoded.put(screen.name, encode(layout)) }
+        return JSONObject().put(COLUMNS, CustomScreen.COLUMNS).put(ROWS, CustomScreen.ROWS).put(SCREENS, encoded)
+    }
+
+    fun decodeOwner(value: Any?): Map<RemoteScreen, CustomScreen> = when (value) {
         is JSONArray -> mapOf(RemoteScreen.CUSTOM to decode(value, LEGACY_COLUMNS, LEGACY_ROWS))
         is JSONObject -> {
             val columns = value.optInt(COLUMNS, CustomScreen.COLUMNS)

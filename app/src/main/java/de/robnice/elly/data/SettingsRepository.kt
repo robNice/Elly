@@ -111,6 +111,17 @@ class SettingsRepository(context: Context, private val motionAvailable: Boolean)
         }
     }
 
+    suspend fun setAppearance(palette: ColorPalette, background: AppBackground, keyRounding: Float, dpadRounding: Float, lightEffect: Boolean) {
+        dataStore.edit {
+            it[COLOR_PALETTE] = palette.name
+            it[BACKGROUND] = background.type.name
+            if (background.image != null) it[BACKGROUND_IMAGE] = background.image else it.remove(BACKGROUND_IMAGE)
+            it[KEY_ROUNDING] = keyRounding.coerceIn(KeyRounding.RANGE)
+            it[DPAD_ROUNDING] = dpadRounding.coerceIn(KeyRounding.RANGE)
+            it[LIGHT_EFFECT] = lightEffect
+        }
+    }
+
     suspend fun setColorPalette(palette: ColorPalette) {
         dataStore.edit { it[COLOR_PALETTE] = palette.name }
     }
