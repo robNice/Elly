@@ -472,21 +472,21 @@
     <string name="settings_root_ssh_ok">SSH 接続は正常です。</string>
     <string name="settings_root_ssh_removing">SSH アクセスを削除しています…</string>
     <string name="settings_root_ssh_setup_title">SSH を設定</string>
-    <string name="settings_root_ssh_setup_message">Elly は root パスワードでテレビに一度だけログインし、専用の鍵をテレビに保存します。パスワードは保存されません。</string>
+    <string name="settings_root_ssh_setup_message">Elly は root パスワードでテレビにログインし、パスワードをこのスマートフォンに暗号化して保存します。テレビ側は何も変更されません。</string>
     <string name="settings_root_ssh_user">ユーザー</string>
     <string name="settings_root_ssh_port">ポート</string>
     <string name="settings_root_ssh_password">パスワード</string>
     <string name="settings_root_ssh_setup_confirm">設定</string>
     <string name="settings_root_ssh_error_unreachable">テレビの SSH サーバーに接続できません。Homebrew Channel で SSH がオンになっているか確認してください。</string>
     <string name="settings_root_ssh_error_auth">ログインが拒否されました。ユーザーとパスワードを確認してください。</string>
-    <string name="settings_root_ssh_error_key">テレビが Elly の鍵を受け付けなくなりました。設定をオフにして、SSH をもう一度設定してください。</string>
+    <string name="settings_root_ssh_error_key">テレビがログインを拒否しました。現在の root パスワードで SSH をもう一度設定してください。</string>
     <string name="settings_root_ssh_error_host_key">テレビの SSH 鍵が変わりました。テレビを再度 root 化した場合は、設定をオフにして SSH をもう一度設定してください。</string>
     <string name="settings_root_ssh_error_luna">ログインできましたが、テレビのシステムコマンドを利用できません。</string>
     <string name="settings_root_ssh_error_unknown">SSH 接続に失敗しました。</string>
     <string name="settings_root_ssh_remove_title">SSH アクセスを削除しますか？</string>
-    <string name="settings_root_ssh_remove_message">Elly はテレビから自分の鍵を削除し、アクセス情報を消去します。番組表は使えなくなります。</string>
+    <string name="settings_root_ssh_remove_message">Elly はアクセス情報と保存したパスワードを消去します。番組表は使えなくなります。</string>
     <string name="settings_root_ssh_remove">削除</string>
-    <string name="settings_root_ssh_removed_locally">テレビに接続できなかったため、Elly の鍵はテレビに残っています。Elly はもうこの鍵を使いません。必要であれば、テレビの ~/.ssh/authorized_keys から「elly-app」で終わる行を削除してください。</string>
+    <string name="settings_root_ssh_removed_locally">テレビに接続できなかったため、以前のバージョンの Elly の鍵がテレビに残っています。この鍵がある間、Homebrew Channel は標準の root パスワードを設定しません。必要であれば、テレビの ~/.ssh/authorized_keys から「elly-app」で終わる行を削除してください。</string>
     <string name="custom_element_epg">番組表</string>
     <string name="epg_title_with_list">番組表 · %1$s</string>
     <string name="epg_editor_hint">長押しでお気に入りリストを変更</string>
@@ -526,7 +526,7 @@
     <string name="help_edit_guide_title">番組表を追加</string>
     <string name="help_edit_guide_body">テレビの SSH を設定済み（設定を参照）またはデモモードがオンのとき、「+ 要素」に番組表が表示されます。配置する前に、表示するチャンネルのお気に入りリストを選びます。要素を 2 秒長押しするとリストを変更できます。\n番組表は最初はスクリーンと同じ幅、半分の高さです。ほかの要素と同様に移動やサイズ変更ができます。異なるリストの番組表を複数置くこともできます。SSH アクセスがない場合、要素は保存されたままですがスクリーンには表示されません。</string>
     <string name="help_settings_root_title">root 化と SSH</string>
-    <string name="help_settings_root_body">番組表には、LG が root 化した場合にのみ許可しているテレビへのアクセスが必要です。テレビが root 化済み（Homebrew Channel）で、そこで SSH サーバーがオンになっている場合は、「TV」タブで「root 化と SSH の設定は完了していますか？」をオンにします。\nユーザー（通常は root）、ポート（通常は 22）、root パスワードを入力します。Elly は一度だけログインし、専用の鍵をテレビに保存します。パスワードは保存されません。「確認」で接続をテストできます。\nオフにすると、確認後にテレビから鍵が削除されます。この設定はテレビごとに保存されます。</string>
+    <string name="help_settings_root_body">番組表には、LG が root 化した場合にのみ許可しているテレビへのアクセスが必要です。テレビが root 化済み（Homebrew Channel）で、そこで SSH サーバーがオンになっている場合は、「TV」タブで「root 化と SSH の設定は完了していますか？」をオンにします。\nユーザー（通常は root）、ポート（通常は 22）、root パスワードを入力します。Elly は毎回このパスワードでログインし、スマートフォンに暗号化して保存します。テレビ側は何も変更されません。「確認」で接続をテストできます。\nオフにすると、確認後にアクセス情報とパスワードが消去されます。この設定はテレビごとに保存されます。</string>
     <string-array name="epg_demo_channels">
         <item>エリー 1</item>
         <item>とりごや TV</item>

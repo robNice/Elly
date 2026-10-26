@@ -472,21 +472,21 @@
     <string name="settings_root_ssh_ok">SSH-forbindelsen virker.</string>
     <string name="settings_root_ssh_removing">Fjerner SSH-adgang…</string>
     <string name="settings_root_ssh_setup_title">Konfigurer SSH</string>
-    <string name="settings_root_ssh_setup_message">Elly logger én gang på tv\'et med rootadgangskoden og gemmer sin egen nøgle der. Adgangskoden gemmes ikke.</string>
+    <string name="settings_root_ssh_setup_message">Elly logger på tv\'et med rootadgangskoden og gemmer den krypteret på denne telefon. Der ændres ikke noget på tv\'et.</string>
     <string name="settings_root_ssh_user">Bruger</string>
     <string name="settings_root_ssh_port">Port</string>
     <string name="settings_root_ssh_password">Adgangskode</string>
     <string name="settings_root_ssh_setup_confirm">Konfigurer</string>
     <string name="settings_root_ssh_error_unreachable">Der kan ikke oprettes forbindelse til tv\'ets SSH-server. Er SSH slået til i Homebrew Channel?</string>
     <string name="settings_root_ssh_error_auth">Login blev afvist. Kontrollér bruger og adgangskode.</string>
-    <string name="settings_root_ssh_error_key">Tv\'et accepterer ikke længere Ellys nøgle. Slå indstillingen fra, og konfigurer SSH igen.</string>
+    <string name="settings_root_ssh_error_key">Tv\'et afviser login. Konfigurer SSH igen med den aktuelle rootadgangskode.</string>
     <string name="settings_root_ssh_error_host_key">Tv\'ets SSH-nøgle er ændret. Hvis tv\'et er blevet rootet igen, skal du slå indstillingen fra og konfigurere SSH igen.</string>
     <string name="settings_root_ssh_error_luna">Der blev logget ind, men tv\'ets systemkommandoer er ikke tilgængelige.</string>
     <string name="settings_root_ssh_error_unknown">SSH-forbindelsen mislykkedes.</string>
     <string name="settings_root_ssh_remove_title">Fjern SSH-adgang?</string>
-    <string name="settings_root_ssh_remove_message">Elly sletter sin nøgle fra tv\'et og glemmer adgangen. Programguiden vil derefter ikke længere være tilgængelig.</string>
+    <string name="settings_root_ssh_remove_message">Elly glemmer adgangen og den gemte adgangskode. Programguiden vil derefter ikke længere være tilgængelig.</string>
     <string name="settings_root_ssh_remove">Fjern</string>
-    <string name="settings_root_ssh_removed_locally">Tv\'et kunne ikke nås, så Ellys nøgle er stadig gemt på det. Elly bruger den ikke længere. Hvis du vil, kan du slette linjen, der slutter med »elly-app«, fra ~/.ssh/authorized_keys på tv\'et.</string>
+    <string name="settings_root_ssh_removed_locally">Tv\'et kunne ikke nås, så nøglen fra en ældre Elly-version er stadig gemt på det. Så længe den ligger der, sætter Homebrew Channel ikke sin standard-rootadgangskode. Hvis du vil, kan du slette linjen, der slutter med »elly-app«, fra ~/.ssh/authorized_keys på tv\'et.</string>
 
     <string name="custom_element_epg">Programguide</string>
     <string name="epg_title_with_list">Programguide · %1$s</string>
@@ -572,5 +572,5 @@
     <string name="help_edit_guide_title">Tilføj programguiden</string>
     <string name="help_edit_guide_body">»+ Element« tilbyder programguiden, når SSH er konfigureret for tv\'et (se Indstillinger), eller demotilstand er slået til. Før den indsættes, vælger du den favoritliste på tv\'et, hvis kanaler skal vises. Hold elementet nede i 2 sekunder for at skifte liste.\nGuiden er fra start lige så bred som skærmen og halvt så høj; ligesom andre elementer kan den flyttes og få ændret størrelse. Du kan tilføje flere guider med forskellige lister. Uden SSH-adgang forbliver elementet gemt, men vises ikke på skærmen.</string>
     <string name="help_settings_root_title">Rootadgang og SSH</string>
-    <string name="help_settings_root_body">Programguiden kræver adgang til tv\'et, som LG kun tillader med root. Hvis dit tv er rootet (Homebrew Channel), og dets SSH-server er slået til der, skal du aktivere »Rootadgang og SSH konfigureret?« på fanen »TV«.\nIndtast bruger (normalt root), port (normalt 22) og rootadgangskoden. Elly logger på én gang og gemmer sin egen nøgle på tv\'et; adgangskoden gemmes ikke. »Kontrollér« tester forbindelsen.\nNår indstillingen slås fra, fjernes nøglen fra tv\'et igen efter en bekræftelse. Indstillingen gælder separat for hvert tv.</string>
+    <string name="help_settings_root_body">Programguiden kræver adgang til tv\'et, som LG kun tillader med root. Hvis dit tv er rootet (Homebrew Channel), og dets SSH-server er slået til der, skal du aktivere »Rootadgang og SSH konfigureret?« på fanen »TV«.\nIndtast bruger (normalt root), port (normalt 22) og rootadgangskoden. Elly logger på med den hver gang og gemmer den krypteret på telefonen; der ændres ikke noget på tv\'et. »Kontrollér« tester forbindelsen.\nNår indstillingen slås fra, glemmes adgangen og adgangskoden efter en bekræftelse. Indstillingen gælder separat for hvert tv.</string>
 </resources>

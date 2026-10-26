@@ -21,7 +21,7 @@ Les données suivantes sont enregistrées localement sur ton appareil :
 - Paramètres de l'appli (écrans, design, touches appli, pointeur, vibration, mode démo)
 - copies des images que tu choisis comme arrière-plans d'écran ; l'appli ne reçoit que les images que tu sélectionnes dans le sélecteur de photos d'Android
 - Icônes d'applis chargées depuis la TV
-- pour le guide des programmes : utilisateur SSH, port et empreinte de la clé SSH de la TV ; clé SSH de l'appli, conservée dans Android Keystore et impossible à extraire de l'appareil ; guide des programmes (listes de chaînes et programmes des dernières 24 heures et jusqu'à 14 jours à l'avance) et logos des chaînes. Le mot de passe root de la TV n'est utilisé qu'une seule fois pour configurer l'accès et n'est pas enregistré.
+- pour le guide des programmes : utilisateur SSH, port et empreinte de la clé SSH de la TV ; mot de passe root de la TV, chiffré avec une clé conservée dans Android Keystore et impossible à extraire de l'appareil ; guide des programmes (listes de chaînes et programmes des dernières 24 heures et jusqu'à 14 jours à l'avance) et logos des chaînes.
 
 Ces données restent exclusivement sur ton appareil, sont exclues des sauvegardes Android et sont supprimées lors de la désinstallation de l'appli.
 

@@ -472,21 +472,21 @@
     <string name="settings_root_ssh_ok">SSH-verbinding werkt.</string>
     <string name="settings_root_ssh_removing">SSH-toegang wordt verwijderd…</string>
     <string name="settings_root_ssh_setup_title">SSH instellen</string>
-    <string name="settings_root_ssh_setup_message">Elly logt één keer met het rootwachtwoord in op de tv en slaat daar een eigen sleutel op. Het wachtwoord wordt niet opgeslagen.</string>
+    <string name="settings_root_ssh_setup_message">Elly logt met het rootwachtwoord in op de tv en bewaart het versleuteld op deze telefoon. Op de tv wordt niets gewijzigd.</string>
     <string name="settings_root_ssh_user">Gebruiker</string>
     <string name="settings_root_ssh_port">Poort</string>
     <string name="settings_root_ssh_password">Wachtwoord</string>
     <string name="settings_root_ssh_setup_confirm">Instellen</string>
     <string name="settings_root_ssh_error_unreachable">De SSH-server van de tv is niet bereikbaar. Is SSH ingeschakeld in het Homebrew Channel?</string>
     <string name="settings_root_ssh_error_auth">Aanmelding geweigerd. Controleer gebruiker en wachtwoord.</string>
-    <string name="settings_root_ssh_error_key">De tv accepteert de sleutel van Elly niet meer. Zet de instelling uit en stel SSH opnieuw in.</string>
+    <string name="settings_root_ssh_error_key">De tv weigert de aanmelding. Stel SSH opnieuw in met het huidige rootwachtwoord.</string>
     <string name="settings_root_ssh_error_host_key">De SSH-sleutel van de tv is gewijzigd. Is de tv opnieuw geroot, zet dan de instelling uit en stel SSH opnieuw in.</string>
     <string name="settings_root_ssh_error_luna">Aangemeld, maar de systeemopdrachten van de tv zijn niet beschikbaar.</string>
     <string name="settings_root_ssh_error_unknown">De SSH-verbinding is mislukt.</string>
     <string name="settings_root_ssh_remove_title">SSH-toegang verwijderen?</string>
-    <string name="settings_root_ssh_remove_message">Elly verwijdert haar sleutel van de tv en vergeet de toegang. De programmagids is daarna niet meer beschikbaar.</string>
+    <string name="settings_root_ssh_remove_message">Elly vergeet de toegang en het opgeslagen wachtwoord. De programmagids is daarna niet meer beschikbaar.</string>
     <string name="settings_root_ssh_remove">Verwijderen</string>
-    <string name="settings_root_ssh_removed_locally">De tv was niet bereikbaar, daarom staat de sleutel van Elly er nog op. Elly gebruikt hem niet meer. Als je wilt, verwijder je op de tv in ~/.ssh/authorized_keys de regel die eindigt op ‘elly-app’.</string>
+    <string name="settings_root_ssh_removed_locally">De tv was niet bereikbaar, daarom staat de sleutel van een oudere Elly-versie er nog op. Zolang die er staat, stelt het Homebrew Channel zijn standaard-rootwachtwoord niet in. Als je wilt, verwijder je op de tv in ~/.ssh/authorized_keys de regel die eindigt op ‘elly-app’.</string>
     <string name="custom_element_epg">Programmagids</string>
     <string name="epg_title_with_list">Programmagids · %1$s</string>
     <string name="epg_editor_hint">Vasthouden om de favorietenlijst te wijzigen</string>
@@ -526,7 +526,7 @@
     <string name="help_edit_guide_title">Programmagids toevoegen</string>
     <string name="help_edit_guide_body">‘+ Element’ biedt de programmagids aan zodra SSH voor de tv is ingesteld (zie Instellingen) of de demomodus aan staat. Vóór het plaatsen kies je de favorietenlijst van de tv waarvan de zenders worden getoond. Houd het element 2 seconden vast om de lijst te wijzigen.\nDe gids is eerst zo breed als het scherm en half zo hoog; zoals andere elementen kun je hem verplaatsen en van grootte veranderen. Meerdere gidsen met verschillende lijsten zijn mogelijk. Zonder SSH-toegang blijft het element bewaard, maar het verschijnt niet op het scherm.</string>
     <string name="help_settings_root_title">Roottoegang en SSH</string>
-    <string name="help_settings_root_body">De programmagids heeft toegang tot de tv nodig die LG alleen met root toestaat. Is je tv geroot (Homebrew Channel) en staat de SSH-server daar aan, zet dan op het tabblad ‘Tv’ ‘Roottoegang en SSH ingesteld?’ aan.\nVoer gebruiker (meestal root), poort (meestal 22) en het rootwachtwoord in. Elly logt één keer in en slaat een eigen sleutel op de tv op; het wachtwoord wordt niet bewaard. ‘Controleren’ test de verbinding.\nUitzetten verwijdert de sleutel na een bevestiging weer van de tv. De instelling geldt per tv.</string>
+    <string name="help_settings_root_body">De programmagids heeft toegang tot de tv nodig die LG alleen met root toestaat. Is je tv geroot (Homebrew Channel) en staat de SSH-server daar aan, zet dan op het tabblad ‘Tv’ ‘Roottoegang en SSH ingesteld?’ aan.\nVoer gebruiker (meestal root), poort (meestal 22) en het rootwachtwoord in. Elly logt er elke keer mee in en bewaart het versleuteld op de telefoon; op de tv wordt niets gewijzigd. ‘Controleren’ test de verbinding.\nUitzetten vergeet na een bevestiging de toegang en het wachtwoord. De instelling geldt per tv.</string>
     <string-array name="epg_demo_channels">
         <item>Elly Eén</item>
         <item>Ren TV</item>

@@ -473,21 +473,21 @@
     <string name="settings_root_ssh_ok">Η σύνδεση SSH λειτουργεί.</string>
     <string name="settings_root_ssh_removing">Αφαίρεση πρόσβασης SSH…</string>
     <string name="settings_root_ssh_setup_title">Ρύθμιση SSH</string>
-    <string name="settings_root_ssh_setup_message">Η Elly συνδέεται μία φορά στην τηλεόραση με τον κωδικό root και αποθηκεύει εκεί το δικό της κλειδί. Ο κωδικός δεν αποθηκεύεται.</string>
+    <string name="settings_root_ssh_setup_message">Η Elly συνδέεται στην τηλεόραση με τον κωδικό root και τον αποθηκεύει κρυπτογραφημένο σε αυτό το κινητό. Στην τηλεόραση δεν αλλάζει τίποτα.</string>
     <string name="settings_root_ssh_user">Χρήστης</string>
     <string name="settings_root_ssh_port">Θύρα</string>
     <string name="settings_root_ssh_password">Κωδικός</string>
     <string name="settings_root_ssh_setup_confirm">Ρύθμιση</string>
     <string name="settings_root_ssh_error_unreachable">Ο διακομιστής SSH της τηλεόρασης δεν είναι προσβάσιμος. Είναι ενεργό το SSH στο Homebrew Channel;</string>
     <string name="settings_root_ssh_error_auth">Η σύνδεση απορρίφθηκε. Έλεγξε χρήστη και κωδικό.</string>
-    <string name="settings_root_ssh_error_key">Η τηλεόραση δεν δέχεται πλέον το κλειδί της Elly. Απενεργοποίησε τη ρύθμιση και ρύθμισε ξανά το SSH.</string>
+    <string name="settings_root_ssh_error_key">Η τηλεόραση απορρίπτει τη σύνδεση. Ρύθμισε ξανά το SSH με τον τρέχοντα κωδικό root.</string>
     <string name="settings_root_ssh_error_host_key">Το κλειδί SSH της τηλεόρασης άλλαξε. Αν η τηλεόραση έγινε ξανά root, απενεργοποίησε τη ρύθμιση και ρύθμισε ξανά το SSH.</string>
     <string name="settings_root_ssh_error_luna">Η σύνδεση πέτυχε, αλλά οι εντολές συστήματος της τηλεόρασης δεν είναι διαθέσιμες.</string>
     <string name="settings_root_ssh_error_unknown">Η σύνδεση SSH απέτυχε.</string>
     <string name="settings_root_ssh_remove_title">Αφαίρεση πρόσβασης SSH;</string>
-    <string name="settings_root_ssh_remove_message">Η Elly διαγράφει το κλειδί της από την τηλεόραση και ξεχνά την πρόσβαση. Ο οδηγός προγράμματος δεν θα είναι πλέον διαθέσιμος.</string>
+    <string name="settings_root_ssh_remove_message">Η Elly ξεχνά την πρόσβαση και τον αποθηκευμένο κωδικό. Ο οδηγός προγράμματος δεν θα είναι πλέον διαθέσιμος.</string>
     <string name="settings_root_ssh_remove">Αφαίρεση</string>
-    <string name="settings_root_ssh_removed_locally">Η τηλεόραση δεν ήταν προσβάσιμη, οπότε το κλειδί της Elly είναι ακόμη αποθηκευμένο εκεί. Η Elly δεν το χρησιμοποιεί πλέον. Αν θέλεις, διάγραψε στην τηλεόραση τη γραμμή που τελειώνει σε «elly-app» από το ~/.ssh/authorized_keys.</string>
+    <string name="settings_root_ssh_removed_locally">Η τηλεόραση δεν ήταν προσβάσιμη, οπότε το κλειδί μιας παλαιότερης έκδοσης της Elly είναι ακόμη αποθηκευμένο εκεί. Όσο υπάρχει, το Homebrew Channel δεν ορίζει τον προεπιλεγμένο κωδικό root. Αν θέλεις, διάγραψε στην τηλεόραση τη γραμμή που τελειώνει σε «elly-app» από το ~/.ssh/authorized_keys.</string>
     <string name="custom_element_epg">Οδηγός προγράμματος</string>
     <string name="epg_title_with_list">Οδηγός προγράμματος · %1$s</string>
     <string name="epg_editor_hint">Κράτησε πατημένο για αλλαγή λίστας αγαπημένων</string>
@@ -527,7 +527,7 @@
     <string name="help_edit_guide_title">Προσθήκη οδηγού προγράμματος</string>
     <string name="help_edit_guide_body">Το «+ Στοιχείο» προσφέρει τον οδηγό προγράμματος μόλις ρυθμιστεί το SSH για την τηλεόραση (δες Ρυθμίσεις) ή είναι ενεργή η λειτουργία επίδειξης. Πριν τον τοποθετήσεις, διαλέγεις τη λίστα αγαπημένων της τηλεόρασης της οποίας τα κανάλια θα εμφανίζονται. Κράτησε πατημένο το στοιχείο 2 δευτερόλεπτα για να αλλάξεις λίστα.\nΟ οδηγός ξεκινά όσο φαρδύς είναι η οθόνη και με το μισό ύψος· όπως τα άλλα στοιχεία, μετακινείται και αλλάζει μέγεθος. Μπορείς να έχεις πολλούς οδηγούς με διαφορετικές λίστες. Χωρίς πρόσβαση SSH το στοιχείο μένει αποθηκευμένο, αλλά δεν εμφανίζεται στην οθόνη.</string>
     <string name="help_settings_root_title">Πρόσβαση root και SSH</string>
-    <string name="help_settings_root_body">Ο οδηγός προγράμματος χρειάζεται πρόσβαση στην τηλεόραση που η LG επιτρέπει μόνο με root. Αν η τηλεόρασή σου έχει root (Homebrew Channel) και εκεί είναι ενεργός ο διακομιστής SSH, ενεργοποίησε στην καρτέλα «Τηλεόραση» την επιλογή «Πρόσβαση root και SSH ρυθμισμένα;».\nΔώσε χρήστη (συνήθως root), θύρα (συνήθως 22) και τον κωδικό root. Η Elly συνδέεται μία φορά και αποθηκεύει δικό της κλειδί στην τηλεόραση· ο κωδικός δεν αποθηκεύεται. Ο «Έλεγχος» δοκιμάζει τη σύνδεση.\nΗ απενεργοποίηση αφαιρεί ξανά το κλειδί από την τηλεόραση μετά από επιβεβαίωση. Η ρύθμιση ισχύει ανά τηλεόραση.</string>
+    <string name="help_settings_root_body">Ο οδηγός προγράμματος χρειάζεται πρόσβαση στην τηλεόραση που η LG επιτρέπει μόνο με root. Αν η τηλεόρασή σου έχει root (Homebrew Channel) και εκεί είναι ενεργός ο διακομιστής SSH, ενεργοποίησε στην καρτέλα «Τηλεόραση» την επιλογή «Πρόσβαση root και SSH ρυθμισμένα;».\nΔώσε χρήστη (συνήθως root), θύρα (συνήθως 22) και τον κωδικό root. Η Elly συνδέεται με αυτόν κάθε φορά και τον αποθηκεύει κρυπτογραφημένο στο κινητό· στην τηλεόραση δεν αλλάζει τίποτα. Ο «Έλεγχος» δοκιμάζει τη σύνδεση.\nΗ απενεργοποίηση ξεχνά την πρόσβαση και τον κωδικό μετά από επιβεβαίωση. Η ρύθμιση ισχύει ανά τηλεόραση.</string>
     <string-array name="epg_demo_channels">
         <item>Elly Ένα</item>
         <item>Κοτέτσι TV</item>

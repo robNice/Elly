@@ -21,7 +21,7 @@ Os seguintes dados são armazenados localmente no seu dispositivo:
 - Configurações do app (telas, design, botões de app, ponteiro, vibração, modo demo)
 - cópias das imagens que você escolhe como fundo de tela; o app só recebe as imagens que você seleciona no seletor de fotos do Android
 - Ícones dos apps carregados da TV
-- para o guia de programação: usuário SSH, porta e impressão digital da chave SSH da TV; a chave SSH do app, guardada no Android Keystore e que não pode ser extraída do dispositivo; os dados de programação (listas de canais e programas das últimas 24 horas e até 14 dias à frente) e logotipos de canais. A senha de root da TV é usada só uma vez para configurar o acesso e não é salva.
+- para o guia de programação: usuário SSH, porta e impressão digital da chave SSH da TV; a senha de root da TV, criptografada com uma chave guardada no Android Keystore que não pode ser extraída do dispositivo; os dados de programação (listas de canais e programas das últimas 24 horas e até 14 dias à frente) e logotipos de canais.
 
 Esses dados ficam exclusivamente no seu dispositivo, são excluídos dos backups do Android e são apagados quando o app é desinstalado.
 

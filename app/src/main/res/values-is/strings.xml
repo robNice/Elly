@@ -473,21 +473,21 @@
     <string name="settings_root_ssh_ok">SSH-tengingin virkar.</string>
     <string name="settings_root_ssh_removing">Fjarlægi SSH-aðgang…</string>
     <string name="settings_root_ssh_setup_title">Setja upp SSH</string>
-    <string name="settings_root_ssh_setup_message">Elly skráir sig einu sinni inn á sjónvarpið með rótarlykilorðinu og vistar þar eigin lykil. Lykilorðið er ekki vistað.</string>
+    <string name="settings_root_ssh_setup_message">Elly skráir sig inn á sjónvarpið með rótarlykilorðinu og vistar það dulkóðað í þessum síma. Engu er breytt á sjónvarpinu.</string>
     <string name="settings_root_ssh_user">Notandi</string>
     <string name="settings_root_ssh_port">Gátt</string>
     <string name="settings_root_ssh_password">Lykilorð</string>
     <string name="settings_root_ssh_setup_confirm">Setja upp</string>
     <string name="settings_root_ssh_error_unreachable">Ekki næst í SSH-þjón sjónvarpsins. Er kveikt á SSH í Homebrew Channel?</string>
     <string name="settings_root_ssh_error_auth">Innskráningu hafnað. Athugaðu notanda og lykilorð.</string>
-    <string name="settings_root_ssh_error_key">Sjónvarpið samþykkir ekki lengur lykil Elly. Slökktu á stillingunni og settu SSH upp aftur.</string>
+    <string name="settings_root_ssh_error_key">Sjónvarpið hafnar innskráningunni. Settu SSH upp aftur með núverandi rótarlykilorði.</string>
     <string name="settings_root_ssh_error_host_key">SSH-lykill sjónvarpsins hefur breyst. Ef sjónvarpið fékk rótaraðgang aftur skaltu slökkva á stillingunni og setja SSH upp aftur.</string>
     <string name="settings_root_ssh_error_luna">Innskráning tókst en kerfisskipanir sjónvarpsins eru ekki tiltækar.</string>
     <string name="settings_root_ssh_error_unknown">SSH-tengingin mistókst.</string>
     <string name="settings_root_ssh_remove_title">Fjarlægja SSH-aðgang?</string>
-    <string name="settings_root_ssh_remove_message">Elly eyðir lykli sínum af sjónvarpinu og gleymir aðganginum. Dagskrárvísirinn verður þá ekki lengur tiltækur.</string>
+    <string name="settings_root_ssh_remove_message">Elly gleymir aðganginum og vistaða lykilorðinu. Dagskrárvísirinn verður þá ekki lengur tiltækur.</string>
     <string name="settings_root_ssh_remove">Fjarlægja</string>
-    <string name="settings_root_ssh_removed_locally">Ekki náðist í sjónvarpið og því er lykill Elly enn vistaður þar. Elly notar hann ekki lengur. Ef þú vilt geturðu eytt línunni sem endar á „elly-app“ úr ~/.ssh/authorized_keys á sjónvarpinu.</string>
+    <string name="settings_root_ssh_removed_locally">Ekki náðist í sjónvarpið og því er lykill eldri útgáfu af Elly enn vistaður þar. Meðan hann er þar setur Homebrew Channel ekki sjálfgefna rótarlykilorðið sitt. Ef þú vilt geturðu eytt línunni sem endar á „elly-app“ úr ~/.ssh/authorized_keys á sjónvarpinu.</string>
     <string name="custom_element_epg">Dagskrárvísir</string>
     <string name="epg_title_with_list">Dagskrárvísir · %1$s</string>
     <string name="epg_editor_hint">Haltu inni til að breyta eftirlætislistanum</string>
@@ -527,7 +527,7 @@
     <string name="help_edit_guide_title">Bæta við dagskrárvísi</string>
     <string name="help_edit_guide_body">„+ Eining“ býður dagskrárvísinn um leið og SSH er sett upp fyrir sjónvarpið (sjá Stillingar) eða prufuhamur er virkur. Áður en hann er settur á skjáinn velurðu eftirlætislista sjónvarpsins sem rásirnar koma úr. Haltu einingunni inni í 2 sekúndur til að breyta listanum.\nVísirinn er í fyrstu jafnbreiður skjánum og hálfur á hæð; eins og aðrar einingar má færa hann og breyta stærð hans. Hægt er að hafa marga vísa með ólíkum listum. Án SSH-aðgangs geymist einingin en birtist ekki á skjánum.</string>
     <string name="help_settings_root_title">Rótaraðgangur og SSH</string>
-    <string name="help_settings_root_body">Dagskrárvísirinn þarf aðgang að sjónvarpinu sem LG leyfir aðeins með rótaraðgangi. Ef sjónvarpið þitt er með rótaraðgang (Homebrew Channel) og kveikt er á SSH-þjóninum þar, kveiktu á „Rótaraðgangur og SSH uppsett?“ í flipanum „Sjónvarp“.\nSláðu inn notanda (venjulega root), gátt (venjulega 22) og rótarlykilorðið. Elly skráir sig inn einu sinni og vistar eigin lykil á sjónvarpinu; lykilorðið er ekki vistað. „Athuga“ prófar tenginguna.\nAð slökkva fjarlægir lykilinn aftur af sjónvarpinu eftir staðfestingu. Stillingin gildir fyrir hvert sjónvarp.</string>
+    <string name="help_settings_root_body">Dagskrárvísirinn þarf aðgang að sjónvarpinu sem LG leyfir aðeins með rótaraðgangi. Ef sjónvarpið þitt er með rótaraðgang (Homebrew Channel) og kveikt er á SSH-þjóninum þar, kveiktu á „Rótaraðgangur og SSH uppsett?“ í flipanum „Sjónvarp“.\nSláðu inn notanda (venjulega root), gátt (venjulega 22) og rótarlykilorðið. Elly skráir sig inn með því í hvert sinn og vistar það dulkóðað í símanum; engu er breytt á sjónvarpinu. „Athuga“ prófar tenginguna.\nAð slökkva gleymir aðganginum og lykilorðinu eftir staðfestingu. Stillingin gildir fyrir hvert sjónvarp.</string>
     <string-array name="epg_demo_channels">
         <item>Elly Eitt</item>
         <item>Hænsnakofi TV</item>

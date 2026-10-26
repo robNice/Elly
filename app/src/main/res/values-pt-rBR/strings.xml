@@ -473,21 +473,21 @@
     <string name="settings_root_ssh_ok">A conexão SSH funciona.</string>
     <string name="settings_root_ssh_removing">Removendo o acesso SSH…</string>
     <string name="settings_root_ssh_setup_title">Configurar SSH</string>
-    <string name="settings_root_ssh_setup_message">A Elly faz login uma vez na TV com a senha de root e salva lá a própria chave. A senha não é salva.</string>
+    <string name="settings_root_ssh_setup_message">A Elly faz login na TV com a senha de root e a guarda criptografada neste celular. Nada é alterado na TV.</string>
     <string name="settings_root_ssh_user">Usuário</string>
     <string name="settings_root_ssh_port">Porta</string>
     <string name="settings_root_ssh_password">Senha</string>
     <string name="settings_root_ssh_setup_confirm">Configurar</string>
     <string name="settings_root_ssh_error_unreachable">Não é possível acessar o servidor SSH da TV. O SSH está ativado no Homebrew Channel?</string>
     <string name="settings_root_ssh_error_auth">Login recusado. Verifique o usuário e a senha.</string>
-    <string name="settings_root_ssh_error_key">A TV não aceita mais a chave da Elly. Desative a configuração e configure o SSH de novo.</string>
+    <string name="settings_root_ssh_error_key">A TV recusa o login. Configure o SSH de novo com a senha de root atual.</string>
     <string name="settings_root_ssh_error_host_key">A chave SSH da TV mudou. Se a TV recebeu root de novo, desative a configuração e configure o SSH de novo.</string>
     <string name="settings_root_ssh_error_luna">Login feito, mas os comandos de sistema da TV não estão disponíveis.</string>
     <string name="settings_root_ssh_error_unknown">A conexão SSH falhou.</string>
     <string name="settings_root_ssh_remove_title">Remover o acesso SSH?</string>
-    <string name="settings_root_ssh_remove_message">A Elly apaga a chave dela da TV e esquece o acesso. O guia de programação não estará mais disponível.</string>
+    <string name="settings_root_ssh_remove_message">A Elly esquece o acesso e a senha salva. O guia de programação não estará mais disponível.</string>
     <string name="settings_root_ssh_remove">Remover</string>
-    <string name="settings_root_ssh_removed_locally">Não foi possível acessar a TV, por isso a chave da Elly continua salva nela. A Elly não a usa mais. Se quiser, apague na TV a linha que termina em “elly-app” em ~/.ssh/authorized_keys.</string>
+    <string name="settings_root_ssh_removed_locally">Não foi possível acessar a TV, por isso a chave de uma versão antiga da Elly continua salva nela. Enquanto ela estiver lá, o Homebrew Channel não define a senha de root padrão. Se quiser, apague na TV a linha que termina em “elly-app” em ~/.ssh/authorized_keys.</string>
     <string name="custom_element_epg">Guia de programação</string>
     <string name="epg_title_with_list">Guia de programação · %1$s</string>
     <string name="epg_editor_hint">Toque e segure para mudar a lista de favoritos</string>
@@ -527,7 +527,7 @@
     <string name="help_edit_guide_title">Adicionar o guia de programação</string>
     <string name="help_edit_guide_body">“+ Elemento” oferece o guia de programação assim que o SSH estiver configurado para a TV (veja Configurações) ou o modo demo estiver ativo. Antes de posicioná-lo, você escolhe a lista de favoritos da TV cujos canais são mostrados. Toque e segure o elemento por 2 segundos para mudar a lista.\nO guia começa com a largura da tela e metade da altura; como os outros elementos, pode ser movido e redimensionado. Vários guias com listas diferentes são possíveis. Sem acesso SSH, o elemento fica salvo, mas não aparece na tela.</string>
     <string name="help_settings_root_title">Acesso root e SSH</string>
-    <string name="help_settings_root_body">O guia de programação precisa de um acesso à TV que a LG só permite com root. Se a sua TV tem root (Homebrew Channel) e o servidor SSH está ativado, ative “Acesso root e SSH configurados?” na aba “TV”.\nInforme o usuário (normalmente root), a porta (normalmente 22) e a senha de root. A Elly faz login uma vez e salva uma chave própria na TV; a senha não é salva. “Verificar” testa a conexão.\nDesativar remove a chave da TV depois de confirmar. A configuração vale por TV.</string>
+    <string name="help_settings_root_body">O guia de programação precisa de um acesso à TV que a LG só permite com root. Se a sua TV tem root (Homebrew Channel) e o servidor SSH está ativado, ative “Acesso root e SSH configurados?” na aba “TV”.\nInforme o usuário (normalmente root), a porta (normalmente 22) e a senha de root. A Elly faz login com ela toda vez e a guarda criptografada no celular; nada é alterado na TV. “Verificar” testa a conexão.\nDesativar esquece o acesso e a senha depois de confirmar. A configuração vale por TV.</string>
     <string-array name="epg_demo_channels">
         <item>Elly Um</item>
         <item>Galinheiro TV</item>

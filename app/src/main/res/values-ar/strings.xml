@@ -476,21 +476,21 @@
     <string name="settings_root_ssh_ok">اتصال SSH يعمل.</string>
     <string name="settings_root_ssh_removing">جارٍ إزالة وصول SSH…</string>
     <string name="settings_root_ssh_setup_title">إعداد SSH</string>
-    <string name="settings_root_ssh_setup_message">تسجّل Elly الدخول إلى التلفاز مرة واحدة باستخدام كلمة مرور الجذر وتخزّن مفتاحها الخاص عليه. لا تُحفَظ كلمة المرور.</string>
+    <string name="settings_root_ssh_setup_message">تسجّل Elly الدخول إلى التلفاز باستخدام كلمة مرور الجذر وتحفظها مشفّرة على هذا الهاتف. لا يتغيّر أي شيء على التلفاز.</string>
     <string name="settings_root_ssh_user">المستخدم</string>
     <string name="settings_root_ssh_port">المنفذ</string>
     <string name="settings_root_ssh_password">كلمة المرور</string>
     <string name="settings_root_ssh_setup_confirm">إعداد</string>
     <string name="settings_root_ssh_error_unreachable">تعذّر الوصول إلى خادم SSH في التلفاز. هل SSH مفعّل في Homebrew Channel؟</string>
     <string name="settings_root_ssh_error_auth">رُفض تسجيل الدخول. تحقق من المستخدم وكلمة المرور.</string>
-    <string name="settings_root_ssh_error_key">لم يعد التلفاز يقبل مفتاح Elly. أوقف الإعداد ثم أعد إعداد SSH.</string>
+    <string name="settings_root_ssh_error_key">يرفض التلفاز تسجيل الدخول. أعد إعداد SSH باستخدام كلمة مرور الجذر الحالية.</string>
     <string name="settings_root_ssh_error_host_key">تغيّر مفتاح SSH الخاص بالتلفاز. إذا مُنح التلفاز صلاحيات الجذر من جديد، فأوقف الإعداد ثم أعد إعداد SSH.</string>
     <string name="settings_root_ssh_error_luna">تم تسجيل الدخول، لكن أوامر نظام التلفاز غير متاحة.</string>
     <string name="settings_root_ssh_error_unknown">فشل اتصال SSH.</string>
     <string name="settings_root_ssh_remove_title">إزالة وصول SSH؟</string>
-    <string name="settings_root_ssh_remove_message">تحذف Elly مفتاحها من التلفاز وتنسى بيانات الوصول. لن يعود دليل البرامج متاحًا بعد ذلك.</string>
+    <string name="settings_root_ssh_remove_message">تنسى Elly بيانات الوصول وكلمة المرور المحفوظة. لن يعود دليل البرامج متاحًا بعد ذلك.</string>
     <string name="settings_root_ssh_remove">إزالة</string>
-    <string name="settings_root_ssh_removed_locally">تعذّر الوصول إلى التلفاز، ولذلك ما زال مفتاح Elly مخزنًا عليه. لم تعد Elly تستخدمه. إذا أردت، فاحذف السطر المنتهي بـ «elly-app» من ~/.ssh/authorized_keys على التلفاز.</string>
+    <string name="settings_root_ssh_removed_locally">تعذّر الوصول إلى التلفاز، ولذلك ما زال مفتاح إصدار أقدم من Elly مخزنًا عليه. ما دام موجودًا، لا يعيّن Homebrew Channel كلمة مرور الجذر الافتراضية. إذا أردت، فاحذف السطر المنتهي بـ «elly-app» من ~/.ssh/authorized_keys على التلفاز.</string>
 
     <string name="custom_element_epg">دليل البرامج</string>
     <string name="epg_title_with_list">دليل البرامج · %1$s</string>
@@ -576,5 +576,5 @@
     <string name="help_edit_guide_title">إضافة دليل البرامج</string>
     <string name="help_edit_guide_body">يتيح «+ عنصر» دليل البرامج بمجرد إعداد SSH للتلفاز (راجع الإعدادات) أو تشغيل الوضع التجريبي. قبل وضعه، اختر قائمة المفضلة في التلفاز التي ستُعرض قنواتها. اضغط على العنصر مطولًا لمدة ثانيتين لتغيير القائمة.\nيبدأ الدليل بعرض الشاشة ونصف ارتفاعها؛ ويمكن نقله وتغيير حجمه مثل العناصر الأخرى. يمكن إضافة عدة أدلة بقوائم مختلفة. من دون وصول SSH يظل العنصر محفوظًا، لكنه لا يظهر على الشاشة.</string>
     <string name="help_settings_root_title">الوصول بصلاحيات الجذر وSSH</string>
-    <string name="help_settings_root_body">يحتاج دليل البرامج إلى وصول إلى التلفاز لا تسمح به LG إلا بصلاحيات الجذر. إذا كان تلفازك مزوّدًا بصلاحيات الجذر (Homebrew Channel) وخادم SSH مفعّلًا فيه، ففعّل «هل تم إعداد الوصول بصلاحيات الجذر وSSH؟» في علامة تبويب «التلفاز».\nأدخل المستخدم (عادةً root) والمنفذ (عادةً 22) وكلمة مرور الجذر. تسجّل Elly الدخول مرة واحدة وتخزّن مفتاحها الخاص على التلفاز؛ ولا تُحفَظ كلمة المرور. يختبر «فحص» الاتصال.\nيؤدي إيقافه إلى إزالة المفتاح من التلفاز بعد التأكيد. ينطبق الإعداد على كل تلفاز على حدة.</string>
+    <string name="help_settings_root_body">يحتاج دليل البرامج إلى وصول إلى التلفاز لا تسمح به LG إلا بصلاحيات الجذر. إذا كان تلفازك مزوّدًا بصلاحيات الجذر (Homebrew Channel) وخادم SSH مفعّلًا فيه، ففعّل «هل تم إعداد الوصول بصلاحيات الجذر وSSH؟» في علامة تبويب «التلفاز».\nأدخل المستخدم (عادةً root) والمنفذ (عادةً 22) وكلمة مرور الجذر. تسجّل Elly الدخول بها في كل مرة وتحفظها مشفّرة على الهاتف؛ ولا يتغيّر أي شيء على التلفاز. يختبر «فحص» الاتصال.\nيؤدي إيقافه بعد التأكيد إلى نسيان بيانات الوصول وكلمة المرور. ينطبق الإعداد على كل تلفاز على حدة.</string>
 </resources>

@@ -475,21 +475,21 @@
     <string name="settings_root_ssh_ok">SSH-з\'єднання працює.</string>
     <string name="settings_root_ssh_removing">Видалення SSH-доступу…</string>
     <string name="settings_root_ssh_setup_title">Налаштувати SSH</string>
-    <string name="settings_root_ssh_setup_message">Elly один раз входить на телевізор із паролем root і зберігає там власний ключ. Пароль не зберігається.</string>
+    <string name="settings_root_ssh_setup_message">Elly входить на телевізор із паролем root і зберігає його в зашифрованому вигляді на цьому телефоні. На телевізорі нічого не змінюється.</string>
     <string name="settings_root_ssh_user">Користувач</string>
     <string name="settings_root_ssh_port">Порт</string>
     <string name="settings_root_ssh_password">Пароль</string>
     <string name="settings_root_ssh_setup_confirm">Налаштувати</string>
     <string name="settings_root_ssh_error_unreachable">SSH-сервер телевізора недоступний. Чи ввімкнено SSH у Homebrew Channel?</string>
     <string name="settings_root_ssh_error_auth">Вхід відхилено. Перевір користувача й пароль.</string>
-    <string name="settings_root_ssh_error_key">Телевізор більше не приймає ключ Elly. Вимкни налаштування й налаштуй SSH заново.</string>
+    <string name="settings_root_ssh_error_key">Телевізор відхиляє вхід. Налаштуй SSH заново з поточним паролем root.</string>
     <string name="settings_root_ssh_error_host_key">SSH-ключ телевізора змінився. Якщо root-доступ на телевізорі отримано заново, вимкни налаштування й налаштуй SSH заново.</string>
     <string name="settings_root_ssh_error_luna">Вхід виконано, але системні команди телевізора недоступні.</string>
     <string name="settings_root_ssh_error_unknown">Не вдалося встановити SSH-з\'єднання.</string>
     <string name="settings_root_ssh_remove_title">Видалити SSH-доступ?</string>
-    <string name="settings_root_ssh_remove_message">Elly видалить свій ключ із телевізора й забуде доступ. Телепрограма після цього буде недоступна.</string>
+    <string name="settings_root_ssh_remove_message">Elly забуде доступ і збережений пароль. Телепрограма після цього буде недоступна.</string>
     <string name="settings_root_ssh_remove">Видалити</string>
-    <string name="settings_root_ssh_removed_locally">Телевізор був недоступний, тому ключ Elly досі збережено на ньому. Elly більше його не використовує. За бажання видали на телевізорі в ~/.ssh/authorized_keys рядок, що закінчується на «elly-app».</string>
+    <string name="settings_root_ssh_removed_locally">Телевізор був недоступний, тому ключ старішої версії Elly досі збережено на ньому. Поки він там, Homebrew Channel не встановлює свій стандартний пароль root. За бажання видали на телевізорі в ~/.ssh/authorized_keys рядок, що закінчується на «elly-app».</string>
     <string name="custom_element_epg">Телепрограма</string>
     <string name="epg_title_with_list">Телепрограма · %1$s</string>
     <string name="epg_editor_hint">Утримуй, щоб змінити список обраного</string>
@@ -529,7 +529,7 @@
     <string name="help_edit_guide_title">Додавання телепрограми</string>
     <string name="help_edit_guide_body">«+ Елемент» пропонує телепрограму, щойно для телевізора налаштовано SSH (див. Налаштування) або ввімкнено демо-режим. Перед розміщенням ти вибираєш список обраного телевізора, канали якого буде показано. Утримуй елемент 2 секунди, щоб змінити список.\nСпочатку телепрограма завширшки на весь екран і заввишки в половину; як і інші елементи, її можна переміщувати й змінювати її розмір. Можна додати кілька телепрограм із різними списками. Без SSH-доступу елемент зберігається, але не показується на екрані.</string>
     <string name="help_settings_root_title">Root-доступ і SSH</string>
-    <string name="help_settings_root_body">Телепрограмі потрібен доступ до телевізора, який LG дозволяє лише з root. Якщо твій телевізор має root (Homebrew Channel) і там увімкнено SSH-сервер, увімкни на вкладці «ТБ» «Root-доступ і SSH налаштовано?».\nВведи користувача (зазвичай root), порт (зазвичай 22) і пароль root. Elly один раз входить і зберігає на телевізорі власний ключ; пароль не зберігається. «Перевірити» тестує з\'єднання.\nВимкнення після підтвердження видаляє ключ із телевізора. Налаштування діє для кожного телевізора окремо.</string>
+    <string name="help_settings_root_body">Телепрограмі потрібен доступ до телевізора, який LG дозволяє лише з root. Якщо твій телевізор має root (Homebrew Channel) і там увімкнено SSH-сервер, увімкни на вкладці «ТБ» «Root-доступ і SSH налаштовано?».\nВведи користувача (зазвичай root), порт (зазвичай 22) і пароль root. Elly входить із ним щоразу й зберігає його в зашифрованому вигляді на телефоні; на телевізорі нічого не змінюється. «Перевірити» тестує з\'єднання.\nВимкнення після підтвердження видаляє доступ і пароль. Налаштування діє для кожного телевізора окремо.</string>
     <string-array name="epg_demo_channels">
         <item>Еллі Один</item>
         <item>Курник ТБ</item>

@@ -475,21 +475,21 @@
     <string name="settings_root_ssh_ok">Połączenie SSH działa.</string>
     <string name="settings_root_ssh_removing">Usuwanie dostępu SSH…</string>
     <string name="settings_root_ssh_setup_title">Skonfiguruj SSH</string>
-    <string name="settings_root_ssh_setup_message">Elly loguje się jednorazowo do telewizora hasłem roota i zapisuje tam własny klucz. Hasło nie jest zapisywane.</string>
+    <string name="settings_root_ssh_setup_message">Elly loguje się do telewizora hasłem roota i przechowuje je zaszyfrowane na tym telefonie. Na telewizorze nic nie jest zmieniane.</string>
     <string name="settings_root_ssh_user">Użytkownik</string>
     <string name="settings_root_ssh_port">Port</string>
     <string name="settings_root_ssh_password">Hasło</string>
     <string name="settings_root_ssh_setup_confirm">Skonfiguruj</string>
     <string name="settings_root_ssh_error_unreachable">Serwer SSH telewizora jest nieosiągalny. Czy SSH jest włączone w Homebrew Channel?</string>
     <string name="settings_root_ssh_error_auth">Logowanie odrzucone. Sprawdź użytkownika i hasło.</string>
-    <string name="settings_root_ssh_error_key">Telewizor nie akceptuje już klucza Elly. Wyłącz to ustawienie i skonfiguruj SSH ponownie.</string>
+    <string name="settings_root_ssh_error_key">Telewizor odrzuca logowanie. Skonfiguruj SSH ponownie z aktualnym hasłem roota.</string>
     <string name="settings_root_ssh_error_host_key">Klucz SSH telewizora się zmienił. Jeśli telewizor został ponownie zrootowany, wyłącz to ustawienie i skonfiguruj SSH ponownie.</string>
     <string name="settings_root_ssh_error_luna">Zalogowano, ale polecenia systemowe telewizora są niedostępne.</string>
     <string name="settings_root_ssh_error_unknown">Połączenie SSH nie powiodło się.</string>
     <string name="settings_root_ssh_remove_title">Usunąć dostęp SSH?</string>
-    <string name="settings_root_ssh_remove_message">Elly usuwa swój klucz z telewizora i zapomina dostęp. Przewodnik po programach nie będzie już dostępny.</string>
+    <string name="settings_root_ssh_remove_message">Elly zapomina dostęp i zapisane hasło. Przewodnik po programach nie będzie już dostępny.</string>
     <string name="settings_root_ssh_remove">Usuń</string>
-    <string name="settings_root_ssh_removed_locally">Telewizor był nieosiągalny, więc klucz Elly nadal jest na nim zapisany. Elly już go nie używa. Jeśli chcesz, usuń na telewizorze z pliku ~/.ssh/authorized_keys wiersz kończący się na „elly-app”.</string>
+    <string name="settings_root_ssh_removed_locally">Telewizor był nieosiągalny, więc klucz starszej wersji Elly nadal jest na nim zapisany. Dopóki tam jest, Homebrew Channel nie ustawia swojego domyślnego hasła roota. Jeśli chcesz, usuń na telewizorze z pliku ~/.ssh/authorized_keys wiersz kończący się na „elly-app”.</string>
     <string name="custom_element_epg">Przewodnik po programach</string>
     <string name="epg_title_with_list">Przewodnik po programach · %1$s</string>
     <string name="epg_editor_hint">Przytrzymaj, aby zmienić listę ulubionych</string>
@@ -529,7 +529,7 @@
     <string name="help_edit_guide_title">Dodawanie przewodnika po programach</string>
     <string name="help_edit_guide_body">„+ Element” oferuje przewodnik po programach, gdy tylko SSH jest skonfigurowane dla telewizora (zobacz Ustawienia) lub włączony jest tryb demo. Przed umieszczeniem wybierasz listę ulubionych telewizora, której kanały będą pokazywane. Przytrzymaj element przez 2 sekundy, aby zmienić listę.\nPrzewodnik ma na początku szerokość ekranu i połowę jego wysokości; jak inne elementy można go przesuwać i zmieniać jego rozmiar. Można mieć kilka przewodników z różnymi listami. Bez dostępu SSH element pozostaje zapisany, ale nie pojawia się na ekranie.</string>
     <string name="help_settings_root_title">Dostęp root i SSH</string>
-    <string name="help_settings_root_body">Przewodnik po programach potrzebuje dostępu do telewizora, na który LG pozwala tylko z rootem. Jeśli twój telewizor ma root (Homebrew Channel) i jest w nim włączony serwer SSH, włącz na karcie „TV” opcję „Dostęp root i SSH skonfigurowane?”.\nPodaj użytkownika (zwykle root), port (zwykle 22) i hasło roota. Elly loguje się raz i zapisuje w telewizorze własny klucz; hasło nie jest zapisywane. „Sprawdź” testuje połączenie.\nWyłączenie po potwierdzeniu usuwa klucz z telewizora. Ustawienie dotyczy każdego telewizora osobno.</string>
+    <string name="help_settings_root_body">Przewodnik po programach potrzebuje dostępu do telewizora, na który LG pozwala tylko z rootem. Jeśli twój telewizor ma root (Homebrew Channel) i jest w nim włączony serwer SSH, włącz na karcie „TV” opcję „Dostęp root i SSH skonfigurowane?”.\nPodaj użytkownika (zwykle root), port (zwykle 22) i hasło roota. Elly loguje się nim za każdym razem i przechowuje je zaszyfrowane na telefonie; na telewizorze nic nie jest zmieniane. „Sprawdź” testuje połączenie.\nWyłączenie po potwierdzeniu usuwa zapisany dostęp i hasło. Ustawienie dotyczy każdego telewizora osobno.</string>
     <string-array name="epg_demo_channels">
         <item>Elly Jeden</item>
         <item>Kurnik TV</item>
