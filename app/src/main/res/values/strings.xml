@@ -232,6 +232,8 @@
     <string name="group_power">Power + screen</string>
     <string name="custom_element_volume">Volume rocker</string>
     <string name="custom_element_channel">Channel rocker</string>
+    <string name="custom_element_volume_horizontal">Volume rocker (horizontal)</string>
+    <string name="custom_element_channel_horizontal">Channel rocker (horizontal)</string>
     <string name="custom_element_dpad">Directional pad</string>
     <string name="custom_element_app">App key</string>
     <string name="custom_element_epg">Program guide</string>

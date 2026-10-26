@@ -191,6 +191,8 @@
     <string name="group_power">Ström + skärm</string>
     <string name="custom_element_volume">Volymvippa</string>
     <string name="custom_element_channel">Kanalvippa</string>
+    <string name="custom_element_volume_horizontal">Volymvippa (vågrät)</string>
+    <string name="custom_element_channel_horizontal">Kanalvippa (vågrät)</string>
     <string name="custom_element_dpad">Styrkors</string>
     <string name="custom_element_app">Appknapp</string>
     <string name="custom_app_hold">Håll 2 s</string>

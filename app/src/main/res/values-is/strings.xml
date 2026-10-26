@@ -192,6 +192,8 @@
     <string name="group_power">Kveikja/slökkva + skjár</string>
     <string name="custom_element_volume">Hljóðstyrksrofi</string>
     <string name="custom_element_channel">Stöðvarofi</string>
+    <string name="custom_element_volume_horizontal">Hljóðstyrksrofi (láréttur)</string>
+    <string name="custom_element_channel_horizontal">Stöðvarofi (láréttur)</string>
     <string name="custom_element_dpad">Stýrikross</string>
     <string name="custom_element_app">App-hnappur</string>
     <string name="custom_app_hold">Haltu 2 s</string>

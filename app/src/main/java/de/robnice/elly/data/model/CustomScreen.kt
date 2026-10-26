@@ -10,6 +10,8 @@ enum class CustomElementType(val defaultWidth: Int, val defaultHeight: Int, val 
     KEY(4, 4, 2, 2),
     VOLUME(4, 10, 3, 6),
     CHANNEL(4, 10, 3, 6),
+    VOLUME_HORIZONTAL(10, 4, 6, 3),
+    CHANNEL_HORIZONTAL(10, 4, 6, 3),
     DPAD(18, 18, 10, 10),
     APP(8, 3, 5, 2),
     EPG(24, 24, 12, 12)

@@ -192,6 +192,8 @@
     <string name="group_power">Живлення + екран</string>
     <string name="custom_element_volume">Гойдалка гучності</string>
     <string name="custom_element_channel">Гойдалка каналів</string>
+    <string name="custom_element_volume_horizontal">Гойдалка гучності (горизонтальна)</string>
+    <string name="custom_element_channel_horizontal">Гойдалка каналів (горизонтальна)</string>
     <string name="custom_element_dpad">Хрестовина</string>
     <string name="custom_element_app">Кнопка застосунку</string>
     <string name="custom_app_hold">Утримуй 2 с</string>

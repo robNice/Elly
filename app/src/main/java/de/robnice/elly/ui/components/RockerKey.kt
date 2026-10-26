@@ -6,7 +6,8 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import de.robnice.elly.R
 
+// A horizontal rocker shows the top half on the left and the bottom half on the right.
 @Composable
 fun RockerKey(
     label: String?,
@@ -30,7 +32,8 @@ fun RockerKey(
     onTop: () -> Unit,
     onBottom: () -> Unit,
     modifier: Modifier = Modifier.size(dimensionResource(R.dimen.rocker_width), dimensionResource(R.dimen.rocker_height)),
-    @DrawableRes labelIcon: Int? = null
+    @DrawableRes labelIcon: Int? = null,
+    horizontal: Boolean = false
 ) {
     val rounding = LocalKeyRounding.current
     val shape = keyShape(rounding)
@@ -40,37 +43,48 @@ fun RockerKey(
     val topPressed by topInteraction.collectIsPressedAsState()
     val bottomPressed by bottomInteraction.collectIsPressedAsState()
 
-    Column(
-        modifier = modifier.keyBody(shape, palette, pressed = false),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        RockerHalf(
-            icon = topIcon,
-            description = topDescription,
-            interactionSource = topInteraction,
-            pressed = topPressed,
-            pressedColor = palette.pressedOverlay,
-            contentColor = palette.content,
-            shape = rockerHalfShape(rounding, top = true),
-            onPress = onTop
-        )
+    @Composable
+    fun Half(first: Boolean, halfModifier: Modifier) = RockerHalf(
+        icon = if (first) topIcon else bottomIcon,
+        description = if (first) topDescription else bottomDescription,
+        interactionSource = if (first) topInteraction else bottomInteraction,
+        pressed = if (first) topPressed else bottomPressed,
+        pressedColor = palette.pressedOverlay,
+        contentColor = palette.content,
+        shape = rockerHalfShape(rounding, first, horizontal),
+        onPress = if (first) onTop else onBottom,
+        modifier = halfModifier
+    )
+
+    @Composable
+    fun Label() {
         if (labelIcon != null) KeyIcon(icon = labelIcon, tint = palette.content)
         if (label != null) KeyLabel(text = label, color = palette.content, fontSize = 13, fontWeight = FontWeight.Bold)
-        RockerHalf(
-            icon = bottomIcon,
-            description = bottomDescription,
-            interactionSource = bottomInteraction,
-            pressed = bottomPressed,
-            pressedColor = palette.pressedOverlay,
-            contentColor = palette.content,
-            shape = rockerHalfShape(rounding, top = false),
-            onPress = onBottom
-        )
+    }
+
+    if (horizontal) {
+        Row(
+            modifier = modifier.keyBody(shape, palette, pressed = false),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Half(first = true, halfModifier = Modifier.fillMaxHeight().weight(1f))
+            Label()
+            Half(first = false, halfModifier = Modifier.fillMaxHeight().weight(1f))
+        }
+    } else {
+        Column(
+            modifier = modifier.keyBody(shape, palette, pressed = false),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Half(first = true, halfModifier = Modifier.fillMaxWidth().weight(1f))
+            Label()
+            Half(first = false, halfModifier = Modifier.fillMaxWidth().weight(1f))
+        }
     }
 }
 
 @Composable
-private fun ColumnScope.RockerHalf(
+private fun RockerHalf(
     @DrawableRes icon: Int,
     description: String,
     interactionSource: MutableInteractionSource,
@@ -78,12 +92,11 @@ private fun ColumnScope.RockerHalf(
     pressedColor: Color,
     contentColor: Color,
     shape: Shape,
-    onPress: () -> Unit
+    onPress: () -> Unit,
+    modifier: Modifier
 ) {
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f)
+        modifier = modifier
             .background(if (pressed) pressedColor else Color.Transparent, shape)
             .keyPress(interactionSource, description, repeatOnHold = true, onPress = onPress),
         contentAlignment = Alignment.Center

@@ -192,6 +192,8 @@
     <string name="group_power">Zasilanie + ekran</string>
     <string name="custom_element_volume">Przełącznik głośności</string>
     <string name="custom_element_channel">Przełącznik kanałów</string>
+    <string name="custom_element_volume_horizontal">Przełącznik głośności (poziomy)</string>
+    <string name="custom_element_channel_horizontal">Przełącznik kanałów (poziomy)</string>
     <string name="custom_element_dpad">Krzyżak</string>
     <string name="custom_element_app">Przycisk aplikacji</string>
     <string name="custom_app_hold">Przytrzymaj 2 s</string>

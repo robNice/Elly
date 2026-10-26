@@ -191,6 +191,8 @@
     <string name="group_power">Aan/uit + scherm</string>
     <string name="custom_element_volume">Volumeregelaar</string>
     <string name="custom_element_channel">Zenderregelaar</string>
+    <string name="custom_element_volume_horizontal">Volumeregelaar (horizontaal)</string>
+    <string name="custom_element_channel_horizontal">Zenderregelaar (horizontaal)</string>
     <string name="custom_element_dpad">Navigatiekruis</string>
     <string name="custom_element_app">App-toets</string>
     <string name="custom_app_hold">2 s vasthouden</string>

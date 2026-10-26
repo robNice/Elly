@@ -192,6 +192,8 @@
     <string name="group_power">Liga/desliga + tela</string>
     <string name="custom_element_volume">Controle de volume</string>
     <string name="custom_element_channel">Controle de canal</string>
+    <string name="custom_element_volume_horizontal">Controle de volume (horizontal)</string>
+    <string name="custom_element_channel_horizontal">Controle de canal (horizontal)</string>
     <string name="custom_element_dpad">Direcional</string>
     <string name="custom_element_app">Botão de app</string>
     <string name="custom_app_hold">Segure 2 s</string>

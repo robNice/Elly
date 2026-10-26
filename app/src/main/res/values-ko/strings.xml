@@ -192,6 +192,8 @@
     <string name="group_power">전원 + 화면</string>
     <string name="custom_element_volume">볼륨 조절 버튼</string>
     <string name="custom_element_channel">채널 조절 버튼</string>
+    <string name="custom_element_volume_horizontal">볼륨 조절 버튼(가로)</string>
+    <string name="custom_element_channel_horizontal">채널 조절 버튼(가로)</string>
     <string name="custom_element_dpad">방향 패드</string>
     <string name="custom_element_app">앱 버튼</string>
     <string name="custom_app_hold">2초간 누르기</string>

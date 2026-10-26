@@ -175,6 +175,29 @@ fun CustomElementView(
                 onBottom = { onKey(RemoteKey.CHANNEL_DOWN) },
                 modifier = Modifier.fillMaxSize()
             )
+            CustomElementType.VOLUME_HORIZONTAL -> RockerKey(
+                label = null,
+                labelIcon = R.drawable.ic_volume,
+                topIcon = R.drawable.ic_minus,
+                bottomIcon = R.drawable.ic_plus,
+                topDescription = stringResource(R.string.key_volume_down),
+                bottomDescription = stringResource(R.string.key_volume_up),
+                onTop = { onKey(RemoteKey.VOLUME_DOWN) },
+                onBottom = { onKey(RemoteKey.VOLUME_UP) },
+                modifier = Modifier.fillMaxSize(),
+                horizontal = true
+            )
+            CustomElementType.CHANNEL_HORIZONTAL -> RockerKey(
+                label = stringResource(R.string.key_channel),
+                topIcon = R.drawable.ic_chevron_left,
+                bottomIcon = R.drawable.ic_chevron_right,
+                topDescription = stringResource(R.string.key_channel_down),
+                bottomDescription = stringResource(R.string.key_channel_up),
+                onTop = { onKey(RemoteKey.CHANNEL_DOWN) },
+                onBottom = { onKey(RemoteKey.CHANNEL_UP) },
+                modifier = Modifier.fillMaxSize(),
+                horizontal = true
+            )
             CustomElementType.DPAD -> DirectionalPad(onKey = onKey, modifier = Modifier.fillMaxSize(), capped = false)
             CustomElementType.EPG -> EpgElement(
                 config = element.epg,

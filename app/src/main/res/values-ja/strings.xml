@@ -192,6 +192,8 @@
     <string name="group_power">電源 + 画面</string>
     <string name="custom_element_volume">音量キー</string>
     <string name="custom_element_channel">チャンネルキー</string>
+    <string name="custom_element_volume_horizontal">音量キー（横向き）</string>
+    <string name="custom_element_channel_horizontal">チャンネルキー（横向き）</string>
     <string name="custom_element_dpad">十字キー</string>
     <string name="custom_element_app">アプリキー</string>
     <string name="custom_app_hold">2 秒長押し</string>

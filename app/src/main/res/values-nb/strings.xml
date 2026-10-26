@@ -192,6 +192,8 @@
     <string name="group_power">Av/på + skjerm</string>
     <string name="custom_element_volume">Volumvippe</string>
     <string name="custom_element_channel">Kanalvippe</string>
+    <string name="custom_element_volume_horizontal">Volumvippe (vannrett)</string>
+    <string name="custom_element_channel_horizontal">Kanalvippe (vannrett)</string>
     <string name="custom_element_dpad">Styrekors</string>
     <string name="custom_element_app">Appknapp</string>
     <string name="custom_app_hold">Hold 2 s</string>

@@ -192,6 +192,8 @@
     <string name="group_power">Encendido + pantalla</string>
     <string name="custom_element_volume">Balancín de volumen</string>
     <string name="custom_element_channel">Balancín de canal</string>
+    <string name="custom_element_volume_horizontal">Balancín de volumen (horizontal)</string>
+    <string name="custom_element_channel_horizontal">Balancín de canal (horizontal)</string>
     <string name="custom_element_dpad">Cruceta</string>
     <string name="custom_element_app">Tecla de app</string>
     <string name="custom_app_hold">Mantén 2 s</string>

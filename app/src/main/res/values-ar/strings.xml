@@ -191,6 +191,8 @@
     <string name="group_power">الطاقة + الشاشة</string>
     <string name="custom_element_volume">شريط الصوت</string>
     <string name="custom_element_channel">شريط القنوات</string>
+    <string name="custom_element_volume_horizontal">شريط الصوت (أفقي)</string>
+    <string name="custom_element_channel_horizontal">شريط القنوات (أفقي)</string>
     <string name="custom_element_dpad">لوحة الاتجاهات</string>
     <string name="custom_element_app">زر تطبيق</string>
     <string name="custom_app_hold">اضغط ثانيتين</string>

@@ -192,6 +192,8 @@
     <string name="group_power">Accensione + schermo</string>
     <string name="custom_element_volume">Bilanciere volume</string>
     <string name="custom_element_channel">Bilanciere canali</string>
+    <string name="custom_element_volume_horizontal">Bilanciere volume (orizzontale)</string>
+    <string name="custom_element_channel_horizontal">Bilanciere canali (orizzontale)</string>
     <string name="custom_element_dpad">Croce direzionale</string>
     <string name="custom_element_app">Tasto app</string>
     <string name="custom_app_hold">Tieni 2 s</string>

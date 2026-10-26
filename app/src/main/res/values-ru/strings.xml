@@ -192,6 +192,8 @@
     <string name="group_power">Питание + экран</string>
     <string name="custom_element_volume">Качелька громкости</string>
     <string name="custom_element_channel">Качелька каналов</string>
+    <string name="custom_element_volume_horizontal">Качелька громкости (горизонтальная)</string>
+    <string name="custom_element_channel_horizontal">Качелька каналов (горизонтальная)</string>
     <string name="custom_element_dpad">Крестовина</string>
     <string name="custom_element_app">Кнопка приложения</string>
     <string name="custom_app_hold">Удерживай 2 с</string>

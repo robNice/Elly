@@ -651,6 +651,8 @@ private fun ElementPickerDialog(
         add(PickerItem.Header(R.string.custom_picker_elements))
         add(PickerItem.Element(CustomElementType.VOLUME, R.string.custom_element_volume))
         add(PickerItem.Element(CustomElementType.CHANNEL, R.string.custom_element_channel))
+        add(PickerItem.Element(CustomElementType.VOLUME_HORIZONTAL, R.string.custom_element_volume_horizontal))
+        add(PickerItem.Element(CustomElementType.CHANNEL_HORIZONTAL, R.string.custom_element_channel_horizontal))
         add(PickerItem.Element(CustomElementType.DPAD, R.string.custom_element_dpad))
         add(PickerItem.Element(CustomElementType.APP, R.string.custom_element_app))
         if (epgAvailable) add(PickerItem.Element(CustomElementType.EPG, R.string.custom_element_epg))
@@ -819,6 +821,8 @@ private fun ElementLeading(type: CustomElementType, onClick: () -> Unit) {
     when (type) {
         CustomElementType.VOLUME -> RockerPreview(volume = true, onClick = onClick)
         CustomElementType.CHANNEL -> RockerPreview(volume = false, onClick = onClick)
+        CustomElementType.VOLUME_HORIZONTAL -> RockerPreview(volume = true, onClick = onClick, horizontal = true)
+        CustomElementType.CHANNEL_HORIZONTAL -> RockerPreview(volume = false, onClick = onClick, horizontal = true)
         CustomElementType.DPAD -> PickerIcon(R.drawable.ic_dpad_background)
         CustomElementType.APP -> PickerIcon(R.drawable.ic_apps)
         CustomElementType.EPG -> PickerIcon(R.drawable.ic_epg)
@@ -828,22 +832,29 @@ private fun ElementLeading(type: CustomElementType, onClick: () -> Unit) {
 
 // The real rocker drawn at its normal size and scaled down, so it follows palette and rounding.
 @Composable
-private fun RockerPreview(volume: Boolean, onClick: () -> Unit) {
-    val width = dimensionResource(R.dimen.rocker_width)
-    val height = dimensionResource(R.dimen.rocker_height)
-    val previewHeight = dimensionResource(R.dimen.custom_picker_rocker_height)
-    val scale = previewHeight / height
+private fun RockerPreview(volume: Boolean, onClick: () -> Unit, horizontal: Boolean = false) {
+    val long = dimensionResource(R.dimen.rocker_height)
+    val short = dimensionResource(R.dimen.rocker_width)
+    val width = if (horizontal) long else short
+    val height = if (horizontal) short else long
+    val scale = dimensionResource(R.dimen.custom_picker_rocker_height) / long
     Box(
         modifier = Modifier
-            .size(width * scale, previewHeight)
+            .size(width * scale, height * scale)
             .clearAndSetSemantics { },
         contentAlignment = Alignment.Center
     ) {
         RockerKey(
             label = if (volume) null else stringResource(R.string.key_channel),
             labelIcon = if (volume) R.drawable.ic_volume else null,
-            topIcon = if (volume) R.drawable.ic_plus else R.drawable.ic_chevron_up,
-            bottomIcon = if (volume) R.drawable.ic_minus else R.drawable.ic_chevron_down,
+            topIcon = when {
+                volume -> if (horizontal) R.drawable.ic_minus else R.drawable.ic_plus
+                else -> if (horizontal) R.drawable.ic_chevron_left else R.drawable.ic_chevron_up
+            },
+            bottomIcon = when {
+                volume -> if (horizontal) R.drawable.ic_plus else R.drawable.ic_minus
+                else -> if (horizontal) R.drawable.ic_chevron_right else R.drawable.ic_chevron_down
+            },
             topDescription = "",
             bottomDescription = "",
             onTop = {},
@@ -853,7 +864,8 @@ private fun RockerPreview(volume: Boolean, onClick: () -> Unit) {
                 .graphicsLayer {
                     scaleX = scale
                     scaleY = scale
-                }
+                },
+            horizontal = horizontal
         )
         // Taps add the element instead of pressing the preview's keys.
         Box(

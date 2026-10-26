@@ -192,6 +192,8 @@
     <string name="group_power">Tænd/sluk + skærm</string>
     <string name="custom_element_volume">Lydstyrkevippe</string>
     <string name="custom_element_channel">Kanalvippe</string>
+    <string name="custom_element_volume_horizontal">Lydstyrkevippe (vandret)</string>
+    <string name="custom_element_channel_horizontal">Kanalvippe (vandret)</string>
     <string name="custom_element_dpad">Styrekryds</string>
     <string name="custom_element_app">App-knap</string>
     <string name="custom_app_hold">Hold 2 sek.</string>

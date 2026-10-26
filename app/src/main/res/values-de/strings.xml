@@ -227,6 +227,8 @@
     <string name="group_power">Ein/Aus + Bildschirm</string>
     <string name="custom_element_volume">Lautstärke-Wippe</string>
     <string name="custom_element_channel">Kanal-Wippe</string>
+    <string name="custom_element_volume_horizontal">Lautstärke-Wippe (waagerecht)</string>
+    <string name="custom_element_channel_horizontal">Kanal-Wippe (waagerecht)</string>
     <string name="custom_element_dpad">Steuerkreuz</string>
     <string name="custom_element_app">App-Taste</string>
     <string name="custom_element_epg">Programmübersicht</string>

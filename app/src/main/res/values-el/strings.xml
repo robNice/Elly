@@ -192,6 +192,8 @@
     <string name="group_power">Λειτουργία + οθόνη</string>
     <string name="custom_element_volume">Ρυθμιστής έντασης</string>
     <string name="custom_element_channel">Ρυθμιστής καναλιών</string>
+    <string name="custom_element_volume_horizontal">Ρυθμιστής έντασης (οριζόντιος)</string>
+    <string name="custom_element_channel_horizontal">Ρυθμιστής καναλιών (οριζόντιος)</string>
     <string name="custom_element_dpad">Σταυρός κατεύθυνσης</string>
     <string name="custom_element_app">Πλήκτρο εφαρμογής</string>
     <string name="custom_app_hold">Κράτα 2 δλ.</string>
