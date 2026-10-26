@@ -117,6 +117,7 @@
     <dimen name="epg_loading_stroke">2dp</dimen>
     <dimen name="epg_edge_margin">4dp</dimen>
     <dimen name="epg_info_max_height">360dp</dimen>
+    <dimen name="epg_info_close_inset">12dp</dimen>
     <dimen name="epg_info_logo_height">22dp</dimen>
     <dimen name="epg_badge_spacing">4dp</dimen>
     <dimen name="epg_badge_padding">5dp</dimen>

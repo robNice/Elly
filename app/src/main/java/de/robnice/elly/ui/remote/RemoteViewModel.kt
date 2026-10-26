@@ -91,6 +91,9 @@ class RemoteViewModel(
     private val _results = MutableSharedFlow<SendResult>(extraBufferCapacity = 1)
     val results: SharedFlow<SendResult> = _results
 
+    private val _commandSent = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val commandSent: SharedFlow<Unit> = _commandSent
+
     var currentScreen: RemoteScreen? = null
 
     private val _inputs = MutableStateFlow<List<TvInput>?>(null)
@@ -192,13 +195,18 @@ class RemoteViewModel(
     suspend fun guideVideoInfo(channel: EpgChannel): EpgVideoInfo? = epgRepository.videoInfo(channel)
 
     // Runs in the view model, so closing the info window does not stop a change the TV has already begun.
-    suspend fun performGuideAction(action: EpgAction) = viewModelScope.async { epgRepository.perform(action) }.await()
+    suspend fun performGuideAction(action: EpgAction) = viewModelScope.async {
+        _commandSent.tryEmit(Unit)
+        epgRepository.perform(action)
+    }.await()
 
     fun press(key: RemoteKey) {
+        _commandSent.tryEmit(Unit)
         viewModelScope.launch { report(remoteControl.send(key)) }
     }
 
     fun switchChannel(channelId: String) {
+        _commandSent.tryEmit(Unit)
         viewModelScope.launch {
             val result = remoteControl.openChannel(channelId)
             if (result == SendResult.SENT || result == SendResult.DEMO) _currentChannel.value = channelId
@@ -207,6 +215,7 @@ class RemoteViewModel(
     }
 
     fun launchApp(appId: String) {
+        _commandSent.tryEmit(Unit)
         viewModelScope.launch { report(remoteControl.launchApp(appId)) }
     }
 
@@ -223,6 +232,7 @@ class RemoteViewModel(
 
     fun selectInput(input: TvInput) {
         _inputs.value = null
+        _commandSent.tryEmit(Unit)
         viewModelScope.launch { report(remoteControl.switchInput(input)) }
     }
 
@@ -245,6 +255,7 @@ class RemoteViewModel(
     }
 
     fun changeText(text: String) {
+        _commandSent.tryEmit(Unit)
         viewModelScope.launch {
             textMutex.withLock {
                 val common = sentText.commonPrefixWith(text).length
@@ -255,6 +266,7 @@ class RemoteViewModel(
     }
 
     fun sendEnter() {
+        _commandSent.tryEmit(Unit)
         viewModelScope.launch { textMutex.withLock { report(remoteControl.sendEnter()) } }
     }
 

@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -17,6 +18,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalDensity
 import kotlin.math.roundToInt
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -197,7 +200,7 @@ fun RemotePager(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     TextButton(onClick = onOpenSetup, modifier = Modifier.weight(1f)) {
-                        StatusLight(connectionState)
+                        StatusLight(connectionState, viewModel.commandSent)
                         Spacer(modifier = Modifier.width(dimensionResource(R.dimen.status_light_spacing)))
                         Text(text = activeTvName, color = colorResource(R.color.top_bar_content))
                     }
@@ -371,7 +374,7 @@ private fun PageIndicator(pagerState: PagerState) {
 }
 
 @Composable
-private fun StatusLight(state: ConnectionState) {
+private fun StatusLight(state: ConnectionState, sent: Flow<Unit>) {
     val (colorRes, descriptionRes) = when (state) {
         ConnectionState.CONNECTED -> R.color.status_connected to R.string.status_connected
         ConnectionState.DISCONNECTED -> R.color.status_disconnected to R.string.status_disconnected
@@ -392,11 +395,20 @@ private fun StatusLight(state: ConnectionState) {
     } else {
         1f
     }
+    val flash = remember { Animatable(0f) }
+    LaunchedEffect(sent) {
+        sent.collectLatest {
+            flash.snapTo(1f)
+            flash.animateTo(0f, tween(STATUS_FLASH_MILLIS, easing = FastOutSlowInEasing))
+        }
+    }
     Box(
         modifier = Modifier
             .size(dimensionResource(R.dimen.status_light_size))
             .semantics { contentDescription = description }
             .drawBehind {
+                val glow = flash.value
+                if (glow > 0f) drawCircle(color.copy(alpha = STATUS_FLASH_ALPHA * glow), radius = size.minDimension / 2 * (1f + STATUS_FLASH_GROWTH * glow))
                 drawCircle(color.copy(alpha = STATUS_GLOW_ALPHA * pulse), radius = size.minDimension / 2 * pulse)
                 drawCircle(color.copy(alpha = STATUS_CORE_LOW_ALPHA + (1f - STATUS_CORE_LOW_ALPHA) * pulse), radius = size.minDimension * STATUS_CORE_RATIO)
             }
@@ -408,4 +420,7 @@ private const val STATUS_GLOW_ALPHA = 0.3f
 private const val STATUS_CORE_RATIO = 0.3f
 private const val STATUS_PULSE_LOW = 0.45f
 private const val STATUS_PULSE_MILLIS = 900
+private const val STATUS_FLASH_MILLIS = 700
+private const val STATUS_FLASH_ALPHA = 0.6f
+private const val STATUS_FLASH_GROWTH = 1.2f
 private const val STATUS_CORE_LOW_ALPHA = 0.55f

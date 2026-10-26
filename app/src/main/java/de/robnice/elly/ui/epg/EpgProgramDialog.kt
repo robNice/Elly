@@ -1,14 +1,23 @@
 package de.robnice.elly.ui.epg
 
 import android.text.format.DateFormat
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.layout.ContentScale
@@ -104,7 +113,15 @@ fun EpgProgramDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(program.title) },
+        title = {
+            Row(verticalAlignment = Alignment.Top) {
+                Text(program.title, modifier = Modifier.weight(1f))
+                val inset = dimensionResource(R.dimen.epg_info_close_inset)
+                IconButton(onClick = onDismiss, modifier = Modifier.offset(x = inset, y = -inset)) {
+                    Icon(painter = painterResource(R.drawable.ic_close), contentDescription = stringResource(R.string.epg_info_close))
+                }
+            }
+        },
         text = {
             Column(
                 modifier = Modifier
@@ -133,17 +150,29 @@ fun EpgProgramDialog(
                 Badges(channel, program, video)
                 if (program.end > now) {
                     if (program.start > now) {
-                        OutlinedButton(
-                            onClick = { act(if (reminder != null) EpgAction.Cancel(reminder) else EpgAction.Remind(channel, program)) },
+                        ActionButton(
+                            icon = if (reminder != null) R.drawable.ic_reminder_off else R.drawable.ic_reminder,
+                            text = if (reminder != null) R.string.epg_remind_cancel else R.string.epg_remind,
                             enabled = !busy,
-                            modifier = Modifier.fillMaxWidth()
-                        ) { Text(stringResource(if (reminder != null) R.string.epg_remind_cancel else R.string.epg_remind)) }
+                            onClick = { act(if (reminder != null) EpgAction.Cancel(reminder) else EpgAction.Remind(channel, program)) }
+                        )
                     }
                     val recordData = program.offlineProgramId != null || channel.channelCode != null
                     val recordable = canRecord && recordData
                     // A recording already running is ended and kept; a planned one is deleted.
                     val running = program.start <= now
-                    OutlinedButton(
+                    ActionButton(
+                        icon = when {
+                            recording == null -> R.drawable.ic_record
+                            running -> R.drawable.ic_stop
+                            else -> R.drawable.ic_delete
+                        },
+                        text = when {
+                            recording == null -> R.string.epg_record
+                            running -> R.string.epg_record_stop
+                            else -> R.string.epg_record_cancel
+                        },
+                        enabled = !busy && (recording != null || recordable),
                         onClick = {
                             act(
                                 when {
@@ -152,20 +181,8 @@ fun EpgProgramDialog(
                                     else -> EpgAction.Cancel(recording)
                                 }
                             )
-                        },
-                        enabled = !busy && (recording != null || recordable),
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text(
-                            stringResource(
-                                when {
-                                    recording == null -> R.string.epg_record
-                                    running -> R.string.epg_record_stop
-                                    else -> R.string.epg_record_cancel
-                                }
-                            )
-                        )
-                    }
+                        }
+                    )
                     when {
                         busy -> LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
                         error != null -> Text(
@@ -188,12 +205,26 @@ fun EpgProgramDialog(
             }
         },
         confirmButton = {
-            TextButton(onClick = onSwitch) { Text(stringResource(R.string.epg_info_switch)) }
-        },
-        dismissButton = {
-            TextButton(onClick = onDismiss) { Text(stringResource(R.string.epg_info_close)) }
+            TextButton(onClick = onSwitch) {
+                ButtonIcon(R.drawable.ic_live_tv)
+                Text(stringResource(R.string.epg_info_switch))
+            }
         }
     )
+}
+
+@Composable
+private fun ActionButton(@DrawableRes icon: Int, @StringRes text: Int, enabled: Boolean, onClick: () -> Unit) {
+    OutlinedButton(onClick = onClick, enabled = enabled, modifier = Modifier.fillMaxWidth()) {
+        ButtonIcon(icon)
+        Text(stringResource(text))
+    }
+}
+
+@Composable
+private fun ButtonIcon(@DrawableRes icon: Int) {
+    Icon(painter = painterResource(icon), contentDescription = null, modifier = Modifier.size(ButtonDefaults.IconSize))
+    Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
 }
 
 // Channel number, logo and name, as in the TV's info banner.

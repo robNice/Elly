@@ -518,9 +518,9 @@ fun epgColors(palette: PaletteColors) = EpgColors(
 private fun NowLine(x: Dp, modifier: Modifier) {
     Box(
         modifier = modifier
-            .offset(x = x - (NOW_LINE_WIDTH / 2).dp)
+            .offset(x = x - (NOW_LINE_WIDTH / 2f).dp)
             .width(NOW_LINE_WIDTH.dp)
-            .background(colorResource(R.color.epg_now_line))
+            .background(colorResource(R.color.epg_now_line).copy(alpha = NOW_LINE_ALPHA))
     )
 }
 
@@ -557,7 +557,8 @@ private const val EPG_PAST_MILLIS = 24 * 60 * MINUTE_MILLIS
 private const val EPG_MIN_AHEAD_MILLIS = 3 * 60 * MINUTE_MILLIS
 private const val VISIBLE_ROWS = 6
 private const val NOW_POSITION = 3f
-private const val NOW_LINE_WIDTH = 2
+private const val NOW_LINE_WIDTH = 1
+private const val NOW_LINE_ALPHA = 0.7f
 private const val TICK_START = 0.7f
 private const val DAY_PATTERN = "EEEdM"
 private const val DAY_LINE_WIDTH = 1
