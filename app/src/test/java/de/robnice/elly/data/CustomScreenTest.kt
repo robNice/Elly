@@ -85,7 +85,7 @@ class CustomScreenTest {
     }
 
     @Test
-    fun normalize_dropsOverlappingAndInvalidElements() {
+    fun normalize_keepsOverlappingFramesAndDropsInvalidElements() {
         val screen = CustomScreen.normalize(
             listOf(
                 CustomElement(1, key, 0, 0, 4, 3, key = RemoteKey.OK),
@@ -95,7 +95,7 @@ class CustomScreenTest {
             )
         )
 
-        assertEquals(listOf(1L, 4L), screen.elements.map { it.id })
+        assertEquals(listOf(1L, 2L, 4L), screen.elements.map { it.id })
     }
 
     @Test

@@ -4,6 +4,7 @@ import de.robnice.elly.data.model.RootAccess
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class RootAccessJsonTest {
@@ -21,10 +22,21 @@ class RootAccessJsonTest {
     }
 
     @Test
+    fun keyAndPassphraseAreStoredEncrypted() {
+        val access = RootAccess(22, "root", "x", privateKey = "-----BEGIN KEY-----", passphrase = "secret")
+        val raw = RootAccessJson.encode(access, encrypt)
+
+        assertFalse(raw.contains("BEGIN") || raw.contains("secret"))
+        assertEquals(access, RootAccessJson.decode(raw, decrypt))
+        assertFalse(access.oldElly)
+    }
+
+    @Test
     fun accessOfOlderVersionsHasNoPassword() {
         val raw = "{\"port\":22,\"user\":\"root\",\"hostKey\":\"x\"}"
 
         assertEquals(RootAccess(22, "root", "x"), RootAccessJson.decode(raw, decrypt))
+        assertTrue(RootAccess(22, "root", "x").oldElly)
     }
 
     @Test

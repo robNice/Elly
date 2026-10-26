@@ -20,8 +20,10 @@
 # hide the original source file name.
 -renamesourcefileattribute SourceFile
 
-# JSch instantiates its algorithms by class name.
--keep class com.jcraft.jsch.** { *; }
+# JSch instantiates its algorithms by class name. Of its Bouncy Castle algorithms only Ed25519 is used,
+# so the others and the parts of Bouncy Castle they need can be removed.
+-keep class !com.jcraft.jsch.bc.**, com.jcraft.jsch.** { *; }
+-keep class com.jcraft.jsch.bc.SignatureEd25519, com.jcraft.jsch.bc.SignatureEdDSA, com.jcraft.jsch.bc.KeyPairGenEdDSA { *; }
 # Optional JSch features Elly does not use: Windows agents, Kerberos, Unix sockets, external loggers.
 -dontwarn com.sun.jna.**
 -dontwarn org.apache.logging.log4j.**

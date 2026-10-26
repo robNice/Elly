@@ -4,6 +4,7 @@ import com.jcraft.jsch.ChannelExec
 import com.jcraft.jsch.JSch
 import com.jcraft.jsch.JSchChangedHostKeyException
 import com.jcraft.jsch.JSchException
+import com.jcraft.jsch.KeyPair
 import com.jcraft.jsch.Session
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -20,13 +21,28 @@ data class SshTarget(val host: String, val port: Int, val user: String, val host
 sealed class SshAuth {
     class Password(val password: String) : SshAuth()
     class Key(val identity: EcdsaIdentity) : SshAuth()
+    class PrivateKey(val key: String, val passphrase: String?) : SshAuth()
 }
 
 data class ShellResult(val exitStatus: Int, val output: String)
 
 // SSH access to the root shell of a TV running the Homebrew Channel (dropbear).
-// Only algorithms that Android supports without extra providers are offered.
+// Only algorithms that Android supports without extra providers are offered; Ed25519 keys use Bouncy Castle.
 class TvShell {
+
+    // Throws InvalidKey or PassphraseNeeded if JSch cannot use the key.
+    fun checkKey(key: String, passphrase: String?) {
+        val pair = try {
+            KeyPair.load(JSch(), key.toByteArray(Charsets.UTF_8), null)
+        } catch (e: JSchException) {
+            throw TvShellException.InvalidKey(e)
+        }
+        try {
+            if (pair.isEncrypted && !pair.decrypt(passphrase?.toByteArray(Charsets.UTF_8))) throw TvShellException.PassphraseNeeded()
+        } finally {
+            pair.dispose()
+        }
+    }
 
     suspend fun <T> session(target: SshTarget, auth: SshAuth, block: suspend (ShellSession) -> T): T =
         withContext(Dispatchers.IO) {
@@ -42,7 +58,15 @@ class TvShell {
         val jsch = JSch()
         val hostKeys = PinnedHostKey(target.hostKey)
         jsch.hostKeyRepository = hostKeys
-        if (auth is SshAuth.Key) jsch.addIdentity(auth.identity, null)
+        when (auth) {
+            is SshAuth.Key -> jsch.addIdentity(auth.identity, null)
+            is SshAuth.PrivateKey -> try {
+                jsch.addIdentity(USER_KEY, auth.key.toByteArray(Charsets.UTF_8), null, auth.passphrase?.toByteArray(Charsets.UTF_8))
+            } catch (e: JSchException) {
+                throw TvShellException.InvalidKey(e)
+            }
+            is SshAuth.Password -> Unit
+        }
         val session = jsch.getSession(target.user, target.host, target.port)
         ALGORITHMS.forEach { (key, value) -> session.setConfig(key, value) }
         when (auth) {
@@ -50,7 +74,7 @@ class TvShell {
                 session.setPassword(auth.password)
                 session.setConfig(PREFERRED_AUTHENTICATIONS, AUTH_PASSWORD)
             }
-            is SshAuth.Key -> session.setConfig(PREFERRED_AUTHENTICATIONS, AUTH_PUBLIC_KEY)
+            is SshAuth.Key, is SshAuth.PrivateKey -> session.setConfig(PREFERRED_AUTHENTICATIONS, AUTH_PUBLIC_KEY)
         }
         try {
             session.timeout = READ_TIMEOUT_MILLIS
@@ -73,12 +97,20 @@ class TvShell {
         private const val PREFERRED_AUTHENTICATIONS = "PreferredAuthentications"
         private const val AUTH_PASSWORD = "password,keyboard-interactive"
         private const val AUTH_PUBLIC_KEY = "publickey"
+        private const val USER_KEY = "user-key"
+
+        // Without this JSch would pick its Ed25519 classes for Java 15+, which do not run on Android.
+        init {
+            JSch.setConfig("ssh-ed25519", "com.jcraft.jsch.bc.SignatureEd25519")
+            JSch.setConfig("keypairgen.eddsa", "com.jcraft.jsch.bc.KeyPairGenEdDSA")
+            JSch.setConfig("keypairgen_fromprivate.eddsa", "com.jcraft.jsch.bc.KeyPairGenEdDSA")
+        }
 
         private val ALGORITHMS = mapOf(
             "StrictHostKeyChecking" to "yes",
             "kex" to "ecdh-sha2-nistp256,diffie-hellman-group14-sha256",
             "server_host_key" to SshKeyFormat.ALGORITHM,
-            "PubkeyAcceptedAlgorithms" to SshKeyFormat.ALGORITHM,
+            "PubkeyAcceptedAlgorithms" to "ssh-ed25519,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512,rsa-sha2-256",
             "cipher.c2s" to "aes128-ctr,aes256-ctr",
             "cipher.s2c" to "aes128-ctr,aes256-ctr",
             "mac.c2s" to "hmac-sha2-256",

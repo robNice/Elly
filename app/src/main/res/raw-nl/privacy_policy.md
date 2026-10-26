@@ -21,7 +21,7 @@ De volgende gegevens worden lokaal op je apparaat opgeslagen:
 - App-instellingen (schermen, vormgeving, app-toetsen, aanwijzer, trillen, demomodus)
 - kopieën van de afbeeldingen die je als schermachtergrond kiest; de app ontvangt alleen de afbeeldingen die je in de Android-fotokiezer selecteert
 - App-pictogrammen die van de tv zijn geladen
-- voor de programmagids: SSH-gebruiker, poort en vingerafdruk van de SSH-sleutel van de tv; het rootwachtwoord van de tv, versleuteld met een sleutel die in de Android Keystore ligt en niet uit het apparaat kan worden gelezen; de programmagegevens (zenderlijsten en programma's van de afgelopen 24 uur en tot 14 dagen vooruit) en zenderlogo's.
+- voor de programmagids: SSH-gebruiker, poort en vingerafdruk van de SSH-sleutel van de tv; het rootwachtwoord van de tv of de privé-SSH-sleutel die je hebt ingevoerd (met wachtwoordzin), versleuteld met een sleutel die in de Android Keystore ligt en niet uit het apparaat kan worden gelezen; de programmagegevens (zenderlijsten en programma's van de afgelopen 24 uur en tot 14 dagen vooruit) en zenderlogo's.
 
 Deze gegevens blijven uitsluitend op je apparaat, worden uitgesloten van Android-back-ups en worden verwijderd als de app wordt verwijderd.
 

@@ -6,7 +6,7 @@ import java.security.Signature
 import java.security.interfaces.ECPublicKey
 
 // SSH keys that older versions created per TV in the Android Keystore and stored on the TV.
-// They are only used once more, to remove them from the TV again.
+// Access set up back then still logs in with them until the user removes them from the TV.
 class SshKeyStore {
 
     private val keyStore: KeyStore by lazy { KeyStore.getInstance(PROVIDER).apply { load(null) } }

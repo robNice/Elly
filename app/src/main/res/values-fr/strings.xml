@@ -472,21 +472,35 @@
     <string name="settings_root_ssh_ok">La connexion SSH fonctionne.</string>
     <string name="settings_root_ssh_removing">Suppression de l\'accès SSH…</string>
     <string name="settings_root_ssh_setup_title">Configurer SSH</string>
-    <string name="settings_root_ssh_setup_message">Elly se connecte à la TV avec le mot de passe root et le conserve chiffré sur ce téléphone. Rien n\'est modifié sur la TV.</string>
+    <string name="settings_root_ssh_setup_message">Choisis comment la TV attend la connexion. Elly conserve le mot de passe ou la clé chiffrés sur ce téléphone et ne modifie rien sur la TV.</string>
     <string name="settings_root_ssh_user">Utilisateur</string>
     <string name="settings_root_ssh_port">Port</string>
     <string name="settings_root_ssh_password">Mot de passe</string>
     <string name="settings_root_ssh_setup_confirm">Configurer</string>
     <string name="settings_root_ssh_error_unreachable">Le serveur SSH de la TV est inaccessible. SSH est-il activé dans Homebrew Channel ?</string>
     <string name="settings_root_ssh_error_auth">Connexion refusée. Vérifie l\'utilisateur et le mot de passe.</string>
-    <string name="settings_root_ssh_error_key">La TV refuse la connexion. Configure à nouveau SSH avec le mot de passe root actuel.</string>
+    <string name="settings_root_ssh_error_key">La TV refuse la connexion. Désactive ce paramètre, puis configure-le à nouveau avec le mot de passe ou la clé actuels.</string>
     <string name="settings_root_ssh_error_host_key">La clé SSH de la TV a changé. Si la TV a de nouveau été rootée, désactive ce paramètre, puis configure à nouveau SSH.</string>
     <string name="settings_root_ssh_error_luna">Connexion réussie, mais les commandes système de la TV ne sont pas disponibles.</string>
     <string name="settings_root_ssh_error_unknown">Échec de la connexion SSH.</string>
     <string name="settings_root_ssh_remove_title">Supprimer l\'accès SSH ?</string>
-    <string name="settings_root_ssh_remove_message">Elly oublie l\'accès et le mot de passe enregistré. Le guide des programmes ne sera alors plus disponible.</string>
+    <string name="settings_root_ssh_remove_message">Elly oublie l\'accès et le mot de passe ou la clé enregistrés ; rien n\'est modifié sur la TV. Le guide des programmes ne sera alors plus disponible.</string>
     <string name="settings_root_ssh_remove">Supprimer</string>
-    <string name="settings_root_ssh_removed_locally">La TV était inaccessible, la clé d\'une ancienne version d\'Elly y est donc toujours enregistrée. Tant qu\'elle s\'y trouve, Homebrew Channel ne définit pas son mot de passe root par défaut. Si tu le souhaites, supprime de ~/.ssh/authorized_keys sur la TV la ligne se terminant par « elly-app ».</string>
+    <string name="settings_root_ssh_method_password">Mot de passe root</string>
+    <string name="settings_root_ssh_method_key">Clé SSH</string>
+    <string name="settings_root_ssh_method_hint">Si des clés SSH sont configurées sur la TV, Homebrew Channel ne définit plus de mot de passe root. Choisis alors « Clé SSH ».</string>
+    <string name="settings_root_ssh_key">Clé privée</string>
+    <string name="settings_root_ssh_key_file">Charger depuis un fichier</string>
+    <string name="settings_root_ssh_passphrase">Phrase secrète (si la clé en a une)</string>
+    <string name="settings_root_ssh_error_auth_key">Connexion refusée. Vérifie l\'utilisateur et la clé ; la clé publique correspondante doit être enregistrée sur la TV.</string>
+    <string name="settings_root_ssh_error_key_invalid">Elly ne peut pas lire cette clé. Sont prises en charge les clés Ed25519, ECDSA et RSA au format OpenSSH ou PEM.</string>
+    <string name="settings_root_ssh_error_passphrase">Cette clé est protégée. Saisis la bonne phrase secrète.</string>
+    <string name="settings_root_ssh_error_key_file">Le fichier n\'a pas pu être lu ou est trop volumineux pour une clé.</string>
+    <string name="settings_root_ssh_old_key_hint">Cet accès utilise une clé qu\'une ancienne version d\'Elly a enregistrée sur la TV. Tant qu\'elle s\'y trouve, Homebrew Channel ne définit pas son mot de passe root par défaut, et les applis qui se connectent avec le mot de passe ne peuvent pas atteindre la TV.</string>
+    <string name="settings_root_ssh_old_key_remove">Supprimer la clé</string>
+    <string name="settings_root_ssh_old_key_remove_title">Supprimer l\'ancienne clé d\'Elly ?</string>
+    <string name="settings_root_ssh_old_key_remove_message">Elly supprime sa propre clé de la TV et oublie cet accès. Les autres clés restent. S\'il ne reste aucune clé, Elly supprime aussi le fichier ~/.ssh/authorized_keys alors vide, afin que Homebrew Channel définisse à nouveau son mot de passe root par défaut après le prochain redémarrage de la TV. Configure ensuite à nouveau SSH.</string>
+    <string name="settings_root_ssh_old_key_removed">L\'ancienne clé d\'Elly a été supprimée. Redémarre la TV, puis configure à nouveau SSH.</string>
 
     <string name="custom_element_epg">Guide des programmes</string>
     <string name="epg_title_with_list">Guide des programmes · %1$s</string>
@@ -572,5 +586,5 @@
     <string name="help_edit_guide_title">Ajouter le guide des programmes</string>
     <string name="help_edit_guide_body">« + Élément » propose le guide des programmes dès que SSH est configuré pour la TV (voir Paramètres) ou que le mode démo est activé. Avant de l\'insérer, tu choisis la liste de favoris de la TV dont les chaînes seront affichées. Maintiens l\'élément pendant 2 secondes pour changer de liste.\nAu départ, le guide est aussi large que l\'écran et deux fois moins haut ; comme les autres éléments, tu peux le déplacer et le redimensionner. Plusieurs guides avec des listes différentes sont possibles. Sans accès SSH, l\'élément reste enregistré, mais n\'apparaît pas à l\'écran.</string>
     <string name="help_settings_root_title">Accès root et SSH</string>
-    <string name="help_settings_root_body">Le guide des programmes a besoin d\'un accès à la TV que LG n\'autorise qu\'avec root. Si ta TV est rootée (Homebrew Channel) et que son serveur SSH y est activé, active « Accès root et SSH configurés ? » dans l\'onglet « TV ».\nSaisis l\'utilisateur (généralement root), le port (généralement 22) et le mot de passe root. Elly l\'utilise à chaque connexion et le conserve chiffré sur le téléphone ; rien n\'est modifié sur la TV. « Vérifier » teste la connexion.\nLa désactivation oublie l\'accès et le mot de passe après confirmation. Le réglage s\'applique séparément à chaque TV.</string>
+    <string name="help_settings_root_body">Le guide des programmes a besoin d\'un accès à la TV que LG n\'autorise qu\'avec root. Si ta TV est rootée (Homebrew Channel) et que son serveur SSH y est activé, active « Accès root et SSH configurés ? » dans l\'onglet « TV ».\nSaisis l\'utilisateur (généralement root) et le port (généralement 22), puis choisis comment la TV attend la connexion : avec le mot de passe root ou, si des clés SSH sont configurées sur la TV, avec ta clé privée (collée ou chargée depuis un fichier). Elly la conserve chiffrée sur le téléphone et ne modifie rien sur la TV. « Vérifier » teste la connexion.\nLa désactivation oublie l\'accès après confirmation. Le réglage s\'applique séparément à chaque TV.</string>
 </resources>

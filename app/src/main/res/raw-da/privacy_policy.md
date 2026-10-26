@@ -21,7 +21,7 @@ Følgende data gemmes lokalt på din enhed:
 - Appindstillinger (skærme, design, app-knapper, markør, vibration, demotilstand)
 - kopier af de billeder, du vælger som skærmbaggrund; appen modtager kun de billeder, du vælger i Androids fotovælger
 - App-ikoner hentet fra tv'et
-- for programguiden: SSH-bruger, port og fingeraftrykket på tv'ets SSH-nøgle; tv'ets rootadgangskode, krypteret med en nøgle, der opbevares i Android Keystore og ikke kan læses ud af enheden; programguiden (kanallister og programmer fra de seneste 24 timer og op til 14 dage frem) og kanallogoer.
+- for programguiden: SSH-bruger, port og fingeraftrykket på tv'ets SSH-nøgle; tv'ets rootadgangskode eller den private SSH-nøgle, du har indtastet (med adgangsfrase), krypteret med en nøgle, der opbevares i Android Keystore og ikke kan læses ud af enheden; programguiden (kanallister og programmer fra de seneste 24 timer og op til 14 dage frem) og kanallogoer.
 
 Disse data forbliver udelukkende på din enhed, er udelukket fra Android-sikkerhedskopier og slettes, når appen afinstalleres.
 

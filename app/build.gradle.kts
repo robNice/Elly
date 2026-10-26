@@ -15,8 +15,8 @@ android {
         applicationId = "de.robnice.elly"
         minSdk = 28
         targetSdk = 36
-        versionCode = 10001037
-        versionName = "1.1.37"
+        versionCode = 10001038
+        versionName = "1.1.38"
     }
 
     androidResources {
@@ -60,6 +60,8 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            // Data files of Bouncy Castle algorithms Elly does not use; only its Ed25519 classes are needed.
+            excludes += "/org/bouncycastle/**"
         }
     }
 }
@@ -78,6 +80,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.jsch)
+    implementation(libs.bouncycastle.prov)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.okhttp)
 
