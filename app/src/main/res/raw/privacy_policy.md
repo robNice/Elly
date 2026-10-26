@@ -21,7 +21,7 @@ The following data is stored locally on your device:
 - App settings (screens, design, app keys, pointer, vibration, demo mode)
 - copies of the pictures you choose as screen backgrounds; the app only receives the pictures you select in the Android photo picker
 - App icons loaded from the TV
-- for the program guide: SSH user, port and the fingerprint of the TV's SSH key; the app's SSH key, which is kept in the Android Keystore and cannot be read out of the device; the program guide (channel lists and programs of the last 24 hours and up to 14 days ahead) and channel logos. The TV's root password is only used once to set up the access and is not stored.
+- for the program guide: SSH user, port and the fingerprint of the TV's SSH key; the TV's root password, encrypted with a key that is kept in the Android Keystore and cannot be read out of the device; the program guide (channel lists and programs of the last 24 hours and up to 14 days ahead) and channel logos.
 
 This data remains exclusively on your device, is excluded from Android backups and is deleted when the app is uninstalled.
 

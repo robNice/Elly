@@ -5,6 +5,7 @@ import de.robnice.elly.data.AppIconCache
 import de.robnice.elly.data.AppIconFiller
 import de.robnice.elly.data.BackgroundImageStore
 import de.robnice.elly.data.RootAccessRepository
+import de.robnice.elly.data.SecretCipher
 import de.robnice.elly.widget.WidgetController
 import de.robnice.elly.widget.WidgetStore
 import de.robnice.elly.data.AppSlotsRepository
@@ -77,7 +78,7 @@ class AppContainer(context: Context) {
 
     val pairingService = PairingService(pairingManifest, connector)
 
-    val rootAccessRepository = RootAccessRepository(appContext)
+    val rootAccessRepository = RootAccessRepository(appContext, SecretCipher())
 
     val rootAccessService = RootAccessService(TvShell(), SshKeyStore(), rootAccessRepository)
 

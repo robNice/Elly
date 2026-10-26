@@ -21,7 +21,7 @@ Folgende Daten werden lokal auf Ihrem Gerät gespeichert:
 - Einstellungen der App (Screens, Design, App-Tasten, Zeiger, Vibration, Demo-Modus)
 - Kopien der Bilder, die Sie als Screen-Hintergrund wählen; die App erhält nur die Bilder, die Sie in der Android-Fotoauswahl auswählen
 - vom Fernseher geladene App-Symbole
-- für die Programmübersicht: SSH-Benutzer, Port und Fingerabdruck des SSH-Schlüssels des Fernsehers; der SSH-Schlüssel der App, der im Android-Keystore liegt und nicht aus dem Gerät ausgelesen werden kann; die Programmdaten (Senderlisten und Sendungen der letzten 24 Stunden und bis zu 14 Tage im Voraus) und Senderlogos. Das Root-Passwort des Fernsehers wird nur einmal zum Einrichten des Zugangs verwendet und nicht gespeichert.
+- für die Programmübersicht: SSH-Benutzer, Port und Fingerabdruck des SSH-Schlüssels des Fernsehers; das Root-Passwort des Fernsehers, verschlüsselt mit einem Schlüssel, der im Android-Keystore liegt und nicht aus dem Gerät ausgelesen werden kann; die Programmdaten (Senderlisten und Sendungen der letzten 24 Stunden und bis zu 14 Tage im Voraus) und Senderlogos.
 
 Diese Daten verbleiben ausschließlich auf Ihrem Gerät, sind von der Android-Datensicherung ausgeschlossen und werden beim Deinstallieren der App gelöscht.
 

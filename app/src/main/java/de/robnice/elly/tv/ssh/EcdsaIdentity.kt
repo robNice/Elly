@@ -14,8 +14,6 @@ class EcdsaIdentity(
 
     val encodedPublicKey: String = SshKeyFormat.encode(blob)
 
-    fun authorizedKeysLine(comment: String): String = SshKeyFormat.authorizedKeysLine(blob, comment)
-
     override fun setPassphrase(passphrase: ByteArray?): Boolean = true
 
     override fun getPublicKeyBlob(): ByteArray = blob.copyOf()

@@ -13,16 +13,16 @@ import kotlinx.coroutines.flow.map
 
 private val Context.rootAccessDataStore: DataStore<Preferences> by preferencesDataStore(name = "root_access")
 
-class RootAccessRepository(context: Context) {
+class RootAccessRepository(context: Context, private val cipher: SecretCipher) {
 
     private val dataStore = context.applicationContext.rootAccessDataStore
 
-    fun access(tvId: String): Flow<RootAccess?> = dataStore.data.map { RootAccessJson.decode(it[key(tvId)]) }
+    fun access(tvId: String): Flow<RootAccess?> = dataStore.data.map { RootAccessJson.decode(it[key(tvId)], cipher::decrypt) }
 
     suspend fun get(tvId: String): RootAccess? = access(tvId).first()
 
     suspend fun save(tvId: String, access: RootAccess) {
-        dataStore.edit { it[key(tvId)] = RootAccessJson.encode(access) }
+        dataStore.edit { it[key(tvId)] = RootAccessJson.encode(access, cipher::encrypt) }
     }
 
     suspend fun remove(tvId: String) {
