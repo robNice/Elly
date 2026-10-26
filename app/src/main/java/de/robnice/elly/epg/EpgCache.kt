@@ -15,15 +15,19 @@ data class EpgCache(
         channelsUpdated = channelsUpdated + (listId to now)
     )
 
-    // Fetched programs replace what was known for those channels within [from, to) and every program they overlap;
-    // older programs outside stay, which is how the guide keeps the past the TV has already dropped.
+    // Fetched programs replace what was known for a channel only between its first and last fetched program
+    // (within [from, to)) and every program they overlap. Everything else stays: the TV drops programs that have
+    // ended and answers little or nothing right after it was switched on.
     fun merge(fetched: List<EpgProgram>, signalIds: Set<String>, from: Long, to: Long): EpgCache {
         val bySignal = fetched.groupBy { it.signalId }
         val merged = programs.toMutableMap()
         signalIds.forEach { signalId ->
             val incoming = bySignal[signalId].orEmpty()
+            if (incoming.isEmpty()) return@forEach
+            val coveredFrom = maxOf(from, incoming.minOf { it.start })
+            val coveredTo = minOf(to, incoming.maxOf { it.end })
             val kept = programs[signalId].orEmpty().filter { old ->
-                (old.end <= from || old.start >= to) && incoming.none { it.start < old.end && old.start < it.end }
+                (old.end <= coveredFrom || old.start >= coveredTo) && incoming.none { it.start < old.end && old.start < it.end }
             }
             val combined = (kept + incoming).distinctBy { it.start }.sortedBy { it.start }
             if (combined.isEmpty()) merged.remove(signalId) else merged[signalId] = combined

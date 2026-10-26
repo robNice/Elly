@@ -23,8 +23,20 @@ class EpgCacheTest {
             .merge(listOf(program("vox", -10), program("vox", -2), program("vox", 1)), setOf("vox"), now - 12 * hour, now + 2 * hour)
             .merge(listOf(program("vox", -1, title = "new"), program("vox", 0)), setOf("vox"), now - hour, now + 3 * hour)
 
-        assertEquals(listOf(-10L, -2L, -1L, 0L), cache.programs["vox"]!!.map { (it.start - now) / hour })
+        assertEquals(listOf(-10L, -2L, -1L, 0L, 1L), cache.programs["vox"]!!.map { (it.start - now) / hour })
         assertEquals("new", cache.programs["vox"]!![2].title)
+    }
+
+    @Test
+    fun mergeKeepsProgramsOutsideWhatTheAnswerCovers() {
+        val known = (-8L..8L).map { program("vox", it) } + (-8L..8L).map { program("ard", it) }
+        val cache = base
+            .merge(known, setOf("vox", "ard"), now - 8 * hour, now + 9 * hour)
+            .merge(listOf(program("vox", 0, title = "new"), program("vox", 1)), setOf("vox", "ard"), now - 8 * hour, now + 9 * hour)
+
+        assertEquals((-8L..8L).toList(), cache.programs["vox"]!!.map { (it.start - now) / hour })
+        assertEquals("new", cache.programs["vox"]!![8].title)
+        assertEquals(17, cache.programs["ard"]!!.size)
     }
 
     @Test
