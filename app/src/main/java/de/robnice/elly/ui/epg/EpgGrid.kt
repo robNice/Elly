@@ -6,6 +6,7 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -42,6 +43,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
@@ -97,6 +99,7 @@ fun EpgGrid(
     canRecord: Boolean,
     onAction: suspend (EpgAction) -> Unit,
     loadVideoInfo: suspend (EpgChannel) -> EpgVideoInfo?,
+    onAudioTracks: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val colors = epgColors(currentPaletteColors())
@@ -116,6 +119,7 @@ fun EpgGrid(
             onAction = onAction,
             // Picture details come from the received signal, so only running programs ask; the TV then checks the channel.
             loadVideoInfo = loadVideoInfo.takeIf { program.start <= System.currentTimeMillis() && program.end > System.currentTimeMillis() },
+            onAudioTracks = onAudioTracks.takeIf { channel.id == currentChannelId },
             onSwitch = {
                 selected = null
                 haptic()
@@ -241,6 +245,8 @@ fun EpgGrid(
                                             zone = zone,
                                             colors = colors,
                                             marks = marksOf(program).map { it.type },
+                                            onAir = row == activeIndex,
+                                            activeTint = activeRow,
                                             hiddenStart = with(density) { (left - x0).coerceAtLeast(0f).toDp() },
                                             modifier = Modifier
                                                 .offset(with(density) { x0.toDp() }, rowHeight * row)
@@ -430,19 +436,30 @@ private fun ProgramCell(
     zone: ZoneId,
     colors: EpgColors,
     marks: List<ReservationType>,
+    onAir: Boolean,
+    activeTint: Color,
     hiddenStart: Dp,
     modifier: Modifier
 ) {
     val formatter = remember { DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT) }
+    val running = program.start <= now && program.end > now
     val color = when {
         program.end <= now -> colors.past
-        program.start <= now -> colors.running
+        running && onAir -> activeTint.compositeOver(colors.running)
+        running -> colors.running
         else -> colors.program
+    }
+    val shape = RoundedCornerShape(dimensionResource(R.dimen.epg_cell_corner))
+    val frame = if (running && onAir) {
+        Modifier.border(dimensionResource(R.dimen.epg_on_air_border), colorResource(R.color.epg_now_line), shape)
+    } else {
+        Modifier
     }
     Box(
         modifier = modifier
             .padding(dimensionResource(R.dimen.epg_cell_gap))
-            .background(color, RoundedCornerShape(dimensionResource(R.dimen.epg_cell_corner)))
+            .background(color, shape)
+            .then(frame)
             .clipToBounds()
             .padding(start = hiddenStart)
             .padding(horizontal = dimensionResource(R.dimen.epg_cell_padding)),

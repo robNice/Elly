@@ -158,6 +158,41 @@ class EpgParserTest {
     }
 
     @Test
+    fun audioTracksFromLegacyBroadcast() {
+        // BR Fernsehen Süd HD, shortened.
+        val answer = JSONObject(
+            """
+            {"returnValue":true,"audioLanguageListCount":4,"currentAudioLanguageId":3,"audioLanguageList":[
+             {"audioLanguageId":0,"audioLanguageName":"German","translatedAudioLanguageName":"Deutsch","audioCodecType":"AUDIO_CODEC_MPEG","hearingImpaired":false,"visualImpaired":false},
+             {"audioLanguageId":1,"audioLanguageName":"German","translatedAudioLanguageName":"Deutsch","audioCodecType":"AUDIO_CODEC_MPEG","hearingImpaired":false,"visualImpaired":true,"mixType":true},
+             {"audioLanguageId":2,"audioLanguageName":"German","translatedAudioLanguageName":"","audioCodecType":"AUDIO_CODEC_MPEG","hearingImpaired":true,"visualImpaired":false},
+             {"audioLanguageId":3,"audioLanguageName":"German","translatedAudioLanguageName":"Deutsch","audioCodecType":"AUDIO_CODEC_AC3_DOLBY","hearingImpaired":false,"visualImpaired":false}]}
+            """
+        )
+
+        val tracks = EpgParser.audioTracks(answer)
+
+        assertEquals(3, tracks.currentId)
+        assertEquals(
+            listOf(
+                AudioTrack(0, "Deutsch", description = false, hearingImpaired = false, dolby = false),
+                AudioTrack(1, "Deutsch", description = true, hearingImpaired = false, dolby = false),
+                AudioTrack(2, "German", description = false, hearingImpaired = true, dolby = false),
+                AudioTrack(3, "Deutsch", description = false, hearingImpaired = false, dolby = true)
+            ),
+            tracks.tracks
+        )
+        assertEquals(AudioTracks(emptyList(), null), EpgParser.audioTracks(JSONObject("{\"returnValue\":false}")))
+    }
+
+    @Test
+    fun audioDescriptionSetting() {
+        assertEquals(true, EpgParser.audioDescriptionEnabled(JSONObject("{\"returnValue\":true,\"settings\":{\"audioDescription\":\"on\"}}")))
+        assertEquals(false, EpgParser.audioDescriptionEnabled(JSONObject("{\"returnValue\":true,\"settings\":{\"audioDescription\":\"off\"}}")))
+        assertNull(EpgParser.audioDescriptionEnabled(JSONObject("{\"returnValue\":false}")))
+    }
+
+    @Test
     fun localTimeUsesTvFormat() {
         val millis = Instant.parse("2026-10-25T19:15:00Z").toEpochMilli()
 

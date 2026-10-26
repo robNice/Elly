@@ -182,6 +182,32 @@ class RootedEpgSource(
         if (current != channel.id) null else EpgParser.videoInfo(luna.call(VIDEO_INFO))
     }
 
+    // The older broadcast service takes the channel on screen itself; the newer one needs the live TV app's playback ID.
+    override suspend fun audioTracks(): AudioTracks = rootAccess.withLuna(tv) { luna ->
+        val channelId = currentChannelId(luna)
+        val setting = luna.call(SYSTEM_SETTINGS, JSONObject().put("category", "sound").put("keys", JSONArray().put(AUDIO_DESCRIPTION)))
+        EpgParser.audioTracks(luna.call(AUDIO_TRACKS)).copy(
+            channelId = channelId,
+            descriptionEnabled = EpgParser.audioDescriptionEnabled(setting)
+        )
+    }
+
+    // The TV applies the id to whatever channel runs, so it is only sent while that is still the listed one.
+    override suspend fun selectAudioTrack(id: Int, channelId: String?): Boolean = rootAccess.withLuna(tv) { luna ->
+        if (channelId == null || currentChannelId(luna) != channelId) return@withLuna false
+        luna.call(AUDIO_TRACK_SELECT, JSONObject().put("broadcastId", "").put("audioLanguageId", id)).requireSuccess()
+        true
+    }
+
+    override suspend fun setAudioDescription(enabled: Boolean) = rootAccess.withLuna(tv) { luna ->
+        val settings = JSONObject().put(AUDIO_DESCRIPTION, if (enabled) "on" else "off")
+        luna.call(SYSTEM_SETTINGS_SET, JSONObject().put("category", "sound").put("settings", settings)).requireSuccess()
+        Unit
+    }
+
+    private suspend fun currentChannelId(luna: TvLuna): String? =
+        luna.call(CURRENT_CHANNEL).optString("channelId").takeIf { it.isNotBlank() }
+
     private fun schedule(type: String, channel: EpgChannel, program: EpgProgram): JSONObject = JSONObject()
         .put("scheduleType", type)
         .put("channelId", channel.id)
@@ -239,8 +265,12 @@ class RootedEpgSource(
         const val RECORDING_SOURCES = "luna://com.webos.service.legacybroadcast.dvr/record/getRecordingSourceList"
         const val CURRENT_CHANNEL = "luna://com.webos.service.apiadapter/tv/getCurrentChannel"
         const val VIDEO_INFO = "luna://com.webos.service.utp.broadcast/getCurrentVideoInfo"
+        const val AUDIO_TRACKS = "luna://com.webos.service.legacybroadcast.broadcast/getAudioLanguageList"
+        const val AUDIO_TRACK_SELECT = "luna://com.webos.service.legacybroadcast.broadcast/setAudioLanguage"
         const val RECORDING_STOP ="luna://com.webos.service.legacybroadcast.dvr/record/stopRecord"
         const val SYSTEM_SETTINGS = "luna://com.lge.settingsservice/getSystemSettings"
+        const val SYSTEM_SETTINGS_SET = "luna://com.webos.settingsservice/setSystemSettings"
+        const val AUDIO_DESCRIPTION = "audioDescription"
         const val LIST_DEVICES = "luna://com.webos.service.attachedstoragemanager/listDevices"
         const val SCHEDULE_WATCHING = "watching"
         const val SCHEDULE_RECORDING = "recording"

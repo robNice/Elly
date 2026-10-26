@@ -74,7 +74,8 @@ class RemoteControl(
                 it.connection.request(LAUNCH_APP, JSONObject().put("id", command.appId))
                 SendResult.SENT
             }
-            RemoteCommand.InputPicker, RemoteCommand.TextInput, RemoteCommand.Unsupported -> SendResult.UNSUPPORTED
+            RemoteCommand.InputPicker, RemoteCommand.AudioTrackPicker, RemoteCommand.TextInput, RemoteCommand.Unsupported ->
+                SendResult.UNSUPPORTED
         }
     }
 

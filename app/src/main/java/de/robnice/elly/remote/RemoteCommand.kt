@@ -6,6 +6,7 @@ sealed interface RemoteCommand {
     data class LaunchApp(val appId: String) : RemoteCommand
     data object Power : RemoteCommand
     data object InputPicker : RemoteCommand
+    data object AudioTrackPicker : RemoteCommand
     data object TextInput : RemoteCommand
     data object Unsupported : RemoteCommand
 }

@@ -48,6 +48,7 @@ enum class RemoteKey(val command: RemoteCommand) {
     GUIDE(RemoteCommand.Button("GUIDE")),
 
     INPUT(RemoteCommand.InputPicker),
+    AUDIO_TRACK(RemoteCommand.AudioTrackPicker),
     KEYBOARD(RemoteCommand.TextInput),
 
     RED(RemoteCommand.Button("RED")),

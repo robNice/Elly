@@ -75,6 +75,7 @@
     <string name="key_back">Tilbake</string>
     <string name="key_guide">Guide</string>
     <string name="key_input">Inngang</string>
+    <string name="key_audio_track">Lydspor</string>
     <string name="key_keyboard">Tastatur</string>
     <string name="text_input_hint">Tekst til TV-en</string>
     <string name="text_input_close">Lukk tastaturet</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">TV-en kunne ikke utføre kommandoen.</string>
     <string name="result_wake_sent">Påslagssignal sendt.</string>
     <string name="input_picker_title">Velg inngang</string>
+    <string name="audio_tracks_title">Velg lydspor</string>
+    <string name="audio_tracks_none">Fant ingen lydspor. De kan bare velges mens TV-en viser en TV-kanal.</string>
+    <string name="audio_tracks_no_root">Valg av lydspor krever root-tilgang. Sett den opp under Innstillinger → TV.</string>
+    <string name="audio_tracks_failed">TV-en svarte ikke.</string>
+    <string name="audio_tracks_channel_changed">Kanalen ble byttet. Velg lydsporet på nytt.</string>
+    <string name="audio_tracks_description_setting">Synstolking på alle kanaler</string>
+    <string name="audio_tracks_description_setting_hint">TV-en velger sporet med synstolking der det finnes et.</string>
+    <string name="audio_track_description">Synstolking</string>
+    <string name="audio_track_hearing_impaired">For hørselshemmede</string>
+    <string name="audio_track_unknown">Ukjent språk</string>
+    <string name="audio_track_selected">Aktiv</string>
     <string name="input_picker_empty">TV-en meldte ingen innganger.</string>
     <string name="input_picker_not_connected">Ingenting tilkoblet</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Demomodus</string>
     <string name="custom_screen_empty">Denne skjermen er tom. Legg til knapper i innstillingene under «Skjermer» med blyantknappen.</string>
     <string name="custom_editor_done">Ferdig</string>
+    <string name="custom_editor_guide">Veiledning</string>
+    <string name="custom_editor_guide_title">Slik gjør du</string>
+    <string name="custom_editor_guide_move">Dra et element for å flytte det. Drar du det til papirkurven, fjernes det.</string>
+    <string name="custom_editor_guide_resize">Trykk på et element for å velge det, og dra deretter i håndtaket i hjørnet for å endre størrelsen.</string>
+    <string name="custom_editor_guide_select">Tegn en ramme på et tomt område for å velge flere elementer. Flytt dem så samlet.</string>
+    <string name="custom_editor_guide_app">Hold inne en app-tast i 2 sekunder for å sette den opp.</string>
+    <string name="custom_editor_guide_hold">2 sek.</string>
     <string name="custom_editor_undo">Angre</string>
     <string name="custom_editor_reset">Tilbakestill skjerm</string>
     <string name="settings_background">Bakgrunn</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Fjell</string>
     <string name="background_forest">Skog</string>
     <string name="background_sea">Sjø</string>
-    <string name="custom_editor_hint">Dra for å flytte, dra til søppelkassen for å fjerne. Trykk for å velge, og dra deretter i hjørnehåndtaket for å endre størrelsen. Tegn en ramme på et tomt område for å velge flere elementer og flytte dem samlet. Hold en appknapp i 2 sekunder for å stille den inn.</string>
     <string name="custom_editor_add">Legg til element</string>
     <string name="custom_editor_no_space">Ingen ledig plass til dette elementet. Lag plass først.</string>
     <string name="custom_editor_remove">Fjern</string>

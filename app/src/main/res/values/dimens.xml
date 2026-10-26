@@ -43,6 +43,13 @@
     <dimen name="custom_editor_corner">12dp</dimen>
     <dimen name="custom_editor_handle_size">28dp</dimen>
     <dimen name="custom_editor_trash_size">48dp</dimen>
+    <dimen name="custom_guide_spacing">16dp</dimen>
+    <dimen name="custom_guide_art_width">104dp</dimen>
+    <dimen name="custom_guide_art_height">56dp</dimen>
+    <dimen name="custom_guide_key">40dp</dimen>
+    <dimen name="custom_guide_small_key">32dp</dimen>
+    <dimen name="custom_guide_app_width">88dp</dimen>
+    <dimen name="custom_guide_app_height">36dp</dimen>
     <dimen name="custom_editor_button_icon_size">18dp</dimen>
     <dimen name="custom_editor_button_icon_spacing">6dp</dimen>
     <dimen name="screen_action_size">34dp</dimen>
@@ -111,6 +118,7 @@
     <dimen name="epg_row_max_height">52dp</dimen>
     <dimen name="epg_cell_gap">1dp</dimen>
     <dimen name="epg_cell_corner">4dp</dimen>
+    <dimen name="epg_on_air_border">1.5dp</dimen>
     <dimen name="epg_cell_padding">6dp</dimen>
     <dimen name="epg_logo_padding">7dp</dimen>
     <dimen name="epg_loading_size">14dp</dimen>

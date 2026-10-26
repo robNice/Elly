@@ -75,6 +75,7 @@
     <string name="key_back">Atrás</string>
     <string name="key_guide">Guía</string>
     <string name="key_input">Entrada</string>
+    <string name="key_audio_track">Pista de audio</string>
     <string name="key_keyboard">Teclado</string>
     <string name="text_input_hint">Texto para la TV</string>
     <string name="text_input_close">Cerrar teclado</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">La TV no ha podido ejecutar el comando.</string>
     <string name="result_wake_sent">Señal de encendido enviada.</string>
     <string name="input_picker_title">Seleccionar entrada</string>
+    <string name="audio_tracks_title">Seleccionar pista de audio</string>
+    <string name="audio_tracks_none">No se han encontrado pistas de audio. Solo se pueden elegir mientras la TV muestra un canal de televisión.</string>
+    <string name="audio_tracks_no_root">Para elegir la pista de audio hace falta acceso root. Configúralo en Ajustes → TV.</string>
+    <string name="audio_tracks_failed">La TV no ha respondido.</string>
+    <string name="audio_tracks_channel_changed">Se ha cambiado de canal. Vuelve a elegir la pista de audio.</string>
+    <string name="audio_tracks_description_setting">Audiodescripción en todos los canales</string>
+    <string name="audio_tracks_description_setting_hint">La TV elige la pista con audiodescripción siempre que haya una.</string>
+    <string name="audio_track_description">Audiodescripción</string>
+    <string name="audio_track_hearing_impaired">Para personas con discapacidad auditiva</string>
+    <string name="audio_track_unknown">Idioma desconocido</string>
+    <string name="audio_track_selected">Activa</string>
     <string name="input_picker_empty">La TV no ha indicado ninguna entrada.</string>
     <string name="input_picker_not_connected">Nada conectado</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Modo demo</string>
     <string name="custom_screen_empty">Esta pantalla está vacía. Añade teclas en los ajustes, en «Pantallas», con el botón del lápiz.</string>
     <string name="custom_editor_done">Listo</string>
+    <string name="custom_editor_guide">Cómo se usa</string>
+    <string name="custom_editor_guide_title">Así funciona</string>
+    <string name="custom_editor_guide_move">Arrastra un elemento para moverlo. Si lo arrastras a la papelera, se quita.</string>
+    <string name="custom_editor_guide_resize">Toca un elemento para seleccionarlo y luego arrastra el tirador de la esquina para cambiar su tamaño.</string>
+    <string name="custom_editor_guide_select">Dibuja un marco en una zona libre para seleccionar varios elementos. Luego muévelos juntos.</string>
+    <string name="custom_editor_guide_app">Mantén pulsada una tecla de app 2 segundos para configurarla.</string>
+    <string name="custom_editor_guide_hold">2 s</string>
     <string name="custom_editor_undo">Deshacer</string>
     <string name="custom_editor_reset">Restablecer pantalla</string>
     <string name="settings_background">Fondo</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Montañas</string>
     <string name="background_forest">Bosque</string>
     <string name="background_sea">Mar</string>
-    <string name="custom_editor_hint">Arrastra para mover; arrastra a la papelera para quitar. Toca para seleccionar y arrastra el tirador de la esquina para cambiar el tamaño. Dibuja un marco en una zona vacía para seleccionar varios elementos y moverlos juntos. Mantén pulsada una tecla de app 2 segundos para configurarla.</string>
     <string name="custom_editor_add">Añadir elemento</string>
     <string name="custom_editor_no_space">No hay espacio libre para este elemento. Haz sitio primero.</string>
     <string name="custom_editor_remove">Quitar</string>

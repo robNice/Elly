@@ -67,6 +67,24 @@ sealed class EpgAction {
     class StopRecording(val channel: EpgChannel, val reservation: EpgReservation) : EpgAction()
 }
 
+// One sound track of the program on the TV; the language as the TV names it.
+data class AudioTrack(
+    val id: Int,
+    val language: String,
+    val description: Boolean,
+    val hearingImpaired: Boolean,
+    val dolby: Boolean
+)
+
+// Track ids only mean something for the channel they were read from.
+// descriptionEnabled is the TV's own setting; null when the TV does not report it.
+data class AudioTracks(
+    val tracks: List<AudioTrack>,
+    val currentId: Int?,
+    val channelId: String? = null,
+    val descriptionEnabled: Boolean? = null
+)
+
 // Thrown when the TV refuses a reminder or recording; reason is the TV's own text.
 class EpgActionException(val reason: String?) : Exception(reason)
 
@@ -87,6 +105,15 @@ interface EpgSource {
 
     // Null unless this channel is the one on the TV right now.
     suspend fun videoInfo(channel: EpgChannel): EpgVideoInfo?
+
+    // Tracks of whatever channel the TV shows; empty when it shows no TV channel.
+    suspend fun audioTracks(): AudioTracks
+
+    // False without switching when the TV no longer shows the channel the track belongs to.
+    suspend fun selectAudioTrack(id: Int, channelId: String?): Boolean
+
+    // Applies to every channel: the TV picks the described track wherever one exists.
+    suspend fun setAudioDescription(enabled: Boolean)
 
     suspend fun favoriteLists(): List<FavoriteList>
 

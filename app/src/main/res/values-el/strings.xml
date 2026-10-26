@@ -75,6 +75,7 @@
     <string name="key_back">Πίσω</string>
     <string name="key_guide">Οδηγός</string>
     <string name="key_input">Είσοδος</string>
+    <string name="key_audio_track">Ηχητικό κομμάτι</string>
     <string name="key_keyboard">Πληκτρολόγιο</string>
     <string name="text_input_hint">Κείμενο για την τηλεόραση</string>
     <string name="text_input_close">Κλείσιμο πληκτρολογίου</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">Η τηλεόραση δεν μπόρεσε να εκτελέσει την εντολή.</string>
     <string name="result_wake_sent">Το σήμα ενεργοποίησης στάλθηκε.</string>
     <string name="input_picker_title">Επιλογή εισόδου</string>
+    <string name="audio_tracks_title">Επιλογή ηχητικού κομματιού</string>
+    <string name="audio_tracks_none">Δεν βρέθηκαν ηχητικά κομμάτια. Μπορείς να τα επιλέξεις μόνο όταν η τηλεόραση δείχνει τηλεοπτικό κανάλι.</string>
+    <string name="audio_tracks_no_root">Η επιλογή ηχητικού κομματιού χρειάζεται πρόσβαση root. Ρύθμισέ την στις Ρυθμίσεις → Τηλεόραση.</string>
+    <string name="audio_tracks_failed">Η τηλεόραση δεν απάντησε.</string>
+    <string name="audio_tracks_channel_changed">Το κανάλι άλλαξε. Επίλεξε ξανά το ηχητικό κομμάτι.</string>
+    <string name="audio_tracks_description_setting">Ακουστική περιγραφή σε όλα τα κανάλια</string>
+    <string name="audio_tracks_description_setting_hint">Η τηλεόραση επιλέγει το κομμάτι με ακουστική περιγραφή όπου υπάρχει.</string>
+    <string name="audio_track_description">Ακουστική περιγραφή</string>
+    <string name="audio_track_hearing_impaired">Για άτομα με προβλήματα ακοής</string>
+    <string name="audio_track_unknown">Άγνωστη γλώσσα</string>
+    <string name="audio_track_selected">Ενεργό</string>
     <string name="input_picker_empty">Η τηλεόραση δεν ανέφερε καμία είσοδο.</string>
     <string name="input_picker_not_connected">Τίποτα συνδεδεμένο</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Λειτουργία επίδειξης</string>
     <string name="custom_screen_empty">Αυτή η οθόνη είναι άδεια. Πρόσθεσε πλήκτρα στις ρυθμίσεις, στο «Οθόνες», με το κουμπί του μολυβιού.</string>
     <string name="custom_editor_done">Τέλος</string>
+    <string name="custom_editor_guide">Οδηγίες</string>
+    <string name="custom_editor_guide_title">Πώς λειτουργεί</string>
+    <string name="custom_editor_guide_move">Σύρε ένα στοιχείο για να το μετακινήσεις. Αν το σύρεις στον κάδο, αφαιρείται.</string>
+    <string name="custom_editor_guide_resize">Πάτησε ένα στοιχείο για να το επιλέξεις και μετά σύρε τη λαβή στη γωνία για να αλλάξεις το μέγεθος.</string>
+    <string name="custom_editor_guide_select">Σχεδίασε ένα πλαίσιο σε κενό σημείο για να επιλέξεις πολλά στοιχεία. Μετά μετακίνησέ τα μαζί.</string>
+    <string name="custom_editor_guide_app">Κράτα πατημένο ένα πλήκτρο εφαρμογής για 2 δευτερόλεπτα για να το ρυθμίσεις.</string>
+    <string name="custom_editor_guide_hold">2 δευτ.</string>
     <string name="custom_editor_undo">Αναίρεση</string>
     <string name="custom_editor_reset">Επαναφορά οθόνης</string>
     <string name="settings_background">Φόντο</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Βουνά</string>
     <string name="background_forest">Δάσος</string>
     <string name="background_sea">Θάλασσα</string>
-    <string name="custom_editor_hint">Σύρε για μετακίνηση, σύρε στον κάδο για αφαίρεση. Πάτησε για επιλογή και σύρε τη λαβή στη γωνία για αλλαγή μεγέθους. Σχεδίασε ένα πλαίσιο σε κενή περιοχή για να επιλέξεις πολλά στοιχεία και να τα μετακινήσεις μαζί. Κράτησε πατημένο ένα πλήκτρο εφαρμογής για 2 δευτερόλεπτα για να το ρυθμίσεις.</string>
     <string name="custom_editor_add">Προσθήκη στοιχείου</string>
     <string name="custom_editor_no_space">Δεν υπάρχει ελεύθερος χώρος για αυτό το στοιχείο. Κάνε πρώτα λίγο χώρο.</string>
     <string name="custom_editor_remove">Αφαίρεση</string>

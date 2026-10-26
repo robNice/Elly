@@ -75,6 +75,7 @@
     <string name="key_back">Til baka</string>
     <string name="key_guide">Dagskrá</string>
     <string name="key_input">Inntak</string>
+    <string name="key_audio_track">Hljóðrás</string>
     <string name="key_keyboard">Lyklaborð</string>
     <string name="text_input_hint">Texti fyrir sjónvarpið</string>
     <string name="text_input_close">Loka lyklaborði</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">Sjónvarpið gat ekki framkvæmt skipunina.</string>
     <string name="result_wake_sent">Kveikimerki sent.</string>
     <string name="input_picker_title">Veldu inntak</string>
+    <string name="audio_tracks_title">Veldu hljóðrás</string>
+    <string name="audio_tracks_none">Engar hljóðrásir fundust. Aðeins er hægt að velja þær meðan sjónvarpið sýnir sjónvarpsstöð.</string>
+    <string name="audio_tracks_no_root">Val á hljóðrás krefst rótaraðgangs. Settu hann upp í Stillingar → Sjónvarp.</string>
+    <string name="audio_tracks_failed">Sjónvarpið svaraði ekki.</string>
+    <string name="audio_tracks_channel_changed">Skipt var um stöð. Veldu hljóðrásina aftur.</string>
+    <string name="audio_tracks_description_setting">Sjónlýsing á öllum stöðvum</string>
+    <string name="audio_tracks_description_setting_hint">Sjónvarpið velur rásina með sjónlýsingu þar sem hún er til.</string>
+    <string name="audio_track_description">Sjónlýsing</string>
+    <string name="audio_track_hearing_impaired">Fyrir heyrnarskerta</string>
+    <string name="audio_track_unknown">Óþekkt tungumál</string>
+    <string name="audio_track_selected">Virk</string>
     <string name="input_picker_empty">Sjónvarpið gaf ekki upp nein inntök.</string>
     <string name="input_picker_not_connected">Ekkert tengt</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Prufuhamur</string>
     <string name="custom_screen_empty">Þessi síða er tóm. Bættu við hnöppum í stillingunum undir „Síður“ með blýantinum.</string>
     <string name="custom_editor_done">Lokið</string>
+    <string name="custom_editor_guide">Leiðbeiningar</string>
+    <string name="custom_editor_guide_title">Svona virkar þetta</string>
+    <string name="custom_editor_guide_move">Dragðu einingu til að færa hana. Ef þú dregur hana í ruslafötuna er hún fjarlægð.</string>
+    <string name="custom_editor_guide_resize">Ýttu á einingu til að velja hana og dragðu svo handfangið í horninu til að breyta stærðinni.</string>
+    <string name="custom_editor_guide_select">Teiknaðu ramma á autt svæði til að velja margar einingar. Færðu þær svo saman.</string>
+    <string name="custom_editor_guide_app">Haltu forritshnappi inni í 2 sekúndur til að stilla hann.</string>
+    <string name="custom_editor_guide_hold">2 sek.</string>
     <string name="custom_editor_undo">Afturkalla</string>
     <string name="custom_editor_reset">Endurstilla síðu</string>
     <string name="settings_background">Bakgrunnur</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Fjöll</string>
     <string name="background_forest">Skógur</string>
     <string name="background_sea">Sjór</string>
-    <string name="custom_editor_hint">Dragðu til að færa, dragðu í ruslafötuna til að fjarlægja. Ýttu til að velja og dragðu svo hornhaldið til að breyta stærð. Dragðu ramma á auðu svæði til að velja margar einingar og færa þær saman. Haltu app-hnappi inni í 2 sekúndur til að stilla hann.</string>
     <string name="custom_editor_add">Bæta við einingu</string>
     <string name="custom_editor_no_space">Ekkert laust pláss fyrir þessa einingu. Búðu fyrst til pláss.</string>
     <string name="custom_editor_remove">Fjarlægja</string>

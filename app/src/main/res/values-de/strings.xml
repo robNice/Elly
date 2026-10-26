@@ -110,6 +110,7 @@
     <string name="key_back">Zurück</string>
     <string name="key_guide">Programmführer</string>
     <string name="key_input">Eingang</string>
+    <string name="key_audio_track">Tonspur</string>
     <string name="key_keyboard">Tastatur</string>
     <string name="text_input_hint">Text für den TV</string>
     <string name="text_input_close">Tastatur schließen</string>
@@ -134,6 +135,17 @@
     <string name="result_failed">Der Fernseher konnte den Befehl nicht ausführen.</string>
     <string name="result_wake_sent">Einschaltsignal gesendet.</string>
     <string name="input_picker_title">Eingang wählen</string>
+    <string name="audio_tracks_title">Tonspur wählen</string>
+    <string name="audio_tracks_none">Keine Tonspuren gefunden. Wählen lassen sie sich nur, während der Fernseher ein Fernsehprogramm zeigt.</string>
+    <string name="audio_tracks_no_root">Die Tonspur-Auswahl braucht den Root-Zugang. Richte ihn unter Einstellungen → TV ein.</string>
+    <string name="audio_tracks_failed">Der Fernseher hat nicht geantwortet.</string>
+    <string name="audio_tracks_channel_changed">Der Sender wurde gewechselt. Bitte wähle die Tonspur neu.</string>
+    <string name="audio_tracks_description_setting">Audiobeschreibung bei allen Sendern</string>
+    <string name="audio_tracks_description_setting_hint">Der Fernseher wählt die Tonspur mit Audiobeschreibung, wo es eine gibt.</string>
+    <string name="audio_track_description">Audiobeschreibung</string>
+    <string name="audio_track_hearing_impaired">Für Hörgeschädigte</string>
+    <string name="audio_track_unknown">Unbekannte Sprache</string>
+    <string name="audio_track_selected">Aktiv</string>
     <string name="input_picker_empty">Der Fernseher hat keine Eingänge gemeldet.</string>
     <string name="input_picker_not_connected">Nichts angeschlossen</string>
 
@@ -210,6 +222,13 @@
     <string name="status_demo">Demo-Modus</string>
     <string name="custom_screen_empty">Dieser Screen ist leer. Tasten fügst du in den Einstellungen unter „Screens“ über den Stift hinzu.</string>
     <string name="custom_editor_done">Fertig</string>
+    <string name="custom_editor_guide">Anleitung</string>
+    <string name="custom_editor_guide_title">So geht’s</string>
+    <string name="custom_editor_guide_move">Element ziehen, um es zu verschieben. Auf den Papierkorb gezogen, wird es entfernt.</string>
+    <string name="custom_editor_guide_resize">Element antippen, um es auszuwählen, dann den Griff an der Ecke ziehen, um die Größe zu ändern.</string>
+    <string name="custom_editor_guide_select">Auf freier Fläche einen Rahmen ziehen, um mehrere Elemente auszuwählen. Danach lassen sie sich gemeinsam verschieben.</string>
+    <string name="custom_editor_guide_app">App-Tasten 2 Sekunden halten, um sie einzurichten.</string>
+    <string name="custom_editor_guide_hold">2 Sek.</string>
     <string name="custom_editor_undo">Rückgängig</string>
     <string name="custom_editor_reset">Screen zurücksetzen</string>
     <string name="settings_background">Hintergrund</string>
@@ -225,7 +244,6 @@
     <string name="background_mountains">Berge</string>
     <string name="background_forest">Wald</string>
     <string name="background_sea">Meer</string>
-    <string name="custom_editor_hint">Ziehen zum Verschieben, auf den Papierkorb ziehen zum Entfernen. Antippen zum Auswählen, dann den Griff an der Ecke ziehen für die Größe. Auf freier Fläche einen Rahmen ziehen, um mehrere Elemente auszuwählen und gemeinsam zu verschieben. App-Tasten 2 Sekunden halten zum Einrichten.</string>
     <string name="custom_editor_add">Element hinzufügen</string>
     <string name="custom_editor_no_space">Kein freier Platz für dieses Element. Schaffe zuerst Platz.</string>
     <string name="custom_editor_remove">Entfernen</string>

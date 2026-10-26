@@ -97,6 +97,16 @@ class EpgRepository(
         null
     }
 
+    // Null without root access; throws when the TV cannot be asked.
+    suspend fun audioTracks(): AudioTracks? = access.source()?.audioTracks()
+
+    suspend fun selectAudioTrack(id: Int, channelId: String?): Boolean =
+        access.source()?.selectAudioTrack(id, channelId) ?: false
+
+    suspend fun setAudioDescription(enabled: Boolean) {
+        access.source()?.setAudioDescription(enabled)
+    }
+
     // Plans or removes a reminder or recording on the TV and reloads the plan afterwards.
     suspend fun perform(action: EpgAction) {
         val source = access.source() ?: throw EpgActionException(null)

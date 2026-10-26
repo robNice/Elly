@@ -64,7 +64,8 @@ class EpgGuides(
     val reservations: StateFlow<List<EpgReservation>>,
     val canRecord: StateFlow<Boolean>,
     val perform: suspend (EpgAction) -> Unit,
-    val videoInfo: suspend (EpgChannel) -> EpgVideoInfo?
+    val videoInfo: suspend (EpgChannel) -> EpgVideoInfo?,
+    val openAudioTracks: () -> Unit
 )
 
 val LocalEpgGuides = compositionLocalOf<EpgGuides?> { null }
@@ -91,6 +92,7 @@ fun EpgElement(config: EpgConfig?, editing: Boolean, modifier: Modifier = Modifi
                 canRecord = canRecord,
                 onAction = guides.perform,
                 loadVideoInfo = guides.videoInfo,
+                onAudioTracks = guides.openAudioTracks,
                 modifier = modifier
             )
             return

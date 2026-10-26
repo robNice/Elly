@@ -74,6 +74,7 @@
     <string name="key_back">Tillbaka</string>
     <string name="key_guide">Guide</string>
     <string name="key_input">Ingång</string>
+    <string name="key_audio_track">Ljudspår</string>
     <string name="key_keyboard">Tangentbord</string>
     <string name="text_input_hint">Text till tv:n</string>
     <string name="text_input_close">Stäng tangentbordet</string>
@@ -98,6 +99,17 @@
     <string name="result_failed">Tv:n kunde inte utföra kommandot.</string>
     <string name="result_wake_sent">Startsignal skickad.</string>
     <string name="input_picker_title">Välj ingång</string>
+    <string name="audio_tracks_title">Välj ljudspår</string>
+    <string name="audio_tracks_none">Inga ljudspår hittades. De kan bara väljas medan tv:n visar en tv-kanal.</string>
+    <string name="audio_tracks_no_root">Val av ljudspår kräver root-åtkomst. Ställ in den under Inställningar → Tv.</string>
+    <string name="audio_tracks_failed">Tv:n svarade inte.</string>
+    <string name="audio_tracks_channel_changed">Kanalen byttes. Välj ljudspåret igen.</string>
+    <string name="audio_tracks_description_setting">Syntolkning på alla kanaler</string>
+    <string name="audio_tracks_description_setting_hint">Tv:n väljer spåret med syntolkning där det finns ett.</string>
+    <string name="audio_track_description">Syntolkning</string>
+    <string name="audio_track_hearing_impaired">För hörselskadade</string>
+    <string name="audio_track_unknown">Okänt språk</string>
+    <string name="audio_track_selected">Aktiv</string>
     <string name="input_picker_empty">Tv:n rapporterade inga ingångar.</string>
     <string name="input_picker_not_connected">Inget anslutet</string>
 
@@ -174,6 +186,13 @@
     <string name="status_demo">Demoläge</string>
     <string name="custom_screen_empty">Den här skärmen är tom. Lägg till knappar i inställningarna under ”Skärmar” med pennknappen.</string>
     <string name="custom_editor_done">Klar</string>
+    <string name="custom_editor_guide">Instruktioner</string>
+    <string name="custom_editor_guide_title">Så fungerar det</string>
+    <string name="custom_editor_guide_move">Dra ett element för att flytta det. Drar du det till papperskorgen tas det bort.</string>
+    <string name="custom_editor_guide_resize">Tryck på ett element för att markera det och dra sedan i handtaget i hörnet för att ändra storlek.</string>
+    <string name="custom_editor_guide_select">Rita en ram på en tom yta för att markera flera element. Flytta dem sedan tillsammans.</string>
+    <string name="custom_editor_guide_app">Håll in en appknapp i 2 sekunder för att ställa in den.</string>
+    <string name="custom_editor_guide_hold">2 sek.</string>
     <string name="custom_editor_undo">Ångra</string>
     <string name="custom_editor_reset">Återställ skärmen</string>
     <string name="settings_background">Bakgrund</string>
@@ -189,7 +208,6 @@
     <string name="background_mountains">Berg</string>
     <string name="background_forest">Skog</string>
     <string name="background_sea">Hav</string>
-    <string name="custom_editor_hint">Dra för att flytta, dra till papperskorgen för att ta bort. Tryck för att markera och dra sedan i hörnhandtaget för att ändra storlek. Rita en ram på en tom yta för att markera flera element och flytta dem tillsammans. Håll en appknapp i 2 sekunder för att ställa in den.</string>
     <string name="custom_editor_add">Lägg till element</string>
     <string name="custom_editor_no_space">Det finns ingen ledig plats för elementet. Gör plats först.</string>
     <string name="custom_editor_remove">Ta bort</string>

@@ -75,6 +75,7 @@
     <string name="key_back">Indietro</string>
     <string name="key_guide">Guida</string>
     <string name="key_input">Ingresso</string>
+    <string name="key_audio_track">Traccia audio</string>
     <string name="key_keyboard">Tastiera</string>
     <string name="text_input_hint">Testo per la TV</string>
     <string name="text_input_close">Chiudi tastiera</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">La TV non è riuscita a eseguire il comando.</string>
     <string name="result_wake_sent">Segnale di accensione inviato.</string>
     <string name="input_picker_title">Seleziona ingresso</string>
+    <string name="audio_tracks_title">Seleziona traccia audio</string>
+    <string name="audio_tracks_none">Nessuna traccia audio trovata. Puoi sceglierle solo mentre la TV mostra un canale TV.</string>
+    <string name="audio_tracks_no_root">Per scegliere la traccia audio serve l\'accesso root. Configuralo in Impostazioni → TV.</string>
+    <string name="audio_tracks_failed">La TV non ha risposto.</string>
+    <string name="audio_tracks_channel_changed">Il canale è cambiato. Scegli di nuovo la traccia audio.</string>
+    <string name="audio_tracks_description_setting">Audiodescrizione su tutti i canali</string>
+    <string name="audio_tracks_description_setting_hint">La TV sceglie la traccia con audiodescrizione ovunque ce ne sia una.</string>
+    <string name="audio_track_description">Audiodescrizione</string>
+    <string name="audio_track_hearing_impaired">Per non udenti</string>
+    <string name="audio_track_unknown">Lingua sconosciuta</string>
+    <string name="audio_track_selected">Attiva</string>
     <string name="input_picker_empty">La TV non ha segnalato nessun ingresso.</string>
     <string name="input_picker_not_connected">Niente collegato</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Modalità demo</string>
     <string name="custom_screen_empty">Questa schermata è vuota. Aggiungi dei tasti nelle impostazioni, in «Schermate», con il pulsante della matita.</string>
     <string name="custom_editor_done">Fatto</string>
+    <string name="custom_editor_guide">Istruzioni</string>
+    <string name="custom_editor_guide_title">Come funziona</string>
+    <string name="custom_editor_guide_move">Trascina un elemento per spostarlo. Se lo trascini nel cestino, viene rimosso.</string>
+    <string name="custom_editor_guide_resize">Tocca un elemento per selezionarlo, poi trascina la maniglia nell\'angolo per ridimensionarlo.</string>
+    <string name="custom_editor_guide_select">Disegna un riquadro su un\'area libera per selezionare più elementi. Poi spostali insieme.</string>
+    <string name="custom_editor_guide_app">Tieni premuto un tasto app per 2 secondi per configurarlo.</string>
+    <string name="custom_editor_guide_hold">2 s</string>
     <string name="custom_editor_undo">Annulla</string>
     <string name="custom_editor_reset">Ripristina schermata</string>
     <string name="settings_background">Sfondo</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Montagne</string>
     <string name="background_forest">Foresta</string>
     <string name="background_sea">Mare</string>
-    <string name="custom_editor_hint">Trascina per spostare, trascina sul cestino per rimuovere. Tocca per selezionare, poi trascina la maniglia nell\'angolo per ridimensionare. Disegna un riquadro in un\'area vuota per selezionare più elementi e spostarli insieme. Tieni premuto un tasto app per 2 secondi per configurarlo.</string>
     <string name="custom_editor_add">Aggiungi elemento</string>
     <string name="custom_editor_no_space">Non c\'è spazio libero per questo elemento. Fai prima un po\' di posto.</string>
     <string name="custom_editor_remove">Rimuovi</string>

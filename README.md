@@ -35,6 +35,7 @@ Elly turns your Android phone into a remote control for LG TVs running webOS. It
    - [4.5 Screen 4](#45-screen-4)
    - [4.6 Text input](#46-text-input)
    - [4.7 Program guide](#47-program-guide)
+   - [4.8 Audio track](#48-audio-track)
 5. [Pointer](#5-pointer)
    - [5.1 Motion mode](#51-motion-mode)
    - [5.2 Touchpad mode](#52-touchpad-mode)
@@ -64,10 +65,12 @@ Elly turns your Android phone into a remote control for LG TVs running webOS. It
 - Seven home screen widgets, including “Elly remote” with freely selectable keys and its own look.
 - Status light in the top bar that shows whether the TV can be reached.
 - Program guide like the TV's for rooted LG TVs: channels of your favorite list, switching, program details, reminders and recordings.
+- Choose the audio track on your phone (rooted TVs), e.g. audio description or another language.
+- Back up screens and appearance to files, restore them and pass them on.
 - Quick start on first launch and an extensive help with search – explained by Elly.
 - Find TVs on the network, pair them, switch them on via Wake-on-LAN.
 - Demo mode for trying everything without an LG TV.
-- Available in English and German.
+- Available in 20 languages.
 
 ## 2 Requirements
 
@@ -178,9 +181,18 @@ When an input field is active on the TV (e.g. a search), a text field with your 
 With a **rooted** LG TV a screen can show the program guide, laid out like the guide on the TV. It needs the Homebrew Channel with its SSH server switched on; the access is set up under [Settings → TV](#9-settings). In demo mode Elly shows invented channels and programs.
 
 - **Adding:** in the [editor](#61-editor) under “+ Element” → “Program guide”, then choose the TV favorite list. The element starts as wide as the screen and half as high and can be moved and resized like any other; holding it changes the list. Several guides with different lists are possible.
-- **Display:** times in half-hour steps along the top with the date kept in view and a line at each new day, channel logos on the left, programs on the right. The orange line marks the current time, the row of the channel on the TV is highlighted in orange, “Now” jumps back. Scroll in any direction, back up to 24 hours and ahead as far as the TV has data (at most 14 days).
-- **Use:** tap a channel to switch to it. Tap a program for its details (channel, time, progress, marks such as HD or subtitles, description) with **Remind me** and **Record** – the TV handles both itself, even when the phone is off. Running recordings can be stopped. Planned reminders show a bell, recordings a red dot.
+- **Display:** times in half-hour steps along the top with the date kept in view and a line at each new day, channel logos on the left, programs on the right. The orange line marks the current time, the row of the channel on the TV is highlighted in orange and its running program framed in orange, “Now” jumps back. Scroll in any direction, back up to 24 hours and ahead as far as the TV has data (at most 14 days).
+- **Use:** tap a channel to switch to it. Tap a program for its details (channel, time, progress, marks such as HD or subtitles, description) with **Remind me** and **Record** – the TV handles both itself, even when the phone is off. Running recordings can be stopped. For the running program of the channel on the TV, **Select audio track** opens the [audio track list](#48-audio-track). Planned reminders show a bell, recordings a red dot.
 - **Data:** Elly reads the guide from the TV over SSH, keeps it on the phone and refreshes it while the remote is open. Swiping sideways in the guide never changes the screen; swipe across the dots at the bottom instead.
+
+### 4.8 Audio track
+
+<img src="docs/en/audio_tracks.png" width="270" alt="Select audio track window">
+
+With a **rooted** TV (same access as for the [program guide](#47-program-guide)) you can place the **Audio track** key on a screen in the [editor](#61-editor). It opens the audio tracks of the running channel with their language and marks such as audio description, for the hard of hearing or Dolby; a checkmark shows the active one. Tapping a track switches the TV over and the window stays open. The same window also opens from the program guide's info window.
+
+- **Audio description on all channels** switches the TV's own setting: when it is on, the TV picks the described track for every program that has one, even after changing channels.
+- Audio tracks are only available while the TV shows a TV channel. If someone changes the channel in between, Elly switches nothing and shows the new channel's tracks.
 
 ## 5 Pointer
 
@@ -230,9 +242,13 @@ The selection and layouts are saved per TV; demo mode has its own.
 
 ### 6.1 Editor
 
-<img src="docs/en/editor.png" width="270" alt="Editor with the direction pad selected">
+<p>
+  <img src="docs/en/editor.png" width="270" alt="Editor with the direction pad selected">
+  &nbsp;
+  <img src="docs/en/editor_guide.png" width="270" alt="Editor guide">
+</p>
 
-The editor shows the screen's grid (24 × 48 cells) in the proportions of the remote screen.
+The editor shows the screen's grid (24 × 48 cells) in the proportions of the remote screen. **How to** at the top left explains how it works, with pictures.
 
 - **Element** adds a single key, a rocker, the direction pad, an app key or a [button group](#62-button-groups); it lands on the first free spot.
 - **Drag** moves an element, **dragging it onto the bin** removes it.
@@ -268,6 +284,7 @@ On the **Appearance** tab of the settings:
 - **Background** – applies to all screens: None, Auto (matching the palette), your own image from the photo picker (scaled proportionally and cropped) or one of the motifs Hills, Ocean, Meadow, Sky, Aurora, Graphite, Mountains, Forest and Sea.
 - **Rounding** – two sliders with a corner preview: “Keys” applies to keys, rockers and app keys, “Directional pad” to the ring and the OK key.
 - **Long summer evenings** – low light from the top left; the keys cast long, soft shadows to the bottom right and the background brightens from that corner (Android 12 and later).
+- **Back up and restore** – **Back up screens** saves the order, shown screens and layouts of the active TV, **Back up appearance** the color palette, background (including your own image), rounding and light effect, each as a file of its own. **Restore from file** recognizes the kind itself and, after asking, replaces only that part. This way you can pass on your screens without changing the other person's look.
 
 ## 8 Widgets
 
@@ -294,8 +311,8 @@ Elly comes with seven home screen widgets:
 
 The gear in the top bar opens the settings. They have three tabs, which you can also swipe between; Elly remembers the last one.
 
-- **TV** – paired TVs, search, IP address and **demo mode**: it simulates a connected TV (“Demo TV”, yellow status light), all screens can be used without an LG TV and no commands are sent. See [connecting a TV](#32-connecting-a-tv). For rooted TVs, **Root access and SSH set up?** sets up the access for the [program guide](#47-program-guide): user, port and the root password once; Elly stores its own key on the TV and does not save the password.
-- **Appearance** – screens, color palette, background, rounding, light effect. See [editing screens](#6-editing-screens) and [appearance](#7-appearance).
+- **TV** – paired TVs, search, IP address and **demo mode**: it simulates a connected TV (“Demo TV”, yellow status light), all screens can be used without an LG TV and no commands are sent. See [connecting a TV](#32-connecting-a-tv). For rooted TVs, **Root access and SSH set up?** sets up the access for the [program guide](#47-program-guide) and the [audio track](#48-audio-track): user, port and the login the TV expects – the **root password** or, if SSH keys are set up on the TV, your **SSH key** (pasted or loaded from a file). Elly keeps it encrypted on the phone and changes nothing on the TV.
+- **Appearance** – screens, color palette, background, rounding, light effect, back up and restore. See [editing screens](#6-editing-screens) and [appearance](#7-appearance).
 - **Controls** – pointer (see [pointer](#5-pointer)) and **vibrate on key press**.
 
 The bottom edge always shows the version number and the links **Licenses** (all open source components used) and **Privacy**. Elly at the top right opens the help.

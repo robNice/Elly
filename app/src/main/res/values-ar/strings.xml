@@ -74,6 +74,7 @@
     <string name="key_back">رجوع</string>
     <string name="key_guide">دليل البرامج</string>
     <string name="key_input">مصدر الإدخال</string>
+    <string name="key_audio_track">المسار الصوتي</string>
     <string name="key_keyboard">لوحة المفاتيح</string>
     <string name="text_input_hint">نص للتلفاز</string>
     <string name="text_input_close">إغلاق لوحة المفاتيح</string>
@@ -98,6 +99,17 @@
     <string name="result_failed">تعذّر على التلفاز تنفيذ الأمر.</string>
     <string name="result_wake_sent">أُرسلت إشارة التشغيل.</string>
     <string name="input_picker_title">اختيار مصدر الإدخال</string>
+    <string name="audio_tracks_title">اختيار المسار الصوتي</string>
+    <string name="audio_tracks_none">لم يُعثر على مسارات صوتية. لا يمكن اختيارها إلا أثناء عرض التلفاز لقناة تلفزيونية.</string>
+    <string name="audio_tracks_no_root">يتطلب اختيار المسار الصوتي الوصول بصلاحيات الجذر. فعّله في «الإعدادات» ضمن تبويب «التلفاز».</string>
+    <string name="audio_tracks_failed">لم يستجب التلفاز.</string>
+    <string name="audio_tracks_channel_changed">تم تغيير القناة. اختر المسار الصوتي من جديد.</string>
+    <string name="audio_tracks_description_setting">الوصف الصوتي على جميع القنوات</string>
+    <string name="audio_tracks_description_setting_hint">يختار التلفاز المسار المزوّد بالوصف الصوتي حيثما وُجد.</string>
+    <string name="audio_track_description">الوصف الصوتي</string>
+    <string name="audio_track_hearing_impaired">لضعاف السمع</string>
+    <string name="audio_track_unknown">لغة غير معروفة</string>
+    <string name="audio_track_selected">نشط</string>
     <string name="input_picker_empty">لم يُبلغ التلفاز عن أي مصادر إدخال.</string>
     <string name="input_picker_not_connected">لا شيء متصل</string>
 
@@ -174,6 +186,13 @@
     <string name="status_demo">الوضع التجريبي</string>
     <string name="custom_screen_empty">هذه الشاشة فارغة. أضِف أزرارًا في الإعدادات ضمن «الشاشات» باستخدام زر القلم.</string>
     <string name="custom_editor_done">تم</string>
+    <string name="custom_editor_guide">طريقة الاستخدام</string>
+    <string name="custom_editor_guide_title">هكذا تعمل</string>
+    <string name="custom_editor_guide_move">اسحب العنصر لتحريكه. إذا سحبته إلى سلة المهملات فسيُزال.</string>
+    <string name="custom_editor_guide_resize">انقر على العنصر لتحديده، ثم اسحب المقبض في الزاوية لتغيير حجمه.</string>
+    <string name="custom_editor_guide_select">ارسم إطارًا على مساحة فارغة لتحديد عدة عناصر، ثم حرّكها معًا.</string>
+    <string name="custom_editor_guide_app">اضغط مطولًا على زر التطبيق لمدة ثانيتين لإعداده.</string>
+    <string name="custom_editor_guide_hold">ثانيتان</string>
     <string name="custom_editor_undo">تراجع</string>
     <string name="custom_editor_reset">إعادة ضبط الشاشة</string>
     <string name="settings_background">الخلفية</string>
@@ -189,7 +208,6 @@
     <string name="background_mountains">جبال</string>
     <string name="background_forest">غابة</string>
     <string name="background_sea">بحر</string>
-    <string name="custom_editor_hint">اسحب للتحريك، واسحب إلى سلة المهملات للإزالة. انقر للتحديد، ثم اسحب مقبض الزاوية لتغيير الحجم. ارسم إطارًا على مساحة فارغة لتحديد عدة عناصر وتحريكها معًا. اضغط مطولًا على زر تطبيق لمدة ثانيتين لإعداده.</string>
     <string name="custom_editor_add">إضافة عنصر</string>
     <string name="custom_editor_no_space">لا توجد مساحة فارغة لهذا العنصر. أفسِح مكانًا أولًا.</string>
     <string name="custom_editor_remove">إزالة</string>

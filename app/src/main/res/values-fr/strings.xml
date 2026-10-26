@@ -74,6 +74,7 @@
     <string name="key_back">Retour</string>
     <string name="key_guide">Guide</string>
     <string name="key_input">Source</string>
+    <string name="key_audio_track">Piste audio</string>
     <string name="key_keyboard">Clavier</string>
     <string name="text_input_hint">Texte pour la TV</string>
     <string name="text_input_close">Fermer le clavier</string>
@@ -98,6 +99,17 @@
     <string name="result_failed">La TV n\'a pas pu exécuter la commande.</string>
     <string name="result_wake_sent">Signal d\'allumage envoyé.</string>
     <string name="input_picker_title">Choisir la source</string>
+    <string name="audio_tracks_title">Choisir la piste audio</string>
+    <string name="audio_tracks_none">Aucune piste audio trouvée. Tu ne peux les choisir que lorsque la TV affiche une chaîne de télévision.</string>
+    <string name="audio_tracks_no_root">Le choix de la piste audio nécessite l\'accès root. Configure-le dans Paramètres → TV.</string>
+    <string name="audio_tracks_failed">La TV n\'a pas répondu.</string>
+    <string name="audio_tracks_channel_changed">La chaîne a changé. Choisis à nouveau la piste audio.</string>
+    <string name="audio_tracks_description_setting">Audiodescription sur toutes les chaînes</string>
+    <string name="audio_tracks_description_setting_hint">La TV choisit la piste avec audiodescription dès qu\'il y en a une.</string>
+    <string name="audio_track_description">Audiodescription</string>
+    <string name="audio_track_hearing_impaired">Pour malentendants</string>
+    <string name="audio_track_unknown">Langue inconnue</string>
+    <string name="audio_track_selected">Active</string>
     <string name="input_picker_empty">La TV n\'a signalé aucune source.</string>
     <string name="input_picker_not_connected">Rien de branché</string>
 
@@ -174,6 +186,13 @@
     <string name="status_demo">Mode démo</string>
     <string name="custom_screen_empty">Cet écran est vide. Ajoute des touches dans les paramètres, sous « Écrans », avec le bouton crayon.</string>
     <string name="custom_editor_done">Terminé</string>
+    <string name="custom_editor_guide">Mode d\'emploi</string>
+    <string name="custom_editor_guide_title">Comment ça marche</string>
+    <string name="custom_editor_guide_move">Fais glisser un élément pour le déplacer. Dépose-le sur la corbeille pour le supprimer.</string>
+    <string name="custom_editor_guide_resize">Touche un élément pour le sélectionner, puis fais glisser la poignée dans le coin pour le redimensionner.</string>
+    <string name="custom_editor_guide_select">Trace un cadre sur une zone libre pour sélectionner plusieurs éléments. Déplace-les ensuite ensemble.</string>
+    <string name="custom_editor_guide_app">Maintiens une touche d\'app 2 secondes pour la configurer.</string>
+    <string name="custom_editor_guide_hold">2 s</string>
     <string name="custom_editor_undo">Annuler</string>
     <string name="custom_editor_reset">Réinitialiser l\'écran</string>
     <string name="settings_background">Arrière-plan</string>
@@ -189,7 +208,6 @@
     <string name="background_mountains">Montagnes</string>
     <string name="background_forest">Forêt</string>
     <string name="background_sea">Mer</string>
-    <string name="custom_editor_hint">Fais glisser pour déplacer, dépose sur la corbeille pour supprimer. Touche pour sélectionner, puis tire la poignée d\'angle pour redimensionner. Trace un cadre sur une zone vide pour sélectionner plusieurs éléments et les déplacer ensemble. Maintiens une touche appli 2 secondes pour la configurer.</string>
     <string name="custom_editor_add">Ajouter un élément</string>
     <string name="custom_editor_no_space">Pas de place libre pour cet élément. Fais d\'abord de la place.</string>
     <string name="custom_editor_remove">Supprimer</string>

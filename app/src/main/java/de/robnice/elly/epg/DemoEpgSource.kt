@@ -2,6 +2,7 @@ package de.robnice.elly.epg
 
 import android.content.Context
 import de.robnice.elly.R
+import java.util.Locale
 import kotlin.random.Random
 
 // Invented channels and programs for demo mode, so the guide can be tried without a rooted TV.
@@ -85,6 +86,38 @@ class DemoEpgSource(private val context: Context) : EpgSource {
 
     override suspend fun videoInfo(channel: EpgChannel): EpgVideoInfo? = null
 
+    @Volatile
+    private var demoAudioTrack = 0
+
+    @Volatile
+    private var demoAudioDescription = false
+
+    override suspend fun audioTracks(): AudioTracks {
+        val german = Locale.GERMAN.displayLanguage
+        return AudioTracks(
+            listOf(
+                AudioTrack(0, german, description = false, hearingImpaired = false, dolby = false),
+                AudioTrack(1, german, description = true, hearingImpaired = false, dolby = false),
+                AudioTrack(2, german, description = false, hearingImpaired = true, dolby = false),
+                AudioTrack(3, german, description = false, hearingImpaired = false, dolby = true),
+                AudioTrack(4, Locale.ENGLISH.displayLanguage, description = false, hearingImpaired = false, dolby = false)
+            ),
+            demoAudioTrack,
+            DEMO_AUDIO_CHANNEL,
+            demoAudioDescription
+        )
+    }
+
+    override suspend fun selectAudioTrack(id: Int, channelId: String?): Boolean {
+        demoAudioTrack = id
+        return true
+    }
+
+    override suspend fun setAudioDescription(enabled: Boolean) {
+        demoAudioDescription = enabled
+        demoAudioTrack = if (enabled) 1 else 0
+    }
+
     private fun plan(type: ReservationType, program: EpgProgram) {
         synchronized(planned) {
             planned += EpgReservation("${type.name}_${program.programId}", type, program.signalId, program.start, program.title)
@@ -92,6 +125,7 @@ class DemoEpgSource(private val context: Context) : EpgSource {
     }
 
     private companion object {
+        const val DEMO_AUDIO_CHANNEL = "demo"
         const val MAIN_LIST = "A"
         const val KIDS_LIST = "B"
         const val MAIN_PREFIX = "demo_"

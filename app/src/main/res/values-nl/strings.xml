@@ -74,6 +74,7 @@
     <string name="key_back">Terug</string>
     <string name="key_guide">Gids</string>
     <string name="key_input">Bron</string>
+    <string name="key_audio_track">Audiospoor</string>
     <string name="key_keyboard">Toetsenbord</string>
     <string name="text_input_hint">Tekst voor de tv</string>
     <string name="text_input_close">Toetsenbord sluiten</string>
@@ -98,6 +99,17 @@
     <string name="result_failed">De tv kon de opdracht niet uitvoeren.</string>
     <string name="result_wake_sent">Inschakelsignaal verstuurd.</string>
     <string name="input_picker_title">Bron kiezen</string>
+    <string name="audio_tracks_title">Audiospoor kiezen</string>
+    <string name="audio_tracks_none">Geen audiosporen gevonden. Je kunt ze alleen kiezen terwijl de tv een tv-zender toont.</string>
+    <string name="audio_tracks_no_root">Voor het kiezen van het audiospoor is roottoegang nodig. Stel die in bij Instellingen → Tv.</string>
+    <string name="audio_tracks_failed">De tv reageerde niet.</string>
+    <string name="audio_tracks_channel_changed">De zender is gewisseld. Kies het audiospoor opnieuw.</string>
+    <string name="audio_tracks_description_setting">Audiodescriptie op alle zenders</string>
+    <string name="audio_tracks_description_setting_hint">De tv kiest het spoor met audiodescriptie overal waar er een is.</string>
+    <string name="audio_track_description">Audiodescriptie</string>
+    <string name="audio_track_hearing_impaired">Voor slechthorenden</string>
+    <string name="audio_track_unknown">Onbekende taal</string>
+    <string name="audio_track_selected">Actief</string>
     <string name="input_picker_empty">De tv heeft geen bronnen gemeld.</string>
     <string name="input_picker_not_connected">Niets aangesloten</string>
 
@@ -174,6 +186,13 @@
     <string name="status_demo">Demomodus</string>
     <string name="custom_screen_empty">Dit scherm is leeg. Voeg toetsen toe in de instellingen onder “Schermen” met de potloodknop.</string>
     <string name="custom_editor_done">Klaar</string>
+    <string name="custom_editor_guide">Uitleg</string>
+    <string name="custom_editor_guide_title">Zo werkt het</string>
+    <string name="custom_editor_guide_move">Sleep een element om het te verplaatsen. Sleep je het naar de prullenbak, dan wordt het verwijderd.</string>
+    <string name="custom_editor_guide_resize">Tik op een element om het te selecteren en sleep dan de greep in de hoek om de grootte te wijzigen.</string>
+    <string name="custom_editor_guide_select">Teken een kader op een lege plek om meerdere elementen te selecteren. Verplaats ze daarna samen.</string>
+    <string name="custom_editor_guide_app">Houd een app-toets 2 seconden ingedrukt om hem in te stellen.</string>
+    <string name="custom_editor_guide_hold">2 sec.</string>
     <string name="custom_editor_undo">Ongedaan maken</string>
     <string name="custom_editor_reset">Scherm terugzetten</string>
     <string name="settings_background">Achtergrond</string>
@@ -189,7 +208,6 @@
     <string name="background_mountains">Bergen</string>
     <string name="background_forest">Bos</string>
     <string name="background_sea">Zee</string>
-    <string name="custom_editor_hint">Sleep om te verplaatsen, sleep naar de prullenbak om te verwijderen. Tik om te selecteren en sleep dan aan de hoekgreep om de grootte te wijzigen. Trek een kader op een lege plek om meerdere elementen te selecteren en samen te verplaatsen. Houd een app-toets 2 seconden vast om hem in te stellen.</string>
     <string name="custom_editor_add">Element toevoegen</string>
     <string name="custom_editor_no_space">Geen vrije plek voor dit element. Maak eerst ruimte.</string>
     <string name="custom_editor_remove">Verwijderen</string>

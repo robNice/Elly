@@ -75,6 +75,7 @@
     <string name="key_back">Voltar</string>
     <string name="key_guide">Guia</string>
     <string name="key_input">Entrada</string>
+    <string name="key_audio_track">Faixa de áudio</string>
     <string name="key_keyboard">Teclado</string>
     <string name="text_input_hint">Texto para a TV</string>
     <string name="text_input_close">Fechar teclado</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">A TV não conseguiu executar o comando.</string>
     <string name="result_wake_sent">Sinal para ligar enviado.</string>
     <string name="input_picker_title">Escolher entrada</string>
+    <string name="audio_tracks_title">Escolher faixa de áudio</string>
+    <string name="audio_tracks_none">Nenhuma faixa de áudio encontrada. Só as podes escolher enquanto a TV mostra um canal de televisão.</string>
+    <string name="audio_tracks_no_root">Escolher a faixa de áudio precisa de acesso root. Configura-o em Definições → TV.</string>
+    <string name="audio_tracks_failed">A TV não respondeu.</string>
+    <string name="audio_tracks_channel_changed">O canal foi mudado. Escolhe novamente a faixa de áudio.</string>
+    <string name="audio_tracks_description_setting">Audiodescrição em todos os canais</string>
+    <string name="audio_tracks_description_setting_hint">A TV escolhe a faixa com audiodescrição sempre que houver uma.</string>
+    <string name="audio_track_description">Audiodescrição</string>
+    <string name="audio_track_hearing_impaired">Para pessoas com deficiência auditiva</string>
+    <string name="audio_track_unknown">Idioma desconhecido</string>
+    <string name="audio_track_selected">Ativa</string>
     <string name="input_picker_empty">A TV não indicou nenhuma entrada.</string>
     <string name="input_picker_not_connected">Nada ligado</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Modo de demonstração</string>
     <string name="custom_screen_empty">Este ecrã está vazio. Adiciona teclas nas definições, em “Ecrãs”, com o botão do lápis.</string>
     <string name="custom_editor_done">Concluído</string>
+    <string name="custom_editor_guide">Como usar</string>
+    <string name="custom_editor_guide_title">Como funciona</string>
+    <string name="custom_editor_guide_move">Arrasta um elemento para o mover. Se o arrastares para o lixo, é removido.</string>
+    <string name="custom_editor_guide_resize">Toca num elemento para o selecionar e depois arrasta a pega no canto para alterar o tamanho.</string>
+    <string name="custom_editor_guide_select">Desenha uma moldura numa área livre para selecionar vários elementos. Depois move-os em conjunto.</string>
+    <string name="custom_editor_guide_app">Mantém premida uma tecla de app durante 2 segundos para a configurar.</string>
+    <string name="custom_editor_guide_hold">2 s</string>
     <string name="custom_editor_undo">Anular</string>
     <string name="custom_editor_reset">Repor ecrã</string>
     <string name="settings_background">Fundo</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Montanhas</string>
     <string name="background_forest">Floresta</string>
     <string name="background_sea">Mar</string>
-    <string name="custom_editor_hint">Arrasta para mover, arrasta para o caixote do lixo para remover. Toca para selecionar e depois arrasta a pega do canto para redimensionar. Desenha uma moldura numa área vazia para selecionar vários elementos e movê-los em conjunto. Mantém uma tecla de app premida durante 2 segundos para a configurar.</string>
     <string name="custom_editor_add">Adicionar elemento</string>
     <string name="custom_editor_no_space">Não há espaço livre para este elemento. Abre espaço primeiro.</string>
     <string name="custom_editor_remove">Remover</string>
@@ -352,7 +370,7 @@
     <string name="help_nav_home">Vista geral da ajuda</string>
     <string name="help_nav_next">Capítulo seguinte</string>
     <plurals name="help_elly_results">
-        <item quantity="one">Encontrei um resultado.</item>
+        <item quantity="one">Encontrei %d resultado.</item>
         <item quantity="other">Encontrei %d resultados.</item>
     </plurals>
 

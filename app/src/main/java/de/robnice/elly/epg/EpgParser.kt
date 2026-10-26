@@ -119,6 +119,34 @@ object EpgParser {
 
     private val RATIO = Regex("^\\d+_\\d+$")
 
+    // legacybroadcast.broadcast/getAudioLanguageList: visualImpaired marks the audio description,
+    // codecs like AUDIO_CODEC_AC3_DOLBY the Dolby track. Without a TV channel on screen the list is missing.
+    fun audioTracks(answer: JSONObject): AudioTracks {
+        val list = answer.optJSONArray("audioLanguageList") ?: return AudioTracks(emptyList(), null)
+        val tracks = (0 until list.length()).mapNotNull { index ->
+            val track = list.optJSONObject(index) ?: return@mapNotNull null
+            val codec = track.optString("audioCodecType")
+            AudioTrack(
+                id = track.optInt("audioLanguageId", -1).takeIf { it >= 0 } ?: return@mapNotNull null,
+                language = track.optString("translatedAudioLanguageName").ifBlank { track.optString("audioLanguageName") },
+                description = track.optBoolean("visualImpaired"),
+                hearingImpaired = track.optBoolean("hearingImpaired"),
+                dolby = DOLBY_CODECS.any { codec.contains(it) }
+            )
+        }
+        return AudioTracks(tracks, if (answer.has("currentAudioLanguageId")) answer.optInt("currentAudioLanguageId") else null)
+    }
+
+    private val DOLBY_CODECS = listOf("DOLBY", "AC3", "AC4")
+
+    // getSystemSettings, category sound: audioDescription is "on" or "off".
+    fun audioDescriptionEnabled(answer: JSONObject): Boolean? =
+        when (answer.optJSONObject("settings")?.optString("audioDescription")) {
+            "on" -> true
+            "off" -> false
+            else -> null
+        }
+
     fun localTime(millis: Long, zone: ZoneId): String =
         LocalDateTime.ofInstant(java.time.Instant.ofEpochMilli(millis), zone).format(TV_TIME)
 

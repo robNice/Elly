@@ -75,6 +75,7 @@
     <string name="key_back">戻る</string>
     <string name="key_guide">番組表</string>
     <string name="key_input">入力切替</string>
+    <string name="key_audio_track">音声切替</string>
     <string name="key_keyboard">キーボード</string>
     <string name="text_input_hint">テレビに送るテキスト</string>
     <string name="text_input_close">キーボードを閉じる</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">テレビでコマンドを実行できませんでした。</string>
     <string name="result_wake_sent">電源オンの信号を送信しました。</string>
     <string name="input_picker_title">入力を選択</string>
+    <string name="audio_tracks_title">音声トラックを選択</string>
+    <string name="audio_tracks_none">音声トラックが見つかりません。テレビで放送を見ているときだけ選べます。</string>
+    <string name="audio_tracks_no_root">音声トラックの選択には root 化が必要です。設定 → テレビで設定してください。</string>
+    <string name="audio_tracks_failed">テレビから応答がありませんでした。</string>
+    <string name="audio_tracks_channel_changed">チャンネルが切り替わりました。もう一度音声トラックを選んでください。</string>
+    <string name="audio_tracks_description_setting">すべてのチャンネルで音声解説</string>
+    <string name="audio_tracks_description_setting_hint">音声解説付きのトラックがあれば、テレビが自動で選びます。</string>
+    <string name="audio_track_description">音声解説</string>
+    <string name="audio_track_hearing_impaired">聴覚障害者向け</string>
+    <string name="audio_track_unknown">不明な言語</string>
+    <string name="audio_track_selected">選択中</string>
     <string name="input_picker_empty">テレビから入力が報告されませんでした。</string>
     <string name="input_picker_not_connected">未接続</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">デモモード</string>
     <string name="custom_screen_empty">このスクリーンは空です。設定の「スクリーン」で鉛筆ボタンからキーを追加してください。</string>
     <string name="custom_editor_done">完了</string>
+    <string name="custom_editor_guide">使い方</string>
+    <string name="custom_editor_guide_title">操作方法</string>
+    <string name="custom_editor_guide_move">要素をドラッグすると移動できます。ゴミ箱までドラッグすると削除されます。</string>
+    <string name="custom_editor_guide_resize">要素をタップして選択し、角のハンドルをドラッグするとサイズを変えられます。</string>
+    <string name="custom_editor_guide_select">空いている場所で枠を描くと、複数の要素を選んでまとめて移動できます。</string>
+    <string name="custom_editor_guide_app">アプリボタンを 2 秒長押しすると設定できます。</string>
+    <string name="custom_editor_guide_hold">2 秒</string>
     <string name="custom_editor_undo">元に戻す</string>
     <string name="custom_editor_reset">スクリーンをリセット</string>
     <string name="settings_background">背景</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">山</string>
     <string name="background_forest">森</string>
     <string name="background_sea">海</string>
-    <string name="custom_editor_hint">ドラッグで移動、ゴミ箱にドラッグで削除します。タップで選択し、角のハンドルをドラッグするとサイズを変更できます。空いている場所で枠を描くと、複数の要素を選択してまとめて移動できます。アプリキーを 2 秒長押しすると設定できます。</string>
     <string name="custom_editor_add">要素を追加</string>
     <string name="custom_editor_no_space">この要素を置く空きがありません。先にスペースを空けてください。</string>
     <string name="custom_editor_remove">削除</string>

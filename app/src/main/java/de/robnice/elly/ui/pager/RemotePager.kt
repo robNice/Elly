@@ -62,6 +62,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalResources
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -90,6 +91,7 @@ import de.robnice.elly.ui.components.LocalKeyRounding
 import de.robnice.elly.ui.components.LocalLightEffect
 import de.robnice.elly.ui.onboarding.HelpButton
 import de.robnice.elly.ui.pointer.PointerOverlay
+import de.robnice.elly.ui.remote.AudioTrackDialog
 import de.robnice.elly.ui.remote.CustomPage
 import de.robnice.elly.ui.remote.RemoteViewModel
 import de.robnice.elly.ui.remote.ScreenBackgroundImage
@@ -127,9 +129,11 @@ fun RemotePager(
     val screenContents by viewModel.screens.collectAsStateWithLifecycle()
     val snackbarHostState = remember { SnackbarHostState() }
     val context = LocalContext.current
+    val resources = LocalResources.current
     val onKey: (RemoteKey) -> Unit = { key ->
         when (key.command) {
             RemoteCommand.InputPicker -> viewModel.openInputPicker()
+            RemoteCommand.AudioTrackPicker -> viewModel.openAudioTracks()
             RemoteCommand.TextInput -> viewModel.openKeyboard()
             else -> viewModel.press(key)
         }
@@ -169,13 +173,14 @@ fun RemotePager(
             reservations = viewModel.guideReservations,
             canRecord = viewModel.guideCanRecord,
             perform = viewModel::performGuideAction,
-            videoInfo = viewModel::guideVideoInfo
+            videoInfo = viewModel::guideVideoInfo,
+            openAudioTracks = viewModel::openAudioTracks
         )
     }
 
     LaunchedEffect(viewModel) {
         viewModel.results.collect { result ->
-            result.messageRes()?.let { snackbarHostState.showSnackbar(context.getString(it)) }
+            result.messageRes()?.let { snackbarHostState.showSnackbar(resources.getString(it)) }
         }
     }
 
@@ -284,6 +289,16 @@ fun RemotePager(
             inputs = list,
             onSelect = viewModel::selectInput,
             onDismiss = viewModel::dismissInputPicker
+        )
+    }
+
+    val audioTracks by viewModel.audioTracks.collectAsStateWithLifecycle()
+    audioTracks?.let { picker ->
+        AudioTrackDialog(
+            picker = picker,
+            onSelect = viewModel::selectAudioTrack,
+            onDescriptionChange = viewModel::setAudioDescription,
+            onDismiss = viewModel::dismissAudioTracks
         )
     }
 }

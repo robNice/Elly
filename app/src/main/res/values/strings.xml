@@ -113,6 +113,7 @@
     <string name="key_back">Back</string>
     <string name="key_guide">Guide</string>
     <string name="key_input">Input</string>
+    <string name="key_audio_track">Audio track</string>
     <string name="key_keyboard">Keyboard</string>
     <string name="text_input_hint">Text for the TV</string>
     <string name="text_input_close">Close keyboard</string>
@@ -139,6 +140,18 @@
     <string name="result_failed">The TV could not execute the command.</string>
     <string name="result_wake_sent">Switch-on signal sent.</string>
     <string name="input_picker_title">Select input</string>
+    <string name="audio_tracks_title">Select audio track</string>
+    <string name="audio_tracks_none">No audio tracks found. They can only be chosen while the TV shows a TV channel.</string>
+    <string name="audio_tracks_no_root">Choosing the audio track needs root access. Set it up in Settings → TV.</string>
+    <string name="audio_tracks_failed">The TV did not respond.</string>
+    <string name="audio_tracks_channel_changed">The channel was changed. Please choose the audio track again.</string>
+    <string name="audio_tracks_description_setting">Audio description on all channels</string>
+    <string name="audio_tracks_description_setting_hint">The TV picks the track with audio description wherever there is one.</string>
+    <string name="audio_track_description">Audio description</string>
+    <string name="audio_track_hearing_impaired">For the hard of hearing</string>
+    <string name="audio_track_dolby" translatable="false">Dolby</string>
+    <string name="audio_track_unknown">Unknown language</string>
+    <string name="audio_track_selected">Active</string>
     <string name="input_picker_empty">The TV did not report any inputs.</string>
     <string name="input_picker_not_connected">Nothing connected</string>
 
@@ -216,6 +229,14 @@
     <string name="status_demo">Demo mode</string>
     <string name="custom_screen_empty">This screen is empty. Add keys in the settings under “Screens” with the pencil button.</string>
     <string name="custom_editor_done">Done</string>
+    <string name="custom_editor_guide">How to</string>
+    <string name="custom_editor_guide_title">How it works</string>
+    <string name="custom_editor_guide_move">Drag an element to move it. Dragging it onto the trash removes it.</string>
+    <string name="custom_editor_guide_resize">Tap an element to select it, then drag the corner handle to resize it.</string>
+    <string name="custom_editor_guide_select">Draw a frame on an empty area to select several elements. Then move them together.</string>
+    <string name="custom_editor_guide_app">Hold an app key for 2 seconds to set it up.</string>
+    <string name="custom_editor_guide_hold">2 sec</string>
+    <string name="custom_editor_guide_arrow" translatable="false">→</string>
     <string name="custom_editor_undo">Undo</string>
     <string name="custom_editor_reset">Reset screen</string>
     <string name="settings_background">Background</string>
@@ -231,7 +252,6 @@
     <string name="background_mountains">Mountains</string>
     <string name="background_forest">Forest</string>
     <string name="background_sea">Sea</string>
-    <string name="custom_editor_hint">Drag to move, drag onto the trash to remove. Tap to select, then drag the corner handle to resize. Draw a frame on an empty area to select several elements and move them together. Hold an app key for 2 seconds to set it up.</string>
     <string name="custom_editor_add">Add element</string>
     <string name="custom_editor_no_space">No free space for this element. Make room first.</string>
     <string name="custom_editor_remove">Remove</string>

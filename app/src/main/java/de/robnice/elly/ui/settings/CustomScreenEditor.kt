@@ -72,6 +72,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
 import de.robnice.elly.R
@@ -105,7 +106,7 @@ private const val DRAG_ALPHA = 0.7f
 private const val MAJOR_LINE_STEP = 3
 private const val MINOR_LINE_ALPHA = 0.35f
 private const val TRASH_SCALE = 0.4f
-private const val MARQUEE_FILL_ALPHA = 0.15f
+internal const val MARQUEE_FILL_ALPHA = 0.15f
 private const val GROUP_CELL_ASPECT = 1.1f
 private const val GROUP_ELEMENT_INSET = 0.25f
 
@@ -139,6 +140,7 @@ fun CustomScreenEditor(
     var dragging by remember { mutableStateOf(false) }
     var overTrash by remember { mutableStateOf(false) }
     var noSpace by remember { mutableStateOf(false) }
+    var showGuide by remember { mutableStateOf(false) }
     val padding = dimensionResource(R.dimen.setup_padding)
 
     // Saving is asynchronous: keep dropped elements at their new spot until the updated layout arrives.
@@ -162,15 +164,17 @@ fun CustomScreenEditor(
                 .padding(horizontal = padding),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Spacer(modifier = Modifier.weight(1f))
+            TextButton(onClick = { showGuide = true }) { Text(stringResource(R.string.custom_editor_guide)) }
+            Text(
+                text = if (noSpace) stringResource(R.string.custom_editor_no_space) else "",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.error,
+                textAlign = TextAlign.Center,
+                maxLines = 2,
+                modifier = Modifier.weight(1f)
+            )
             TextButton(onClick = onClose) { Text(stringResource(R.string.custom_editor_done)) }
         }
-        Text(
-            text = stringResource(if (noSpace) R.string.custom_editor_no_space else R.string.custom_editor_hint),
-            style = MaterialTheme.typography.bodySmall,
-            color = if (noSpace) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(horizontal = padding)
-        )
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -315,6 +319,10 @@ fun CustomScreenEditor(
         )
     }
 
+    if (showGuide) {
+        EditorGuideDialog(onDismiss = { showGuide = false })
+    }
+
     if (showPicker) {
         ElementPickerDialog(
             epgAvailable = epgAvailable,
@@ -334,7 +342,7 @@ fun CustomScreenEditor(
 }
 
 @Composable
-private fun Trash(dragging: Boolean, hovering: Boolean, modifier: Modifier) {
+internal fun Trash(dragging: Boolean, hovering: Boolean, modifier: Modifier) {
     val color = when {
         hovering -> colorResource(R.color.custom_editor_invalid)
         dragging -> MaterialTheme.colorScheme.onSurface
@@ -616,7 +624,7 @@ private fun EditableElement(
 }
 
 @Composable
-private fun Handle(icon: Int, description: Int, color: Color, modifier: Modifier) {
+internal fun Handle(icon: Int, description: Int, color: Color, modifier: Modifier) {
     Box(
         modifier = modifier
             .size(dimensionResource(R.dimen.custom_editor_handle_size))
@@ -657,7 +665,8 @@ private fun ElementPickerDialog(
         add(PickerItem.Element(CustomElementType.APP, R.string.custom_element_app))
         if (epgAvailable) add(PickerItem.Element(CustomElementType.EPG, R.string.custom_element_epg))
         add(PickerItem.Header(R.string.custom_picker_keys))
-        RemoteKey.entries.forEach { add(PickerItem.Key(it)) }
+        // The audio track list is read over the same root access as the program guide.
+        RemoteKey.entries.filter { epgAvailable || it != RemoteKey.AUDIO_TRACK }.forEach { add(PickerItem.Key(it)) }
     }
     val itemPadding = dimensionResource(R.dimen.custom_picker_item_padding)
 

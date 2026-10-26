@@ -75,6 +75,7 @@
     <string name="key_back">Wstecz</string>
     <string name="key_guide">Przewodnik</string>
     <string name="key_input">Źródło</string>
+    <string name="key_audio_track">Ścieżka dźwiękowa</string>
     <string name="key_keyboard">Klawiatura</string>
     <string name="text_input_hint">Tekst dla telewizora</string>
     <string name="text_input_close">Zamknij klawiaturę</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">Telewizor nie mógł wykonać polecenia.</string>
     <string name="result_wake_sent">Wysłano sygnał włączenia.</string>
     <string name="input_picker_title">Wybierz źródło</string>
+    <string name="audio_tracks_title">Wybierz ścieżkę dźwiękową</string>
+    <string name="audio_tracks_none">Nie znaleziono ścieżek dźwiękowych. Możesz je wybrać tylko wtedy, gdy telewizor pokazuje kanał telewizyjny.</string>
+    <string name="audio_tracks_no_root">Wybór ścieżki dźwiękowej wymaga dostępu root. Skonfiguruj go w Ustawienia → TV.</string>
+    <string name="audio_tracks_failed">Telewizor nie odpowiedział.</string>
+    <string name="audio_tracks_channel_changed">Kanał został zmieniony. Wybierz ścieżkę dźwiękową ponownie.</string>
+    <string name="audio_tracks_description_setting">Audiodeskrypcja na wszystkich kanałach</string>
+    <string name="audio_tracks_description_setting_hint">Telewizor wybiera ścieżkę z audiodeskrypcją wszędzie tam, gdzie jest dostępna.</string>
+    <string name="audio_track_description">Audiodeskrypcja</string>
+    <string name="audio_track_hearing_impaired">Dla niedosłyszących</string>
+    <string name="audio_track_unknown">Nieznany język</string>
+    <string name="audio_track_selected">Aktywna</string>
     <string name="input_picker_empty">Telewizor nie zgłosił żadnych źródeł.</string>
     <string name="input_picker_not_connected">Nic nie podłączono</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Tryb demo</string>
     <string name="custom_screen_empty">Ta strona jest pusta. Dodaj przyciski w ustawieniach w sekcji „Strony” za pomocą ołówka.</string>
     <string name="custom_editor_done">Gotowe</string>
+    <string name="custom_editor_guide">Instrukcja</string>
+    <string name="custom_editor_guide_title">Jak to działa</string>
+    <string name="custom_editor_guide_move">Przeciągnij element, aby go przesunąć. Przeciągnięty do kosza zostanie usunięty.</string>
+    <string name="custom_editor_guide_resize">Stuknij element, aby go zaznaczyć, a potem przeciągnij uchwyt w rogu, aby zmienić rozmiar.</string>
+    <string name="custom_editor_guide_select">Narysuj ramkę na wolnym miejscu, aby zaznaczyć kilka elementów. Potem przesuń je razem.</string>
+    <string name="custom_editor_guide_app">Przytrzymaj przycisk aplikacji przez 2 sekundy, aby go skonfigurować.</string>
+    <string name="custom_editor_guide_hold">2 s</string>
     <string name="custom_editor_undo">Cofnij</string>
     <string name="custom_editor_reset">Resetuj stronę</string>
     <string name="settings_background">Tło</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Góry</string>
     <string name="background_forest">Las</string>
     <string name="background_sea">Morze</string>
-    <string name="custom_editor_hint">Przeciągnij, aby przesunąć, przeciągnij na kosz, aby usunąć. Dotknij, aby zaznaczyć, a potem przeciągnij uchwyt w rogu, aby zmienić rozmiar. Narysuj ramkę na pustym miejscu, aby zaznaczyć kilka elementów i przesunąć je razem. Przytrzymaj przycisk aplikacji przez 2 sekundy, aby go skonfigurować.</string>
     <string name="custom_editor_add">Dodaj element</string>
     <string name="custom_editor_no_space">Brak wolnego miejsca na ten element. Najpierw zrób miejsce.</string>
     <string name="custom_editor_remove">Usuń</string>

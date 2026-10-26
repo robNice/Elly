@@ -74,6 +74,7 @@
     <string name="key_back">Takaisin</string>
     <string name="key_guide">Opas</string>
     <string name="key_input">Tulo</string>
+    <string name="key_audio_track">Ääniraita</string>
     <string name="key_keyboard">Näppäimistö</string>
     <string name="text_input_hint">Teksti TV:lle</string>
     <string name="text_input_close">Sulje näppäimistö</string>
@@ -98,6 +99,17 @@
     <string name="result_failed">TV ei pystynyt suorittamaan komentoa.</string>
     <string name="result_wake_sent">Käynnistyssignaali lähetetty.</string>
     <string name="input_picker_title">Valitse tulo</string>
+    <string name="audio_tracks_title">Valitse ääniraita</string>
+    <string name="audio_tracks_none">Ääniraitoja ei löytynyt. Niitä voi valita vain, kun TV näyttää TV-kanavaa.</string>
+    <string name="audio_tracks_no_root">Ääniraidan valinta vaatii root-oikeudet. Ota ne käyttöön kohdassa Asetukset → TV.</string>
+    <string name="audio_tracks_failed">TV ei vastannut.</string>
+    <string name="audio_tracks_channel_changed">Kanava vaihtui. Valitse ääniraita uudelleen.</string>
+    <string name="audio_tracks_description_setting">Kuvailutulkkaus kaikilla kanavilla</string>
+    <string name="audio_tracks_description_setting_hint">TV valitsee kuvailutulkatun raidan aina, kun sellainen on.</string>
+    <string name="audio_track_description">Kuvailutulkkaus</string>
+    <string name="audio_track_hearing_impaired">Kuulovammaisille</string>
+    <string name="audio_track_unknown">Tuntematon kieli</string>
+    <string name="audio_track_selected">Käytössä</string>
     <string name="input_picker_empty">TV ei ilmoittanut yhtään tuloa.</string>
     <string name="input_picker_not_connected">Ei mitään liitettynä</string>
 
@@ -174,6 +186,13 @@
     <string name="status_demo">Esittelytila</string>
     <string name="custom_screen_empty">Tämä näkymä on tyhjä. Lisää painikkeita asetuksissa kohdassa ”Näkymät” kynäpainikkeella.</string>
     <string name="custom_editor_done">Valmis</string>
+    <string name="custom_editor_guide">Ohjeet</string>
+    <string name="custom_editor_guide_title">Näin se toimii</string>
+    <string name="custom_editor_guide_move">Siirrä elementtiä vetämällä. Kun vedät sen roskakoriin, se poistetaan.</string>
+    <string name="custom_editor_guide_resize">Valitse elementti napauttamalla ja muuta sen kokoa vetämällä kulman kahvasta.</string>
+    <string name="custom_editor_guide_select">Valitse useita elementtejä piirtämällä kehys tyhjälle alueelle. Siirrä ne sitten yhdessä.</string>
+    <string name="custom_editor_guide_app">Määritä sovelluspainike pitämällä sitä painettuna 2 sekuntia.</string>
+    <string name="custom_editor_guide_hold">2 s</string>
     <string name="custom_editor_undo">Kumoa</string>
     <string name="custom_editor_reset">Palauta näkymä</string>
     <string name="settings_background">Tausta</string>
@@ -189,7 +208,6 @@
     <string name="background_mountains">Vuoret</string>
     <string name="background_forest">Metsä</string>
     <string name="background_sea">Meri</string>
-    <string name="custom_editor_hint">Siirrä vetämällä, poista vetämällä roskakoriin. Valitse napauttamalla ja muuta kokoa vetämällä kulmakahvasta. Piirrä kehys tyhjälle alueelle valitaksesi useita elementtejä ja siirtääksesi niitä yhdessä. Pidä sovelluspainiketta painettuna 2 sekuntia määrittääksesi sen.</string>
     <string name="custom_editor_add">Lisää elementti</string>
     <string name="custom_editor_no_space">Elementille ei ole vapaata tilaa. Tee ensin tilaa.</string>
     <string name="custom_editor_remove">Poista</string>

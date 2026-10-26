@@ -43,6 +43,7 @@ object KeyCatalog {
         RemoteKey.BACK -> KeyVisual(R.string.key_back, R.drawable.ic_back)
         RemoteKey.GUIDE -> KeyVisual(R.string.key_guide, label = R.string.key_label_guide)
         RemoteKey.INPUT -> KeyVisual(R.string.key_input, R.drawable.ic_input)
+        RemoteKey.AUDIO_TRACK -> KeyVisual(R.string.key_audio_track, R.drawable.ic_audio_track)
         RemoteKey.KEYBOARD -> KeyVisual(R.string.key_keyboard, R.drawable.ic_keyboard)
         RemoteKey.RED -> KeyVisual(R.string.key_red, style = KeyStyle.RED)
         RemoteKey.GREEN -> KeyVisual(R.string.key_green, style = KeyStyle.GREEN)

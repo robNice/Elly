@@ -75,6 +75,7 @@
     <string name="key_back">Назад</string>
     <string name="key_guide">Телегид</string>
     <string name="key_input">Вход</string>
+    <string name="key_audio_track">Звуковая дорожка</string>
     <string name="key_keyboard">Клавиатура</string>
     <string name="text_input_hint">Текст для ТВ</string>
     <string name="text_input_close">Закрыть клавиатуру</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">Телевизору не удалось выполнить команду.</string>
     <string name="result_wake_sent">Сигнал включения отправлен.</string>
     <string name="input_picker_title">Выбор входа</string>
+    <string name="audio_tracks_title">Выбор звуковой дорожки</string>
+    <string name="audio_tracks_none">Звуковые дорожки не найдены. Выбрать их можно, только пока телевизор показывает телеканал.</string>
+    <string name="audio_tracks_no_root">Для выбора звуковой дорожки нужен root-доступ. Настрой его в Настройки → ТВ.</string>
+    <string name="audio_tracks_failed">Телевизор не ответил.</string>
+    <string name="audio_tracks_channel_changed">Канал переключён. Выбери звуковую дорожку заново.</string>
+    <string name="audio_tracks_description_setting">Тифлокомментарий на всех каналах</string>
+    <string name="audio_tracks_description_setting_hint">Телевизор выбирает дорожку с тифлокомментарием везде, где она есть.</string>
+    <string name="audio_track_description">Тифлокомментарий</string>
+    <string name="audio_track_hearing_impaired">Для слабослышащих</string>
+    <string name="audio_track_unknown">Неизвестный язык</string>
+    <string name="audio_track_selected">Активна</string>
     <string name="input_picker_empty">Телевизор не сообщил ни одного входа.</string>
     <string name="input_picker_not_connected">Ничего не подключено</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Демо-режим</string>
     <string name="custom_screen_empty">Этот экран пуст. Добавь кнопки в настройках в разделе «Экраны» с помощью карандаша.</string>
     <string name="custom_editor_done">Готово</string>
+    <string name="custom_editor_guide">Инструкция</string>
+    <string name="custom_editor_guide_title">Как это работает</string>
+    <string name="custom_editor_guide_move">Перетащи элемент, чтобы переместить его. Если перетащить его в корзину, он удалится.</string>
+    <string name="custom_editor_guide_resize">Коснись элемента, чтобы выбрать его, затем потяни за маркер в углу, чтобы изменить размер.</string>
+    <string name="custom_editor_guide_select">Нарисуй рамку на свободном месте, чтобы выбрать несколько элементов. Потом перемещай их вместе.</string>
+    <string name="custom_editor_guide_app">Удерживай кнопку приложения 2 секунды, чтобы настроить её.</string>
+    <string name="custom_editor_guide_hold">2 сек</string>
     <string name="custom_editor_undo">Отменить</string>
     <string name="custom_editor_reset">Сбросить экран</string>
     <string name="settings_background">Фон</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Горы</string>
     <string name="background_forest">Лес</string>
     <string name="background_sea">Море</string>
-    <string name="custom_editor_hint">Перетаскивай, чтобы переместить, перетащи в корзину, чтобы удалить. Нажми, чтобы выбрать, затем тяни за уголок, чтобы изменить размер. Обведи рамкой свободную область, чтобы выбрать несколько элементов и двигать их вместе. Удерживай кнопку приложения 2 секунды, чтобы настроить её.</string>
     <string name="custom_editor_add">Добавить элемент</string>
     <string name="custom_editor_no_space">Нет свободного места для этого элемента. Сначала освободи место.</string>
     <string name="custom_editor_remove">Удалить</string>

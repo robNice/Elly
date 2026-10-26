@@ -4,7 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.annotation.StringRes
 import de.robnice.elly.AppContainer
+import de.robnice.elly.R
 import de.robnice.elly.data.AppIconFiller
 import de.robnice.elly.data.model.AppBackground
 import de.robnice.elly.data.model.ColorPalette
@@ -17,6 +19,8 @@ import de.robnice.elly.data.model.PointerMode
 import de.robnice.elly.data.model.PointerSettings
 import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenLayout
+import de.robnice.elly.epg.AudioTrack
+import de.robnice.elly.epg.AudioTracks
 import de.robnice.elly.epg.EpgAction
 import de.robnice.elly.epg.EpgChannel
 import de.robnice.elly.epg.EpgGuide
@@ -28,6 +32,7 @@ import de.robnice.elly.remote.RemoteControl
 import de.robnice.elly.remote.RemoteKey
 import de.robnice.elly.remote.SendResult
 import de.robnice.elly.remote.TvInput
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
@@ -45,6 +50,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -270,6 +276,73 @@ class RemoteViewModel(
         viewModelScope.launch { textMutex.withLock { report(remoteControl.sendEnter()) } }
     }
 
+    private val _audioTracks = MutableStateFlow<AudioTrackPicker?>(null)
+    val audioTracks: StateFlow<AudioTrackPicker?> = _audioTracks.asStateFlow()
+
+    fun openAudioTracks() {
+        _audioTracks.value = AudioTrackPicker.Loading
+        viewModelScope.launch { showAudioTracks(loadAudioTracks()) }
+    }
+
+    // The list stays open, so the checkmark shows what the TV really switched to.
+    fun selectAudioTrack(track: AudioTrack) {
+        val shown = _audioTracks.value as? AudioTrackPicker.Tracks ?: return
+        _audioTracks.value = AudioTrackPicker.Tracks(shown.tracks.copy(currentId = track.id))
+        _commandSent.tryEmit(Unit)
+        viewModelScope.launch {
+            val result = try {
+                val switched = epgRepository.selectAudioTrack(track.id, shown.tracks.channelId)
+                val reloaded = loadAudioTracks()
+                if (!switched && reloaded is AudioTrackPicker.Tracks) reloaded.copy(notice = R.string.audio_tracks_channel_changed) else reloaded
+            } catch (e: CancellationException) {
+                throw e
+            } catch (_: Exception) {
+                AudioTrackPicker.Message(R.string.audio_tracks_failed)
+            }
+            showAudioTracks(result)
+        }
+    }
+
+    // The TV then picks the described track by itself wherever there is one, so the list is read again.
+    fun setAudioDescription(enabled: Boolean) {
+        val shown = _audioTracks.value as? AudioTrackPicker.Tracks ?: return
+        _audioTracks.value = AudioTrackPicker.Tracks(shown.tracks.copy(descriptionEnabled = enabled))
+        _commandSent.tryEmit(Unit)
+        viewModelScope.launch {
+            val result = try {
+                epgRepository.setAudioDescription(enabled)
+                delay(AUDIO_DESCRIPTION_SETTLE_MILLIS)
+                loadAudioTracks()
+            } catch (e: CancellationException) {
+                throw e
+            } catch (_: Exception) {
+                AudioTrackPicker.Message(R.string.audio_tracks_failed)
+            }
+            showAudioTracks(result)
+        }
+    }
+
+    fun dismissAudioTracks() {
+        _audioTracks.value = null
+    }
+
+    private fun showAudioTracks(picker: AudioTrackPicker) {
+        _audioTracks.update { if (it == null) null else picker }
+    }
+
+    private suspend fun loadAudioTracks(): AudioTrackPicker = try {
+        val tracks = epgRepository.audioTracks()
+        when {
+            tracks == null -> AudioTrackPicker.Message(R.string.audio_tracks_no_root)
+            tracks.tracks.isEmpty() -> AudioTrackPicker.Message(R.string.audio_tracks_none)
+            else -> AudioTrackPicker.Tracks(tracks)
+        }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (_: Exception) {
+        AudioTrackPicker.Message(R.string.audio_tracks_failed)
+    }
+
     fun dismissInputPicker() {
         _inputs.value = null
     }
@@ -343,6 +416,7 @@ class RemoteViewModel(
         private const val CONNECTION_CHECK_INTERVAL_MILLIS = 10_000L
         private const val GUIDE_REFRESH_INTERVAL_MILLIS = 15 * 60_000L
         private const val CURRENT_CHANNEL_INTERVAL_MILLIS = 10_000L
+        private const val AUDIO_DESCRIPTION_SETTLE_MILLIS = 1_000L
 
         fun factory(container: AppContainer) = viewModelFactory {
             initializer {
@@ -366,4 +440,10 @@ class RemoteViewModel(
             }
         }
     }
+}
+
+sealed interface AudioTrackPicker {
+    data object Loading : AudioTrackPicker
+    data class Tracks(val tracks: AudioTracks, @param:StringRes val notice: Int? = null) : AudioTrackPicker
+    data class Message(@param:StringRes val text: Int) : AudioTrackPicker
 }

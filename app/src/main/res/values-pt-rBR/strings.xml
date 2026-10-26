@@ -75,6 +75,7 @@
     <string name="key_back">Voltar</string>
     <string name="key_guide">Guia</string>
     <string name="key_input">Entrada</string>
+    <string name="key_audio_track">Faixa de áudio</string>
     <string name="key_keyboard">Teclado</string>
     <string name="text_input_hint">Texto para a TV</string>
     <string name="text_input_close">Fechar teclado</string>
@@ -99,6 +100,17 @@
     <string name="result_failed">A TV não conseguiu executar o comando.</string>
     <string name="result_wake_sent">Sinal para ligar enviado.</string>
     <string name="input_picker_title">Selecionar entrada</string>
+    <string name="audio_tracks_title">Selecionar faixa de áudio</string>
+    <string name="audio_tracks_none">Nenhuma faixa de áudio encontrada. Você só pode escolhê-las enquanto a TV mostra um canal de TV.</string>
+    <string name="audio_tracks_no_root">Para escolher a faixa de áudio é preciso acesso root. Configure em Configurações → TV.</string>
+    <string name="audio_tracks_failed">A TV não respondeu.</string>
+    <string name="audio_tracks_channel_changed">O canal foi trocado. Escolha a faixa de áudio de novo.</string>
+    <string name="audio_tracks_description_setting">Audiodescrição em todos os canais</string>
+    <string name="audio_tracks_description_setting_hint">A TV escolhe a faixa com audiodescrição sempre que houver uma.</string>
+    <string name="audio_track_description">Audiodescrição</string>
+    <string name="audio_track_hearing_impaired">Para deficientes auditivos</string>
+    <string name="audio_track_unknown">Idioma desconhecido</string>
+    <string name="audio_track_selected">Ativa</string>
     <string name="input_picker_empty">A TV não informou nenhuma entrada.</string>
     <string name="input_picker_not_connected">Nada conectado</string>
 
@@ -175,6 +187,13 @@
     <string name="status_demo">Modo demo</string>
     <string name="custom_screen_empty">Esta tela está vazia. Adicione botões nas configurações, em “Telas”, com o botão de lápis.</string>
     <string name="custom_editor_done">Concluir</string>
+    <string name="custom_editor_guide">Como usar</string>
+    <string name="custom_editor_guide_title">Como funciona</string>
+    <string name="custom_editor_guide_move">Arraste um elemento para movê-lo. Se arrastá-lo para a lixeira, ele é removido.</string>
+    <string name="custom_editor_guide_resize">Toque em um elemento para selecioná-lo e depois arraste a alça no canto para mudar o tamanho.</string>
+    <string name="custom_editor_guide_select">Desenhe um quadro em uma área livre para selecionar vários elementos. Depois mova todos juntos.</string>
+    <string name="custom_editor_guide_app">Mantenha pressionada uma tecla de app por 2 segundos para configurá-la.</string>
+    <string name="custom_editor_guide_hold">2 s</string>
     <string name="custom_editor_undo">Desfazer</string>
     <string name="custom_editor_reset">Redefinir tela</string>
     <string name="settings_background">Fundo</string>
@@ -190,7 +209,6 @@
     <string name="background_mountains">Montanhas</string>
     <string name="background_forest">Floresta</string>
     <string name="background_sea">Mar</string>
-    <string name="custom_editor_hint">Arraste para mover, arraste até a lixeira para remover. Toque para selecionar e depois arraste a alça do canto para redimensionar. Desenhe um quadro em uma área vazia para selecionar vários elementos e movê-los juntos. Segure um botão de app por 2 segundos para configurá-lo.</string>
     <string name="custom_editor_add">Adicionar elemento</string>
     <string name="custom_editor_no_space">Não há espaço livre para este elemento. Abra espaço primeiro.</string>
     <string name="custom_editor_remove">Remover</string>
@@ -352,7 +370,7 @@
     <string name="help_nav_home">Visão geral da ajuda</string>
     <string name="help_nav_next">Próximo capítulo</string>
     <plurals name="help_elly_results">
-        <item quantity="one">Achei um resultado.</item>
+        <item quantity="one">Achei %d resultado.</item>
         <item quantity="other">Achei %d resultados.</item>
     </plurals>
 

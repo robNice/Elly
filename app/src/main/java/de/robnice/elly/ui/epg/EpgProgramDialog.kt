@@ -69,6 +69,7 @@ fun EpgProgramDialog(
     canRecord: Boolean,
     onAction: suspend (EpgAction) -> Unit,
     loadVideoInfo: (suspend (EpgChannel) -> EpgVideoInfo?)?,
+    onAudioTracks: (() -> Unit)?,
     onSwitch: () -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -192,6 +193,10 @@ fun EpgProgramDialog(
                         )
                         recording == null && !canRecord -> Hint(R.string.epg_record_no_storage)
                         recording == null && !recordData -> Hint(R.string.epg_record_no_data)
+                    }
+                    // The TV only lists the tracks of what it shows right now.
+                    if (running && onAudioTracks != null) {
+                        ActionButton(icon = R.drawable.ic_audio_track, text = R.string.audio_tracks_title, enabled = true, onClick = onAudioTracks)
                     }
                 }
                 if (program.genre.isNotBlank()) {
