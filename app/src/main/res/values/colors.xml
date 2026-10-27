@@ -47,7 +47,6 @@
     <!-- Page indicator -->
     <color name="indicator_active">#FFE6E8EB</color>
     <color name="indicator_inactive">#99E6E8EB</color>
-    <color name="indicator_halo">#73000000</color>
 
     <!-- Keys -->
     <color name="key_body_top">#FF34373C</color>

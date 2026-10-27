@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.Dp
 import de.robnice.elly.R
 import de.robnice.elly.data.model.CustomElement
 import de.robnice.elly.data.model.CustomElementType
@@ -46,8 +47,15 @@ private data class ThumbnailColors(
 )
 
 @Composable
-fun ScreenThumbnail(layout: CustomScreen, enabled: Boolean, modifier: Modifier = Modifier) {
-    val shape = RoundedCornerShape(dimensionResource(R.dimen.screen_thumbnail_corner))
+fun ScreenThumbnail(
+    layout: CustomScreen,
+    enabled: Boolean,
+    modifier: Modifier = Modifier,
+    corner: Dp = dimensionResource(R.dimen.screen_thumbnail_corner),
+    padding: Dp = dimensionResource(R.dimen.screen_thumbnail_padding),
+    border: Color = colorResource(R.color.pointer_area_border)
+) {
+    val shape = RoundedCornerShape(corner)
     val palette = currentPaletteColors()
     val colors = ThumbnailColors(
         key = palette.keyTop,
@@ -65,7 +73,7 @@ fun ScreenThumbnail(layout: CustomScreen, enabled: Boolean, modifier: Modifier =
             .aspectRatio(THUMBNAIL_ASPECT_RATIO)
             .clip(shape)
             .background(colorResource(R.color.remote_background), shape)
-            .border(dimensionResource(R.dimen.key_rim_width), colorResource(R.color.pointer_area_border), shape)
+            .border(dimensionResource(R.dimen.key_rim_width), border, shape)
     ) {
         val background = LocalAppBackground.current
         ScreenBackgroundImage(background.type, background.image, Modifier.matchParentSize(), thumbnail = true)
@@ -73,7 +81,7 @@ fun ScreenThumbnail(layout: CustomScreen, enabled: Boolean, modifier: Modifier =
             modifier = Modifier
                 .matchParentSize()
                 .alpha(if (enabled) 1f else DISABLED_ALPHA)
-                .padding(dimensionResource(R.dimen.screen_thumbnail_padding))
+                .padding(padding)
         ) {
             val rounding = LocalKeyRounding.current
             val dpadRounding = LocalDpadRounding.current

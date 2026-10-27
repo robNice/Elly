@@ -3,6 +3,7 @@
 
 
     <string name="page_indicator_description">Page %1$d of %2$d</string>
+    <string name="page_indicator_jump">Go to page %1$d</string>
 
     <string name="setup_close">Close</string>
     <string name="setup_emulator_hint">Emulator: the network search cannot reach your home network. Enter the IP address of your TV manually.</string>

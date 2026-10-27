@@ -1,6 +1,7 @@
 package de.robnice.elly.ui.pager
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +26,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.only
@@ -39,7 +41,6 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberOverscrollEffect
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -57,9 +58,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
@@ -74,6 +75,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import de.robnice.elly.R
+import de.robnice.elly.data.model.CustomScreen
 import de.robnice.elly.data.model.DefaultScreens
 import de.robnice.elly.data.model.PointerMode
 import de.robnice.elly.remote.ConnectionState
@@ -93,10 +95,12 @@ import de.robnice.elly.ui.onboarding.HelpButton
 import de.robnice.elly.ui.pointer.PointerOverlay
 import de.robnice.elly.ui.remote.AudioTrackDialog
 import de.robnice.elly.ui.remote.CustomPage
+import de.robnice.elly.ui.remote.LocalAppBackground
 import de.robnice.elly.ui.remote.RemoteViewModel
 import de.robnice.elly.ui.remote.ScreenBackgroundImage
 import de.robnice.elly.ui.remote.TextInputBar
 import de.robnice.elly.ui.remote.messageRes
+import de.robnice.elly.ui.settings.ScreenThumbnail
 import de.robnice.elly.ui.settings.SettingsButton
 
 @Composable
@@ -231,7 +235,10 @@ fun RemotePager(
                     HorizontalPager(
                         state = pagerState,
                         modifier = Modifier.fillMaxSize(),
-                        overscrollEffect = if (lightEffect) null else rememberOverscrollEffect()
+                        overscrollEffect = if (lightEffect) null else rememberOverscrollEffect(),
+                        // A page that is only built when it slides in gets its blurred shadows a moment
+                        // after it has settled, so the neighbours are kept ready.
+                        beyondViewportPageCount = if (lightEffect) 1 else 0
                     ) { index ->
                         CompositionLocalProvider(
                             LocalKeyHapticsEnabled provides keyHaptics,
@@ -239,14 +246,17 @@ fun RemotePager(
                             LocalDpadRounding provides dpadRounding,
                             LocalEpgGuides provides guides
                         ) {
-                            CustomPage(
-                                screen = screenContents[screens[index]] ?: DefaultScreens.layout(screens[index]),
-                                onKey = onKey,
-                                onLaunchApp = viewModel::launchApp,
-                                onDoubleTap = viewModel::openPointer.takeIf {
-                                    pointerSettings.mode == PointerMode.TOUCH && pointerSettings.doubleTapToOpen && !pointerActive
-                                }
-                            )
+                            // The shadow layer reaches far beyond its page and would end in a hard edge on the neighbour.
+                            Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
+                                CustomPage(
+                                    screen = screenContents[screens[index]] ?: DefaultScreens.layout(screens[index]),
+                                    onKey = onKey,
+                                    onLaunchApp = viewModel::launchApp,
+                                    onDoubleTap = viewModel::openPointer.takeIf {
+                                        pointerSettings.mode == PointerMode.TOUCH && pointerSettings.doubleTapToOpen && !pointerActive
+                                    }
+                                )
+                            }
                         }
                     }
                     if (pointerActive) {
@@ -261,7 +271,18 @@ fun RemotePager(
                         }
                     }
                 }
-                if (screens.size > 1) PageIndicator(pagerState = pagerState)
+                if (screens.size > 1) {
+                    CompositionLocalProvider(
+                        LocalAppBackground provides background,
+                        LocalKeyRounding provides keyRounding,
+                        LocalDpadRounding provides dpadRounding
+                    ) {
+                        PageIndicator(
+                            pagerState = pagerState,
+                            previews = screens.map { screenContents[it] ?: DefaultScreens.layout(it) }
+                        )
+                    }
+                }
             }
             SnackbarHost(
                 hostState = snackbarHostState,
@@ -336,14 +357,14 @@ private fun InputPickerDialog(inputs: List<TvInput>, onSelect: (TvInput) -> Unit
 }
 
 @Composable
-private fun PageIndicator(pagerState: PagerState) {
+private fun PageIndicator(pagerState: PagerState, previews: List<CustomScreen>) {
     val description = stringResource(
         R.string.page_indicator_description,
         pagerState.currentPage + 1,
         pagerState.pageCount
     )
     // Elements filling the whole page, like a large program guide, leave no room to swipe, so the
-    // dots take swipes as well.
+    // previews take swipes as well.
     val scope = rememberCoroutineScope()
     val flingVelocity = with(LocalDensity.current) { dimensionResource(R.dimen.indicator_fling_velocity).toPx() }
     Row(
@@ -361,28 +382,27 @@ private fun PageIndicator(pagerState: PagerState) {
                     scope.launch { pagerState.animateScrollToPage(target) }
                 }
             )
-            .padding(dimensionResource(R.dimen.indicator_padding))
             .semantics { contentDescription = description },
-        horizontalArrangement = Arrangement.spacedBy(
-            dimensionResource(R.dimen.indicator_dot_spacing),
-            Alignment.CenterHorizontally
-        )
+        horizontalArrangement = Arrangement.Center
     ) {
-        val halo = colorResource(R.color.indicator_halo)
-        repeat(pagerState.pageCount) { index ->
-            val color = if (index == pagerState.currentPage) {
-                colorResource(R.color.indicator_active)
-            } else {
-                colorResource(R.color.indicator_inactive)
-            }
-            Box(
+        previews.forEachIndexed { index, preview ->
+            val current = index == pagerState.currentPage
+            ScreenThumbnail(
+                layout = preview,
+                enabled = true,
+                corner = dimensionResource(R.dimen.indicator_preview_corner),
+                padding = dimensionResource(R.dimen.indicator_preview_inner_padding),
+                border = colorResource(if (current) R.color.indicator_active else R.color.indicator_inactive),
                 modifier = Modifier
-                    .size(dimensionResource(R.dimen.indicator_dot_size))
-                    .drawBehind {
-                        val radius = size.minDimension / 2 * INDICATOR_HALO_RATIO
-                        drawCircle(Brush.radialGradient(listOf(halo, Color.Transparent), center, radius), radius)
+                    .clickable(onClickLabel = stringResource(R.string.page_indicator_jump, index + 1)) {
+                        scope.launch { pagerState.animateScrollToPage(index) }
                     }
-                    .background(color, CircleShape)
+                    .padding(
+                        horizontal = dimensionResource(R.dimen.indicator_preview_padding_horizontal),
+                        vertical = dimensionResource(R.dimen.indicator_preview_padding_vertical)
+                    )
+                    .height(dimensionResource(R.dimen.indicator_preview_height))
+                    .alpha(if (current) 1f else INDICATOR_INACTIVE_ALPHA)
             )
         }
     }
@@ -430,7 +450,7 @@ private fun StatusLight(state: ConnectionState, sent: Flow<Unit>) {
     )
 }
 
-private const val INDICATOR_HALO_RATIO = 2.2f
+private const val INDICATOR_INACTIVE_ALPHA = 0.5f
 private const val STATUS_GLOW_ALPHA = 0.3f
 private const val STATUS_CORE_RATIO = 0.3f
 private const val STATUS_PULSE_LOW = 0.45f
