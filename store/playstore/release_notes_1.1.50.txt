@@ -1,0 +1,180 @@
+<en-US>
+• TV guide: the info window now shows the program's picture (tap to enlarge), season and episode, genres and age rating where available
+• Fixed: reminders now also work for programs the TV only knows from LG's online guide data
+• Small previews of your screens replace the page dots at the bottom: tap one to jump straight to it
+• "Long summer evenings": shadows appear right away while swiping
+</en-US>
+<ar>
+• دليل البرامج: تعرض نافذة المعلومات الآن صورة البرنامج (اضغط لتكبيرها) والموسم والحلقة والأنواع والتصنيف العمري عند توفرها
+• تم الإصلاح: التذكيرات تعمل الآن أيضًا للبرامج التي يعرفها التلفاز من بيانات دليل LG عبر الإنترنت فقط
+• معاينات صغيرة لشاشاتك بدلًا من نقاط الصفحات في الأسفل: اضغط على إحداها للانتقال إليها مباشرة
+• «أمسيات الصيف الطويلة»: تظهر الظلال فورًا أثناء التمرير
+</ar>
+<cs-CZ>
+• TV program: informační okno nyní ukazuje obrázek pořadu (klepnutím ho zvětšíš), řadu a díl, žánry a věkovou hranici, pokud jsou k dispozici
+• Opraveno: připomínky nyní fungují i u pořadů, které televize zná jen z online dat programu od LG
+• Malé náhledy tvých obrazovek nahrazují tečky stránek dole: klepnutím na náhled přejdeš přímo na obrazovku
+• „Long summer evenings“: stíny se při přejíždění objeví hned
+</cs-CZ>
+<da-DK>
+• Programguide: infovinduet viser nu programmets billede (tryk for at forstørre), sæson og afsnit, genrer og aldersgrænse, hvor de findes
+• Rettet: påmindelser virker nu også for programmer, som tv'et kun kender fra LG's onlineprogramdata
+• Små forhåndsvisninger af dine skærme erstatter sideprikkerne nederst: tryk på en for at springe direkte til den
+• "Lange sommeraftener": skyggerne er der med det samme, når du swiper
+</da-DK>
+<de-DE>
+• Programmübersicht: Das Info-Fenster zeigt jetzt das Bild zur Sendung (antippen zum Vergrößern), Staffel und Folge, Genres und Altersfreigabe, soweit vorhanden
+• Behoben: Erinnerungen klappen jetzt auch bei Sendungen, die der Fernseher nur aus LGs Online-Programmdaten kennt
+• Kleine Vorschauen der Screens ersetzen die Seitenpunkte unten: Antippen springt direkt zum Screen
+• „Lange Sommerabende“: Schatten sind beim Wischen sofort da
+</de-DE>
+<es-419>
+• Guía de programación: la ventana de información ahora muestra la imagen del programa (tócala para ampliarla), temporada y episodio, géneros y clasificación por edad, si están disponibles
+• Corregido: los recordatorios ahora también funcionan con programas que la TV solo conoce por los datos en línea de LG
+• Pequeñas vistas previas de tus pantallas reemplazan los puntos de página abajo: toca una para ir directo a ella
+• "Largas tardes de verano": las sombras aparecen de inmediato al deslizar
+</es-419>
+<es-ES>
+• Guía de programación: la ventana de información muestra la imagen del programa (tócala para ampliarla), temporada y episodio, géneros y edad recomendada, si existen
+• Corregido: los recordatorios funcionan ahora también con programas que la TV solo conoce por los datos en línea de LG
+• Pequeñas vistas previas de tus pantallas sustituyen a los puntos de página de abajo: toca una para ir directamente a ella
+• «Largas tardes de verano»: las sombras aparecen al instante al deslizar
+</es-ES>
+<fi-FI>
+• Ohjelmaopas: tietoikkuna näyttää nyt ohjelman kuvan (napauta suurentaaksesi), kauden ja jakson, lajityypit ja ikärajan, jos ne ovat saatavilla
+• Korjattu: muistutukset toimivat nyt myös ohjelmille, jotka TV tuntee vain LG:n verkko-ohjelmatiedoista
+• Näkymiesi pienet esikatselut korvaavat sivupisteet alareunassa: napauta yhtä siirtyäksesi suoraan siihen
+• ”Pitkät kesäillat”: varjot näkyvät heti pyyhkäistessä
+</fi-FI>
+<fr-FR>
+• Guide des programmes : la fenêtre d'infos affiche l'image du programme (touche pour agrandir), saison et épisode, genres et âge conseillé, si disponibles
+• Corrigé : les rappels fonctionnent aussi pour les programmes que la TV ne connaît que par les données en ligne de LG
+• De petits aperçus de tes écrans remplacent les points de page en bas : touche-en un pour y aller directement
+• « Longues soirées d'été » : les ombres apparaissent tout de suite pendant le balayage
+</fr-FR>
+<hi-IN>
+• प्रोग्राम गाइड: जानकारी विंडो अब प्रोग्राम की तस्वीर (बड़ा करने के लिए टैप करें), सीज़न और एपिसोड, शैलियाँ और आयु रेटिंग दिखाती है, जहाँ उपलब्ध हों
+• ठीक किया गया: रिमाइंडर अब उन प्रोग्रामों के लिए भी काम करते हैं जिन्हें टीवी सिर्फ़ LG के ऑनलाइन गाइड डेटा से जानता है
+• नीचे पेज बिंदुओं की जगह अब आपकी स्क्रीनों के छोटे प्रीव्यू हैं: किसी पर टैप करके सीधे उस स्क्रीन पर जाएँ
+• "Long summer evenings": स्वाइप करते समय छायाएँ तुरंत दिखती हैं
+</hi-IN>
+<hu-HU>
+• Műsorújság: az információs ablak most a műsor képét (koppints rá a nagyításhoz), az évadot és epizódot, a műfajokat és a korhatárt is mutatja, ha elérhetők
+• Javítva: az emlékeztetők most azoknál a műsoroknál is működnek, amelyeket a tévé csak az LG online műsoradataiból ismer
+• Lent a képernyőid kis előnézetei váltják az oldalpontokat: koppints egyre, hogy közvetlenül odaugorj
+• „Long summer evenings”: az árnyékok húzás közben azonnal megjelennek
+</hu-HU>
+<id>
+• Panduan program: jendela info kini menampilkan gambar acara (ketuk untuk memperbesar), musim dan episode, genre, serta batasan usia jika tersedia
+• Diperbaiki: pengingat kini juga berfungsi untuk acara yang hanya diketahui TV dari data panduan online LG
+• Pratinjau kecil layar-layarmu menggantikan titik halaman di bawah: ketuk salah satunya untuk langsung ke layar itu
+• "Long summer evenings": bayangan langsung muncul saat menggeser
+</id>
+<it-IT>
+• Guida programmi: la finestra info ora mostra l'immagine del programma (toccala per ingrandirla), stagione ed episodio, generi e fascia d'età, se disponibili
+• Corretto: i promemoria ora funzionano anche per i programmi che la TV conosce solo dai dati online di LG
+• Piccole anteprime delle tue schermate sostituiscono i puntini di pagina in basso: toccane una per andarci subito
+• "Lunghe sere d'estate": le ombre compaiono subito mentre scorri
+</it-IT>
+<iw-IL>
+• מדריך התוכניות: חלון המידע מציג עכשיו את תמונת התוכנית (הקש כדי להגדיל), עונה ופרק, ז'אנרים וסיווג גיל, כשהם זמינים
+• תוקן: תזכורות עובדות עכשיו גם לתוכניות שהטלוויזיה מכירה רק מנתוני המדריך המקוונים של LG
+• תצוגות מקדימות קטנות של המסכים שלך מחליפות את נקודות הדפים למטה: הקש על אחת כדי לעבור אליה ישירות
+• "Long summer evenings": הצללים מופיעים מיד בזמן ההחלקה
+</iw-IL>
+<ja-JP>
+• 番組表：情報ウィンドウに番組の画像（タップで拡大）、シーズンとエピソード、ジャンル、年齢制限を表示（データがある場合）
+• 修正：LG のオンライン番組データでしか分からない番組でもリマインダーを設定できるようになりました
+• 下部のページドットの代わりに、スクリーンの小さなプレビューを表示。タップでそのスクリーンへ直接移動
+• 「夏の長い夕暮れ」：スワイプ中も影がすぐに表示されます
+</ja-JP>
+<ko-KR>
+• 프로그램 가이드: 정보 창에 프로그램 이미지(탭하면 확대), 시즌과 에피소드, 장르, 연령 등급이 표시돼요(정보가 있는 경우)
+• 수정: TV가 LG 온라인 가이드 데이터로만 아는 프로그램에도 이제 알림이 작동해요
+• 아래쪽 페이지 점 대신 화면의 작은 미리보기가 표시돼요. 탭하면 해당 화면으로 바로 이동해요
+• "긴 여름 저녁": 스와이프하는 동안에도 그림자가 바로 나타나요
+</ko-KR>
+<nl-NL>
+• Programmagids: het infovenster toont nu de afbeelding van het programma (tik om te vergroten), seizoen en aflevering, genres en leeftijdsclassificatie, als die beschikbaar zijn
+• Opgelost: herinneringen werken nu ook voor programma's die de tv alleen kent uit de onlinegidsgegevens van LG
+• Kleine voorbeelden van je schermen vervangen de paginapuntjes onderaan: tik op een voorbeeld om er meteen naartoe te gaan
+• "Lange zomeravonden": schaduwen zijn er meteen tijdens het vegen
+</nl-NL>
+<no-NO>
+• Programguide: infovinduet viser nå bildet til programmet (trykk for å forstørre), sesong og episode, sjangre og aldersgrense der de finnes
+• Rettet: påminnelser virker nå også for programmer TV-en bare kjenner fra LGs nettbaserte programdata
+• Små forhåndsvisninger av skjermene dine erstatter sideprikkene nederst: trykk på en for å gå rett dit
+• «Lange sommerkvelder»: skyggene er der med en gang når du sveiper
+</no-NO>
+<pl-PL>
+• Przewodnik po programach: okno informacji pokazuje teraz zdjęcie programu (dotknij, aby powiększyć), sezon i odcinek, gatunki oraz kategorię wiekową, jeśli są dostępne
+• Naprawiono: przypomnienia działają teraz także dla programów, które telewizor zna tylko z danych online LG
+• Małe podglądy stron zastępują kropki na dole: dotknij podglądu, aby od razu przejść do tej strony
+• „Długie letnie wieczory”: cienie pojawiają się od razu podczas przesuwania
+</pl-PL>
+<pt-BR>
+• Guia de programação: a janela de informações agora mostra a imagem do programa (toque para ampliar), temporada e episódio, gêneros e classificação indicativa, quando disponíveis
+• Corrigido: os lembretes agora também funcionam para programas que a TV só conhece pelos dados on-line da LG
+• Pequenas prévias das suas telas substituem os pontos de página embaixo: toque em uma para ir direto a ela
+• "Longas tardes de verão": as sombras aparecem na hora ao deslizar
+</pt-BR>
+<pt-PT>
+• Guia de programação: a janela de informações mostra agora a imagem do programa (toca para ampliar), temporada e episódio, géneros e classificação etária, quando disponíveis
+• Corrigido: os lembretes funcionam agora também para programas que a TV só conhece pelos dados online da LG
+• Pequenas pré-visualizações dos teus ecrãs substituem os pontos de página em baixo: toca numa para ir diretamente para esse ecrã
+• "Longas tardes de verão": as sombras aparecem logo ao deslizar
+</pt-PT>
+<ro>
+• Ghidul de programe: fereastra de informații arată acum imaginea emisiunii (atinge pentru mărire), sezonul și episodul, genurile și restricția de vârstă, când sunt disponibile
+• Remediat: mementourile funcționează acum și pentru emisiunile pe care televizorul le cunoaște doar din datele online LG
+• Previzualizări mici ale ecranelor tale înlocuiesc punctele de pagină de jos: atinge una ca să ajungi direct la ea
+• „Long summer evenings”: umbrele apar imediat în timpul glisării
+</ro>
+<ru-RU>
+• Телепрограмма: окно информации теперь показывает картинку передачи (нажми, чтобы увеличить), сезон и серию, жанры и возрастное ограничение, если они есть
+• Исправлено: напоминания теперь работают и для передач, которые телевизор знает только из онлайн-данных LG
+• Маленькие превью экранов заменяют точки страниц внизу: нажми на превью, чтобы сразу перейти к экрану
+• «Долгие летние вечера»: тени появляются сразу во время пролистывания
+</ru-RU>
+<sk>
+• TV program: informačné okno teraz ukazuje obrázok relácie (ťuknutím ho zväčšíš), sériu a diel, žánre a vekové obmedzenie, ak sú k dispozícii
+• Opravené: pripomienky teraz fungujú aj pri reláciách, ktoré televízor pozná len z online údajov programu od LG
+• Malé náhľady tvojich obrazoviek nahrádzajú bodky stránok dole: ťuknutím na náhľad prejdeš priamo na obrazovku
+• „Long summer evenings“: tiene sa pri posúvaní objavia hneď
+</sk>
+<sv-SE>
+• Programguide: infofönstret visar nu programmets bild (tryck för att förstora), säsong och avsnitt, genrer och åldersgräns när de finns
+• Åtgärdat: påminnelser fungerar nu även för program som tv:n bara känner till från LG:s onlineprogramdata
+• Små förhandsvisningar av dina skärmar ersätter sidprickarna längst ned: tryck på en för att gå direkt dit
+• ”Långa sommarkvällar”: skuggorna syns direkt medan du sveper
+</sv-SE>
+<th>
+• ผังรายการ: หน้าต่างข้อมูลแสดงภาพของรายการ (แตะเพื่อขยาย) ซีซันและตอน ประเภท และเรตอายุ หากมีข้อมูล
+• แก้ไขแล้ว: ตอนนี้ตั้งการแจ้งเตือนได้แม้กับรายการที่ทีวีรู้จักเฉพาะจากข้อมูลผังรายการออนไลน์ของ LG
+• ภาพตัวอย่างขนาดเล็กของหน้าจอแทนที่จุดบอกหน้าด้านล่าง: แตะเพื่อไปยังหน้าจอนั้นทันที
+• "Long summer evenings": เงาปรากฏทันทีขณะปัด
+</th>
+<tr-TR>
+• Yayın akışı: bilgi penceresi artık programın görselini (büyütmek için dokun), sezon ve bölümü, türleri ve yaş sınırını gösteriyor (varsa)
+• Düzeltildi: hatırlatıcılar artık TV'nin yalnızca LG'nin çevrimiçi yayın verilerinden bildiği programlarda da çalışıyor
+• Alttaki sayfa noktalarının yerini ekranlarının küçük önizlemeleri aldı: doğrudan o ekrana gitmek için birine dokun
+• "Long summer evenings": kaydırırken gölgeler hemen görünüyor
+</tr-TR>
+<uk>
+• Телепрограма: вікно інформації тепер показує зображення передачі (торкнися, щоб збільшити), сезон і серію, жанри та вікове обмеження, якщо вони є
+• Виправлено: нагадування тепер працюють і для передач, які телевізор знає лише з онлайн-даних LG
+• Маленькі превʼю екранів замінюють точки сторінок унизу: торкнися превʼю, щоб одразу перейти до екрана
+• «Довгі літні вечори»: тіні зʼявляються одразу під час гортання
+</uk>
+<vi>
+• Lịch phát sóng: cửa sổ thông tin giờ hiển thị hình ảnh chương trình (chạm để phóng to), mùa và tập, thể loại và giới hạn độ tuổi nếu có
+• Đã sửa: lời nhắc giờ cũng hoạt động với các chương trình mà TV chỉ biết qua dữ liệu lịch phát sóng trực tuyến của LG
+• Ảnh xem trước nhỏ của các màn hình thay cho dấu chấm trang ở dưới cùng: chạm vào một ảnh để đến thẳng màn hình đó
+• "Long summer evenings": bóng đổ xuất hiện ngay khi vuốt
+</vi>
+<zh-CN>
+• 节目指南：信息窗口现在会显示节目图片（点按可放大）、季和集、类型以及年龄分级（如有）
+• 已修复：对于电视仅通过 LG 在线节目数据得知的节目，提醒现在也能正常设置
+• 底部的页面圆点换成了屏幕的小预览：点按预览即可直接跳到该屏幕
+• "Long summer evenings"：滑动时阴影会立即出现
+</zh-CN>

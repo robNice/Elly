@@ -1,0 +1,180 @@
+<en-US>
+• Back up and restore: save your screens and your appearance as separate files and load them again. Share your screens without changing anyone else's look.
+• TV guide: buttons with icons in the info window, close button at the top right, thinner "now" line
+• The status light flashes briefly whenever a command goes to the TV
+• Fixed: the screen editor no longer looks squashed after typing
+</en-US>
+<ar>
+• النسخ الاحتياطي والاستعادة: احفظ شاشاتك ومظهرك في ملفين منفصلين وحمّلهما من جديد. شارك شاشاتك دون تغيير مظهر أي شخص آخر.
+• دليل البرامج: أزرار بأيقونات في نافذة المعلومات، وزر الإغلاق في أعلى اليمين، وخط «الآن» أرفع
+• يومض ضوء الحالة لفترة قصيرة كلما أُرسل أمر إلى التلفاز
+• تم الإصلاح: لم يعد محرر الشاشات يبدو مضغوطًا بعد الكتابة
+</ar>
+<cs-CZ>
+• Zálohování a obnovení: ulož své obrazovky a vzhled jako samostatné soubory a znovu je načti. Sdílej obrazovky, aniž bys někomu změnil jeho vzhled.
+• TV program: tlačítka s ikonami v informačním okně, zavírací tlačítko vpravo nahoře, tenčí čára „teď“
+• Stavová kontrolka krátce blikne pokaždé, když jde příkaz do televize
+• Opraveno: editor obrazovek po psaní už nevypadá zmáčknutý
+</cs-CZ>
+<da-DK>
+• Sikkerhedskopi og gendannelse: gem dine skærme og dit udseende som separate filer, og indlæs dem igen. Del dine skærme uden at ændre andres udseende.
+• Programguide: knapper med ikoner i infovinduet, luk-knap øverst til højre, tyndere "nu"-linje
+• Statuslampen blinker kort, hver gang en kommando sendes til tv'et
+• Rettet: skærmeditoren ser ikke længere sammenklemt ud efter indtastning
+</da-DK>
+<de-DE>
+• Sichern und einspielen: Screens und Darstellung getrennt als Datei speichern und wieder laden. So gibst du Screens weiter, ohne die Optik des anderen zu ändern.
+• Programmübersicht: Knöpfe mit Icons im Info-Fenster, Schließen oben rechts, dünnere Jetzt-Linie
+• Die Statusleuchte blinkt kurz auf, sobald ein Befehl an den Fernseher geht
+• Behoben: Der Screen-Editor wirkt nach der Texteingabe nicht mehr gestaucht
+</de-DE>
+<es-419>
+• Copia de seguridad y restauración: guarda tus pantallas y tu apariencia en archivos separados y vuelve a cargarlos. Comparte tus pantallas sin cambiar el aspecto de nadie más.
+• Guía de programación: botones con íconos en la ventana de información, botón de cerrar arriba a la derecha, línea de "ahora" más delgada
+• La luz de estado parpadea brevemente cada vez que se envía un comando a la TV
+• Corregido: el editor de pantallas ya no se ve aplastado después de escribir
+</es-419>
+<es-ES>
+• Copia de seguridad y restauración: guarda tus pantallas y tu apariencia en archivos separados y vuelve a cargarlos. Comparte tus pantallas sin cambiar el aspecto de nadie más.
+• Guía de programación: botones con iconos en la ventana de información, botón de cerrar arriba a la derecha, línea de "ahora" más fina
+• La luz de estado parpadea brevemente cada vez que se envía una orden a la TV
+• Corregido: el editor de pantallas ya no se ve aplastado después de escribir
+</es-ES>
+<fi-FI>
+• Varmuuskopiointi ja palautus: tallenna näkymät ja ulkoasu erillisiin tiedostoihin ja lataa ne takaisin. Jaa näkymäsi muuttamatta kenenkään muun ulkoasua.
+• Ohjelmaopas: kuvakkeelliset painikkeet tietoikkunassa, sulkemispainike oikeassa yläkulmassa, ohuempi "nyt"-viiva
+• Tilavalo välähtää lyhyesti aina, kun komento lähtee televisioon
+• Korjattu: näkymäeditori ei enää näytä litistyneeltä kirjoittamisen jälkeen
+</fi-FI>
+<fr-FR>
+• Sauvegarde et restauration : enregistre tes écrans et ton apparence dans des fichiers séparés et recharge-les. Partage tes écrans sans changer l'apparence des autres.
+• Guide des programmes : boutons avec icônes dans la fenêtre d'infos, bouton de fermeture en haut à droite, ligne « maintenant » plus fine
+• Le voyant d'état clignote brièvement à chaque commande envoyée à la TV
+• Corrigé : l'éditeur d'écrans n'apparaît plus écrasé après la saisie
+</fr-FR>
+<hi-IN>
+• बैकअप और रीस्टोर: अपनी स्क्रीन और अपना रूप अलग-अलग फ़ाइलों में सहेजें और फिर से लोड करें। किसी और का रूप बदले बिना अपनी स्क्रीन शेयर करें।
+• प्रोग्राम गाइड: जानकारी विंडो में आइकन वाले बटन, ऊपर दाईं ओर बंद करने का बटन, पतली "अभी" रेखा
+• जब भी टीवी को कोई कमांड जाती है, स्टेटस लाइट थोड़ी देर के लिए चमकती है
+• ठीक किया गया: टाइप करने के बाद स्क्रीन एडिटर अब दबा हुआ नहीं दिखता
+</hi-IN>
+<hu-HU>
+• Mentés és visszaállítás: mentsd a képernyőidet és a megjelenést külön fájlokba, majd töltsd be őket újra. Oszd meg a képernyőidet anélkül, hogy más megjelenését megváltoztatnád.
+• Műsorújság: ikonos gombok az információs ablakban, bezárás gomb jobbra fent, vékonyabb „most” vonal
+• Az állapotjelző röviden felvillan, valahányszor parancs megy a tévére
+• Javítva: a képernyőszerkesztő gépelés után már nem tűnik összenyomottnak
+</hu-HU>
+<id>
+• Cadangkan dan pulihkan: simpan layar dan tampilanmu sebagai file terpisah lalu muat lagi. Bagikan layarmu tanpa mengubah tampilan orang lain.
+• Panduan program: tombol dengan ikon di jendela info, tombol tutup di kanan atas, garis "sekarang" lebih tipis
+• Lampu status berkedip sebentar setiap kali perintah dikirim ke TV
+• Diperbaiki: editor layar tidak lagi terlihat gepeng setelah mengetik
+</id>
+<it-IT>
+• Backup e ripristino: salva schermate e aspetto in file separati e ricaricali. Condividi le tue schermate senza cambiare l'aspetto di nessun altro.
+• Guida programmi: pulsanti con icone nella finestra info, pulsante di chiusura in alto a destra, linea "adesso" più sottile
+• La spia di stato lampeggia brevemente ogni volta che un comando arriva alla TV
+• Corretto: l'editor delle schermate non appare più schiacciato dopo la digitazione
+</it-IT>
+<iw-IL>
+• גיבוי ושחזור: שמור את המסכים ואת המראה שלך כקבצים נפרדים וטען אותם שוב. שתף את המסכים שלך בלי לשנות את המראה של אף אחד אחר.
+• מדריך התוכניות: כפתורים עם סמלים בחלון המידע, כפתור סגירה בפינה הימנית העליונה, קו "עכשיו" דק יותר
+• נורית המצב מהבהבת לרגע בכל פעם שפקודה נשלחת לטלוויזיה
+• תוקן: עורך המסכים כבר לא נראה מכווץ אחרי הקלדה
+</iw-IL>
+<ja-JP>
+• バックアップと復元：スクリーンと外観を別々のファイルに保存して、あとで読み込めます。相手の外観を変えずにスクリーンを共有できます。
+• 番組表：情報ウィンドウのボタンにアイコン、閉じるボタンは右上に、「現在」の線を細く
+• テレビにコマンドを送るたびにステータスランプが短く光ります
+• 修正：文字入力のあとにスクリーンエディターが縦に縮んで見えなくなりました
+</ja-JP>
+<ko-KR>
+• 백업 및 복원: 화면과 디자인을 별도의 파일로 저장하고 다시 불러올 수 있어요. 다른 사람의 디자인을 바꾸지 않고 화면을 공유하세요.
+• 프로그램 가이드: 정보 창의 버튼에 아이콘 추가, 닫기 버튼은 오른쪽 위로, 더 얇은 "지금" 선
+• TV로 명령을 보낼 때마다 상태 표시등이 잠깐 깜박여요
+• 수정: 입력 후 화면 편집기가 더 이상 눌려 보이지 않아요
+</ko-KR>
+<nl-NL>
+• Back-up en terugzetten: sla je schermen en je weergave op als aparte bestanden en laad ze weer. Deel je schermen zonder de weergave van een ander te veranderen.
+• Programmagids: knoppen met pictogrammen in het infovenster, sluitknop rechtsboven, dunnere "nu"-lijn
+• Het statuslampje knippert kort zodra er een opdracht naar de tv gaat
+• Opgelost: de schermeditor ziet er na het typen niet meer platgedrukt uit
+</nl-NL>
+<no-NO>
+• Sikkerhetskopi og gjenoppretting: lagre skjermene og utseendet ditt som separate filer og last dem inn igjen. Del skjermene dine uten å endre andres utseende.
+• Programguide: knapper med ikoner i infovinduet, lukkeknapp øverst til høyre, tynnere «nå»-linje
+• Statuslampen blinker kort hver gang en kommando går til TV-en
+• Rettet: skjermredigeringen ser ikke lenger sammenklemt ut etter skriving
+</no-NO>
+<pl-PL>
+• Kopia zapasowa i przywracanie: zapisz swoje strony i wygląd w osobnych plikach i wczytaj je ponownie. Udostępniaj strony, nie zmieniając nikomu wyglądu.
+• Przewodnik po programach: przyciski z ikonami w oknie informacji, przycisk zamykania w prawym górnym rogu, cieńsza linia „teraz”
+• Lampka stanu krótko miga za każdym razem, gdy polecenie trafia do telewizora
+• Naprawiono: edytor stron po pisaniu nie wygląda już na ściśnięty
+</pl-PL>
+<pt-BR>
+• Backup e restauração: salve suas telas e sua aparência em arquivos separados e carregue-os de novo. Compartilhe suas telas sem mudar a aparência de mais ninguém.
+• Guia de programação: botões com ícones na janela de informações, botão de fechar no canto superior direito, linha "agora" mais fina
+• A luz de status pisca rapidamente sempre que um comando vai para a TV
+• Corrigido: o editor de telas não parece mais achatado depois de digitar
+</pt-BR>
+<pt-PT>
+• Cópia de segurança e restauro: guarda os teus ecrãs e o teu aspeto em ficheiros separados e volta a carregá-los. Partilha os teus ecrãs sem alterar o aspeto de mais ninguém.
+• Guia de programação: botões com ícones na janela de informações, botão de fechar no canto superior direito, linha "agora" mais fina
+• A luz de estado pisca brevemente sempre que um comando é enviado para a TV
+• Corrigido: o editor de ecrãs já não parece achatado depois de escrever
+</pt-PT>
+<ro>
+• Copiere de rezervă și restaurare: salvează ecranele și aspectul în fișiere separate și încarcă-le din nou. Partajează-ți ecranele fără să schimbi aspectul altcuiva.
+• Ghidul de programe: butoane cu pictograme în fereastra de informații, butonul de închidere în dreapta sus, linia „acum” mai subțire
+• Indicatorul de stare clipește scurt de fiecare dată când o comandă ajunge la televizor
+• Remediat: editorul de ecrane nu mai pare turtit după tastare
+</ro>
+<ru-RU>
+• Резервная копия и восстановление: сохраняй экраны и оформление в отдельные файлы и загружай их снова. Делись экранами, не меняя чужое оформление.
+• Телепрограмма: кнопки со значками в окне информации, кнопка закрытия вверху справа, более тонкая линия «сейчас»
+• Индикатор состояния коротко мигает каждый раз, когда на телевизор уходит команда
+• Исправлено: редактор экранов больше не выглядит сжатым после ввода текста
+</ru-RU>
+<sk>
+• Zálohovanie a obnovenie: ulož svoje obrazovky a vzhľad ako samostatné súbory a znova ich načítaj. Zdieľaj obrazovky bez toho, aby si niekomu zmenil jeho vzhľad.
+• TV program: tlačidlá s ikonami v informačnom okne, tlačidlo zatvorenia vpravo hore, tenšia čiara „teraz“
+• Stavová kontrolka krátko blikne vždy, keď ide príkaz do televízora
+• Opravené: editor obrazoviek po písaní už nevyzerá stlačený
+</sk>
+<sv-SE>
+• Säkerhetskopiera och återställ: spara dina skärmar och ditt utseende som separata filer och läs in dem igen. Dela dina skärmar utan att ändra någon annans utseende.
+• Programguide: knappar med ikoner i infofönstret, stängknapp uppe till höger, tunnare "nu"-linje
+• Statuslampan blinkar kort varje gång ett kommando går till tv:n
+• Åtgärdat: skärmredigeraren ser inte längre hoptryckt ut efter skrivning
+</sv-SE>
+<th>
+• สำรองและกู้คืน: บันทึกหน้าจอและรูปลักษณ์เป็นไฟล์แยกกันแล้วโหลดกลับมาได้ แชร์หน้าจอของคุณโดยไม่เปลี่ยนรูปลักษณ์ของคนอื่น
+• ผังรายการ: ปุ่มพร้อมไอคอนในหน้าต่างข้อมูล ปุ่มปิดอยู่มุมขวาบน เส้น "ตอนนี้" บางลง
+• ไฟสถานะจะกะพริบสั้น ๆ ทุกครั้งที่ส่งคำสั่งไปยังทีวี
+• แก้ไขแล้ว: ตัวแก้ไขหน้าจอไม่ดูบีบแบนอีกต่อไปหลังพิมพ์ข้อความ
+</th>
+<tr-TR>
+• Yedekleme ve geri yükleme: ekranlarını ve görünümünü ayrı dosyalar olarak kaydet ve yeniden yükle. Başkasının görünümünü değiştirmeden ekranlarını paylaş.
+• Yayın akışı: bilgi penceresinde simgeli düğmeler, sağ üstte kapatma düğmesi, daha ince "şimdi" çizgisi
+• TV'ye her komut gittiğinde durum ışığı kısa bir süre yanıp söner
+• Düzeltildi: ekran düzenleyici yazı yazdıktan sonra artık basık görünmüyor
+</tr-TR>
+<uk>
+• Резервна копія та відновлення: зберігай екрани й вигляд в окремі файли та завантажуй їх знову. Ділися екранами, не змінюючи чужий вигляд.
+• Телепрограма: кнопки зі значками у вікні інформації, кнопка закриття вгорі праворуч, тонша лінія «зараз»
+• Індикатор стану коротко блимає щоразу, коли на телевізор надходить команда
+• Виправлено: редактор екранів більше не виглядає стиснутим після введення тексту
+</uk>
+<vi>
+• Sao lưu và khôi phục: lưu màn hình và giao diện thành các tệp riêng rồi tải lại. Chia sẻ màn hình mà không thay đổi giao diện của người khác.
+• Lịch phát sóng: nút có biểu tượng trong cửa sổ thông tin, nút đóng ở góc trên bên phải, vạch "bây giờ" mảnh hơn
+• Đèn trạng thái nháy ngắn mỗi khi có lệnh gửi tới TV
+• Đã sửa: trình chỉnh sửa màn hình không còn bị dẹt sau khi nhập chữ
+</vi>
+<zh-CN>
+• 备份与恢复：将屏幕和外观分别保存为文件并重新加载。分享你的屏幕，而不会改变别人的外观。
+• 节目指南：信息窗口中的按钮带有图标，关闭按钮移至右上角，“现在”线更细
+• 每当有命令发送到电视时，状态灯都会短暂闪烁
+• 已修复：输入文字后屏幕编辑器不再显得被压扁
+</zh-CN>

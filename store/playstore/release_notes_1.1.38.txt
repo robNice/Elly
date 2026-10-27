@@ -1,0 +1,150 @@
+<en-US>
+• TV guide: no more gaps after switching the TV on
+• Root access: choose whether Elly logs in with the root password or with your SSH key (pasted or loaded from a file). Elly no longer changes anything on the TV.
+• If an older Elly version stored its key on the TV, a notice explains why the root password no longer works there and offers to remove the key.
+</en-US>
+<ar>
+• دليل البرامج: لا مزيد من الفجوات بعد تشغيل التلفاز
+• الوصول بصلاحيات الجذر: اختر ما إذا كانت Elly تسجّل الدخول بكلمة مرور الجذر أو بمفتاح SSH الخاص بك (ملصقًا أو محمّلًا من ملف). لم تعد Elly تغيّر أي شيء على التلفاز.
+• إذا خزّن إصدار أقدم من Elly مفتاحه على التلفاز، يوضّح تنبيه سبب عدم عمل كلمة مرور الجذر هناك ويعرض إزالة المفتاح.
+</ar>
+<cs-CZ>
+• TV program: po zapnutí televize už v něm nejsou mezery
+• Root přístup: vyber, zda se Elly přihlásí heslem roota, nebo tvým SSH klíčem (vloženým nebo načteným ze souboru). Elly už na televizi nic nemění.
+• Pokud starší verze Elly uložila na televizi svůj klíč, upozornění vysvětlí, proč tam heslo roota nefunguje, a nabídne klíč odstranit.
+</cs-CZ>
+<da-DK>
+• Programguide: ingen huller længere, efter at tv'et er tændt
+• Rootadgang: vælg, om Elly logger på med rootadgangskoden eller med din SSH-nøgle (indsat eller indlæst fra en fil). Elly ændrer ikke længere noget på tv'et.
+• Har en ældre Elly-version gemt sin nøgle på tv'et, forklarer en meddelelse, hvorfor rootadgangskoden ikke virker der, og tilbyder at fjerne nøglen.
+</da-DK>
+<de-DE>
+• Programmübersicht: keine Lücken mehr nach dem Einschalten des Fernsehers
+• Root-Zugang: Wähle, ob sich Elly mit dem Root-Passwort oder mit deinem SSH-Schlüssel anmeldet (eingefügt oder aus einer Datei geladen). Elly verändert am Fernseher nichts mehr.
+• Hat eine ältere Elly-Version ihren Schlüssel auf dem Fernseher hinterlegt, erklärt ein Hinweis, warum das Root-Passwort dort nicht greift, und bietet an, den Schlüssel zu entfernen.
+</de-DE>
+<es-419>
+• Guía de programación: ya no hay huecos después de encender la TV
+• Acceso root: elige si Elly inicia sesión con la contraseña root o con tu clave SSH (pegada o cargada desde un archivo). Elly ya no cambia nada en la TV.
+• Si una versión anterior de Elly guardó su clave en la TV, un aviso explica por qué la contraseña root no funciona allí y ofrece eliminar la clave.
+</es-419>
+<es-ES>
+• Guía de programación: ya no hay huecos después de encender la TV
+• Acceso root: elige si Elly inicia sesión con la contraseña root o con tu clave SSH (pegada o cargada desde un archivo). Elly ya no cambia nada en la TV.
+• Si una versión anterior de Elly guardó su clave en la TV, un aviso explica por qué la contraseña root no funciona allí y ofrece eliminar la clave.
+</es-ES>
+<fi-FI>
+• Ohjelmaopas: ei enää aukkoja television käynnistämisen jälkeen
+• Root-oikeudet: valitse, kirjautuuko Elly root-salasanalla vai SSH-avaimellasi (liitettynä tai tiedostosta ladattuna). Elly ei enää muuta televisiossa mitään.
+• Jos Ellyn vanhempi versio tallensi avaimensa televisioon, ilmoitus kertoo, miksi root-salasana ei toimi siellä, ja tarjoaa avaimen poistamista.
+</fi-FI>
+<fr-FR>
+• Guide des programmes : plus de trous après l'allumage de la TV
+• Accès root : choisis si Elly se connecte avec le mot de passe root ou avec ta clé SSH (collée ou chargée depuis un fichier). Elly ne modifie plus rien sur la TV.
+• Si une ancienne version d'Elly a enregistré sa clé sur la TV, un message explique pourquoi le mot de passe root n'y fonctionne plus et propose de supprimer la clé.
+</fr-FR>
+<hi-IN>
+• प्रोग्राम गाइड: टीवी चालू करने के बाद अब कोई खाली जगह नहीं
+• रूट एक्सेस: चुनें कि Elly रूट पासवर्ड से लॉग इन करे या आपकी SSH कुंजी से (पेस्ट की गई या फ़ाइल से लोड की गई)। Elly अब टीवी पर कुछ भी नहीं बदलती।
+• अगर Elly के किसी पुराने वर्शन ने टीवी पर अपनी कुंजी सेव की है, तो एक सूचना बताती है कि वहाँ रूट पासवर्ड क्यों काम नहीं करता और कुंजी हटाने का विकल्प देती है।
+</hi-IN>
+<hu-HU>
+• Műsorújság: a tévé bekapcsolása után már nincsenek benne hézagok
+• Root-hozzáférés: válaszd ki, hogy Elly a root-jelszóval vagy az SSH-kulcsoddal (beillesztve vagy fájlból betöltve) jelentkezzen be. Elly már semmit sem változtat a tévén.
+• Ha egy régebbi Elly-verzió a kulcsát a tévén tárolta, egy értesítés elmagyarázza, miért nem működik ott a root-jelszó, és felajánlja a kulcs eltávolítását.
+</hu-HU>
+<id>
+• Panduan program: tidak ada lagi celah setelah TV dinyalakan
+• Akses root: pilih apakah Elly masuk dengan kata sandi root atau dengan kunci SSH Anda (ditempel atau dimuat dari file). Elly tidak lagi mengubah apa pun di TV.
+• Jika versi Elly yang lebih lama menyimpan kuncinya di TV, sebuah pemberitahuan menjelaskan mengapa kata sandi root tidak berfungsi di sana dan menawarkan untuk menghapus kunci tersebut.
+</id>
+<it-IT>
+• Guida programmi: niente più vuoti dopo l'accensione della TV
+• Accesso root: scegli se Elly accede con la password di root o con la tua chiave SSH (incollata o caricata da un file). Elly non modifica più nulla sulla TV.
+• Se una versione precedente di Elly ha salvato la sua chiave sulla TV, un avviso spiega perché lì la password di root non funziona e propone di rimuovere la chiave.
+</it-IT>
+<iw-IL>
+• מדריך התוכניות: אין יותר פערים אחרי הדלקת הטלוויזיה
+• גישת root: אפשר לבחור אם ‏Elly תתחבר עם סיסמת ה-root או עם מפתח ה-SSH שלך (מודבק או נטען מקובץ). ‏Elly כבר לא משנה שום דבר בטלוויזיה.
+• אם גרסה ישנה יותר של Elly שמרה את המפתח שלה בטלוויזיה, הודעה מסבירה למה סיסמת ה-root לא עובדת שם ומציעה להסיר את המפתח.
+</iw-IL>
+<ja-JP>
+• 番組表：テレビの電源を入れた後に番組が抜けることがなくなりました
+• root アクセス：Elly のログイン方法を root パスワードと SSH 鍵（貼り付けまたはファイルから読み込み）から選べるようになりました。Elly はテレビ側を一切変更しません。
+• 以前のバージョンの Elly がテレビに鍵を保存している場合は、そこで root パスワードが使えない理由を説明し、鍵の削除を提案するお知らせが表示されます。
+</ja-JP>
+<ko-KR>
+• 프로그램 가이드: TV를 켠 뒤에 빈칸이 더 이상 생기지 않아요
+• 루트 권한: Elly가 루트 비밀번호로 로그인할지, SSH 키(붙여 넣기 또는 파일에서 불러오기)로 로그인할지 선택할 수 있어요. Elly는 이제 TV에서 아무것도 바꾸지 않아요.
+• 이전 버전의 Elly가 TV에 키를 저장했다면, 그곳에서 루트 비밀번호가 통하지 않는 이유를 알려 주고 키를 삭제할 수 있는 안내가 표시돼요.
+</ko-KR>
+<nl-NL>
+• Programmagids: geen gaten meer na het aanzetten van de tv
+• Roottoegang: kies of Elly inlogt met het rootwachtwoord of met je SSH-sleutel (geplakt of uit een bestand geladen). Elly wijzigt niets meer op de tv.
+• Heeft een oudere Elly-versie haar sleutel op de tv opgeslagen, dan legt een melding uit waarom het rootwachtwoord daar niet werkt en biedt aan de sleutel te verwijderen.
+</nl-NL>
+<no-NO>
+• Programguide: ingen hull lenger etter at TV-en er slått på
+• Root-tilgang: velg om Elly logger inn med root-passordet eller med SSH-nøkkelen din (limt inn eller lastet inn fra en fil). Elly endrer ikke lenger noe på TV-en.
+• Har en eldre Elly-versjon lagret nøkkelen sin på TV-en, forklarer et varsel hvorfor root-passordet ikke virker der, og tilbyr å fjerne nøkkelen.
+</no-NO>
+<pl-PL>
+• Przewodnik po programach: koniec z lukami po włączeniu telewizora
+• Dostęp root: wybierz, czy Elly loguje się hasłem roota, czy twoim kluczem SSH (wklejonym lub wczytanym z pliku). Elly niczego już nie zmienia w telewizorze.
+• Jeśli starsza wersja Elly zapisała swój klucz na telewizorze, komunikat wyjaśnia, dlaczego hasło roota tam nie działa, i proponuje usunięcie klucza.
+</pl-PL>
+<pt-BR>
+• Guia de programação: sem mais lacunas depois de ligar a TV
+• Acesso root: escolha se a Elly faz login com a senha de root ou com a sua chave SSH (colada ou carregada de um arquivo). A Elly não altera mais nada na TV.
+• Se uma versão antiga da Elly salvou a chave dela na TV, um aviso explica por que a senha de root não funciona lá e oferece remover a chave.
+</pt-BR>
+<pt-PT>
+• Guia de programação: sem mais falhas depois de ligar a TV
+• Acesso root: escolhe se a Elly inicia sessão com a palavra-passe de root ou com a tua chave SSH (colada ou carregada de um ficheiro). A Elly já não altera nada na TV.
+• Se uma versão anterior da Elly guardou a sua chave na TV, um aviso explica porque é que a palavra-passe de root não funciona lá e propõe remover a chave.
+</pt-PT>
+<ro>
+• Ghidul de programe: nu mai apar goluri după pornirea televizorului
+• Acces root: alege dacă Elly se conectează cu parola root sau cu cheia ta SSH (lipită sau încărcată dintr-un fișier). Elly nu mai modifică nimic pe televizor.
+• Dacă o versiune mai veche a Elly și-a salvat cheia pe televizor, o notificare explică de ce parola root nu funcționează acolo și oferă eliminarea cheii.
+</ro>
+<ru-RU>
+• Телепрограмма: больше никаких пробелов после включения телевизора
+• Root-доступ: выбери, входит ли Elly с паролем root или с твоим SSH-ключом (вставленным или загруженным из файла). Elly больше ничего не меняет на телевизоре.
+• Если старая версия Elly сохранила свой ключ на телевизоре, уведомление объяснит, почему пароль root там не работает, и предложит удалить ключ.
+</ru-RU>
+<sk>
+• TV program: po zapnutí televízora už v ňom nie sú medzery
+• Root prístup: vyber, či sa Elly prihlási heslom roota, alebo tvojím SSH kľúčom (vloženým alebo načítaným zo súboru). Elly už na televízore nič nemení.
+• Ak staršia verzia Elly uložila na televízor svoj kľúč, upozornenie vysvetlí, prečo tam heslo roota nefunguje, a ponúkne kľúč odstrániť.
+</sk>
+<sv-SE>
+• Programguide: inga luckor längre efter att tv:n slagits på
+• Root-åtkomst: välj om Elly loggar in med root-lösenordet eller med din SSH-nyckel (inklistrad eller inläst från en fil). Elly ändrar inte längre något på tv:n.
+• Om en äldre Elly-version har sparat sin nyckel på tv:n förklarar ett meddelande varför root-lösenordet inte fungerar där och erbjuder att ta bort nyckeln.
+</sv-SE>
+<th>
+• ผังรายการ: ไม่มีช่องว่างอีกต่อไปหลังจากเปิดทีวี
+• สิทธิ์ root: เลือกได้ว่าจะให้ Elly เข้าสู่ระบบด้วยรหัสผ่าน root หรือด้วยคีย์ SSH ของคุณ (วางหรือโหลดจากไฟล์) Elly จะไม่เปลี่ยนแปลงอะไรบนทีวีอีก
+• หาก Elly เวอร์ชันเก่าเคยบันทึกคีย์ของตัวเองไว้บนทีวี จะมีข้อความอธิบายว่าทำไมรหัสผ่าน root ใช้ไม่ได้ที่นั่น และเสนอให้ลบคีย์ออก
+</th>
+<tr-TR>
+• Yayın akışı: TV açıldıktan sonra artık boşluk yok
+• Root erişimi: Elly'nin root parolasıyla mı yoksa SSH anahtarınla mı (yapıştırılmış ya da dosyadan yüklenmiş) oturum açacağını seç. Elly artık TV'de hiçbir şeyi değiştirmiyor.
+• Elly'nin eski bir sürümü anahtarını TV'ye kaydettiyse, bir bildirim root parolasının orada neden çalışmadığını açıklıyor ve anahtarı kaldırmayı öneriyor.
+</tr-TR>
+<uk>
+• Телепрограма: більше жодних прогалин після ввімкнення телевізора
+• Root-доступ: вибери, чи входить Elly з паролем root, чи з твоїм SSH-ключем (вставленим або завантаженим із файлу). Elly більше нічого не змінює на телевізорі.
+• Якщо старіша версія Elly зберегла свій ключ на телевізорі, сповіщення пояснить, чому пароль root там не працює, і запропонує видалити ключ.
+</uk>
+<vi>
+• Lịch phát sóng: không còn khoảng trống sau khi bật TV
+• Quyền root: chọn Elly đăng nhập bằng mật khẩu root hay bằng khóa SSH của bạn (dán vào hoặc tải từ tệp). Elly không còn thay đổi gì trên TV nữa.
+• Nếu một phiên bản Elly cũ đã lưu khóa của nó trên TV, một thông báo sẽ giải thích vì sao mật khẩu root không hoạt động ở đó và đề xuất xóa khóa.
+</vi>
+<zh-CN>
+• 节目指南：开启电视后不再出现空缺
+• Root 访问：可选择让 Elly 使用 root 密码登录，或使用你的 SSH 密钥（粘贴或从文件加载）登录。Elly 不再更改电视上的任何内容。
+• 如果旧版 Elly 曾在电视上保存了自己的密钥，会有提示说明为什么那里的 root 密码不起作用，并提供删除该密钥的选项。
+</zh-CN>

@@ -1,0 +1,16 @@
+{
+  "title": "Elly: Fjärrkontroll för LG-tv",
+  "short_description": "Telefonen blir fjärrkontroll för LG webOS-tv – med pekare, widgetar och Elly.",
+  "full_description": "Elly gör din Android-telefon till en fjärrkontroll för LG-tv-apparater med webOS. Alla knappar från Magic Remote plus pekaren – styrd genom att röra telefonen eller med en pekplatta. Elly, en höna med en fjärrkontroll under vingen, guidar dig genom appen.\n\nFJÄRRKONTROLL\n• Alla viktiga knappar på upp till fyra skärmar, ingen rullning – svep bara för att byta\n• Volym, kanal, styrkors, siffror, färgknappar, uppspelning och val av ingång\n• Appknappar som öppnar Netflix med flera direkt på tv:n – med appikonen från tv:n\n• Skärm av, ljud på: stäng av tv-skärmen medan ljudet fortsätter\n• Textinmatning: när ett textfält är aktivt på tv:n skriver du bara på telefonen\n\nPEKARE SOM MAGIC REMOTE\n• Rörelseläge: markören följer telefonen\n• Pekplatta med svep eller joystick\n• Öppna den genom att skaka eller dubbeltrycka\n\nEFTER DIN SMAK\n• Varje skärm går att anpassa helt: flytta knappar och ändra storlek, lägg in knappgrupper, ångra steg för steg\n• 15 färgpaletter, tolv bakgrunder eller ditt eget foto\n• Justerbar rundning och ljuseffekten ”Långa sommarkvällar”\n\nWIDGETAR\n• Sju widgetar för hemskärmen – från volym till en komplett minifjärrkontroll med valfria knappar\n\nPROGRAMGUIDE (FÖR ROOTADE TV-APPARATER)\n• Programmet för din favoritlista i en överblick – upp till 14 dagar framåt\n• Planera påminnelser och inspelningar direkt på tv:n\n• Tryck på en kanal för att byta till den\n• Kräver root-åtkomst och SSH på tv:n\n\nOCH MER\n• Hittar din tv i nätverket automatiskt, parkoppla en gång\n• Slå på tv:n via wifi (Wake-on-LAN)\n• Demoläge för att testa allt utan tv\n• Utförlig hjälp med sökning – förklarad av Elly\n\nINTEGRITET\nElly pratar bara med din tv i det lokala nätverket. Ingen reklam, inget konto, inga data skickas till externa servrar. Elly är öppen källkod (MIT-licens). För programguiden ansluter Elly till din tv via SSH; kanallogotyperna hämtar tv:n själv från LG.\n\nKrav: Android 9 eller senare, en LG-tv med webOS i samma nätverk.\n\nElly är ett oberoende projekt och har ingen koppling till LG Electronics. LG, webOS och Magic Remote är varumärken som tillhör respektive ägare.",
+  "feature_title": "Elly",
+  "feature_tagline": "Fjärrkontrollen för din LG-tv",
+  "captions": [
+    "Gör telefonen till en fjärrkontroll för LG-tv",
+    "En pekare som Magic Remote – med rörelse eller pekplatta",
+    "Utforma varje skärm precis som du vill",
+    "Färger, bakgrunder och former efter din smak",
+    "Widgetar för hemskärmen",
+    "Elly förklarar allt",
+    "Programguide med påminnelser och inspelningar – för rootade tv-apparater"
+  ]
+}

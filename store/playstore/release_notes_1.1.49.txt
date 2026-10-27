@@ -1,0 +1,180 @@
+<en-US>
+• New "Audio track" key (with root access): pick the running channel's audio track on your phone, e.g. audio description or another language. Also available from the TV guide's info window.
+• "Audio description on all channels" switch: the TV then picks the described track wherever there is one
+• TV guide: the program running on the current channel now stands out
+• Screen editor: more room to edit, and a "How to" button with illustrated steps
+</en-US>
+<ar>
+• زر جديد «المسار الصوتي» (مع الوصول بصلاحيات الجذر): اختر المسار الصوتي للقناة الحالية من هاتفك، مثل الوصف الصوتي أو لغة أخرى. متاح أيضًا من نافذة المعلومات في دليل البرامج.
+• مفتاح «الوصف الصوتي على جميع القنوات»: يختار التلفاز المسار المزوّد بالوصف الصوتي حيثما وُجد
+• دليل البرامج: البرنامج المعروض حاليًا على القناة الحالية أصبح بارزًا
+• محرر الشاشات: مساحة أكبر للتعديل، وزر «طريقة الاستخدام» بخطوات مصوّرة
+</ar>
+<cs-CZ>
+• Nové tlačítko „Zvuková stopa“ (s root přístupem): vyber na telefonu zvukovou stopu běžícího kanálu, např. audiopopis nebo jiný jazyk. Dostupné i z informačního okna TV programu.
+• Přepínač „Audiopopis na všech kanálech“: televize pak sama zvolí stopu s audiopopisem všude, kde je k dispozici
+• TV program: pořad, který právě běží na aktuálním kanálu, je nyní zvýrazněný
+• Editor obrazovek: víc místa na úpravy a tlačítko „Návod“ s obrázkovými kroky
+</cs-CZ>
+<da-DK>
+• Ny tast "Lydspor" (med rootadgang): vælg lydsporet for den aktuelle kanal på telefonen, f.eks. synstolkning eller et andet sprog. Findes også i programguidens infovindue.
+• Kontakten "Synstolkning på alle kanaler": tv'et vælger så selv sporet med synstolkning, hvor der er et
+• Programguide: programmet, der kører på den aktuelle kanal, er nu fremhævet
+• Skærmeditor: mere plads til redigering og en "Vejledning"-knap med illustrerede trin
+</da-DK>
+<de-DE>
+• Neue Taste „Tonspur“ (mit Root-Zugang): Tonspur des laufenden Senders am Handy wählen, z. B. Audiobeschreibung oder eine andere Sprache. Auch aus dem Info-Fenster der Programmübersicht.
+• Schalter „Audiobeschreibung bei allen Sendern“: Der Fernseher wählt dann selbst die Spur mit Audiobeschreibung
+• Programmübersicht: Die laufende Sendung des aktuellen Senders ist jetzt hervorgehoben
+• Screen-Editor: mehr Platz zum Bearbeiten und ein Button „Anleitung“ mit bebilderten Schritten
+</de-DE>
+<es-419>
+• Nueva tecla "Pista de audio" (con acceso root): elige desde el teléfono la pista de audio del canal actual, por ejemplo audiodescripción u otro idioma. También desde la ventana de información de la guía.
+• Interruptor "Audiodescripción en todos los canales": la TV elige sola la pista con audiodescripción
+• Guía de programación: el programa en curso del canal actual ahora se destaca
+• Editor de pantallas: más espacio para editar y un botón "Cómo se usa" con pasos ilustrados
+</es-419>
+<es-ES>
+• Nueva tecla «Pista de audio» (con acceso root): elige desde el móvil la pista de audio del canal actual, por ejemplo audiodescripción u otro idioma. También desde la ventana de información de la guía.
+• Interruptor «Audiodescripción en todos los canales»: la TV elige sola la pista con audiodescripción
+• Guía de programación: el programa en emisión del canal actual ahora destaca
+• Editor de pantallas: más espacio para editar y un botón «Cómo se usa» con pasos ilustrados
+</es-ES>
+<fi-FI>
+• Uusi painike ”Ääniraita” (root-oikeuksilla): valitse puhelimella käynnissä olevan kanavan ääniraita, esim. kuvailutulkkaus tai toinen kieli. Myös ohjelmaoppaan tietoikkunasta.
+• Kytkin ”Kuvailutulkkaus kaikilla kanavilla”: TV valitsee itse kuvailutulkatun raidan aina, kun sellainen on
+• Ohjelmaopas: nykyisen kanavan käynnissä oleva ohjelma erottuu nyt selvästi
+• Näkymäeditori: enemmän tilaa muokata ja ”Ohjeet”-painike kuvitetuin vaihein
+</fi-FI>
+<fr-FR>
+• Nouvelle touche « Piste audio » (avec accès root) : choisis sur ton téléphone la piste audio de la chaîne en cours, par ex. l'audiodescription ou une autre langue. Aussi depuis la fenêtre d'infos du guide.
+• Interrupteur « Audiodescription sur toutes les chaînes » : la TV choisit elle-même la piste avec audiodescription
+• Guide des programmes : le programme en cours de la chaîne actuelle ressort
+• Éditeur d'écrans : plus de place et un bouton « Mode d'emploi » avec des étapes illustrées
+</fr-FR>
+<hi-IN>
+• नई "ऑडियो ट्रैक" कुंजी (रूट एक्सेस के साथ): फ़ोन से चल रहे चैनल का ऑडियो ट्रैक चुनें, जैसे ऑडियो विवरण या कोई दूसरी भाषा। प्रोग्राम गाइड की जानकारी विंडो से भी।
+• "सभी चैनलों पर ऑडियो विवरण" स्विच: जहाँ भी ऑडियो विवरण वाला ट्रैक हो, टीवी उसे खुद चुन लेता है
+• प्रोग्राम गाइड: मौजूदा चैनल पर चल रहा प्रोग्राम अब अलग से दिखता है
+• स्क्रीन एडिटर: एडिट करने के लिए ज़्यादा जगह और चित्रों वाले चरणों के साथ "कैसे करें" बटन
+</hi-IN>
+<hu-HU>
+• Új „Hangsáv” gomb (root hozzáféréssel): válaszd ki a telefonon a futó csatorna hangsávját, pl. a hangos leírást vagy egy másik nyelvet. A műsorújság információs ablakából is.
+• „Hangos leírás minden csatornán” kapcsoló: a tévé magától választja a hangos leírásos sávot, ahol van ilyen
+• Műsorújság: az aktuális csatornán futó műsor most kiemelve látszik
+• Képernyőszerkesztő: több hely a szerkesztéshez és „Útmutató” gomb képes lépésekkel
+</hu-HU>
+<id>
+• Tombol baru "Trek audio" (dengan akses root): pilih trek audio saluran yang sedang tayang dari ponselmu, misalnya deskripsi audio atau bahasa lain. Juga dari jendela info panduan program.
+• Sakelar "Deskripsi audio di semua saluran": TV akan memilih sendiri trek dengan deskripsi audio jika tersedia
+• Panduan program: acara yang sedang tayang di saluran saat ini kini lebih menonjol
+• Editor layar: ruang lebih luas untuk mengedit dan tombol "Cara pakai" dengan langkah bergambar
+</id>
+<it-IT>
+• Nuovo tasto "Traccia audio" (con accesso root): scegli dal telefono la traccia audio del canale in onda, per esempio l'audiodescrizione o un'altra lingua. Anche dalla finestra info della guida.
+• Interruttore "Audiodescrizione su tutti i canali": la TV sceglie da sola la traccia con audiodescrizione
+• Guida programmi: il programma in onda sul canale attuale ora è evidenziato
+• Editor delle schermate: più spazio per modificare e un pulsante "Istruzioni" con passaggi illustrati
+</it-IT>
+<iw-IL>
+• מקש חדש "רצועת שמע" (עם גישת root): בחר בטלפון את רצועת השמע של הערוץ הנוכחי, למשל תיאור קולי או שפה אחרת. זמין גם מחלון המידע של מדריך התוכניות.
+• מתג "תיאור קולי בכל הערוצים": הטלוויזיה בוחרת בעצמה את הרצועה עם התיאור הקולי בכל מקום שיש כזו
+• מדריך התוכניות: התוכנית שמשודרת כעת בערוץ הנוכחי מודגשת עכשיו
+• עורך המסכים: יותר מקום לעריכה וכפתור "איך משתמשים" עם שלבים מאוירים
+</iw-IL>
+<ja-JP>
+• 新しい「音声切替」キー（root 化が必要）：視聴中のチャンネルの音声トラックをスマホで選べます。音声解説や別の言語など。番組表の情報ウィンドウからも使えます。
+• 「すべてのチャンネルで音声解説」スイッチ：音声解説付きのトラックがあれば、テレビが自動で選びます
+• 番組表：現在のチャンネルで放送中の番組が目立つようになりました
+• スクリーンエディター：編集スペースが広くなり、図解付きの「使い方」ボタンを追加
+</ja-JP>
+<ko-KR>
+• 새 "음성 트랙" 키(루트 권한 필요): 휴대폰에서 지금 보는 채널의 음성 트랙을 선택해요. 화면해설이나 다른 언어 등. 프로그램 가이드의 정보 창에서도 열 수 있어요.
+• "모든 채널에서 화면해설" 스위치: 화면해설 트랙이 있으면 TV가 자동으로 선택해요
+• 프로그램 가이드: 현재 채널에서 방송 중인 프로그램이 눈에 띄게 표시돼요
+• 화면 편집기: 편집 공간이 더 넓어지고, 그림으로 설명하는 "사용법" 버튼이 생겼어요
+</ko-KR>
+<nl-NL>
+• Nieuwe toets "Audiospoor" (met roottoegang): kies op je telefoon het audiospoor van de huidige zender, bijvoorbeeld audiodescriptie of een andere taal. Ook vanuit het infovenster van de programmagids.
+• Schakelaar "Audiodescriptie op alle zenders": de tv kiest dan zelf het spoor met audiodescriptie overal waar er een is
+• Programmagids: het programma dat nu op de huidige zender loopt, valt nu op
+• Schermeditor: meer ruimte om te bewerken en een knop "Uitleg" met geïllustreerde stappen
+</nl-NL>
+<no-NO>
+• Ny tast «Lydspor» (med root-tilgang): velg lydsporet for den aktuelle kanalen på telefonen, f.eks. synstolking eller et annet språk. Også fra infovinduet i programguiden.
+• Bryteren «Synstolking på alle kanaler»: TV-en velger da selv sporet med synstolking der det finnes et
+• Programguide: programmet som går på den aktuelle kanalen, er nå uthevet
+• Skjermredigering: mer plass til redigering og en «Veiledning»-knapp med illustrerte trinn
+</no-NO>
+<pl-PL>
+• Nowy przycisk „Ścieżka dźwiękowa” (z dostępem root): wybierz na telefonie ścieżkę dźwiękową bieżącego kanału, np. audiodeskrypcję lub inny język. Dostępne też z okna informacji przewodnika.
+• Przełącznik „Audiodeskrypcja na wszystkich kanałach”: telewizor sam wybiera ścieżkę z audiodeskrypcją
+• Przewodnik po programach: program nadawany na bieżącym kanale jest teraz wyróżniony
+• Edytor stron: więcej miejsca na edycję i przycisk „Instrukcja” z ilustrowanymi krokami
+</pl-PL>
+<pt-BR>
+• Nova tecla "Faixa de áudio" (com acesso root): escolha no celular a faixa de áudio do canal atual, por exemplo audiodescrição ou outro idioma. Também pela janela de informações do guia.
+• Chave "Audiodescrição em todos os canais": a TV escolhe sozinha a faixa com audiodescrição sempre que houver uma
+• Guia de programação: o programa no ar no canal atual agora fica em destaque
+• Editor de telas: mais espaço para editar e um botão "Como usar" com passos ilustrados
+</pt-BR>
+<pt-PT>
+• Nova tecla "Faixa de áudio" (com acesso root): escolhe no telemóvel a faixa de áudio do canal atual, por exemplo audiodescrição ou outro idioma. Também a partir da janela de informações do guia.
+• Interruptor "Audiodescrição em todos os canais": a TV escolhe sozinha a faixa com audiodescrição sempre que houver uma
+• Guia de programação: o programa em emissão no canal atual fica agora em destaque
+• Editor de ecrãs: mais espaço para editar e um botão "Como usar" com passos ilustrados
+</pt-PT>
+<ro>
+• Tastă nouă „Pistă audio” (cu acces root): alege de pe telefon pista audio a canalului curent, de exemplu descrierea audio sau altă limbă. Disponibilă și din fereastra de informații a ghidului.
+• Comutatorul „Descriere audio pe toate canalele”: televizorul alege singur pista cu descriere audio
+• Ghidul de programe: emisiunea care rulează pe canalul curent este acum evidențiată
+• Editorul de ecrane: mai mult spațiu pentru editare și un buton „Cum se folosește” cu pași ilustrați
+</ro>
+<ru-RU>
+• Новая кнопка «Звуковая дорожка» (с root-доступом): выбирай на телефоне звуковую дорожку текущего канала, например тифлокомментарий или другой язык. Также из окна информации телепрограммы.
+• Переключатель «Тифлокомментарий на всех каналах»: телевизор сам выбирает дорожку с тифлокомментарием везде, где она есть
+• Телепрограмма: передача, которая идёт на текущем канале, теперь выделена
+• Редактор экранов: больше места для редактирования и кнопка «Инструкция» с иллюстрированными шагами
+</ru-RU>
+<sk>
+• Nové tlačidlo „Zvuková stopa“ (s root prístupom): vyber v telefóne zvukovú stopu aktuálneho kanála, napr. hlasový komentár pre nevidiacich alebo iný jazyk. Dostupné aj z informačného okna TV programu.
+• Prepínač „Hlasový komentár na všetkých kanáloch“: televízor sám zvolí stopu s komentárom všade, kde je k dispozícii
+• TV program: relácia, ktorá práve beží na aktuálnom kanáli, je teraz zvýraznená
+• Editor obrazoviek: viac miesta na úpravy a tlačidlo „Návod“ s obrázkovými krokmi
+</sk>
+<sv-SE>
+• Ny knapp ”Ljudspår” (med root-åtkomst): välj ljudspår för den aktuella kanalen i telefonen, t.ex. syntolkning eller ett annat språk. Även från programguidens infofönster.
+• Reglaget ”Syntolkning på alla kanaler”: tv:n väljer då själv spåret med syntolkning där det finns ett
+• Programguide: programmet som sänds på den aktuella kanalen är nu markerat
+• Skärmredigeraren: mer plats att redigera och en ”Instruktioner”-knapp med illustrerade steg
+</sv-SE>
+<th>
+• ปุ่มใหม่ "แทร็กเสียง" (ต้องมีสิทธิ์ root): เลือกแทร็กเสียงของช่องที่กำลังดูจากโทรศัพท์ เช่น เสียงบรรยายภาพหรือภาษาอื่น เปิดได้จากหน้าต่างข้อมูลในผังรายการด้วย
+• สวิตช์ "เสียงบรรยายภาพทุกช่อง": ทีวีจะเลือกแทร็กที่มีเสียงบรรยายภาพให้เองเมื่อมี
+• ผังรายการ: รายการที่กำลังออกอากาศในช่องปัจจุบันเด่นชัดขึ้น
+• ตัวแก้ไขหน้าจอ: มีพื้นที่แก้ไขมากขึ้น และมีปุ่ม "วิธีใช้" พร้อมขั้นตอนแบบมีภาพ
+</th>
+<tr-TR>
+• Yeni "Ses parçası" tuşu (root erişimiyle): o an izlenen kanalın ses parçasını telefondan seç, örneğin sesli betimleme ya da başka bir dil. Yayın akışının bilgi penceresinden de açılır.
+• "Tüm kanallarda sesli betimleme" anahtarı: TV, sesli betimlemeli parça olan her yerde onu kendisi seçer
+• Yayın akışı: mevcut kanalda yayında olan program artık öne çıkıyor
+• Ekran düzenleyici: düzenleme için daha fazla alan ve resimli adımlar içeren "Nasıl kullanılır" düğmesi
+</tr-TR>
+<uk>
+• Нова кнопка «Звукова доріжка» (з root-доступом): вибирай на телефоні звукову доріжку поточного каналу, наприклад аудіоопис або іншу мову. Також із вікна інформації телепрограми.
+• Перемикач «Аудіоопис на всіх каналах»: телевізор сам вибирає доріжку з аудіоописом скрізь, де вона є
+• Телепрограма: передача, що йде на поточному каналі, тепер виділена
+• Редактор екранів: більше місця для редагування і кнопка «Інструкція» з ілюстрованими кроками
+</uk>
+<vi>
+• Phím mới "Kênh âm thanh" (cần quyền root): chọn kênh âm thanh của kênh đang xem ngay trên điện thoại, ví dụ mô tả âm thanh hoặc ngôn ngữ khác. Mở được cả từ cửa sổ thông tin của lịch phát sóng.
+• Công tắc "Mô tả âm thanh trên mọi kênh": TV tự chọn kênh âm thanh có mô tả ở bất cứ đâu có
+• Lịch phát sóng: chương trình đang phát trên kênh hiện tại giờ được làm nổi bật
+• Trình chỉnh sửa màn hình: thêm chỗ để chỉnh sửa và nút "Cách dùng" với các bước có hình minh họa
+</vi>
+<zh-CN>
+• 新增"音轨"按键（需 root 权限）：在手机上选择当前频道的音轨，例如口述影像或其他语言。也可从节目指南的信息窗口打开。
+• "所有频道启用口述影像"开关：只要有带口述影像的音轨，电视就会自动选择
+• 节目指南：当前频道正在播出的节目现在会突出显示
+• 屏幕编辑器：编辑空间更大，并新增带图示步骤的"使用方法"按钮
+</zh-CN>

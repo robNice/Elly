@@ -1,0 +1,16 @@
+{
+  "title": "Elly: Comando para TV LG",
+  "short_description": "O teu telemóvel como comando para TVs LG webOS – com ponteiro, widgets e Elly.",
+  "full_description": "A Elly transforma o teu telemóvel Android num comando para TVs LG com webOS. Todas as teclas do Magic Remote e ainda o ponteiro – controlado movendo o telemóvel ou com um touchpad. A Elly, uma galinha com um comando debaixo da asa, guia-te pela app.\n\nCOMANDO\n• Todas as teclas importantes em até quatro ecrãs, sem deslocar – basta deslizar para mudar\n• Volume, canal, cruz direcional, números, teclas de cor, reprodução e seleção de entrada\n• Teclas de app que abrem a Netflix e companhia diretamente na TV – com o ícone da app vindo da TV\n• Ecrã desligado, som ligado: desliga o ecrã da TV enquanto o som continua a tocar\n• Introdução de texto: quando há um campo de texto ativo na TV, escreve simplesmente no telemóvel\n\nPONTEIRO COMO NO MAGIC REMOTE\n• Modo de movimento: o cursor segue o teu telemóvel\n• Touchpad com deslize ou joystick\n• Abre-o ao abanar ou com um toque duplo\n\nÀ TUA MEDIDA\n• Cada ecrã é totalmente personalizável: move e redimensiona teclas, insere grupos de botões, anula passo a passo\n• 15 paletas de cores, doze fundos ou a tua própria foto\n• Arredondamento ajustável e o efeito de luz “Longas tardes de verão”\n\nWIDGETS\n• Sete widgets para o ecrã principal – do volume a um minicomando completo com teclas à escolha\n\nGUIA DE PROGRAMAÇÃO (PARA TVS COM ROOT)\n• A programação da tua lista de favoritos num relance – até 14 dias antes\n• Agenda lembretes e gravações diretamente na TV\n• Toca num canal para mudar para ele\n• Requer acesso root e SSH na TV\n\nE MAIS\n• Encontra a tua TV na rede automaticamente; basta emparelhar uma vez\n• Liga a TV via Wi-Fi (Wake-on-LAN)\n• Modo de demonstração para experimentar tudo sem TV\n• Ajuda completa com pesquisa – explicada pela Elly\n\nPRIVACIDADE\nA Elly só fala com a tua TV na rede local. Sem anúncios, sem conta, sem dados enviados para servidores externos. A Elly é de código aberto (licença MIT). Para o guia de programação, a Elly liga-se à tua TV por SSH; a própria TV descarrega os logótipos dos canais da LG.\n\nRequisitos: Android 9 ou mais recente e uma TV LG com webOS na mesma rede.\n\nA Elly é um projeto independente e não tem qualquer ligação à LG Electronics. LG, webOS e Magic Remote são marcas comerciais dos respetivos proprietários.",
+  "feature_title": "Elly",
+  "feature_tagline": "O comando para a tua TV LG",
+  "captions": [
+    "O teu telemóvel como comando para TVs LG",
+    "Um ponteiro como o Magic Remote – por movimento ou touchpad",
+    "Cria cada ecrã à tua maneira",
+    "Cores, fundos e formas ao teu gosto",
+    "Widgets para o teu ecrã principal",
+    "A Elly explica tudo",
+    "Guia de programação com lembretes e gravações – para televisores com root"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Elly: Remote for LG webOS TV",
+  "short_description": "Turn your phone into a remote for LG webOS TVs – with pointer, widgets and Elly.",
+  "full_description": "Elly turns your Android phone into a remote control for LG TVs running webOS. All keys of the Magic Remote plus the pointer – controlled by moving your phone or with a touchpad. Elly, a chicken with a remote under her wing, guides you through the app.\n\nREMOTE CONTROL\n• All important keys on up to four screens, no scrolling – just swipe to switch\n• Volume, channel, direction pad, numbers, color keys, playback and input selection\n• App keys that open Netflix & co. right on the TV – with the app icon from the TV\n• Screen off, sound on: turn the TV screen off while the sound keeps playing\n• Text input: when an input field is active on the TV, simply type on your phone\n\nPOINTER LIKE THE MAGIC REMOTE\n• Motion mode: the cursor follows your phone\n• Touchpad with swipe or joystick\n• Open it by shaking or a double tap\n\nMADE TO YOUR TASTE\n• Every screen is fully customizable: move and resize keys, insert button groups, undo step by step\n• 15 color palettes, twelve backgrounds or your own photo\n• Adjustable rounding and the “Long summer evenings” light effect\n\nWIDGETS\n• Seven home screen widgets – from volume to a complete mini remote with freely selectable keys\n\nTV GUIDE (FOR ROOTED TVS)\n• The program of your favorites list at a glance – up to 14 days ahead\n• Plan reminders and recordings right on the TV\n• Tap a channel to switch to it\n• Requires root access and SSH on the TV\n\nAND MORE\n• Finds your TV on the network automatically, pair it once\n• Switch the TV on via Wi-Fi (Wake-on-LAN)\n• Demo mode to try everything without a TV\n• Extensive help with search – explained by Elly\n\nPRIVACY\nElly only talks to your TV on the local network. No ads, no account, no data sent to external servers. Elly is open source (MIT license). For the TV guide, Elly connects to your TV via SSH; the TV downloads the channel logos from LG itself.\n\nRequirements: Android 9 or newer, an LG TV running webOS on the same network.\n\nElly is an independent project and is not affiliated with LG Electronics. LG, webOS and Magic Remote are trademarks of their respective owners.",
+  "feature_title": "Elly",
+  "feature_tagline": "The remote for your LG TV",
+  "captions": [
+    "Turn your phone into a remote for LG TVs",
+    "A pointer like the Magic Remote – by motion or touchpad",
+    "Design every screen the way you like",
+    "Colors, backgrounds and shapes to your taste",
+    "Widgets for your home screen",
+    "Elly explains everything",
+    "TV guide with reminders and recordings – for rooted TVs"
+  ]
+}

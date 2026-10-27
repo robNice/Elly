@@ -1,0 +1,120 @@
+<en-US>
+• TV guide: no more gaps after switching the TV on
+• Root access: Elly now logs in with the root password and no longer changes anything on the TV, so other apps can still log in with the password. Please set up the access once more after the update.
+</en-US>
+<ar>
+• دليل البرامج: لا مزيد من الفجوات بعد تشغيل التلفاز
+• الوصول بصلاحيات الجذر: تسجّل Elly الدخول الآن بكلمة مرور الجذر ولا تغيّر أي شيء على التلفاز، لذا يمكن للتطبيقات الأخرى مواصلة تسجيل الدخول بكلمة المرور. يُرجى إعداد الوصول مرة أخرى بعد التحديث.
+</ar>
+<cs-CZ>
+• TV program: po zapnutí televize už v něm nejsou mezery
+• Root přístup: Elly se nyní přihlašuje heslem roota a na televizi nic nemění, takže ostatní aplikace se mohou heslem přihlašovat i nadále. Po aktualizaci prosím přístup nastav znovu.
+</cs-CZ>
+<da-DK>
+• Programguide: ingen huller længere, efter at tv'et er tændt
+• Rootadgang: Elly logger nu på med rootadgangskoden og ændrer ikke længere noget på tv'et, så andre apps fortsat kan logge på med adgangskoden. Konfigurer adgangen igen efter opdateringen.
+</da-DK>
+<de-DE>
+• Programmübersicht: keine Lücken mehr nach dem Einschalten des Fernsehers
+• Root-Zugang: Elly meldet sich jetzt mit dem Root-Passwort an und verändert am Fernseher nichts mehr, andere Apps können sich also weiter mit dem Passwort anmelden. Bitte richte den Zugang nach dem Update einmal neu ein.
+</de-DE>
+<es-419>
+• Guía de programación: ya no hay huecos después de encender la TV
+• Acceso root: Elly ahora inicia sesión con la contraseña root y ya no cambia nada en la TV, así que otras apps pueden seguir iniciando sesión con la contraseña. Vuelve a configurar el acceso después de la actualización.
+</es-419>
+<es-ES>
+• Guía de programación: ya no hay huecos después de encender la TV
+• Acceso root: Elly ahora inicia sesión con la contraseña root y ya no cambia nada en la TV, así que otras apps pueden seguir iniciando sesión con la contraseña. Vuelve a configurar el acceso después de la actualización.
+</es-ES>
+<fi-FI>
+• Ohjelmaopas: ei enää aukkoja television käynnistämisen jälkeen
+• Root-oikeudet: Elly kirjautuu nyt root-salasanalla eikä muuta televisiossa enää mitään, joten muut sovellukset voivat edelleen kirjautua salasanalla. Määritä yhteys päivityksen jälkeen uudelleen.
+</fi-FI>
+<fr-FR>
+• Guide des programmes : plus de trous après l'allumage de la TV
+• Accès root : Elly se connecte désormais avec le mot de passe root et ne modifie plus rien sur la TV, les autres applis peuvent donc toujours se connecter avec le mot de passe. Configure à nouveau l'accès après la mise à jour.
+</fr-FR>
+<hi-IN>
+• प्रोग्राम गाइड: टीवी चालू करने के बाद अब कोई खाली जगह नहीं
+• रूट एक्सेस: Elly अब रूट पासवर्ड से लॉग इन करती है और टीवी पर कुछ भी नहीं बदलती, इसलिए दूसरे ऐप पासवर्ड से लॉग इन करते रह सकते हैं। अपडेट के बाद कृपया एक्सेस फिर से सेट करें।
+</hi-IN>
+<hu-HU>
+• Műsorújság: a tévé bekapcsolása után már nincsenek benne hézagok
+• Root-hozzáférés: Elly mostantól a root-jelszóval jelentkezik be, és semmit sem változtat a tévén, így más alkalmazások továbbra is bejelentkezhetnek a jelszóval. A frissítés után állítsd be újra a hozzáférést.
+</hu-HU>
+<id>
+• Panduan program: tidak ada lagi celah setelah TV dinyalakan
+• Akses root: Elly kini masuk dengan kata sandi root dan tidak lagi mengubah apa pun di TV, sehingga aplikasi lain tetap bisa masuk dengan kata sandi. Siapkan akses sekali lagi setelah pembaruan.
+</id>
+<it-IT>
+• Guida programmi: niente più vuoti dopo l'accensione della TV
+• Accesso root: Elly ora accede con la password di root e non modifica più nulla sulla TV, quindi le altre app possono continuare ad accedere con la password. Dopo l'aggiornamento configura di nuovo l'accesso.
+</it-IT>
+<iw-IL>
+• מדריך התוכניות: אין יותר פערים אחרי הדלקת הטלוויזיה
+• גישת root: ‏Elly מתחברת עכשיו עם סיסמת ה-root ולא משנה יותר שום דבר בטלוויזיה, כך שאפליקציות אחרות עדיין יכולות להתחבר עם הסיסמה. אחרי העדכון יש להגדיר את הגישה מחדש.
+</iw-IL>
+<ja-JP>
+• 番組表：テレビの電源を入れた後に番組が抜けることがなくなりました
+• root アクセス：Elly は root パスワードでログインするようになり、テレビ側を一切変更しません。他のアプリも引き続きパスワードでログインできます。アップデート後にアクセスをもう一度設定してください。
+</ja-JP>
+<ko-KR>
+• 프로그램 가이드: TV를 켠 뒤에 빈칸이 더 이상 생기지 않아요
+• 루트 권한: 이제 Elly가 루트 비밀번호로 로그인하고 TV에서 아무것도 바꾸지 않아요. 다른 앱도 계속 비밀번호로 로그인할 수 있어요. 업데이트 후 접근을 한 번 다시 설정해 주세요.
+</ko-KR>
+<nl-NL>
+• Programmagids: geen gaten meer na het aanzetten van de tv
+• Roottoegang: Elly logt nu in met het rootwachtwoord en wijzigt niets meer op de tv, zodat andere apps nog steeds met het wachtwoord kunnen inloggen. Stel de toegang na de update opnieuw in.
+</nl-NL>
+<no-NO>
+• Programguide: ingen hull lenger etter at TV-en er slått på
+• Root-tilgang: Elly logger nå inn med root-passordet og endrer ikke lenger noe på TV-en, så andre apper fortsatt kan logge inn med passordet. Konfigurer tilgangen på nytt etter oppdateringen.
+</no-NO>
+<pl-PL>
+• Przewodnik po programach: koniec z lukami po włączeniu telewizora
+• Dostęp root: Elly loguje się teraz hasłem roota i niczego już nie zmienia w telewizorze, więc inne aplikacje nadal mogą logować się hasłem. Po aktualizacji skonfiguruj dostęp ponownie.
+</pl-PL>
+<pt-BR>
+• Guia de programação: sem mais lacunas depois de ligar a TV
+• Acesso root: a Elly agora faz login com a senha de root e não altera mais nada na TV, então outros apps continuam podendo fazer login com a senha. Configure o acesso de novo depois da atualização.
+</pt-BR>
+<pt-PT>
+• Guia de programação: sem mais falhas depois de ligar a TV
+• Acesso root: a Elly passa a iniciar sessão com a palavra-passe de root e já não altera nada na TV, por isso outras aplicações continuam a poder iniciar sessão com a palavra-passe. Configura o acesso novamente após a atualização.
+</pt-PT>
+<ro>
+• Ghidul de programe: nu mai apar goluri după pornirea televizorului
+• Acces root: Elly se conectează acum cu parola root și nu mai modifică nimic pe televizor, așa că alte aplicații se pot conecta în continuare cu parola. După actualizare, configurează din nou accesul.
+</ro>
+<ru-RU>
+• Телепрограмма: больше никаких пробелов после включения телевизора
+• Root-доступ: Elly теперь входит с паролем root и ничего не меняет на телевизоре, поэтому другие приложения по-прежнему могут входить с паролем. После обновления настрой доступ заново.
+</ru-RU>
+<sk>
+• TV program: po zapnutí televízora už v ňom nie sú medzery
+• Root prístup: Elly sa teraz prihlasuje heslom roota a na televízore nič nemení, takže ostatné aplikácie sa môžu heslom prihlasovať aj naďalej. Po aktualizácii prístup nastav znova.
+</sk>
+<sv-SE>
+• Programguide: inga luckor längre efter att tv:n slagits på
+• Root-åtkomst: Elly loggar nu in med root-lösenordet och ändrar inte längre något på tv:n, så andra appar kan fortfarande logga in med lösenordet. Konfigurera åtkomsten igen efter uppdateringen.
+</sv-SE>
+<th>
+• ผังรายการ: ไม่มีช่องว่างอีกต่อไปหลังจากเปิดทีวี
+• สิทธิ์ root: ตอนนี้ Elly เข้าสู่ระบบด้วยรหัสผ่าน root และไม่เปลี่ยนแปลงอะไรบนทีวีอีก แอปอื่นจึงยังเข้าสู่ระบบด้วยรหัสผ่านได้ตามเดิม โปรดตั้งค่าการเข้าถึงอีกครั้งหลังอัปเดต
+</th>
+<tr-TR>
+• Yayın akışı: TV açıldıktan sonra artık boşluk yok
+• Root erişimi: Elly artık root parolasıyla oturum açıyor ve TV'de hiçbir şeyi değiştirmiyor; böylece diğer uygulamalar parolayla oturum açmaya devam edebilir. Güncellemeden sonra erişimi bir kez yeniden ayarla.
+</tr-TR>
+<uk>
+• Телепрограма: більше жодних прогалин після ввімкнення телевізора
+• Root-доступ: Elly тепер входить із паролем root і нічого не змінює на телевізорі, тож інші застосунки й надалі можуть входити з паролем. Після оновлення налаштуй доступ заново.
+</uk>
+<vi>
+• Lịch phát sóng: không còn khoảng trống sau khi bật TV
+• Quyền root: Elly giờ đăng nhập bằng mật khẩu root và không thay đổi gì trên TV nữa, nên các ứng dụng khác vẫn đăng nhập bằng mật khẩu được. Vui lòng thiết lập lại quyền truy cập một lần sau khi cập nhật.
+</vi>
+<zh-CN>
+• 节目指南：开启电视后不再出现空缺
+• Root 访问：Elly 现在使用 root 密码登录，不再更改电视上的任何内容，因此其他应用仍可使用密码登录。更新后请重新设置一次访问。
+</zh-CN>
