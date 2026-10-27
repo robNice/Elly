@@ -1,4 +1,4 @@
-name: Build APK and app bundle on v* tag
+name: Build and publish on v* tag
 
 on:
   push:
@@ -8,18 +8,76 @@ on:
 permissions:
   contents: write
 
+env:
+  PACKAGE_NAME: de.robnice.elly
+  # Tag suffix = Play track: v1.2.3-gt -> closed testing, v1.2.3-p -> production
+  PLAY_TRACKS: |
+    gt=alpha
+    p=production
+  PLAY_RELEASE_STATUS: completed
+  STORE_DIR: store/playstore
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout main branch
+      - name: Checkout tagged commit
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.ref }}
           fetch-depth: 0
 
+      - name: Resolve version and track from tag
+        id: tag
+        run: |
+          if [[ ! "$GITHUB_REF_NAME" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)-([a-z]+)$ ]]; then
+            echo "::error::Tag '$GITHUB_REF_NAME' must look like v1.2.3-<track>, e.g. v1.2.3-gt"
+            exit 1
+          fi
+          version="${BASH_REMATCH[1]}"
+          suffix="${BASH_REMATCH[2]}"
+          track="$(echo "$PLAY_TRACKS" | awk -F= -v s="$suffix" '$1==s {print $2}')"
+          if [ -z "$track" ]; then
+            echo "::error::Unknown track suffix '$suffix'. Known: $(echo "$PLAY_TRACKS" | cut -d= -f1 | xargs)"
+            exit 1
+          fi
+          gradle_name="$(grep -oP 'versionName\s*=\s*"\K[^"]+' app/build.gradle.kts)"
+          gradle_code="$(grep -oP 'versionCode\s*=\s*\K[0-9]+' app/build.gradle.kts)"
+          if [ "$gradle_name" != "$version" ]; then
+            echo "::error::Tag version $version does not match versionName $gradle_name in app/build.gradle.kts"
+            exit 1
+          fi
+          if [ ! -f "$STORE_DIR/release_notes_$version.txt" ]; then
+            echo "::error::Release notes missing: $STORE_DIR/release_notes_$version.txt"
+            exit 1
+          fi
+          {
+            echo "version=$version"
+            echo "version_code=$gradle_code"
+            echo "track=$track"
+          } >> "$GITHUB_OUTPUT"
+          echo "Version $version ($gradle_code) -> track $track"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Play API client
+        run: pip install google-api-python-client google-auth
+
+      - name: Check whether version is already on Play
+        id: play
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          python .github/scripts/play_publish.py check \
+            --package "$PACKAGE_NAME" \
+            --version-code "${{ steps.tag.outputs.version_code }}"
+
       - name: Set up JDK 17
+        if: steps.play.outputs.bundle_exists != 'true'
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -27,12 +85,15 @@ jobs:
           cache: gradle
 
       - name: Make Gradle executable
+        if: steps.play.outputs.bundle_exists != 'true'
         run: chmod +x ./gradlew
 
       - name: Decode keystore
+        if: steps.play.outputs.bundle_exists != 'true'
         run: echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > "${{ github.workspace }}/keystore.jks"
 
       - name: Build release artifacts
+        if: steps.play.outputs.bundle_exists != 'true'
         env:
           GRADLE_OPTS: -Dorg.gradle.jvmargs="-Xmx4g -XX:MaxMetaspaceSize=1g -Dfile.encoding=UTF-8"
           KEYSTORE_PATH: ${{ github.workspace }}/keystore.jks
@@ -41,26 +102,46 @@ jobs:
           KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
         run: ./gradlew --no-daemon :app:assembleRelease :app:bundleRelease
 
-      - name: Rename artifacts to include tag
+      - name: Rename artifacts to include version
+        if: steps.play.outputs.bundle_exists != 'true'
         run: |
-          mv "app/build/outputs/apk/release/app-release.apk" "elly-${{ github.ref_name }}.apk"
-          mv "app/build/outputs/bundle/release/app-release.aab" "elly-${{ github.ref_name }}.aab"
+          mv "app/build/outputs/apk/release/app-release.apk" "elly-v${{ steps.tag.outputs.version }}.apk"
+          mv "app/build/outputs/bundle/release/app-release.aab" "elly-v${{ steps.tag.outputs.version }}.aab"
 
       - name: Upload release artifacts
+        if: steps.play.outputs.bundle_exists != 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: release-${{ github.ref_name }}
+          name: release-v${{ steps.tag.outputs.version }}
           path: |
-            elly-${{ github.ref_name }}.apk
-            elly-${{ github.ref_name }}.aab
+            elly-v${{ steps.tag.outputs.version }}.apk
+            elly-v${{ steps.tag.outputs.version }}.aab
           if-no-files-found: error
 
       - name: Publish release artifacts to GitHub Release
+        if: steps.play.outputs.bundle_exists != 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: ${{ github.ref_name }}
+          name: v${{ steps.tag.outputs.version }}
           generate_release_notes: true
           files: |
-            elly-${{ github.ref_name }}.apk
-            elly-${{ github.ref_name }}.aab
+            elly-v${{ steps.tag.outputs.version }}.apk
+            elly-v${{ steps.tag.outputs.version }}.aab
+
+      - name: Publish to Google Play
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          aab_arg=()
+          if [ "${{ steps.play.outputs.bundle_exists }}" != "true" ]; then
+            aab_arg=(--aab "elly-v${{ steps.tag.outputs.version }}.aab")
+          fi
+          python .github/scripts/play_publish.py publish \
+            --package "$PACKAGE_NAME" \
+            --version-code "${{ steps.tag.outputs.version_code }}" \
+            --version-name "${{ steps.tag.outputs.version }}" \
+            --track "${{ steps.tag.outputs.track }}" \
+            --status "$PLAY_RELEASE_STATUS" \
+            --store-dir "$STORE_DIR" \
+            "${aab_arg[@]}"
