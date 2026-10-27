@@ -327,7 +327,7 @@
 
     <string name="onboarding_screens_title">Näkymät ja yläpalkki</string>
     <string name="onboarding_screens_text">Painikkeet on jaettu enintään neljään näkymään, joten kaikki mahtuu esiin ilman vierittämistä.</string>
-    <string name="onboarding_screens_swipe">Vaihda näkymää pyyhkäisemällä vasemmalle tai oikealle. Alareunan pisteet näyttävät, missä olet.</string>
+    <string name="onboarding_screens_swipe">Vaihda näkymää pyyhkäisemällä vasemmalle tai oikealle. Alareunan esikatselukuvat näyttävät, missä olet; napauta yhtä siirtyäksesi suoraan siihen.</string>
     <string name="onboarding_screens_status">TV:n nimen edessä oleva valo näyttää yhteyden: vihreä yhdistetty, punainen ei tavoiteta, harmaa tarkistetaan, keltainen esittelytila.</string>
     <string name="onboarding_screens_tv">Napauta TV:n nimeä, kun haluat etsiä, yhdistää tai vaihtaa TV:n.</string>
     <string name="onboarding_screens_pointer">Avaa osoittimen.</string>
@@ -399,7 +399,7 @@
     <string name="help_remote_status_title">Tilavalo</string>
     <string name="help_remote_status_body">• Vihreä: yhdistetty.\n• Punainen: TV:tä ei tavoiteta.\n• Harmaa: yhteyttä tarkistetaan.\n• Keltainen: esittelytila.\nKun Elly on näkyvissä, yhteys tarkistetaan 10 sekunnin välein ja jokaisen painalluksen jälkeen. Kun sovellus siirtyy taustalle, yhteys suljetaan.</string>
     <string name="help_remote_screens_title">Näkymän vaihtaminen</string>
-    <string name="help_remote_screens_body">Painikkeet on jaettu enintään neljään näkymään, joten kaikki mahtuu esiin ilman vierittämistä. Vaihda pyyhkäisemällä vasemmalle tai oikealle. Alareunan pisteet näyttävät, missä näkymässä olet; jos käytössä on vain yksi näkymä, ne katoavat.\nElly muistaa viimeksi käyttämäsi näkymän. Asetuksissa määrität, mitkä näkymät näytetään ja missä järjestyksessä. Jos elementti, kuten ohjelmaopas, täyttää näytön, pyyhkäise alareunan pisteiden päällä.</string>
+    <string name="help_remote_screens_body">Painikkeet on jaettu enintään neljään näkymään, joten kaikki mahtuu esiin ilman vierittämistä. Vaihda pyyhkäisemällä vasemmalle tai oikealle. Alareunan esikatselukuvat näyttävät, missä näkymässä olet; napauta yhtä siirtyäksesi suoraan siihen. Jos käytössä on vain yksi näkymä, ne katoavat.\nElly muistaa viimeksi käyttämäsi näkymän. Asetuksissa määrität, mitkä näkymät näytetään ja missä järjestyksessä. Jos elementti, kuten ohjelmaopas, täyttää näytön, pyyhkäise alareunan esikatselukuvien päällä tai napauta yhtä.</string>
     <string name="help_remote_keys_title">Painikkeiden käyttö</string>
     <string name="help_remote_keys_body">• Painikkeet toimivat, kun nostat sormen. Painikkeen päältä alkava pyyhkäisy ei siis lähetä mitään.\n• Äänenvoimakkuus, kanava ja suuntaohjain toistuvat, kun pidät niitä painettuna.\n• Halutessasi puhelin värisee jokaisella painalluksella (Asetukset → ”Ohjaus”).\n• Jos painike ei ole käytettävissä tai TV:tä ei tavoiteta, alareunaan tulee viesti.</string>
     <string name="help_remote_defaults_title">Oletusasettelu</string>
@@ -551,7 +551,13 @@
     <string name="epg_info_remaining">%1$d min jäljellä</string>
     <string name="epg_info_switch">Vaihda kanavalle</string>
     <string name="epg_info_close">Sulje</string>
+    <string name="epg_info_image_enlarge">Näytä kuva suurena</string>
+    <string name="epg_info_image_description">Kuva: %1$s</string>
+    <string name="epg_info_season_episode">Kausi %1$d, jakso %2$d</string>
+    <string name="epg_info_season">Kausi %1$d</string>
+    <string name="epg_info_episode">Jakso %1$d</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">K%1$d</string>
     <string name="epg_badge_subtitles">Tekstitys</string>
     <string name="epg_badge_audio_description">Kuvailutulkkaus</string>
     <string name="epg_badge_sign_language">Viittomakieli</string>
@@ -570,7 +576,7 @@
     <string name="epg_demo_list_kids">Lapset</string>
     <string name="epg_demo_description">Keksitty ohjelma esittelytilaa varten. Rootatulla TV:llä ja määritetyllä SSH:lla opas näyttää TV:si oikean ohjelman.</string>
     <string name="help_remote_guide_title">Ohjelmaopas</string>
-    <string name="help_remote_guide_body">Rootatulla TV:llä (tai esittelytilassa) näyttö voi näyttää ohjelmaoppaan kuten TV:n opas: ylhäällä kellonajat, vasemmalla suosikkilistasi kanavat, oikealla ohjelmat.\n• Pyyhkäise mihin suuntaan tahansa: taaksepäin enintään 24 tuntia, eteenpäin niin pitkälle kuin TV:llä on tietoja (enintään 14 päivää). Aikapalkin vasemmassa reunassa on päivämäärä, ja jokainen uusi päivä alkaa viivalla.\n• Oranssi viiva näyttää nykyisen ajan; vasemman yläkulman ”Nyt” palaa siihen. TV:ssä parhaillaan näkyvän kanavan rivi on korostettu oranssilla.\n• Napauta kanavaa vaihtaaksesi sille.\nPyyhkäisy oppaassa ei koskaan vaihda näyttöä; vaihda näyttöä pyyhkäisemällä alareunan pisteiden päällä. Elly tallentaa tiedot puhelimeen ja päivittää ne 15 minuutin välein, kun kaukosäädin on auki; latauksen aikana vasemmassa yläkulmassa pyörii pieni ympyrä.</string>
+    <string name="help_remote_guide_body">Rootatulla TV:llä (tai esittelytilassa) näyttö voi näyttää ohjelmaoppaan kuten TV:n opas: ylhäällä kellonajat, vasemmalla suosikkilistasi kanavat, oikealla ohjelmat.\n• Pyyhkäise mihin suuntaan tahansa: taaksepäin enintään 24 tuntia, eteenpäin niin pitkälle kuin TV:llä on tietoja (enintään 14 päivää). Aikapalkin vasemmassa reunassa on päivämäärä, ja jokainen uusi päivä alkaa viivalla.\n• Oranssi viiva näyttää nykyisen ajan; vasemman yläkulman ”Nyt” palaa siihen. TV:ssä parhaillaan näkyvän kanavan rivi on korostettu oranssilla.\n• Napauta kanavaa vaihtaaksesi sille.\nPyyhkäisy oppaassa ei koskaan vaihda näyttöä; vaihda näyttöä pyyhkäisemällä alareunan esikatselukuvien päällä tai napauttamalla yhtä. Elly tallentaa tiedot puhelimeen ja päivittää ne 15 minuutin välein, kun kaukosäädin on auki; latauksen aikana vasemmassa yläkulmassa pyörii pieni ympyrä.</string>
     <string name="help_remote_guide_info_title">Ohjelmat, muistutukset ja tallennukset</string>
     <string name="help_remote_guide_info_body">Napauta ohjelmaa nähdäksesi tiedot: kanava, päivä, aika, kesto, lajityyppi ja kuvaus. ”Vaihda kanavalle” vaihtaa TV:n kanavalle.\n• Muistuta: TV muistuttaa ohjelman alkaessa, vaikka puhelin olisi pois päältä. Ajastetuissa muistutuksissa on kello.\n• Tallenna: TV tallentaa siihen tallennuslaitteeseen, joka on valittu TV:ssä tallennuksille. Ajastetuissa tallennuksissa on punainen piste; käynnissä olevat tallennukset voi lopettaa.\nMolemmat voi poistaa. Elly näyttää myös TV:ssä luodut muistutukset ja tallennukset. Jos TV kieltäytyy, esimerkiksi päällekkäisyyden vuoksi, sen viesti näkyy ikkunassa.</string>
     <string name="help_edit_guide_title">Ohjelmaoppaan lisääminen</string>

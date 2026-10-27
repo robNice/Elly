@@ -328,7 +328,7 @@
 
     <string name="onboarding_screens_title">Strony i górny pasek</string>
     <string name="onboarding_screens_text">Przyciski są rozłożone na maksymalnie cztery strony, więc wszystko się mieści bez przewijania.</string>
-    <string name="onboarding_screens_swipe">Przesuń palcem w lewo lub w prawo, aby zmienić stronę. Kropki na dole pokazują, gdzie jesteś.</string>
+    <string name="onboarding_screens_swipe">Przesuń palcem w lewo lub w prawo, aby zmienić stronę. Podglądy na dole pokazują, gdzie jesteś; dotknij jednego, aby przejść prosto do niego.</string>
     <string name="onboarding_screens_status">Lampka przed nazwą telewizora pokazuje stan połączenia: zielona – połączono, czerwona – nieosiągalny, szara – sprawdzanie, żółta – tryb demo.</string>
     <string name="onboarding_screens_tv">Dotknij nazwy telewizora, aby wyszukać, sparować lub przełączyć telewizor.</string>
     <string name="onboarding_screens_pointer">Otwiera wskaźnik.</string>
@@ -403,7 +403,7 @@
     <string name="help_remote_status_title">Lampka stanu</string>
     <string name="help_remote_status_body">• Zielona: połączono.\n• Czerwona: telewizor nieosiągalny.\n• Szara: sprawdzanie połączenia.\n• Żółta: tryb demo.\nGdy Elly jest widoczna, połączenie jest sprawdzane co 10 sekund i po każdym naciśnięciu przycisku. Gdy aplikacja przechodzi w tło, połączenie zostaje zamknięte.</string>
     <string name="help_remote_screens_title">Przełączanie stron</string>
-    <string name="help_remote_screens_body">Przyciski są rozłożone na maksymalnie cztery strony, więc wszystko się mieści bez przewijania. Przesuń palcem w lewo lub w prawo, aby przełączyć. Kropki na dole pokazują, na której stronie jesteś; przy jednej aktywnej stronie znikają.\nElly zapamiętuje ostatnio używaną stronę. Które strony są widoczne i w jakiej kolejności, ustawiasz w ustawieniach. Jeśli element taki jak przewodnik po programach wypełnia ekran, przesuń palcem po kropkach na dole.</string>
+    <string name="help_remote_screens_body">Przyciski są rozłożone na maksymalnie cztery strony, więc wszystko się mieści bez przewijania. Przesuń palcem w lewo lub w prawo, aby przełączyć. Podglądy na dole pokazują, na której stronie jesteś; dotknij jednego, aby przejść prosto do tej strony. Przy jednej aktywnej stronie znikają.\nElly zapamiętuje ostatnio używaną stronę. Które strony są widoczne i w jakiej kolejności, ustawiasz w ustawieniach. Jeśli element taki jak przewodnik po programach wypełnia ekran, przesuń palcem po podglądach na dole albo dotknij jednego z nich.</string>
     <string name="help_remote_keys_title">Używanie przycisków</string>
     <string name="help_remote_keys_body">• Przyciski reagują, gdy podnosisz palec. Przesunięcie palcem zaczęte na przycisku niczego więc nie wysyła.\n• Głośność, kanał i krzyżak powtarzają się, dopóki je przytrzymujesz.\n• Jeśli chcesz, telefon wibruje przy każdym naciśnięciu (Ustawienia → „Sterowanie”).\n• Jeśli przycisk jest niedostępny albo telewizor jest nieosiągalny, na dole pojawia się komunikat.</string>
     <string name="help_remote_defaults_title">Układ domyślny</string>
@@ -555,7 +555,13 @@
     <string name="epg_info_remaining">zostało %1$d min</string>
     <string name="epg_info_switch">Przełącz kanał</string>
     <string name="epg_info_close">Zamknij</string>
+    <string name="epg_info_image_enlarge">Pokaż obraz w powiększeniu</string>
+    <string name="epg_info_image_description">Obraz: %1$s</string>
+    <string name="epg_info_season_episode">Sezon %1$d, odcinek %2$d</string>
+    <string name="epg_info_season">Sezon %1$d</string>
+    <string name="epg_info_episode">Odcinek %1$d</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d+</string>
     <string name="epg_badge_subtitles">Napisy</string>
     <string name="epg_badge_audio_description">Audiodeskrypcja</string>
     <string name="epg_badge_sign_language">Język migowy</string>
@@ -574,7 +580,7 @@
     <string name="epg_demo_list_kids">Dzieci</string>
     <string name="epg_demo_description">Zmyślony program do trybu demo. Z telewizorem z rootem i skonfigurowanym SSH przewodnik pokazuje prawdziwy program twojego telewizora.</string>
     <string name="help_remote_guide_title">Przewodnik po programach</string>
-    <string name="help_remote_guide_body">Z telewizorem z rootem (lub w trybie demo) ekran może pokazywać przewodnik po programach, jak przewodnik w telewizorze: u góry godziny, po lewej kanały z twojej listy ulubionych, po prawej programy.\n• Przesuwaj w dowolnym kierunku: wstecz do 24 godzin, do przodu tak daleko, jak telewizor ma dane (najwyżej 14 dni). Po lewej stronie paska czasu widać datę, a każdy nowy dzień zaczyna się linią.\n• Pomarańczowa linia pokazuje bieżącą godzinę; „Teraz” w lewym górnym rogu wraca do niej. Wiersz kanału, który właśnie leci w telewizorze, jest wyróżniony na pomarańczowo.\n• Dotknij kanału, aby na niego przełączyć.\nPrzesuwanie w przewodniku nigdy nie zmienia ekranu; do tego przesuń palcem po kropkach na dole. Elly przechowuje dane w telefonie i odświeża je co 15 minut, gdy pilot jest otwarty; podczas wczytywania w lewym górnym rogu kręci się małe kółko.</string>
+    <string name="help_remote_guide_body">Z telewizorem z rootem (lub w trybie demo) ekran może pokazywać przewodnik po programach, jak przewodnik w telewizorze: u góry godziny, po lewej kanały z twojej listy ulubionych, po prawej programy.\n• Przesuwaj w dowolnym kierunku: wstecz do 24 godzin, do przodu tak daleko, jak telewizor ma dane (najwyżej 14 dni). Po lewej stronie paska czasu widać datę, a każdy nowy dzień zaczyna się linią.\n• Pomarańczowa linia pokazuje bieżącą godzinę; „Teraz” w lewym górnym rogu wraca do niej. Wiersz kanału, który właśnie leci w telewizorze, jest wyróżniony na pomarańczowo.\n• Dotknij kanału, aby na niego przełączyć.\nPrzesuwanie w przewodniku nigdy nie zmienia ekranu; do tego przesuń palcem po podglądach na dole albo dotknij jednego z nich. Elly przechowuje dane w telefonie i odświeża je co 15 minut, gdy pilot jest otwarty; podczas wczytywania w lewym górnym rogu kręci się małe kółko.</string>
     <string name="help_remote_guide_info_title">Programy, przypomnienia i nagrania</string>
     <string name="help_remote_guide_info_body">Dotknij programu, aby zobaczyć szczegóły: kanał, dzień, godzinę, czas trwania, gatunek i opis. „Przełącz kanał” przełącza telewizor na ten kanał.\n• Przypomnij: telewizor przypomni ci o początku programu, nawet gdy telefon jest wyłączony. Zaplanowane przypomnienia mają dzwonek.\n• Nagraj: telewizor nagrywa na urządzenie pamięci wybrane w nim do nagrań. Zaplanowane nagrania mają czerwoną kropkę; trwające nagrania można zatrzymać.\nOba można znów usunąć. Elly pokazuje też przypomnienia i nagrania ustawione w telewizorze. Jeśli telewizor coś odrzuci, np. z powodu nakładania się, jego komunikat pojawi się w oknie.</string>
     <string name="help_edit_guide_title">Dodawanie przewodnika po programach</string>

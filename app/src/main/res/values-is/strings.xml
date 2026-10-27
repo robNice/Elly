@@ -328,7 +328,7 @@
 
     <string name="onboarding_screens_title">Síður og efsta stika</string>
     <string name="onboarding_screens_text">Hnapparnir dreifast á allt að fjórar síður, svo allt kemst fyrir án þess að skruna.</string>
-    <string name="onboarding_screens_swipe">Strjúktu til vinstri eða hægri til að skipta um síðu. Punktarnir neðst sýna hvar þú ert.</string>
+    <string name="onboarding_screens_swipe">Strjúktu til vinstri eða hægri til að skipta um síðu. Smámyndirnar neðst sýna hvar þú ert; ýttu á eina til að fara beint þangað.</string>
     <string name="onboarding_screens_status">Ljósið fyrir framan nafn sjónvarpsins sýnir tenginguna: grænt tengt, rautt næst ekki, grátt athugar, gult prufuhamur.</string>
     <string name="onboarding_screens_tv">Ýttu á nafn sjónvarpsins til að leita að, para eða skipta um sjónvarp.</string>
     <string name="onboarding_screens_pointer">Opnar bendilinn.</string>
@@ -401,7 +401,7 @@
     <string name="help_remote_status_title">Stöðuljósið</string>
     <string name="help_remote_status_body">• Grænt: tengt.\n• Rautt: ekki næst í sjónvarpið.\n• Grátt: athugar tenginguna.\n• Gult: prufuhamur.\nMeðan Elly er sýnileg er tengingin athuguð á 10 sekúndna fresti og eftir hverja hnappaýtingu. Þegar appið fer í bakgrunninn er tengingunni lokað.</string>
     <string name="help_remote_screens_title">Skipt um síðu</string>
-    <string name="help_remote_screens_body">Hnapparnir dreifast á allt að fjórar síður, svo allt kemst fyrir án þess að skruna. Strjúktu til vinstri eða hægri til að skipta. Punktarnir neðst sýna á hvaða síðu þú ert; ef aðeins ein síða er virk hverfa þeir.\nElly man hvaða síðu þú notaðir síðast. Hvaða síður birtast og í hvaða röð er stillt í stillingunum. Ef eining eins og dagskrárvísirinn fyllir skjáinn skaltu strjúka yfir punktana neðst.</string>
+    <string name="help_remote_screens_body">Hnapparnir dreifast á allt að fjórar síður, svo allt kemst fyrir án þess að skruna. Strjúktu til vinstri eða hægri til að skipta. Smámyndirnar neðst sýna á hvaða síðu þú ert; ýttu á eina til að fara beint þangað. Ef aðeins ein síða er virk hverfa þær.\nElly man hvaða síðu þú notaðir síðast. Hvaða síður birtast og í hvaða röð er stillt í stillingunum. Ef eining eins og dagskrárvísirinn fyllir skjáinn skaltu strjúka yfir smámyndirnar neðst eða ýta á eina.</string>
     <string name="help_remote_keys_title">Hnapparnir notaðir</string>
     <string name="help_remote_keys_body">• Hnappar virkjast þegar þú lyftir fingrinum. Strok sem byrjar á hnappi sendir því ekkert.\n• Hljóðstyrkur, stöð og stýrikrossinn endurtaka sig meðan þú heldur þeim inni.\n• Ef þú vilt titrar síminn við hverja hnappaýtingu (Stillingar → „Stýring“).\n• Ef hnappur er ekki í boði eða ekki næst í sjónvarpið birtast skilaboð neðst.</string>
     <string name="help_remote_defaults_title">Sjálfgefin uppsetning</string>
@@ -553,7 +553,13 @@
     <string name="epg_info_remaining">%1$d mín. eftir</string>
     <string name="epg_info_switch">Skipta á rás</string>
     <string name="epg_info_close">Loka</string>
+    <string name="epg_info_image_enlarge">Sýna myndina stærri</string>
+    <string name="epg_info_image_description">Mynd: %1$s</string>
+    <string name="epg_info_season_episode">Þáttaröð %1$d, þáttur %2$d</string>
+    <string name="epg_info_season">Þáttaröð %1$d</string>
+    <string name="epg_info_episode">Þáttur %1$d</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d+</string>
     <string name="epg_badge_subtitles">Texti</string>
     <string name="epg_badge_audio_description">Sjónlýsing</string>
     <string name="epg_badge_sign_language">Táknmál</string>
@@ -572,7 +578,7 @@
     <string name="epg_demo_list_kids">Börn</string>
     <string name="epg_demo_description">Tilbúinn þáttur fyrir prufuham. Með sjónvarpi með rótaraðgangi og uppsettu SSH sýnir vísirinn raunverulega dagskrá sjónvarpsins þíns.</string>
     <string name="help_remote_guide_title">Dagskrárvísir</string>
-    <string name="help_remote_guide_body">Með sjónvarpi með rótaraðgangi (eða í prufuham) getur skjár sýnt dagskrárvísi eins og vísirinn á sjónvarpinu: efst tímarnir, vinstra megin rásir eftirlætislistans þíns, hægra megin þættirnir.\n• Strjúktu í allar áttir: aftur um allt að 24 klukkustundir, fram eins langt og sjónvarpið hefur gögn (í mesta lagi 14 daga). Vinstra megin í tímastikunni stendur dagsetningin og hver nýr dagur byrjar með línu.\n• Appelsínugula línan sýnir núverandi tíma; „Núna“ efst til vinstri fer aftur þangað. Röð rásarinnar sem er í gangi á sjónvarpinu er auðkennd með appelsínugulu.\n• Ýttu á rás til að skipta yfir á hana.\nAð strjúka í vísinum skiptir aldrei um skjá; strjúktu þá yfir punktana neðst. Elly geymir gögnin í símanum og uppfærir þau á 15 mínútna fresti meðan fjarstýringin er opin; meðan hleðst snýst lítill hringur efst til vinstri.</string>
+    <string name="help_remote_guide_body">Með sjónvarpi með rótaraðgangi (eða í prufuham) getur skjár sýnt dagskrárvísi eins og vísirinn á sjónvarpinu: efst tímarnir, vinstra megin rásir eftirlætislistans þíns, hægra megin þættirnir.\n• Strjúktu í allar áttir: aftur um allt að 24 klukkustundir, fram eins langt og sjónvarpið hefur gögn (í mesta lagi 14 daga). Vinstra megin í tímastikunni stendur dagsetningin og hver nýr dagur byrjar með línu.\n• Appelsínugula línan sýnir núverandi tíma; „Núna“ efst til vinstri fer aftur þangað. Röð rásarinnar sem er í gangi á sjónvarpinu er auðkennd með appelsínugulu.\n• Ýttu á rás til að skipta yfir á hana.\nAð strjúka í vísinum skiptir aldrei um skjá; strjúktu þá yfir smámyndirnar neðst eða ýttu á eina. Elly geymir gögnin í símanum og uppfærir þau á 15 mínútna fresti meðan fjarstýringin er opin; meðan hleðst snýst lítill hringur efst til vinstri.</string>
     <string name="help_remote_guide_info_title">Þættir, áminningar og upptökur</string>
     <string name="help_remote_guide_info_body">Ýttu á þátt til að sjá upplýsingar: rás, dag, tíma, lengd, tegund og lýsingu. „Skipta á rás“ setur sjónvarpið á rásina.\n• Minna á: sjónvarpið minnir þig á þegar þátturinn byrjar, líka þótt slökkt sé á símanum. Skráðar áminningar sýna bjöllu.\n• Taka upp: sjónvarpið tekur upp á geymslutækið sem þar er valið fyrir upptökur. Skráðar upptökur sýna rauðan punkt; upptökur í gangi má stöðva.\nHvoru tveggja má eyða aftur. Elly sýnir líka áminningar og upptökur sem þú skráir á sjónvarpinu. Hafni sjónvarpið einhverju, t.d. vegna skörunar, birtast skilaboð þess í glugganum.</string>
     <string name="help_edit_guide_title">Bæta við dagskrárvísi</string>

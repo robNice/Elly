@@ -98,6 +98,10 @@ object EpgCacheJson {
         .putIfTrue("sub", program.subtitles)
         .putIfTrue("ad", program.audioDescription)
         .putIfTrue("sl", program.signLanguage)
+        .putOpt("sn", program.season)
+        .putOpt("ep", program.episode)
+        .putOpt("gl", program.genres.takeIf { it.isNotEmpty() }?.let { JSONArray(it) })
+        .putOpt("r", program.rating)
 
     private fun program(signalId: String, json: JSONObject): EpgProgram? {
         val start = json.optLong("b")
@@ -118,7 +122,11 @@ object EpgCacheJson {
             imageUrl = json.text("img"),
             subtitles = json.optBoolean("sub"),
             audioDescription = json.optBoolean("ad"),
-            signLanguage = json.optBoolean("sl")
+            signLanguage = json.optBoolean("sl"),
+            season = json.optInt("sn").takeIf { it > 0 },
+            episode = json.optInt("ep").takeIf { it > 0 },
+            genres = json.optJSONArray("gl")?.let { list -> (0 until list.length()).map { list.optString(it) } }.orEmpty(),
+            rating = if (json.has("r")) json.optInt("r") else null
         )
     }
 

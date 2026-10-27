@@ -9,7 +9,7 @@ Appen kommunikerer udelukkende inden for dit lokale netværk:
 - Søgning efter tv: SSDP-forespørgsel og en kontrol af adresserne i dit lokale netværk for webOS-portene 3000 og 3001.
 - Styring: krypteret forbindelse til det parrede tv (ældre tv uden kryptering via port 3000). Appen sender styringskommandoer som knaptryk, markørbevægelser, app-start samt indgangs- og kanalskift og henter de installerede apps, indgangene og app-ikonerne.
 - Tænding: Wake-on-LAN-pakke til tv'ets MAC-adresse.
-- Programguide (valgfrit, kun for tv med rootadgang, som du selv konfigurerer): SSH-forbindelse til tv'et (port 22). Appen læser tv'ets favoritlister, kanaler, programguide samt planlagte påmindelser og optagelser, opretter eller sletter påmindelser og optagelser på tv'et og læser kanallogoer. Logoer, som tv'et endnu ikke har, henter tv'et selv fra LG's logoserver, ligesom det gør til sin egen programguide; din enhed kontakter ikke denne server.
+- Programguide (valgfrit, kun for tv med rootadgang, som du selv konfigurerer): SSH-forbindelse til tv'et (port 22). Appen læser tv'ets favoritlister, kanaler, programguide samt planlagte påmindelser og optagelser, opretter eller sletter påmindelser og optagelser på tv'et og læser kanallogoer. Logoer, som tv'et endnu ikke har, henter tv'et selv fra LG's logoserver, ligesom det gør til sin egen programguide; din enhed kontakter ikke denne server. Det samme gælder programbilleder fra LG's onlineprogramdata: Når du åbner detaljerne for et program, henter tv'et billedet fra LG's server og sender det videre; din enhed gemmer det kun i hukommelsen, mens appen kører.
 
 Denne kommunikation foregår direkte mellem din enhed og tv'et. Der sendes ingen data til eksterne servere.
 

@@ -65,6 +65,7 @@ class EpgGuides(
     val canRecord: StateFlow<Boolean>,
     val perform: suspend (EpgAction) -> Unit,
     val videoInfo: suspend (EpgChannel) -> EpgVideoInfo?,
+    val programImage: suspend (String) -> ByteArray?,
     val openAudioTracks: () -> Unit
 )
 
@@ -92,6 +93,7 @@ fun EpgElement(config: EpgConfig?, editing: Boolean, modifier: Modifier = Modifi
                 canRecord = canRecord,
                 onAction = guides.perform,
                 loadVideoInfo = guides.videoInfo,
+                loadImage = guides.programImage,
                 onAudioTracks = guides.openAudioTracks,
                 modifier = modifier
             )

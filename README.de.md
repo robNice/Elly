@@ -111,7 +111,7 @@ Die Kopfleiste ist auf jedem Screen sichtbar:
 - **Zahnrad** – öffnet die [Einstellungen](#9-einstellungen).
 - **Elly** ganz rechts – öffnet die [Hilfe](#10-hilfe). Zu Weihnachten (24.12. bis 06.01.), zu Ostern (Palmsonntag bis zum Sonntag nach Ostern) und vor Halloween (24. bis 31.10.) trägt sie ein passendes Kostüm.
 
-Die Punkte unten zeigen den aktuellen Screen; gewechselt wird durch Wischen nach links oder rechts. Tasten lösen erst beim Loslassen aus – ein Wisch, der auf einer Taste beginnt, sendet also nichts. Lautstärke, Kanal und das Steuerkreuz wiederholen beim Gedrückthalten.
+Die Vorschauen unten zeigen den aktuellen Screen; gewechselt wird durch Wischen nach links oder rechts oder durch Antippen einer Vorschau, die direkt zu ihrem Screen springt. Tasten lösen erst beim Loslassen aus – ein Wisch, der auf einer Taste beginnt, sendet also nichts. Lautstärke, Kanal und das Steuerkreuz wiederholen beim Gedrückthalten.
 
 ### 4.2 Screen 1
 
@@ -183,7 +183,7 @@ Mit einem **gerooteten** LG-Fernseher kann ein Screen die Programmübersicht zei
 - **Einfügen:** Im [Editor](#61-editor) unter „+ Element“ → „Programmübersicht“, danach die Favoritenliste des Fernsehers wählen. Das Element ist anfangs so breit wie der Screen und halb so hoch und lässt sich wie jedes andere verschieben und skalieren; Gedrückthalten ändert die Liste. Mehrere Übersichten mit verschiedenen Listen sind möglich.
 - **Anzeige:** oben die Uhrzeiten im Halbstundentakt mit mitlaufendem Datum und einer Linie an jedem Tageswechsel, links die Senderlogos, rechts die Sendungen. Die orange Linie zeigt die aktuelle Uhrzeit, die Zeile des laufenden Senders ist orange hinterlegt und seine laufende Sendung orange gerahmt, „Jetzt“ springt zurück. Gescrollt wird in alle Richtungen, zurück bis zu 24 Stunden, voraus so weit, wie der Fernseher Daten hat (höchstens 14 Tage).
 - **Bedienung:** Sender antippen schaltet um. Sendung antippen öffnet die Infos (Sender, Uhrzeit, Fortschritt, Kennzeichen wie HD oder Untertitel, Beschreibung) mit **Erinnern** und **Aufnehmen** – beides übernimmt der Fernseher selbst, auch wenn das Handy aus ist. Laufende Aufnahmen lassen sich beenden. Bei der laufenden Sendung des Senders, der gerade am Fernseher läuft, öffnet **Tonspur wählen** die [Tonspur-Auswahl](#48-tonspur). Geplante Erinnerungen tragen eine Glocke, Aufnahmen einen roten Punkt.
-- **Daten:** Elly holt das Programm per SSH vom Fernseher, speichert es auf dem Handy und aktualisiert es, solange die Fernbedienung offen ist. Waagerechtes Wischen in der Übersicht wechselt nie den Screen; dafür wischst du über die Punkte unten.
+- **Daten:** Elly holt das Programm per SSH vom Fernseher, speichert es auf dem Handy und aktualisiert es, solange die Fernbedienung offen ist. Waagerechtes Wischen in der Übersicht wechselt nie den Screen; dafür wischst du über die Vorschauen unten oder tippst eine an.
 
 ### 4.8 Tonspur
 
@@ -234,7 +234,7 @@ Der OK-Button lässt sich unten (Standard) oder oben platzieren. Mit **Aktiviere
 
 In den Einstellungen unter **Darstellung → Screens** werden die vier Screens als Vorschau ihrer Belegung angezeigt:
 
-- **Antippen** blendet einen Screen ein oder aus; mindestens einer bleibt aktiv. Ist nur ein Screen aktiv, verschwinden die Seitenpunkte.
+- **Antippen** blendet einen Screen ein oder aus; mindestens einer bleibt aktiv. Ist nur ein Screen aktiv, verschwinden die Vorschauen unten.
 - **Gedrückt halten und ziehen** ändert die Reihenfolge.
 - **Stift** öffnet den [Editor](#61-editor), **Pfeil** setzt den Screen nach einer Rückfrage auf seine Standardbelegung zurück.
 

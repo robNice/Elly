@@ -327,7 +327,7 @@
 
     <string name="onboarding_screens_title">Skärmar och toppfält</string>
     <string name="onboarding_screens_text">Knapparna är fördelade på upp till fyra skärmar, så allt får plats utan att du behöver rulla.</string>
-    <string name="onboarding_screens_swipe">Svep åt vänster eller höger för att byta skärm. Prickarna längst ned visar var du är.</string>
+    <string name="onboarding_screens_swipe">Svep åt vänster eller höger för att byta skärm. Förhandsvisningarna längst ned visar var du är; tryck på en för att hoppa direkt dit.</string>
     <string name="onboarding_screens_status">Lampan framför tv-namnet visar anslutningen: grön ansluten, röd inte nåbar, grå kontrollerar, gul demoläge.</string>
     <string name="onboarding_screens_tv">Tryck på tv-namnet för att söka efter, parkoppla eller byta tv.</string>
     <string name="onboarding_screens_pointer">Öppnar pekaren.</string>
@@ -399,7 +399,7 @@
     <string name="help_remote_status_title">Statuslampan</string>
     <string name="help_remote_status_body">• Grön: ansluten.\n• Röd: tv:n går inte att nå.\n• Grå: anslutningen kontrolleras.\n• Gul: demoläge.\nMedan Elly syns kontrolleras anslutningen var 10:e sekund och efter varje knapptryck. När appen hamnar i bakgrunden stängs anslutningen.</string>
     <string name="help_remote_screens_title">Byta skärm</string>
-    <string name="help_remote_screens_body">Knapparna är fördelade på upp till fyra skärmar, så allt får plats utan att du behöver rulla. Svep åt vänster eller höger för att byta. Prickarna längst ned visar vilken skärm du är på; med bara en aktiv skärm försvinner de.\nElly kommer ihåg skärmen du använde senast. Vilka skärmar som visas och i vilken ordning ställer du in i inställningarna. Fyller ett element som programguiden skärmen sveper du över prickarna längst ned.</string>
+    <string name="help_remote_screens_body">Knapparna är fördelade på upp till fyra skärmar, så allt får plats utan att du behöver rulla. Svep åt vänster eller höger för att byta. Förhandsvisningarna längst ned visar vilken skärm du är på; tryck på en för att hoppa direkt dit. Med bara en aktiv skärm försvinner de.\nElly kommer ihåg skärmen du använde senast. Vilka skärmar som visas och i vilken ordning ställer du in i inställningarna. Fyller ett element som programguiden skärmen sveper du över förhandsvisningarna längst ned eller trycker på en.</string>
     <string name="help_remote_keys_title">Använda knapparna</string>
     <string name="help_remote_keys_body">• Knapparna reagerar när du lyfter fingret. Ett svep som börjar på en knapp skickar därför ingenting.\n• Volym, kanal och styrkorset upprepas medan du håller dem.\n• Om du vill vibrerar telefonen vid varje knapptryck (Inställningar → ”Styrning”).\n• Om en knapp inte är tillgänglig eller tv:n inte går att nå visas ett meddelande längst ned.</string>
     <string name="help_remote_defaults_title">Standardlayout</string>
@@ -551,7 +551,13 @@
     <string name="epg_info_remaining">%1$d min kvar</string>
     <string name="epg_info_switch">Byt till kanalen</string>
     <string name="epg_info_close">Stäng</string>
+    <string name="epg_info_image_enlarge">Visa bilden större</string>
+    <string name="epg_info_image_description">Bild: %1$s</string>
+    <string name="epg_info_season_episode">Säsong %1$d, avsnitt %2$d</string>
+    <string name="epg_info_season">Säsong %1$d</string>
+    <string name="epg_info_episode">Avsnitt %1$d</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d+</string>
     <string name="epg_badge_subtitles">Undertexter</string>
     <string name="epg_badge_audio_description">Syntolkning</string>
     <string name="epg_badge_sign_language">Teckenspråk</string>
@@ -570,7 +576,7 @@
     <string name="epg_demo_list_kids">Barn</string>
     <string name="epg_demo_description">Påhittat program för demoläget. Med en rootad tv och konfigurerat SSH visar guiden det riktiga programmet på din tv.</string>
     <string name="help_remote_guide_title">Programguide</string>
-    <string name="help_remote_guide_body">Med en rootad tv (eller i demoläget) kan en skärm visa programguiden, som guiden på tv:n: överst klockslagen, till vänster kanalerna i din favoritlista, till höger programmen.\n• Svep åt alla håll: bakåt upp till 24 timmar, framåt så långt tv:n har data (högst 14 dagar). Till vänster i tidslisten står datumet, och varje ny dag börjar med ett streck.\n• Det orange strecket visar aktuell tid; ”Nu” uppe till vänster hoppar tillbaka dit. Raden för kanalen som visas på tv:n just nu är markerad i orange.\n• Tryck på en kanal för att byta till den.\nSvep i guiden byter aldrig skärm; svep i stället över prickarna längst ned. Elly sparar data på telefonen och uppdaterar dem var 15:e minut medan fjärrkontrollen är öppen; medan den laddar snurrar en liten cirkel uppe till vänster.</string>
+    <string name="help_remote_guide_body">Med en rootad tv (eller i demoläget) kan en skärm visa programguiden, som guiden på tv:n: överst klockslagen, till vänster kanalerna i din favoritlista, till höger programmen.\n• Svep åt alla håll: bakåt upp till 24 timmar, framåt så långt tv:n har data (högst 14 dagar). Till vänster i tidslisten står datumet, och varje ny dag börjar med ett streck.\n• Det orange strecket visar aktuell tid; ”Nu” uppe till vänster hoppar tillbaka dit. Raden för kanalen som visas på tv:n just nu är markerad i orange.\n• Tryck på en kanal för att byta till den.\nSvep i guiden byter aldrig skärm; svep i stället över förhandsvisningarna längst ned eller tryck på en. Elly sparar data på telefonen och uppdaterar dem var 15:e minut medan fjärrkontrollen är öppen; medan den laddar snurrar en liten cirkel uppe till vänster.</string>
     <string name="help_remote_guide_info_title">Program, påminnelser och inspelningar</string>
     <string name="help_remote_guide_info_body">Tryck på ett program för att se detaljerna: kanal, dag, tid, längd, genre och beskrivning. ”Byt till kanalen” ställer tv:n på kanalen.\n• Påminn mig: tv:n påminner dig när programmet börjar, även när telefonen är avstängd. Planerade påminnelser har en klocka.\n• Spela in: tv:n spelar in till den lagringsenhet som valts för inspelningar där. Planerade inspelningar har en röd prick; pågående inspelningar kan stoppas.\nBåda kan tas bort igen. Elly visar även påminnelser och inspelningar som du har lagt in på tv:n. Om tv:n avvisar något, till exempel vid överlappning, visas dess meddelande i fönstret.</string>
     <string name="help_edit_guide_title">Lägga till programguiden</string>

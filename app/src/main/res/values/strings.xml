@@ -287,12 +287,18 @@
     <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min)</string>
     <string name="epg_info_remaining">%1$d min left</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d+</string>
     <string name="epg_badge_subtitles">Subtitles</string>
     <string name="epg_badge_audio_description">Audio description</string>
     <string name="epg_badge_sign_language">Sign language</string>
     <string name="epg_badge_satellite">%1$s · %2$d</string>
     <string name="epg_info_switch">Switch to channel</string>
     <string name="epg_info_close">Close</string>
+    <string name="epg_info_image_enlarge">Show picture larger</string>
+    <string name="epg_info_image_description">Picture: %1$s</string>
+    <string name="epg_info_season_episode">Season %1$d, episode %2$d</string>
+    <string name="epg_info_season">Season %1$d</string>
+    <string name="epg_info_episode">Episode %1$d</string>
     <string name="epg_remind">Remind me</string>
     <string name="epg_remind_cancel">Delete reminder</string>
     <string name="epg_record">Record</string>
@@ -464,7 +470,7 @@
 
     <string name="onboarding_screens_title">Screens and top bar</string>
     <string name="onboarding_screens_text">The keys are spread across up to four screens, so everything fits without scrolling.</string>
-    <string name="onboarding_screens_swipe">Swipe left or right to switch screens. The dots at the bottom show where you are.</string>
+    <string name="onboarding_screens_swipe">Swipe left or right to switch screens. The previews at the bottom show where you are; tap one to jump straight to it.</string>
     <string name="onboarding_screens_status">The light in front of the TV name shows the connection: green connected, red not reachable, grey checking, yellow demo mode.</string>
     <string name="onboarding_screens_tv">Tap the TV name to search for, pair or switch TVs.</string>
     <string name="onboarding_screens_pointer">Opens the pointer.</string>
@@ -537,7 +543,7 @@
     <string name="help_remote_status_title">The status light</string>
     <string name="help_remote_status_body">• Green: connected.\n• Red: TV not reachable.\n• Grey: checking the connection.\n• Yellow: demo mode.\nWhile Elly is visible, the connection is checked every 10 seconds and after every key press. When the app goes to the background, the connection is closed.</string>
     <string name="help_remote_screens_title">Switching screens</string>
-    <string name="help_remote_screens_body">The keys are spread across up to four screens, so everything fits without scrolling. Swipe left or right to switch. The dots at the bottom show which screen you are on; with only one active screen they disappear.\nElly remembers the screen you used last. Which screens are shown and in which order is set in the settings. If an element such as the program guide fills the screen, swipe across the dots at the bottom.</string>
+    <string name="help_remote_screens_body">The keys are spread across up to four screens, so everything fits without scrolling. Swipe left or right to switch. The previews at the bottom show which screen you are on; tap one to jump straight to it. With only one active screen they disappear.\nElly remembers the screen you used last. Which screens are shown and in which order is set in the settings. If an element such as the program guide fills the screen, swipe across the previews at the bottom or tap one.</string>
     <string name="help_remote_keys_title">Using the keys</string>
     <string name="help_remote_keys_body">• Keys trigger when you lift your finger. A swipe that starts on a key therefore sends nothing.\n• Volume, channel and the direction pad repeat while you hold them.\n• If you like, the phone vibrates on every key press (Settings → “Controls”).\n• If a key isn\'t available or the TV can\'t be reached, a message appears at the bottom.</string>
     <string name="help_remote_defaults_title">Default layout</string>
@@ -545,7 +551,7 @@
     <string name="help_remote_text_title">Entering text</string>
     <string name="help_remote_text_body">When a text field is active on the TV (e.g. a search), a text bar opens automatically at the bottom. What you type is sent to the TV live; the send key works like Enter.\nWith the “Keyboard” key (can be added in the editor) you open the text bar by hand. Apps with their own on-screen keyboard sometimes don\'t accept the text.</string>
     <string name="help_remote_guide_title">Program guide</string>
-    <string name="help_remote_guide_body">With a rooted TV (or in demo mode) a screen can show the program guide, like the guide on the TV: times along the top, the channels of your favorite list on the left, the programs on the right.\n• Swipe in any direction: back up to 24 hours, ahead as far as the TV has data (at most 14 days). The date stands at the left of the time bar, every new day starts with a line.\n• The orange line marks the current time; “Now” in the top left corner jumps back to it. The row of the channel currently on the TV is highlighted in orange.\n• Tap a channel to switch to it.\nSwiping in the guide never changes the screen; swipe across the dots at the bottom instead. Elly keeps the data on the phone and refreshes it every 15 minutes while the remote is open; a small circle turns in the top left corner while it loads.</string>
+    <string name="help_remote_guide_body">With a rooted TV (or in demo mode) a screen can show the program guide, like the guide on the TV: times along the top, the channels of your favorite list on the left, the programs on the right.\n• Swipe in any direction: back up to 24 hours, ahead as far as the TV has data (at most 14 days). The date stands at the left of the time bar, every new day starts with a line.\n• The orange line marks the current time; “Now” in the top left corner jumps back to it. The row of the channel currently on the TV is highlighted in orange.\n• Tap a channel to switch to it.\nSwiping in the guide never changes the screen; swipe across the previews at the bottom or tap one instead. Elly keeps the data on the phone and refreshes it every 15 minutes while the remote is open; a small circle turns in the top left corner while it loads.</string>
     <string name="help_remote_guide_info_title">Programs, reminders and recordings</string>
     <string name="help_remote_guide_info_body">Tap a program to see its details: channel, day, time, duration, genre and description. “Switch to channel” switches the TV to it.\n• Remind me: the TV reminds you when the program starts, even when the phone is off. Planned reminders show a bell.\n• Record: the TV records to the storage chosen on the TV for recordings. Planned recordings show a red dot.\nBoth can be removed again (“Delete …”). Reminders and recordings you set up on the TV show up in Elly too. If the TV refuses, for example because recordings overlap, its message appears in the window.</string>
 

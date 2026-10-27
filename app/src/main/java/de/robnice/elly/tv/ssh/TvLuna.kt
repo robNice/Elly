@@ -43,7 +43,7 @@ class TvLuna internal constructor(private val session: ShellSession) {
         const val LONG_TIMEOUT_MILLIS = 60_000L
         const val MAX_ERROR_LENGTH = 200
         val SAFE_PATH = Regex("^/[A-Za-z0-9_./-]+$")
-        val SAFE_URL = Regex("^https://[A-Za-z0-9.-]+/[A-Za-z0-9_./?&=-]+$")
+        val SAFE_URL = Regex("^https?://[A-Za-z0-9.-]+/[A-Za-z0-9_./?&=-]+$")
         const val DOWNLOAD_TIMEOUT_SECONDS = 10
     }
 }

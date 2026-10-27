@@ -279,12 +279,18 @@
     <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d Min.)</string>
     <string name="epg_info_remaining">noch %1$d Min.</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">ab %1$d</string>
     <string name="epg_badge_subtitles">Untertitel</string>
     <string name="epg_badge_audio_description">Audiodeskription</string>
     <string name="epg_badge_sign_language">Gebärdensprache</string>
     <string name="epg_badge_satellite">%1$s · %2$d</string>
     <string name="epg_info_switch">Umschalten</string>
     <string name="epg_info_close">Schließen</string>
+    <string name="epg_info_image_enlarge">Bild groß anzeigen</string>
+    <string name="epg_info_image_description">Bild: %1$s</string>
+    <string name="epg_info_season_episode">Staffel %1$d, Folge %2$d</string>
+    <string name="epg_info_season">Staffel %1$d</string>
+    <string name="epg_info_episode">Folge %1$d</string>
     <string name="epg_remind">Erinnern</string>
     <string name="epg_remind_cancel">Erinnerung löschen</string>
     <string name="epg_record">Aufnehmen</string>
@@ -439,7 +445,7 @@
 
     <string name="onboarding_screens_title">Screens und Kopfleiste</string>
     <string name="onboarding_screens_text">Die Tasten sind auf bis zu vier Screens verteilt, damit alles ohne Scrollen passt.</string>
-    <string name="onboarding_screens_swipe">Wische nach links oder rechts, um den Screen zu wechseln. Die Punkte unten zeigen, wo du bist.</string>
+    <string name="onboarding_screens_swipe">Wische nach links oder rechts, um den Screen zu wechseln. Die Vorschauen unten zeigen, wo du bist; tippe eine an, um direkt dorthin zu springen.</string>
     <string name="onboarding_screens_status">Die Leuchte vor dem TV-Namen zeigt die Verbindung: grün verbunden, rot nicht erreichbar, grau wird geprüft, gelb Demo-Modus.</string>
     <string name="onboarding_screens_tv">Tippe auf den TV-Namen, um Fernseher zu suchen, zu koppeln oder zu wechseln.</string>
     <string name="onboarding_screens_pointer">Öffnet den Zeiger.</string>
@@ -512,7 +518,7 @@
     <string name="help_remote_status_title">Die Statusleuchte</string>
     <string name="help_remote_status_body">• Grün: verbunden.\n• Rot: Fernseher nicht erreichbar.\n• Grau: Verbindung wird geprüft.\n• Gelb: Demo-Modus.\nSolange Elly sichtbar ist, wird die Verbindung alle 10 Sekunden und nach jedem Tastendruck geprüft. Geht die App in den Hintergrund, wird die Verbindung getrennt.</string>
     <string name="help_remote_screens_title">Screens wechseln</string>
-    <string name="help_remote_screens_body">Die Tasten sind auf bis zu vier Screens verteilt, damit alles ohne Scrollen passt. Wische nach links oder rechts, um zu wechseln. Die Punkte unten zeigen, auf welchem Screen du bist; ist nur ein Screen aktiv, fallen sie weg.\nElly merkt sich den zuletzt benutzten Screen. Welche Screens angezeigt werden und in welcher Reihenfolge, legst du in den Einstellungen fest. Füllt ein Element wie die Programmübersicht den Screen, wischst du über die Punkte unten.</string>
+    <string name="help_remote_screens_body">Die Tasten sind auf bis zu vier Screens verteilt, damit alles ohne Scrollen passt. Wische nach links oder rechts, um zu wechseln. Die Vorschauen unten zeigen, auf welchem Screen du bist; tippe eine an, um direkt dorthin zu springen. Ist nur ein Screen aktiv, fallen sie weg.\nElly merkt sich den zuletzt benutzten Screen. Welche Screens angezeigt werden und in welcher Reihenfolge, legst du in den Einstellungen fest. Füllt ein Element wie die Programmübersicht den Screen, wischst du über die Vorschauen unten oder tippst eine an.</string>
     <string name="help_remote_keys_title">Tasten bedienen</string>
     <string name="help_remote_keys_body">• Tasten lösen beim Loslassen aus. Ein Wisch, der auf einer Taste beginnt, sendet also nichts.\n• Lautstärke, Kanal und Steuerkreuz wiederholen, solange du sie gedrückt hältst.\n• Auf Wunsch vibriert das Handy bei jedem Tastendruck (Einstellungen → „Bedienung“).\n• Ist eine Taste nicht verfügbar oder der Fernseher nicht erreichbar, erscheint unten ein Hinweis.</string>
     <string name="help_remote_defaults_title">Standardbelegung</string>
@@ -520,7 +526,7 @@
     <string name="help_remote_text_title">Text eingeben</string>
     <string name="help_remote_text_body">Ist am Fernseher ein Eingabefeld aktiv (z. B. eine Suche), öffnet sich unten automatisch eine Textleiste. Was du tippst, wird live an den Fernseher übertragen; die Senden-Taste wirkt wie Enter.\nMit der Taste „Tastatur“ (im Editor hinzufügbar) öffnest du die Textleiste auch von Hand. Apps mit eigener Bildschirmtastatur nehmen den Text manchmal nicht an.</string>
     <string name="help_remote_guide_title">Programmübersicht</string>
-    <string name="help_remote_guide_body">Mit gerootetem Fernseher (oder im Demo-Modus) kann ein Screen die Programmübersicht zeigen, wie der Guide am Fernseher: oben die Uhrzeiten, links die Sender deiner Favoritenliste, rechts die Sendungen.\n• Wische in alle Richtungen: zurück bis zu 24 Stunden, voraus so weit, wie der Fernseher Daten hat (höchstens 14 Tage). Links in der Zeitleiste steht das Datum, jeder neue Tag beginnt mit einer Linie.\n• Die orange Linie zeigt die aktuelle Uhrzeit, „Jetzt“ oben links springt zu ihr zurück. Die Zeile des Senders, der gerade am Fernseher läuft, ist orange hinterlegt.\n• Tippe auf einen Sender, um umzuschalten.\nWischen in der Übersicht wechselt nie den Screen; dafür wischst du über die Punkte unten. Elly speichert die Daten auf dem Handy und aktualisiert sie alle 15 Minuten, solange die Fernbedienung offen ist; beim Laden dreht sich oben links ein kleiner Kreis.</string>
+    <string name="help_remote_guide_body">Mit gerootetem Fernseher (oder im Demo-Modus) kann ein Screen die Programmübersicht zeigen, wie der Guide am Fernseher: oben die Uhrzeiten, links die Sender deiner Favoritenliste, rechts die Sendungen.\n• Wische in alle Richtungen: zurück bis zu 24 Stunden, voraus so weit, wie der Fernseher Daten hat (höchstens 14 Tage). Links in der Zeitleiste steht das Datum, jeder neue Tag beginnt mit einer Linie.\n• Die orange Linie zeigt die aktuelle Uhrzeit, „Jetzt“ oben links springt zu ihr zurück. Die Zeile des Senders, der gerade am Fernseher läuft, ist orange hinterlegt.\n• Tippe auf einen Sender, um umzuschalten.\nWischen in der Übersicht wechselt nie den Screen; dafür wischst du über die Vorschauen unten oder tippst eine an. Elly speichert die Daten auf dem Handy und aktualisiert sie alle 15 Minuten, solange die Fernbedienung offen ist; beim Laden dreht sich oben links ein kleiner Kreis.</string>
     <string name="help_remote_guide_info_title">Sendungen, Erinnern und Aufnehmen</string>
     <string name="help_remote_guide_info_body">Tippe auf eine Sendung, um ihre Infos zu sehen: Sender, Tag, Uhrzeit, Dauer, Genre und Beschreibung. „Umschalten“ schaltet den Fernseher auf den Sender.\n• Erinnern: Der Fernseher erinnert dich zu Beginn der Sendung, auch wenn das Handy aus ist. Geplante Erinnerungen tragen eine Glocke.\n• Aufnehmen: Der Fernseher nimmt auf den Speicher auf, den du am Fernseher für Aufnahmen gewählt hast. Geplante Aufnahmen tragen einen roten Punkt.\nBeides lässt sich wieder löschen („… löschen“). Erinnerungen und Aufnahmen, die du am Fernseher anlegst, zeigt Elly ebenfalls. Lehnt der Fernseher etwas ab, z. B. bei einer Überschneidung, steht seine Meldung im Fenster.</string>
 

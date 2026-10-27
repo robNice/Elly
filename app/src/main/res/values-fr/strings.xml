@@ -327,7 +327,7 @@
 
     <string name="onboarding_screens_title">Écrans et barre du haut</string>
     <string name="onboarding_screens_text">Les touches sont réparties sur quatre écrans maximum, pour que tout tienne sans défiler.</string>
-    <string name="onboarding_screens_swipe">Balaie vers la gauche ou la droite pour changer d\'écran. Les points en bas t\'indiquent où tu es.</string>
+    <string name="onboarding_screens_swipe">Balaie vers la gauche ou la droite pour changer d\'écran. Les aperçus en bas t\'indiquent où tu es ; touche-en un pour y aller directement.</string>
     <string name="onboarding_screens_status">Le voyant devant le nom de la TV montre la connexion : vert connectée, rouge injoignable, gris vérification, jaune mode démo.</string>
     <string name="onboarding_screens_tv">Touche le nom de la TV pour chercher, associer ou changer de TV.</string>
     <string name="onboarding_screens_pointer">Ouvre le pointeur.</string>
@@ -400,7 +400,7 @@
     <string name="help_remote_status_title">Le voyant d\'état</string>
     <string name="help_remote_status_body">• Vert : connectée.\n• Rouge : TV injoignable.\n• Gris : vérification de la connexion.\n• Jaune : mode démo.\nTant qu\'Elly est visible, la connexion est vérifiée toutes les 10 secondes et après chaque appui sur une touche. Quand l\'appli passe en arrière-plan, la connexion est fermée.</string>
     <string name="help_remote_screens_title">Changer d\'écran</string>
-    <string name="help_remote_screens_body">Les touches sont réparties sur quatre écrans maximum, pour que tout tienne sans défiler. Balaie vers la gauche ou la droite pour changer. Les points en bas indiquent sur quel écran tu es ; avec un seul écran actif, ils disparaissent.\nElly retient le dernier écran utilisé. Les écrans affichés et leur ordre se règlent dans les paramètres.</string>
+    <string name="help_remote_screens_body">Les touches sont réparties sur quatre écrans maximum, pour que tout tienne sans défiler. Balaie vers la gauche ou la droite pour changer. Les aperçus en bas indiquent sur quel écran tu es ; touche-en un pour y aller directement. Avec un seul écran actif, ils disparaissent.\nElly retient le dernier écran utilisé. Les écrans affichés et leur ordre se règlent dans les paramètres. Si un élément comme le guide des programmes remplit l\'écran, balaie sur les aperçus en bas ou touche-en un.</string>
     <string name="help_remote_keys_title">Utiliser les touches</string>
     <string name="help_remote_keys_body">• Les touches se déclenchent quand tu lèves le doigt. Un balayage qui commence sur une touche n\'envoie donc rien.\n• Volume, chaîne et pavé directionnel se répètent tant que tu restes appuyé.\n• Si tu veux, le téléphone vibre à chaque appui (Paramètres → « Commandes »).\n• Si une touche n\'est pas disponible ou si la TV est injoignable, un message apparaît en bas.</string>
     <string name="help_remote_defaults_title">Disposition par défaut</string>
@@ -552,12 +552,18 @@
     <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min)</string>
     <string name="epg_info_remaining">Encore %1$d min</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">-%1$d</string>
     <string name="epg_badge_subtitles">Sous-titres</string>
     <string name="epg_badge_audio_description">Audiodescription</string>
     <string name="epg_badge_sign_language">Langue des signes</string>
     <string name="epg_badge_satellite">%1$s · %2$d</string>
     <string name="epg_info_switch">Changer de chaîne</string>
     <string name="epg_info_close">Fermer</string>
+    <string name="epg_info_image_enlarge">Afficher l\'image en grand</string>
+    <string name="epg_info_image_description">Image : %1$s</string>
+    <string name="epg_info_season_episode">Saison %1$d, épisode %2$d</string>
+    <string name="epg_info_season">Saison %1$d</string>
+    <string name="epg_info_episode">Épisode %1$d</string>
     <string name="epg_remind">Me le rappeler</string>
     <string name="epg_remind_cancel">Supprimer le rappel</string>
     <string name="epg_record">Enregistrer</string>
@@ -617,7 +623,7 @@
     </string-array>
 
     <string name="help_remote_guide_title">Guide des programmes</string>
-    <string name="help_remote_guide_body">Avec une TV rootée (ou en mode démo), un écran peut afficher le guide des programmes, comme sur la TV : les horaires en haut, les chaînes de ta liste de favoris à gauche et les programmes à droite.\n• Balaie dans toutes les directions : jusqu\'à 24 heures en arrière et aussi loin que la TV dispose de données (14 jours au maximum). La date figure à gauche de la barre horaire et chaque nouveau jour commence par une ligne.\n• La ligne orange indique l\'heure actuelle ; « Maintenant », en haut à gauche, y revient. La ligne de la chaîne actuellement affichée sur la TV est surlignée en orange.\n• Touche une chaîne pour la regarder.\nBalayer dans le guide ne change jamais d\'écran ; balaie plutôt sur les points en bas. Elly conserve les données sur le téléphone et les actualise toutes les 15 minutes tant que la télécommande est ouverte ; un petit cercle tourne en haut à gauche pendant le chargement.</string>
+    <string name="help_remote_guide_body">Avec une TV rootée (ou en mode démo), un écran peut afficher le guide des programmes, comme sur la TV : les horaires en haut, les chaînes de ta liste de favoris à gauche et les programmes à droite.\n• Balaie dans toutes les directions : jusqu\'à 24 heures en arrière et aussi loin que la TV dispose de données (14 jours au maximum). La date figure à gauche de la barre horaire et chaque nouveau jour commence par une ligne.\n• La ligne orange indique l\'heure actuelle ; « Maintenant », en haut à gauche, y revient. La ligne de la chaîne actuellement affichée sur la TV est surlignée en orange.\n• Touche une chaîne pour la regarder.\nBalayer dans le guide ne change jamais d\'écran ; balaie plutôt sur les aperçus en bas ou touche-en un. Elly conserve les données sur le téléphone et les actualise toutes les 15 minutes tant que la télécommande est ouverte ; un petit cercle tourne en haut à gauche pendant le chargement.</string>
     <string name="help_remote_guide_info_title">Programmes, rappels et enregistrements</string>
     <string name="help_remote_guide_info_body">Touche un programme pour voir ses détails : chaîne, jour, heure, durée, genre et description. « Changer de chaîne » fait passer la TV sur cette chaîne.\n• Me le rappeler : la TV te prévient au début du programme, même si le téléphone est éteint. Les rappels programmés affichent une cloche.\n• Enregistrer : la TV enregistre sur le support de stockage sélectionné pour les enregistrements. Les enregistrements programmés affichent un point rouge.\nLes deux peuvent être supprimés (« Supprimer… »). Les rappels et enregistrements que tu programmes sur la TV apparaissent aussi dans Elly. Si la TV refuse l\'action, par exemple parce que des enregistrements se chevauchent, son message s\'affiche dans la fenêtre.</string>
     <string name="help_edit_guide_title">Ajouter le guide des programmes</string>

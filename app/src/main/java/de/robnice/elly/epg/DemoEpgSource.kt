@@ -45,14 +45,16 @@ class DemoEpgSource(private val context: Context) : EpgSource {
         val end = start + DAY_MILLIS
         while (start < end) {
             val length = minOf(LENGTHS_MINUTES[random.nextInt(LENGTHS_MINUTES.size)] * MINUTE_MILLIS, end - start)
+            val title = random.nextInt(titles.size)
             programs += EpgProgram(
                 signalId = channel.signalId,
                 programId = "${channel.id}_$start",
                 start = start,
                 end = start + length,
-                title = titles[random.nextInt(titles.size)],
+                title = titles[title],
                 description = description,
-                offlineProgramId = "${channel.id}_$start"
+                offlineProgramId = "${channel.id}_$start",
+                imageUrl = if (title % 2 == 1) "$IMAGE_PREFIX${title / 2 % IMAGES.size}" else null
             )
             start += length
         }
@@ -85,6 +87,12 @@ class DemoEpgSource(private val context: Context) : EpgSource {
     }
 
     override suspend fun videoInfo(channel: EpgChannel): EpgVideoInfo? = null
+
+    // Demo pictures are the app's own landscape backgrounds.
+    override suspend fun programImage(url: String): ByteArray? {
+        val image = url.removePrefix(IMAGE_PREFIX).toIntOrNull()?.let { IMAGES.getOrNull(it) } ?: return null
+        return context.resources.openRawResource(image).use { it.readBytes() }
+    }
 
     @Volatile
     private var demoAudioTrack = 0
@@ -133,5 +141,16 @@ class DemoEpgSource(private val context: Context) : EpgSource {
         const val MINUTE_MILLIS = 60_000L
         const val DAY_MILLIS = 24 * 60 * MINUTE_MILLIS
         val LENGTHS_MINUTES = intArrayOf(15, 25, 30, 45, 45, 60, 60, 90, 105, 120)
+        const val IMAGE_PREFIX = "demo-image:"
+        val IMAGES = intArrayOf(
+            R.drawable.bg_forest,
+            R.drawable.bg_sea,
+            R.drawable.bg_mountains,
+            R.drawable.bg_meadow,
+            R.drawable.bg_ocean,
+            R.drawable.bg_hills,
+            R.drawable.bg_sky,
+            R.drawable.bg_aurora
+        )
     }
 }

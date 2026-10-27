@@ -328,7 +328,7 @@
 
     <string name="onboarding_screens_title">スクリーンと上部バー</string>
     <string name="onboarding_screens_text">キーは最大 4 つのスクリーンに分かれているから、スクロールしなくても全部収まるよ。</string>
-    <string name="onboarding_screens_swipe">左右にスワイプしてスクリーンを切り替えてね。下のドットで今どこにいるかわかるよ。</string>
+    <string name="onboarding_screens_swipe">左右にスワイプしてスクリーンを切り替えてね。下のプレビューで今どこにいるかわかるよ。タップするとそのスクリーンに直接移動できるよ。</string>
     <string name="onboarding_screens_status">テレビ名の前のランプが接続状態を表すよ。緑は接続中、赤は接続できない、グレーは確認中、黄色はデモモードだよ。</string>
     <string name="onboarding_screens_tv">テレビ名をタップすると、テレビの検索、ペアリング、切り替えができるよ。</string>
     <string name="onboarding_screens_pointer">ポインターを開くよ。</string>
@@ -400,7 +400,7 @@
     <string name="help_remote_status_title">ステータスランプ</string>
     <string name="help_remote_status_body">• 緑: 接続中。\n• 赤: テレビに接続できない。\n• グレー: 接続を確認中。\n• 黄色: デモモード。\nElly が表示されている間は、10 秒ごとと、キーを押すたびに接続を確認します。アプリがバックグラウンドに移ると、接続は閉じられます。</string>
     <string name="help_remote_screens_title">スクリーンの切り替え</string>
-    <string name="help_remote_screens_body">キーは最大 4 つのスクリーンに分かれているので、スクロールせずにすべて収まります。左右にスワイプして切り替えます。下のドットで今どのスクリーンにいるかがわかります。有効なスクリーンが 1 つだけのときは表示されません。\nElly は最後に使ったスクリーンを覚えています。表示するスクリーンとその順番は設定で決められます。 番組表などの要素がスクリーン全体を埋めている場合は、下のドットの上をスワイプしてください。</string>
+    <string name="help_remote_screens_body">キーは最大 4 つのスクリーンに分かれているので、スクロールせずにすべて収まります。左右にスワイプして切り替えます。下のプレビューで今どのスクリーンにいるかがわかります。プレビューをタップすると、そのスクリーンに直接移動します。有効なスクリーンが 1 つだけのときは表示されません。\nElly は最後に使ったスクリーンを覚えています。表示するスクリーンとその順番は設定で決められます。 番組表などの要素がスクリーン全体を埋めている場合は、下のプレビューの上をスワイプするか、プレビューをタップしてください。</string>
     <string name="help_remote_keys_title">キーの使い方</string>
     <string name="help_remote_keys_body">• キーは指を離したときに反応します。そのため、キーの上から始めたスワイプでは何も送信されません。\n• 音量、チャンネル、十字キーは押し続けている間リピートします。\n• お好みで、キーを押すたびにスマホを振動させられます（設定 → 「操作」）。\n• キーが使えない場合やテレビに接続できない場合は、下にメッセージが表示されます。</string>
     <string name="help_remote_defaults_title">初期レイアウト</string>
@@ -552,7 +552,13 @@
     <string name="epg_info_remaining">残り %1$d 分</string>
     <string name="epg_info_switch">チャンネルを切り替え</string>
     <string name="epg_info_close">閉じる</string>
+    <string name="epg_info_image_enlarge">画像を大きく表示</string>
+    <string name="epg_info_image_description">画像: %1$s</string>
+    <string name="epg_info_season_episode">シーズン %1$d・第 %2$d 話</string>
+    <string name="epg_info_season">シーズン %1$d</string>
+    <string name="epg_info_episode">第 %1$d 話</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d+</string>
     <string name="epg_badge_subtitles">字幕</string>
     <string name="epg_badge_audio_description">音声解説</string>
     <string name="epg_badge_sign_language">手話</string>
@@ -571,7 +577,7 @@
     <string name="epg_demo_list_kids">キッズ</string>
     <string name="epg_demo_description">デモモード用の架空の番組です。root 化したテレビで SSH を設定すると、テレビの実際の番組が表示されます。</string>
     <string name="help_remote_guide_title">番組表</string>
-    <string name="help_remote_guide_body">root 化したテレビ（またはデモモード）では、スクリーンにテレビのガイドと同じような番組表を表示できます。上に時刻、左にお気に入りリストのチャンネル、右に番組が並びます。\n• 上下左右にスワイプできます。過去は 24 時間まで、未来はテレビにデータがある範囲（最大 14 日）まで表示します。時刻バーの左に日付があり、日が変わるところに線が入ります。\n• オレンジの線は現在時刻です。左上の「現在」で戻れます。テレビで放送中のチャンネルの行はオレンジで強調されます。\n• チャンネルをタップすると切り替わります。\n番組表の中でスワイプしてもスクリーンは切り替わりません。切り替えるには下のドットの上をスワイプしてください。Elly はデータをスマホに保存し、リモコン画面が開いている間は 15 分ごとに更新します。読み込み中は左上で小さな円が回ります。</string>
+    <string name="help_remote_guide_body">root 化したテレビ（またはデモモード）では、スクリーンにテレビのガイドと同じような番組表を表示できます。上に時刻、左にお気に入りリストのチャンネル、右に番組が並びます。\n• 上下左右にスワイプできます。過去は 24 時間まで、未来はテレビにデータがある範囲（最大 14 日）まで表示します。時刻バーの左に日付があり、日が変わるところに線が入ります。\n• オレンジの線は現在時刻です。左上の「現在」で戻れます。テレビで放送中のチャンネルの行はオレンジで強調されます。\n• チャンネルをタップすると切り替わります。\n番組表の中でスワイプしてもスクリーンは切り替わりません。切り替えるには下のプレビューの上をスワイプするか、プレビューをタップしてください。Elly はデータをスマホに保存し、リモコン画面が開いている間は 15 分ごとに更新します。読み込み中は左上で小さな円が回ります。</string>
     <string name="help_remote_guide_info_title">番組、リマインダー、録画</string>
     <string name="help_remote_guide_info_body">番組をタップすると、チャンネル、日付、時刻、長さ、ジャンル、説明が表示されます。「チャンネルを切り替え」でテレビをそのチャンネルにします。\n• リマインダー: 番組の開始時にテレビがお知らせします。スマホの電源が切れていても動作します。予約済みのリマインダーにはベルが付きます。\n• 録画: テレビで録画用に選んだ保存先に録画します。予約済みの録画には赤い点が付き、録画中のものは停止できます。\nどちらも削除できます。テレビで設定したリマインダーや録画も Elly に表示されます。重複などでテレビが受け付けない場合は、テレビのメッセージがウィンドウに表示されます。</string>
     <string name="help_edit_guide_title">番組表を追加</string>

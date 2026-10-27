@@ -17,7 +17,8 @@ data class EpgChannel(
 )
 
 // Times in milliseconds since 1970 (UTC). offlineProgramId is only set for programs received over the air;
-// the others are recorded via LG's channel code.
+// the others are recorded via LG's channel code. Season, episode, the finer genres and the rating only come
+// with LG's online data.
 data class EpgProgram(
     val signalId: String,
     val programId: String,
@@ -33,7 +34,11 @@ data class EpgProgram(
     val imageUrl: String? = null,
     val subtitles: Boolean = false,
     val audioDescription: Boolean = false,
-    val signLanguage: Boolean = false
+    val signLanguage: Boolean = false,
+    val season: Int? = null,
+    val episode: Int? = null,
+    val genres: List<String> = emptyList(),
+    val rating: Int? = null
 )
 
 // Picture of the channel currently on the TV, from the received signal.
@@ -105,6 +110,9 @@ interface EpgSource {
 
     // Null unless this channel is the one on the TV right now.
     suspend fun videoInfo(channel: EpgChannel): EpgVideoInfo?
+
+    // The picture of a program from LG's online data; null when it cannot be loaded.
+    suspend fun programImage(url: String): ByteArray?
 
     // Tracks of whatever channel the TV shows; empty when it shows no TV channel.
     suspend fun audioTracks(): AudioTracks

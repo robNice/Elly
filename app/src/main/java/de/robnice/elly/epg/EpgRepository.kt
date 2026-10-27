@@ -1,6 +1,7 @@
 package de.robnice.elly.epg
 
 import android.util.Log
+import android.util.LruCache
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -95,6 +96,20 @@ class EpgRepository(
     } catch (e: Exception) {
         Log.w(TAG, "Video info not loaded: ${e.message}")
         null
+    }
+
+    private val programImages = LruCache<String, ByteArray>(PROGRAM_IMAGE_CACHE_SIZE)
+
+    suspend fun programImage(url: String): ByteArray? {
+        programImages.get(url)?.let { return it }
+        return try {
+            access.source()?.programImage(url)?.also { programImages.put(url, it) }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            Log.w(TAG, "Program image not loaded: ${e.message}")
+            null
+        }
     }
 
     // Null without root access; throws when the TV cannot be asked.
@@ -236,6 +251,7 @@ class EpgRepository(
 
     private companion object {
         const val TAG = "EllyEpg"
+        const val PROGRAM_IMAGE_CACHE_SIZE = 40
         const val MINUTE_MILLIS = 60_000L
         const val NEAR_AHEAD_MILLIS = 26 * EpgCache.HOUR_MILLIS
         const val NEAR_MIN_INTERVAL_MILLIS = 10 * MINUTE_MILLIS

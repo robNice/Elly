@@ -328,7 +328,7 @@
 
     <string name="onboarding_screens_title">Skærme og topbjælke</string>
     <string name="onboarding_screens_text">Knapperne er fordelt på op til fire skærme, så der er plads til alt uden at rulle.</string>
-    <string name="onboarding_screens_swipe">Stryg til venstre eller højre for at skifte skærm. Prikkerne nederst viser, hvor du er.</string>
+    <string name="onboarding_screens_swipe">Stryg til venstre eller højre for at skifte skærm. Forhåndsvisningerne nederst viser, hvor du er; tryk på en for at springe direkte dertil.</string>
     <string name="onboarding_screens_status">Lampen foran tv-navnet viser forbindelsen: grøn forbundet, rød ikke tilgængelig, grå kontrollerer, gul demotilstand.</string>
     <string name="onboarding_screens_tv">Tryk på tv-navnet for at søge efter, parre eller skifte tv.</string>
     <string name="onboarding_screens_pointer">Åbner markøren.</string>
@@ -400,7 +400,7 @@
     <string name="help_remote_status_title">Statuslampen</string>
     <string name="help_remote_status_body">• Grøn: forbundet.\n• Rød: tv\'et kan ikke nås.\n• Grå: kontrollerer forbindelsen.\n• Gul: demotilstand.\nMens Elly er synlig, kontrolleres forbindelsen hvert 10. sekund og efter hvert knaptryk. Når appen går i baggrunden, lukkes forbindelsen.</string>
     <string name="help_remote_screens_title">Skift skærm</string>
-    <string name="help_remote_screens_body">Knapperne er fordelt på op til fire skærme, så der er plads til alt uden at rulle. Stryg til venstre eller højre for at skifte. Prikkerne nederst viser, hvilken skærm du er på; med kun én aktiv skærm forsvinder de.\nElly husker den skærm, du sidst brugte. Hvilke skærme der vises og i hvilken rækkefølge, indstiller du i indstillingerne.</string>
+    <string name="help_remote_screens_body">Knapperne er fordelt på op til fire skærme, så der er plads til alt uden at rulle. Stryg til venstre eller højre for at skifte. Forhåndsvisningerne nederst viser, hvilken skærm du er på; tryk på en for at springe direkte dertil. Med kun én aktiv skærm forsvinder de.\nElly husker den skærm, du sidst brugte. Hvilke skærme der vises og i hvilken rækkefølge, indstiller du i indstillingerne. Fylder et element som programguiden skærmen, stryger du hen over forhåndsvisningerne nederst eller trykker på en.</string>
     <string name="help_remote_keys_title">Brug af knapperne</string>
     <string name="help_remote_keys_body">• Knapperne reagerer, når du løfter fingeren. Et strøg, der starter på en knap, sender derfor ingenting.\n• Lydstyrke, kanal og styrekrydset gentages, mens du holder dem nede.\n• Hvis du vil, vibrerer telefonen ved hvert knaptryk (Indstillinger → »Betjening«).\n• Hvis en knap ikke er tilgængelig, eller tv\'et ikke kan nås, vises en besked nederst.</string>
     <string name="help_remote_defaults_title">Standardlayout</string>
@@ -552,12 +552,18 @@
     <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min.)</string>
     <string name="epg_info_remaining">%1$d min. tilbage</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d+</string>
     <string name="epg_badge_subtitles">Undertekster</string>
     <string name="epg_badge_audio_description">Synstolkning</string>
     <string name="epg_badge_sign_language">Tegnsprog</string>
     <string name="epg_badge_satellite">%1$s · %2$d</string>
     <string name="epg_info_switch">Skift til kanal</string>
     <string name="epg_info_close">Luk</string>
+    <string name="epg_info_image_enlarge">Vis billedet større</string>
+    <string name="epg_info_image_description">Billede: %1$s</string>
+    <string name="epg_info_season_episode">Sæson %1$d, afsnit %2$d</string>
+    <string name="epg_info_season">Sæson %1$d</string>
+    <string name="epg_info_episode">Afsnit %1$d</string>
     <string name="epg_remind">Påmind mig</string>
     <string name="epg_remind_cancel">Slet påmindelse</string>
     <string name="epg_record">Optag</string>
@@ -617,7 +623,7 @@
     </string-array>
 
     <string name="help_remote_guide_title">Programguide</string>
-    <string name="help_remote_guide_body">Med et rootet tv (eller i demotilstand) kan en skærm vise programguiden ligesom guiden på tv\'et: tider øverst, kanalerne fra din favoritliste til venstre og programmerne til højre.\n• Stryg i alle retninger: op til 24 timer tilbage og så langt frem, som tv\'et har data (højst 14 dage). Datoen står til venstre på tidslinjen, og hver ny dag begynder med en linje.\n• Den orange linje markerer det aktuelle tidspunkt; »Nu« øverst til venstre springer tilbage til det. Rækken for den kanal, der vises på tv\'et, er fremhævet med orange.\n• Tryk på en kanal for at skifte til den.\nStryg i guiden skifter aldrig skærm; stryg i stedet hen over prikkerne nederst. Elly gemmer dataene på telefonen og opdaterer dem hvert 15. minut, mens fjernbetjeningen er åben; en lille cirkel drejer øverst til venstre under indlæsningen.</string>
+    <string name="help_remote_guide_body">Med et rootet tv (eller i demotilstand) kan en skærm vise programguiden ligesom guiden på tv\'et: tider øverst, kanalerne fra din favoritliste til venstre og programmerne til højre.\n• Stryg i alle retninger: op til 24 timer tilbage og så langt frem, som tv\'et har data (højst 14 dage). Datoen står til venstre på tidslinjen, og hver ny dag begynder med en linje.\n• Den orange linje markerer det aktuelle tidspunkt; »Nu« øverst til venstre springer tilbage til det. Rækken for den kanal, der vises på tv\'et, er fremhævet med orange.\n• Tryk på en kanal for at skifte til den.\nStryg i guiden skifter aldrig skærm; stryg i stedet hen over forhåndsvisningerne nederst, eller tryk på en. Elly gemmer dataene på telefonen og opdaterer dem hvert 15. minut, mens fjernbetjeningen er åben; en lille cirkel drejer øverst til venstre under indlæsningen.</string>
     <string name="help_remote_guide_info_title">Programmer, påmindelser og optagelser</string>
     <string name="help_remote_guide_info_body">Tryk på et program for at se detaljer: kanal, dag, tidspunkt, varighed, genre og beskrivelse. »Skift til kanal« skifter tv\'et til den.\n• Påmind mig: Tv\'et minder dig om det, når programmet starter, selv når telefonen er slukket. Planlagte påmindelser vises med en klokke.\n• Optag: Tv\'et optager på det lager, der er valgt til optagelser på tv\'et. Planlagte optagelser vises med en rød prik.\nBegge kan slettes igen (»Slet …«). Påmindelser og optagelser, du opretter på tv\'et, vises også i Elly. Hvis tv\'et afviser handlingen, f.eks. fordi optagelser overlapper, vises dets besked i vinduet.</string>
     <string name="help_edit_guide_title">Tilføj programguiden</string>

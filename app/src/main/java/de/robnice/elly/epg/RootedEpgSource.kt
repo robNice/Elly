@@ -113,12 +113,20 @@ class RootedEpgSource(
 
     override suspend fun canRecord(): Boolean = rootAccess.withLuna(tv) { storage(it) != null }
 
-    // Same parameters as the TV's own scheduling app (com.webos.app.dvrpopup).
+    // Same parameters as the TV's own scheduling app (com.webos.app.dvrpopup). As with recordings, programs
+    // received over the air go by their broadcast ID; programs the TV only knows from LG's online data need the
+    // network call with LG's channel code.
     override suspend fun remind(channel: EpgChannel, program: EpgProgram) {
         val payload = schedule(SCHEDULE_WATCHING, channel, program)
-            .put("programId", program.programId)
-            .put("programIdType", if (program.online) ID_ONLINE else ID_OFFLINE)
-        rootAccess.withLuna(tv) { luna -> luna.call(WATCH_ADD, payload).requireAction() }
+        val offlineId = program.offlineProgramId
+        if (offlineId != null) {
+            payload.put("programId", offlineId).put("programIdType", ID_OFFLINE)
+            rootAccess.withLuna(tv) { luna -> luna.call(WATCH_ADD, payload).requireAction() }
+        } else {
+            val channelCode = channel.channelCode ?: throw EpgActionException(null)
+            payload.put("programId", program.programId).networkProgram(channel, channelCode)
+            rootAccess.withLuna(tv) { luna -> luna.call(WATCH_NETWORK_ADD, payload).requireAction() }
+        }
     }
 
     // Programs received over the air are recorded by their broadcast ID. Programs the TV only knows from LG's
@@ -146,17 +154,20 @@ class RootedEpgSource(
             } else {
                 payload
                     .put("programId", program.programId)
-                    .put("channelCode", channelCode)
-                    .put("channelName", channel.name)
-                    .put("seriesGroupId", "")
-                    .put("seriesCRIDs", "")
-                    .put("posterImageUrl", "")
-                    .put("startPadding", 0)
-                    .put("endPadding", 0)
+                    .networkProgram(channel, channelCode)
                 luna.call(RECORD_NETWORK_ADD, payload).requireAction()
             }
         }
     }
+
+    private fun JSONObject.networkProgram(channel: EpgChannel, channelCode: String?): JSONObject = this
+        .put("channelCode", channelCode)
+        .put("channelName", channel.name)
+        .put("seriesGroupId", "")
+        .put("seriesCRIDs", "")
+        .put("posterImageUrl", "")
+        .put("startPadding", 0)
+        .put("endPadding", 0)
 
     override suspend fun cancel(reservation: EpgReservation) {
         val payload = JSONObject().put("scheduleIdList", JSONArray().put(reservation.id))
@@ -181,6 +192,9 @@ class RootedEpgSource(
         val current = luna.call(CURRENT_CHANNEL).optString("channelId")
         if (current != channel.id) null else EpgParser.videoInfo(luna.call(VIDEO_INFO))
     }
+
+    // Like the logos, the TV loads the picture from LG's server, so the phone never contacts it.
+    override suspend fun programImage(url: String): ByteArray? = rootAccess.withLuna(tv) { it.download(url) }
 
     // The older broadcast service takes the channel on screen itself; the newer one needs the live TV app's playback ID.
     override suspend fun audioTracks(): AudioTracks = rootAccess.withLuna(tv) { luna ->
@@ -258,6 +272,7 @@ class RootedEpgSource(
         const val EVENT_LIST = "luna://com.webos.service.iepg/getEventList"
         const val RESERVATIONS = "luna://com.webos.service.iepg/getReservationEventList"
         const val WATCH_ADD = "luna://com.webos.service.tvReservationAgent/watch/epgProgram/add"
+        const val WATCH_NETWORK_ADD = "luna://com.webos.service.tvReservationAgent/watch/fullEpgProgram/add"
         const val RECORD_ADD = "luna://com.webos.service.tvReservationAgent/record/epgProgram/add"
         const val RECORD_NETWORK_ADD = "luna://com.webos.service.tvReservationAgent/record/fullEpgProgram/add"
         const val RESERVATION_DELETE = "luna://com.webos.service.tvReservationAgent/delete"
@@ -274,7 +289,6 @@ class RootedEpgSource(
         const val LIST_DEVICES = "luna://com.webos.service.attachedstoragemanager/listDevices"
         const val SCHEDULE_WATCHING = "watching"
         const val SCHEDULE_RECORDING = "recording"
-        const val ID_ONLINE = "online"
         const val ID_OFFLINE = "offline"
         const val REPEAT_ONCE = "once"
         const val RECORD_QUALITY = "record_quality_high"

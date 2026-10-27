@@ -111,7 +111,7 @@ The top bar is visible on every screen:
 - **Gear** – opens the [settings](#9-settings).
 - **Elly** at the far right – opens the [help](#10-help). At Christmas (24 Dec to 6 Jan), Easter (Palm Sunday to the Sunday after Easter) and before Halloween (24 to 31 Oct) she wears a matching costume.
 
-The dots at the bottom show the current screen; swipe left or right to switch. Keys only trigger when you lift your finger – a swipe that starts on a key sends nothing. Volume, channel and the direction pad repeat while held.
+The previews at the bottom show the current screen; swipe left or right to switch, or tap a preview to jump straight to its screen. Keys only trigger when you lift your finger – a swipe that starts on a key sends nothing. Volume, channel and the direction pad repeat while held.
 
 ### 4.2 Screen 1
 
@@ -183,7 +183,7 @@ With a **rooted** LG TV a screen can show the program guide, laid out like the g
 - **Adding:** in the [editor](#61-editor) under “+ Element” → “Program guide”, then choose the TV favorite list. The element starts as wide as the screen and half as high and can be moved and resized like any other; holding it changes the list. Several guides with different lists are possible.
 - **Display:** times in half-hour steps along the top with the date kept in view and a line at each new day, channel logos on the left, programs on the right. The orange line marks the current time, the row of the channel on the TV is highlighted in orange and its running program framed in orange, “Now” jumps back. Scroll in any direction, back up to 24 hours and ahead as far as the TV has data (at most 14 days).
 - **Use:** tap a channel to switch to it. Tap a program for its details (channel, time, progress, marks such as HD or subtitles, description) with **Remind me** and **Record** – the TV handles both itself, even when the phone is off. Running recordings can be stopped. For the running program of the channel on the TV, **Select audio track** opens the [audio track list](#48-audio-track). Planned reminders show a bell, recordings a red dot.
-- **Data:** Elly reads the guide from the TV over SSH, keeps it on the phone and refreshes it while the remote is open. Swiping sideways in the guide never changes the screen; swipe across the dots at the bottom instead.
+- **Data:** Elly reads the guide from the TV over SSH, keeps it on the phone and refreshes it while the remote is open. Swiping sideways in the guide never changes the screen; swipe across the previews at the bottom or tap one instead.
 
 ### 4.8 Audio track
 
@@ -234,7 +234,7 @@ The OK button can sit at the bottom (default) or at the top. With **Open by doub
 
 In the settings under **Appearance → Screens** the four screens are shown as previews of their layout:
 
-- **Tap** shows or hides a screen; at least one stays active. With only one active screen the page dots disappear.
+- **Tap** shows or hides a screen; at least one stays active. With only one active screen the previews at the bottom disappear.
 - **Long-press and drag** changes the order.
 - The **pencil** opens the [editor](#61-editor), the **arrow** resets the screen to its default layout after asking.
 

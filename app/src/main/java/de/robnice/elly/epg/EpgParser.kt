@@ -84,7 +84,11 @@ object EpgParser {
                 imageUrl = item.optString("imgUrl").ifBlank { item.optString("fepgImgUrl") }.takeIf { it.startsWith("http") },
                 subtitles = item.optBoolean("isSubtitle"),
                 audioDescription = item.optBoolean("isAD"),
-                signLanguage = item.optBoolean("isSignLanguage")
+                signLanguage = item.optBoolean("isSignLanguage"),
+                season = item.optString("seasonNo").toIntOrNull()?.takeIf { it > 0 },
+                episode = item.optInt("epsdNo").takeIf { it > 0 },
+                genres = listOf(item.optString("oGenreName"), item.optString("oGenreName2")).filter { it.isNotBlank() },
+                rating = item.optJSONArray("rating")?.optJSONObject(0)?.let { if (it.has("ratingValue")) it.optInt("ratingValue") else null }
             )
         }
     }

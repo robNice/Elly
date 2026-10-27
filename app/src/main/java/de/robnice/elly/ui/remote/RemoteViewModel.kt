@@ -200,6 +200,8 @@ class RemoteViewModel(
 
     suspend fun guideVideoInfo(channel: EpgChannel): EpgVideoInfo? = epgRepository.videoInfo(channel)
 
+    suspend fun guideProgramImage(url: String): ByteArray? = epgRepository.programImage(url)
+
     // Runs in the view model, so closing the info window does not stop a change the TV has already begun.
     suspend fun performGuideAction(action: EpgAction) = viewModelScope.async {
         _commandSent.tryEmit(Unit)

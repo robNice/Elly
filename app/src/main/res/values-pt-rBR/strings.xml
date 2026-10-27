@@ -328,7 +328,7 @@
 
     <string name="onboarding_screens_title">Telas e barra superior</string>
     <string name="onboarding_screens_text">Os botões ficam distribuídos em até quatro telas, então tudo cabe sem precisar rolar.</string>
-    <string name="onboarding_screens_swipe">Deslize para a esquerda ou para a direita para trocar de tela. Os pontinhos embaixo mostram onde você está.</string>
+    <string name="onboarding_screens_swipe">Deslize para a esquerda ou para a direita para trocar de tela. As miniaturas embaixo mostram onde você está; toque em uma para ir direto até ela.</string>
     <string name="onboarding_screens_status">A luz antes do nome da TV mostra a conexão: verde conectada, vermelha inacessível, cinza verificando, amarela modo demo.</string>
     <string name="onboarding_screens_tv">Toque no nome da TV para buscar, parear ou trocar de TV.</string>
     <string name="onboarding_screens_pointer">Abre o ponteiro.</string>
@@ -401,7 +401,7 @@
     <string name="help_remote_status_title">A luz de status</string>
     <string name="help_remote_status_body">• Verde: conectada.\n• Vermelha: TV inacessível.\n• Cinza: verificando a conexão.\n• Amarela: modo demo.\nEnquanto a Elly está visível, a conexão é verificada a cada 10 segundos e depois de cada toque em um botão. Quando o app vai para segundo plano, a conexão é encerrada.</string>
     <string name="help_remote_screens_title">Trocar de tela</string>
-    <string name="help_remote_screens_body">Os botões ficam distribuídos em até quatro telas, então tudo cabe sem precisar rolar. Deslize para a esquerda ou para a direita para trocar. Os pontinhos embaixo mostram em qual tela você está; com apenas uma tela ativa, eles somem.\nA Elly se lembra da última tela que você usou. Quais telas aparecem e em que ordem é definido nas configurações. Se um elemento como o guia de programação ocupar a tela, deslize sobre os pontos embaixo.</string>
+    <string name="help_remote_screens_body">Os botões ficam distribuídos em até quatro telas, então tudo cabe sem precisar rolar. Deslize para a esquerda ou para a direita para trocar. As miniaturas embaixo mostram em qual tela você está; toque em uma para ir direto até ela. Com apenas uma tela ativa, elas somem.\nA Elly se lembra da última tela que você usou. Quais telas aparecem e em que ordem é definido nas configurações. Se um elemento como o guia de programação ocupar a tela, deslize sobre as miniaturas embaixo ou toque em uma.</string>
     <string name="help_remote_keys_title">Usar os botões</string>
     <string name="help_remote_keys_body">• Os botões disparam quando você levanta o dedo. Por isso, um deslize que começa em um botão não envia nada.\n• Volume, canal e o direcional repetem enquanto você os segura.\n• Se quiser, o celular vibra a cada toque em um botão (Configurações → “Controle”).\n• Se um botão não estiver disponível ou a TV estiver inacessível, aparece uma mensagem embaixo.</string>
     <string name="help_remote_defaults_title">Layout padrão</string>
@@ -553,7 +553,13 @@
     <string name="epg_info_remaining">faltam %1$d min</string>
     <string name="epg_info_switch">Mudar de canal</string>
     <string name="epg_info_close">Fechar</string>
+    <string name="epg_info_image_enlarge">Mostrar a imagem ampliada</string>
+    <string name="epg_info_image_description">Imagem: %1$s</string>
+    <string name="epg_info_season_episode">Temporada %1$d, episódio %2$d</string>
+    <string name="epg_info_season">Temporada %1$d</string>
+    <string name="epg_info_episode">Episódio %1$d</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d anos</string>
     <string name="epg_badge_subtitles">Legendas</string>
     <string name="epg_badge_audio_description">Audiodescrição</string>
     <string name="epg_badge_sign_language">Libras</string>
@@ -572,7 +578,7 @@
     <string name="epg_demo_list_kids">Crianças</string>
     <string name="epg_demo_description">Programa inventado para o modo demo. Com uma TV com root e SSH configurado, o guia mostra a programação real da sua TV.</string>
     <string name="help_remote_guide_title">Guia de programação</string>
-    <string name="help_remote_guide_body">Com uma TV com root (ou no modo demo), uma tela pode mostrar o guia de programação, como o guia da TV: em cima os horários, à esquerda os canais da sua lista de favoritos, à direita os programas.\n• Deslize em todas as direções: para trás até 24 horas, para frente até onde a TV tiver dados (no máximo 14 dias). À esquerda na barra de horários fica a data; cada novo dia começa com uma linha.\n• A linha laranja mostra o horário atual; “Agora” no canto superior esquerdo volta para ele. A linha do canal que está passando na TV fica destacada em laranja.\n• Toque em um canal para mudar para ele.\nDeslizar no guia nunca muda de tela; para isso, deslize sobre os pontos embaixo. A Elly guarda os dados no celular e atualiza a cada 15 minutos enquanto o controle está aberto; durante o carregamento gira um pequeno círculo no canto superior esquerdo.</string>
+    <string name="help_remote_guide_body">Com uma TV com root (ou no modo demo), uma tela pode mostrar o guia de programação, como o guia da TV: em cima os horários, à esquerda os canais da sua lista de favoritos, à direita os programas.\n• Deslize em todas as direções: para trás até 24 horas, para frente até onde a TV tiver dados (no máximo 14 dias). À esquerda na barra de horários fica a data; cada novo dia começa com uma linha.\n• A linha laranja mostra o horário atual; “Agora” no canto superior esquerdo volta para ele. A linha do canal que está passando na TV fica destacada em laranja.\n• Toque em um canal para mudar para ele.\nDeslizar no guia nunca muda de tela; para isso, deslize sobre as miniaturas embaixo ou toque em uma. A Elly guarda os dados no celular e atualiza a cada 15 minutos enquanto o controle está aberto; durante o carregamento gira um pequeno círculo no canto superior esquerdo.</string>
     <string name="help_remote_guide_info_title">Programas, lembretes e gravações</string>
     <string name="help_remote_guide_info_body">Toque em um programa para ver os detalhes: canal, dia, horário, duração, gênero e descrição. “Mudar de canal” muda a TV para esse canal.\n• Lembrar: a TV lembra você quando o programa começa, mesmo com o celular desligado. Lembretes agendados mostram um sino.\n• Gravar: a TV grava no dispositivo escolhido na TV para gravações. Gravações agendadas mostram um ponto vermelho; gravações em andamento podem ser paradas.\nAmbos podem ser apagados. A Elly também mostra lembretes e gravações criados na TV. Se a TV recusar algo, por exemplo por sobreposição, a mensagem dela aparece na janela.</string>
     <string name="help_edit_guide_title">Adicionar o guia de programação</string>

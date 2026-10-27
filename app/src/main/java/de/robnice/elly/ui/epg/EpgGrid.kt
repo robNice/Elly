@@ -99,6 +99,7 @@ fun EpgGrid(
     canRecord: Boolean,
     onAction: suspend (EpgAction) -> Unit,
     loadVideoInfo: suspend (EpgChannel) -> EpgVideoInfo?,
+    loadImage: suspend (String) -> ByteArray?,
     onAudioTracks: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -119,6 +120,7 @@ fun EpgGrid(
             onAction = onAction,
             // Picture details come from the received signal, so only running programs ask; the TV then checks the channel.
             loadVideoInfo = loadVideoInfo.takeIf { program.start <= System.currentTimeMillis() && program.end > System.currentTimeMillis() },
+            loadImage = loadImage,
             onAudioTracks = onAudioTracks.takeIf { channel.id == currentChannelId },
             onSwitch = {
                 selected = null

@@ -327,7 +327,7 @@
 
     <string name="onboarding_screens_title">Schermen en bovenbalk</string>
     <string name="onboarding_screens_text">De toetsen zijn verdeeld over maximaal vier schermen, zodat alles past zonder te scrollen.</string>
-    <string name="onboarding_screens_swipe">Veeg naar links of rechts om van scherm te wisselen. De stipjes onderaan laten zien waar je bent.</string>
+    <string name="onboarding_screens_swipe">Veeg naar links of rechts om van scherm te wisselen. De voorbeelden onderaan laten zien waar je bent; tik er een aan om er direct naartoe te gaan.</string>
     <string name="onboarding_screens_status">Het lampje voor de tv-naam toont de verbinding: groen verbonden, rood niet bereikbaar, grijs controleren, geel demomodus.</string>
     <string name="onboarding_screens_tv">Tik op de tv-naam om tv\'s te zoeken, te koppelen of te wisselen.</string>
     <string name="onboarding_screens_pointer">Opent de aanwijzer.</string>
@@ -400,7 +400,7 @@
     <string name="help_remote_status_title">Het statuslampje</string>
     <string name="help_remote_status_body">• Groen: verbonden.\n• Rood: tv niet bereikbaar.\n• Grijs: verbinding wordt gecontroleerd.\n• Geel: demomodus.\nZolang Elly zichtbaar is, wordt de verbinding elke 10 seconden en na elke toetsdruk gecontroleerd. Gaat de app naar de achtergrond, dan wordt de verbinding gesloten.</string>
     <string name="help_remote_screens_title">Van scherm wisselen</string>
-    <string name="help_remote_screens_body">De toetsen zijn verdeeld over maximaal vier schermen, zodat alles past zonder te scrollen. Veeg naar links of rechts om te wisselen. De stipjes onderaan laten zien op welk scherm je bent; met maar één actief scherm verdwijnen ze.\nElly onthoudt het scherm dat je het laatst gebruikte. Welke schermen getoond worden en in welke volgorde, stel je in bij de instellingen. Vult een element zoals de programmagids het scherm, veeg dan over de punten onderaan.</string>
+    <string name="help_remote_screens_body">De toetsen zijn verdeeld over maximaal vier schermen, zodat alles past zonder te scrollen. Veeg naar links of rechts om te wisselen. De voorbeelden onderaan laten zien op welk scherm je bent; tik er een aan om er direct naartoe te gaan. Met maar één actief scherm verdwijnen ze.\nElly onthoudt het scherm dat je het laatst gebruikte. Welke schermen getoond worden en in welke volgorde, stel je in bij de instellingen. Vult een element zoals de programmagids het scherm, veeg dan over de voorbeelden onderaan of tik er een aan.</string>
     <string name="help_remote_keys_title">De toetsen gebruiken</string>
     <string name="help_remote_keys_body">• Toetsen reageren als je je vinger optilt. Een veegbeweging die op een toets begint, verstuurt dus niets.\n• Volume, zender en het navigatiekruis herhalen zolang je ze vasthoudt.\n• Als je wilt, trilt de telefoon bij elke toetsdruk (Instellingen → “Bediening”).\n• Is een toets niet beschikbaar of is de tv niet bereikbaar, dan verschijnt er onderaan een melding.</string>
     <string name="help_remote_defaults_title">Standaardindeling</string>
@@ -552,7 +552,13 @@
     <string name="epg_info_remaining">nog %1$d min</string>
     <string name="epg_info_switch">Overschakelen</string>
     <string name="epg_info_close">Sluiten</string>
+    <string name="epg_info_image_enlarge">Afbeelding groot weergeven</string>
+    <string name="epg_info_image_description">Afbeelding: %1$s</string>
+    <string name="epg_info_season_episode">Seizoen %1$d, aflevering %2$d</string>
+    <string name="epg_info_season">Seizoen %1$d</string>
+    <string name="epg_info_episode">Aflevering %1$d</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d+</string>
     <string name="epg_badge_subtitles">Ondertiteling</string>
     <string name="epg_badge_audio_description">Audiodescriptie</string>
     <string name="epg_badge_sign_language">Gebarentaal</string>
@@ -571,7 +577,7 @@
     <string name="epg_demo_list_kids">Kinderen</string>
     <string name="epg_demo_description">Verzonnen programma voor de demomodus. Met een geroote tv en ingestelde SSH toont de gids het echte programma van je tv.</string>
     <string name="help_remote_guide_title">Programmagids</string>
-    <string name="help_remote_guide_body">Met een geroote tv (of in de demomodus) kan een scherm de programmagids tonen, zoals de gids op de tv: bovenaan de tijden, links de zenders van je favorietenlijst, rechts de programma\'s.\n• Veeg in alle richtingen: terug tot 24 uur, vooruit zo ver als de tv gegevens heeft (hoogstens 14 dagen). Links in de tijdbalk staat de datum, elke nieuwe dag begint met een lijn.\n• De oranje lijn toont de huidige tijd; ‘Nu’ linksboven springt ernaar terug. De rij van de zender die nu op de tv speelt, is oranje gemarkeerd.\n• Tik op een zender om over te schakelen.\nVegen in de gids wisselt nooit van scherm; veeg daarvoor over de punten onderaan. Elly bewaart de gegevens op de telefoon en ververst ze elke 15 minuten zolang de afstandsbediening open is; tijdens het laden draait linksboven een rondje.</string>
+    <string name="help_remote_guide_body">Met een geroote tv (of in de demomodus) kan een scherm de programmagids tonen, zoals de gids op de tv: bovenaan de tijden, links de zenders van je favorietenlijst, rechts de programma\'s.\n• Veeg in alle richtingen: terug tot 24 uur, vooruit zo ver als de tv gegevens heeft (hoogstens 14 dagen). Links in de tijdbalk staat de datum, elke nieuwe dag begint met een lijn.\n• De oranje lijn toont de huidige tijd; ‘Nu’ linksboven springt ernaar terug. De rij van de zender die nu op de tv speelt, is oranje gemarkeerd.\n• Tik op een zender om over te schakelen.\nVegen in de gids wisselt nooit van scherm; veeg daarvoor over de voorbeelden onderaan of tik er een aan. Elly bewaart de gegevens op de telefoon en ververst ze elke 15 minuten zolang de afstandsbediening open is; tijdens het laden draait linksboven een rondje.</string>
     <string name="help_remote_guide_info_title">Programma\'s, herinneren en opnemen</string>
     <string name="help_remote_guide_info_body">Tik op een programma voor de details: zender, dag, tijd, duur, genre en beschrijving. ‘Overschakelen’ zet de tv op de zender.\n• Herinneren: de tv herinnert je aan het begin van het programma, ook als de telefoon uit is. Geplande herinneringen krijgen een belletje.\n• Opnemen: de tv neemt op naar het opslagapparaat dat op de tv voor opnames is gekozen. Geplande opnames krijgen een rode stip; lopende opnames kun je stoppen.\nBeide kun je weer verwijderen. Herinneringen en opnames die je op de tv instelt, toont Elly ook. Weigert de tv iets, bijvoorbeeld bij een overlapping, dan staat zijn melding in het venster.</string>
     <string name="help_edit_guide_title">Programmagids toevoegen</string>

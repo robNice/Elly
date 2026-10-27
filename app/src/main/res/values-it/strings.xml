@@ -328,7 +328,7 @@
 
     <string name="onboarding_screens_title">Schermate e barra in alto</string>
     <string name="onboarding_screens_text">I tasti sono distribuiti su un massimo di quattro schermate, così tutto ci sta senza scorrere.</string>
-    <string name="onboarding_screens_swipe">Scorri a sinistra o a destra per cambiare schermata. I puntini in basso ti mostrano dove sei.</string>
+    <string name="onboarding_screens_swipe">Scorri a sinistra o a destra per cambiare schermata. Le anteprime in basso ti mostrano dove sei; toccane una per andarci direttamente.</string>
     <string name="onboarding_screens_status">La luce davanti al nome della TV mostra la connessione: verde connessa, rossa non raggiungibile, grigia in verifica, gialla modalità demo.</string>
     <string name="onboarding_screens_tv">Tocca il nome della TV per cercare, associare o cambiare TV.</string>
     <string name="onboarding_screens_pointer">Apre il puntatore.</string>
@@ -401,7 +401,7 @@
     <string name="help_remote_status_title">La spia di stato</string>
     <string name="help_remote_status_body">• Verde: connessa.\n• Rossa: TV non raggiungibile.\n• Grigia: verifica della connessione.\n• Gialla: modalità demo.\nFinché Elly è visibile, la connessione viene verificata ogni 10 secondi e dopo ogni pressione di un tasto. Quando l\'app passa in background, la connessione viene chiusa.</string>
     <string name="help_remote_screens_title">Cambiare schermata</string>
-    <string name="help_remote_screens_body">I tasti sono distribuiti su un massimo di quattro schermate, così tutto ci sta senza scorrere. Scorri a sinistra o a destra per cambiare. I puntini in basso mostrano in quale schermata sei; se c\'è una sola schermata attiva, spariscono.\nElly si ricorda l\'ultima schermata che hai usato. Quali schermate mostrare e in che ordine si imposta nelle impostazioni.</string>
+    <string name="help_remote_screens_body">I tasti sono distribuiti su un massimo di quattro schermate, così tutto ci sta senza scorrere. Scorri a sinistra o a destra per cambiare. Le anteprime in basso mostrano in quale schermata sei; toccane una per andarci direttamente. Se c\'è una sola schermata attiva, spariscono.\nElly si ricorda l\'ultima schermata che hai usato. Quali schermate mostrare e in che ordine si imposta nelle impostazioni. Se un elemento come la guida TV riempie la schermata, scorri sulle anteprime in basso o toccane una.</string>
     <string name="help_remote_keys_title">Usare i tasti</string>
     <string name="help_remote_keys_body">• I tasti scattano quando sollevi il dito. Per questo uno scorrimento che parte da un tasto non invia nulla.\n• Volume, canale e croce direzionale si ripetono finché li tieni premuti.\n• Se vuoi, il telefono vibra a ogni pressione (Impostazioni → «Controlli»).\n• Se un tasto non è disponibile o la TV non è raggiungibile, compare un messaggio in basso.</string>
     <string name="help_remote_defaults_title">Layout predefinito</string>
@@ -553,12 +553,18 @@
     <string name="epg_info_when">%1$s · %2$s – %3$s (%4$d min)</string>
     <string name="epg_info_remaining">%1$d min rimanenti</string>
     <string name="epg_badge_hd">HD</string>
+    <string name="epg_badge_age">%1$d+</string>
     <string name="epg_badge_subtitles">Sottotitoli</string>
     <string name="epg_badge_audio_description">Audiodescrizione</string>
     <string name="epg_badge_sign_language">Lingua dei segni</string>
     <string name="epg_badge_satellite">%1$s · %2$d</string>
     <string name="epg_info_switch">Passa al canale</string>
     <string name="epg_info_close">Chiudi</string>
+    <string name="epg_info_image_enlarge">Mostra l\'immagine in grande</string>
+    <string name="epg_info_image_description">Immagine: %1$s</string>
+    <string name="epg_info_season_episode">Stagione %1$d, episodio %2$d</string>
+    <string name="epg_info_season">Stagione %1$d</string>
+    <string name="epg_info_episode">Episodio %1$d</string>
     <string name="epg_remind">Ricordamelo</string>
     <string name="epg_remind_cancel">Elimina promemoria</string>
     <string name="epg_record">Registra</string>
@@ -618,7 +624,7 @@
     </string-array>
 
     <string name="help_remote_guide_title">Guida programmi</string>
-    <string name="help_remote_guide_body">Con una TV dotata di root (o in modalità demo), una schermata può mostrare la guida programmi, come quella sulla TV: gli orari in alto, i canali del tuo elenco dei preferiti a sinistra e i programmi a destra.\n• Scorri in qualsiasi direzione: indietro fino a 24 ore e in avanti fin dove la TV dispone di dati (al massimo 14 giorni). La data compare a sinistra della barra degli orari e ogni nuovo giorno inizia con una linea.\n• La linea arancione indica l\'ora attuale; «Ora», in alto a sinistra, permette di tornarvi. La riga del canale attualmente visualizzato sulla TV è evidenziata in arancione.\n• Tocca un canale per passare a quel canale.\nScorrere nella guida non cambia mai schermata; per farlo, scorri sui puntini in basso. Elly conserva i dati sul telefono e li aggiorna ogni 15 minuti mentre il telecomando è aperto; durante il caricamento, in alto a sinistra gira un piccolo cerchio.</string>
+    <string name="help_remote_guide_body">Con una TV dotata di root (o in modalità demo), una schermata può mostrare la guida programmi, come quella sulla TV: gli orari in alto, i canali del tuo elenco dei preferiti a sinistra e i programmi a destra.\n• Scorri in qualsiasi direzione: indietro fino a 24 ore e in avanti fin dove la TV dispone di dati (al massimo 14 giorni). La data compare a sinistra della barra degli orari e ogni nuovo giorno inizia con una linea.\n• La linea arancione indica l\'ora attuale; «Ora», in alto a sinistra, permette di tornarvi. La riga del canale attualmente visualizzato sulla TV è evidenziata in arancione.\n• Tocca un canale per passare a quel canale.\nScorrere nella guida non cambia mai schermata; per farlo, scorri sulle anteprime in basso o toccane una. Elly conserva i dati sul telefono e li aggiorna ogni 15 minuti mentre il telecomando è aperto; durante il caricamento, in alto a sinistra gira un piccolo cerchio.</string>
     <string name="help_remote_guide_info_title">Programmi, promemoria e registrazioni</string>
     <string name="help_remote_guide_info_body">Tocca un programma per vederne i dettagli: canale, giorno, ora, durata, genere e descrizione. «Passa al canale» sintonizza la TV su quel canale.\n• Ricordamelo: la TV ti avvisa all\'inizio del programma, anche quando il telefono è spento. I promemoria pianificati mostrano una campanella.\n• Registra: la TV registra sul dispositivo di archiviazione scelto per le registrazioni. Le registrazioni pianificate mostrano un punto rosso.\nEntrambi possono essere eliminati («Elimina…»). Anche i promemoria e le registrazioni impostati sulla TV vengono mostrati in Elly. Se la TV rifiuta l\'operazione, ad esempio perché le registrazioni si sovrappongono, il suo messaggio viene visualizzato nella finestra.</string>
     <string name="help_edit_guide_title">Aggiungere la guida programmi</string>

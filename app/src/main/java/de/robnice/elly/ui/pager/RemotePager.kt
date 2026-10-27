@@ -178,6 +178,7 @@ fun RemotePager(
             canRecord = viewModel.guideCanRecord,
             perform = viewModel::performGuideAction,
             videoInfo = viewModel::guideVideoInfo,
+            programImage = viewModel::guideProgramImage,
             openAudioTracks = viewModel::openAudioTracks
         )
     }

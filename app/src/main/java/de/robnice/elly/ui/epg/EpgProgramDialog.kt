@@ -1,9 +1,13 @@
 package de.robnice.elly.ui.epg
 
+import android.graphics.BitmapFactory
 import android.text.format.DateFormat
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
@@ -20,6 +24,11 @@ import androidx.compose.material3.IconButton
 import androidx.compose.ui.res.painterResource
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,6 +44,8 @@ import de.robnice.elly.epg.EpgReservation
 import de.robnice.elly.epg.EpgVideoInfo
 import androidx.compose.runtime.produceState
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -69,6 +80,7 @@ fun EpgProgramDialog(
     canRecord: Boolean,
     onAction: suspend (EpgAction) -> Unit,
     loadVideoInfo: (suspend (EpgChannel) -> EpgVideoInfo?)?,
+    loadImage: suspend (String) -> ByteArray?,
     onAudioTracks: (() -> Unit)?,
     onSwitch: () -> Unit,
     onDismiss: () -> Unit
@@ -130,12 +142,20 @@ fun EpgProgramDialog(
                     .verticalScroll(rememberScrollState()),
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))
             ) {
-                ChannelLine(channel, logoPath)
-                Text(
-                    text = stringResource(R.string.epg_info_when, day.format(start), time.format(start), time.format(end), minutes),
-                    style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.primary
-                )
+                Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))) {
+                    ProgramImage(program.imageUrl, program.title, loadImage)
+                    Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))) {
+                        ChannelLine(channel, logoPath)
+                        Text(
+                            text = stringResource(R.string.epg_info_when, day.format(start), time.format(start), time.format(end), minutes),
+                            style = MaterialTheme.typography.labelLarge,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        seasonEpisode(program)?.let {
+                            Text(text = it, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        }
+                    }
+                }
                 if (program.start <= now && program.end > now) {
                     LinearProgressIndicator(
                         progress = { (now - program.start).toFloat() / (program.end - program.start) },
@@ -199,9 +219,10 @@ fun EpgProgramDialog(
                         ActionButton(icon = R.drawable.ic_audio_track, text = R.string.audio_tracks_title, enabled = true, onClick = onAudioTracks)
                     }
                 }
-                if (program.genre.isNotBlank()) {
+                val genre = program.genres.joinToString(GENRE_SEPARATOR).ifBlank { program.genre }
+                if (genre.isNotBlank()) {
                     Text(
-                        text = program.genre,
+                        text = genre,
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -232,6 +253,59 @@ private fun ButtonIcon(@DrawableRes icon: Int) {
     Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
 }
 
+// While the picture loads, a plain square keeps its place so the text beside it does not jump.
+@Composable
+private fun ProgramImage(url: String?, title: String, loadImage: suspend (String) -> ByteArray?) {
+    if (url == null) return
+    val description = stringResource(R.string.epg_info_image_description, title)
+    var loading by remember(url) { mutableStateOf(true) }
+    var enlarged by remember(url) { mutableStateOf(false) }
+    val image by produceState<ImageBitmap?>(null, url) {
+        val bytes = loadImage(url)
+        value = bytes?.let { withContext(Dispatchers.Default) { runCatching { BitmapFactory.decodeByteArray(it, 0, it.size)?.asImageBitmap() }.getOrNull() } }
+        loading = false
+    }
+    if (image == null && !loading) return
+    val shape = RoundedCornerShape(dimensionResource(R.dimen.epg_cell_corner))
+    val modifier = Modifier
+        .size(dimensionResource(R.dimen.epg_info_image_size))
+        .clip(shape)
+    image?.let { bitmap ->
+        Image(
+            bitmap = bitmap,
+            contentDescription = description,
+            contentScale = ContentScale.Crop,
+            modifier = modifier.clickable(onClickLabel = stringResource(R.string.epg_info_image_enlarge)) { enlarged = true }
+        )
+        if (enlarged) {
+            Dialog(onDismissRequest = { enlarged = false }, properties = DialogProperties(usePlatformDefaultWidth = false)) {
+                Image(
+                    bitmap = bitmap,
+                    contentDescription = description,
+                    contentScale = ContentScale.FillWidth,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(dimensionResource(R.dimen.epg_info_image_dialog_padding))
+                        .clip(shape)
+                        .clickable(onClickLabel = stringResource(R.string.epg_info_close)) { enlarged = false }
+                )
+            }
+        }
+    } ?: Box(modifier = modifier.background(MaterialTheme.colorScheme.surfaceVariant))
+}
+
+@Composable
+private fun seasonEpisode(program: EpgProgram): String? {
+    val season = program.season
+    val episode = program.episode
+    return when {
+        season != null && episode != null -> stringResource(R.string.epg_info_season_episode, season, episode)
+        season != null -> stringResource(R.string.epg_info_season, season)
+        episode != null -> stringResource(R.string.epg_info_episode, episode)
+        else -> null
+    }
+}
+
 // Channel number, logo and name, as in the TV's info banner.
 @Composable
 private fun ChannelLine(channel: EpgChannel, logoPath: String?) {
@@ -260,6 +334,8 @@ private fun ChannelLine(channel: EpgChannel, logoPath: String?) {
 @Composable
 private fun Badges(channel: EpgChannel, program: EpgProgram, video: EpgVideoInfo?) {
     val badges = buildList {
+        // Broadcasters send 3 for nearly everything, children's shows included, so only real age limits are shown.
+        program.rating?.takeIf { it >= MIN_SHOWN_AGE }?.let { add(stringResource(R.string.epg_badge_age, it)) }
         if (channel.hd) add(stringResource(R.string.epg_badge_hd))
         video?.resolution?.let { add(it) }
         video?.aspectRatio?.let { add(it) }
@@ -304,6 +380,8 @@ private fun Hint(@StringRes text: Int) {
 }
 
 private const val MINUTE_MILLIS = 60_000L
+private const val GENRE_SEPARATOR = " · "
+private const val MIN_SHOWN_AGE = 6
 
 // The TV's text when a new reminder or recording overlaps one already planned.
 private const val TV_CONFLICT = "Crash schedule"

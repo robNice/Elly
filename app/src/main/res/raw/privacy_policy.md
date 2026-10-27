@@ -9,7 +9,7 @@ The app communicates exclusively within your local network:
 - Searching for TVs: SSDP request and a check of the addresses in your local network for the webOS ports 3000 and 3001.
 - Control: encrypted connection to the paired TV (older TVs without encryption via port 3000). The app transmits control commands such as keys, pointer movements, app launches, input and channel changes, and requests the installed apps, the inputs and the app icons.
 - Power on: Wake-on-LAN packet to the TV's MAC address.
-- Program guide (optional, only for TVs with root access that you set up yourself): SSH connection to the TV (port 22). The app reads the TV's favorite lists, channels, program guide and planned reminders and recordings, plans or deletes reminders and recordings on the TV and reads channel logos. Logos the TV does not have yet are downloaded by the TV itself from LG's logo server, as it does for its own guide; your device does not contact that server.
+- Program guide (optional, only for TVs with root access that you set up yourself): SSH connection to the TV (port 22). The app reads the TV's favorite lists, channels, program guide and planned reminders and recordings, plans or deletes reminders and recordings on the TV and reads channel logos. Logos the TV does not have yet are downloaded by the TV itself from LG's logo server, as it does for its own guide; your device does not contact that server. The same applies to program pictures from LG's online guide data: when you open a program's details, the TV downloads its picture from LG's server and passes it on; your device keeps it only in memory while the app is running.
 
 This communication takes place directly between your device and the TV. No data is transmitted to external servers.
 
