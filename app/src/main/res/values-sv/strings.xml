@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="page_indicator_description">Sida %1$d av %2$d</string>
+    <string name="page_indicator_jump">Gå till sida %1$d</string>
 
     <string name="setup_close">Stäng</string>
     <string name="setup_emulator_hint">Emulator: nätverkssökningen når inte ditt hemnätverk. Ange tv:ns IP-adress manuellt.</string>

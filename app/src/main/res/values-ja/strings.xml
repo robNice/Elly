@@ -2,6 +2,7 @@
 <resources>
 
     <string name="page_indicator_description">%2$d ページ中 %1$d ページ目</string>
+    <string name="page_indicator_jump">%1$d ページ目へ移動</string>
 
     <string name="setup_close">閉じる</string>
     <string name="setup_emulator_hint">エミュレーター: ネットワーク検索ではホームネットワークに届きません。テレビの IP アドレスを手動で入力してください。</string>

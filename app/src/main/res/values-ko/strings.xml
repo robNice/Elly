@@ -2,6 +2,7 @@
 <resources>
 
     <string name="page_indicator_description">%2$d페이지 중 %1$d페이지</string>
+    <string name="page_indicator_jump">%1$d페이지로 이동</string>
 
     <string name="setup_close">닫기</string>
     <string name="setup_emulator_hint">에뮬레이터: 네트워크 검색으로는 홈 네트워크에 접근할 수 없어요. TV의 IP 주소를 직접 입력해 주세요.</string>

@@ -2,6 +2,7 @@
 <resources>
 
     <string name="page_indicator_description">Página %1$d de %2$d</string>
+    <string name="page_indicator_jump">Ir a la página %1$d</string>
 
     <string name="setup_close">Cerrar</string>
     <string name="setup_emulator_hint">Emulador: la búsqueda en red no llega a tu red doméstica. Introduce manualmente la dirección IP de tu TV.</string>
