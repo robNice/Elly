@@ -122,7 +122,7 @@
     <string name="input_picker_empty">テレビから入力が報告されませんでした。</string>
     <string name="input_picker_not_connected">未接続</string>
 
-    <string name="pointer_motion_hint">スマホを動かしてポインターを操作します。</string>
+    <string name="pointer_motion_hint">スマホをテレビのリモコンのように持ち、振ってポインターを動かします。</string>
     <string name="pointer_touch_hint">スワイプでポインターを動かし、タップでクリックします。</string>
     <string name="pointer_scroll_area">スクロール</string>
     <string name="pointer_close">ポインターを閉じる</string>

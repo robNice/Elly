@@ -33,6 +33,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.RadioButton
@@ -56,6 +57,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -269,7 +272,14 @@ fun SettingsScreen(
                                 )
                             }
                         }
-                        Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))) {
+                        val dividerColor = DividerDefaults.color
+                        Row(
+                            modifier = Modifier.drawBehind {
+                                val x = size.width / 2
+                                drawLine(dividerColor, Offset(x, 0f), Offset(x, size.height), DividerDefaults.Thickness.toPx())
+                            },
+                            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))
+                        ) {
                             PaletteSection(selected = colorPalette, onSelect = viewModel::setColorPalette, modifier = Modifier.weight(1f))
                             val half = Modifier.weight(1f)
                             CompositionLocalProvider(LocalColorPalette provides colorPalette) {
@@ -398,7 +408,11 @@ private fun PaletteSection(selected: ColorPalette, onSelect: (ColorPalette) -> U
     val spacing = dimensionResource(R.dimen.setup_item_spacing)
     var open by remember { mutableStateOf(false) }
     // Only the palette in use is shown; tapping it opens all of them.
-    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(spacing)) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(spacing),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(text = stringResource(R.string.settings_palette), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         PaletteOption(
             palette = selected,

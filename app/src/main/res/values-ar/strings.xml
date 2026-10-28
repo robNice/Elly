@@ -121,7 +121,7 @@
     <string name="input_picker_empty">لم يُبلغ التلفاز عن أي مصادر إدخال.</string>
     <string name="input_picker_not_connected">لا شيء متصل</string>
 
-    <string name="pointer_motion_hint">حرّك هاتفك للتحكم في المؤشر.</string>
+    <string name="pointer_motion_hint">أمسك هاتفك مثل جهاز التحكم بالتلفاز وحرّكه يمينًا ويسارًا لتحريك المؤشر.</string>
     <string name="pointer_touch_hint">اسحب إصبعك لتحريك المؤشر، والمس للنقر.</string>
     <string name="pointer_scroll_area">تمرير</string>
     <string name="pointer_close">إغلاق المؤشر</string>

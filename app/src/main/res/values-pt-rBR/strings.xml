@@ -122,7 +122,7 @@
     <string name="input_picker_empty">A TV não informou nenhuma entrada.</string>
     <string name="input_picker_not_connected">Nada conectado</string>
 
-    <string name="pointer_motion_hint">Mova o celular para controlar o ponteiro.</string>
+    <string name="pointer_motion_hint">Segure o celular como o controle remoto da TV e gire-o para mover o ponteiro.</string>
     <string name="pointer_touch_hint">Deslize para mover o ponteiro, toque para clicar.</string>
     <string name="pointer_scroll_area">Rolar</string>
     <string name="pointer_close">Fechar ponteiro</string>

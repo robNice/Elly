@@ -122,7 +122,7 @@
     <string name="input_picker_empty">Телевизор не сообщил ни одного входа.</string>
     <string name="input_picker_not_connected">Ничего не подключено</string>
 
-    <string name="pointer_motion_hint">Двигай телефон, чтобы управлять указателем.</string>
+    <string name="pointer_motion_hint">Держи телефон как пульт от телевизора и поворачивай его, чтобы двигать указатель.</string>
     <string name="pointer_touch_hint">Проведи пальцем, чтобы двигать указатель, нажми для клика.</string>
     <string name="pointer_scroll_area">Прокрутка</string>
     <string name="pointer_close">Закрыть указатель</string>

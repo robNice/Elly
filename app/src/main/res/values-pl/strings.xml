@@ -122,7 +122,7 @@
     <string name="input_picker_empty">Telewizor nie zgłosił żadnych źródeł.</string>
     <string name="input_picker_not_connected">Nic nie podłączono</string>
 
-    <string name="pointer_motion_hint">Poruszaj telefonem, aby sterować wskaźnikiem.</string>
+    <string name="pointer_motion_hint">Trzymaj telefon jak pilota do telewizora i obracaj nim, aby przesuwać wskaźnik.</string>
     <string name="pointer_touch_hint">Przesuwaj palcem, aby przesunąć wskaźnik, dotknij, aby kliknąć.</string>
     <string name="pointer_scroll_area">Przewijanie</string>
     <string name="pointer_close">Zamknij wskaźnik</string>

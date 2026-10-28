@@ -163,7 +163,7 @@
     <string name="input_picker_empty">The TV did not report any inputs.</string>
     <string name="input_picker_not_connected">Nothing connected</string>
 
-    <string name="pointer_motion_hint">Move your phone to control the pointer.</string>
+    <string name="pointer_motion_hint">Hold your phone like your TV remote and swing it to move the pointer.</string>
     <string name="pointer_touch_hint">Swipe to move the pointer, tap to click.</string>
     <string name="pointer_scroll_area">Scroll</string>
     <string name="pointer_close">Close pointer</string>

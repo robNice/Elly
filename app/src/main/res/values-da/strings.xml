@@ -122,7 +122,7 @@
     <string name="input_picker_empty">Tv\'et meldte ingen indgange.</string>
     <string name="input_picker_not_connected">Intet tilsluttet</string>
 
-    <string name="pointer_motion_hint">Bevæg din telefon for at styre markøren.</string>
+    <string name="pointer_motion_hint">Hold telefonen som din tv-fjernbetjening, og sving den for at flytte markøren.</string>
     <string name="pointer_touch_hint">Stryg for at flytte markøren, tryk for at klikke.</string>
     <string name="pointer_scroll_area">Rul</string>
     <string name="pointer_close">Luk markør</string>

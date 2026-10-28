@@ -1,0 +1,150 @@
+<en-US>
+• Motion pointer: Elly shows how to hold and swing your phone, with a clearer hint
+• Elly helps while searching for and pairing your TV, on empty screens and when the TV guide has no data
+• Appearance settings: color palette and background are neatly centered
+</en-US>
+<ar>
+• مؤشر الحركة: تُريك «إيلي» كيف تمسك هاتفك وتحرّكه، مع تلميح أوضح
+• تساعدك «إيلي» أثناء البحث عن التلفاز وإقرانه، وفي الشاشات الفارغة، وعندما لا تتوفر بيانات في دليل البرامج
+• إعدادات المظهر: لوحة الألوان والخلفية في المنتصف بشكل مرتب
+</ar>
+<cs-CZ>
+• Ukazatel pohybem: Elly ukazuje, jak telefon držet a naklánět, s jasnější nápovědou
+• Elly pomáhá při hledání a párování televize, na prázdných obrazovkách a když TV program nemá data
+• Nastavení vzhledu: barevná paleta a pozadí jsou úhledně vycentrované
+</cs-CZ>
+<da-DK>
+• Bevægelsesmarkør: Elly viser, hvordan du holder og svinger telefonen, med et tydeligere tip
+• Elly hjælper, når du søger efter og parrer dit tv, på tomme skærme, og når programguiden ikke har data
+• Udseende: farvepalet og baggrund står pænt centreret
+</da-DK>
+<de-DE>
+• Zeiger per Bewegung: Elly zeigt, wie du dein Handy hältst und schwenkst, mit klarerem Hinweis
+• Elly hilft bei der Suche und Kopplung des Fernsehers, auf leeren Screens und wenn die Programmübersicht keine Daten hat
+• Einstellungen „Darstellung“: Farbpalette und Hintergrund stehen sauber zentriert
+</de-DE>
+<es-419>
+• Puntero por movimiento: Elly muestra cómo sujetar y girar el teléfono, con una indicación más clara
+• Elly te ayuda al buscar y vincular tu TV, en pantallas vacías y cuando la guía no tiene datos
+• Ajustes de apariencia: la paleta de colores y el fondo quedan bien centrados
+</es-419>
+<es-ES>
+• Puntero por movimiento: Elly muestra cómo sujetar y girar el móvil, con una indicación más clara
+• Elly te ayuda al buscar y vincular tu tele, en pantallas vacías y cuando la guía no tiene datos
+• Ajustes de apariencia: la paleta de colores y el fondo quedan bien centrados
+</es-ES>
+<fi-FI>
+• Liikeosoitin: Elly näyttää, miten puhelinta pidetään ja käännetään, ja ohje on selkeämpi
+• Elly auttaa television haussa ja yhdistämisessä, tyhjissä näkymissä ja kun ohjelmaoppaassa ei ole tietoja
+• Ulkoasuasetukset: väripaletti ja tausta ovat siististi keskitettyinä
+</fi-FI>
+<fr-FR>
+• Pointeur par mouvement : Elly montre comment tenir et faire pivoter ton téléphone, avec une indication plus claire
+• Elly t'aide pendant la recherche et l'appairage de ta TV, sur les écrans vides et quand le guide n'a pas de données
+• Réglages d'apparence : la palette de couleurs et le fond sont bien centrés
+</fr-FR>
+<hi-IN>
+• मोशन पॉइंटर: एली दिखाती है कि फ़ोन कैसे पकड़ें और घुमाएँ, साथ में ज़्यादा साफ़ संकेत
+• टीवी खोजते और जोड़ते समय, खाली स्क्रीन पर और जब प्रोग्राम गाइड में डेटा न हो, तब एली मदद करती है
+• रूप-रंग सेटिंग: कलर पैलेट और बैकग्राउंड अब बीच में सुव्यवस्थित हैं
+</hi-IN>
+<hu-HU>
+• Mozgásos mutató: Elly megmutatja, hogyan tartsd és lendítsd a telefont, érthetőbb tippel
+• Elly segít a TV keresésekor és párosításakor, üres képernyőkön és ha a műsorújságban nincs adat
+• Megjelenés beállításai: a színpaletta és a háttér szépen középre igazítva
+</hu-HU>
+<id>
+• Penunjuk gerak: Elly menunjukkan cara memegang dan mengayunkan ponsel, dengan petunjuk yang lebih jelas
+• Elly membantu saat mencari dan menyambungkan TV, di layar kosong, dan saat panduan program tidak punya data
+• Pengaturan tampilan: palet warna dan latar kini rapi di tengah
+</id>
+<iw-IL>
+• סמן תנועה: אלי מראה איך להחזיק ולהניף את הטלפון, עם רמז ברור יותר
+• אלי עוזרת בחיפוש הטלוויזיה ובצימוד, במסכים ריקים וכשאין נתונים במדריך התוכניות
+• הגדרות מראה: פלטת הצבעים והרקע ממורכזים בצורה מסודרת
+</iw-IL>
+<it-IT>
+• Puntatore con movimento: Elly mostra come tenere e ruotare il telefono, con un suggerimento più chiaro
+• Elly ti aiuta durante la ricerca e l'abbinamento della TV, nelle schermate vuote e quando la guida non ha dati
+• Impostazioni aspetto: tavolozza colori e sfondo sono centrati in modo ordinato
+</it-IT>
+<ja-JP>
+• モーションポインター：エリーがスマホの持ち方と振り方を見せてくれます。ヒントもわかりやすくなりました
+• テレビの検索とペアリング中、空のスクリーン、番組表にデータがないときにエリーがサポートします
+• 外観の設定：カラーパレットと背景をすっきり中央に配置
+</ja-JP>
+<ko-KR>
+• 모션 포인터: 엘리가 휴대폰을 잡고 흔드는 방법을 보여 주고, 안내도 더 명확해졌어요
+• TV 검색과 연결 중, 빈 화면, 프로그램 가이드에 데이터가 없을 때 엘리가 도와줘요
+• 디자인 설정: 색상 팔레트와 배경이 깔끔하게 가운데 정렬돼요
+</ko-KR>
+<nl-NL>
+• Bewegingsaanwijzer: Elly laat zien hoe je je telefoon vasthoudt en zwaait, met een duidelijkere hint
+• Elly helpt bij het zoeken en koppelen van je tv, op lege schermen en als de programmagids geen gegevens heeft
+• Weergave-instellingen: kleurenpalet en achtergrond staan netjes gecentreerd
+</nl-NL>
+<no-NO>
+• Bevegelsespeker: Elly viser hvordan du holder og svinger telefonen, med et tydeligere tips
+• Elly hjelper når du søker etter og kobler til tv-en, på tomme skjermer og når programguiden mangler data
+• Utseende: fargepalett og bakgrunn står pent sentrert
+</no-NO>
+<pl-PL>
+• Wskaźnik ruchowy: Elly pokazuje, jak trzymać i obracać telefon, z czytelniejszą wskazówką
+• Elly pomaga przy wyszukiwaniu i parowaniu telewizora, na pustych stronach i gdy przewodnik nie ma danych
+• Ustawienia wyglądu: paleta kolorów i tło są starannie wyśrodkowane
+</pl-PL>
+<pt-BR>
+• Ponteiro por movimento: a Elly mostra como segurar e girar o celular, com uma dica mais clara
+• A Elly ajuda ao procurar e parear a TV, em telas vazias e quando o guia não tem dados
+• Configurações de aparência: paleta de cores e fundo bem centralizados
+</pt-BR>
+<pt-PT>
+• Ponteiro por movimento: a Elly mostra como segurar e rodar o telemóvel, com uma dica mais clara
+• A Elly ajuda ao procurar e emparelhar a TV, em ecrãs vazios e quando o guia não tem dados
+• Definições de aspeto: paleta de cores e fundo bem centrados
+</pt-PT>
+<ro>
+• Indicator prin mișcare: Elly arată cum să ții și să rotești telefonul, cu un indiciu mai clar
+• Elly te ajută la căutarea și asocierea televizorului, pe ecranele goale și când ghidul nu are date
+• Setări de aspect: paleta de culori și fundalul sunt centrate frumos
+</ro>
+<ru-RU>
+• Указатель движением: Элли показывает, как держать и поворачивать телефон, подсказка стала понятнее
+• Элли помогает при поиске и подключении телевизора, на пустых экранах и когда в телепрограмме нет данных
+• Настройки оформления: палитра и фон аккуратно выровнены по центру
+</ru-RU>
+<sk>
+• Ukazovateľ pohybom: Elly ukazuje, ako telefón držať a nakláňať, s jasnejšou nápovedou
+• Elly pomáha pri hľadaní a párovaní televízora, na prázdnych obrazovkách a keď TV program nemá údaje
+• Nastavenia vzhľadu: farebná paleta a pozadie sú úhľadne vycentrované
+</sk>
+<sv-SE>
+• Rörelsepekare: Elly visar hur du håller och svänger telefonen, med en tydligare ledtråd
+• Elly hjälper när du söker efter och parkopplar din tv, på tomma skärmar och när programguiden saknar data
+• Utseende: färgpalett och bakgrund står snyggt centrerade
+</sv-SE>
+<th>
+• ตัวชี้แบบเคลื่อนไหว: เอลลี่สาธิตวิธีถือและแกว่งโทรศัพท์ พร้อมคำแนะนำที่ชัดเจนขึ้น
+• เอลลี่ช่วยระหว่างค้นหาและจับคู่ทีวี บนหน้าจอว่าง และเมื่อผังรายการไม่มีข้อมูล
+• การตั้งค่ารูปลักษณ์: จานสีและพื้นหลังจัดกึ่งกลางอย่างเรียบร้อย
+</th>
+<tr-TR>
+• Hareketli işaretçi: Elly telefonunu nasıl tutup sallayacağını gösteriyor, ipucu daha anlaşılır
+• Elly TV'yi ararken ve eşleştirirken, boş ekranlarda ve yayın akışında veri yokken yardım ediyor
+• Görünüm ayarları: renk paleti ve arka plan düzgünce ortalandı
+</tr-TR>
+<uk>
+• Вказівник рухом: Еллі показує, як тримати й повертати телефон, підказка стала зрозумілішою
+• Еллі допомагає під час пошуку й підключення телевізора, на порожніх екранах і коли в телепрограмі немає даних
+• Налаштування вигляду: палітра й фон акуратно вирівняні по центру
+</uk>
+<vi>
+• Con trỏ chuyển động: Elly chỉ cách cầm và vung điện thoại, kèm gợi ý rõ ràng hơn
+• Elly hỗ trợ khi tìm và ghép nối TV, trên màn hình trống và khi lịch phát sóng chưa có dữ liệu
+• Cài đặt giao diện: bảng màu và hình nền được căn giữa gọn gàng
+</vi>
+<zh-CN>
+• 体感指针：Elly 会演示如何握持和挥动手机，提示也更清晰
+• 搜索和配对电视时、屏幕为空时以及节目指南没有数据时，Elly 都会提供帮助
+• 外观设置：调色板和背景整齐居中
+</zh-CN>

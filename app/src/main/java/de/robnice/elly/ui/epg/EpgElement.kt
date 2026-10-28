@@ -4,6 +4,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,6 +33,9 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.unit.Constraints
 import de.robnice.elly.ui.components.currentPaletteColors
+import de.robnice.elly.ui.elly.EllyDialogMessage
+import de.robnice.elly.ui.elly.EllyMascot
+import de.robnice.elly.ui.elly.EllyPoses
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -178,12 +182,26 @@ private fun EpgStatus(guides: EpgGuides, colors: EpgColors) {
         CircularProgressIndicator(color = colors.text, modifier = Modifier.size(dimensionResource(R.dimen.epg_placeholder_icon)))
         return
     }
-    Text(
-        text = stringResource(if (failed) R.string.epg_status_failed else R.string.epg_status_empty),
-        style = MaterialTheme.typography.bodySmall,
-        color = if (failed) colorResource(R.color.remote_power) else colors.muted,
-        textAlign = TextAlign.Center
-    )
+    val mascotSize = dimensionResource(R.dimen.epg_mascot_size)
+    val textRoom = dimensionResource(R.dimen.epg_mascot_text_room)
+    BoxWithConstraints(contentAlignment = Alignment.Center) {
+        // Small guide elements keep the plain text.
+        val roomy = maxHeight >= mascotSize + textRoom
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))
+        ) {
+            if (roomy) {
+                EllyMascot(size = mascotSize, pose = if (failed) EllyPoses.Mechanic else EllyPoses.Reading)
+            }
+            Text(
+                text = stringResource(if (failed) R.string.epg_status_failed else R.string.epg_status_empty),
+                style = MaterialTheme.typography.bodySmall,
+                color = if (failed) colorResource(R.color.remote_power) else colors.muted,
+                textAlign = TextAlign.Center
+            )
+        }
+    }
 }
 
 @Composable
@@ -196,8 +214,8 @@ fun EpgListDialog(state: EpgPickerState, onPick: (FavoriteList) -> Unit, onDismi
                 state.loading -> Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                     CircularProgressIndicator()
                 }
-                state.failed -> Text(stringResource(R.string.epg_list_failed))
-                state.lists.isEmpty() -> Text(stringResource(R.string.epg_list_empty))
+                state.failed -> EllyDialogMessage(text = stringResource(R.string.epg_list_failed), pose = EllyPoses.Mechanic)
+                state.lists.isEmpty() -> EllyDialogMessage(text = stringResource(R.string.epg_list_empty), pose = EllyPoses.Reading)
                 else -> LazyColumn {
                     items(state.lists) { list ->
                         Row(

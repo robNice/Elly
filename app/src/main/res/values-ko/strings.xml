@@ -122,7 +122,7 @@
     <string name="input_picker_empty">TV에서 입력 정보를 받지 못했어요.</string>
     <string name="input_picker_not_connected">연결된 기기 없음</string>
 
-    <string name="pointer_motion_hint">휴대폰을 움직여 포인터를 조작하세요.</string>
+    <string name="pointer_motion_hint">휴대폰을 TV 리모컨처럼 잡고 흔들어 포인터를 움직이세요.</string>
     <string name="pointer_touch_hint">스와이프로 포인터를 움직이고, 탭하여 클릭하세요.</string>
     <string name="pointer_scroll_area">스크롤</string>
     <string name="pointer_close">포인터 닫기</string>

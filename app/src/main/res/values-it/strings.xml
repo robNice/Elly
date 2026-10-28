@@ -122,7 +122,7 @@
     <string name="input_picker_empty">La TV non ha segnalato nessun ingresso.</string>
     <string name="input_picker_not_connected">Niente collegato</string>
 
-    <string name="pointer_motion_hint">Muovi il telefono per controllare il puntatore.</string>
+    <string name="pointer_motion_hint">Tieni il telefono come il telecomando della TV e ruotalo per muovere il puntatore.</string>
     <string name="pointer_touch_hint">Scorri per muovere il puntatore, tocca per fare clic.</string>
     <string name="pointer_scroll_area">Scorri</string>
     <string name="pointer_close">Chiudi puntatore</string>

@@ -122,7 +122,7 @@
     <string name="input_picker_empty">A TV não indicou nenhuma entrada.</string>
     <string name="input_picker_not_connected">Nada ligado</string>
 
-    <string name="pointer_motion_hint">Move o telemóvel para controlar o ponteiro.</string>
+    <string name="pointer_motion_hint">Segura o telemóvel como o comando da TV e roda-o para mover o ponteiro.</string>
     <string name="pointer_touch_hint">Desliza para mover o ponteiro, toca para clicar.</string>
     <string name="pointer_scroll_area">Deslocar</string>
     <string name="pointer_close">Fechar ponteiro</string>

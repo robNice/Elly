@@ -35,6 +35,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.robnice.elly.R
 import de.robnice.elly.data.model.PairedTv
 import de.robnice.elly.tv.discovery.DiscoveredTv
+import de.robnice.elly.ui.elly.EllyDialogMessage
+import de.robnice.elly.ui.elly.EllyNote
+import de.robnice.elly.ui.elly.EllyPoses
 
 @Composable
 fun TvConnectionSection(viewModel: SetupViewModel, visible: Boolean, onPaired: () -> Unit) {
@@ -113,22 +116,14 @@ private fun DiscoverySection(state: SetupUiState, onScan: () -> Unit, onSelect: 
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))) {
         SectionTitle(stringResource(R.string.setup_found_tvs))
         if (state.scanState == ScanState.SCANNING) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                CircularProgressIndicator(modifier = Modifier.size(dimensionResource(R.dimen.setup_progress_size)))
-                Spacer(modifier = Modifier.padding(dimensionResource(R.dimen.setup_item_spacing)))
-                Text(stringResource(R.string.setup_scanning))
-            }
+            EllyNote(text = stringResource(R.string.setup_scanning), pose = EllyPoses.Searching)
         } else {
             Button(onClick = onScan) {
                 Text(stringResource(if (state.scanState == ScanState.DONE) R.string.setup_scan_again else R.string.setup_scan))
             }
         }
         if (state.scanState == ScanState.DONE && state.foundTvs.isEmpty()) {
-            Text(
-                text = stringResource(R.string.setup_no_tvs_found),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+            EllyNote(text = stringResource(R.string.setup_no_tvs_found), pose = EllyPoses.FirstSteps)
         }
         state.foundTvs.forEach { tv ->
             val paired = state.pairedTvs.any { it.ipAddress == tv.ipAddress }
@@ -246,9 +241,11 @@ private fun PairingDialog(
             message = stringResource(R.string.pairing_connecting, pairing.ipAddress),
             onCancel = onCancel
         )
-        is PairingState.AwaitingConfirmation -> ProgressDialog(
-            message = stringResource(R.string.pairing_confirm_on_tv),
-            onCancel = onCancel
+        is PairingState.AwaitingConfirmation -> AlertDialog(
+            onDismissRequest = {},
+            text = { EllyDialogMessage(text = stringResource(R.string.pairing_confirm_on_tv), pose = EllyPoses.Pointer) },
+            confirmButton = {},
+            dismissButton = { TextButton(onClick = onCancel) { Text(stringResource(R.string.dialog_cancel)) } }
         )
         is PairingState.Paired -> AlertDialog(
             onDismissRequest = onPaired,
@@ -259,7 +256,7 @@ private fun PairingDialog(
         is PairingState.Failed -> AlertDialog(
             onDismissRequest = onDismiss,
             title = { Text(stringResource(R.string.pairing_failed_title)) },
-            text = { Text(stringResource(pairing.error.messageRes())) },
+            text = { EllyDialogMessage(text = stringResource(pairing.error.messageRes()), pose = EllyPoses.Mechanic) },
             confirmButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_ok)) } }
         )
     }

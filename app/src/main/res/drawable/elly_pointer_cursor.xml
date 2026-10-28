@@ -6,7 +6,7 @@
     android:viewportHeight="100">
     <path
         android:fillColor="@color/elly_eye_highlight"
-        android:pathData="M144,55L144,66L146.8,63.4L148.8,67.8L150.6,67L148.6,62.7L152.4,62.4Z"
+        android:pathData="M133,54L133,64L135.4,61.7L137.1,65.8L138.5,65.1L136.9,61.1L140,60.8Z"
         android:strokeWidth="0.6"
         android:strokeColor="@color/elly_eye"
         android:strokeLineCap="round"

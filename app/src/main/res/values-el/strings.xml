@@ -122,7 +122,7 @@
     <string name="input_picker_empty">Η τηλεόραση δεν ανέφερε καμία είσοδο.</string>
     <string name="input_picker_not_connected">Τίποτα συνδεδεμένο</string>
 
-    <string name="pointer_motion_hint">Κούνα το κινητό σου για να κατευθύνεις τον δείκτη.</string>
+    <string name="pointer_motion_hint">Κράτα το κινητό σου όπως το τηλεχειριστήριο της τηλεόρασης και στρέψε το για να μετακινήσεις τον δείκτη.</string>
     <string name="pointer_touch_hint">Σύρε για να μετακινήσεις τον δείκτη, πάτησε για κλικ.</string>
     <string name="pointer_scroll_area">Κύλιση</string>
     <string name="pointer_close">Κλείσιμο δείκτη</string>

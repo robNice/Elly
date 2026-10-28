@@ -49,7 +49,11 @@ fun BackgroundSection(current: AppBackground, onSelect: (ScreenBackground) -> Un
     }
     var open by remember { mutableStateOf(false) }
     // Only the background in use is shown; tapping it opens all of them.
-    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(spacing)) {
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(spacing),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(text = stringResource(R.string.settings_background), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         BackgroundOption(
             background = current.type,

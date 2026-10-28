@@ -12,14 +12,16 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectVerticalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -48,7 +50,10 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.compose.LifecycleStartEffect
 import de.robnice.elly.R
 import de.robnice.elly.data.model.JoystickPlacement
@@ -63,6 +68,8 @@ import de.robnice.elly.ui.components.LocalKeyRounding
 import de.robnice.elly.ui.components.RemoteKeyButton
 import de.robnice.elly.ui.components.keyShape
 import de.robnice.elly.ui.components.rememberKeyHaptic
+import de.robnice.elly.ui.elly.EllyMascot
+import de.robnice.elly.ui.elly.EllyPoses
 import kotlinx.coroutines.delay
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -106,40 +113,43 @@ fun PointerOverlay(
         }
     }
 
-    Column(
+    Box(
         modifier = modifier
             .fillMaxSize()
             .background(colorResource(R.color.pointer_scrim))
             .pointerInput(Unit) { detectTapGestures { } }
-            .padding(dimensionResource(R.dimen.pointer_padding)),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.pointer_padding))
+            .padding(dimensionResource(R.dimen.pointer_padding))
     ) {
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-            RemoteKeyButton(
-                contentDescription = stringResource(R.string.pointer_close),
-                onPress = onClose,
-                modifier = Modifier.size(dimensionResource(R.dimen.key_size_small)),
-                shape = keyShape(LocalKeyRounding.current)
-            ) { color -> KeyIcon(icon = R.drawable.ic_close, tint = color) }
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(1f)
-        ) {
-            when (settings.mode) {
-                PointerMode.MOTION -> MotionLayout(settings, onMove, onScroll, click, markActivity)
-                PointerMode.TOUCH -> TouchLayout(
-                    settings.okButtonPosition,
-                    settings.touchStyle,
-                    settings.joystickPlacement,
-                    settings.swipeSpeed,
-                    onMove,
-                    click,
-                    markActivity
-                )
+        Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.pointer_padding))) {
+            // Motion mode puts Elly next to the close button, touch mode keeps the row free for it.
+            if (settings.mode == PointerMode.TOUCH) Spacer(modifier = Modifier.height(dimensionResource(R.dimen.key_size_small)))
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+            ) {
+                when (settings.mode) {
+                    PointerMode.MOTION -> MotionLayout(settings, onMove, onScroll, click, markActivity)
+                    PointerMode.TOUCH -> TouchLayout(
+                        settings.okButtonPosition,
+                        settings.touchStyle,
+                        settings.joystickPlacement,
+                        settings.swipeSpeed,
+                        onMove,
+                        click,
+                        markActivity
+                    )
+                }
             }
         }
+        RemoteKeyButton(
+            contentDescription = stringResource(R.string.pointer_close),
+            onPress = onClose,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .size(dimensionResource(R.dimen.key_size_small)),
+            shape = keyShape(LocalKeyRounding.current)
+        ) { color -> KeyIcon(icon = R.drawable.ic_close, tint = color) }
     }
 }
 
@@ -164,14 +174,75 @@ private fun MotionLayout(
         onStopOrDispose { sensor.stop() }
     }
 
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Hint(stringResource(R.string.pointer_motion_hint))
-        OkButton(onOk, Modifier.size(dimensionResource(R.dimen.pointer_ok_size)))
-        ScrollArea(onScroll, markActivity)
+    val hint = stringResource(R.string.pointer_motion_hint)
+    val hintStyle = MaterialTheme.typography.bodyMedium
+    val textMeasurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+    val mascotPainter = painterResource(R.drawable.elly_pointer_chair)
+    val gap = dimensionResource(R.dimen.pointer_padding)
+    val hintSpacing = dimensionResource(R.dimen.pointer_hint_spacing)
+    val closeSize = dimensionResource(R.dimen.key_size_small)
+    val metrics = MotionLayoutMetrics(
+        gap = gap,
+        hintSpacing = hintSpacing,
+        closeSize = closeSize,
+        sideReserve = closeSize + dimensionResource(R.dimen.pointer_mascot_side_gap),
+        maxMascot = dimensionResource(R.dimen.pointer_mascot_size),
+        minMascot = dimensionResource(R.dimen.pointer_mascot_min_size),
+        maxOk = dimensionResource(R.dimen.pointer_ok_size),
+        minOk = dimensionResource(R.dimen.pointer_ok_min_size),
+        scrollHeight = dimensionResource(R.dimen.pointer_scroll_height)
+    )
+
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val hintHeight = with(density) {
+            textMeasurer.measure(hint, hintStyle, constraints = Constraints(maxWidth = constraints.maxWidth)).size.height.toDp()
+        }
+        val ratio = mascotPainter.intrinsicSize.let { it.width / it.height }
+        val mascotHeight = metrics.mascotHeight(maxWidth, maxHeight, ratio, hintHeight)
+        val okSize = metrics.okSize(maxHeight, mascotHeight, hintHeight)
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            if (mascotHeight != null) {
+                EllyMascot(size = mascotHeight, pose = EllyPoses.Pointer)
+                Spacer(modifier = Modifier.height(hintSpacing))
+            } else {
+                Spacer(modifier = Modifier.height(closeSize + gap))
+            }
+            Hint(hint)
+            Spacer(modifier = Modifier.weight(1f).heightIn(min = gap))
+            OkButton(onOk, Modifier.size(okSize))
+            Spacer(modifier = Modifier.weight(1f).heightIn(min = gap))
+            ScrollArea(onScroll, markActivity)
+        }
+    }
+}
+
+// Elly sits centered next to the close button and shrinks on narrow or short screens so she neither touches the
+// button nor pushes the OK key and the scroll area off the screen. Too small to recognise, she is left out and the
+// hint moves below the close button. On very short screens the OK key shrinks so the scroll area stays complete.
+internal class MotionLayoutMetrics(
+    private val gap: Dp,
+    private val hintSpacing: Dp,
+    private val closeSize: Dp,
+    private val sideReserve: Dp,
+    private val maxMascot: Dp,
+    private val minMascot: Dp,
+    private val maxOk: Dp,
+    private val minOk: Dp,
+    private val scrollHeight: Dp
+) {
+    fun mascotHeight(width: Dp, height: Dp, ratio: Float, hintHeight: Dp): Dp? {
+        val byWidth = (width - sideReserve * 2) / ratio
+        val byHeight = height - hintSpacing - hintHeight - maxOk - scrollHeight - gap * 2
+        return minOf(maxMascot, byWidth, byHeight).takeIf { it >= minMascot }
+    }
+
+    fun okSize(height: Dp, mascotHeight: Dp?, hintHeight: Dp): Dp {
+        val top = mascotHeight?.plus(hintSpacing) ?: (closeSize + gap)
+        return (height - top - hintHeight - scrollHeight - gap * 2).coerceIn(minOk, maxOk)
     }
 }
 

@@ -121,7 +121,7 @@
     <string name="input_picker_empty">TV ei ilmoittanut yhtään tuloa.</string>
     <string name="input_picker_not_connected">Ei mitään liitettynä</string>
 
-    <string name="pointer_motion_hint">Liikuta puhelinta ohjataksesi osoitinta.</string>
+    <string name="pointer_motion_hint">Pidä puhelinta kuin television kaukosäädintä ja käännä sitä liikuttaaksesi osoitinta.</string>
     <string name="pointer_touch_hint">Liikuta osoitinta pyyhkäisemällä, napauta klikataksesi.</string>
     <string name="pointer_scroll_area">Vieritä</string>
     <string name="pointer_close">Sulje osoitin</string>

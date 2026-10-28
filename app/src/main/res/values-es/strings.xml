@@ -122,7 +122,7 @@
     <string name="input_picker_empty">La TV no ha indicado ninguna entrada.</string>
     <string name="input_picker_not_connected">Nada conectado</string>
 
-    <string name="pointer_motion_hint">Mueve el móvil para controlar el puntero.</string>
+    <string name="pointer_motion_hint">Sujeta el móvil como el mando de la tele y gíralo para mover el puntero.</string>
     <string name="pointer_touch_hint">Desliza para mover el puntero, toca para hacer clic.</string>
     <string name="pointer_scroll_area">Desplazar</string>
     <string name="pointer_close">Cerrar puntero</string>

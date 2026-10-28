@@ -8,8 +8,10 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -123,6 +125,26 @@ fun EllySpeechBubble(text: String, tailSide: TailSide, modifier: Modifier = Modi
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = textAlign
         )
+    }
+}
+
+@Composable
+fun EllyNote(text: String, pose: EllyPose, modifier: Modifier = Modifier) {
+    Row(modifier = modifier.fillMaxWidth()) {
+        EllyMascot(size = dimensionResource(R.dimen.elly_note_mascot_size), pose = pose)
+        EllySpeechBubble(text = text, tailSide = TailSide.START, modifier = Modifier.weight(1f))
+    }
+}
+
+@Composable
+fun EllyDialogMessage(text: String, pose: EllyPose) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.elly_dialog_spacing))
+    ) {
+        EllyMascot(size = dimensionResource(R.dimen.elly_dialog_mascot_size), pose = pose)
+        Text(text = text, modifier = Modifier.fillMaxWidth())
     }
 }
 

@@ -72,6 +72,7 @@ object EllyPoses {
         }
     )
     val Reading = EllyPose(R.drawable.elly_reading)
+    val Searching = EllyPose(R.drawable.elly_costume_detective)
     val Hero = EllyPose(
         listOf(
             EllyLayer(R.drawable.elly_remote_hero_glow, setOf(EllyMotion.BOB, EllyMotion.SPIN), pivotX = 0.76f, pivotY = 0.22f),
@@ -108,7 +109,7 @@ object EllyPoses {
         listOf(
             EllyLayer(R.drawable.elly_painter_easel, EllyMotion.NONE),
             EllyLayer(R.drawable.elly_painter_elly, EllyMotion.BREATHE, pivotX = 0.313f, pivotY = 0.91f),
-            EllyLayer(R.drawable.elly_painter_arm, EllyMotion.AIM, pivotX = 0.453f, pivotY = 0.62f, range = 5f, cycles = 3)
+            EllyLayer(R.drawable.elly_painter_arm, EllyMotion.AIM, pivotX = 0.453f, pivotY = 0.62f, range = 7f, cycles = 3)
         )
     )
     val Magician = EllyPose(

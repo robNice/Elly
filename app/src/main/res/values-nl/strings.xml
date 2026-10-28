@@ -121,7 +121,7 @@
     <string name="input_picker_empty">De tv heeft geen bronnen gemeld.</string>
     <string name="input_picker_not_connected">Niets aangesloten</string>
 
-    <string name="pointer_motion_hint">Beweeg je telefoon om de aanwijzer te besturen.</string>
+    <string name="pointer_motion_hint">Houd je telefoon vast zoals je tv-afstandsbediening en zwaai ermee om de aanwijzer te bewegen.</string>
     <string name="pointer_touch_hint">Veeg om de aanwijzer te bewegen, tik om te klikken.</string>
     <string name="pointer_scroll_area">Scrollen</string>
     <string name="pointer_close">Aanwijzer sluiten</string>

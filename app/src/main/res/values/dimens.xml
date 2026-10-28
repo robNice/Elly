@@ -30,9 +30,14 @@
 
     <dimen name="pointer_padding">24dp</dimen>
     <dimen name="pointer_ok_size">170dp</dimen>
+    <dimen name="pointer_ok_min_size">96dp</dimen>
     <dimen name="pointer_ok_bar_height">80dp</dimen>
     <dimen name="pointer_area_corner">28dp</dimen>
     <dimen name="pointer_scroll_height">140dp</dimen>
+    <dimen name="pointer_mascot_size">120dp</dimen>
+    <dimen name="pointer_mascot_min_size">48dp</dimen>
+    <dimen name="pointer_mascot_side_gap">8dp</dimen>
+    <dimen name="pointer_hint_spacing">12dp</dimen>
     <dimen name="settings_footer_padding">12dp</dimen>
     <dimen name="status_light_size">16dp</dimen>
     <dimen name="status_light_spacing">8dp</dimen>
@@ -117,6 +122,8 @@
     <dimen name="epg_panel_border">1dp</dimen>
     <dimen name="epg_panel_padding">12dp</dimen>
     <dimen name="epg_placeholder_icon">32dp</dimen>
+    <dimen name="epg_mascot_size">64dp</dimen>
+    <dimen name="epg_mascot_text_room">48dp</dimen>
     <dimen name="epg_minute_width">3dp</dimen>
     <dimen name="epg_channel_width">56dp</dimen>
     <dimen name="epg_header_height">36dp</dimen>
@@ -147,6 +154,9 @@
     <dimen name="onboarding_mascot_size_small">84dp</dimen>
     <dimen name="onboarding_fade_height">48dp</dimen>
     <dimen name="help_mascot_size">64dp</dimen>
+    <dimen name="elly_note_mascot_size">64dp</dimen>
+    <dimen name="elly_dialog_mascot_size">72dp</dimen>
+    <dimen name="elly_dialog_spacing">16dp</dimen>
     <dimen name="help_spacing">12dp</dimen>
     <dimen name="help_image_corner">14dp</dimen>
     <dimen name="help_image_border">1dp</dimen>

@@ -6,14 +6,13 @@ import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.ime
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,7 +27,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.min
 import androidx.compose.ui.zIndex
@@ -38,6 +36,10 @@ import de.robnice.elly.data.model.CustomElement
 import de.robnice.elly.data.model.CustomElementType
 import de.robnice.elly.ui.epg.EpgElement
 import de.robnice.elly.ui.epg.epgBleed
+import de.robnice.elly.ui.elly.EllyMascot
+import de.robnice.elly.ui.elly.EllyPoses
+import de.robnice.elly.ui.elly.EllySpeechBubble
+import de.robnice.elly.ui.elly.TailSide
 import de.robnice.elly.data.model.CustomScreen
 import de.robnice.elly.remote.RemoteKey
 import de.robnice.elly.ui.components.DirectionalPad
@@ -117,12 +119,10 @@ fun CustomPage(
                     .padding(dimensionResource(R.dimen.remote_page_padding)),
                 contentAlignment = Alignment.Center
             ) {
-                Text(
-                    text = stringResource(R.string.custom_screen_empty),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    textAlign = TextAlign.Center
-                )
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    EllyMascot(size = dimensionResource(R.dimen.onboarding_mascot_size), pose = EllyPoses.Painter)
+                    EllySpeechBubble(text = stringResource(R.string.custom_screen_empty), tailSide = TailSide.TOP)
+                }
             }
         } else {
             // The page shrinks above an open keyboard; that shape must not reach the editor.

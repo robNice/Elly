@@ -121,7 +121,7 @@
     <string name="input_picker_empty">Tv:n rapporterade inga ingångar.</string>
     <string name="input_picker_not_connected">Inget anslutet</string>
 
-    <string name="pointer_motion_hint">Rör telefonen för att styra pekaren.</string>
+    <string name="pointer_motion_hint">Håll telefonen som din tv-fjärrkontroll och svep med den för att flytta pekaren.</string>
     <string name="pointer_touch_hint">Svep för att flytta pekaren, tryck för att klicka.</string>
     <string name="pointer_scroll_area">Rulla</string>
     <string name="pointer_close">Stäng pekaren</string>

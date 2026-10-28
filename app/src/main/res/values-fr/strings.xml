@@ -121,7 +121,7 @@
     <string name="input_picker_empty">La TV n\'a signalé aucune source.</string>
     <string name="input_picker_not_connected">Rien de branché</string>
 
-    <string name="pointer_motion_hint">Bouge ton téléphone pour diriger le pointeur.</string>
+    <string name="pointer_motion_hint">Tiens ton téléphone comme ta télécommande et fais-le pivoter pour déplacer le pointeur.</string>
     <string name="pointer_touch_hint">Balaie pour déplacer le pointeur, touche pour cliquer.</string>
     <string name="pointer_scroll_area">Défiler</string>
     <string name="pointer_close">Fermer le pointeur</string>

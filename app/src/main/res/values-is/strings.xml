@@ -122,7 +122,7 @@
     <string name="input_picker_empty">Sjónvarpið gaf ekki upp nein inntök.</string>
     <string name="input_picker_not_connected">Ekkert tengt</string>
 
-    <string name="pointer_motion_hint">Hreyfðu símann til að stýra bendlinum.</string>
+    <string name="pointer_motion_hint">Haltu á símanum eins og fjarstýringu sjónvarpsins og sveiflaðu honum til að færa bendilinn.</string>
     <string name="pointer_touch_hint">Strjúktu til að færa bendilinn, ýttu til að smella.</string>
     <string name="pointer_scroll_area">Skruna</string>
     <string name="pointer_close">Loka bendli</string>

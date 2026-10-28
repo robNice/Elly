@@ -122,7 +122,7 @@
     <string name="input_picker_empty">Телевізор не повідомив жодного входу.</string>
     <string name="input_picker_not_connected">Нічого не підключено</string>
 
-    <string name="pointer_motion_hint">Рухай телефоном, щоб керувати вказівником.</string>
+    <string name="pointer_motion_hint">Тримай телефон як пульт від телевізора й повертай його, щоб рухати вказівник.</string>
     <string name="pointer_touch_hint">Проведи пальцем, щоб рухати вказівник, торкнися, щоб клацнути.</string>
     <string name="pointer_scroll_area">Прокручування</string>
     <string name="pointer_close">Закрити вказівник</string>

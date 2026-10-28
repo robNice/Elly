@@ -157,7 +157,7 @@
     <string name="input_picker_empty">Der Fernseher hat keine Eingänge gemeldet.</string>
     <string name="input_picker_not_connected">Nichts angeschlossen</string>
 
-    <string name="pointer_motion_hint">Bewege dein Handy, um den Zeiger zu steuern.</string>
+    <string name="pointer_motion_hint">Halte dein Handy wie deine TV-Fernbedienung und schwenke es, um den Zeiger zu bewegen.</string>
     <string name="pointer_touch_hint">Wische, um den Zeiger zu bewegen, tippe zum Klicken.</string>
     <string name="pointer_scroll_area">Scrollen</string>
     <string name="pointer_close">Zeiger beenden</string>
