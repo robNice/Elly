@@ -77,6 +77,7 @@
     <string name="key_guide">Guide</string>
     <string name="key_input">Indgang</string>
     <string name="key_audio_track">Lydspor</string>
+    <string name="key_subtitle">Undertekster</string>
     <string name="key_keyboard">Tastatur</string>
     <string name="text_input_hint">Tekst til tv\'et</string>
     <string name="text_input_close">Luk tastatur</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">For hørehæmmede</string>
     <string name="audio_track_unknown">Ukendt sprog</string>
     <string name="audio_track_selected">Aktiv</string>
+    <string name="subtitles_title">Vælg undertekster</string>
+    <string name="subtitles_off">Fra</string>
+    <string name="subtitles_none">Ingen undertekster fundet. De kan kun vælges, mens tv\'et viser en tv-kanal.</string>
+    <string name="subtitles_no_root">Valg af undertekster kræver rootadgang. Opsæt den under Indstillinger → TV.</string>
+    <string name="subtitles_channel_changed">Kanalen blev skiftet. Vælg underteksterne igen.</string>
+    <string name="subtitle_teletext">Tekst-tv</string>
     <string name="input_picker_empty">Tv\'et meldte ingen indgange.</string>
     <string name="input_picker_not_connected">Intet tilsluttet</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Lange sommeraftener</string>
     <string name="settings_light_effect_description">Lavt lys fra øverst til venstre: knapperne kaster lange skygger, og baggrunden bliver oplyst fra det hjørne.</string>
     <string name="settings_backup">Sikkerhedskopi og gendannelse</string>
-    <string name="settings_backup_description">Skærme og udseende gemmes som separate filer, så du kan give dine skærme videre, uden at den anden mister sit eget udseende. Ved gendannelse genkender Elly selv, hvilken slags fil det er.</string>
+    <string name="settings_backup_description">Skærme og udseende kan sikkerhedskopieres hver for sig eller sammen, så du kan give dine skærme videre, uden at den anden mister sit eget udseende. Ved gendannelse viser Elly, hvad filen indeholder, og du vælger, hvad der skal overtages.</string>
     <string name="settings_backup_restore">Gendan fra fil</string>
+    <string name="settings_backup_save">Sikkerhedskopiér</string>
+    <string name="settings_backup_save_title">Hvad skal sikkerhedskopieres?</string>
+    <string name="settings_backup_part_screens">Skærme</string>
+    <string name="settings_backup_part_screens_description">Rækkefølge, viste skærme og egne layouts på det aktive tv.</string>
+    <string name="settings_backup_part_appearance">Udseende</string>
+    <string name="settings_backup_part_appearance_description">Farvepalet, baggrund, afrunding og lyseffekt.</string>
+    <string name="settings_backup_restore_title">Hvad skal gendannes?</string>
+    <string name="settings_backup_restore_message">De valgte dele erstattes af dem i filen. App-ikoner hentes igen fra tv\'et; en programguide forbliver tom, hvis tv\'et ikke har en favoritliste med det navn.</string>
     <string name="settings_backup_appearance_file">Elly-Udseende</string>
     <string name="settings_backup_restore_confirm">Erstat</string>
     <string name="settings_backup_saved">Sikkerhedskopi gemt.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Rystefølsomhed</string>
     <string name="settings_double_tap_to_open">Åbn med dobbelttryk</string>
     <string name="settings_double_tap_to_open_description">Dobbelttryk på et tomt sted på skærmen for at åbne markøren.</string>
+    <string name="settings_pointer_activation">Aktivering</string>
+    <string name="settings_pointer_header_button">Åbn med markørikonet</string>
+    <string name="settings_pointer_header_button_description">Viser museikonet i topbjælken. Når det er slået fra, skjules ikonet.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Som en analog pind: jo længere du trækker, jo hurtigere bevæger markøren sig.</string>
     <string name="status_connected">Forbundet til tv\'et</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Bevægelse: markøren følger din telefon. Hold den som en fjernbetjening eller oprejst foran dig, og bevæg den. Den store OK-knap klikker, stryg på rulleområdet for at rulle.</string>
     <string name="onboarding_pointer_touch">Touchpad: stryg hen over området for at flytte markøren, tryk for at klikke. Som joystick: jo længere du trækker, jo hurtigere bevæger den sig.</string>
     <string name="onboarding_pointer_close">Luk den med X øverst til højre, med tilbage-bevægelsen eller automatisk efter 5 sekunder uden aktivitet.</string>
-    <string name="onboarding_pointer_quick">Åbn den endnu hurtigere ved at ryste telefonen (bevægelse) eller dobbelttrykke på et tomt sted (touchpad), hvis det er slået til under Betjening.</string>
+    <string name="onboarding_pointer_quick">Åbn den endnu hurtigere ved at ryste telefonen eller dobbelttrykke på et tomt sted, hvis det er slået til under Betjening.</string>
 
     <string name="onboarding_done_title">Sådan!</string>
     <string name="onboarding_done_text">God fornøjelse med dit tv. Hvis du vil slå noget op, finder du mig altid bag mit billede øverst til højre.</string>
@@ -440,7 +458,7 @@
     <string name="help_pointer_okpos_title">OK-knap øverst eller nederst</string>
     <string name="help_pointer_okpos_body">I touchpad-tilstand sidder OK-knappen nederst (standard) eller øverst – alt efter hvordan du holder din telefon.</string>
     <string name="help_pointer_quick_title">Åbn den hurtigere</string>
-    <string name="help_pointer_quick_body">• Åbn ved at ryste (bevægelsestilstand): en kort rystelse af telefonen åbner markøren. Rystefølsomheden kan justeres.\n• Åbn med dobbelttryk (touchpad-tilstand): tryk to gange på et tomt sted på en skærm.\nBegge slås til i indstillingerne under »Betjening«.</string>
+    <string name="help_pointer_quick_body">• Åbn ved at ryste: en kort rystelse af telefonen åbner markøren. Rystefølsomheden kan justeres.\n• Åbn med dobbelttryk: tryk to gange på et tomt sted på en skærm.\n• Åbn med markørikonet: museikonet i topbjælken. Når det er slået fra, skjules det.\nAlle tre slås til eller fra i indstillingerne under »Betjening«, også flere på én gang. De virker med alle former for markørstyring.</string>
 
     <string name="help_edit_title">Rediger skærme</string>
     <string name="help_edit_elly">Du bestemmer, hvilke knapper der skal sidde hvor. Her viser jeg dig editoren.</string>

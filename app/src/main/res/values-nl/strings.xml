@@ -76,6 +76,7 @@
     <string name="key_guide">Gids</string>
     <string name="key_input">Bron</string>
     <string name="key_audio_track">Audiospoor</string>
+    <string name="key_subtitle">Ondertiteling</string>
     <string name="key_keyboard">Toetsenbord</string>
     <string name="text_input_hint">Tekst voor de tv</string>
     <string name="text_input_close">Toetsenbord sluiten</string>
@@ -111,6 +112,12 @@
     <string name="audio_track_hearing_impaired">Voor slechthorenden</string>
     <string name="audio_track_unknown">Onbekende taal</string>
     <string name="audio_track_selected">Actief</string>
+    <string name="subtitles_title">Ondertiteling kiezen</string>
+    <string name="subtitles_off">Uit</string>
+    <string name="subtitles_none">Geen ondertiteling gevonden. Je kunt die alleen kiezen terwijl de tv een tv-zender toont.</string>
+    <string name="subtitles_no_root">Voor het kiezen van ondertiteling is roottoegang nodig. Stel die in bij Instellingen → Tv.</string>
+    <string name="subtitles_channel_changed">De zender is gewisseld. Kies de ondertiteling opnieuw.</string>
+    <string name="subtitle_teletext">Teletekst</string>
     <string name="input_picker_empty">De tv heeft geen bronnen gemeld.</string>
     <string name="input_picker_not_connected">Niets aangesloten</string>
 
@@ -145,8 +152,16 @@
     <string name="settings_light_effect">Lange zomeravonden</string>
     <string name="settings_light_effect_description">Laag licht van linksboven: de toetsen werpen lange schaduwen en de achtergrond wordt vanuit die hoek verlicht.</string>
     <string name="settings_backup">Back-up en terugzetten</string>
-    <string name="settings_backup_description">Schermen en weergave worden als aparte bestanden opgeslagen, zodat je je schermen kunt doorgeven zonder dat de ander zijn eigen weergave kwijtraakt. Bij het terugzetten herkent Elly zelf wat voor bestand het is.</string>
+    <string name="settings_backup_description">Schermen en weergave kun je apart of samen opslaan, zodat je je schermen kunt doorgeven zonder dat de ander zijn eigen weergave kwijtraakt. Bij het terugzetten toont Elly wat er in het bestand zit en kies jij wat je overneemt.</string>
     <string name="settings_backup_restore">Terugzetten uit bestand</string>
+    <string name="settings_backup_save">Back-up maken</string>
+    <string name="settings_backup_save_title">Wat wil je opslaan?</string>
+    <string name="settings_backup_part_screens">Schermen</string>
+    <string name="settings_backup_part_screens_description">Volgorde, getoonde schermen en eigen indelingen van de actieve tv.</string>
+    <string name="settings_backup_part_appearance">Weergave</string>
+    <string name="settings_backup_part_appearance_description">Kleurenpalet, achtergrond, afronding en lichteffect.</string>
+    <string name="settings_backup_restore_title">Wat wil je terugzetten?</string>
+    <string name="settings_backup_restore_message">De gekozen onderdelen worden vervangen door die uit het bestand. App-pictogrammen worden opnieuw van de tv geladen; een programmagids blijft leeg als de tv geen favorietenlijst met die naam heeft.</string>
     <string name="settings_backup_appearance_file">Elly-Weergave</string>
     <string name="settings_backup_restore_confirm">Vervangen</string>
     <string name="settings_backup_saved">Back-up opgeslagen.</string>
@@ -173,6 +188,9 @@
     <string name="settings_shake_sensitivity">Schudgevoeligheid</string>
     <string name="settings_double_tap_to_open">Openen door dubbeltikken</string>
     <string name="settings_double_tap_to_open_description">Tik twee keer op een lege plek van het scherm om de aanwijzer te openen.</string>
+    <string name="settings_pointer_activation">Openen</string>
+    <string name="settings_pointer_header_button">Openen met het aanwijzerpictogram</string>
+    <string name="settings_pointer_header_button_description">Toont het muispictogram in de bovenbalk. Uitgeschakeld wordt het pictogram verborgen.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Zoals een analoge stick: hoe verder je trekt, hoe sneller de aanwijzer beweegt.</string>
     <string name="status_connected">Verbonden met de tv</string>
@@ -344,7 +362,7 @@
     <string name="onboarding_pointer_motion">Beweging: de aanwijzer volgt je telefoon. Houd hem vast als een afstandsbediening of rechtop voor je en beweeg hem. De grote OK-knop klikt, veeg over het scrollvlak om te scrollen.</string>
     <string name="onboarding_pointer_touch">Touchpad: veeg over het vlak om de aanwijzer te bewegen, tik om te klikken. Als joystick: hoe verder je trekt, hoe sneller hij beweegt.</string>
     <string name="onboarding_pointer_close">Sluit hem met de X rechtsboven, met het teruggebaar of automatisch na 5 seconden zonder activiteit.</string>
-    <string name="onboarding_pointer_quick">Open hem nog sneller door je telefoon te schudden (beweging) of op een vrije plek te dubbeltikken (touchpad), als dat onder Bediening is ingeschakeld.</string>
+    <string name="onboarding_pointer_quick">Open hem nog sneller door je telefoon te schudden of op een vrije plek te dubbeltikken, als dat onder Bediening is ingeschakeld.</string>
 
     <string name="onboarding_done_title">Klaar is kip!</string>
     <string name="onboarding_done_text">Veel plezier met je tv. Wil je iets opzoeken? Je vindt me altijd achter mijn plaatje rechtsboven.</string>
@@ -440,7 +458,7 @@
     <string name="help_pointer_okpos_title">OK-knop boven of onder</string>
     <string name="help_pointer_okpos_body">In de touchpadmodus zit de OK-knop onderaan (standaard) of bovenaan – net wat het best past bij hoe je je telefoon vasthoudt.</string>
     <string name="help_pointer_quick_title">Sneller openen</string>
-    <string name="help_pointer_quick_body">• Openen door schudden (bewegingsmodus): kort schudden met de telefoon opent de aanwijzer. De schudgevoeligheid is instelbaar.\n• Openen door dubbeltikken (touchpadmodus): tik twee keer op een vrije plek van een scherm.\nBeide schakel je in bij de instellingen onder “Bediening”.</string>
+    <string name="help_pointer_quick_body">• Openen door schudden: kort schudden met de telefoon opent de aanwijzer. De schudgevoeligheid is instelbaar.\n• Openen door dubbeltikken: tik twee keer op een vrije plek van een scherm.\n• Openen met het aanwijzerpictogram: het muispictogram in de bovenbalk. Uitgeschakeld wordt het verborgen.\nAlle drie schakel je in of uit bij de instellingen onder “Bediening”, ook meerdere tegelijk. Ze werken met elke aanwijzerbesturing.</string>
 
     <string name="help_edit_title">Schermen bewerken</string>
     <string name="help_edit_elly">Jij bepaalt welke toetsen waar komen. Hier laat ik je de editor zien.</string>

@@ -76,6 +76,7 @@
     <string name="key_guide">دليل البرامج</string>
     <string name="key_input">مصدر الإدخال</string>
     <string name="key_audio_track">المسار الصوتي</string>
+    <string name="key_subtitle">الترجمة</string>
     <string name="key_keyboard">لوحة المفاتيح</string>
     <string name="text_input_hint">نص للتلفاز</string>
     <string name="text_input_close">إغلاق لوحة المفاتيح</string>
@@ -111,6 +112,12 @@
     <string name="audio_track_hearing_impaired">لضعاف السمع</string>
     <string name="audio_track_unknown">لغة غير معروفة</string>
     <string name="audio_track_selected">نشط</string>
+    <string name="subtitles_title">اختيار الترجمة</string>
+    <string name="subtitles_off">إيقاف</string>
+    <string name="subtitles_none">لم يُعثر على ترجمات. لا يمكن اختيارها إلا أثناء عرض التلفاز لقناة تلفزيونية.</string>
+    <string name="subtitles_no_root">يتطلب اختيار الترجمة الوصول بصلاحيات الجذر. فعّله في «الإعدادات» ضمن تبويب «التلفاز».</string>
+    <string name="subtitles_channel_changed">تم تغيير القناة. اختر الترجمة من جديد.</string>
+    <string name="subtitle_teletext">تيليتكست</string>
     <string name="input_picker_empty">لم يُبلغ التلفاز عن أي مصادر إدخال.</string>
     <string name="input_picker_not_connected">لا شيء متصل</string>
 
@@ -145,8 +152,16 @@
     <string name="settings_light_effect">أمسيات الصيف الطويلة</string>
     <string name="settings_light_effect_description">ضوء منخفض من أعلى اليسار: تُلقي الأزرار ظلالًا طويلة وتُضاء الخلفية من تلك الزاوية.</string>
     <string name="settings_backup">النسخ الاحتياطي والاستعادة</string>
-    <string name="settings_backup_description">تُحفظ الشاشات والمظهر في ملفين منفصلين، فيمكنك مشاركة شاشاتك دون أن يفقد الشخص الآخر مظهره الخاص. عند الاستعادة تتعرّف Elly بنفسها على نوع الملف.</string>
+    <string name="settings_backup_description">يمكنك نسخ الشاشات والمظهر احتياطيًا كلًّا على حدة أو معًا، فتشارك شاشاتك دون أن يفقد الشخص الآخر مظهره الخاص. عند الاستعادة تعرض Elly محتوى الملف وتختار أنت ما تريد اعتماده.</string>
     <string name="settings_backup_restore">استعادة من ملف</string>
+    <string name="settings_backup_save">نسخ احتياطي</string>
+    <string name="settings_backup_save_title">ماذا تريد أن تنسخ احتياطيًا؟</string>
+    <string name="settings_backup_part_screens">الشاشات</string>
+    <string name="settings_backup_part_screens_description">الترتيب والشاشات المعروضة والتخطيطات الخاصة للتلفاز النشط.</string>
+    <string name="settings_backup_part_appearance">المظهر</string>
+    <string name="settings_backup_part_appearance_description">لوحة الألوان والخلفية وتدوير الزوايا وتأثير الإضاءة.</string>
+    <string name="settings_backup_restore_title">ماذا تريد أن تستعيد؟</string>
+    <string name="settings_backup_restore_message">تُستبدل الأجزاء المختارة بتلك الموجودة في الملف. تُحمَّل أيقونات التطبيقات من التلفاز من جديد، ويبقى دليل البرامج فارغًا إذا لم يكن في التلفاز قائمة مفضلة بهذا الاسم.</string>
     <string name="settings_backup_appearance_file">Elly-المظهر</string>
     <string name="settings_backup_restore_confirm">استبدال</string>
     <string name="settings_backup_saved">تم حفظ النسخة الاحتياطية.</string>
@@ -173,6 +188,9 @@
     <string name="settings_shake_sensitivity">حساسية الهز</string>
     <string name="settings_double_tap_to_open">الفتح بالنقر المزدوج</string>
     <string name="settings_double_tap_to_open_description">انقر نقرًا مزدوجًا على مكان فارغ من الشاشة لفتح المؤشر.</string>
+    <string name="settings_pointer_activation">التفعيل</string>
+    <string name="settings_pointer_header_button">الفتح برمز المؤشر</string>
+    <string name="settings_pointer_header_button_description">يعرض رمز الماوس في الشريط العلوي. عند الإيقاف يُخفى الرمز.</string>
     <string name="settings_touch_style_joystick">عصا التحكم</string>
     <string name="settings_touch_style_joystick_description">مثل العصا التناظرية: كلما سحبت أبعد، تحرّك المؤشر أسرع.</string>
     <string name="status_connected">متصل بالتلفاز</string>
@@ -344,7 +362,7 @@
     <string name="onboarding_pointer_motion">الحركة: يتبع المؤشر هاتفك. أمسِكه مثل جهاز التحكم أو منتصبًا أمامك وحرّكه. زر OK الكبير ينقر، واسحب على منطقة التمرير للتمرير.</string>
     <string name="onboarding_pointer_touch">لوحة اللمس: اسحب على المساحة لتحريك المؤشر، والمس للنقر. وبوضع عصا التحكم: كلما سحبت أبعد، تحرّك أسرع.</string>
     <string name="onboarding_pointer_close">أغلِقه بعلامة X في أعلى اليسار، أو بإيماءة الرجوع، أو تلقائيًا بعد 5 ثوانٍ دون نشاط.</string>
-    <string name="onboarding_pointer_quick">افتحه أسرع بهزّ هاتفك (الحركة) أو بنقر مزدوج على مكان فارغ (لوحة اللمس)، إن فعّلت ذلك في «التحكم».</string>
+    <string name="onboarding_pointer_quick">افتحه أسرع بهزّ هاتفك أو بنقر مزدوج على مكان فارغ، إن فعّلت ذلك في «التحكم».</string>
 
     <string name="onboarding_done_title">هذا كل شيء!</string>
     <string name="onboarding_done_text">استمتع بتلفازك! وإن أردت البحث عن شيء، ستجدني دائمًا خلف صورتي في أعلى اليسار.</string>
@@ -444,7 +462,7 @@
     <string name="help_pointer_okpos_title">زر OK في الأعلى أو الأسفل</string>
     <string name="help_pointer_okpos_body">في وضع لوحة اللمس يكون زر OK في الأسفل (افتراضيًا) أو في الأعلى – حسب ما يناسب طريقة إمساكك للهاتف.</string>
     <string name="help_pointer_quick_title">فتحه بشكل أسرع</string>
-    <string name="help_pointer_quick_body">• الفتح بالهز (وضع الحركة): هزّة قصيرة للهاتف تفتح المؤشر. ويمكن ضبط حساسية الهز.\n• الفتح بالنقر المزدوج (وضع لوحة اللمس): انقر مرتين على مكان فارغ في الشاشة.\nيُفعَّل كلاهما في الإعدادات ضمن «التحكم».</string>
+    <string name="help_pointer_quick_body">• الفتح بالهز: هزّة قصيرة للهاتف تفتح المؤشر. ويمكن ضبط حساسية الهز.\n• الفتح بالنقر المزدوج: انقر مرتين على مكان فارغ في الشاشة.\n• الفتح برمز المؤشر: رمز الماوس في الشريط العلوي. عند الإيقاف يُخفى.\nتُفعَّل الثلاثة أو تُوقَف في الإعدادات ضمن «التحكم»، ويمكن تفعيل أكثر من واحد معًا. وتعمل مع كل طرق التحكم في المؤشر.</string>
 
     <string name="help_edit_title">تعديل الشاشات</string>
     <string name="help_edit_elly">أنت من يقرّر أين يوضع كل زر. هنا أريك المحرّر.</string>

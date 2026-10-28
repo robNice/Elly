@@ -77,6 +77,7 @@
     <string name="key_guide">Przewodnik</string>
     <string name="key_input">Źródło</string>
     <string name="key_audio_track">Ścieżka dźwiękowa</string>
+    <string name="key_subtitle">Napisy</string>
     <string name="key_keyboard">Klawiatura</string>
     <string name="text_input_hint">Tekst dla telewizora</string>
     <string name="text_input_close">Zamknij klawiaturę</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Dla niedosłyszących</string>
     <string name="audio_track_unknown">Nieznany język</string>
     <string name="audio_track_selected">Aktywna</string>
+    <string name="subtitles_title">Wybierz napisy</string>
+    <string name="subtitles_off">Wyłączone</string>
+    <string name="subtitles_none">Nie znaleziono napisów. Możesz je wybrać tylko wtedy, gdy telewizor pokazuje kanał telewizyjny.</string>
+    <string name="subtitles_no_root">Wybór napisów wymaga dostępu root. Skonfiguruj go w Ustawienia → TV.</string>
+    <string name="subtitles_channel_changed">Kanał został zmieniony. Wybierz napisy ponownie.</string>
+    <string name="subtitle_teletext">Telegazeta</string>
     <string name="input_picker_empty">Telewizor nie zgłosił żadnych źródeł.</string>
     <string name="input_picker_not_connected">Nic nie podłączono</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Długie letnie wieczory</string>
     <string name="settings_light_effect_description">Niskie światło z lewego górnego rogu: przyciski rzucają długie cienie, a tło jest oświetlone od tego rogu.</string>
     <string name="settings_backup">Kopia zapasowa i przywracanie</string>
-    <string name="settings_backup_description">Strony i wygląd są zapisywane w osobnych plikach, więc możesz przekazać komuś swoje strony, a ta osoba nie straci własnego wyglądu. Przy przywracaniu Elly sama rozpoznaje, jaki to plik.</string>
+    <string name="settings_backup_description">Strony i wygląd możesz zapisać osobno lub razem, więc przekażesz komuś swoje strony, a ta osoba nie straci własnego wyglądu. Przy przywracaniu Elly pokazuje, co jest w pliku, a ty wybierasz, co przejąć.</string>
     <string name="settings_backup_restore">Przywróć z pliku</string>
+    <string name="settings_backup_save">Kopia zapasowa</string>
+    <string name="settings_backup_save_title">Co zapisać?</string>
+    <string name="settings_backup_part_screens">Strony</string>
+    <string name="settings_backup_part_screens_description">Kolejność, wyświetlane strony i własne układy aktywnego telewizora.</string>
+    <string name="settings_backup_part_appearance">Wygląd</string>
+    <string name="settings_backup_part_appearance_description">Paleta kolorów, tło, zaokrąglenie i efekt światła.</string>
+    <string name="settings_backup_restore_title">Co przywrócić?</string>
+    <string name="settings_backup_restore_message">Wybrane części zostaną zastąpione zawartością pliku. Ikony aplikacji zostaną ponownie pobrane z telewizora; przewodnik po programach pozostanie pusty, jeśli telewizor nie ma listy ulubionych o tej nazwie.</string>
     <string name="settings_backup_appearance_file">Elly-Wyglad</string>
     <string name="settings_backup_restore_confirm">Zastąp</string>
     <string name="settings_backup_saved">Kopia zapasowa zapisana.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Czułość potrząśnięcia</string>
     <string name="settings_double_tap_to_open">Otwieranie podwójnym dotknięciem</string>
     <string name="settings_double_tap_to_open_description">Dotknij dwukrotnie pustego miejsca na ekranie, aby otworzyć wskaźnik.</string>
+    <string name="settings_pointer_activation">Otwieranie</string>
+    <string name="settings_pointer_header_button">Otwieranie ikoną wskaźnika</string>
+    <string name="settings_pointer_header_button_description">Pokazuje ikonę myszy na górnym pasku. Po wyłączeniu ikona jest ukryta.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Jak gałka analogowa: im dalej pociągniesz, tym szybciej porusza się wskaźnik.</string>
     <string name="status_connected">Połączono z telewizorem</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Ruch: wskaźnik podąża za telefonem. Trzymaj go jak pilota albo pionowo przed sobą i poruszaj nim. Duży przycisk OK klika, przesuń palcem po obszarze przewijania, aby przewijać.</string>
     <string name="onboarding_pointer_touch">Touchpad: przesuwaj palcem po obszarze, aby poruszać wskaźnikiem, dotknij, aby kliknąć. Jako joystick: im dalej pociągniesz, tym szybciej się porusza.</string>
     <string name="onboarding_pointer_close">Zamkniesz go krzyżykiem w prawym górnym rogu, gestem wstecz albo automatycznie po 5 sekundach bezczynności.</string>
-    <string name="onboarding_pointer_quick">Otworzysz go jeszcze szybciej, potrząsając telefonem (ruch) lub dotykając dwukrotnie wolnego miejsca (touchpad), jeśli włączysz to w karcie Sterowanie.</string>
+    <string name="onboarding_pointer_quick">Otworzysz go jeszcze szybciej, potrząsając telefonem lub dotykając dwukrotnie wolnego miejsca, jeśli włączysz to w karcie Sterowanie.</string>
 
     <string name="onboarding_done_title">Gotowe!</string>
     <string name="onboarding_done_text">Miłej zabawy z telewizorem! Jeśli zechcesz coś sprawdzić, zawsze znajdziesz mnie pod moim obrazkiem w prawym górnym rogu.</string>
@@ -443,7 +461,7 @@
     <string name="help_pointer_okpos_title">Przycisk OK na górze lub na dole</string>
     <string name="help_pointer_okpos_body">W trybie touchpada przycisk OK jest na dole (domyślnie) lub na górze – jak Ci wygodniej trzymać telefon.</string>
     <string name="help_pointer_quick_title">Szybsze otwieranie</string>
-    <string name="help_pointer_quick_body">• Otwieranie potrząśnięciem (tryb ruchu): krótkie potrząśnięcie telefonem otwiera wskaźnik. Czułość potrząśnięcia można dostosować.\n• Otwieranie podwójnym dotknięciem (tryb touchpada): dotknij dwukrotnie wolnego miejsca na stronie.\nOba włączasz w ustawieniach na karcie „Sterowanie”.</string>
+    <string name="help_pointer_quick_body">• Otwieranie potrząśnięciem: krótkie potrząśnięcie telefonem otwiera wskaźnik. Czułość potrząśnięcia można dostosować.\n• Otwieranie podwójnym dotknięciem: dotknij dwukrotnie wolnego miejsca na stronie.\n• Otwieranie ikoną wskaźnika: ikona myszy na górnym pasku. Po wyłączeniu jest ukryta.\nWszystkie trzy włączasz lub wyłączasz w ustawieniach na karcie „Sterowanie”, także kilka naraz. Działają przy każdym sposobie sterowania wskaźnikiem.</string>
 
     <string name="help_edit_title">Edycja stron</string>
     <string name="help_edit_elly">To Ty decydujesz, gdzie są które przyciski. Tu pokażę Ci edytor.</string>

@@ -77,6 +77,7 @@
     <string name="key_guide">Guide</string>
     <string name="key_input">Inngang</string>
     <string name="key_audio_track">Lydspor</string>
+    <string name="key_subtitle">Undertekster</string>
     <string name="key_keyboard">Tastatur</string>
     <string name="text_input_hint">Tekst til TV-en</string>
     <string name="text_input_close">Lukk tastaturet</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">For hørselshemmede</string>
     <string name="audio_track_unknown">Ukjent språk</string>
     <string name="audio_track_selected">Aktiv</string>
+    <string name="subtitles_title">Velg undertekster</string>
+    <string name="subtitles_off">Av</string>
+    <string name="subtitles_none">Fant ingen undertekster. De kan bare velges mens TV-en viser en TV-kanal.</string>
+    <string name="subtitles_no_root">Valg av undertekster krever root-tilgang. Sett den opp under Innstillinger → TV.</string>
+    <string name="subtitles_channel_changed">Kanalen ble byttet. Velg undertekstene på nytt.</string>
+    <string name="subtitle_teletext">Tekst-TV</string>
     <string name="input_picker_empty">TV-en meldte ingen innganger.</string>
     <string name="input_picker_not_connected">Ingenting tilkoblet</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Lange sommerkvelder</string>
     <string name="settings_light_effect_description">Lavt lys fra øverst til venstre: knappene kaster lange skygger, og bakgrunnen lyses opp fra det hjørnet.</string>
     <string name="settings_backup">Sikkerhetskopi og gjenoppretting</string>
-    <string name="settings_backup_description">Skjermer og utseende lagres som separate filer, slik at du kan gi skjermene dine videre uten at den andre mister sitt eget utseende. Ved gjenoppretting gjenkjenner Elly selv hva slags fil det er.</string>
+    <string name="settings_backup_description">Skjermer og utseende kan sikkerhetskopieres hver for seg eller sammen, slik at du kan gi skjermene dine videre uten at den andre mister sitt eget utseende. Ved gjenoppretting viser Elly hva filen inneholder, og du velger hva som skal tas over.</string>
     <string name="settings_backup_restore">Gjenopprett fra fil</string>
+    <string name="settings_backup_save">Sikkerhetskopier</string>
+    <string name="settings_backup_save_title">Hva skal sikkerhetskopieres?</string>
+    <string name="settings_backup_part_screens">Skjermer</string>
+    <string name="settings_backup_part_screens_description">Rekkefølge, viste skjermer og egne oppsett på den aktive TV-en.</string>
+    <string name="settings_backup_part_appearance">Utseende</string>
+    <string name="settings_backup_part_appearance_description">Fargepalett, bakgrunn, avrunding og lyseffekt.</string>
+    <string name="settings_backup_restore_title">Hva skal gjenopprettes?</string>
+    <string name="settings_backup_restore_message">De valgte delene erstattes av dem i filen. App-ikoner hentes på nytt fra TV-en; en programguide forblir tom hvis TV-en ikke har en favorittliste med det navnet.</string>
     <string name="settings_backup_appearance_file">Elly-Utseende</string>
     <string name="settings_backup_restore_confirm">Erstatt</string>
     <string name="settings_backup_saved">Sikkerhetskopi lagret.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Ristefølsomhet</string>
     <string name="settings_double_tap_to_open">Åpne med dobbelttrykk</string>
     <string name="settings_double_tap_to_open_description">Dobbelttrykk på et tomt sted på skjermen for å åpne pekeren.</string>
+    <string name="settings_pointer_activation">Åpning</string>
+    <string name="settings_pointer_header_button">Åpne med pekerikonet</string>
+    <string name="settings_pointer_header_button_description">Viser museikonet i topplinjen. Når det er slått av, skjules ikonet.</string>
     <string name="settings_touch_style_joystick">Styrespak</string>
     <string name="settings_touch_style_joystick_description">Som en analog spak: jo lenger du drar, jo raskere beveger pekeren seg.</string>
     <string name="status_connected">Koblet til TV-en</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Bevegelse: pekeren følger telefonen. Hold den som en fjernkontroll eller oppreist foran deg og beveg den. Den store OK-knappen klikker, sveip på rulleområdet for å rulle.</string>
     <string name="onboarding_pointer_touch">Styreflate: sveip over området for å flytte pekeren, trykk for å klikke. Som styrespak: jo lenger du drar, jo raskere beveger den seg.</string>
     <string name="onboarding_pointer_close">Lukk den med X-en øverst til høyre, med tilbakebevegelsen eller automatisk etter 5 sekunder uten aktivitet.</string>
-    <string name="onboarding_pointer_quick">Åpne den enda raskere ved å riste telefonen (bevegelse) eller dobbelttrykke på et tomt sted (styreflate), hvis det er slått på under Styring.</string>
+    <string name="onboarding_pointer_quick">Åpne den enda raskere ved å riste telefonen eller dobbelttrykke på et tomt sted, hvis det er slått på under Styring.</string>
 
     <string name="onboarding_done_title">Sånn!</string>
     <string name="onboarding_done_text">Kos deg med TV-en. Vil du slå opp noe, finner du meg alltid bak bildet mitt øverst til høyre.</string>
@@ -440,7 +458,7 @@
     <string name="help_pointer_okpos_title">OK-knapp øverst eller nederst</string>
     <string name="help_pointer_okpos_body">I styreflatemodus sitter OK-knappen nederst (standard) eller øverst – alt etter hvordan du holder telefonen.</string>
     <string name="help_pointer_quick_title">Åpne den raskere</string>
-    <string name="help_pointer_quick_body">• Åpne ved å riste (bevegelsesmodus): en kort risting av telefonen åpner pekeren. Ristefølsomheten kan justeres.\n• Åpne med dobbelttrykk (styreflatemodus): trykk to ganger på et tomt sted på en skjerm.\nBegge slås på i innstillingene under «Styring».</string>
+    <string name="help_pointer_quick_body">• Åpne ved å riste: en kort risting av telefonen åpner pekeren. Ristefølsomheten kan justeres.\n• Åpne med dobbelttrykk: trykk to ganger på et tomt sted på en skjerm.\n• Åpne med pekerikonet: museikonet i topplinjen. Når det er slått av, skjules det.\nAlle tre slås på eller av i innstillingene under «Styring», også flere samtidig. De virker med all pekerstyring.</string>
 
     <string name="help_edit_title">Redigere skjermer</string>
     <string name="help_edit_elly">Du bestemmer hvilke knapper som skal ligge hvor. Her viser jeg deg redigeringsverktøyet.</string>

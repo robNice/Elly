@@ -77,6 +77,7 @@
     <string name="key_guide">Guia</string>
     <string name="key_input">Entrada</string>
     <string name="key_audio_track">Faixa de áudio</string>
+    <string name="key_subtitle">Legendas</string>
     <string name="key_keyboard">Teclado</string>
     <string name="text_input_hint">Texto para a TV</string>
     <string name="text_input_close">Fechar teclado</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Para pessoas com deficiência auditiva</string>
     <string name="audio_track_unknown">Idioma desconhecido</string>
     <string name="audio_track_selected">Ativa</string>
+    <string name="subtitles_title">Escolher legendas</string>
+    <string name="subtitles_off">Desativadas</string>
+    <string name="subtitles_none">Nenhuma legenda encontrada. Só as podes escolher enquanto a TV mostra um canal de televisão.</string>
+    <string name="subtitles_no_root">Escolher as legendas precisa de acesso root. Configura-o em Definições → TV.</string>
+    <string name="subtitles_channel_changed">O canal foi mudado. Escolhe novamente as legendas.</string>
+    <string name="subtitle_teletext">Teletexto</string>
     <string name="input_picker_empty">A TV não indicou nenhuma entrada.</string>
     <string name="input_picker_not_connected">Nada ligado</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Longas tardes de verão</string>
     <string name="settings_light_effect_description">Luz rasante vinda do canto superior esquerdo: as teclas projetam sombras longas e o fundo é iluminado a partir desse canto.</string>
     <string name="settings_backup">Cópia de segurança e restauro</string>
-    <string name="settings_backup_description">Os ecrãs e o aspeto são guardados em ficheiros separados, para que possas passar os teus ecrãs a alguém sem que essa pessoa perca o próprio aspeto. Ao restaurar, a Elly reconhece sozinha que tipo de ficheiro é.</string>
+    <string name="settings_backup_description">Podes guardar os ecrãs e o aspeto separadamente ou em conjunto, para passares os teus ecrãs a alguém sem que essa pessoa perca o próprio aspeto. Ao restaurar, a Elly mostra o que o ficheiro contém e tu escolhes o que aplicar.</string>
     <string name="settings_backup_restore">Restaurar de ficheiro</string>
+    <string name="settings_backup_save">Cópia de segurança</string>
+    <string name="settings_backup_save_title">O que guardar?</string>
+    <string name="settings_backup_part_screens">Ecrãs</string>
+    <string name="settings_backup_part_screens_description">Ordem, ecrãs apresentados e esquemas próprios da TV ativa.</string>
+    <string name="settings_backup_part_appearance">Aspeto</string>
+    <string name="settings_backup_part_appearance_description">Paleta de cores, fundo, arredondamento e efeito de luz.</string>
+    <string name="settings_backup_restore_title">O que restaurar?</string>
+    <string name="settings_backup_restore_message">As partes escolhidas são substituídas pelas do ficheiro. Os ícones das apps são novamente carregados da TV; um guia de programação fica vazio se a TV não tiver uma lista de favoritos com esse nome.</string>
     <string name="settings_backup_appearance_file">Elly-Aspeto</string>
     <string name="settings_backup_restore_confirm">Substituir</string>
     <string name="settings_backup_saved">Cópia de segurança guardada.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Sensibilidade ao abanar</string>
     <string name="settings_double_tap_to_open">Abrir com toque duplo</string>
     <string name="settings_double_tap_to_open_description">Toca duas vezes num espaço vazio do ecrã para abrir o ponteiro.</string>
+    <string name="settings_pointer_activation">Abertura</string>
+    <string name="settings_pointer_header_button">Abrir com o ícone do ponteiro</string>
+    <string name="settings_pointer_header_button_description">Mostra o ícone do rato na barra superior. Desativado, o ícone fica oculto.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Como um manípulo analógico: quanto mais puxares, mais depressa o ponteiro se move.</string>
     <string name="status_connected">Ligada à TV</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Movimento: o ponteiro segue o teu telemóvel. Segura-o como um comando ou na vertical à tua frente e move-o. O botão OK grande clica; desliza na área de deslocamento para deslocar.</string>
     <string name="onboarding_pointer_touch">Touchpad: desliza na área para mover o ponteiro, toca para clicar. Como joystick: quanto mais arrastares, mais depressa se move.</string>
     <string name="onboarding_pointer_close">Fecha-o com o X no canto superior direito, com o gesto de voltar ou automaticamente após 5 segundos sem atividade.</string>
-    <string name="onboarding_pointer_quick">Abre-o ainda mais depressa abanando o telemóvel (movimento) ou tocando duas vezes num espaço livre (touchpad), se estiver ativado em Controlo.</string>
+    <string name="onboarding_pointer_quick">Abre-o ainda mais depressa abanando o telemóvel ou tocando duas vezes num espaço livre, se estiver ativado em Controlo.</string>
 
     <string name="onboarding_done_title">Já está!</string>
     <string name="onboarding_done_text">Diverte-te com a tua TV. Se quiseres consultar alguma coisa, encontras-me sempre atrás da minha imagem, no canto superior direito.</string>
@@ -441,7 +459,7 @@
     <string name="help_pointer_okpos_title">Botão OK em cima ou em baixo</string>
     <string name="help_pointer_okpos_body">No modo touchpad, o botão OK fica em baixo (predefinição) ou em cima – conforme a forma como seguras o telemóvel.</string>
     <string name="help_pointer_quick_title">Abrir mais depressa</string>
-    <string name="help_pointer_quick_body">• Abrir ao abanar (modo de movimento): uma pequena abanadela no telemóvel abre o ponteiro. A sensibilidade ao abanar pode ser ajustada.\n• Abrir com toque duplo (modo touchpad): toca duas vezes num espaço livre de um ecrã.\nAmbas as opções se ativam nas definições, em “Controlo”.</string>
+    <string name="help_pointer_quick_body">• Abrir ao abanar: uma pequena abanadela no telemóvel abre o ponteiro. A sensibilidade ao abanar pode ser ajustada.\n• Abrir com toque duplo: toca duas vezes num espaço livre de um ecrã.\n• Abrir com o ícone do ponteiro: o ícone do rato na barra superior. Desativado, fica oculto.\nAs três opções ativam-se ou desativam-se nas definições, em “Controlo”, também várias em simultâneo. Funcionam com qualquer controlo do ponteiro.</string>
 
     <string name="help_edit_title">Editar ecrãs</string>
     <string name="help_edit_elly">Tu decides que teclas vão para onde. Aqui mostro-te o editor.</string>

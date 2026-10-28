@@ -76,6 +76,7 @@
     <string name="key_guide">Guide</string>
     <string name="key_input">Ingång</string>
     <string name="key_audio_track">Ljudspår</string>
+    <string name="key_subtitle">Undertexter</string>
     <string name="key_keyboard">Tangentbord</string>
     <string name="text_input_hint">Text till tv:n</string>
     <string name="text_input_close">Stäng tangentbordet</string>
@@ -111,6 +112,12 @@
     <string name="audio_track_hearing_impaired">För hörselskadade</string>
     <string name="audio_track_unknown">Okänt språk</string>
     <string name="audio_track_selected">Aktiv</string>
+    <string name="subtitles_title">Välj undertexter</string>
+    <string name="subtitles_off">Av</string>
+    <string name="subtitles_none">Inga undertexter hittades. De kan bara väljas medan tv:n visar en tv-kanal.</string>
+    <string name="subtitles_no_root">Val av undertexter kräver root-åtkomst. Ställ in den under Inställningar → Tv.</string>
+    <string name="subtitles_channel_changed">Kanalen byttes. Välj undertexterna igen.</string>
+    <string name="subtitle_teletext">Text-tv</string>
     <string name="input_picker_empty">Tv:n rapporterade inga ingångar.</string>
     <string name="input_picker_not_connected">Inget anslutet</string>
 
@@ -145,8 +152,16 @@
     <string name="settings_light_effect">Långa sommarkvällar</string>
     <string name="settings_light_effect_description">Lågt ljus uppifrån vänster: knapparna kastar långa skuggor och bakgrunden lyses upp från det hörnet.</string>
     <string name="settings_backup">Säkerhetskopiera och återställ</string>
-    <string name="settings_backup_description">Skärmar och utseende sparas som separata filer, så att du kan ge dina skärmar vidare utan att den andra förlorar sitt eget utseende. Vid återställning känner Elly själv igen vilken sorts fil det är.</string>
+    <string name="settings_backup_description">Skärmar och utseende kan säkerhetskopieras var för sig eller tillsammans, så att du kan ge dina skärmar vidare utan att den andra förlorar sitt eget utseende. Vid återställning visar Elly vad filen innehåller, och du väljer vad som ska tas över.</string>
     <string name="settings_backup_restore">Återställ från fil</string>
+    <string name="settings_backup_save">Säkerhetskopiera</string>
+    <string name="settings_backup_save_title">Vad ska säkerhetskopieras?</string>
+    <string name="settings_backup_part_screens">Skärmar</string>
+    <string name="settings_backup_part_screens_description">Ordning, visade skärmar och egna layouter på den aktiva tv:n.</string>
+    <string name="settings_backup_part_appearance">Utseende</string>
+    <string name="settings_backup_part_appearance_description">Färgpalett, bakgrund, rundning och ljuseffekt.</string>
+    <string name="settings_backup_restore_title">Vad ska återställas?</string>
+    <string name="settings_backup_restore_message">De valda delarna ersätts av dem i filen. Appikoner hämtas på nytt från tv:n; en programguide förblir tom om tv:n inte har någon favoritlista med det namnet.</string>
     <string name="settings_backup_appearance_file">Elly-Utseende</string>
     <string name="settings_backup_restore_confirm">Ersätt</string>
     <string name="settings_backup_saved">Säkerhetskopia sparad.</string>
@@ -173,6 +188,9 @@
     <string name="settings_shake_sensitivity">Skakkänslighet</string>
     <string name="settings_double_tap_to_open">Öppna med dubbeltryck</string>
     <string name="settings_double_tap_to_open_description">Dubbeltryck på en tom plats på skärmen för att öppna pekaren.</string>
+    <string name="settings_pointer_activation">Öppning</string>
+    <string name="settings_pointer_header_button">Öppna med pekarikonen</string>
+    <string name="settings_pointer_header_button_description">Visar musikonen i det övre fältet. När det är avstängt döljs ikonen.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Som en analog spak: ju längre du drar, desto snabbare rör sig pekaren.</string>
     <string name="status_connected">Ansluten till tv:n</string>
@@ -344,7 +362,7 @@
     <string name="onboarding_pointer_motion">Rörelse: pekaren följer telefonen. Håll den som en fjärrkontroll eller upprätt framför dig och rör på den. Den stora OK-knappen klickar, svep på rullningsytan för att rulla.</string>
     <string name="onboarding_pointer_touch">Pekplatta: svep över ytan för att flytta pekaren, tryck för att klicka. Som joystick: ju längre du drar, desto snabbare rör den sig.</string>
     <string name="onboarding_pointer_close">Stäng den med krysset uppe till höger, med tillbaka-gesten eller automatiskt efter 5 sekunder utan aktivitet.</string>
-    <string name="onboarding_pointer_quick">Öppna den ännu snabbare genom att skaka telefonen (rörelse) eller dubbeltrycka på en tom plats (pekplatta), om det är aktiverat under Styrning.</string>
+    <string name="onboarding_pointer_quick">Öppna den ännu snabbare genom att skaka telefonen eller dubbeltrycka på en tom plats, om det är aktiverat under Styrning.</string>
 
     <string name="onboarding_done_title">Klart!</string>
     <string name="onboarding_done_text">Ha kul med din tv! Vill du slå upp något hittar du mig när som helst bakom min bild uppe till höger.</string>
@@ -439,7 +457,7 @@
     <string name="help_pointer_okpos_title">OK-knappen upptill eller nedtill</string>
     <string name="help_pointer_okpos_body">I pekplatteläget sitter OK-knappen nederst (standard) eller överst – det som passar bäst för hur du håller telefonen.</string>
     <string name="help_pointer_quick_title">Öppna den snabbare</string>
-    <string name="help_pointer_quick_body">• Öppna genom att skaka (rörelseläge): en kort skakning av telefonen öppnar pekaren. Skakkänsligheten kan justeras.\n• Öppna med dubbeltryck (pekplatteläge): tryck två gånger på en tom plats på en skärm.\nBåda aktiveras i inställningarna under ”Styrning”.</string>
+    <string name="help_pointer_quick_body">• Öppna genom att skaka: en kort skakning av telefonen öppnar pekaren. Skakkänsligheten kan justeras.\n• Öppna med dubbeltryck: tryck två gånger på en tom plats på en skärm.\n• Öppna med pekarikonen: musikonen i det övre fältet. När det är avstängt döljs den.\nAlla tre slås på eller av i inställningarna under ”Styrning”, även flera samtidigt. De fungerar med all pekarstyrning.</string>
 
     <string name="help_edit_title">Redigera skärmar</string>
     <string name="help_edit_elly">Du bestämmer vilka knappar som hamnar var. Här visar jag dig redigeraren.</string>

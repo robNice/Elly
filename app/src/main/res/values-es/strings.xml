@@ -77,6 +77,7 @@
     <string name="key_guide">Guía</string>
     <string name="key_input">Entrada</string>
     <string name="key_audio_track">Pista de audio</string>
+    <string name="key_subtitle">Subtítulos</string>
     <string name="key_keyboard">Teclado</string>
     <string name="text_input_hint">Texto para la TV</string>
     <string name="text_input_close">Cerrar teclado</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Para personas con discapacidad auditiva</string>
     <string name="audio_track_unknown">Idioma desconocido</string>
     <string name="audio_track_selected">Activa</string>
+    <string name="subtitles_title">Elegir subtítulos</string>
+    <string name="subtitles_off">Desactivados</string>
+    <string name="subtitles_none">No se han encontrado subtítulos. Solo se pueden elegir mientras la TV muestra un canal de televisión.</string>
+    <string name="subtitles_no_root">Para elegir los subtítulos hace falta acceso root. Configúralo en Ajustes → TV.</string>
+    <string name="subtitles_channel_changed">Se ha cambiado de canal. Vuelve a elegir los subtítulos.</string>
+    <string name="subtitle_teletext">Teletexto</string>
     <string name="input_picker_empty">La TV no ha indicado ninguna entrada.</string>
     <string name="input_picker_not_connected">Nada conectado</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Largas tardes de verano</string>
     <string name="settings_light_effect_description">Luz baja desde arriba a la izquierda: las teclas proyectan sombras largas y el fondo se ilumina desde esa esquina.</string>
     <string name="settings_backup">Copia de seguridad y restauración</string>
-    <string name="settings_backup_description">Las pantallas y la apariencia se guardan en archivos separados, así puedes compartir tus pantallas sin que la otra persona pierda su propio aspecto. Al restaurar, Elly reconoce por sí misma qué tipo de archivo es.</string>
+    <string name="settings_backup_description">Puedes guardar las pantallas y la apariencia por separado o juntas, así compartes tus pantallas sin que la otra persona pierda su propio aspecto. Al restaurar, Elly muestra qué contiene el archivo y tú eliges qué se aplica.</string>
     <string name="settings_backup_restore">Restaurar desde archivo</string>
+    <string name="settings_backup_save">Guardar copia</string>
+    <string name="settings_backup_save_title">¿Qué quieres guardar?</string>
+    <string name="settings_backup_part_screens">Pantallas</string>
+    <string name="settings_backup_part_screens_description">Orden, pantallas visibles y diseños propios del TV activo.</string>
+    <string name="settings_backup_part_appearance">Apariencia</string>
+    <string name="settings_backup_part_appearance_description">Paleta de colores, fondo, redondeo y efecto de luz.</string>
+    <string name="settings_backup_restore_title">¿Qué quieres restaurar?</string>
+    <string name="settings_backup_restore_message">Las partes elegidas se reemplazan por las del archivo. Los iconos de las apps se vuelven a cargar desde el TV; una guía de programación queda vacía si el TV no tiene una lista de favoritos con ese nombre.</string>
     <string name="settings_backup_appearance_file">Elly-Apariencia</string>
     <string name="settings_backup_restore_confirm">Reemplazar</string>
     <string name="settings_backup_saved">Copia de seguridad guardada.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Sensibilidad al agitar</string>
     <string name="settings_double_tap_to_open">Abrir con doble toque</string>
     <string name="settings_double_tap_to_open_description">Toca dos veces un hueco libre de la pantalla para abrir el puntero.</string>
+    <string name="settings_pointer_activation">Activación</string>
+    <string name="settings_pointer_header_button">Abrir con el icono del puntero</string>
+    <string name="settings_pointer_header_button_description">Muestra el icono del ratón en la barra superior. Si está desactivado, el icono se oculta.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Como un stick analógico: cuanto más lejos tiras, más rápido se mueve el puntero.</string>
     <string name="status_connected">Conectado a la TV</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Movimiento: el puntero sigue a tu móvil. Sujétalo como un mando o en vertical delante de ti y muévelo. El botón OK grande hace clic; desliza en la zona de desplazamiento para desplazarte.</string>
     <string name="onboarding_pointer_touch">Touchpad: desliza por la zona para mover el puntero y toca para hacer clic. Como joystick: cuanto más lejos arrastras, más rápido se mueve.</string>
     <string name="onboarding_pointer_close">Ciérralo con la X de arriba a la derecha, con el gesto de atrás o se cierra solo tras 5 segundos sin actividad.</string>
-    <string name="onboarding_pointer_quick">Ábrelo aún más rápido agitando el móvil (movimiento) o tocando dos veces un hueco libre (touchpad), si lo activas en Controles.</string>
+    <string name="onboarding_pointer_quick">Ábrelo aún más rápido agitando el móvil o tocando dos veces un hueco libre, si lo activas en Controles.</string>
 
     <string name="onboarding_done_title">¡Listo!</string>
     <string name="onboarding_done_text">Que disfrutes de tu TV. Si quieres consultar algo, me encontrarás siempre detrás de mi foto, arriba a la derecha.</string>
@@ -441,7 +459,7 @@
     <string name="help_pointer_okpos_title">Botón OK arriba o abajo</string>
     <string name="help_pointer_okpos_body">En el modo touchpad, el botón OK está abajo (predeterminado) o arriba, según cómo te resulte más cómodo sujetar el móvil.</string>
     <string name="help_pointer_quick_title">Abrirlo más rápido</string>
-    <string name="help_pointer_quick_body">• Abrir al agitar (modo movimiento): una sacudida breve del móvil abre el puntero. La sensibilidad al agitar se puede ajustar.\n• Abrir con doble toque (modo touchpad): toca dos veces un hueco libre de una pantalla.\nAmbas opciones se activan en los ajustes, en «Controles».</string>
+    <string name="help_pointer_quick_body">• Abrir al agitar: una sacudida breve del móvil abre el puntero. La sensibilidad al agitar se puede ajustar.\n• Abrir con doble toque: toca dos veces un hueco libre de una pantalla.\n• Abrir con el icono del puntero: el icono del ratón en la barra superior. Si está desactivado, se oculta.\nLas tres se activan o desactivan en los ajustes, en «Controles», también varias a la vez. Funcionan con cualquier control del puntero.</string>
 
     <string name="help_edit_title">Editar pantallas</string>
     <string name="help_edit_elly">Tú decides qué teclas van y dónde. Aquí te enseño el editor.</string>

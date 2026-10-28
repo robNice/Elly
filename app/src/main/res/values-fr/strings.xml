@@ -76,6 +76,7 @@
     <string name="key_guide">Guide</string>
     <string name="key_input">Source</string>
     <string name="key_audio_track">Piste audio</string>
+    <string name="key_subtitle">Sous-titres</string>
     <string name="key_keyboard">Clavier</string>
     <string name="text_input_hint">Texte pour la TV</string>
     <string name="text_input_close">Fermer le clavier</string>
@@ -111,6 +112,12 @@
     <string name="audio_track_hearing_impaired">Pour malentendants</string>
     <string name="audio_track_unknown">Langue inconnue</string>
     <string name="audio_track_selected">Active</string>
+    <string name="subtitles_title">Choisir les sous-titres</string>
+    <string name="subtitles_off">Désactivés</string>
+    <string name="subtitles_none">Aucun sous-titre trouvé. Tu ne peux les choisir que lorsque la TV affiche une chaîne de télévision.</string>
+    <string name="subtitles_no_root">Le choix des sous-titres nécessite l\'accès root. Configure-le dans Paramètres → TV.</string>
+    <string name="subtitles_channel_changed">La chaîne a changé. Choisis à nouveau les sous-titres.</string>
+    <string name="subtitle_teletext">Télétexte</string>
     <string name="input_picker_empty">La TV n\'a signalé aucune source.</string>
     <string name="input_picker_not_connected">Rien de branché</string>
 
@@ -145,8 +152,16 @@
     <string name="settings_light_effect">Longues soirées d\'été</string>
     <string name="settings_light_effect_description">Lumière rasante venant d\'en haut à gauche : les touches projettent de longues ombres et l\'arrière-plan s\'éclaire depuis ce coin.</string>
     <string name="settings_backup">Sauvegarder et restaurer</string>
-    <string name="settings_backup_description">Les écrans et l\'apparence sont enregistrés dans des fichiers séparés : tu peux ainsi partager tes écrans sans que l\'autre personne perde sa propre apparence. Lors de la restauration, Elly reconnaît elle-même le type de fichier.</string>
+    <string name="settings_backup_description">Tu peux sauvegarder les écrans et l\'apparence séparément ou ensemble : tu partages ainsi tes écrans sans que l\'autre personne perde sa propre apparence. Lors de la restauration, Elly montre ce que contient le fichier et tu choisis ce qui est repris.</string>
     <string name="settings_backup_restore">Restaurer depuis un fichier</string>
+    <string name="settings_backup_save">Sauvegarder</string>
+    <string name="settings_backup_save_title">Que sauvegarder ?</string>
+    <string name="settings_backup_part_screens">Écrans</string>
+    <string name="settings_backup_part_screens_description">Ordre, écrans affichés et dispositions personnelles de la TV active.</string>
+    <string name="settings_backup_part_appearance">Apparence</string>
+    <string name="settings_backup_part_appearance_description">Palette de couleurs, arrière-plan, arrondi et effet de lumière.</string>
+    <string name="settings_backup_restore_title">Que restaurer ?</string>
+    <string name="settings_backup_restore_message">Les parties choisies sont remplacées par celles du fichier. Les icônes des applis sont rechargées depuis la TV ; un guide des programmes reste vide si la TV n\'a pas de liste de favoris portant ce nom.</string>
     <string name="settings_backup_appearance_file">Elly-Apparence</string>
     <string name="settings_backup_restore_confirm">Remplacer</string>
     <string name="settings_backup_saved">Sauvegarde enregistrée.</string>
@@ -173,6 +188,9 @@
     <string name="settings_shake_sensitivity">Sensibilité de la secousse</string>
     <string name="settings_double_tap_to_open">Ouvrir par double appui</string>
     <string name="settings_double_tap_to_open_description">Touche deux fois une zone vide de l\'écran pour ouvrir le pointeur.</string>
+    <string name="settings_pointer_activation">Ouverture</string>
+    <string name="settings_pointer_header_button">Ouvrir avec l\'icône du pointeur</string>
+    <string name="settings_pointer_header_button_description">Affiche l\'icône de souris dans la barre du haut. Désactivée, l\'icône est masquée.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Comme un stick analogique : plus tu tires loin, plus le pointeur va vite.</string>
     <string name="status_connected">Connectée à la TV</string>
@@ -344,7 +362,7 @@
     <string name="onboarding_pointer_motion">Mouvement : le pointeur suit ton téléphone. Tiens-le comme une télécommande ou debout devant toi, et bouge-le. Le gros bouton OK clique, balaie la zone de défilement pour faire défiler.</string>
     <string name="onboarding_pointer_touch">Pavé tactile : balaie la zone pour déplacer le pointeur, touche pour cliquer. En joystick : plus tu tires loin, plus il va vite.</string>
     <string name="onboarding_pointer_close">Ferme-le avec le X en haut à droite, avec le geste retour, ou il se ferme tout seul après 5 secondes d\'inactivité.</string>
-    <string name="onboarding_pointer_quick">Ouvre-le encore plus vite en secouant ton téléphone (mouvement) ou en touchant deux fois une zone libre (pavé tactile), si c\'est activé sous Commandes.</string>
+    <string name="onboarding_pointer_quick">Ouvre-le encore plus vite en secouant ton téléphone ou en touchant deux fois une zone libre, si c\'est activé sous Commandes.</string>
 
     <string name="onboarding_done_title">Et voilà !</string>
     <string name="onboarding_done_text">Amuse-toi bien avec ta TV. Si tu veux vérifier quelque chose, tu me trouveras à tout moment derrière ma photo, en haut à droite.</string>
@@ -440,7 +458,7 @@
     <string name="help_pointer_okpos_title">Bouton OK en haut ou en bas</string>
     <string name="help_pointer_okpos_body">En mode pavé tactile, le bouton OK se trouve en bas (par défaut) ou en haut – selon ta façon de tenir le téléphone.</string>
     <string name="help_pointer_quick_title">L\'ouvrir plus vite</string>
-    <string name="help_pointer_quick_body">• Ouvrir en secouant (mode mouvement) : une brève secousse du téléphone ouvre le pointeur. La sensibilité de la secousse est réglable.\n• Ouvrir par double appui (mode pavé tactile) : touche deux fois une zone libre d\'un écran.\nLes deux s\'activent dans les paramètres, sous « Commandes ».</string>
+    <string name="help_pointer_quick_body">• Ouvrir en secouant : une brève secousse du téléphone ouvre le pointeur. La sensibilité de la secousse est réglable.\n• Ouvrir par double appui : touche deux fois une zone libre d\'un écran.\n• Ouvrir avec l\'icône du pointeur : l\'icône de souris dans la barre du haut. Désactivée, elle est masquée.\nLes trois s\'activent ou se désactivent dans les paramètres, sous « Commandes », plusieurs à la fois si tu veux. Elles fonctionnent avec chaque commande du pointeur.</string>
 
     <string name="help_edit_title">Modifier les écrans</string>
     <string name="help_edit_elly">C\'est toi qui décides où va chaque touche. Ici, je te montre l\'éditeur.</string>

@@ -76,6 +76,7 @@
     <string name="key_guide">Opas</string>
     <string name="key_input">Tulo</string>
     <string name="key_audio_track">Ääniraita</string>
+    <string name="key_subtitle">Tekstitys</string>
     <string name="key_keyboard">Näppäimistö</string>
     <string name="text_input_hint">Teksti TV:lle</string>
     <string name="text_input_close">Sulje näppäimistö</string>
@@ -111,6 +112,12 @@
     <string name="audio_track_hearing_impaired">Kuulovammaisille</string>
     <string name="audio_track_unknown">Tuntematon kieli</string>
     <string name="audio_track_selected">Käytössä</string>
+    <string name="subtitles_title">Valitse tekstitys</string>
+    <string name="subtitles_off">Pois</string>
+    <string name="subtitles_none">Tekstityksiä ei löytynyt. Niitä voi valita vain, kun TV näyttää TV-kanavaa.</string>
+    <string name="subtitles_no_root">Tekstityksen valinta vaatii root-oikeudet. Ota ne käyttöön kohdassa Asetukset → TV.</string>
+    <string name="subtitles_channel_changed">Kanava vaihtui. Valitse tekstitys uudelleen.</string>
+    <string name="subtitle_teletext">Teksti-TV</string>
     <string name="input_picker_empty">TV ei ilmoittanut yhtään tuloa.</string>
     <string name="input_picker_not_connected">Ei mitään liitettynä</string>
 
@@ -145,8 +152,16 @@
     <string name="settings_light_effect">Pitkät kesäillat</string>
     <string name="settings_light_effect_description">Matala valo vasemmalta ylhäältä: painikkeet luovat pitkiä varjoja ja tausta valaistuu siitä kulmasta.</string>
     <string name="settings_backup">Varmuuskopiointi ja palautus</string>
-    <string name="settings_backup_description">Näkymät ja ulkoasu tallennetaan erillisiin tiedostoihin, joten voit antaa näkymäsi toiselle ilman, että hän menettää oman ulkoasunsa. Palautettaessa Elly tunnistaa itse, millainen tiedosto on kyseessä.</string>
+    <string name="settings_backup_description">Näkymät ja ulkoasun voi varmuuskopioida erikseen tai yhdessä, joten voit antaa näkymäsi toiselle ilman, että hän menettää oman ulkoasunsa. Palautettaessa Elly näyttää, mitä tiedostossa on, ja sinä valitset, mitä otetaan käyttöön.</string>
     <string name="settings_backup_restore">Palauta tiedostosta</string>
+    <string name="settings_backup_save">Varmuuskopioi</string>
+    <string name="settings_backup_save_title">Mitä varmuuskopioidaan?</string>
+    <string name="settings_backup_part_screens">Näkymät</string>
+    <string name="settings_backup_part_screens_description">Aktiivisen TV:n järjestys, näytettävät näkymät ja omat asettelut.</string>
+    <string name="settings_backup_part_appearance">Ulkoasu</string>
+    <string name="settings_backup_part_appearance_description">Väripaletti, tausta, pyöristys ja valotehoste.</string>
+    <string name="settings_backup_restore_title">Mitä palautetaan?</string>
+    <string name="settings_backup_restore_message">Valitut osat korvataan tiedoston sisällöllä. Sovelluskuvakkeet ladataan uudelleen TV:stä; ohjelmaopas jää tyhjäksi, jos TV:ssä ei ole samannimistä suosikkilistaa.</string>
     <string name="settings_backup_appearance_file">Elly-Ulkoasu</string>
     <string name="settings_backup_restore_confirm">Korvaa</string>
     <string name="settings_backup_saved">Varmuuskopio tallennettu.</string>
@@ -173,6 +188,9 @@
     <string name="settings_shake_sensitivity">Ravistuksen herkkyys</string>
     <string name="settings_double_tap_to_open">Avaa kaksoisnapautuksella</string>
     <string name="settings_double_tap_to_open_description">Avaa osoitin kaksoisnapauttamalla tyhjää kohtaa näytössä.</string>
+    <string name="settings_pointer_activation">Avaaminen</string>
+    <string name="settings_pointer_header_button">Avaa osoitinkuvakkeella</string>
+    <string name="settings_pointer_header_button_description">Näyttää hiirikuvakkeen yläpalkissa. Kun asetus on pois päältä, kuvake piilotetaan.</string>
     <string name="settings_touch_style_joystick">Ohjainsauva</string>
     <string name="settings_touch_style_joystick_description">Kuin analoginen sauva: mitä pidemmälle vedät, sitä nopeammin osoitin liikkuu.</string>
     <string name="status_connected">Yhdistetty TV:hen</string>
@@ -344,7 +362,7 @@
     <string name="onboarding_pointer_motion">Liike: osoitin seuraa puhelinta. Pidä sitä kuin kaukosäädintä tai pystyssä edessäsi ja liikuta sitä. Iso OK-painike klikkaa, vieritä pyyhkäisemällä vieritysalueella.</string>
     <string name="onboarding_pointer_touch">Kosketuslevy: liikuta osoitinta pyyhkäisemällä alueella, napauta klikataksesi. Ohjainsauvana: mitä pidemmälle vedät, sitä nopeammin se liikkuu.</string>
     <string name="onboarding_pointer_close">Sulje se oikean yläkulman X:llä, takaisin-eleellä tai se sulkeutuu itsestään 5 sekunnin käyttämättömyyden jälkeen.</string>
-    <string name="onboarding_pointer_quick">Avaa se vielä nopeammin ravistamalla puhelinta (liike) tai kaksoisnapauttamalla tyhjää kohtaa (kosketuslevy), jos se on otettu käyttöön Ohjaus-välilehdellä.</string>
+    <string name="onboarding_pointer_quick">Avaa se vielä nopeammin ravistamalla puhelinta tai kaksoisnapauttamalla tyhjää kohtaa, jos se on otettu käyttöön Ohjaus-välilehdellä.</string>
 
     <string name="onboarding_done_title">Siinä kaikki!</string>
     <string name="onboarding_done_text">Hauskoja hetkiä TV:n parissa! Jos haluat tarkistaa jotain, löydät minut milloin vain kuvani takaa oikeasta yläkulmasta.</string>
@@ -439,7 +457,7 @@
     <string name="help_pointer_okpos_title">OK-painike ylhäällä tai alhaalla</string>
     <string name="help_pointer_okpos_body">Kosketuslevytilassa OK-painike on alhaalla (oletus) tai ylhäällä – sen mukaan, kumpi sopii paremmin tapaasi pitää puhelinta.</string>
     <string name="help_pointer_quick_title">Nopeampi avaaminen</string>
-    <string name="help_pointer_quick_body">• Avaa ravistamalla (liiketila): lyhyt ravistus avaa osoittimen. Ravistuksen herkkyyttä voi säätää.\n• Avaa kaksoisnapautuksella (kosketuslevytila): napauta kahdesti tyhjää kohtaa näkymässä.\nMolemmat otetaan käyttöön asetusten ”Ohjaus”-välilehdellä.</string>
+    <string name="help_pointer_quick_body">• Avaa ravistamalla: lyhyt ravistus avaa osoittimen. Ravistuksen herkkyyttä voi säätää.\n• Avaa kaksoisnapautuksella: napauta kahdesti tyhjää kohtaa näkymässä.\n• Avaa osoitinkuvakkeella: hiirikuvake yläpalkissa. Kun asetus on pois päältä, kuvake piilotetaan.\nKaikki kolme otetaan käyttöön tai pois asetusten ”Ohjaus”-välilehdellä, myös useampi kerralla. Ne toimivat kaikilla osoittimen ohjaustavoilla.</string>
 
     <string name="help_edit_title">Näkymien muokkaaminen</string>
     <string name="help_edit_elly">Sinä päätät, mikä painike menee minnekin. Tässä esittelen muokkaimen.</string>

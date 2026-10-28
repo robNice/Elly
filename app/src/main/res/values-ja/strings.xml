@@ -77,6 +77,7 @@
     <string name="key_guide">番組表</string>
     <string name="key_input">入力切替</string>
     <string name="key_audio_track">音声切替</string>
+    <string name="key_subtitle">字幕</string>
     <string name="key_keyboard">キーボード</string>
     <string name="text_input_hint">テレビに送るテキスト</string>
     <string name="text_input_close">キーボードを閉じる</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">聴覚障害者向け</string>
     <string name="audio_track_unknown">不明な言語</string>
     <string name="audio_track_selected">選択中</string>
+    <string name="subtitles_title">字幕を選択</string>
+    <string name="subtitles_off">オフ</string>
+    <string name="subtitles_none">字幕が見つかりません。テレビで放送を見ているときだけ選べます。</string>
+    <string name="subtitles_no_root">字幕の選択には root 化が必要です。設定 → テレビで設定してください。</string>
+    <string name="subtitles_channel_changed">チャンネルが切り替わりました。もう一度字幕を選んでください。</string>
+    <string name="subtitle_teletext">文字放送</string>
     <string name="input_picker_empty">テレビから入力が報告されませんでした。</string>
     <string name="input_picker_not_connected">未接続</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">夏の長い夕暮れ</string>
     <string name="settings_light_effect_description">左上から低い光が差し込みます。キーは長い影を落とし、背景はその角から照らされます。</string>
     <string name="settings_backup">バックアップと復元</string>
-    <string name="settings_backup_description">スクリーンと外観は別々のファイルに保存されるため、相手の外観を変えずにスクリーンだけを渡せます。復元時には、Elly がファイルの種類を自動で判別します。</string>
+    <string name="settings_backup_description">スクリーンと外観は別々にも一緒にもバックアップできるため、相手の外観を変えずにスクリーンだけを渡せます。復元時には Elly がファイルの中身を表示し、取り込む項目を選べます。</string>
     <string name="settings_backup_restore">ファイルから復元</string>
+    <string name="settings_backup_save">バックアップ</string>
+    <string name="settings_backup_save_title">何をバックアップしますか？</string>
+    <string name="settings_backup_part_screens">スクリーン</string>
+    <string name="settings_backup_part_screens_description">使用中のテレビの並び順、表示するスクリーン、独自のレイアウト。</string>
+    <string name="settings_backup_part_appearance">外観</string>
+    <string name="settings_backup_part_appearance_description">カラーパレット、背景、角の丸み、光の効果。</string>
+    <string name="settings_backup_restore_title">何を復元しますか？</string>
+    <string name="settings_backup_restore_message">選んだ項目がファイルの内容に置き換わります。アプリのアイコンはテレビから再読み込みされます。テレビに同じ名前のお気に入りリストがない場合、番組表は空のままになります。</string>
     <string name="settings_backup_appearance_file">Elly-外観</string>
     <string name="settings_backup_restore_confirm">置き換える</string>
     <string name="settings_backup_saved">バックアップを保存しました。</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">振る感度</string>
     <string name="settings_double_tap_to_open">ダブルタップで開く</string>
     <string name="settings_double_tap_to_open_description">スクリーンの空いている場所をダブルタップするとポインターが開きます。</string>
+    <string name="settings_pointer_activation">開き方</string>
+    <string name="settings_pointer_header_button">ポインターアイコンで開く</string>
+    <string name="settings_pointer_header_button_description">上部バーにマウスアイコンを表示します。オフにするとアイコンは非表示になります。</string>
     <string name="settings_touch_style_joystick">ジョイスティック</string>
     <string name="settings_touch_style_joystick_description">アナログスティックのように、大きく引くほどポインターが速く動きます。</string>
     <string name="status_connected">テレビに接続中</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">モーション: ポインターがスマホの動きについてくるよ。リモコンみたいに持っても、目の前に立てて持ってもOK。大きな OK ボタンでクリック、スクロールエリアをスワイプしてスクロールしてね。</string>
     <string name="onboarding_pointer_touch">タッチパッド: エリアをスワイプしてポインターを動かし、タップでクリック。ジョイスティックなら、大きく引くほど速く動くよ。</string>
     <string name="onboarding_pointer_close">閉じるときは右上の X、戻るジェスチャー、または 5 秒間操作しないと自動で閉じるよ。</string>
-    <string name="onboarding_pointer_quick">「操作」で有効にすれば、スマホを振る（モーション）か、空いている場所をダブルタップ（タッチパッド）でもっと早く開けるよ。</string>
+    <string name="onboarding_pointer_quick">「操作」で有効にすれば、スマホを振るか、空いている場所をダブルタップしてもっと早く開けるよ。</string>
 
     <string name="onboarding_done_title">これでおしまい！</string>
     <string name="onboarding_done_text">テレビを楽しんでね。何か調べたいときは、いつでも右上のわたしの絵をタップしてね。</string>
@@ -440,7 +458,7 @@
     <string name="help_pointer_okpos_title">OK ボタンを上または下に</string>
     <string name="help_pointer_okpos_body">タッチパッドモードでは、OK ボタンは下（初期設定）または上に配置されます。スマホの持ち方に合わせて選んでください。</string>
     <string name="help_pointer_quick_title">もっと早く開く</string>
-    <string name="help_pointer_quick_body">• 振って開く（モーションモード）: スマホを軽く振るとポインターが開きます。振る感度は調整できます。\n• ダブルタップで開く（タッチパッドモード）: スクリーンの空いている場所を 2 回タップします。\nどちらも設定の「操作」で有効にします。</string>
+    <string name="help_pointer_quick_body">• 振って開く: スマホを軽く振るとポインターが開きます。振る感度は調整できます。\n• ダブルタップで開く: スクリーンの空いている場所を 2 回タップします。\n• ポインターアイコンで開く: 上部バーのマウスアイコンです。オフにすると非表示になります。\n3 つとも設定の「操作」でオン・オフでき、複数を同時に使えます。どのポインター操作方法でも使えます。</string>
 
     <string name="help_edit_title">スクリーンの編集</string>
     <string name="help_edit_elly">どのキーをどこに置くかはあなた次第。エディターの使い方を教えるね。</string>

@@ -77,6 +77,7 @@
     <string name="key_guide">Dagskrá</string>
     <string name="key_input">Inntak</string>
     <string name="key_audio_track">Hljóðrás</string>
+    <string name="key_subtitle">Texti</string>
     <string name="key_keyboard">Lyklaborð</string>
     <string name="text_input_hint">Texti fyrir sjónvarpið</string>
     <string name="text_input_close">Loka lyklaborði</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Fyrir heyrnarskerta</string>
     <string name="audio_track_unknown">Óþekkt tungumál</string>
     <string name="audio_track_selected">Virk</string>
+    <string name="subtitles_title">Veldu texta</string>
+    <string name="subtitles_off">Slökkt</string>
+    <string name="subtitles_none">Enginn texti fannst. Aðeins er hægt að velja hann meðan sjónvarpið sýnir sjónvarpsstöð.</string>
+    <string name="subtitles_no_root">Val á texta krefst rótaraðgangs. Settu hann upp í Stillingar → Sjónvarp.</string>
+    <string name="subtitles_channel_changed">Skipt var um stöð. Veldu textann aftur.</string>
+    <string name="subtitle_teletext">Textavarp</string>
     <string name="input_picker_empty">Sjónvarpið gaf ekki upp nein inntök.</string>
     <string name="input_picker_not_connected">Ekkert tengt</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Löng sumarkvöld</string>
     <string name="settings_light_effect_description">Lágt ljós ofan frá vinstri: hnapparnir varpa löngum skuggum og bakgrunnurinn lýsist upp frá því horni.</string>
     <string name="settings_backup">Afrita og endurheimta</string>
-    <string name="settings_backup_description">Síður og útlit eru vistuð í aðskildum skrám, svo þú getur deilt síðunum þínum án þess að hinn aðilinn tapi sínu eigin útliti. Við endurheimt þekkir Elly sjálf hvers konar skrá þetta er.</string>
+    <string name="settings_backup_description">Þú getur afritað síður og útlit hvort fyrir sig eða saman, svo þú getur deilt síðunum þínum án þess að hinn aðilinn tapi sínu eigin útliti. Við endurheimt sýnir Elly hvað er í skránni og þú velur hvað er tekið upp.</string>
     <string name="settings_backup_restore">Endurheimta úr skrá</string>
+    <string name="settings_backup_save">Afrita</string>
+    <string name="settings_backup_save_title">Hvað á að afrita?</string>
+    <string name="settings_backup_part_screens">Síður</string>
+    <string name="settings_backup_part_screens_description">Röð, sýndar síður og eigin uppsetningar virka sjónvarpsins.</string>
+    <string name="settings_backup_part_appearance">Útlit</string>
+    <string name="settings_backup_part_appearance_description">Litaspjald, bakgrunnur, rúnnun og ljósáhrif.</string>
+    <string name="settings_backup_restore_title">Hvað á að endurheimta?</string>
+    <string name="settings_backup_restore_message">Völdum hlutum er skipt út fyrir það sem er í skránni. Forritatákn eru sótt aftur úr sjónvarpinu; dagskrárvísir helst tómur ef sjónvarpið er ekki með eftirlætislista með þessu nafni.</string>
     <string name="settings_backup_appearance_file">Elly-Utlit</string>
     <string name="settings_backup_restore_confirm">Skipta út</string>
     <string name="settings_backup_saved">Afrit vistað.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Hristinæmni</string>
     <string name="settings_double_tap_to_open">Opna með tvípikki</string>
     <string name="settings_double_tap_to_open_description">Ýttu tvisvar á autt svæði á skjánum til að opna bendilinn.</string>
+    <string name="settings_pointer_activation">Opnun</string>
+    <string name="settings_pointer_header_button">Opna með bendiltákninu</string>
+    <string name="settings_pointer_header_button_description">Sýnir músartáknið í efstu stikunni. Ef slökkt er á þessu er táknið falið.</string>
     <string name="settings_touch_style_joystick">Stýripinni</string>
     <string name="settings_touch_style_joystick_description">Eins og hliðræn stýristöng: því lengra sem þú dregur, því hraðar fer bendillinn.</string>
     <string name="status_connected">Tengt við sjónvarpið</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Hreyfing: bendillinn fylgir símanum. Haltu á honum eins og fjarstýringu eða uppréttum fyrir framan þig og hreyfðu hann. Stóri OK-hnappurinn smellir, strjúktu á skrunsvæðinu til að skruna.</string>
     <string name="onboarding_pointer_touch">Snertiflötur: strjúktu yfir svæðið til að færa bendilinn, ýttu til að smella. Sem stýripinni: því lengra sem þú dregur, því hraðar fer hann.</string>
     <string name="onboarding_pointer_close">Lokaðu honum með X efst til hægri, með til-baka-bendingunni eða sjálfkrafa eftir 5 sekúndur án virkni.</string>
-    <string name="onboarding_pointer_quick">Opnaðu hann enn hraðar með því að hrista símann (hreyfing) eða ýta tvisvar á autt svæði (snertiflötur), ef það er virkt undir Stýring.</string>
+    <string name="onboarding_pointer_quick">Opnaðu hann enn hraðar með því að hrista símann eða ýta tvisvar á autt svæði, ef það er virkt undir Stýring.</string>
 
     <string name="onboarding_done_title">Þá er það komið!</string>
     <string name="onboarding_done_text">Góða skemmtun með sjónvarpinu. Ef þú vilt fletta einhverju upp finnurðu mig alltaf á bak við myndina mína efst til hægri.</string>
@@ -441,7 +459,7 @@
     <string name="help_pointer_okpos_title">OK-hnappur efst eða neðst</string>
     <string name="help_pointer_okpos_body">Í snertiflatarham er OK-hnappurinn neðst (sjálfgefið) eða efst – eftir því hvað hentar því hvernig þú heldur á símanum.</string>
     <string name="help_pointer_quick_title">Opnað hraðar</string>
-    <string name="help_pointer_quick_body">• Opna með því að hrista (hreyfihamur): stutt hrist á símanum opnar bendilinn. Hægt er að stilla hristinæmnina.\n• Opna með tvípikki (snertiflatarhamur): ýttu tvisvar á autt svæði á síðu.\nHvort tveggja er virkjað í stillingunum undir „Stýring“.</string>
+    <string name="help_pointer_quick_body">• Opna með því að hrista: stutt hrist á símanum opnar bendilinn. Hægt er að stilla hristinæmnina.\n• Opna með tvípikki: ýttu tvisvar á autt svæði á síðu.\n• Opna með bendiltákninu: músartáknið í efstu stikunni. Ef slökkt er á því er það falið.\nKveikt og slökkt er á öllum þremur í stillingunum undir „Stýring“, líka fleirum í einu. Þau virka með allri stýringu bendils.</string>
 
     <string name="help_edit_title">Síðum breytt</string>
     <string name="help_edit_elly">Þú ræður hvaða hnappar fara hvert. Hér sýni ég þér ritilinn.</string>

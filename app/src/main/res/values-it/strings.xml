@@ -77,6 +77,7 @@
     <string name="key_guide">Guida</string>
     <string name="key_input">Ingresso</string>
     <string name="key_audio_track">Traccia audio</string>
+    <string name="key_subtitle">Sottotitoli</string>
     <string name="key_keyboard">Tastiera</string>
     <string name="text_input_hint">Testo per la TV</string>
     <string name="text_input_close">Chiudi tastiera</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Per non udenti</string>
     <string name="audio_track_unknown">Lingua sconosciuta</string>
     <string name="audio_track_selected">Attiva</string>
+    <string name="subtitles_title">Scegli i sottotitoli</string>
+    <string name="subtitles_off">Disattivati</string>
+    <string name="subtitles_none">Nessun sottotitolo trovato. Puoi sceglierli solo mentre la TV mostra un canale TV.</string>
+    <string name="subtitles_no_root">Per scegliere i sottotitoli serve l\'accesso root. Configuralo in Impostazioni → TV.</string>
+    <string name="subtitles_channel_changed">Il canale è cambiato. Scegli di nuovo i sottotitoli.</string>
+    <string name="subtitle_teletext">Televideo</string>
     <string name="input_picker_empty">La TV non ha segnalato nessun ingresso.</string>
     <string name="input_picker_not_connected">Niente collegato</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Lunghe sere d\'estate</string>
     <string name="settings_light_effect_description">Luce radente dall\'alto a sinistra: i tasti proiettano ombre lunghe e lo sfondo è illuminato da quell\'angolo.</string>
     <string name="settings_backup">Backup e ripristino</string>
-    <string name="settings_backup_description">Schermate e aspetto vengono salvati in file separati, così puoi passare le tue schermate senza che l\'altra persona perda il proprio aspetto. Durante il ripristino Elly riconosce da sola di che tipo di file si tratta.</string>
+    <string name="settings_backup_description">Puoi salvare schermate e aspetto separatamente o insieme, così passi le tue schermate senza che l\'altra persona perda il proprio aspetto. Durante il ripristino Elly mostra cosa contiene il file e tu scegli cosa applicare.</string>
     <string name="settings_backup_restore">Ripristina da file</string>
+    <string name="settings_backup_save">Backup</string>
+    <string name="settings_backup_save_title">Cosa salvare?</string>
+    <string name="settings_backup_part_screens">Schermate</string>
+    <string name="settings_backup_part_screens_description">Ordine, schermate visibili e layout personali della TV attiva.</string>
+    <string name="settings_backup_part_appearance">Aspetto</string>
+    <string name="settings_backup_part_appearance_description">Tavolozza colori, sfondo, arrotondamento ed effetto luce.</string>
+    <string name="settings_backup_restore_title">Cosa ripristinare?</string>
+    <string name="settings_backup_restore_message">Le parti scelte vengono sostituite da quelle del file. Le icone delle app vengono ricaricate dalla TV; una guida programmi resta vuota se la TV non ha un elenco dei preferiti con quel nome.</string>
     <string name="settings_backup_appearance_file">Elly-Aspetto</string>
     <string name="settings_backup_restore_confirm">Sostituisci</string>
     <string name="settings_backup_saved">Backup salvato.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Sensibilità allo scuotimento</string>
     <string name="settings_double_tap_to_open">Apri con doppio tocco</string>
     <string name="settings_double_tap_to_open_description">Tocca due volte un punto libero dello schermo per aprire il puntatore.</string>
+    <string name="settings_pointer_activation">Apertura</string>
+    <string name="settings_pointer_header_button">Apri con l\'icona del puntatore</string>
+    <string name="settings_pointer_header_button_description">Mostra l\'icona del mouse nella barra in alto. Se disattivata, l\'icona è nascosta.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Come una levetta analogica: più tiri, più veloce si muove il puntatore.</string>
     <string name="status_connected">Connesso alla TV</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Movimento: il puntatore segue il telefono. Tienilo come un telecomando o in verticale davanti a te e muovilo. Il grande pulsante OK fa clic; scorri nell\'area di scorrimento per scorrere.</string>
     <string name="onboarding_pointer_touch">Touchpad: scorri sull\'area per muovere il puntatore, tocca per fare clic. Come joystick: più trascini, più veloce si muove.</string>
     <string name="onboarding_pointer_close">Chiudilo con la X in alto a destra, con il gesto Indietro, oppure si chiude da solo dopo 5 secondi di inattività.</string>
-    <string name="onboarding_pointer_quick">Aprilo ancora più in fretta scuotendo il telefono (movimento) o toccando due volte un punto libero (touchpad), se attivato in Controlli.</string>
+    <string name="onboarding_pointer_quick">Aprilo ancora più in fretta scuotendo il telefono o toccando due volte un punto libero, se attivato in Controlli.</string>
 
     <string name="onboarding_done_title">Fatto!</string>
     <string name="onboarding_done_text">Buon divertimento con la tua TV! Se vuoi consultare qualcosa, mi trovi sempre dietro la mia foto in alto a destra.</string>
@@ -441,7 +459,7 @@
     <string name="help_pointer_okpos_title">Pulsante OK in alto o in basso</string>
     <string name="help_pointer_okpos_body">In modalità touchpad il pulsante OK si trova in basso (predefinito) o in alto, come ti è più comodo in base a come tieni il telefono.</string>
     <string name="help_pointer_quick_title">Aprirlo più in fretta</string>
-    <string name="help_pointer_quick_body">• Apri scuotendo (modalità movimento): una breve scossa al telefono apre il puntatore. La sensibilità allo scuotimento è regolabile.\n• Apri con doppio tocco (modalità touchpad): tocca due volte un punto libero di una schermata.\nEntrambe si attivano nelle impostazioni, in «Controlli».</string>
+    <string name="help_pointer_quick_body">• Apri scuotendo: una breve scossa al telefono apre il puntatore. La sensibilità allo scuotimento è regolabile.\n• Apri con doppio tocco: tocca due volte un punto libero di una schermata.\n• Apri con l\'icona del puntatore: l\'icona del mouse nella barra in alto. Se disattivata, è nascosta.\nTutte e tre si attivano o disattivano nelle impostazioni, in «Controlli», anche più di una insieme. Funzionano con ogni controllo del puntatore.</string>
 
     <string name="help_edit_title">Modificare le schermate</string>
     <string name="help_edit_elly">Decidi tu quali tasti mettere e dove. Qui ti mostro l\'editor.</string>

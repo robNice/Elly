@@ -77,6 +77,7 @@
     <string name="key_guide">Телегід</string>
     <string name="key_input">Вхід</string>
     <string name="key_audio_track">Звукова доріжка</string>
+    <string name="key_subtitle">Субтитри</string>
     <string name="key_keyboard">Клавіатура</string>
     <string name="text_input_hint">Текст для ТБ</string>
     <string name="text_input_close">Закрити клавіатуру</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Для людей з вадами слуху</string>
     <string name="audio_track_unknown">Невідома мова</string>
     <string name="audio_track_selected">Активна</string>
+    <string name="subtitles_title">Вибір субтитрів</string>
+    <string name="subtitles_off">Вимк.</string>
+    <string name="subtitles_none">Субтитрів не знайдено. Вибрати їх можна, лише поки телевізор показує телеканал.</string>
+    <string name="subtitles_no_root">Для вибору субтитрів потрібен root-доступ. Налаштуй його в Налаштування → ТБ.</string>
+    <string name="subtitles_channel_changed">Канал перемкнено. Вибери субтитри знову.</string>
+    <string name="subtitle_teletext">Телетекст</string>
     <string name="input_picker_empty">Телевізор не повідомив жодного входу.</string>
     <string name="input_picker_not_connected">Нічого не підключено</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Довгі літні вечори</string>
     <string name="settings_light_effect_description">Низьке світло зліва згори: кнопки відкидають довгі тіні, а фон підсвічено з цього кута.</string>
     <string name="settings_backup">Резервна копія та відновлення</string>
-    <string name="settings_backup_description">Екрани й вигляд зберігаються в окремі файли, тож ти можеш передати свої екрани, а інша людина не втратить свій власний вигляд. Під час відновлення Elly сама визначає, що це за файл.</string>
+    <string name="settings_backup_description">Екрани й вигляд можна зберігати окремо або разом, тож ти можеш передати свої екрани, а інша людина не втратить свій власний вигляд. Під час відновлення Elly показує, що є у файлі, а ти вибираєш, що перенести.</string>
     <string name="settings_backup_restore">Відновити з файлу</string>
+    <string name="settings_backup_save">Зберегти</string>
+    <string name="settings_backup_save_title">Що зберегти?</string>
+    <string name="settings_backup_part_screens">Екрани</string>
+    <string name="settings_backup_part_screens_description">Порядок, показувані екрани та власні розкладки активного телевізора.</string>
+    <string name="settings_backup_part_appearance">Вигляд</string>
+    <string name="settings_backup_part_appearance_description">Кольорова палітра, фон, заокруглення та світловий ефект.</string>
+    <string name="settings_backup_restore_title">Що відновити?</string>
+    <string name="settings_backup_restore_message">Вибрані частини буде замінено вмістом файлу. Значки застосунків знову завантажаться з телевізора; телепрограма залишиться порожньою, якщо на телевізорі немає списку обраного з такою назвою.</string>
     <string name="settings_backup_appearance_file">Elly-Вигляд</string>
     <string name="settings_backup_restore_confirm">Замінити</string>
     <string name="settings_backup_saved">Резервну копію збережено.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Чутливість струшування</string>
     <string name="settings_double_tap_to_open">Відкривати подвійним дотиком</string>
     <string name="settings_double_tap_to_open_description">Двічі торкнися вільного місця на екрані, щоб відкрити вказівник.</string>
+    <string name="settings_pointer_activation">Відкриття</string>
+    <string name="settings_pointer_header_button">Відкривати значком вказівника</string>
+    <string name="settings_pointer_header_button_description">Показує значок миші на верхній панелі. Якщо вимкнено, значок приховано.</string>
     <string name="settings_touch_style_joystick">Джойстик</string>
     <string name="settings_touch_style_joystick_description">Як аналоговий стік: що далі тягнеш, то швидше рухається вказівник.</string>
     <string name="status_connected">Підключено до ТБ</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Рух: вказівник стежить за телефоном. Тримай його як пульт або вертикально перед собою й рухай. Велика кнопка OK клацає, а щоб прокрутити, веди пальцем по ділянці прокручування.</string>
     <string name="onboarding_pointer_touch">Тачпад: веди пальцем по ділянці, щоб рухати вказівник, торкнися, щоб клацнути. У режимі джойстика: що далі тягнеш, то швидше.</string>
     <string name="onboarding_pointer_close">Закрити його можна хрестиком праворуч угорі, жестом «назад», або він закриється сам після 5 секунд бездіяльності.</string>
-    <string name="onboarding_pointer_quick">Ще швидше відкрити його можна, струснувши телефон (рух) або двічі торкнувшись вільного місця (тачпад), якщо це увімкнено на вкладці «Керування».</string>
+    <string name="onboarding_pointer_quick">Ще швидше відкрити його можна, струснувши телефон або двічі торкнувшись вільного місця, якщо це увімкнено на вкладці «Керування».</string>
 
     <string name="onboarding_done_title">Ось і все!</string>
     <string name="onboarding_done_text">Приємного перегляду! Якщо захочеш щось перечитати, я завжди чекаю на тебе за своєю картинкою праворуч угорі.</string>
@@ -443,7 +461,7 @@
     <string name="help_pointer_okpos_title">Кнопка OK згори чи знизу</string>
     <string name="help_pointer_okpos_body">У режимі тачпада кнопка OK розташована знизу (за замовчуванням) або згори – як тобі зручніше тримати телефон.</string>
     <string name="help_pointer_quick_title">Відкрити швидше</string>
-    <string name="help_pointer_quick_body">• Відкривати струшуванням (режим руху): коротке струшування телефона відкриває вказівник. Чутливість струшування можна налаштувати.\n• Відкривати подвійним дотиком (режим тачпада): двічі торкнися вільного місця на екрані.\nОбидві функції вмикаються в налаштуваннях на вкладці «Керування».</string>
+    <string name="help_pointer_quick_body">• Відкривати струшуванням: коротке струшування телефона відкриває вказівник. Чутливість струшування можна налаштувати.\n• Відкривати подвійним дотиком: двічі торкнися вільного місця на екрані.\n• Відкривати значком вказівника: значок миші на верхній панелі. Якщо вимкнено, його приховано.\nУсі три вмикаються й вимикаються в налаштуваннях на вкладці «Керування», можна й кілька одночасно. Вони працюють за будь-якого керування вказівником.</string>
 
     <string name="help_edit_title">Редагування екранів</string>
     <string name="help_edit_elly">Ти вирішуєш, де яка кнопка. Зараз покажу тобі редактор.</string>

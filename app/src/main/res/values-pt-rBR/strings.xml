@@ -77,6 +77,7 @@
     <string name="key_guide">Guia</string>
     <string name="key_input">Entrada</string>
     <string name="key_audio_track">Faixa de áudio</string>
+    <string name="key_subtitle">Legendas</string>
     <string name="key_keyboard">Teclado</string>
     <string name="text_input_hint">Texto para a TV</string>
     <string name="text_input_close">Fechar teclado</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Para deficientes auditivos</string>
     <string name="audio_track_unknown">Idioma desconhecido</string>
     <string name="audio_track_selected">Ativa</string>
+    <string name="subtitles_title">Escolher legendas</string>
+    <string name="subtitles_off">Desativadas</string>
+    <string name="subtitles_none">Nenhuma legenda encontrada. Você só pode escolhê-las enquanto a TV mostra um canal de TV.</string>
+    <string name="subtitles_no_root">Para escolher as legendas é preciso acesso root. Configure em Configurações → TV.</string>
+    <string name="subtitles_channel_changed">O canal foi trocado. Escolha as legendas de novo.</string>
+    <string name="subtitle_teletext">Teletexto</string>
     <string name="input_picker_empty">A TV não informou nenhuma entrada.</string>
     <string name="input_picker_not_connected">Nada conectado</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Longas tardes de verão</string>
     <string name="settings_light_effect_description">Luz baixa vinda do canto superior esquerdo: os botões projetam sombras longas e o fundo é iluminado a partir desse canto.</string>
     <string name="settings_backup">Backup e restauração</string>
-    <string name="settings_backup_description">Telas e aparência são salvas em arquivos separados, assim você pode passar suas telas para alguém sem que a pessoa perca a própria aparência. Ao restaurar, a Elly reconhece sozinha que tipo de arquivo é.</string>
+    <string name="settings_backup_description">Você pode fazer backup das telas e da aparência separadamente ou juntas, assim passa suas telas para alguém sem que a pessoa perca a própria aparência. Ao restaurar, a Elly mostra o que o arquivo contém e você escolhe o que aplicar.</string>
     <string name="settings_backup_restore">Restaurar de arquivo</string>
+    <string name="settings_backup_save">Fazer backup</string>
+    <string name="settings_backup_save_title">O que salvar?</string>
+    <string name="settings_backup_part_screens">Telas</string>
+    <string name="settings_backup_part_screens_description">Ordem, telas exibidas e layouts próprios da TV ativa.</string>
+    <string name="settings_backup_part_appearance">Aparência</string>
+    <string name="settings_backup_part_appearance_description">Paleta de cores, fundo, arredondamento e efeito de luz.</string>
+    <string name="settings_backup_restore_title">O que restaurar?</string>
+    <string name="settings_backup_restore_message">As partes escolhidas são substituídas pelas do arquivo. Os ícones dos apps são carregados de novo da TV; um guia de programação fica vazio se a TV não tiver uma lista de favoritos com esse nome.</string>
     <string name="settings_backup_appearance_file">Elly-Aparencia</string>
     <string name="settings_backup_restore_confirm">Substituir</string>
     <string name="settings_backup_saved">Backup salvo.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Sensibilidade ao chacoalhar</string>
     <string name="settings_double_tap_to_open">Abrir com toque duplo</string>
     <string name="settings_double_tap_to_open_description">Toque duas vezes em um espaço vazio da tela para abrir o ponteiro.</string>
+    <string name="settings_pointer_activation">Abertura</string>
+    <string name="settings_pointer_header_button">Abrir com o ícone do ponteiro</string>
+    <string name="settings_pointer_header_button_description">Mostra o ícone do mouse na barra superior. Desativado, o ícone fica oculto.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Como uma alavanca analógica: quanto mais você puxar, mais rápido o ponteiro se move.</string>
     <string name="status_connected">Conectado à TV</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Movimento: o ponteiro acompanha seu celular. Segure-o como um controle remoto ou em pé na sua frente e mova-o. O botão OK grande clica; deslize na área de rolagem para rolar.</string>
     <string name="onboarding_pointer_touch">Touchpad: deslize na área para mover o ponteiro, toque para clicar. Como joystick: quanto mais você arrastar, mais rápido ele se move.</string>
     <string name="onboarding_pointer_close">Feche com o X no canto superior direito, com o gesto de voltar ou automaticamente depois de 5 segundos sem atividade.</string>
-    <string name="onboarding_pointer_quick">Abra ainda mais rápido chacoalhando o celular (movimento) ou tocando duas vezes em um espaço livre (touchpad), se estiver ativado em Controle.</string>
+    <string name="onboarding_pointer_quick">Abra ainda mais rápido chacoalhando o celular ou tocando duas vezes em um espaço livre, se estiver ativado em Controle.</string>
 
     <string name="onboarding_done_title">Pronto!</string>
     <string name="onboarding_done_text">Divirta-se com sua TV. Se quiser consultar alguma coisa, é só me procurar atrás da minha foto, no canto superior direito.</string>
@@ -441,7 +459,7 @@
     <string name="help_pointer_okpos_title">Botão OK em cima ou embaixo</string>
     <string name="help_pointer_okpos_body">No modo touchpad, o botão OK fica embaixo (padrão) ou em cima – do jeito que combinar com a forma como você segura o celular.</string>
     <string name="help_pointer_quick_title">Abrir mais rápido</string>
-    <string name="help_pointer_quick_body">• Abrir ao chacoalhar (modo movimento): uma chacoalhada rápida no celular abre o ponteiro. A sensibilidade ao chacoalhar pode ser ajustada.\n• Abrir com toque duplo (modo touchpad): toque duas vezes em um espaço livre de uma tela.\nAs duas opções são ativadas nas configurações, em “Controle”.</string>
+    <string name="help_pointer_quick_body">• Abrir ao chacoalhar: uma chacoalhada rápida no celular abre o ponteiro. A sensibilidade ao chacoalhar pode ser ajustada.\n• Abrir com toque duplo: toque duas vezes em um espaço livre de uma tela.\n• Abrir com o ícone do ponteiro: o ícone do mouse na barra superior. Desativado, ele fica oculto.\nAs três opções são ativadas ou desativadas nas configurações, em “Controle”, inclusive várias ao mesmo tempo. Funcionam com qualquer controle do ponteiro.</string>
 
     <string name="help_edit_title">Editar telas</string>
     <string name="help_edit_elly">Você decide qual botão vai onde. Aqui eu mostro o editor.</string>

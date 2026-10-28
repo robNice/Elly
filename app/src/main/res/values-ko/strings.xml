@@ -77,6 +77,7 @@
     <string name="key_guide">편성표</string>
     <string name="key_input">외부입력</string>
     <string name="key_audio_track">음성 트랙</string>
+    <string name="key_subtitle">자막</string>
     <string name="key_keyboard">키보드</string>
     <string name="text_input_hint">TV로 보낼 텍스트</string>
     <string name="text_input_close">키보드 닫기</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">청각장애인용</string>
     <string name="audio_track_unknown">알 수 없는 언어</string>
     <string name="audio_track_selected">사용 중</string>
+    <string name="subtitles_title">자막 선택</string>
+    <string name="subtitles_off">끄기</string>
+    <string name="subtitles_none">자막을 찾지 못했어요. TV에서 방송 채널을 보고 있을 때만 선택할 수 있어요.</string>
+    <string name="subtitles_no_root">자막을 선택하려면 루트 권한이 필요해요. 설정 → TV에서 설정하세요.</string>
+    <string name="subtitles_channel_changed">채널이 바뀌었어요. 자막을 다시 선택하세요.</string>
+    <string name="subtitle_teletext">텔레텍스트</string>
     <string name="input_picker_empty">TV에서 입력 정보를 받지 못했어요.</string>
     <string name="input_picker_not_connected">연결된 기기 없음</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">긴 여름 저녁</string>
     <string name="settings_light_effect_description">왼쪽 위에서 낮은 빛이 비쳐요. 버튼에 긴 그림자가 생기고 배경은 그 모서리에서부터 밝아져요.</string>
     <string name="settings_backup">백업 및 복원</string>
-    <string name="settings_backup_description">화면과 디자인은 별도의 파일로 저장돼요. 그래서 상대방의 디자인을 바꾸지 않고 화면만 전달할 수 있어요. 복원할 때 Elly가 파일 종류를 스스로 알아봐요.</string>
+    <string name="settings_backup_description">화면과 디자인을 따로 또는 함께 백업할 수 있어요. 그래서 상대방의 디자인을 바꾸지 않고 화면만 전달할 수 있어요. 복원할 때 Elly가 파일에 무엇이 들어 있는지 보여 주고, 무엇을 가져올지 직접 고를 수 있어요.</string>
     <string name="settings_backup_restore">파일에서 복원</string>
+    <string name="settings_backup_save">백업</string>
+    <string name="settings_backup_save_title">무엇을 백업할까요?</string>
+    <string name="settings_backup_part_screens">화면</string>
+    <string name="settings_backup_part_screens_description">활성 TV의 순서, 표시할 화면, 직접 만든 레이아웃.</string>
+    <string name="settings_backup_part_appearance">디자인</string>
+    <string name="settings_backup_part_appearance_description">색상 팔레트, 배경, 모서리 둥글기, 빛 효과.</string>
+    <string name="settings_backup_restore_title">무엇을 복원할까요?</string>
+    <string name="settings_backup_restore_message">선택한 항목이 파일의 내용으로 바뀌어요. 앱 아이콘은 TV에서 다시 불러와요. TV에 같은 이름의 즐겨찾기 목록이 없으면 프로그램 가이드는 비어 있어요.</string>
     <string name="settings_backup_appearance_file">Elly-디자인</string>
     <string name="settings_backup_restore_confirm">바꾸기</string>
     <string name="settings_backup_saved">백업을 저장했어요.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">흔들기 감도</string>
     <string name="settings_double_tap_to_open">두 번 탭해서 열기</string>
     <string name="settings_double_tap_to_open_description">화면의 빈 곳을 두 번 탭하면 포인터가 열려요.</string>
+    <string name="settings_pointer_activation">여는 방법</string>
+    <string name="settings_pointer_header_button">포인터 아이콘으로 열기</string>
+    <string name="settings_pointer_header_button_description">상단 바에 마우스 아이콘을 표시해요. 끄면 아이콘이 숨겨져요.</string>
     <string name="settings_touch_style_joystick">조이스틱</string>
     <string name="settings_touch_style_joystick_description">아날로그 스틱처럼 멀리 당길수록 포인터가 빨리 움직여요.</string>
     <string name="status_connected">TV에 연결됨</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">모션: 포인터가 휴대폰을 따라 움직여요. 리모컨처럼 들거나 앞에 세워 들고 움직여 보세요. 큰 OK 버튼으로 클릭하고, 스크롤 영역을 스와이프하면 스크롤돼요.</string>
     <string name="onboarding_pointer_touch">터치패드: 영역을 스와이프해서 포인터를 움직이고, 탭하면 클릭해요. 조이스틱으로 쓰면 멀리 끌수록 빨리 움직여요.</string>
     <string name="onboarding_pointer_close">오른쪽 위의 X나 뒤로 가기 제스처로 닫을 수 있고, 5초 동안 아무것도 안 하면 자동으로 닫혀요.</string>
-    <string name="onboarding_pointer_quick">‘조작’에서 켜 두면 휴대폰을 흔들거나(모션) 빈 곳을 두 번 탭해서(터치패드) 더 빨리 열 수 있어요.</string>
+    <string name="onboarding_pointer_quick">‘조작’에서 켜 두면 휴대폰을 흔들거나 빈 곳을 두 번 탭해서 더 빨리 열 수 있어요.</string>
 
     <string name="onboarding_done_title">이게 다예요!</string>
     <string name="onboarding_done_text">TV 즐겁게 보세요! 궁금한 게 생기면 언제든 오른쪽 위의 제 그림을 눌러 주세요.</string>
@@ -440,7 +458,7 @@
     <string name="help_pointer_okpos_title">OK 버튼 위 또는 아래</string>
     <string name="help_pointer_okpos_body">터치패드 모드에서 OK 버튼은 아래(기본) 또는 위에 있어요. 휴대폰을 잡는 방식에 맞게 고르세요.</string>
     <string name="help_pointer_quick_title">더 빨리 열기</string>
-    <string name="help_pointer_quick_body">• 흔들어서 열기(모션 모드): 휴대폰을 살짝 흔들면 포인터가 열려요. 흔들기 감도는 조절할 수 있어요.\n• 두 번 탭해서 열기(터치패드 모드): 화면의 빈 곳을 두 번 탭하세요.\n둘 다 설정의 ‘조작’에서 켜요.</string>
+    <string name="help_pointer_quick_body">• 흔들어서 열기: 휴대폰을 살짝 흔들면 포인터가 열려요. 흔들기 감도는 조절할 수 있어요.\n• 두 번 탭해서 열기: 화면의 빈 곳을 두 번 탭하세요.\n• 포인터 아이콘으로 열기: 상단 바의 마우스 아이콘이에요. 끄면 숨겨져요.\n세 가지 모두 설정의 ‘조작’에서 켜고 끌 수 있고, 여러 개를 함께 쓸 수도 있어요. 모든 포인터 조작 방식에서 작동해요.</string>
 
     <string name="help_edit_title">화면 편집</string>
     <string name="help_edit_elly">어떤 버튼을 어디에 둘지는 당신 마음이에요. 편집기를 보여 줄게요.</string>

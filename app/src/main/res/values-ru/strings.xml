@@ -77,6 +77,7 @@
     <string name="key_guide">Телегид</string>
     <string name="key_input">Вход</string>
     <string name="key_audio_track">Звуковая дорожка</string>
+    <string name="key_subtitle">Субтитры</string>
     <string name="key_keyboard">Клавиатура</string>
     <string name="text_input_hint">Текст для ТВ</string>
     <string name="text_input_close">Закрыть клавиатуру</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Для слабослышащих</string>
     <string name="audio_track_unknown">Неизвестный язык</string>
     <string name="audio_track_selected">Активна</string>
+    <string name="subtitles_title">Выбор субтитров</string>
+    <string name="subtitles_off">Выкл.</string>
+    <string name="subtitles_none">Субтитры не найдены. Выбрать их можно, только пока телевизор показывает телеканал.</string>
+    <string name="subtitles_no_root">Для выбора субтитров нужен root-доступ. Настрой его в Настройки → ТВ.</string>
+    <string name="subtitles_channel_changed">Канал переключён. Выбери субтитры заново.</string>
+    <string name="subtitle_teletext">Телетекст</string>
     <string name="input_picker_empty">Телевизор не сообщил ни одного входа.</string>
     <string name="input_picker_not_connected">Ничего не подключено</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Долгие летние вечера</string>
     <string name="settings_light_effect_description">Низкий свет слева сверху: кнопки отбрасывают длинные тени, а фон подсвечен из этого угла.</string>
     <string name="settings_backup">Резервная копия и восстановление</string>
-    <string name="settings_backup_description">Экраны и оформление сохраняются в отдельные файлы, поэтому ты можешь передать свои экраны, а другой человек не потеряет своё оформление. При восстановлении Elly сама определяет, что это за файл.</string>
+    <string name="settings_backup_description">Экраны и оформление можно сохранять по отдельности или вместе, поэтому ты можешь передать свои экраны, а другой человек не потеряет своё оформление. При восстановлении Elly показывает, что есть в файле, а ты выбираешь, что перенести.</string>
     <string name="settings_backup_restore">Восстановить из файла</string>
+    <string name="settings_backup_save">Сохранить</string>
+    <string name="settings_backup_save_title">Что сохранить?</string>
+    <string name="settings_backup_part_screens">Экраны</string>
+    <string name="settings_backup_part_screens_description">Порядок, показываемые экраны и собственные раскладки активного телевизора.</string>
+    <string name="settings_backup_part_appearance">Оформление</string>
+    <string name="settings_backup_part_appearance_description">Цветовая палитра, фон, скругление и световой эффект.</string>
+    <string name="settings_backup_restore_title">Что восстановить?</string>
+    <string name="settings_backup_restore_message">Выбранные части будут заменены содержимым файла. Значки приложений снова загрузятся с телевизора; телепрограмма останется пустой, если на телевизоре нет списка избранного с таким названием.</string>
     <string name="settings_backup_appearance_file">Elly-Оформление</string>
     <string name="settings_backup_restore_confirm">Заменить</string>
     <string name="settings_backup_saved">Резервная копия сохранена.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Чувствительность встряхивания</string>
     <string name="settings_double_tap_to_open">Открывать двойным нажатием</string>
     <string name="settings_double_tap_to_open_description">Дважды нажми на свободное место экрана, чтобы открыть указатель.</string>
+    <string name="settings_pointer_activation">Открытие</string>
+    <string name="settings_pointer_header_button">Открывать значком указателя</string>
+    <string name="settings_pointer_header_button_description">Показывает значок мыши в верхней панели. Если выключено, значок скрыт.</string>
     <string name="settings_touch_style_joystick">Джойстик</string>
     <string name="settings_touch_style_joystick_description">Как аналоговый стик: чем дальше тянешь, тем быстрее движется указатель.</string>
     <string name="status_connected">Подключено к ТВ</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Движение: указатель следует за телефоном. Держи его как пульт или вертикально перед собой и двигай. Большая кнопка OK кликает, а для прокрутки веди пальцем по области прокрутки.</string>
     <string name="onboarding_pointer_touch">Тачпад: веди пальцем по области, чтобы двигать указатель, нажми для клика. В режиме джойстика: чем дальше тянешь, тем быстрее.</string>
     <string name="onboarding_pointer_close">Закрыть можно крестиком справа вверху, жестом «назад» или он закроется сам через 5 секунд бездействия.</string>
-    <string name="onboarding_pointer_quick">Ещё быстрее открыть его можно, встряхнув телефон (движение) или дважды нажав на свободное место (тачпад), если это включено на вкладке «Управление».</string>
+    <string name="onboarding_pointer_quick">Ещё быстрее открыть его можно, встряхнув телефон или дважды нажав на свободное место, если это включено на вкладке «Управление».</string>
 
     <string name="onboarding_done_title">Вот и всё!</string>
     <string name="onboarding_done_text">Приятного просмотра! Если захочешь что-то уточнить, я всегда жду тебя за своей картинкой справа вверху.</string>
@@ -443,7 +461,7 @@
     <string name="help_pointer_okpos_title">Кнопка OK сверху или снизу</string>
     <string name="help_pointer_okpos_body">В режиме тачпада кнопка OK находится снизу (по умолчанию) или сверху – как тебе удобнее держать телефон.</string>
     <string name="help_pointer_quick_title">Открыть быстрее</string>
-    <string name="help_pointer_quick_body">• Открывать встряхиванием (режим движения): короткое встряхивание телефона открывает указатель. Чувствительность встряхивания можно настроить.\n• Открывать двойным нажатием (режим тачпада): дважды нажми на свободное место экрана.\nОбе функции включаются в настройках на вкладке «Управление».</string>
+    <string name="help_pointer_quick_body">• Открывать встряхиванием: короткое встряхивание телефона открывает указатель. Чувствительность встряхивания можно настроить.\n• Открывать двойным нажатием: дважды нажми на свободное место экрана.\n• Открывать значком указателя: значок мыши в верхней панели. Если выключено, он скрыт.\nВсе три включаются и выключаются в настройках на вкладке «Управление», можно и несколько сразу. Они работают при любом управлении указателем.</string>
 
     <string name="help_edit_title">Редактирование экранов</string>
     <string name="help_edit_elly">Ты решаешь, где какая кнопка. Сейчас покажу тебе редактор.</string>

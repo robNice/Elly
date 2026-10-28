@@ -77,6 +77,7 @@
     <string name="key_guide">Οδηγός</string>
     <string name="key_input">Είσοδος</string>
     <string name="key_audio_track">Ηχητικό κομμάτι</string>
+    <string name="key_subtitle">Υπότιτλοι</string>
     <string name="key_keyboard">Πληκτρολόγιο</string>
     <string name="text_input_hint">Κείμενο για την τηλεόραση</string>
     <string name="text_input_close">Κλείσιμο πληκτρολογίου</string>
@@ -112,6 +113,12 @@
     <string name="audio_track_hearing_impaired">Για άτομα με προβλήματα ακοής</string>
     <string name="audio_track_unknown">Άγνωστη γλώσσα</string>
     <string name="audio_track_selected">Ενεργό</string>
+    <string name="subtitles_title">Επιλογή υποτίτλων</string>
+    <string name="subtitles_off">Ανενεργοί</string>
+    <string name="subtitles_none">Δεν βρέθηκαν υπότιτλοι. Μπορείς να τους επιλέξεις μόνο όταν η τηλεόραση δείχνει τηλεοπτικό κανάλι.</string>
+    <string name="subtitles_no_root">Η επιλογή υποτίτλων χρειάζεται πρόσβαση root. Ρύθμισέ την στις Ρυθμίσεις → Τηλεόραση.</string>
+    <string name="subtitles_channel_changed">Το κανάλι άλλαξε. Επίλεξε ξανά τους υπότιτλους.</string>
+    <string name="subtitle_teletext">Teletext</string>
     <string name="input_picker_empty">Η τηλεόραση δεν ανέφερε καμία είσοδο.</string>
     <string name="input_picker_not_connected">Τίποτα συνδεδεμένο</string>
 
@@ -146,8 +153,16 @@
     <string name="settings_light_effect">Μεγάλα καλοκαιρινά δειλινά</string>
     <string name="settings_light_effect_description">Χαμηλό φως από πάνω αριστερά: τα πλήκτρα ρίχνουν μακριές σκιές και το φόντο φωτίζεται από εκείνη τη γωνία.</string>
     <string name="settings_backup">Αντίγραφο ασφαλείας και επαναφορά</string>
-    <string name="settings_backup_description">Οι οθόνες και η εμφάνιση αποθηκεύονται σε ξεχωριστά αρχεία, ώστε να μπορείς να δώσεις τις οθόνες σου σε κάποιον χωρίς εκείνος να χάσει τη δική του εμφάνιση. Κατά την επαναφορά η Elly αναγνωρίζει μόνη της τι είδους αρχείο είναι.</string>
+    <string name="settings_backup_description">Μπορείς να αποθηκεύσεις τις οθόνες και την εμφάνιση χωριστά ή μαζί, ώστε να δώσεις τις οθόνες σου σε κάποιον χωρίς εκείνος να χάσει τη δική του εμφάνιση. Κατά την επαναφορά η Elly δείχνει τι περιέχει το αρχείο και εσύ επιλέγεις τι θα περάσει.</string>
     <string name="settings_backup_restore">Επαναφορά από αρχείο</string>
+    <string name="settings_backup_save">Αντίγραφο ασφαλείας</string>
+    <string name="settings_backup_save_title">Τι να αποθηκευτεί;</string>
+    <string name="settings_backup_part_screens">Οθόνες</string>
+    <string name="settings_backup_part_screens_description">Σειρά, εμφανιζόμενες οθόνες και δικές σου διατάξεις της ενεργής τηλεόρασης.</string>
+    <string name="settings_backup_part_appearance">Εμφάνιση</string>
+    <string name="settings_backup_part_appearance_description">Χρωματική παλέτα, φόντο, στρογγύλεμα και εφέ φωτός.</string>
+    <string name="settings_backup_restore_title">Τι να επαναφερθεί;</string>
+    <string name="settings_backup_restore_message">Τα επιλεγμένα μέρη αντικαθίστανται από αυτά του αρχείου. Τα εικονίδια εφαρμογών φορτώνονται ξανά από την τηλεόραση· ένας οδηγός προγράμματος μένει κενός αν η τηλεόραση δεν έχει λίστα αγαπημένων με αυτό το όνομα.</string>
     <string name="settings_backup_appearance_file">Elly-Εμφάνιση</string>
     <string name="settings_backup_restore_confirm">Αντικατάσταση</string>
     <string name="settings_backup_saved">Το αντίγραφο ασφαλείας αποθηκεύτηκε.</string>
@@ -174,6 +189,9 @@
     <string name="settings_shake_sensitivity">Ευαισθησία κουνήματος</string>
     <string name="settings_double_tap_to_open">Άνοιγμα με διπλό πάτημα</string>
     <string name="settings_double_tap_to_open_description">Πάτησε δύο φορές σε ένα κενό σημείο της οθόνης για να ανοίξει ο δείκτης.</string>
+    <string name="settings_pointer_activation">Ενεργοποίηση</string>
+    <string name="settings_pointer_header_button">Άνοιγμα με το εικονίδιο δείκτη</string>
+    <string name="settings_pointer_header_button_description">Δείχνει το εικονίδιο ποντικιού στην επάνω γραμμή. Όταν είναι ανενεργό, το εικονίδιο κρύβεται.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Σαν αναλογικός μοχλός: όσο πιο πολύ τραβάς, τόσο πιο γρήγορα κινείται ο δείκτης.</string>
     <string name="status_connected">Συνδέθηκε με την τηλεόραση</string>
@@ -345,7 +363,7 @@
     <string name="onboarding_pointer_motion">Κίνηση: ο δείκτης ακολουθεί το κινητό σου. Κράτησέ το σαν τηλεχειριστήριο ή όρθιο μπροστά σου και κούνησέ το. Το μεγάλο κουμπί OK κάνει κλικ, σύρε στην περιοχή κύλισης για κύλιση.</string>
     <string name="onboarding_pointer_touch">Touchpad: σύρε στην περιοχή για να μετακινήσεις τον δείκτη, πάτησε για κλικ. Ως joystick: όσο πιο πολύ σύρεις, τόσο πιο γρήγορα κινείται.</string>
     <string name="onboarding_pointer_close">Κλείσ’ τον με το X πάνω δεξιά, με τη χειρονομία επιστροφής ή αυτόματα μετά από 5 δευτερόλεπτα αδράνειας.</string>
-    <string name="onboarding_pointer_quick">Άνοιξέ τον ακόμα πιο γρήγορα κουνώντας το κινητό (κίνηση) ή πατώντας δύο φορές σε ένα κενό σημείο (touchpad), αν είναι ενεργοποιημένο στον Χειρισμό.</string>
+    <string name="onboarding_pointer_quick">Άνοιξέ τον ακόμα πιο γρήγορα κουνώντας το κινητό ή πατώντας δύο φορές σε ένα κενό σημείο, αν είναι ενεργοποιημένο στον Χειρισμό.</string>
 
     <string name="onboarding_done_title">Αυτό ήταν!</string>
     <string name="onboarding_done_text">Καλή διασκέδαση με την τηλεόρασή σου! Αν θέλεις να ψάξεις κάτι, θα με βρεις όποτε θέλεις πίσω από την εικόνα μου πάνω δεξιά.</string>
@@ -441,7 +459,7 @@
     <string name="help_pointer_okpos_title">Κουμπί OK πάνω ή κάτω</string>
     <string name="help_pointer_okpos_body">Στη λειτουργία touchpad το κουμπί OK βρίσκεται κάτω (προεπιλογή) ή πάνω – όπως ταιριάζει στον τρόπο που κρατάς το κινητό σου.</string>
     <string name="help_pointer_quick_title">Πιο γρήγορο άνοιγμα</string>
-    <string name="help_pointer_quick_body">• Άνοιγμα με κούνημα (λειτουργία κίνησης): ένα σύντομο κούνημα του κινητού ανοίγει τον δείκτη. Η ευαισθησία κουνήματος ρυθμίζεται.\n• Άνοιγμα με διπλό πάτημα (λειτουργία touchpad): πάτησε δύο φορές σε ένα κενό σημείο μιας οθόνης.\nΚαι τα δύο ενεργοποιούνται στις ρυθμίσεις, στην καρτέλα «Χειρισμός».</string>
+    <string name="help_pointer_quick_body">• Άνοιγμα με κούνημα: ένα σύντομο κούνημα του κινητού ανοίγει τον δείκτη. Η ευαισθησία κουνήματος ρυθμίζεται.\n• Άνοιγμα με διπλό πάτημα: πάτησε δύο φορές σε ένα κενό σημείο μιας οθόνης.\n• Άνοιγμα με το εικονίδιο δείκτη: το εικονίδιο ποντικιού στην επάνω γραμμή. Όταν είναι ανενεργό, κρύβεται.\nΚαι τα τρία ενεργοποιούνται ή απενεργοποιούνται στις ρυθμίσεις, στην καρτέλα «Χειρισμός», και μαζί αν θέλεις. Λειτουργούν με κάθε τρόπο χειρισμού του δείκτη.</string>
 
     <string name="help_edit_title">Επεξεργασία οθονών</string>
     <string name="help_edit_elly">Εσύ αποφασίζεις ποιο πλήκτρο πάει πού. Εδώ σου δείχνω τον επεξεργαστή.</string>
