@@ -21,6 +21,7 @@ import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenLayout
 import de.robnice.elly.epg.AudioTrack
 import de.robnice.elly.epg.AudioTracks
+import de.robnice.elly.epg.SubtitleTracks
 import de.robnice.elly.epg.EpgAction
 import de.robnice.elly.epg.EpgChannel
 import de.robnice.elly.epg.EpgGuide
@@ -328,6 +329,54 @@ class RemoteViewModel(
         _audioTracks.value = null
     }
 
+    private val _subtitles = MutableStateFlow<SubtitlePicker?>(null)
+    val subtitles: StateFlow<SubtitlePicker?> = _subtitles.asStateFlow()
+
+    fun openSubtitles() {
+        _subtitles.value = SubtitlePicker.Loading
+        viewModelScope.launch { showSubtitles(loadSubtitles()) }
+    }
+
+    // Like the audio tracks, the list stays open and shows what the TV really switched to. A null id turns subtitles off.
+    fun selectSubtitle(id: Int?) {
+        val shown = _subtitles.value as? SubtitlePicker.Tracks ?: return
+        _subtitles.value = SubtitlePicker.Tracks(shown.tracks.copy(currentId = id))
+        _commandSent.tryEmit(Unit)
+        viewModelScope.launch {
+            val result = try {
+                val switched = epgRepository.selectSubtitle(id, shown.tracks.channelId)
+                val reloaded = loadSubtitles()
+                if (!switched && reloaded is SubtitlePicker.Tracks) reloaded.copy(notice = R.string.subtitles_channel_changed) else reloaded
+            } catch (e: CancellationException) {
+                throw e
+            } catch (_: Exception) {
+                SubtitlePicker.Message(R.string.audio_tracks_failed)
+            }
+            showSubtitles(result)
+        }
+    }
+
+    fun dismissSubtitles() {
+        _subtitles.value = null
+    }
+
+    private fun showSubtitles(picker: SubtitlePicker) {
+        _subtitles.update { if (it == null) null else picker }
+    }
+
+    private suspend fun loadSubtitles(): SubtitlePicker = try {
+        val tracks = epgRepository.subtitles()
+        when {
+            tracks == null -> SubtitlePicker.Message(R.string.subtitles_no_root)
+            tracks.tracks.isEmpty() -> SubtitlePicker.Message(R.string.subtitles_none)
+            else -> SubtitlePicker.Tracks(tracks)
+        }
+    } catch (e: CancellationException) {
+        throw e
+    } catch (_: Exception) {
+        SubtitlePicker.Message(R.string.audio_tracks_failed)
+    }
+
     private fun showAudioTracks(picker: AudioTrackPicker) {
         _audioTracks.update { if (it == null) null else picker }
     }
@@ -448,4 +497,10 @@ sealed interface AudioTrackPicker {
     data object Loading : AudioTrackPicker
     data class Tracks(val tracks: AudioTracks, @param:StringRes val notice: Int? = null) : AudioTrackPicker
     data class Message(@param:StringRes val text: Int) : AudioTrackPicker
+}
+
+sealed interface SubtitlePicker {
+    data object Loading : SubtitlePicker
+    data class Tracks(val tracks: SubtitleTracks, @param:StringRes val notice: Int? = null) : SubtitlePicker
+    data class Message(@param:StringRes val text: Int) : SubtitlePicker
 }

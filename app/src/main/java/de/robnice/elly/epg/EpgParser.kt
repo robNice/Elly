@@ -143,6 +143,27 @@ object EpgParser {
 
     private val DOLBY_CODECS = listOf("DOLBY", "AC3", "AC4")
 
+    // utp.subtitle/getSubtitleList. The TV keeps the last subtitle as current while subtitles are off,
+    // so it only counts while its subtitle setting is on.
+    fun subtitles(answer: JSONObject, enabled: Boolean): SubtitleTracks {
+        val list = answer.optJSONArray("subtitle") ?: answer.optJSONArray("subtitleList") ?: return SubtitleTracks(emptyList(), null)
+        val tracks = (0 until list.length()).mapNotNull { index ->
+            val track = list.optJSONObject(index) ?: return@mapNotNull null
+            SubtitleTrack(
+                id = track.optInt("subtitleId", -1).takeIf { it >= 0 } ?: return@mapNotNull null,
+                language = track.optString("translatedSubtitleLanguage").ifBlank { track.optString("subtitleLanguage") },
+                hearingImpaired = track.optBoolean("isHearingImpaired"),
+                teletext = track.optBoolean("isTeletext")
+            )
+        }
+        val current = answer.optInt("currentSubtitleId", -1).takeIf { enabled && it >= 0 }
+        return SubtitleTracks(tracks, current)
+    }
+
+    // getSystemSettings, category caption: captionEnable is "on" or "off".
+    fun subtitlesEnabled(answer: JSONObject): Boolean =
+        answer.optJSONObject("settings")?.optString("captionEnable") == "on"
+
     // getSystemSettings, category sound: audioDescription is "on" or "off".
     fun audioDescriptionEnabled(answer: JSONObject): Boolean? =
         when (answer.optJSONObject("settings")?.optString("audioDescription")) {

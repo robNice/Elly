@@ -146,14 +146,8 @@
     <string name="settings_light_effect_description">Laag licht van linksboven: de toetsen werpen lange schaduwen en de achtergrond wordt vanuit die hoek verlicht.</string>
     <string name="settings_backup">Back-up en terugzetten</string>
     <string name="settings_backup_description">Schermen en weergave worden als aparte bestanden opgeslagen, zodat je je schermen kunt doorgeven zonder dat de ander zijn eigen weergave kwijtraakt. Bij het terugzetten herkent Elly zelf wat voor bestand het is.</string>
-    <string name="settings_backup_screens">Schermen opslaan</string>
-    <string name="settings_backup_appearance">Weergave opslaan</string>
     <string name="settings_backup_restore">Terugzetten uit bestand</string>
     <string name="settings_backup_appearance_file">Elly-Weergave</string>
-    <string name="settings_backup_restore_screens_title">Schermen vervangen?</string>
-    <string name="settings_backup_restore_screens_message">De schermen van de actieve tv worden vervangen door die uit het bestand: volgorde, getoonde schermen en eigen indelingen. De weergave blijft zoals hij is. App-pictogrammen worden opnieuw van de tv geladen; een programmagids blijft leeg als de tv geen favorietenlijst met die naam heeft.</string>
-    <string name="settings_backup_restore_appearance_title">Weergave vervangen?</string>
-    <string name="settings_backup_restore_appearance_message">Kleurenpalet, achtergrond, afronding en lichteffect worden vervangen door die uit het bestand. Je schermen blijven zoals ze zijn.</string>
     <string name="settings_backup_restore_confirm">Vervangen</string>
     <string name="settings_backup_saved">Back-up opgeslagen.</string>
     <string name="settings_backup_save_failed">Het bestand kon niet worden opgeslagen.</string>

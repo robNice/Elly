@@ -30,8 +30,11 @@ class BackupJsonTest {
         )
         val backup = Backup.Screens(ScreenLayout.DEFAULT.toggle(RemoteScreen.CUSTOM), mapOf(RemoteScreen.CUSTOM to screen))
 
-        val raw = BackupJson.encode(backup)
-        val restored = BackupJson.decode(raw) as Backup.Screens
+        val raw = BackupJson.encode(BackupContent(backup, null))
+        val content = BackupJson.decode(raw)!!
+        val restored = content.screens!!
+
+        assertNull(content.appearance)
 
         assertFalse(raw.contains("/data/icons"))
         assertEquals(backup.layout, restored.layout)
@@ -47,7 +50,7 @@ class BackupJsonTest {
         val image = byteArrayOf(1, 2, 3, 4)
         val backup = Backup.Appearance(ColorPalette.entries.last(), ScreenBackground.CUSTOM, image, 0.3f, 0.7f, true)
 
-        val restored = BackupJson.decode(BackupJson.encode(backup)) as Backup.Appearance
+        val restored = BackupJson.decode(BackupJson.encode(BackupContent(null, backup)))!!.appearance!!
 
         assertEquals(backup.palette, restored.palette)
         assertEquals(ScreenBackground.CUSTOM, restored.background)
@@ -58,9 +61,35 @@ class BackupJsonTest {
     }
 
     @Test
+    fun screensAndAppearanceInOneFile() {
+        val screens = Backup.Screens(ScreenLayout.DEFAULT.toggle(RemoteScreen.CUSTOM), emptyMap())
+        val appearance = Backup.Appearance(ColorPalette.OCEAN, ScreenBackground.HILLS, null, 0.2f, 1f, true)
+
+        val content = BackupJson.decode(BackupJson.encode(BackupContent(screens, appearance)))!!
+
+        assertEquals(screens.layout, content.screens!!.layout)
+        assertEquals(ColorPalette.OCEAN, content.appearance!!.palette)
+        assertEquals(ScreenBackground.HILLS, content.appearance!!.background)
+    }
+
+    @Test
+    fun readsTheOlderSingleFiles() {
+        val appearance = BackupJson.decode(
+            """{"format":"elly-appearance","version":1,"palette":"RUBY","background":"SKY","keyRounding":0.4,"dpadRounding":0.6,"lightEffect":true}"""
+        )!!
+        assertNull(appearance.screens)
+        assertEquals(ColorPalette.RUBY, appearance.appearance!!.palette)
+        assertEquals(ScreenBackground.SKY, appearance.appearance!!.background)
+        assertTrue(appearance.appearance!!.lightEffect)
+
+        val screens = BackupJson.decode("""{"format":"elly-screens","version":1}""")!!
+        assertNull(screens.appearance)
+        assertEquals(ScreenLayout.DEFAULT, screens.screens!!.layout)
+    }
+
+    @Test
     fun recognisesTheKindOfFile() {
-        assertTrue(BackupJson.decode("""{"format":"elly-screens","version":1}""") is Backup.Screens)
-        assertTrue(BackupJson.decode("""{"format":"elly-appearance","version":1}""") is Backup.Appearance)
+        assertNull(BackupJson.decode("""{"format":"elly-backup","version":1}"""))
         assertNull(BackupJson.decode("""{"format":"something-else"}"""))
         assertNull(BackupJson.decode("not json"))
     }

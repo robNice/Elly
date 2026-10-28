@@ -10,6 +10,7 @@ import de.robnice.elly.AppContainer
 import de.robnice.elly.R
 import de.robnice.elly.data.AppSlotsRepository
 import de.robnice.elly.data.Backup
+import de.robnice.elly.data.BackupContent
 import de.robnice.elly.data.BackupJson
 import de.robnice.elly.data.BackgroundImageStore
 import de.robnice.elly.data.ScreenLayoutRepository
@@ -127,21 +128,26 @@ class SettingsViewModel(
         }
     }
 
-    private val _backupToRestore = MutableStateFlow<Backup?>(null)
-    val backupToRestore: StateFlow<Backup?> = _backupToRestore.asStateFlow()
+    private val _backupToRestore = MutableStateFlow<BackupContent?>(null)
+    val backupToRestore: StateFlow<BackupContent?> = _backupToRestore.asStateFlow()
 
     private val _backupMessage = MutableStateFlow<Int?>(null)
     val backupMessage: StateFlow<Int?> = _backupMessage.asStateFlow()
 
-    fun exportScreens(resolver: ContentResolver, uri: Uri) = export(resolver, uri) { screenLayoutRepository.activeBackup() }
+    fun exportBackup(resolver: ContentResolver, uri: Uri, screens: Boolean, appearance: Boolean) = export(resolver, uri) {
+        BackupContent(
+            screens = if (screens) screenLayoutRepository.activeBackup() else null,
+            appearance = if (appearance) appearanceBackup() else null
+        ).takeUnless { it.isEmpty }
+    }
 
     // The own picture goes along only while it is the chosen background.
-    fun exportAppearance(resolver: ContentResolver, uri: Uri) = export(resolver, uri) {
+    private suspend fun appearanceBackup(): Backup.Appearance {
         val background = settingsRepository.background.first()
         val image = background.image
             ?.takeIf { background.type == ScreenBackground.CUSTOM }
             ?.let { backgroundImageStore.read(it) }
-        Backup.Appearance(
+        return Backup.Appearance(
             palette = settingsRepository.colorPalette.first(),
             background = if (background.type == ScreenBackground.CUSTOM && image == null) ScreenBackground.NONE else background.type,
             image = image,
@@ -151,7 +157,7 @@ class SettingsViewModel(
         )
     }
 
-    private fun export(resolver: ContentResolver, uri: Uri, create: suspend () -> Backup?) {
+    private fun export(resolver: ContentResolver, uri: Uri, create: suspend () -> BackupContent?) {
         viewModelScope.launch {
             val saved = try {
                 val text = BackupJson.encode(create() ?: throw IllegalStateException("nothing to back up"))
@@ -174,30 +180,30 @@ class SettingsViewModel(
                 runCatching { resolver.openInputStream(uri)?.use { it.readBackupFile() } }.getOrNull()
             }
             val backup = text?.let { BackupJson.decode(it) }
+            // Screens belong to a TV, so without one only the appearance can be taken over.
+            val usable = backup?.takeIf { it.screens == null || appSlotsRepository.activeOwner.first() != null }
+                ?: backup?.let { BackupContent(null, it.appearance) }
             when {
                 backup == null -> _backupMessage.value = R.string.settings_backup_invalid
-                backup is Backup.Screens && appSlotsRepository.activeOwner.first() == null ->
-                    _backupMessage.value = R.string.settings_backup_no_tv
-                else -> _backupToRestore.value = backup
+                usable == null || usable.isEmpty -> _backupMessage.value = R.string.settings_backup_no_tv
+                else -> _backupToRestore.value = usable
             }
         }
     }
 
-    fun confirmRestore() {
+    fun confirmRestore(screens: Boolean, appearance: Boolean) {
         val backup = _backupToRestore.value ?: return
         _backupToRestore.value = null
         viewModelScope.launch {
-            when (backup) {
-                is Backup.Screens -> {
-                    screenLayoutRepository.restoreActive(backup)
-                    clearHistory()
-                }
-                is Backup.Appearance -> {
-                    val path = backup.image?.let { backgroundImageStore.import(it) }
-                    val type = if (backup.background == ScreenBackground.CUSTOM && path == null) ScreenBackground.NONE else backup.background
-                    settingsRepository.setAppearance(backup.palette, AppBackground(type, path), backup.keyRounding, backup.dpadRounding, backup.lightEffect)
-                    backgroundImageStore.deleteUnused(setOfNotNull(path))
-                }
+            backup.screens?.takeIf { screens }?.let {
+                screenLayoutRepository.restoreActive(it)
+                clearHistory()
+            }
+            backup.appearance?.takeIf { appearance }?.let {
+                val path = it.image?.let { image -> backgroundImageStore.import(image) }
+                val type = if (it.background == ScreenBackground.CUSTOM && path == null) ScreenBackground.NONE else it.background
+                settingsRepository.setAppearance(it.palette, AppBackground(type, path), it.keyRounding, it.dpadRounding, it.lightEffect)
+                backgroundImageStore.deleteUnused(setOfNotNull(path))
             }
             _backupMessage.value = R.string.settings_backup_restored
         }
@@ -479,6 +485,10 @@ class SettingsViewModel(
 
     fun setDoubleTapToOpen(enabled: Boolean) {
         viewModelScope.launch { settingsRepository.setDoubleTapToOpen(enabled) }
+    }
+
+    fun setPointerHeaderButton(enabled: Boolean) {
+        viewModelScope.launch { settingsRepository.setPointerHeaderButton(enabled) }
     }
 
     fun setSwipeSpeed(value: Float) {

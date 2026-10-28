@@ -16,12 +16,17 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,6 +34,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.window.Dialog
 import de.robnice.elly.R
 import de.robnice.elly.data.model.AppBackground
 import de.robnice.elly.data.model.ScreenBackground
@@ -36,36 +42,50 @@ import de.robnice.elly.ui.remote.ScreenBackgroundImage
 import de.robnice.elly.ui.remote.ScreenBackgrounds
 
 @Composable
-fun BackgroundSection(current: AppBackground, onSelect: (ScreenBackground) -> Unit, onImage: (Uri) -> Unit) {
+fun BackgroundSection(current: AppBackground, onSelect: (ScreenBackground) -> Unit, onImage: (Uri) -> Unit, modifier: Modifier) {
     val spacing = dimensionResource(R.dimen.setup_item_spacing)
     val imagePicker = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         uri?.let(onImage)
     }
-    Column(verticalArrangement = Arrangement.spacedBy(spacing)) {
+    var open by remember { mutableStateOf(false) }
+    // Only the background in use is shown; tapping it opens all of them.
+    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(spacing)) {
         Text(text = stringResource(R.string.settings_background), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
-        Card(modifier = Modifier.fillMaxWidth()) {
-            Column(
-                modifier = Modifier.padding(dimensionResource(R.dimen.setup_card_padding)),
-                verticalArrangement = Arrangement.spacedBy(spacing)
-            ) {
-                ScreenBackground.entries.chunked(BACKGROUND_COLUMNS).forEach { row ->
-                    Row(horizontalArrangement = Arrangement.spacedBy(spacing)) {
-                        row.forEach { background ->
-                            BackgroundOption(
-                                background = background,
-                                customImage = current.image,
-                                selected = background == current.type,
-                                onClick = {
-                                    if (background == ScreenBackground.CUSTOM) {
-                                        imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-                                    } else {
-                                        onSelect(background)
-                                    }
-                                },
-                                modifier = Modifier.weight(1f)
-                            )
+        BackgroundOption(
+            background = current.type,
+            customImage = current.image,
+            selected = true,
+            onClick = { open = true },
+            modifier = Modifier.width(dimensionResource(R.dimen.settings_current_background_width))
+        )
+    }
+    if (open) {
+        Dialog(onDismissRequest = { open = false }) {
+            Card(modifier = Modifier.fillMaxWidth()) {
+                Column(
+                    modifier = Modifier.padding(dimensionResource(R.dimen.setup_card_padding)),
+                    verticalArrangement = Arrangement.spacedBy(spacing)
+                ) {
+                    ScreenBackground.entries.chunked(BACKGROUND_COLUMNS).forEach { row ->
+                        Row(horizontalArrangement = Arrangement.spacedBy(spacing)) {
+                            row.forEach { background ->
+                                BackgroundOption(
+                                    background = background,
+                                    customImage = current.image,
+                                    selected = background == current.type,
+                                    onClick = {
+                                        open = false
+                                        if (background == ScreenBackground.CUSTOM) {
+                                            imagePicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                                        } else {
+                                            onSelect(background)
+                                        }
+                                    },
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
+                            repeat(BACKGROUND_COLUMNS - row.size) { Spacer(modifier = Modifier.weight(1f)) }
                         }
-                        repeat(BACKGROUND_COLUMNS - row.size) { Spacer(modifier = Modifier.weight(1f)) }
                     }
                 }
             }

@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">Низкий свет слева сверху: кнопки отбрасывают длинные тени, а фон подсвечен из этого угла.</string>
     <string name="settings_backup">Резервная копия и восстановление</string>
     <string name="settings_backup_description">Экраны и оформление сохраняются в отдельные файлы, поэтому ты можешь передать свои экраны, а другой человек не потеряет своё оформление. При восстановлении Elly сама определяет, что это за файл.</string>
-    <string name="settings_backup_screens">Сохранить экраны</string>
-    <string name="settings_backup_appearance">Сохранить оформление</string>
     <string name="settings_backup_restore">Восстановить из файла</string>
     <string name="settings_backup_appearance_file">Elly-Оформление</string>
-    <string name="settings_backup_restore_screens_title">Заменить экраны?</string>
-    <string name="settings_backup_restore_screens_message">Экраны активного телевизора будут заменены экранами из файла: порядок, показываемые экраны и собственные раскладки. Оформление останется прежним. Значки приложений снова загрузятся с телевизора; телепрограмма останется пустой, если на телевизоре нет списка избранного с таким названием.</string>
-    <string name="settings_backup_restore_appearance_title">Заменить оформление?</string>
-    <string name="settings_backup_restore_appearance_message">Цветовая палитра, фон, скругление и световой эффект будут заменены настройками из файла. Твои экраны останутся прежними.</string>
     <string name="settings_backup_restore_confirm">Заменить</string>
     <string name="settings_backup_saved">Резервная копия сохранена.</string>
     <string name="settings_backup_save_failed">Не удалось сохранить файл.</string>

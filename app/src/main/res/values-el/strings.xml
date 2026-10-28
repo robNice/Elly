@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">Χαμηλό φως από πάνω αριστερά: τα πλήκτρα ρίχνουν μακριές σκιές και το φόντο φωτίζεται από εκείνη τη γωνία.</string>
     <string name="settings_backup">Αντίγραφο ασφαλείας και επαναφορά</string>
     <string name="settings_backup_description">Οι οθόνες και η εμφάνιση αποθηκεύονται σε ξεχωριστά αρχεία, ώστε να μπορείς να δώσεις τις οθόνες σου σε κάποιον χωρίς εκείνος να χάσει τη δική του εμφάνιση. Κατά την επαναφορά η Elly αναγνωρίζει μόνη της τι είδους αρχείο είναι.</string>
-    <string name="settings_backup_screens">Αποθήκευση οθονών</string>
-    <string name="settings_backup_appearance">Αποθήκευση εμφάνισης</string>
     <string name="settings_backup_restore">Επαναφορά από αρχείο</string>
     <string name="settings_backup_appearance_file">Elly-Εμφάνιση</string>
-    <string name="settings_backup_restore_screens_title">Αντικατάσταση οθονών;</string>
-    <string name="settings_backup_restore_screens_message">Οι οθόνες της ενεργής τηλεόρασης αντικαθίστανται από αυτές του αρχείου: σειρά, εμφανιζόμενες οθόνες και δικές σου διατάξεις. Η εμφάνιση μένει ως έχει. Τα εικονίδια εφαρμογών φορτώνονται ξανά από την τηλεόραση· ένας οδηγός προγράμματος μένει κενός αν η τηλεόραση δεν έχει λίστα αγαπημένων με αυτό το όνομα.</string>
-    <string name="settings_backup_restore_appearance_title">Αντικατάσταση εμφάνισης;</string>
-    <string name="settings_backup_restore_appearance_message">Η χρωματική παλέτα, το φόντο, το στρογγύλεμα και το εφέ φωτός αντικαθίστανται από αυτά του αρχείου. Οι οθόνες σου μένουν ως έχουν.</string>
     <string name="settings_backup_restore_confirm">Αντικατάσταση</string>
     <string name="settings_backup_saved">Το αντίγραφο ασφαλείας αποθηκεύτηκε.</string>
     <string name="settings_backup_save_failed">Δεν ήταν δυνατή η αποθήκευση του αρχείου.</string>

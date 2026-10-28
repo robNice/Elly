@@ -54,13 +54,20 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.layer.drawLayer
+import androidx.compose.ui.graphics.rememberGraphicsLayer
+import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalResources
@@ -77,7 +84,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import de.robnice.elly.R
 import de.robnice.elly.data.model.CustomScreen
 import de.robnice.elly.data.model.DefaultScreens
-import de.robnice.elly.data.model.PointerMode
 import de.robnice.elly.remote.ConnectionState
 import de.robnice.elly.remote.RemoteCommand
 import de.robnice.elly.remote.RemoteKey
@@ -86,14 +92,18 @@ import de.robnice.elly.sensor.ShakeDetector
 import de.robnice.elly.ui.components.LightOverlay
 import de.robnice.elly.ui.epg.EpgGuides
 import de.robnice.elly.ui.epg.LocalEpgGuides
+import de.robnice.elly.ui.epg.LocalPageShown
 import de.robnice.elly.ui.components.LocalColorPalette
 import de.robnice.elly.ui.components.LocalDpadRounding
 import de.robnice.elly.ui.components.LocalKeyHapticsEnabled
 import de.robnice.elly.ui.components.LocalKeyRounding
 import de.robnice.elly.ui.components.LocalLightEffect
+import de.robnice.elly.ui.components.LocalShadowBackdrop
+import de.robnice.elly.ui.components.ShadowBackdrop
 import de.robnice.elly.ui.onboarding.HelpButton
 import de.robnice.elly.ui.pointer.PointerOverlay
 import de.robnice.elly.ui.remote.AudioTrackDialog
+import de.robnice.elly.ui.remote.SubtitleDialog
 import de.robnice.elly.ui.remote.CustomPage
 import de.robnice.elly.ui.remote.LocalAppBackground
 import de.robnice.elly.ui.remote.RemoteViewModel
@@ -138,16 +148,17 @@ fun RemotePager(
         when (key.command) {
             RemoteCommand.InputPicker -> viewModel.openInputPicker()
             RemoteCommand.AudioTrackPicker -> viewModel.openAudioTracks()
+            RemoteCommand.SubtitlePicker -> viewModel.openSubtitles()
             RemoteCommand.TextInput -> viewModel.openKeyboard()
             else -> viewModel.press(key)
         }
     }
 
-    // Shaking opens the motion pointer; the sensor only runs while the remote is visible. The
+    // Shaking opens the pointer; the sensor only runs while the remote is visible. The
     // detector is kept across opening and closing, so its pause after a shake still applies.
     val shakeDetector = remember(context) { ShakeDetector(context) { viewModel.openPointer() } }
     shakeDetector.sensitivity = pointerSettings.shakeSensitivity
-    if (pointerSettings.mode == PointerMode.MOTION && pointerSettings.shakeToOpen && !pointerActive) {
+    if (pointerSettings.shakeToOpen && !pointerActive) {
         val detector = shakeDetector
         LifecycleStartEffect(detector) {
             detector.start()
@@ -157,6 +168,26 @@ fun RemotePager(
 
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage }.collect { viewModel.currentScreen = screens.getOrNull(it) }
+    }
+
+    var pageShown by remember { mutableIntStateOf(0) }
+    LaunchedEffect(pagerState) {
+        snapshotFlow { pagerState.settledPage }.collect { pageShown++ }
+    }
+    LifecycleStartEffect(Unit) {
+        pageShown++
+        onStopOrDispose { }
+    }
+
+    val backdropLayer = rememberGraphicsLayer()
+    val backdropColor = MaterialTheme.colorScheme.background
+    val shadowBackdrop = remember(backdropLayer, pagerState, background, colorPalette, backdropColor) {
+        ShadowBackdrop(backdropLayer, listOf(background, colorPalette, backdropColor)) {
+            // Both are always read, so the shadows follow every step of the page.
+            val offset = pagerState.currentPageOffsetFraction
+            val scrolling = pagerState.isScrollInProgress
+            scrolling || offset != 0f
+        }
     }
 
     LaunchedEffect(viewModel, lifecycleOwner) {
@@ -179,7 +210,8 @@ fun RemotePager(
             perform = viewModel::performGuideAction,
             videoInfo = viewModel::guideVideoInfo,
             programImage = viewModel::guideProgramImage,
-            openAudioTracks = viewModel::openAudioTracks
+            openAudioTracks = viewModel::openAudioTracks,
+            openSubtitles = viewModel::openSubtitles
         )
     }
 
@@ -193,10 +225,22 @@ fun RemotePager(
         Box(
             modifier = modifier
                 .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
+                .onPlaced { shadowBackdrop.root = it }
         ) {
-            ScreenBackgroundImage(background.type, background.image)
-            LightOverlay()
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    // Its own layer, so changes elsewhere on the screen do not record the background again.
+                    .graphicsLayer()
+                    .drawWithContent {
+                        backdropLayer.record { this@drawWithContent.drawContent() }
+                        drawLayer(backdropLayer)
+                    }
+                    .background(MaterialTheme.colorScheme.background)
+            ) {
+                ScreenBackgroundImage(background.type, background.image)
+                LightOverlay()
+            }
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -214,7 +258,7 @@ fun RemotePager(
                         Spacer(modifier = Modifier.width(dimensionResource(R.dimen.status_light_spacing)))
                         Text(text = activeTvName, color = colorResource(R.color.top_bar_content))
                     }
-                    IconButton(onClick = viewModel::openPointer) {
+                    if (pointerSettings.headerButton) IconButton(onClick = viewModel::openPointer) {
                         Icon(
                             painter = painterResource(R.drawable.ic_pointer),
                             contentDescription = stringResource(R.string.key_pointer),
@@ -245,7 +289,9 @@ fun RemotePager(
                             LocalKeyHapticsEnabled provides keyHaptics,
                             LocalKeyRounding provides keyRounding,
                             LocalDpadRounding provides dpadRounding,
-                            LocalEpgGuides provides guides
+                            LocalEpgGuides provides guides,
+                            LocalPageShown provides pageShown.takeIf { index == pagerState.settledPage },
+                            LocalShadowBackdrop provides shadowBackdrop
                         ) {
                             // The shadow layer reaches far beyond its page and would end in a hard edge on the neighbour.
                             Box(modifier = Modifier.fillMaxSize().clipToBounds()) {
@@ -254,7 +300,7 @@ fun RemotePager(
                                     onKey = onKey,
                                     onLaunchApp = viewModel::launchApp,
                                     onDoubleTap = viewModel::openPointer.takeIf {
-                                        pointerSettings.mode == PointerMode.TOUCH && pointerSettings.doubleTapToOpen && !pointerActive
+                                        pointerSettings.doubleTapToOpen && !pointerActive
                                     }
                                 )
                             }
@@ -321,6 +367,15 @@ fun RemotePager(
             onSelect = viewModel::selectAudioTrack,
             onDescriptionChange = viewModel::setAudioDescription,
             onDismiss = viewModel::dismissAudioTracks
+        )
+    }
+
+    val subtitles by viewModel.subtitles.collectAsStateWithLifecycle()
+    subtitles?.let { picker ->
+        SubtitleDialog(
+            picker = picker,
+            onSelect = viewModel::selectSubtitle,
+            onDismiss = viewModel::dismissSubtitles
         )
     }
 }

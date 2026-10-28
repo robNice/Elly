@@ -146,14 +146,8 @@
     <string name="settings_light_effect_description">ضوء منخفض من أعلى اليسار: تُلقي الأزرار ظلالًا طويلة وتُضاء الخلفية من تلك الزاوية.</string>
     <string name="settings_backup">النسخ الاحتياطي والاستعادة</string>
     <string name="settings_backup_description">تُحفظ الشاشات والمظهر في ملفين منفصلين، فيمكنك مشاركة شاشاتك دون أن يفقد الشخص الآخر مظهره الخاص. عند الاستعادة تتعرّف Elly بنفسها على نوع الملف.</string>
-    <string name="settings_backup_screens">نسخ الشاشات احتياطيًا</string>
-    <string name="settings_backup_appearance">نسخ المظهر احتياطيًا</string>
     <string name="settings_backup_restore">استعادة من ملف</string>
     <string name="settings_backup_appearance_file">Elly-المظهر</string>
-    <string name="settings_backup_restore_screens_title">استبدال الشاشات؟</string>
-    <string name="settings_backup_restore_screens_message">تُستبدل شاشات التلفاز النشط بتلك الموجودة في الملف: الترتيب والشاشات المعروضة والتخطيطات الخاصة. يبقى المظهر كما هو. تُحمَّل أيقونات التطبيقات من التلفاز من جديد، ويبقى دليل البرامج فارغًا إذا لم يكن في التلفاز قائمة مفضلة بهذا الاسم.</string>
-    <string name="settings_backup_restore_appearance_title">استبدال المظهر؟</string>
-    <string name="settings_backup_restore_appearance_message">تُستبدل لوحة الألوان والخلفية وتدوير الزوايا وتأثير الإضاءة بتلك الموجودة في الملف. تبقى شاشاتك كما هي.</string>
     <string name="settings_backup_restore_confirm">استبدال</string>
     <string name="settings_backup_saved">تم حفظ النسخة الاحتياطية.</string>
     <string name="settings_backup_save_failed">تعذّر حفظ الملف.</string>

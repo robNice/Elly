@@ -112,6 +112,7 @@
     <string name="key_guide">Programmführer</string>
     <string name="key_input">Eingang</string>
     <string name="key_audio_track">Tonspur</string>
+    <string name="key_subtitle">Untertitel</string>
     <string name="key_keyboard">Tastatur</string>
     <string name="text_input_hint">Text für den TV</string>
     <string name="text_input_close">Tastatur schließen</string>
@@ -147,6 +148,12 @@
     <string name="audio_track_hearing_impaired">Für Hörgeschädigte</string>
     <string name="audio_track_unknown">Unbekannte Sprache</string>
     <string name="audio_track_selected">Aktiv</string>
+    <string name="subtitles_title">Untertitel wählen</string>
+    <string name="subtitles_off">Aus</string>
+    <string name="subtitles_none">Keine Untertitel gefunden. Wählen lassen sie sich nur, während der Fernseher ein Fernsehprogramm zeigt.</string>
+    <string name="subtitles_no_root">Die Untertitel-Auswahl braucht den Root-Zugang. Richte ihn unter Einstellungen → TV ein.</string>
+    <string name="subtitles_channel_changed">Der Sender wurde gewechselt. Bitte wähle die Untertitel neu.</string>
+    <string name="subtitle_teletext">Videotext</string>
     <string name="input_picker_empty">Der Fernseher hat keine Eingänge gemeldet.</string>
     <string name="input_picker_not_connected">Nichts angeschlossen</string>
 
@@ -181,15 +188,17 @@
     <string name="settings_light_effect">Lange Sommerabende</string>
     <string name="settings_light_effect_description">Flaches Licht von links oben: Tasten werfen lange Schatten, der Hintergrund wird von dieser Ecke her aufgehellt.</string>
     <string name="settings_backup">Sichern und einspielen</string>
-    <string name="settings_backup_description">Screens und Darstellung werden als getrennte Dateien gesichert. So kannst du deine Screens weitergeben, ohne dass der andere seine eigene Optik verliert. Beim Einspielen erkennt Elly selbst, welche Art Datei es ist.</string>
-    <string name="settings_backup_screens">Screens sichern</string>
-    <string name="settings_backup_appearance">Darstellung sichern</string>
+    <string name="settings_backup_description">Screens und Darstellung kannst du einzeln oder zusammen sichern. So gibst du deine Screens weiter, ohne dass der andere seine eigene Optik verliert. Beim Einspielen zeigt Elly, was in der Datei steckt, und du wählst, was übernommen wird.</string>
     <string name="settings_backup_restore">Aus Datei einspielen</string>
+    <string name="settings_backup_save">Sichern</string>
+    <string name="settings_backup_save_title">Was sichern?</string>
+    <string name="settings_backup_part_screens">Screens</string>
+    <string name="settings_backup_part_screens_description">Reihenfolge, angezeigte Screens und eigene Layouts des aktiven Fernsehers.</string>
+    <string name="settings_backup_part_appearance">Darstellung</string>
+    <string name="settings_backup_part_appearance_description">Farbpalette, Hintergrund, Rundung und Lichteffekt.</string>
+    <string name="settings_backup_restore_title">Was einspielen?</string>
+    <string name="settings_backup_restore_message">Die gewählten Teile werden durch die aus der Datei ersetzt. App-Icons lädt Elly neu vom Fernseher; eine Programmübersicht bleibt leer, wenn der Fernseher keine Favoritenliste mit diesem Namen hat.</string>
     <string name="settings_backup_appearance_file">Elly-Darstellung</string>
-    <string name="settings_backup_restore_screens_title">Screens ersetzen?</string>
-    <string name="settings_backup_restore_screens_message">Die Screens des aktiven Fernsehers werden durch die aus der Datei ersetzt: Reihenfolge, angezeigte Screens und eigene Layouts. Die Darstellung bleibt, wie sie ist. App-Icons lädt Elly neu vom Fernseher; eine Programmübersicht bleibt leer, wenn der Fernseher keine Favoritenliste mit diesem Namen hat.</string>
-    <string name="settings_backup_restore_appearance_title">Darstellung ersetzen?</string>
-    <string name="settings_backup_restore_appearance_message">Farbpalette, Hintergrund, Rundung und Lichteffekt werden durch die aus der Datei ersetzt. Deine Screens bleiben, wie sie sind.</string>
     <string name="settings_backup_restore_confirm">Ersetzen</string>
     <string name="settings_backup_saved">Sicherung gespeichert.</string>
     <string name="settings_backup_save_failed">Die Datei konnte nicht gespeichert werden.</string>
@@ -215,6 +224,9 @@
     <string name="settings_shake_sensitivity">Schüttel-Empfindlichkeit</string>
     <string name="settings_double_tap_to_open">Aktivieren durch Doppeltipp</string>
     <string name="settings_double_tap_to_open_description">Doppelt auf eine freie Stelle des Screens tippen, um den Zeiger zu öffnen.</string>
+    <string name="settings_pointer_activation">Aktivierung</string>
+    <string name="settings_pointer_header_button">Aktivieren durch Zeiger-Symbol</string>
+    <string name="settings_pointer_header_button_description">Zeigt das Maussymbol in der Kopfzeile. Ausgeschaltet wird es ausgeblendet.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Wie ein analoger Stick: Je weiter du ziehst, desto schneller bewegt sich der Zeiger.</string>
     <string name="status_connected">Mit dem TV verbunden</string>
@@ -468,7 +480,7 @@
     <string name="onboarding_pointer_motion">Bewegung: Der Zeiger folgt deinem Handy. Halte es wie eine Fernbedienung oder hochkant vor dir und bewege es. Der große OK-Button klickt, auf der Scroll-Fläche wischst du zum Scrollen.</string>
     <string name="onboarding_pointer_touch">Touchpad: Wische über die Fläche, um den Zeiger zu bewegen, tippe zum Klicken. Als Joystick gilt: Je weiter du ziehst, desto schneller.</string>
     <string name="onboarding_pointer_close">Beenden mit dem X oben rechts, mit der Zurück-Geste oder automatisch nach 5 Sekunden ohne Aktivität.</string>
-    <string name="onboarding_pointer_quick">Noch schneller öffnest du ihn durch Schütteln (Bewegung) oder Doppeltipp auf eine freie Stelle (Touchpad), wenn unter „Bedienung“ aktiviert.</string>
+    <string name="onboarding_pointer_quick">Noch schneller öffnest du ihn durch Schütteln oder Doppeltipp auf eine freie Stelle, wenn unter „Bedienung“ aktiviert.</string>
 
     <string name="onboarding_done_title">Das war\'s!</string>
     <string name="onboarding_done_text">Viel Spaß mit deinem Fernseher. Wenn du etwas nachlesen willst, findest du mich jederzeit oben rechts hinter meinem Bild.</string>
@@ -568,7 +580,7 @@
     <string name="help_pointer_okpos_title">OK-Button oben oder unten</string>
     <string name="help_pointer_okpos_body">Im Touchpad-Modus liegt der OK-Button unten (Standard) oder oben – je nachdem, wie du das Handy am liebsten hältst.</string>
     <string name="help_pointer_quick_title">Schneller öffnen</string>
-    <string name="help_pointer_quick_body">• Aktivieren durch Schütteln (Bewegungsmodus): Handy kurz schütteln öffnet den Zeiger. Die Schüttel-Empfindlichkeit ist einstellbar.\n• Aktivieren durch Doppeltipp (Touchpad-Modus): zweimal auf eine freie Stelle eines Screens tippen.\nBeides schaltest du in den Einstellungen unter „Bedienung“ ein.</string>
+    <string name="help_pointer_quick_body">• Aktivieren durch Schütteln: Handy kurz schütteln öffnet den Zeiger. Die Schüttel-Empfindlichkeit ist einstellbar.\n• Aktivieren durch Doppeltipp: zweimal auf eine freie Stelle eines Screens tippen.\n• Aktivieren durch Zeiger-Symbol: das Maussymbol in der Kopfzeile. Ausgeschaltet wird es ausgeblendet.\nAlle drei schaltest du in den Einstellungen unter „Bedienung“ ein oder aus, auch mehrere zugleich. Sie gelten für jede Zeigersteuerung.</string>
 
     <string name="help_edit_title">Screens bearbeiten</string>
     <string name="help_edit_elly">Du bestimmst, welche Tasten wo liegen. Hier zeige ich dir den Editor.</string>

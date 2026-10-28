@@ -146,14 +146,8 @@
     <string name="settings_light_effect_description">Matala valo vasemmalta ylhäältä: painikkeet luovat pitkiä varjoja ja tausta valaistuu siitä kulmasta.</string>
     <string name="settings_backup">Varmuuskopiointi ja palautus</string>
     <string name="settings_backup_description">Näkymät ja ulkoasu tallennetaan erillisiin tiedostoihin, joten voit antaa näkymäsi toiselle ilman, että hän menettää oman ulkoasunsa. Palautettaessa Elly tunnistaa itse, millainen tiedosto on kyseessä.</string>
-    <string name="settings_backup_screens">Varmuuskopioi näkymät</string>
-    <string name="settings_backup_appearance">Varmuuskopioi ulkoasu</string>
     <string name="settings_backup_restore">Palauta tiedostosta</string>
     <string name="settings_backup_appearance_file">Elly-Ulkoasu</string>
-    <string name="settings_backup_restore_screens_title">Korvataanko näkymät?</string>
-    <string name="settings_backup_restore_screens_message">Aktiivisen TV:n näkymät korvataan tiedoston näkymillä: järjestys, näytettävät näkymät ja omat asettelut. Ulkoasu pysyy ennallaan. Sovelluskuvakkeet ladataan uudelleen TV:stä; ohjelmaopas jää tyhjäksi, jos TV:ssä ei ole samannimistä suosikkilistaa.</string>
-    <string name="settings_backup_restore_appearance_title">Korvataanko ulkoasu?</string>
-    <string name="settings_backup_restore_appearance_message">Väripaletti, tausta, pyöristys ja valotehoste korvataan tiedoston asetuksilla. Näkymäsi pysyvät ennallaan.</string>
     <string name="settings_backup_restore_confirm">Korvaa</string>
     <string name="settings_backup_saved">Varmuuskopio tallennettu.</string>
     <string name="settings_backup_save_failed">Tiedostoa ei voitu tallentaa.</string>

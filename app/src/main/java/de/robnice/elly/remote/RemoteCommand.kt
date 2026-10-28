@@ -7,6 +7,7 @@ sealed interface RemoteCommand {
     data object Power : RemoteCommand
     data object InputPicker : RemoteCommand
     data object AudioTrackPicker : RemoteCommand
+    data object SubtitlePicker : RemoteCommand
     data object TextInput : RemoteCommand
     data object Unsupported : RemoteCommand
 }

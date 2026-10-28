@@ -1,25 +1,39 @@
 package de.robnice.elly.ui.components
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.BlurredEdgeTreatment
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.layer.GraphicsLayer
+import androidx.compose.ui.graphics.layer.drawLayer
+import androidx.compose.ui.graphics.rememberGraphicsLayer
+import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.Constraints
@@ -27,7 +41,9 @@ import androidx.compose.ui.unit.Dp
 import de.robnice.elly.R
 import de.robnice.elly.data.model.CellShape
 import de.robnice.elly.data.model.CustomElement
+import de.robnice.elly.data.model.CustomElementType
 import de.robnice.elly.data.model.ElementOutline
+import kotlinx.coroutines.launch
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.max
@@ -36,6 +52,18 @@ import kotlin.math.sin
 // A low light source above the top left corner of the phone. Keys cast long shadows
 // towards the bottom right and the background is lit from that corner.
 val LocalLightEffect = compositionLocalOf { false }
+
+// The background behind the pages, recorded once. Blending the shadows onto the window costs
+// every frame, even while only a guide scrolls, so a page at rest draws its shadows on a copy of
+// the background into a picture once and then only shows that picture. The key changes with
+// everything the background looks like.
+class ShadowBackdrop(val layer: GraphicsLayer, val key: Any, val moving: () -> Boolean) {
+    var root: LayoutCoordinates? = null
+}
+
+val LocalShadowBackdrop = compositionLocalOf<ShadowBackdrop?> { null }
+
+private class ShadowPicture(val image: ImageBitmap, val position: Offset, val size: Size)
 
 // Drawn below all elements, so no shadow falls onto a key. Each shadow is the area the key sweeps
 // along the light direction, filled with one gradient that fades out; the layer is blurred so the
@@ -47,9 +75,14 @@ fun ShadowLayer(elements: List<CustomElement>, cells: CellShape, cellHeight: Dp)
     val softness = dimensionResource(R.dimen.light_shadow_softness)
     val before = dimensionResource(R.dimen.light_shadow_margin_before)
     val after = dimensionResource(R.dimen.light_shadow_margin_after)
+    val backdrop = LocalShadowBackdrop.current
+    var placed by remember { mutableStateOf<LayoutCoordinates?>(null) }
+    val live = rememberGraphicsLayer()
+    val scope = rememberCoroutineScope()
+    var picture by remember(elements, cells, cellHeight, backdrop?.key) { mutableStateOf<ShadowPicture?>(null) }
     // The blurred layer cuts off at its own bounds, so it reaches beyond the grid, mostly to the
     // right and bottom where the shadows fall.
-    Canvas(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .layout { measurable, constraints ->
@@ -58,6 +91,45 @@ fun ShadowLayer(elements: List<CustomElement>, cells: CellShape, cellHeight: Dp)
                 val placeable = measurable.measure(Constraints.fixed(constraints.maxWidth + extra, constraints.maxHeight + extra))
                 layout(constraints.maxWidth, constraints.maxHeight) { placeable.place(-start, -start) }
             }
+            .then(
+                if (backdrop == null) Modifier else Modifier
+                    .graphicsLayer()
+                    .onPlaced { placed = it }
+                    .drawWithContent {
+                        val moving = backdrop.moving()
+                        val root = backdrop.root
+                        val own = placed
+                        if (root == null || own == null || !root.isAttached || !own.isAttached) {
+                            drawContent()
+                            return@drawWithContent
+                        }
+                        val position = root.localPositionOf(own, Offset.Zero)
+                        val ready = picture
+                        if (!moving && ready != null && ready.position == position && ready.size == size) {
+                            drawImage(ready.image)
+                            return@drawWithContent
+                        }
+                        live.record {
+                            translate(-position.x, -position.y) { drawLayer(backdrop.layer) }
+                            this@drawWithContent.drawContent()
+                        }
+                        drawLayer(live)
+                        if (!moving) {
+                            val drawn = size
+                            scope.launch { picture = ShadowPicture(live.toImageBitmap(), position, drawn) }
+                        }
+                    }
+            )
+    ) {
+        ShadowCanvas(elements, cells, cellHeight, before, color, softness)
+    }
+}
+
+@Composable
+private fun ShadowCanvas(elements: List<CustomElement>, cells: CellShape, cellHeight: Dp, before: Dp, color: Color, softness: Dp) {
+    Canvas(
+        modifier = Modifier
+            .fillMaxSize()
             // Soft light darkens mid tones most and bright areas only a little, so shadows on a
             // light sky do not look like dirt.
             .graphicsLayer { blendMode = BlendMode.Softlight }
@@ -66,7 +138,8 @@ fun ShadowLayer(elements: List<CustomElement>, cells: CellShape, cellHeight: Dp)
         val unit = cellHeight.toPx()
         val start = before.toPx()
         translate(start, start) {
-            elements.forEach { element ->
+            // The guide panel lies flat on the page and casts no shadow.
+            elements.filter { it.type != CustomElementType.EPG }.forEach { element ->
                 val outline = element.outline(cells)
                 drawSweptShadow(
                     ElementOutline(outline.left * unit, outline.top * unit, outline.right * unit, outline.bottom * unit, outline.radius * unit),

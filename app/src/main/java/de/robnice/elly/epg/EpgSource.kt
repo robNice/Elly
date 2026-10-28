@@ -90,6 +90,21 @@ data class AudioTracks(
     val descriptionEnabled: Boolean? = null
 )
 
+// One subtitle of the program on the TV; the language as the TV names it.
+data class SubtitleTrack(
+    val id: Int,
+    val language: String,
+    val hearingImpaired: Boolean,
+    val teletext: Boolean
+)
+
+// Subtitle ids only mean something for the channel they were read from; currentId is null while subtitles are off.
+data class SubtitleTracks(
+    val tracks: List<SubtitleTrack>,
+    val currentId: Int?,
+    val channelId: String? = null
+)
+
 // Thrown when the TV refuses a reminder or recording; reason is the TV's own text.
 class EpgActionException(val reason: String?) : Exception(reason)
 
@@ -122,6 +137,12 @@ interface EpgSource {
 
     // Applies to every channel: the TV picks the described track wherever one exists.
     suspend fun setAudioDescription(enabled: Boolean)
+
+    // Subtitles of whatever channel the TV shows; empty when it shows no TV channel.
+    suspend fun subtitles(): SubtitleTracks
+
+    // A null id turns subtitles off. False without switching when the TV no longer shows the channel the subtitle belongs to.
+    suspend fun selectSubtitle(id: Int?, channelId: String?): Boolean
 
     suspend fun favoriteLists(): List<FavoriteList>
 

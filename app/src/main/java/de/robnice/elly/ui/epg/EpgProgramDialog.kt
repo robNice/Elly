@@ -82,6 +82,7 @@ fun EpgProgramDialog(
     loadVideoInfo: (suspend (EpgChannel) -> EpgVideoInfo?)?,
     loadImage: suspend (String) -> ByteArray?,
     onAudioTracks: (() -> Unit)?,
+    onSubtitles: (() -> Unit)?,
     onSwitch: () -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -214,9 +215,12 @@ fun EpgProgramDialog(
                         recording == null && !canRecord -> Hint(R.string.epg_record_no_storage)
                         recording == null && !recordData -> Hint(R.string.epg_record_no_data)
                     }
-                    // The TV only lists the tracks of what it shows right now.
+                    // The TV only lists the tracks and subtitles of what it shows right now.
                     if (running && onAudioTracks != null) {
                         ActionButton(icon = R.drawable.ic_audio_track, text = R.string.audio_tracks_title, enabled = true, onClick = onAudioTracks)
+                    }
+                    if (running && onSubtitles != null) {
+                        ActionButton(icon = R.drawable.ic_subtitles, text = R.string.subtitles_title, enabled = true, onClick = onSubtitles)
                     }
                 }
                 val genre = program.genres.joinToString(GENRE_SEPARATOR).ifBlank { program.genre }

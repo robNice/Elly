@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">Lavt lys fra øverst til venstre: knappene kaster lange skygger, og bakgrunnen lyses opp fra det hjørnet.</string>
     <string name="settings_backup">Sikkerhetskopi og gjenoppretting</string>
     <string name="settings_backup_description">Skjermer og utseende lagres som separate filer, slik at du kan gi skjermene dine videre uten at den andre mister sitt eget utseende. Ved gjenoppretting gjenkjenner Elly selv hva slags fil det er.</string>
-    <string name="settings_backup_screens">Sikkerhetskopier skjermer</string>
-    <string name="settings_backup_appearance">Sikkerhetskopier utseende</string>
     <string name="settings_backup_restore">Gjenopprett fra fil</string>
     <string name="settings_backup_appearance_file">Elly-Utseende</string>
-    <string name="settings_backup_restore_screens_title">Erstatte skjermer?</string>
-    <string name="settings_backup_restore_screens_message">Skjermene på den aktive TV-en erstattes av dem i filen: rekkefølge, viste skjermer og egne oppsett. Utseendet forblir som det er. App-ikoner hentes på nytt fra TV-en; en programguide forblir tom hvis TV-en ikke har en favorittliste med det navnet.</string>
-    <string name="settings_backup_restore_appearance_title">Erstatte utseende?</string>
-    <string name="settings_backup_restore_appearance_message">Fargepalett, bakgrunn, avrunding og lyseffekt erstattes av dem i filen. Skjermene dine forblir som de er.</string>
     <string name="settings_backup_restore_confirm">Erstatt</string>
     <string name="settings_backup_saved">Sikkerhetskopi lagret.</string>
     <string name="settings_backup_save_failed">Filen kunne ikke lagres.</string>

@@ -76,7 +76,8 @@ class SettingsRepository(context: Context, private val motionAvailable: Boolean)
             shakeToOpen = preferences[SHAKE_TO_OPEN] ?: false,
             shakeSensitivity = (preferences[SHAKE_SENSITIVITY] ?: MotionTuning.DEFAULT_SHAKE_SENSITIVITY)
                 .coerceIn(MotionTuning.SHAKE_SENSITIVITY_RANGE),
-            doubleTapToOpen = preferences[DOUBLE_TAP_TO_OPEN] ?: false
+            doubleTapToOpen = preferences[DOUBLE_TAP_TO_OPEN] ?: false,
+            headerButton = preferences[POINTER_HEADER_BUTTON] ?: true
         )
     }
 
@@ -162,6 +163,10 @@ class SettingsRepository(context: Context, private val motionAvailable: Boolean)
         dataStore.edit { it[DOUBLE_TAP_TO_OPEN] = enabled }
     }
 
+    suspend fun setPointerHeaderButton(enabled: Boolean) {
+        dataStore.edit { it[POINTER_HEADER_BUTTON] = enabled }
+    }
+
     suspend fun setSwipeSpeed(value: Float) {
         dataStore.edit { it[SWIPE_SPEED] = value.coerceIn(MotionTuning.SWIPE_SPEED_RANGE) }
     }
@@ -190,6 +195,7 @@ class SettingsRepository(context: Context, private val motionAvailable: Boolean)
         private val SHAKE_TO_OPEN = booleanPreferencesKey("shake_to_open")
         private val SHAKE_SENSITIVITY = floatPreferencesKey("shake_sensitivity")
         private val DOUBLE_TAP_TO_OPEN = booleanPreferencesKey("double_tap_to_open")
+        private val POINTER_HEADER_BUTTON = booleanPreferencesKey("pointer_header_button")
 
         fun resolveMode(stored: PointerMode?, motionAvailable: Boolean): PointerMode = when {
             !motionAvailable -> PointerMode.TOUCH

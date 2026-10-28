@@ -219,6 +219,30 @@ class RootedEpgSource(
         Unit
     }
 
+    // The TV's own subtitle menu works the same way: the setting turns subtitles on or off, the list belongs to the running broadcast.
+    override suspend fun subtitles(): SubtitleTracks = rootAccess.withLuna(tv) { luna ->
+        val channelId = currentChannelId(luna)
+        val setting = luna.call(SYSTEM_SETTINGS, JSONObject().put("category", "caption").put("keys", JSONArray().put(CAPTION_ENABLE)))
+        val list = luna.callBound(SUBTITLES, JSONObject().put("broadcastId", TvLuna.BROADCAST_ID))
+        EpgParser.subtitles(list, EpgParser.subtitlesEnabled(setting)).copy(channelId = channelId)
+    }
+
+    override suspend fun selectSubtitle(id: Int?, channelId: String?): Boolean = rootAccess.withLuna(tv) { luna ->
+        if (id == null) {
+            setSubtitlesEnabled(luna, false)
+            return@withLuna true
+        }
+        if (channelId == null || currentChannelId(luna) != channelId) return@withLuna false
+        setSubtitlesEnabled(luna, true)
+        luna.callBound(SUBTITLE_SELECT, JSONObject().put("broadcastId", TvLuna.BROADCAST_ID).put("subtitleId", id)).requireSuccess()
+        true
+    }
+
+    private suspend fun setSubtitlesEnabled(luna: TvLuna, enabled: Boolean) {
+        val settings = JSONObject().put(CAPTION_ENABLE, if (enabled) "on" else "off")
+        luna.call(SYSTEM_SETTINGS_SET, JSONObject().put("category", "caption").put("settings", settings)).requireSuccess()
+    }
+
     private suspend fun currentChannelId(luna: TvLuna): String? =
         luna.call(CURRENT_CHANNEL).optString("channelId").takeIf { it.isNotBlank() }
 
@@ -286,6 +310,9 @@ class RootedEpgSource(
         const val SYSTEM_SETTINGS = "luna://com.lge.settingsservice/getSystemSettings"
         const val SYSTEM_SETTINGS_SET = "luna://com.webos.settingsservice/setSystemSettings"
         const val AUDIO_DESCRIPTION = "audioDescription"
+        const val SUBTITLES = "luna://com.webos.service.utp.subtitle/getSubtitleList"
+        const val SUBTITLE_SELECT = "luna://com.webos.service.utp.subtitle/setSubtitle"
+        const val CAPTION_ENABLE = "captionEnable"
         const val LIST_DEVICES = "luna://com.webos.service.attachedstoragemanager/listDevices"
         const val SCHEDULE_WATCHING = "watching"
         const val SCHEDULE_RECORDING = "recording"

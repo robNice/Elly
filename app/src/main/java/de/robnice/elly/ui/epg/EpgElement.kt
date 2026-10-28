@@ -66,10 +66,14 @@ class EpgGuides(
     val perform: suspend (EpgAction) -> Unit,
     val videoInfo: suspend (EpgChannel) -> EpgVideoInfo?,
     val programImage: suspend (String) -> ByteArray?,
-    val openAudioTracks: () -> Unit
+    val openAudioTracks: () -> Unit,
+    val openSubtitles: () -> Unit
 )
 
 val LocalEpgGuides = compositionLocalOf<EpgGuides?> { null }
+
+// Counts up each time the page comes into view or the app comes back; null while the page is not the one shown.
+val LocalPageShown = compositionLocalOf<Int?> { null }
 
 // On the remote screens the guide grid as soon as data is there; in the editor and while loading a stand-in.
 @Composable
@@ -95,6 +99,7 @@ fun EpgElement(config: EpgConfig?, editing: Boolean, modifier: Modifier = Modifi
                 loadVideoInfo = guides.videoInfo,
                 loadImage = guides.programImage,
                 onAudioTracks = guides.openAudioTracks,
+                onSubtitles = guides.openSubtitles,
                 modifier = modifier
             )
             return

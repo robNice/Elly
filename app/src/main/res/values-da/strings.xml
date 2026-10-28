@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">Lavt lys fra øverst til venstre: knapperne kaster lange skygger, og baggrunden bliver oplyst fra det hjørne.</string>
     <string name="settings_backup">Sikkerhedskopi og gendannelse</string>
     <string name="settings_backup_description">Skærme og udseende gemmes som separate filer, så du kan give dine skærme videre, uden at den anden mister sit eget udseende. Ved gendannelse genkender Elly selv, hvilken slags fil det er.</string>
-    <string name="settings_backup_screens">Gem skærme</string>
-    <string name="settings_backup_appearance">Gem udseende</string>
     <string name="settings_backup_restore">Gendan fra fil</string>
     <string name="settings_backup_appearance_file">Elly-Udseende</string>
-    <string name="settings_backup_restore_screens_title">Erstat skærme?</string>
-    <string name="settings_backup_restore_screens_message">Skærmene på det aktive tv erstattes af dem i filen: rækkefølge, viste skærme og egne layouts. Udseendet forbliver, som det er. App-ikoner hentes igen fra tv\'et; en programguide forbliver tom, hvis tv\'et ikke har en favoritliste med det navn.</string>
-    <string name="settings_backup_restore_appearance_title">Erstat udseende?</string>
-    <string name="settings_backup_restore_appearance_message">Farvepalet, baggrund, afrunding og lyseffekt erstattes af dem i filen. Dine skærme forbliver, som de er.</string>
     <string name="settings_backup_restore_confirm">Erstat</string>
     <string name="settings_backup_saved">Sikkerhedskopi gemt.</string>
     <string name="settings_backup_save_failed">Filen kunne ikke gemmes.</string>

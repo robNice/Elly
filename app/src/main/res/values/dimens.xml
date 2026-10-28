@@ -99,6 +99,10 @@
     <dimen name="settings_palette_bar_height">26dp</dimen>
     <dimen name="settings_palette_bar_corner">8dp</dimen>
     <dimen name="settings_palette_label_spacing">6dp</dimen>
+    <dimen name="settings_current_palette_width">120dp</dimen>
+    <dimen name="settings_current_background_width">64dp</dimen>
+    <dimen name="settings_backup_icon">18dp</dimen>
+    <dimen name="settings_backup_icon_spacing">8dp</dimen>
     <dimen name="screen_thumbnail_corner">10dp</dimen>
     <dimen name="screen_thumbnail_padding">6dp</dimen>
     <dimen name="screen_thumbnail_checkbox_spacing">10dp</dimen>

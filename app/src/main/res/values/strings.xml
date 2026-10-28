@@ -115,6 +115,7 @@
     <string name="key_guide">Guide</string>
     <string name="key_input">Input</string>
     <string name="key_audio_track">Audio track</string>
+    <string name="key_subtitle">Subtitles</string>
     <string name="key_keyboard">Keyboard</string>
     <string name="text_input_hint">Text for the TV</string>
     <string name="text_input_close">Close keyboard</string>
@@ -153,6 +154,12 @@
     <string name="audio_track_dolby" translatable="false">Dolby</string>
     <string name="audio_track_unknown">Unknown language</string>
     <string name="audio_track_selected">Active</string>
+    <string name="subtitles_title">Choose subtitles</string>
+    <string name="subtitles_off">Off</string>
+    <string name="subtitles_none">No subtitles found. They can only be chosen while the TV shows a TV channel.</string>
+    <string name="subtitles_no_root">Choosing subtitles needs the root access. Set it up under Settings → TV.</string>
+    <string name="subtitles_channel_changed">The channel was changed. Please choose the subtitles again.</string>
+    <string name="subtitle_teletext">Teletext</string>
     <string name="input_picker_empty">The TV did not report any inputs.</string>
     <string name="input_picker_not_connected">Nothing connected</string>
 
@@ -187,16 +194,19 @@
     <string name="settings_light_effect">Long summer evenings</string>
     <string name="settings_light_effect_description">Low light from the top left: keys cast long shadows and the background is lit from that corner.</string>
     <string name="settings_backup">Back up and restore</string>
-    <string name="settings_backup_description">Screens and appearance are saved as separate files, so you can pass on your screens without the other person losing their own look. When restoring, Elly recognises which kind of file it is.</string>
-    <string name="settings_backup_screens">Back up screens</string>
-    <string name="settings_backup_appearance">Back up appearance</string>
+    <string name="settings_backup_description">Screens and appearance can be backed up on their own or together, so you can pass on your screens without the other person losing their own look. When restoring, Elly shows what the file holds and you choose what to take over.</string>
     <string name="settings_backup_restore">Restore from file</string>
+    <string name="settings_backup_save">Back up</string>
+    <string name="settings_backup_save_title">What to back up?</string>
+    <string name="settings_backup_file" translatable="false">Elly-Backup</string>
+    <string name="settings_backup_part_screens">Screens</string>
+    <string name="settings_backup_part_screens_description">Order, shown screens and own layouts of the active TV.</string>
+    <string name="settings_backup_part_appearance">Appearance</string>
+    <string name="settings_backup_part_appearance_description">Color palette, background, rounding and light effect.</string>
+    <string name="settings_backup_restore_title">What to restore?</string>
+    <string name="settings_backup_restore_message">The chosen parts are replaced by those in the file. App icons are loaded from the TV again; a program guide stays empty if the TV has no favorite list of that name.</string>
     <string name="settings_backup_screens_file" translatable="false">Elly-Screens</string>
     <string name="settings_backup_appearance_file">Elly-Appearance</string>
-    <string name="settings_backup_restore_screens_title">Replace screens?</string>
-    <string name="settings_backup_restore_screens_message">The screens of the active TV are replaced by those in the file: order, shown screens and own layouts. The appearance stays as it is. App icons are loaded from the TV again; a program guide stays empty if the TV has no favorite list of that name.</string>
-    <string name="settings_backup_restore_appearance_title">Replace appearance?</string>
-    <string name="settings_backup_restore_appearance_message">Color palette, background, rounding and light effect are replaced by those in the file. Your screens stay as they are.</string>
     <string name="settings_backup_restore_confirm">Replace</string>
     <string name="settings_backup_saved">Backup saved.</string>
     <string name="settings_backup_save_failed">The file could not be saved.</string>
@@ -222,6 +232,9 @@
     <string name="settings_shake_sensitivity">Shake sensitivity</string>
     <string name="settings_double_tap_to_open">Open by double tap</string>
     <string name="settings_double_tap_to_open_description">Double tap an empty spot of the screen to open the pointer.</string>
+    <string name="settings_pointer_activation">Opening</string>
+    <string name="settings_pointer_header_button">Open with the pointer icon</string>
+    <string name="settings_pointer_header_button_description">Shows the mouse icon in the top bar. When off, the icon is hidden.</string>
     <string name="settings_touch_style_joystick">Joystick</string>
     <string name="settings_touch_style_joystick_description">Like an analog stick: the further you pull, the faster the pointer moves.</string>
     <string name="status_connected">Connected to the TV</string>
@@ -493,7 +506,7 @@
     <string name="onboarding_pointer_motion">Motion: the pointer follows your phone. Hold it like a remote or upright in front of you and move it. The big OK button clicks, swipe on the scroll area to scroll.</string>
     <string name="onboarding_pointer_touch">Touchpad: swipe across the area to move the pointer, tap to click. As a joystick: the further you drag, the faster it moves.</string>
     <string name="onboarding_pointer_close">Close it with the X at the top right, with the back gesture or automatically after 5 seconds without activity.</string>
-    <string name="onboarding_pointer_quick">Open it even faster by shaking your phone (motion) or double-tapping a free spot (touchpad), if enabled under Controls.</string>
+    <string name="onboarding_pointer_quick">Open it even faster by shaking your phone or double-tapping a free spot, if enabled under Controls.</string>
 
     <string name="onboarding_done_title">That\'s it!</string>
     <string name="onboarding_done_text">Have fun with your TV. If you want to look something up, you\'ll find me any time behind my picture at the top right.</string>
@@ -593,7 +606,7 @@
     <string name="help_pointer_okpos_title">OK button at the top or bottom</string>
     <string name="help_pointer_okpos_body">In touchpad mode the OK button sits at the bottom (default) or at the top – whichever suits the way you hold your phone.</string>
     <string name="help_pointer_quick_title">Opening it faster</string>
-    <string name="help_pointer_quick_body">• Open by shaking (motion mode): a short shake of the phone opens the pointer. The shake sensitivity can be adjusted.\n• Open by double tap (touchpad mode): tap twice on a free spot of a screen.\nBoth are enabled in the settings under “Controls”.</string>
+    <string name="help_pointer_quick_body">• Open by shaking: a short shake of the phone opens the pointer. The shake sensitivity can be adjusted.\n• Open by double tap: tap twice on a free spot of a screen.\n• Open with the pointer icon: the mouse icon in the top bar. When off, the icon is hidden.\nAll three are switched on or off in the settings under “Controls”, several at once if you like. They work with every kind of pointer control.</string>
 
     <string name="help_edit_title">Editing screens</string>
     <string name="help_edit_elly">You decide which keys go where. Here I show you the editor.</string>

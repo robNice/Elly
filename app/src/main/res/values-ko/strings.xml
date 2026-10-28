@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">왼쪽 위에서 낮은 빛이 비쳐요. 버튼에 긴 그림자가 생기고 배경은 그 모서리에서부터 밝아져요.</string>
     <string name="settings_backup">백업 및 복원</string>
     <string name="settings_backup_description">화면과 디자인은 별도의 파일로 저장돼요. 그래서 상대방의 디자인을 바꾸지 않고 화면만 전달할 수 있어요. 복원할 때 Elly가 파일 종류를 스스로 알아봐요.</string>
-    <string name="settings_backup_screens">화면 백업</string>
-    <string name="settings_backup_appearance">디자인 백업</string>
     <string name="settings_backup_restore">파일에서 복원</string>
     <string name="settings_backup_appearance_file">Elly-디자인</string>
-    <string name="settings_backup_restore_screens_title">화면을 바꿀까요?</string>
-    <string name="settings_backup_restore_screens_message">활성 TV의 화면이 파일의 내용(순서, 표시할 화면, 직접 만든 레이아웃)으로 바뀌어요. 디자인은 그대로예요. 앱 아이콘은 TV에서 다시 불러와요. TV에 같은 이름의 즐겨찾기 목록이 없으면 프로그램 가이드는 비어 있어요.</string>
-    <string name="settings_backup_restore_appearance_title">디자인을 바꿀까요?</string>
-    <string name="settings_backup_restore_appearance_message">색상 팔레트, 배경, 모서리 둥글기, 빛 효과가 파일의 내용으로 바뀌어요. 화면은 그대로예요.</string>
     <string name="settings_backup_restore_confirm">바꾸기</string>
     <string name="settings_backup_saved">백업을 저장했어요.</string>
     <string name="settings_backup_save_failed">파일을 저장하지 못했어요.</string>

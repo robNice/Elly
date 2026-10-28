@@ -18,7 +18,8 @@ data class PointerSettings(
     val swipeSpeed: Float = MotionTuning.DEFAULT_SWIPE_SPEED,
     val shakeToOpen: Boolean = false,
     val shakeSensitivity: Float = MotionTuning.DEFAULT_SHAKE_SENSITIVITY,
-    val doubleTapToOpen: Boolean = false
+    val doubleTapToOpen: Boolean = false,
+    val headerButton: Boolean = true
 )
 
 object MotionTuning {

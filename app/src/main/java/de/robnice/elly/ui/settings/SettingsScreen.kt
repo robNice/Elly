@@ -60,6 +60,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.robnice.elly.BuildConfig
 import de.robnice.elly.R
@@ -268,13 +269,17 @@ fun SettingsScreen(
                                 )
                             }
                         }
-                        PaletteSection(selected = colorPalette, onSelect = viewModel::setColorPalette)
-                        CompositionLocalProvider(LocalColorPalette provides colorPalette) {
-                            BackgroundSection(
-                                current = background,
-                                onSelect = viewModel::setBackground,
-                                onImage = viewModel::setBackgroundImage
-                            )
+                        Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))) {
+                            PaletteSection(selected = colorPalette, onSelect = viewModel::setColorPalette, modifier = Modifier.weight(1f))
+                            val half = Modifier.weight(1f)
+                            CompositionLocalProvider(LocalColorPalette provides colorPalette) {
+                                BackgroundSection(
+                                    current = background,
+                                    onSelect = viewModel::setBackground,
+                                    onImage = viewModel::setBackgroundImage,
+                                    modifier = half
+                                )
+                            }
                         }
                         RoundingSection(
                             keyRounding = keyRounding,
@@ -305,7 +310,8 @@ fun SettingsScreen(
                             onSwipeSpeedChange = viewModel::setSwipeSpeed,
                             onShakeChange = viewModel::setShakeToOpen,
                             onShakeSensitivityChange = viewModel::setShakeSensitivity,
-                            onDoubleTapChange = viewModel::setDoubleTapToOpen
+                            onDoubleTapChange = viewModel::setDoubleTapToOpen,
+                            onHeaderButtonChange = viewModel::setPointerHeaderButton
                         )
                         SwitchSetting(
                             title = stringResource(R.string.settings_key_haptics),
@@ -388,24 +394,39 @@ internal fun SwitchSetting(
 }
 
 @Composable
-private fun PaletteSection(selected: ColorPalette, onSelect: (ColorPalette) -> Unit) {
+private fun PaletteSection(selected: ColorPalette, onSelect: (ColorPalette) -> Unit, modifier: Modifier) {
     val spacing = dimensionResource(R.dimen.setup_item_spacing)
-    Column(verticalArrangement = Arrangement.spacedBy(spacing)) {
+    var open by remember { mutableStateOf(false) }
+    // Only the palette in use is shown; tapping it opens all of them.
+    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(spacing)) {
         Text(text = stringResource(R.string.settings_palette), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
-        Card(modifier = Modifier.fillMaxWidth()) {
-            Column(
-                modifier = Modifier.padding(dimensionResource(R.dimen.setup_card_padding)),
-                verticalArrangement = Arrangement.spacedBy(spacing)
-            ) {
-                ColorPalette.entries.chunked(PALETTE_COLUMNS).forEach { row ->
-                    Row(horizontalArrangement = Arrangement.spacedBy(spacing)) {
-                        row.forEach { palette ->
-                            PaletteOption(
-                                palette = palette,
-                                selected = palette == selected,
-                                onClick = { onSelect(palette) },
-                                modifier = Modifier.weight(1f)
-                            )
+        PaletteOption(
+            palette = selected,
+            selected = true,
+            onClick = { open = true },
+            modifier = Modifier.width(dimensionResource(R.dimen.settings_current_palette_width))
+        )
+    }
+    if (open) {
+        Dialog(onDismissRequest = { open = false }) {
+            Card(modifier = Modifier.fillMaxWidth()) {
+                Column(
+                    modifier = Modifier.padding(dimensionResource(R.dimen.setup_card_padding)),
+                    verticalArrangement = Arrangement.spacedBy(spacing)
+                ) {
+                    ColorPalette.entries.chunked(PALETTE_COLUMNS).forEach { row ->
+                        Row(horizontalArrangement = Arrangement.spacedBy(spacing)) {
+                            row.forEach { palette ->
+                                PaletteOption(
+                                    palette = palette,
+                                    selected = palette == selected,
+                                    onClick = {
+                                        onSelect(palette)
+                                        open = false
+                                    },
+                                    modifier = Modifier.weight(1f)
+                                )
+                            }
                         }
                     }
                 }
@@ -556,12 +577,43 @@ private fun PointerSection(
     onSwipeSpeedChange: (Float) -> Unit,
     onShakeChange: (Boolean) -> Unit,
     onShakeSensitivityChange: (Float) -> Unit,
-    onDoubleTapChange: (Boolean) -> Unit
+    onDoubleTapChange: (Boolean) -> Unit,
+    onHeaderButtonChange: (Boolean) -> Unit
 ) {
     Column(verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_item_spacing))) {
         Text(text = stringResource(R.string.settings_pointer), style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.primary)
         Card(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier.padding(vertical = dimensionResource(R.dimen.setup_item_spacing))) {
+                // The ways to open the pointer work for every kind of control and can be combined.
+                SettingCaption(stringResource(R.string.settings_pointer_activation))
+                SubSwitch(
+                    title = stringResource(R.string.settings_shake_to_open),
+                    description = stringResource(R.string.settings_shake_to_open_description),
+                    checked = settings.shakeToOpen,
+                    onCheckedChange = onShakeChange
+                )
+                if (settings.shakeToOpen) {
+                    Column(modifier = Modifier.padding(start = dimensionResource(R.dimen.settings_sub_option_indent))) {
+                        SliderSetting(
+                            title = stringResource(R.string.settings_shake_sensitivity),
+                            value = settings.shakeSensitivity,
+                            range = MotionTuning.SHAKE_SENSITIVITY_RANGE,
+                            onValueChange = onShakeSensitivityChange
+                        )
+                    }
+                }
+                SubSwitch(
+                    title = stringResource(R.string.settings_double_tap_to_open),
+                    description = stringResource(R.string.settings_double_tap_to_open_description),
+                    checked = settings.doubleTapToOpen,
+                    onCheckedChange = onDoubleTapChange
+                )
+                SubSwitch(
+                    title = stringResource(R.string.settings_pointer_header_button),
+                    description = stringResource(R.string.settings_pointer_header_button_description),
+                    checked = settings.headerButton,
+                    onCheckedChange = onHeaderButtonChange
+                )
                 SettingCaption(stringResource(R.string.settings_pointer_mode))
                 ChoiceRow(
                     title = stringResource(R.string.settings_pointer_mode_motion),
@@ -587,22 +639,6 @@ private fun PointerSection(
                             range = MotionTuning.ACCELERATION_RANGE,
                             onValueChange = onAccelerationChange
                         )
-                        SubSwitch(
-                            title = stringResource(R.string.settings_shake_to_open),
-                            description = stringResource(R.string.settings_shake_to_open_description),
-                            checked = settings.shakeToOpen,
-                            onCheckedChange = onShakeChange
-                        )
-                        if (settings.shakeToOpen) {
-                            Column(modifier = Modifier.padding(start = dimensionResource(R.dimen.settings_sub_option_indent))) {
-                                SliderSetting(
-                                    title = stringResource(R.string.settings_shake_sensitivity),
-                                    value = settings.shakeSensitivity,
-                                    range = MotionTuning.SHAKE_SENSITIVITY_RANGE,
-                                    onValueChange = onShakeSensitivityChange
-                                )
-                            }
-                        }
                     }
                 }
                 ChoiceRow(
@@ -613,12 +649,6 @@ private fun PointerSection(
                 )
                 if (settings.mode == PointerMode.TOUCH) {
                     Column(modifier = Modifier.padding(start = dimensionResource(R.dimen.settings_sub_option_indent))) {
-                        SubSwitch(
-                            title = stringResource(R.string.settings_double_tap_to_open),
-                            description = stringResource(R.string.settings_double_tap_to_open_description),
-                            checked = settings.doubleTapToOpen,
-                            onCheckedChange = onDoubleTapChange
-                        )
                         SettingCaption(stringResource(R.string.settings_touch_style))
                         ChoiceRow(
                             title = stringResource(R.string.settings_touch_style_swipe),

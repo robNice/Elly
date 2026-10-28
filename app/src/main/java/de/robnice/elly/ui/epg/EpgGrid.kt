@@ -32,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
@@ -51,6 +52,7 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
@@ -101,6 +103,7 @@ fun EpgGrid(
     loadVideoInfo: suspend (EpgChannel) -> EpgVideoInfo?,
     loadImage: suspend (String) -> ByteArray?,
     onAudioTracks: () -> Unit,
+    onSubtitles: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val colors = epgColors(currentPaletteColors())
@@ -122,6 +125,7 @@ fun EpgGrid(
             loadVideoInfo = loadVideoInfo.takeIf { program.start <= System.currentTimeMillis() && program.end > System.currentTimeMillis() },
             loadImage = loadImage,
             onAudioTracks = onAudioTracks.takeIf { channel.id == currentChannelId },
+            onSubtitles = onSubtitles.takeIf { channel.id == currentChannelId },
             onSwitch = {
                 selected = null
                 haptic()
@@ -168,13 +172,33 @@ fun EpgGrid(
             .let { with(density) { it.roundToPx().toDp() } }
         val viewportPx = with(density) { (maxWidth - channelWidth).toPx() }
 
-        // Opens with now in the left third.
+        // Opens with now in the left third and goes back there whenever the page is shown again.
+        val shown = LocalPageShown.current
         var positioned by remember { mutableStateOf(false) }
-        LaunchedEffect(horizontal.maxValue) {
-            if (!positioned && horizontal.maxValue > 0) {
-                horizontal.scrollTo((xOf(now) - viewportPx / NOW_POSITION).toInt().coerceIn(0, horizontal.maxValue))
+        var jumpedFor by remember { mutableStateOf<Int?>(null) }
+        LaunchedEffect(horizontal.maxValue > 0, shown) {
+            if (horizontal.maxValue == 0) return@LaunchedEffect
+            val target = (xOf(now) - viewportPx / NOW_POSITION).toInt().coerceIn(0, horizontal.maxValue)
+            if (!positioned) {
                 positioned = true
+                jumpedFor = shown
+                horizontal.scrollTo(target)
+            } else if (shown != null && shown != jumpedFor) {
+                jumpedFor = shown
+                horizontal.animateScrollTo(target)
             }
+        }
+
+        // The channel on air goes to the middle; the channel may only be known a moment after the page is shown.
+        val activeIndex = guide.channels.indexOfFirst { it.id == currentChannelId }
+        val rowPx = with(density) { rowHeight.toPx() }
+        var centeredFor by remember { mutableStateOf<Int?>(null) }
+        LaunchedEffect(shown, activeIndex, vertical.viewportSize) {
+            if (shown == null || shown == centeredFor || activeIndex < 0 || vertical.viewportSize == 0) return@LaunchedEffect
+            val first = centeredFor == null
+            centeredFor = shown
+            val target = (activeIndex * rowPx + rowPx / 2 - vertical.viewportSize / 2f).toInt().coerceIn(0, vertical.maxValue)
+            if (first) vertical.scrollTo(target) else vertical.animateScrollTo(target)
         }
 
         Column(modifier = Modifier.fillMaxSize()) {
@@ -210,7 +234,6 @@ fun EpgGrid(
                 }
                 BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxHeight()) {
                     val viewportHeightPx = with(density) { maxHeight.toPx() }
-                    val rowPx = with(density) { rowHeight.toPx() }
                     // Only a change of the visible rows recomposes the grid, not every scrolled pixel.
                     val firstRow by remember(rowPx) { derivedStateOf { (vertical.value / rowPx).toInt().coerceAtLeast(0) } }
                     val lastRow by remember(rowPx, viewportHeightPx, guide.channels.size) {
@@ -225,7 +248,6 @@ fun EpgGrid(
                         Box(modifier = Modifier.size(contentWidth, rowHeight * guide.channels.size)) {
                             val left = horizontal.value.toFloat()
                             val right = left + viewportPx
-                            val activeIndex = guide.channels.indexOfFirst { it.id == currentChannelId }
                             if (activeIndex >= 0) {
                                 Box(
                                     modifier = Modifier
@@ -234,27 +256,32 @@ fun EpgGrid(
                                         .background(activeRow)
                                 )
                             }
+                            // Keyed by channel and start, so a row or program coming into view does not
+                            // rebuild the ones already shown; unchanged cells are skipped.
                             for (row in firstRow..lastRow) {
                                 val rowChannel = guide.channels[row]
                                 val programs = guide.programs[rowChannel.signalId].orEmpty()
-                                programs.forEach { program ->
-                                    val x0 = xOf(program.start)
-                                    val x1 = xOf(program.end)
-                                    if (x1 > left && x0 < right) {
-                                        ProgramCell(
-                                            program = program,
-                                            now = now,
-                                            zone = zone,
-                                            colors = colors,
-                                            marks = marksOf(program).map { it.type },
-                                            onAir = row == activeIndex,
-                                            activeTint = activeRow,
-                                            hiddenStart = with(density) { (left - x0).coerceAtLeast(0f).toDp() },
-                                            modifier = Modifier
-                                                .offset(with(density) { x0.toDp() }, rowHeight * row)
-                                                .size(with(density) { (x1 - x0).toDp() }, rowHeight)
-                                                .clickable { selected = rowChannel to program }
-                                        )
+                                val rowPlanned = planned[rowChannel.signalId]
+                                key(rowChannel.id) {
+                                    programs.forEach { program ->
+                                        val x0 = xOf(program.start)
+                                        val x1 = xOf(program.end)
+                                        if (x1 > left && x0 < right) key(program.start) {
+                                            ProgramCell(
+                                                program = program,
+                                                now = now,
+                                                zone = zone,
+                                                colors = colors,
+                                                planned = rowPlanned,
+                                                onAir = row == activeIndex,
+                                                activeTint = activeRow,
+                                                hiddenStart = { (horizontal.value - x0).toInt().coerceAtLeast(0) },
+                                                modifier = Modifier
+                                                    .offset(with(density) { x0.toDp() }, rowHeight * row)
+                                                    .size(with(density) { (x1 - x0).toDp() }, rowHeight)
+                                                    .clickable { selected = rowChannel to program }
+                                            )
+                                        }
                                     }
                                 }
                             }
@@ -437,13 +464,14 @@ private fun ProgramCell(
     now: Long,
     zone: ZoneId,
     colors: EpgColors,
-    marks: List<ReservationType>,
+    planned: List<EpgReservation>?,
     onAir: Boolean,
     activeTint: Color,
-    hiddenStart: Dp,
+    hiddenStart: () -> Int,
     modifier: Modifier
 ) {
     val formatter = remember { DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT) }
+    val marks = remember(planned, program) { planned.orEmpty().filter { it.belongsTo(program) }.map { it.type } }
     val running = program.start <= now && program.end > now
     val color = when {
         program.end <= now -> colors.past
@@ -463,7 +491,12 @@ private fun ProgramCell(
             .background(color, shape)
             .then(frame)
             .clipToBounds()
-            .padding(start = hiddenStart)
+            // The title stays at the left edge while the program is partly scrolled out; read while laying out, not composing.
+            .layout { measurable, constraints ->
+                val hidden = hiddenStart().coerceAtMost(constraints.maxWidth)
+                val placeable = measurable.measure(constraints.copy(minWidth = 0, maxWidth = constraints.maxWidth - hidden))
+                layout(constraints.maxWidth, constraints.maxHeight) { placeable.place(hidden, (constraints.maxHeight - placeable.height) / 2) }
+            }
             .padding(horizontal = dimensionResource(R.dimen.epg_cell_padding)),
         contentAlignment = Alignment.CenterStart
     ) {

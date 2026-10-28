@@ -193,6 +193,34 @@ class EpgParserTest {
     }
 
     @Test
+    fun subtitlesFromUtpSubtitle() {
+        // ZDF HD, subtitles off.
+        val answer = JSONObject(
+            """
+            {"subtitleCount":1,"returnValue":true,"broadcastId":"00000029-dd41-cd8c-b4b8-c9bda3f3a8f2","currentSubtitleId":null,
+             "subtitle":[{"subtitleId":1,"subtitleLanguage":"German","subtitleType":1,"isTeletext":false,"isHearingImpaired":true,
+             "subtitleRatio":"","subtitleIndex":0,"translatedSubtitleLanguage":"Deutsch"}]}
+            """
+        )
+
+        val off = EpgParser.subtitles(answer, enabled = true)
+
+        assertNull(off.currentId)
+        assertEquals(listOf(SubtitleTrack(1, "Deutsch", hearingImpaired = true, teletext = false)), off.tracks)
+
+        answer.put("currentSubtitleId", 1)
+        assertEquals(1, EpgParser.subtitles(answer, enabled = true).currentId)
+        assertNull(EpgParser.subtitles(answer, enabled = false).currentId)
+        assertTrue(EpgParser.subtitles(JSONObject("{\"returnValue\":false,\"errorText\":\"no broadcast\"}"), enabled = true).tracks.isEmpty())
+    }
+
+    @Test
+    fun subtitleSetting() {
+        assertTrue(EpgParser.subtitlesEnabled(JSONObject("{\"returnValue\":true,\"settings\":{\"captionEnable\":\"on\"}}")))
+        assertFalse(EpgParser.subtitlesEnabled(JSONObject("{\"returnValue\":true,\"settings\":{\"captionEnable\":\"off\"}}")))
+    }
+
+    @Test
     fun localTimeUsesTvFormat() {
         val millis = Instant.parse("2026-10-25T19:15:00Z").toEpochMilli()
 

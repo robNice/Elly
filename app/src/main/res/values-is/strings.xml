@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">Lágt ljós ofan frá vinstri: hnapparnir varpa löngum skuggum og bakgrunnurinn lýsist upp frá því horni.</string>
     <string name="settings_backup">Afrita og endurheimta</string>
     <string name="settings_backup_description">Síður og útlit eru vistuð í aðskildum skrám, svo þú getur deilt síðunum þínum án þess að hinn aðilinn tapi sínu eigin útliti. Við endurheimt þekkir Elly sjálf hvers konar skrá þetta er.</string>
-    <string name="settings_backup_screens">Afrita síður</string>
-    <string name="settings_backup_appearance">Afrita útlit</string>
     <string name="settings_backup_restore">Endurheimta úr skrá</string>
     <string name="settings_backup_appearance_file">Elly-Utlit</string>
-    <string name="settings_backup_restore_screens_title">Skipta út síðum?</string>
-    <string name="settings_backup_restore_screens_message">Síðum virka sjónvarpsins er skipt út fyrir síðurnar í skránni: röð, sýndar síður og eigin uppsetningar. Útlitið helst óbreytt. Forritatákn eru sótt aftur úr sjónvarpinu; dagskrárvísir helst tómur ef sjónvarpið er ekki með eftirlætislista með þessu nafni.</string>
-    <string name="settings_backup_restore_appearance_title">Skipta út útliti?</string>
-    <string name="settings_backup_restore_appearance_message">Litaspjaldi, bakgrunni, rúnnun og ljósáhrifum er skipt út fyrir það sem er í skránni. Síðurnar þínar haldast óbreyttar.</string>
     <string name="settings_backup_restore_confirm">Skipta út</string>
     <string name="settings_backup_saved">Afrit vistað.</string>
     <string name="settings_backup_save_failed">Ekki tókst að vista skrána.</string>

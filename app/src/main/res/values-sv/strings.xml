@@ -146,14 +146,8 @@
     <string name="settings_light_effect_description">Lågt ljus uppifrån vänster: knapparna kastar långa skuggor och bakgrunden lyses upp från det hörnet.</string>
     <string name="settings_backup">Säkerhetskopiera och återställ</string>
     <string name="settings_backup_description">Skärmar och utseende sparas som separata filer, så att du kan ge dina skärmar vidare utan att den andra förlorar sitt eget utseende. Vid återställning känner Elly själv igen vilken sorts fil det är.</string>
-    <string name="settings_backup_screens">Säkerhetskopiera skärmar</string>
-    <string name="settings_backup_appearance">Säkerhetskopiera utseende</string>
     <string name="settings_backup_restore">Återställ från fil</string>
     <string name="settings_backup_appearance_file">Elly-Utseende</string>
-    <string name="settings_backup_restore_screens_title">Ersätta skärmar?</string>
-    <string name="settings_backup_restore_screens_message">Skärmarna på den aktiva tv:n ersätts av dem i filen: ordning, visade skärmar och egna layouter. Utseendet förblir som det är. Appikoner hämtas på nytt från tv:n; en programguide förblir tom om tv:n inte har någon favoritlista med det namnet.</string>
-    <string name="settings_backup_restore_appearance_title">Ersätta utseende?</string>
-    <string name="settings_backup_restore_appearance_message">Färgpalett, bakgrund, rundning och ljuseffekt ersätts av dem i filen. Dina skärmar förblir som de är.</string>
     <string name="settings_backup_restore_confirm">Ersätt</string>
     <string name="settings_backup_saved">Säkerhetskopia sparad.</string>
     <string name="settings_backup_save_failed">Filen kunde inte sparas.</string>

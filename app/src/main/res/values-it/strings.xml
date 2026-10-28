@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">Luce radente dall\'alto a sinistra: i tasti proiettano ombre lunghe e lo sfondo è illuminato da quell\'angolo.</string>
     <string name="settings_backup">Backup e ripristino</string>
     <string name="settings_backup_description">Schermate e aspetto vengono salvati in file separati, così puoi passare le tue schermate senza che l\'altra persona perda il proprio aspetto. Durante il ripristino Elly riconosce da sola di che tipo di file si tratta.</string>
-    <string name="settings_backup_screens">Salva schermate</string>
-    <string name="settings_backup_appearance">Salva aspetto</string>
     <string name="settings_backup_restore">Ripristina da file</string>
     <string name="settings_backup_appearance_file">Elly-Aspetto</string>
-    <string name="settings_backup_restore_screens_title">Sostituire le schermate?</string>
-    <string name="settings_backup_restore_screens_message">Le schermate della TV attiva vengono sostituite da quelle del file: ordine, schermate visibili e layout personali. L\'aspetto resta invariato. Le icone delle app vengono ricaricate dalla TV; una guida programmi resta vuota se la TV non ha un elenco dei preferiti con quel nome.</string>
-    <string name="settings_backup_restore_appearance_title">Sostituire l\'aspetto?</string>
-    <string name="settings_backup_restore_appearance_message">Tavolozza colori, sfondo, arrotondamento ed effetto luce vengono sostituiti da quelli del file. Le tue schermate restano invariate.</string>
     <string name="settings_backup_restore_confirm">Sostituisci</string>
     <string name="settings_backup_saved">Backup salvato.</string>
     <string name="settings_backup_save_failed">Impossibile salvare il file.</string>

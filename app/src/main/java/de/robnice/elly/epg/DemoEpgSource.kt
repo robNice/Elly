@@ -126,6 +126,23 @@ class DemoEpgSource(private val context: Context) : EpgSource {
         demoAudioTrack = if (enabled) 1 else 0
     }
 
+    @Volatile
+    private var demoSubtitle: Int? = null
+
+    override suspend fun subtitles(): SubtitleTracks = SubtitleTracks(
+        listOf(
+            SubtitleTrack(1, Locale.GERMAN.displayLanguage, hearingImpaired = true, teletext = false),
+            SubtitleTrack(2, Locale.ENGLISH.displayLanguage, hearingImpaired = false, teletext = false)
+        ),
+        demoSubtitle,
+        DEMO_AUDIO_CHANNEL
+    )
+
+    override suspend fun selectSubtitle(id: Int?, channelId: String?): Boolean {
+        demoSubtitle = id
+        return true
+    }
+
     private fun plan(type: ReservationType, program: EpgProgram) {
         synchronized(planned) {
             planned += EpgReservation("${type.name}_${program.programId}", type, program.signalId, program.start, program.title)

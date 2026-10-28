@@ -665,8 +665,8 @@ private fun ElementPickerDialog(
         add(PickerItem.Element(CustomElementType.APP, R.string.custom_element_app))
         if (epgAvailable) add(PickerItem.Element(CustomElementType.EPG, R.string.custom_element_epg))
         add(PickerItem.Header(R.string.custom_picker_keys))
-        // The audio track list is read over the same root access as the program guide.
-        RemoteKey.entries.filter { epgAvailable || it != RemoteKey.AUDIO_TRACK }.forEach { add(PickerItem.Key(it)) }
+        // Audio tracks and subtitles are read over the same root access as the program guide.
+        RemoteKey.entries.filter { epgAvailable || (it != RemoteKey.AUDIO_TRACK && it != RemoteKey.SUBTITLE) }.forEach { add(PickerItem.Key(it)) }
     }
     val itemPadding = dimensionResource(R.dimen.custom_picker_item_padding)
 

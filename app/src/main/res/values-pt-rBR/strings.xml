@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">Luz baixa vinda do canto superior esquerdo: os botões projetam sombras longas e o fundo é iluminado a partir desse canto.</string>
     <string name="settings_backup">Backup e restauração</string>
     <string name="settings_backup_description">Telas e aparência são salvas em arquivos separados, assim você pode passar suas telas para alguém sem que a pessoa perca a própria aparência. Ao restaurar, a Elly reconhece sozinha que tipo de arquivo é.</string>
-    <string name="settings_backup_screens">Fazer backup das telas</string>
-    <string name="settings_backup_appearance">Fazer backup da aparência</string>
     <string name="settings_backup_restore">Restaurar de arquivo</string>
     <string name="settings_backup_appearance_file">Elly-Aparencia</string>
-    <string name="settings_backup_restore_screens_title">Substituir telas?</string>
-    <string name="settings_backup_restore_screens_message">As telas da TV ativa são substituídas pelas do arquivo: ordem, telas exibidas e layouts próprios. A aparência continua como está. Os ícones dos apps são carregados de novo da TV; um guia de programação fica vazio se a TV não tiver uma lista de favoritos com esse nome.</string>
-    <string name="settings_backup_restore_appearance_title">Substituir aparência?</string>
-    <string name="settings_backup_restore_appearance_message">Paleta de cores, fundo, arredondamento e efeito de luz são substituídos pelos do arquivo. Suas telas continuam como estão.</string>
     <string name="settings_backup_restore_confirm">Substituir</string>
     <string name="settings_backup_saved">Backup salvo.</string>
     <string name="settings_backup_save_failed">Não foi possível salvar o arquivo.</string>

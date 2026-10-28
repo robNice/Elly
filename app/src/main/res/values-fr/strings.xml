@@ -146,14 +146,8 @@
     <string name="settings_light_effect_description">Lumière rasante venant d\'en haut à gauche : les touches projettent de longues ombres et l\'arrière-plan s\'éclaire depuis ce coin.</string>
     <string name="settings_backup">Sauvegarder et restaurer</string>
     <string name="settings_backup_description">Les écrans et l\'apparence sont enregistrés dans des fichiers séparés : tu peux ainsi partager tes écrans sans que l\'autre personne perde sa propre apparence. Lors de la restauration, Elly reconnaît elle-même le type de fichier.</string>
-    <string name="settings_backup_screens">Sauvegarder les écrans</string>
-    <string name="settings_backup_appearance">Sauvegarder l\'apparence</string>
     <string name="settings_backup_restore">Restaurer depuis un fichier</string>
     <string name="settings_backup_appearance_file">Elly-Apparence</string>
-    <string name="settings_backup_restore_screens_title">Remplacer les écrans ?</string>
-    <string name="settings_backup_restore_screens_message">Les écrans de la TV active sont remplacés par ceux du fichier : ordre, écrans affichés et dispositions personnelles. L\'apparence reste inchangée. Les icônes des applis sont rechargées depuis la TV ; un guide des programmes reste vide si la TV n\'a pas de liste de favoris portant ce nom.</string>
-    <string name="settings_backup_restore_appearance_title">Remplacer l\'apparence ?</string>
-    <string name="settings_backup_restore_appearance_message">La palette de couleurs, l\'arrière-plan, l\'arrondi et l\'effet de lumière sont remplacés par ceux du fichier. Tes écrans restent inchangés.</string>
     <string name="settings_backup_restore_confirm">Remplacer</string>
     <string name="settings_backup_saved">Sauvegarde enregistrée.</string>
     <string name="settings_backup_save_failed">Impossible d\'enregistrer le fichier.</string>

@@ -147,14 +147,8 @@
     <string name="settings_light_effect_description">Низьке світло зліва згори: кнопки відкидають довгі тіні, а фон підсвічено з цього кута.</string>
     <string name="settings_backup">Резервна копія та відновлення</string>
     <string name="settings_backup_description">Екрани й вигляд зберігаються в окремі файли, тож ти можеш передати свої екрани, а інша людина не втратить свій власний вигляд. Під час відновлення Elly сама визначає, що це за файл.</string>
-    <string name="settings_backup_screens">Зберегти екрани</string>
-    <string name="settings_backup_appearance">Зберегти вигляд</string>
     <string name="settings_backup_restore">Відновити з файлу</string>
     <string name="settings_backup_appearance_file">Elly-Вигляд</string>
-    <string name="settings_backup_restore_screens_title">Замінити екрани?</string>
-    <string name="settings_backup_restore_screens_message">Екрани активного телевізора буде замінено екранами з файлу: порядок, показувані екрани та власні розкладки. Вигляд залишиться без змін. Значки застосунків знову завантажаться з телевізора; телепрограма залишиться порожньою, якщо на телевізорі немає списку обраного з такою назвою.</string>
-    <string name="settings_backup_restore_appearance_title">Замінити вигляд?</string>
-    <string name="settings_backup_restore_appearance_message">Кольорову палітру, фон, заокруглення та світловий ефект буде замінено налаштуваннями з файлу. Твої екрани залишаться без змін.</string>
     <string name="settings_backup_restore_confirm">Замінити</string>
     <string name="settings_backup_saved">Резервну копію збережено.</string>
     <string name="settings_backup_save_failed">Не вдалося зберегти файл.</string>
