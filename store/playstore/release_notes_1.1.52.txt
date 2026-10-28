@@ -1,0 +1,180 @@
+<en-US>
+• New key "Subtitles" (with root access): choose or turn off the subtitles of the running channel, also in the TV guide's info window
+• The TV guide jumps to now and to the channel on air when you open it or return to the app, and scrolls more smoothly
+• Pointer: shaking, double tap and the pointer icon can each be switched on for every pointer mode; the icon can be hidden
+• Back up screens and appearance in one file and choose what to restore
+</en-US>
+<ar>
+• زر جديد «الترجمة» (مع صلاحيات الجذر): اختر ترجمة القناة الحالية أو أوقفها، وكذلك من نافذة المعلومات في دليل البرامج
+• ينتقل دليل البرامج إلى «الآن» وإلى القناة الحالية عند فتحه أو العودة إلى التطبيق، ويتمرر بسلاسة أكبر
+• المؤشر: يمكن تفعيل الهز والنقر المزدوج ورمز المؤشر كلٌّ على حدة مع كل أوضاع المؤشر، ويمكن إخفاء الرمز
+• انسخ الشاشات والمظهر احتياطيًا في ملف واحد واختر ما تريد استعادته
+</ar>
+<cs-CZ>
+• Nové tlačítko „Subtitles“ (s root přístupem): vyber nebo vypni titulky běžícího kanálu, i v informačním okně TV programu
+• TV program při otevření nebo návratu do aplikace skočí na „teď“ a na právě sledovaný kanál a posouvá se plynuleji
+• Ukazatel: zatřesení, dvojité klepnutí a ikonu ukazatele lze zapnout zvlášť pro každý režim; ikonu lze skrýt
+• Zálohuj obrazovky a vzhled do jednoho souboru a vyber, co obnovit
+</cs-CZ>
+<da-DK>
+• Ny knap "Undertekster" (med rootadgang): vælg eller slå underteksterne til den aktuelle kanal fra, også i programguidens infovindue
+• Programguiden springer til nu og til den aktuelle kanal, når du åbner den eller vender tilbage til appen, og ruller mere jævnt
+• Markør: rystelse, dobbelttryk og markørikonet kan slås til hver for sig i alle markørtilstande; ikonet kan skjules
+• Sikkerhedskopiér skærme og udseende i én fil, og vælg, hvad der skal gendannes
+</da-DK>
+<de-DE>
+• Neue Taste „Untertitel“ (mit Root-Zugang): Untertitel des laufenden Senders wählen oder ausschalten, auch im Info-Fenster der Programmübersicht
+• Die Programmübersicht springt beim Öffnen und bei Rückkehr in die App zu „Jetzt“ und zum laufenden Sender und scrollt flüssiger
+• Zeiger: Schütteln, Doppeltipp und Zeiger-Symbol einzeln für jede Zeigersteuerung einschaltbar, Symbol ausblendbar
+• Screens und Darstellung in einer Datei sichern und beim Einspielen auswählen
+</de-DE>
+<es-419>
+• Nuevo botón «Subtítulos» (con acceso root): elige o desactiva los subtítulos del canal actual, también en la ventana de información de la guía
+• La guía salta a «ahora» y al canal actual al abrirla o al volver a la app, y se desplaza con más fluidez
+• Puntero: agitar, doble toque y el icono del puntero se activan por separado en cualquier modo; el icono se puede ocultar
+• Guarda pantallas y apariencia en un solo archivo y elige qué restaurar
+</es-419>
+<es-ES>
+• Nuevo botón «Subtítulos» (con acceso root): elige o desactiva los subtítulos del canal actual, también en la ventana de información de la guía
+• La guía salta a «ahora» y al canal actual al abrirla o al volver a la app, y se desplaza con más fluidez
+• Puntero: agitar, doble toque y el icono del puntero se activan por separado en cualquier modo; el icono se puede ocultar
+• Guarda pantallas y apariencia en un solo archivo y elige qué restaurar
+</es-ES>
+<fi-FI>
+• Uusi painike ”Tekstitys” (root-oikeuksilla): valitse tai poista käynnissä olevan kanavan tekstitys, myös ohjelmaoppaan tietoikkunassa
+• Ohjelmaopas siirtyy avattaessa ja sovellukseen palatessa nykyhetkeen ja katsottavaan kanavaan ja vierii sujuvammin
+• Osoitin: ravistus, kaksoisnapautus ja osoitinkuvake voidaan ottaa käyttöön erikseen kaikissa tiloissa; kuvakkeen voi piilottaa
+• Varmuuskopioi näkymät ja ulkoasu yhteen tiedostoon ja valitse, mitä palautetaan
+</fi-FI>
+<fr-FR>
+• Nouvelle touche « Sous-titres » (avec accès root) : choisis ou désactive les sous-titres de la chaîne en cours, aussi dans la fenêtre d'infos du guide
+• Le guide revient à « maintenant » et à la chaîne en cours à l'ouverture ou au retour dans l'appli, et défile plus fluidement
+• Pointeur : secousse, double appui et icône du pointeur s'activent séparément dans chaque mode ; l'icône peut être masquée
+• Sauvegarde écrans et apparence dans un seul fichier et choisis ce que tu restaures
+</fr-FR>
+<hi-IN>
+• नई कुंजी "Subtitles" (रूट एक्सेस के साथ): चल रहे चैनल के सबटाइटल चुनें या बंद करें, प्रोग्राम गाइड की जानकारी विंडो में भी
+• खोलने या ऐप पर लौटने पर प्रोग्राम गाइड "अभी" और चल रहे चैनल पर पहुँच जाता है और ज़्यादा सहजता से स्क्रॉल होता है
+• पॉइंटर: हिलाना, डबल टैप और पॉइंटर आइकन हर मोड में अलग-अलग चालू किए जा सकते हैं; आइकन छिपाया जा सकता है
+• स्क्रीनों और रूप-रंग का एक ही फ़ाइल में बैकअप लें और चुनें कि क्या रीस्टोर करना है
+</hi-IN>
+<hu-HU>
+• Új „Subtitles” gomb (root hozzáféréssel): válaszd ki vagy kapcsold ki a futó csatorna feliratát, a műsorújság információs ablakában is
+• A műsorújság megnyitáskor és az appba visszatérve a „most” időpontra és a futó csatornára ugrik, és simábban görget
+• Mutató: rázás, dupla koppintás és a mutató ikonja minden módban külön bekapcsolható; az ikon elrejthető
+• Mentsd a képernyőket és a megjelenést egy fájlba, és válaszd ki, mit állítasz vissza
+</hu-HU>
+<id>
+• Tombol baru "Subtitles" (dengan akses root): pilih atau matikan subtitle saluran yang sedang tayang, juga di jendela info panduan program
+• Panduan program langsung ke "sekarang" dan saluran yang sedang tayang saat dibuka atau saat kembali ke aplikasi, dan bergulir lebih mulus
+• Penunjuk: guncang, ketuk dua kali, dan ikon penunjuk bisa diaktifkan terpisah di setiap mode; ikon bisa disembunyikan
+• Cadangkan layar dan tampilan dalam satu file dan pilih apa yang dipulihkan
+</id>
+<iw-IL>
+• מקש חדש "Subtitles" (עם גישת root): בחר או כבה את הכתוביות של הערוץ הנוכחי, גם בחלון המידע של מדריך התוכניות
+• מדריך התוכניות קופץ ל"עכשיו" ולערוץ הנוכחי בפתיחה או בחזרה לאפליקציה, וגולל בצורה חלקה יותר
+• סמן: ניעור, הקשה כפולה וסמל הסמן ניתנים להפעלה בנפרד בכל מצב; ניתן להסתיר את הסמל
+• גבה מסכים ומראה בקובץ אחד ובחר מה לשחזר
+</iw-IL>
+<it-IT>
+• Nuovo tasto "Sottotitoli" (con accesso root): scegli o disattiva i sottotitoli del canale in onda, anche nella finestra info della guida
+• La guida torna ad "adesso" e al canale in onda quando la apri o torni nell'app, e scorre in modo più fluido
+• Puntatore: scuotimento, doppio tocco e icona del puntatore si attivano separatamente in ogni modalità; l'icona si può nascondere
+• Salva schermate e aspetto in un unico file e scegli cosa ripristinare
+</it-IT>
+<ja-JP>
+• 新しいキー「字幕」（root 化が必要）：放送中のチャンネルの字幕を選択またはオフに。番組表の情報ウィンドウからも操作できます
+• 番組表を開いたときやアプリに戻ったとき、現在時刻と視聴中のチャンネルに移動。スクロールもより滑らかに
+• ポインター：振る・ダブルタップ・ポインターアイコンをどの操作方法でも個別にオンにできます。アイコンは非表示にもできます
+• スクリーンと外観を 1 つのファイルにバックアップし、復元する項目を選べます
+</ja-JP>
+<ko-KR>
+• 새 키 "자막"(루트 권한 필요): 방송 중인 채널의 자막을 선택하거나 끌 수 있어요. 프로그램 가이드 정보 창에서도 가능해요
+• 프로그램 가이드를 열거나 앱으로 돌아오면 현재 시간과 시청 중인 채널로 이동하고, 스크롤이 더 부드러워졌어요
+• 포인터: 흔들기, 두 번 탭, 포인터 아이콘을 모든 조작 방식에서 각각 켤 수 있고, 아이콘은 숨길 수 있어요
+• 화면과 디자인을 한 파일에 백업하고, 복원할 항목을 고를 수 있어요
+</ko-KR>
+<nl-NL>
+• Nieuwe toets "Ondertiteling" (met roottoegang): kies of zet de ondertiteling van de huidige zender uit, ook in het infovenster van de programmagids
+• De programmagids springt bij openen en terugkeren naar de app naar nu en naar de huidige zender, en scrolt soepeler
+• Aanwijzer: schudden, dubbeltikken en het aanwijzerpictogram zijn per stuk in te schakelen voor elke modus; het pictogram kan verborgen worden
+• Schermen en weergave in één bestand opslaan en kiezen wat je terugzet
+</nl-NL>
+<no-NO>
+• Ny tast «Undertekster» (med root-tilgang): velg eller slå av undertekstene på kanalen som går, også i infovinduet i programguiden
+• Programguiden hopper til nå og til kanalen som går når du åpner den eller går tilbake til appen, og ruller jevnere
+• Peker: risting, dobbelttrykk og pekerikonet kan slås på hver for seg i alle modi; ikonet kan skjules
+• Sikkerhetskopier skjermer og utseende i én fil og velg hva som skal gjenopprettes
+</no-NO>
+<pl-PL>
+• Nowy przycisk „Napisy” (z dostępem root): wybierz lub wyłącz napisy bieżącego kanału, także w oknie informacji przewodnika
+• Przewodnik po programach przy otwarciu i powrocie do aplikacji przechodzi do „teraz” i bieżącego kanału oraz przewija się płynniej
+• Wskaźnik: potrząśnięcie, podwójne dotknięcie i ikonę wskaźnika można włączyć osobno w każdym trybie; ikonę można ukryć
+• Zapisz strony i wygląd w jednym pliku i wybierz, co przywrócić
+</pl-PL>
+<pt-BR>
+• Novo botão "Legendas" (com acesso root): escolha ou desative as legendas do canal atual, também na janela de informações do guia
+• O guia vai para "agora" e para o canal atual ao abrir ou voltar ao app, e rola com mais fluidez
+• Ponteiro: chacoalhar, toque duplo e o ícone do ponteiro podem ser ativados separadamente em qualquer modo; o ícone pode ser ocultado
+• Faça backup das telas e da aparência em um só arquivo e escolha o que restaurar
+</pt-BR>
+<pt-PT>
+• Novo botão "Legendas" (com acesso root): escolhe ou desativa as legendas do canal atual, também na janela de informações do guia
+• O guia vai para "agora" e para o canal atual ao abrir ou ao voltar à app, e desliza com mais fluidez
+• Ponteiro: abanar, toque duplo e o ícone do ponteiro podem ser ativados separadamente em qualquer modo; o ícone pode ser ocultado
+• Guarda os ecrãs e o aspeto num só ficheiro e escolhe o que restaurar
+</pt-PT>
+<ro>
+• Tastă nouă „Subtitles” (cu acces root): alege sau oprește subtitrările canalului curent, și din fereastra de informații a ghidului
+• Ghidul de programe sare la „acum” și la canalul curent când îl deschizi sau revii în aplicație și derulează mai fluid
+• Indicator: scuturarea, atingerea dublă și pictograma indicatorului se pot activa separat în orice mod; pictograma poate fi ascunsă
+• Fă backup ecranelor și aspectului într-un singur fișier și alege ce restaurezi
+</ro>
+<ru-RU>
+• Новая кнопка «Субтитры» (с root-доступом): выбирай или отключай субтитры текущего канала, также в окне информации телепрограммы
+• Телепрограмма при открытии и возврате в приложение переходит к «сейчас» и текущему каналу и прокручивается плавнее
+• Указатель: встряхивание, двойное нажатие и значок указателя включаются отдельно в любом режиме; значок можно скрыть
+• Сохраняй экраны и оформление в один файл и выбирай, что восстановить
+</ru-RU>
+<sk>
+• Nové tlačidlo „Subtitles“ (s root prístupom): vyber alebo vypni titulky aktuálneho kanála, aj v informačnom okne TV programu
+• TV program pri otvorení alebo návrate do aplikácie skočí na „teraz“ a na aktuálny kanál a posúva sa plynulejšie
+• Ukazovateľ: zatrasenie, dvojité ťuknutie a ikonu ukazovateľa možno zapnúť zvlášť v každom režime; ikonu možno skryť
+• Zálohuj obrazovky a vzhľad do jedného súboru a vyber, čo obnoviť
+</sk>
+<sv-SE>
+• Ny knapp ”Undertexter” (med root-åtkomst): välj eller stäng av undertexterna för kanalen som går, även i programguidens infofönster
+• Programguiden hoppar till nu och till kanalen som går när du öppnar den eller går tillbaka till appen, och rullar jämnare
+• Pekare: skakning, dubbeltryck och pekarikonen kan slås på var för sig i alla lägen; ikonen kan döljas
+• Säkerhetskopiera skärmar och utseende i en fil och välj vad som ska återställas
+</sv-SE>
+<th>
+• ปุ่มใหม่ "Subtitles" (ต้องมีสิทธิ์ root): เลือกหรือปิดคำบรรยายของช่องที่กำลังดู ทำได้จากหน้าต่างข้อมูลในผังรายการด้วย
+• ผังรายการจะไปที่ "ตอนนี้" และช่องที่กำลังดูเมื่อเปิดหรือกลับมาที่แอป และเลื่อนได้ลื่นขึ้น
+• ตัวชี้: การเขย่า การแตะสองครั้ง และไอคอนตัวชี้เปิดใช้แยกกันได้ในทุกโหมด และซ่อนไอคอนได้
+• สำรองหน้าจอและรูปลักษณ์ไว้ในไฟล์เดียว และเลือกได้ว่าจะกู้คืนอะไร
+</th>
+<tr-TR>
+• Yeni "Subtitles" tuşu (root erişimiyle): mevcut kanalın altyazısını seç veya kapat, yayın akışının bilgi penceresinden de
+• Yayın akışı açıldığında veya uygulamaya dönüldüğünde "şimdi"ye ve izlenen kanala gidiyor ve daha akıcı kayıyor
+• İşaretçi: sallama, çift dokunma ve işaretçi simgesi her modda ayrı ayrı açılabilir; simge gizlenebilir
+• Ekranları ve görünümü tek dosyada yedekle ve neyi geri yükleyeceğini seç
+</tr-TR>
+<uk>
+• Нова кнопка «Субтитри» (з root-доступом): вибирай або вимикай субтитри поточного каналу, також у вікні інформації телепрограми
+• Телепрограма під час відкриття й повернення до застосунку переходить до «зараз» і поточного каналу та гортається плавніше
+• Вказівник: струшування, подвійний дотик і значок вказівника вмикаються окремо в будь-якому режимі; значок можна приховати
+• Зберігай екрани й вигляд в одному файлі та вибирай, що відновити
+</uk>
+<vi>
+• Phím mới "Subtitles" (cần quyền root): chọn hoặc tắt phụ đề của kênh đang phát, cả trong cửa sổ thông tin của lịch phát sóng
+• Lịch phát sóng chuyển đến "bây giờ" và kênh đang phát khi mở hoặc quay lại ứng dụng, và cuộn mượt hơn
+• Con trỏ: lắc, chạm hai lần và biểu tượng con trỏ có thể bật riêng trong mọi chế độ; có thể ẩn biểu tượng
+• Sao lưu màn hình và giao diện trong một tệp và chọn phần cần khôi phục
+</vi>
+<zh-CN>
+• 新增"Subtitles"键（需要 root 权限）：选择或关闭当前频道的字幕，也可在节目指南的信息窗口中操作
+• 打开节目指南或返回应用时，会跳到"现在"和正在播放的频道，滚动也更流畅
+• 指针：摇动、双击和指针图标可在每种模式下分别开启；图标可以隐藏
+• 将屏幕和外观备份到同一个文件，并选择要恢复的内容
+</zh-CN>
