@@ -11,6 +11,7 @@ permissions:
 env:
   PACKAGE_NAME: de.robnice.elly
   # Tag suffix = Play track: v1.2.3-gt -> closed testing, v1.2.3-p -> production
+  # No suffix (v1.2.3) -> build APK/AAB and GitHub release only, no Play upload
   PLAY_TRACKS: |
     gt=alpha
     p=production
@@ -31,16 +32,19 @@ jobs:
       - name: Resolve version and track from tag
         id: tag
         run: |
-          if [[ ! "$GITHUB_REF_NAME" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)-([a-z]+)$ ]]; then
-            echo "::error::Tag '$GITHUB_REF_NAME' must look like v1.2.3-<track>, e.g. v1.2.3-gt"
+          if [[ ! "$GITHUB_REF_NAME" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)(-([a-z]+))?$ ]]; then
+            echo "::error::Tag '$GITHUB_REF_NAME' must look like v1.2.3 or v1.2.3-<track>, e.g. v1.2.3-gt"
             exit 1
           fi
           version="${BASH_REMATCH[1]}"
-          suffix="${BASH_REMATCH[2]}"
-          track="$(echo "$PLAY_TRACKS" | awk -F= -v s="$suffix" '$1==s {print $2}')"
-          if [ -z "$track" ]; then
-            echo "::error::Unknown track suffix '$suffix'. Known: $(echo "$PLAY_TRACKS" | cut -d= -f1 | xargs)"
-            exit 1
+          suffix="${BASH_REMATCH[3]}"
+          track=""
+          if [ -n "$suffix" ]; then
+            track="$(echo "$PLAY_TRACKS" | awk -F= -v s="$suffix" '$1==s {print $2}')"
+            if [ -z "$track" ]; then
+              echo "::error::Unknown track suffix '$suffix'. Known: $(echo "$PLAY_TRACKS" | cut -d= -f1 | xargs)"
+              exit 1
+            fi
           fi
           gradle_name="$(grep -oP 'versionName\s*=\s*"\K[^"]+' app/build.gradle.kts)"
           gradle_code="$(grep -oP 'versionCode\s*=\s*\K[0-9]+' app/build.gradle.kts)"
@@ -48,7 +52,7 @@ jobs:
             echo "::error::Tag version $version does not match versionName $gradle_name in app/build.gradle.kts"
             exit 1
           fi
-          if [ ! -f "$STORE_DIR/release_notes_$version.txt" ]; then
+          if [ -n "$track" ] && [ ! -f "$STORE_DIR/release_notes_$version.txt" ]; then
             echo "::error::Release notes missing: $STORE_DIR/release_notes_$version.txt"
             exit 1
           fi
@@ -57,18 +61,21 @@ jobs:
             echo "version_code=$gradle_code"
             echo "track=$track"
           } >> "$GITHUB_OUTPUT"
-          echo "Version $version ($gradle_code) -> track $track"
+          echo "Version $version ($gradle_code) -> track ${track:-none (build only)}"
 
       - name: Set up Python
+        if: steps.tag.outputs.track != ''
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install Play API client
+        if: steps.tag.outputs.track != ''
         run: pip install google-api-python-client google-auth
 
       - name: Check whether version is already on Play
         id: play
+        if: steps.tag.outputs.track != ''
         env:
           PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
         run: |
@@ -130,6 +137,7 @@ jobs:
             elly-v${{ steps.tag.outputs.version }}.aab
 
       - name: Publish to Google Play
+        if: steps.tag.outputs.track != ''
         env:
           PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
         run: |
