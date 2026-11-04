@@ -15,8 +15,8 @@ android {
         applicationId = "de.robnice.elly"
         minSdk = 28
         targetSdk = 36
-        versionCode = 10001053
-        versionName = "1.1.53"
+        versionCode = 10001054
+        versionName = "1.1.54"
     }
 
     androidResources {
@@ -67,6 +67,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.foundation)

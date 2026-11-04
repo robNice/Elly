@@ -1,7 +1,7 @@
 package de.robnice.elly.tv.connection
 
 import android.util.Log
-import de.robnice.elly.BuildConfig
+import de.robnice.elly.core.BuildConfig
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.withTimeout

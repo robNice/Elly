@@ -24,3 +24,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Elly"
 include(":app")
+include(":core")
+include(":wear")

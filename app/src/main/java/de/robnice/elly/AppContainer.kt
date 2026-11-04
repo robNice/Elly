@@ -89,7 +89,7 @@ class AppContainer(context: Context) {
         if (owner == AppSlots.DEMO_OWNER) "${owner}_${appContext.resources.configuration.locales[0].toLanguageTag()}" else owner
     })
 
-    val remoteControl = RemoteControl(tvRepository, settingsRepository, connector, pairingManifest, WakeOnLan())
+    val remoteControl = RemoteControl(tvRepository, settingsRepository.demoMode, connector, pairingManifest, WakeOnLan())
 
     val appIconFiller = AppIconFiller(remoteControl, appSlotsRepository, screenLayoutRepository)
 

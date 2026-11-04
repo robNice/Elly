@@ -1,7 +1,6 @@
 package de.robnice.elly.remote
 
 import android.util.Log
-import de.robnice.elly.data.SettingsRepository
 import de.robnice.elly.data.TvRepository
 import de.robnice.elly.data.model.PairedTv
 import de.robnice.elly.tv.connection.PointerSocket
@@ -27,7 +26,7 @@ import org.json.JSONObject
 
 class RemoteControl(
     private val tvRepository: TvRepository,
-    private val settingsRepository: SettingsRepository,
+    private val demoMode: Flow<Boolean>,
     private val connector: WebOsConnector,
     private val manifest: PairingManifest,
     private val wakeOnLan: WakeOnLan
@@ -46,7 +45,7 @@ class RemoteControl(
     // Length of the text in that field; the TV does not tell its content.
     val keyboardTextLength: StateFlow<Int> = tvTextLength.asStateFlow()
 
-    val connectionState: Flow<ConnectionState> = combine(settingsRepository.demoMode, state) { demo, current ->
+    val connectionState: Flow<ConnectionState> = combine(demoMode, state) { demo, current ->
         if (demo) ConnectionState.DEMO else current
     }
 
@@ -54,7 +53,7 @@ class RemoteControl(
     suspend fun send(key: RemoteKey, target: PairedTv? = null): SendResult {
         val command = key.command
         if (command == RemoteCommand.Unsupported) return SendResult.UNSUPPORTED
-        if (settingsRepository.demoMode.first()) return SendResult.DEMO
+        if (demoMode.first()) return SendResult.DEMO
         val active = tvRepository.activeTv.first()
         val tv = target ?: active ?: return SendResult.NO_TV
         val report = tv.id == active?.id
@@ -81,7 +80,7 @@ class RemoteControl(
     }
 
     suspend fun loadApps(): AppListResult {
-        if (settingsRepository.demoMode.first()) return AppListResult(SendResult.DEMO, DEMO_APPS)
+        if (demoMode.first()) return AppListResult(SendResult.DEMO, DEMO_APPS)
         val tv = tvRepository.activeTv.first() ?: return AppListResult(SendResult.NO_TV)
         var apps = emptyList<TvApp>()
         val result = withSession(tv) {
@@ -92,7 +91,7 @@ class RemoteControl(
     }
 
     suspend fun downloadAppIcon(url: String): ByteArray? {
-        if (settingsRepository.demoMode.first()) return null
+        if (demoMode.first()) return null
         val tv = tvRepository.activeTv.first() ?: return null
         return withContext(Dispatchers.IO) {
             try {
@@ -107,7 +106,7 @@ class RemoteControl(
     }
 
     suspend fun launchApp(appId: String): SendResult {
-        if (settingsRepository.demoMode.first()) return SendResult.DEMO
+        if (demoMode.first()) return SendResult.DEMO
         val tv = tvRepository.activeTv.first() ?: return SendResult.NO_TV
         return withSession(tv) {
             it.connection.request(LAUNCH_APP, JSONObject().put("id", appId))
@@ -116,7 +115,7 @@ class RemoteControl(
     }
 
     suspend fun loadInputs(): InputListResult {
-        if (settingsRepository.demoMode.first()) return InputListResult(SendResult.DEMO, DEMO_INPUTS)
+        if (demoMode.first()) return InputListResult(SendResult.DEMO, DEMO_INPUTS)
         val tv = tvRepository.activeTv.first() ?: return InputListResult(SendResult.NO_TV)
         var inputs = emptyList<TvInput>()
         val result = withSession(tv) {
@@ -127,7 +126,7 @@ class RemoteControl(
     }
 
     suspend fun switchInput(input: TvInput): SendResult {
-        if (settingsRepository.demoMode.first()) return SendResult.DEMO
+        if (demoMode.first()) return SendResult.DEMO
         val tv = tvRepository.activeTv.first() ?: return SendResult.NO_TV
         return withSession(tv) {
             it.connection.request(SWITCH_INPUT, JSONObject().put("inputId", input.id))
@@ -137,7 +136,7 @@ class RemoteControl(
 
     // Null when the TV shows no channel (another input or an app) or cannot be reached.
     suspend fun currentChannelId(): String? {
-        if (settingsRepository.demoMode.first()) return null
+        if (demoMode.first()) return null
         val tv = tvRepository.activeTv.first() ?: return null
         var channelId: String? = null
         withSession(tv, report = false) {
@@ -148,7 +147,7 @@ class RemoteControl(
     }
 
     suspend fun openChannel(channelId: String): SendResult {
-        if (settingsRepository.demoMode.first()) return SendResult.DEMO
+        if (demoMode.first()) return SendResult.DEMO
         val tv = tvRepository.activeTv.first() ?: return SendResult.NO_TV
         return withSession(tv) {
             it.connection.request(OPEN_CHANNEL, JSONObject().put("channelId", channelId))
@@ -158,7 +157,7 @@ class RemoteControl(
 
     // Edits the focused text field on the TV: delete characters before the cursor, then insert text.
     suspend fun editText(delete: Int, insert: String): SendResult {
-        if (settingsRepository.demoMode.first()) return SendResult.DEMO
+        if (demoMode.first()) return SendResult.DEMO
         val tv = tvRepository.activeTv.first() ?: return SendResult.NO_TV
         return withSession(tv) {
             if (delete > 0) it.connection.request(DELETE_CHARACTERS, JSONObject().put("count", delete))
@@ -170,7 +169,7 @@ class RemoteControl(
     // A field whose enter means "next" only closes the keyboard and moves the focus on, for example
     // to the search behind a search field. If no other text field takes the focus, OK presses it.
     suspend fun sendEnter(): SendResult {
-        if (settingsRepository.demoMode.first()) return SendResult.DEMO
+        if (demoMode.first()) return SendResult.DEMO
         val tv = tvRepository.activeTv.first() ?: return SendResult.NO_TV
         val next = tvEnterKeyType == ENTER_KEY_NEXT
         val result = withSession(tv) {
@@ -217,7 +216,7 @@ class RemoteControl(
     }
 
     private suspend fun checkOnce(): ConnectionState? {
-        if (settingsRepository.demoMode.first()) return null
+        if (demoMode.first()) return null
         val tv = tvRepository.activeTv.first() ?: return ConnectionState.DISCONNECTED
         if (!mutex.tryLock()) return null
         return try {
@@ -237,7 +236,7 @@ class RemoteControl(
     }
 
     private suspend fun pointerAction(action: (TvSession) -> Boolean): SendResult {
-        if (settingsRepository.demoMode.first()) return SendResult.DEMO
+        if (demoMode.first()) return SendResult.DEMO
         val tv = tvRepository.activeTv.first() ?: return SendResult.NO_TV
         return withSession(tv) { action(it).toResult() }
     }

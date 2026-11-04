@@ -1,7 +1,7 @@
 package de.robnice.elly.tv.pairing
 
 import android.content.Context
-import de.robnice.elly.R
+import de.robnice.elly.core.R
 import org.json.JSONObject
 
 class PairingManifest(private val context: Context) {
