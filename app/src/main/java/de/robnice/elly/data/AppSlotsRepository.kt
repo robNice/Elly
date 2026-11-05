@@ -31,6 +31,8 @@ class AppSlotsRepository(
         return iconCache.existing(owner, appId)
     }
 
+    suspend fun iconBytes(appId: String): ByteArray? = cachedIcon(appId)?.let { iconCache.read(it) }
+
     suspend fun storeIcon(appId: String, bytes: ByteArray): String? {
         val owner = activeOwner.first() ?: return null
         return iconCache.store(owner, appId, bytes)

@@ -1,0 +1,150 @@
+<en-US>
+• New: Elly for Wear OS watches – remote, volume with the crown, pointer that follows your arm, tile and complications; set up from the phone
+• Settings: new Watch tab for the pages and keys of the watch and new Backup tab; the tabs now show icons
+• Fix: in rare cases, a TV switched on with Elly turned off again later
+</en-US>
+<ar>
+• جديد: «إيلي» لساعات Wear OS – جهاز تحكم، والصوت بالتاج، ومؤشر يتبع ذراعك، وبطاقة وإضافات؛ يُضبط كل شيء من الهاتف
+• الإعدادات: علامة تبويب جديدة «الساعة» لصفحات الساعة وأزرارها، وعلامة جديدة «النسخ الاحتياطي»؛ تعرض علامات التبويب الآن رموزًا
+• إصلاح: في حالات نادرة كان التلفاز الذي شُغّل عبر «إيلي» ينطفئ لاحقًا من جديد
+</ar>
+<cs-CZ>
+• Novinka: Elly pro hodinky s Wear OS – ovladač, hlasitost korunkou, ukazatel, který sleduje ruku, dlaždice a komplikace; nastavení z telefonu
+• Nastavení: nová karta Hodinky pro stránky a tlačítka hodinek a nová karta Záloha; karty teď ukazují ikony
+• Oprava: ve vzácných případech se televize zapnutá přes Elly později znovu vypnula
+</cs-CZ>
+<da-DK>
+• Nyt: Elly til Wear OS-ure – fjernbetjening, lydstyrke med kronen, markør der følger armen, felt og komplikationer; indstilles fra telefonen
+• Indstillinger: ny fane Ur til urets sider og knapper og ny fane Sikkerhedskopi; fanerne viser nu ikoner
+• Rettelse: i sjældne tilfælde slukkede et tv, der var tændt med Elly, igen senere
+</da-DK>
+<de-DE>
+• Neu: Elly für Wear-OS-Uhren – Fernbedienung, Lautstärke per Krone, Zeiger per Armbewegung, Kachel und Complications; eingerichtet wird am Handy
+• Einstellungen: neuer Reiter „Uhr“ für Seiten und Tasten der Uhr und neuer Reiter „Sicherung“; die Reiter zeigen jetzt Symbole
+• Behoben: In seltenen Fällen ging ein mit Elly eingeschalteter Fernseher später wieder aus
+</de-DE>
+<es-419>
+• Nuevo: Elly para relojes Wear OS: control remoto, volumen con la corona, puntero que sigue tu brazo, tarjeta y complicaciones; se configura desde el teléfono
+• Ajustes: nueva pestaña Reloj para las páginas y teclas del reloj y nueva pestaña Copia de seguridad; las pestañas ahora muestran íconos
+• Corrección: en casos raros, una TV encendida con Elly se volvía a apagar más tarde
+</es-419>
+<es-ES>
+• Nuevo: Elly para relojes Wear OS: mando, volumen con la corona, puntero que sigue tu brazo, tarjeta y complicaciones; se configura desde el móvil
+• Ajustes: nueva pestaña Reloj para las páginas y teclas del reloj y nueva pestaña Copia de seguridad; las pestañas ahora muestran iconos
+• Corrección: en casos raros, una tele encendida con Elly se volvía a apagar más tarde
+</es-ES>
+<fi-FI>
+• Uutta: Elly Wear OS -kelloille – kaukosäädin, äänenvoimakkuus kruunulla, kättä seuraava osoitin, ruutu ja komplikaatiot; määritetään puhelimessa
+• Asetukset: uusi Kello-välilehti kellon sivuille ja painikkeille ja uusi Varmuuskopio-välilehti; välilehdet näyttävät nyt kuvakkeita
+• Korjattu: harvoin Ellyllä päälle kytketty TV sammui myöhemmin uudelleen
+</fi-FI>
+<fr-FR>
+• Nouveau : Elly pour les montres Wear OS – télécommande, volume avec la couronne, pointeur qui suit ton bras, vignette et complications ; tout se règle depuis le téléphone
+• Paramètres : nouvel onglet Montre pour les pages et touches de la montre et nouvel onglet Sauvegarde ; les onglets affichent désormais des icônes
+• Correctif : dans de rares cas, une TV allumée avec Elly s'éteignait plus tard
+</fr-FR>
+<hi-IN>
+• नया: Wear OS घड़ियों के लिए एली – रिमोट, क्राउन से वॉल्यूम, बाँह के साथ चलने वाला पॉइंटर, टाइल और कॉम्प्लिकेशन; सेटअप फ़ोन से
+• सेटिंग: घड़ी के पेज और बटन के लिए नया "घड़ी" टैब और नया "बैकअप" टैब; टैब अब आइकन दिखाते हैं
+• सुधार: कभी-कभी एली से चालू किया गया टीवी बाद में फिर से बंद हो जाता था
+</hi-IN>
+<hu-HU>
+• Új: Elly Wear OS órákra – távirányító, hangerő a koronával, a karodat követő mutató, csempe és komplikációk; beállítás a telefonról
+• Beállítások: új Óra fül az óra oldalaihoz és gombjaihoz, valamint új Biztonsági mentés fül; a fülek most ikonokat mutatnak
+• Javítás: ritkán az Elly-vel bekapcsolt TV később újra kikapcsolt
+</hu-HU>
+<id>
+• Baru: Elly untuk jam tangan Wear OS – remote, volume dengan crown, penunjuk yang mengikuti lengan, tile dan komplikasi; diatur dari ponsel
+• Pengaturan: tab Jam baru untuk halaman dan tombol jam, serta tab Cadangan baru; tab kini menampilkan ikon
+• Perbaikan: dalam kasus langka, TV yang dinyalakan dengan Elly mati lagi kemudian
+</id>
+<iw-IL>
+• חדש: אלי לשעונים עם Wear OS – שלט, עוצמת קול בכתר, סמן שעוקב אחרי היד, אריח וסיבוכים; ההגדרה מהטלפון
+• הגדרות: לשונית חדשה "שעון" לדפים ולמקשים של השעון ולשונית חדשה "גיבוי"; הלשוניות מציגות עכשיו סמלים
+• תיקון: במקרים נדירים טלוויזיה שהודלקה עם אלי כבתה שוב מאוחר יותר
+</iw-IL>
+<it-IT>
+• Novità: Elly per orologi Wear OS – telecomando, volume con la corona, puntatore che segue il braccio, riquadro e complicazioni; si imposta dal telefono
+• Impostazioni: nuova scheda Orologio per pagine e tasti dell'orologio e nuova scheda Backup; le schede ora mostrano icone
+• Correzione: in rari casi una TV accesa con Elly si spegneva di nuovo più tardi
+</it-IT>
+<ja-JP>
+• 新機能：Wear OS ウォッチ用のエリー。リモコン、リューズで音量、腕の動きに合わせて動くポインター、タイルとコンプリケーション。設定はスマホから
+• 設定：ウォッチのページとキー用の「ウォッチ」タブと「バックアップ」タブを追加。タブはアイコン表示に
+• 修正：まれに、エリーで電源を入れたテレビが後で再びオフになる問題
+</ja-JP>
+<ko-KR>
+• 새 기능: Wear OS 워치용 엘리 – 리모컨, 크라운으로 볼륨, 팔을 따라 움직이는 포인터, 타일과 컴플리케이션; 설정은 휴대폰에서
+• 설정: 워치의 페이지와 버튼을 위한 워치 탭과 새 백업 탭; 탭이 이제 아이콘으로 표시돼요
+• 수정: 드물게 엘리로 켠 TV가 나중에 다시 꺼지던 문제
+</ko-KR>
+<nl-NL>
+• Nieuw: Elly voor Wear OS-horloges – afstandsbediening, volume met de kroon, aanwijzer die je arm volgt, tegel en complicaties; instellen via de telefoon
+• Instellingen: nieuw tabblad Horloge voor de pagina's en toetsen van het horloge en nieuw tabblad Back-up; de tabbladen tonen nu pictogrammen
+• Opgelost: in zeldzame gevallen ging een met Elly ingeschakelde tv later weer uit
+</nl-NL>
+<no-NO>
+• Nytt: Elly for Wear OS-klokker – fjernkontroll, volum med kronen, peker som følger armen, flis og komplikasjoner; stilles inn fra telefonen
+• Innstillinger: ny fane Klokke for klokkens sider og knapper og ny fane Sikkerhetskopi; fanene viser nå ikoner
+• Rettet: i sjeldne tilfeller slo en TV som var slått på med Elly seg av igjen senere
+</no-NO>
+<pl-PL>
+• Nowość: Elly na zegarki z Wear OS – pilot, głośność koronką, wskaźnik podążający za ręką, kafelek i komplikacje; konfiguracja z telefonu
+• Ustawienia: nowa karta Zegarek dla stron i przycisków zegarka oraz nowa karta Kopia zapasowa; karty pokazują teraz ikony
+• Poprawka: w rzadkich przypadkach telewizor włączony przez Elly później znów się wyłączał
+</pl-PL>
+<pt-BR>
+• Novo: a Elly para relógios Wear OS – controle, volume pela coroa, ponteiro que segue o braço, bloco e complicações; configurado pelo celular
+• Configurações: nova aba Relógio para as páginas e botões do relógio e nova aba Backup; as abas agora mostram ícones
+• Correção: em casos raros, uma TV ligada pela Elly desligava de novo mais tarde
+</pt-BR>
+<pt-PT>
+• Novo: a Elly para relógios Wear OS – comando, volume com a coroa, ponteiro que segue o braço, mosaico e complicações; configurado a partir do telemóvel
+• Definições: novo separador Relógio para as páginas e teclas do relógio e novo separador Cópia de segurança; os separadores mostram agora ícones
+• Correção: em casos raros, uma TV ligada pela Elly voltava a desligar-se mais tarde
+</pt-PT>
+<ro>
+• Nou: Elly pentru ceasuri Wear OS – telecomandă, volum din coroană, indicator care îți urmează brațul, panou și complicații; se configurează din telefon
+• Setări: filă nouă Ceas pentru paginile și butoanele ceasului și filă nouă Copie de rezervă; filele afișează acum pictograme
+• Remediere: în cazuri rare, un televizor pornit cu Elly se oprea din nou mai târziu
+</ro>
+<ru-RU>
+• Новое: Элли для часов с Wear OS – пульт, громкость колёсиком, указатель, следующий за рукой, карточка и усложнения; настройка с телефона
+• Настройки: новая вкладка «Часы» для страниц и кнопок часов и новая вкладка «Резервная копия»; на вкладках теперь значки
+• Исправлено: в редких случаях телевизор, включённый через Элли, позже снова выключался
+</ru-RU>
+<sk>
+• Novinka: Elly pre hodinky s Wear OS – ovládač, hlasitosť korunkou, ukazovateľ, ktorý sleduje ruku, dlaždica a komplikácie; nastavenie z telefónu
+• Nastavenia: nová karta Hodinky pre stránky a tlačidlá hodiniek a nová karta Záloha; karty teraz ukazujú ikony
+• Oprava: v zriedkavých prípadoch sa televízor zapnutý cez Elly neskôr znova vypol
+</sk>
+<sv-SE>
+• Nytt: Elly för Wear OS-klockor – fjärrkontroll, volym med kronan, pekare som följer armen, panel och komplikationer; ställs in från telefonen
+• Inställningar: ny flik Klocka för klockans sidor och knappar och ny flik Säkerhetskopia; flikarna visar nu ikoner
+• Åtgärdat: i sällsynta fall stängdes en tv som slagits på med Elly av igen senare
+</sv-SE>
+<th>
+• ใหม่: เอลลี่สำหรับนาฬิกา Wear OS – รีโมต ปรับเสียงด้วยเม็ดมะยม ตัวชี้ที่ขยับตามแขน ไทล์และคอมพลิเคชัน ตั้งค่าจากโทรศัพท์
+• การตั้งค่า: แท็บนาฬิกาใหม่สำหรับหน้าและปุ่มของนาฬิกา และแท็บสำรองข้อมูลใหม่ แท็บแสดงเป็นไอคอนแล้ว
+• แก้ไข: ในบางกรณี ทีวีที่เปิดด้วยเอลลี่ปิดเองอีกครั้งในภายหลัง
+</th>
+<tr-TR>
+• Yeni: Wear OS saatler için Elly – kumanda, kuronla ses, kolunu izleyen işaretçi, kutucuk ve komplikasyonlar; kurulum telefondan
+• Ayarlar: saatin sayfaları ve tuşları için yeni Saat sekmesi ve yeni Yedekleme sekmesi; sekmeler artık simge gösteriyor
+• Düzeltme: nadir durumlarda Elly ile açılan TV daha sonra yeniden kapanıyordu
+</tr-TR>
+<uk>
+• Нове: Еллі для годинників з Wear OS – пульт, гучність коронкою, вказівник, що слідує за рукою, плитка й ускладнення; налаштування з телефона
+• Налаштування: нова вкладка «Годинник» для сторінок і кнопок годинника та нова вкладка «Резервна копія»; на вкладках тепер значки
+• Виправлено: у рідкісних випадках телевізор, увімкнений через Еллі, згодом знову вимикався
+</uk>
+<vi>
+• Mới: Elly cho đồng hồ Wear OS – điều khiển, chỉnh âm lượng bằng núm xoay, con trỏ theo cánh tay, ô và tiện ích; thiết lập từ điện thoại
+• Cài đặt: thẻ Đồng hồ mới cho các trang và nút của đồng hồ và thẻ Sao lưu mới; các thẻ giờ hiển thị biểu tượng
+• Sửa lỗi: trong một số ít trường hợp, TV bật bằng Elly lại tự tắt sau đó
+</vi>
+<zh-CN>
+• 新功能：适用于 Wear OS 手表的 Elly – 遥控器、用表冠调节音量、跟随手臂移动的指针、卡片和复杂功能；在手机上设置
+• 设置：新增“手表”标签页，用于手表的页面和按键，并新增“备份”标签页；标签页现在显示图标
+• 修复：在少数情况下，用 Elly 打开的电视稍后又会关闭
+</zh-CN>

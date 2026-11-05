@@ -143,6 +143,17 @@ object EllyPoses {
             EllyLayer(R.drawable.elly_mechanic_wrench, EllyMotion.AIM, pivotX = 0.7333f, pivotY = 0.64f, range = 6f, cycles = 2)
         )
     )
+    // Elly sits on the round watch like on an egg and keeps it warm while its display shines.
+    val Brooding = EllyPose(
+        listOf(
+            EllyLayer(R.drawable.elly_brood_nest_back, EllyMotion.NONE),
+            EllyLayer(R.drawable.elly_brood_watch, EllyMotion.NONE),
+            EllyLayer(R.drawable.elly_brood_glow, EllyMotion.NONE),
+            EllyLayer(R.drawable.elly_brood_elly, EllyMotion.BREATHE, pivotY = 0.58f),
+            EllyLayer(R.drawable.elly_brood_nest_front, EllyMotion.NONE),
+            EllyLayer(R.drawable.elly_brood_hearts, EllyMotion.DRIFT, pivotX = 0.84f, pivotY = 0.22f)
+        )
+    )
     val Judge = EllyPose(
         listOf(
             EllyLayer(R.drawable.elly_judge_elly, EllyMotion.BREATHE, pivotY = 0.85f),

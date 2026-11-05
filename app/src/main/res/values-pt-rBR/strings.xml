@@ -153,7 +153,7 @@
     <string name="settings_light_effect">Longas tardes de verão</string>
     <string name="settings_light_effect_description">Luz baixa vinda do canto superior esquerdo: os botões projetam sombras longas e o fundo é iluminado a partir desse canto.</string>
     <string name="settings_backup">Backup e restauração</string>
-    <string name="settings_backup_description">Você pode fazer backup das telas e da aparência separadamente ou juntas, assim passa suas telas para alguém sem que a pessoa perca a própria aparência. Ao restaurar, a Elly mostra o que o arquivo contém e você escolhe o que aplicar.</string>
+    <string name="settings_backup_description">Você pode fazer backup das telas, da aparência e do layout do relógio separadamente ou juntos, assim passa suas telas para alguém sem que a pessoa perca a própria aparência. Ao restaurar, a Elly mostra o que o arquivo contém e você escolhe o que aplicar.</string>
     <string name="settings_backup_restore">Restaurar de arquivo</string>
     <string name="settings_backup_save">Fazer backup</string>
     <string name="settings_backup_save_title">O que salvar?</string>
@@ -503,7 +503,7 @@
     <string name="help_settings_title">Configurações</string>
     <string name="help_settings_elly">Vamos fuçar nas configurações! Eu mostro onde fica cada coisa.</string>
     <string name="help_settings_tabs_title">Como as configurações são organizadas</string>
-    <string name="help_settings_tabs_body">A engrenagem na barra superior abre as configurações. Elas têm três abas, e você também pode deslizar entre elas; a Elly se lembra da última que você abriu.\n• TV: TVs pareadas, busca, endereço IP, modo demo.\n• Aparência: telas, paleta de cores, fundo, arredondamento, efeito de luz, backup e restauração.\n• Controle: ponteiro e vibração.</string>
+    <string name="help_settings_tabs_body">A engrenagem na barra superior abre as configurações. As abas mostram símbolos; você também pode deslizar entre elas, e a Elly se lembra da última que você abriu.\n• TV (tela): TVs pareadas, busca, endereço IP, modo demo.\n• Aparência (paleta): telas, paleta de cores, fundo, arredondamento, efeito de luz.\n• Controle (mouse): ponteiro e vibração.\n• Relógio (relógio, só enquanto um relógio estiver conectado): páginas e botões do app do relógio e do seu bloco.\n• Backup (disquete): salvar as telas, a aparência e o layout do relógio em um arquivo e restaurá-los a partir dele.</string>
     <string name="help_settings_tv_title">Trocar ou remover uma TV</string>
     <string name="help_settings_tv_body">A aba “TV” lista suas TVs pareadas no topo: toque em uma para torná-la ativa. “Remover” desfaz o pareamento, após confirmação; para usar a TV de novo, você precisa pareá-la outra vez.\nMais abaixo, você pode buscar mais TVs ou digitar um endereço IP.\nEnquanto o modo demo está ativado, a aba mostra só o botão dele; desative-o para parear ou trocar de TV.</string>
     <string name="help_settings_haptics_title">Vibrar ao tocar nos botões</string>
@@ -511,7 +511,7 @@
     <string name="help_privacy_title">Privacidade</string>
     <string name="help_privacy_elly">Seus dados são seus. Palavra de galinha, e ponto final!</string>
     <string name="help_privacy_data_title">O que acontece com seus dados</string>
-    <string name="help_privacy_data_body">A Elly só conversa com sua TV na rede local; nenhum dado é enviado para servidores externos. TVs pareadas, configurações, layouts das telas e ícones dos apps ficam no seu celular e são excluídos quando você desinstala o app. O guia de programação também fica no seu celular.</string>
+    <string name="help_privacy_data_body">A Elly só conversa com sua TV na rede local; nenhum dado é enviado para servidores externos. TVs pareadas, configurações, layouts das telas, ícones dos apps e o guia de programação ficam no seu celular e são excluídos quando você desinstala o app. Com um relógio, o celular passa para ele as TVs pareadas e o layout do relógio pelos serviços do Google Play; a política de privacidade explica o que exatamente.</string>
     <string name="help_privacy_policy_title">Política de privacidade</string>
     <string name="help_privacy_policy_body">A política de privacidade completa é aberta em “Privacidade”, no fim das configurações, ao lado do número da versão.</string>
     <string name="help_privacy_link">política de privacidade</string>
@@ -641,4 +641,54 @@
         <item>Pintinhos com sono</item>
         <item>Penugem amarela</item>
     </string-array>
+    <string name="settings_tab_watch">Relógio</string>
+    <string name="watch_settings_intro">Escolha quais páginas o app do relógio mostra e o que os botões fazem. O direcional e os números mantêm a sua função.</string>
+    <string name="watch_pages_title">Páginas</string>
+    <string name="watch_tile">Bloco</string>
+    <string name="watch_tile_description">Seis botões que funcionam sem abrir o app</string>
+    <string name="watch_edit_keys">Atribuir botões</string>
+    <string name="watch_editor_hint">Toque em um botão para mudar o que ele faz.</string>
+    <string name="watch_picker_title">Função</string>
+    <string name="watch_picker_app">Abrir um app</string>
+    <string name="watch_picker_keys">Botões</string>
+    <string name="watch_picker_default">Padrão</string>
+    <string name="watch_action_play_pause">Reproduzir ou pausar, alternando</string>
+    <string name="watch_install_title">A Elly ainda não está no seu relógio</string>
+    <string name="watch_install_body">Com a Elly no relógio você controla a TV pelo pulso. Depois de instalada, as páginas e os botões dela são configurados aqui.</string>
+    <string name="watch_install_button">Instalar no relógio</string>
+    <string name="watch_install_opened">Continue no seu relógio.</string>
+    <string name="watch_install_failed">Não foi possível alcançar o relógio.</string>
+    <string name="watch_app_display">Mostrar como</string>
+    <string name="watch_app_display_icon">Ícone</string>
+    <string name="watch_app_display_text">Nome</string>
+    <string name="watch_app_display_both">Ambos</string>
+    <string name="watch_app_display_change">Mudar a exibição de %1$s</string>
+    <string name="watch_pointer_area">Segure e aponte</string>
+    <string name="watch_pages_description">Toque em uma página para mostrá-la ou ocultá-la, toque e segure e arraste para mudar a ordem. O lápis atribui os botões, a seta os redefine. Pelo menos uma página continua visível.</string>
+    <string name="watch_page_number">Página %1$d</string>
+    <string name="watch_page_edit">Atribuir botões da página %1$d</string>
+    <string name="watch_page_reset">Redefinir a página %1$d</string>
+    <string name="watch_tile_reset">Redefinir o bloco</string>
+    <string name="watch_reset_title">Redefinir os botões?</string>
+    <string name="watch_reset_message">Os botões voltam às funções originais.</string>
+    <string name="settings_backup_part_watch">Relógio</string>
+    <string name="settings_backup_part_watch_description">Páginas e botões do app do relógio e do seu bloco.</string>
+    <string name="settings_backup_watch_file">Elly-Relógio</string>
+    <string name="help_watch_title">Relógio</string>
+    <string name="help_watch_elly">Estou mantendo seu relógio quentinho até ele chocar e virar um controle. Prometo, é rapidinho!</string>
+    <string name="help_watch_devices_title">Quais relógios funcionam</string>
+    <string name="help_watch_devices_body">A Elly funciona em relógios com Wear OS 3 ou mais recente pareados com um celular Android, por exemplo o Samsung Galaxy Watch 4 e posteriores, o Google Pixel Watch e outros relógios Wear OS atuais. Relógios com outros sistemas não funcionam: Apple Watch, relógios Samsung antigos com Tizen, Garmin, Fitbit e Huawei. O relógio precisa de Wi-Fi na mesma rede da TV e do app Elly no celular, que leva até ele as TVs pareadas.</string>
+    <string name="help_watch_install_title">Instalar e configurar</string>
+    <string name="help_watch_install_body">Instale a Elly pela Play Store no relógio. Enquanto a Elly não estiver lá, a aba Relógio das configurações oferece abrir a Play Store no relógio. Depois de instalada, o relógio recebe sozinho as TVs pareadas e o modo demo do celular, então você não precisa parear a TV de novo no relógio. As páginas e os botões são configurados no celular; as poucas configurações que só dizem respeito ao relógio ficam na última página dele, veja Configurações no relógio.</string>
+    <string name="help_watch_use_title">Usar o relógio</string>
+    <string name="help_watch_use_body">Deslize para a esquerda e para a direita para mudar de página; deslize para a direita na primeira página para fechar a Elly. Gire a coroa ou o aro para mudar o volume, ou faça um círculo ao longo da borda da tela: no sentido horário aumenta. A luz ao longo da borda mostra que um comando foi enviado, em vermelho quando falhou, e um arco girando enquanto a TV demora. O relógio vibra a cada botão.</string>
+    <string name="help_watch_layout_title">Páginas e botões</string>
+    <string name="help_watch_layout_body">A aba Relógio das configurações mostra as páginas do relógio como prévias, como as telas do celular. Toque em uma página para mostrá-la ou ocultá-la, toque e segure e arraste para mudar a ordem. O lápis abre a página em tamanho grande: toque em um botão e escolha o que ele faz, qualquer botão do controle, reproduzir ou pausar, o seletor de entradas da TV ou um app, mostrado com o ícone, o nome ou ambos. O direcional e os números mantêm a sua função.</string>
+    <string name="help_watch_pointer_title">Ponteiro no pulso</string>
+    <string name="help_watch_pointer_body">Na página do ponteiro, apoie um dedo na tela e mova o braço: o ponteiro na TV acompanha. Um toque curto clica, a coroa rola. Sem o dedo na tela, o ponteiro fica onde está. A velocidade e a troca de cima e baixo para um relógio no pulso direito são ajustadas no relógio, na página de configurações dele.</string>
+    <string name="help_watch_tile_title">Bloco e complicações</string>
+    <string name="help_watch_tile_body">O bloco da Elly ao lado do mostrador tem seis botões que funcionam sem abrir o app; escolha-os na aba Relógio como os botões de uma página. Em outros mostradores você também pode colocar botões avulsos como complicações, por exemplo mudo ou liga/desliga.</string>
+    <string name="help_watch_settings_title">Configurações no relógio</string>
+    <string name="help_watch_settings_body">Deslize até a última página do relógio para as configurações dele:\n• Vibração: um clique curto a cada botão e um ritmo enquanto o volume muda.\n• Volume em círculo: liga ou desliga o gesto ao longo da borda, por exemplo se atrapalhar.\n• Efeito de luz: a luz ao longo da borda depois de um comando, enquanto a TV demora e enquanto o volume muda.\n• Ponteiro, velocidade: quanto o ponteiro se move quando você move o braço.\n• Ponteiro, trocar cima e baixo: para um relógio usado no pulso direito, onde o ponteiro iria no sentido errado.\n• TV: com várias TVs pareadas, a que o relógio controla; o celular mantém a própria escolha.\nAbaixo, dois botões abrem a Elly ou a política de privacidade no celular, e a versão do app do relógio é mostrada.</string>
+    <string name="settings_tab_backup">Backup</string>
 </resources>

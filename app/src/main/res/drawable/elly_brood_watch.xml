@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_remote_black"
+        android:pathData="M41,42h18v12h-18z M41,86h18v8h-18z" />
+    <path
+        android:fillColor="@color/elly_metal_shade"
+        android:pathData="M69.5,65.5h3.5a1.2,1.2 0,0 1,1.2 1.2v6.6a1.2,1.2 0,0 1,-1.2 1.2h-3.5z" />
+    <path
+        android:fillColor="@color/elly_metal"
+        android:pathData="M50,70m-21,0a21,21 0,1 1,42,0a21,21 0,1 1,-42,0" />
+    <path
+        android:fillColor="@color/elly_remote"
+        android:pathData="M50,70m-18,0a18,18 0,1 1,36,0a18,18 0,1 1,-36,0" />
+    <path
+        android:fillColor="@color/elly_tv_screen"
+        android:pathData="M50,70m-15,0a15,15 0,1 1,30,0a15,15 0,1 1,-30,0" />
+</vector>

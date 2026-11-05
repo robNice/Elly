@@ -26,6 +26,7 @@ import de.robnice.elly.ui.settings.PrivacyScreen
 import de.robnice.elly.ui.settings.RootAccessViewModel
 import de.robnice.elly.ui.settings.SettingsScreen
 import de.robnice.elly.ui.settings.SettingsViewModel
+import de.robnice.elly.ui.settings.WatchSettingsViewModel
 import de.robnice.elly.ui.setup.SetupViewModel
 import de.robnice.elly.ui.theme.EllyWarmTheme
 import kotlinx.coroutines.flow.combine
@@ -42,7 +43,7 @@ private sealed interface RootState {
 private enum class Overlay { SETTINGS, SETTINGS_TV }
 
 @Composable
-fun EllyApp(container: AppContainer) {
+fun EllyApp(container: AppContainer, privacyRequests: Int = 0) {
     val rootFlow = remember(container) {
         combine(
             container.tvRepository.activeTv,
@@ -62,6 +63,9 @@ fun EllyApp(container: AppContainer) {
     var helpOpen by rememberSaveable { mutableStateOf(false) }
     var tourOpen by rememberSaveable { mutableStateOf(false) }
     var privacyOpen by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(privacyRequests) {
+        if (privacyRequests > 0) privacyOpen = true
+    }
     val scope = rememberCoroutineScope()
 
     // Without a TV the settings open on the TV tab; as an overlay they stay open after pairing
@@ -90,6 +94,7 @@ fun EllyApp(container: AppContainer) {
                     viewModel = viewModel(factory = SettingsViewModel.factory(container)),
                     setupViewModel = viewModel(factory = SetupViewModel.factory(container)),
                     rootAccessViewModel = viewModel(factory = RootAccessViewModel.factory(container)),
+                    watchSettings = viewModel(factory = WatchSettingsViewModel.factory(container)),
                     onClose = if (current == RootState.NoTv) null else ({ overlay = null }),
                     onOpenHelp = { helpOpen = true },
                     onPaired = { overlay = null },

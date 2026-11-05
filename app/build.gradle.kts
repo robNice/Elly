@@ -83,7 +83,10 @@ dependencies {
     implementation(libs.jsch)
     implementation(libs.bouncycastle.prov)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.play.services)
     implementation(libs.okhttp)
+    implementation(libs.play.services.wearable)
+    implementation(libs.wear.remote.interactions)
 
     testImplementation(libs.junit)
     testImplementation(libs.org.json)

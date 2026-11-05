@@ -17,7 +17,7 @@ class PairingService(
             allowInsecure = existing?.secure != true
         )
         connection.use {
-            val clientKey = it.register(existing?.clientKey, manifest.json, onPromptShown)
+            val clientKey = it.register(existing?.clientKey, manifest.json, onPrompt = onPromptShown)
             val macAddress = runCatching { MacAddressSelector.select(it.request(GET_NETWORK_INFO)) }.getOrNull()
             val systemModel = runCatching { it.request(GET_SYSTEM_INFO).optString("modelName") }
                 .getOrNull()

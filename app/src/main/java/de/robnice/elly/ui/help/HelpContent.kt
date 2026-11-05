@@ -112,6 +112,21 @@ object HelpContent {
             )
         ),
         HelpChapter(
+            title = R.string.help_watch_title,
+            ellyIntro = R.string.help_watch_elly,
+            icon = R.drawable.ic_watch,
+            elly = EllyPoses.Brooding,
+            topics = listOf(
+                HelpTopic(R.string.help_watch_devices_title, R.string.help_watch_devices_body),
+                HelpTopic(R.string.help_watch_install_title, R.string.help_watch_install_body),
+                HelpTopic(R.string.help_watch_use_title, R.string.help_watch_use_body),
+                HelpTopic(R.string.help_watch_layout_title, R.string.help_watch_layout_body),
+                HelpTopic(R.string.help_watch_pointer_title, R.string.help_watch_pointer_body),
+                HelpTopic(R.string.help_watch_tile_title, R.string.help_watch_tile_body),
+                HelpTopic(R.string.help_watch_settings_title, R.string.help_watch_settings_body)
+            )
+        ),
+        HelpChapter(
             title = R.string.help_settings_title,
             ellyIntro = R.string.help_settings_elly,
             icon = R.drawable.ic_settings,

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Elly</string>
+    <string name="demo_tv_name">Demo TV</string>
+    <string name="no_tv">Set up Elly on your phone first.</string>
+    <string name="no_tv_install_phone">Install Elly on your phone to set up the watch.</string>
+    <string name="no_tv_needs_android">Elly needs an Android phone with the Elly app.</string>
+    <string name="install_on_phone">Install on phone</string>
+    <string name="phone_unreachable">Phone not reachable</string>
+    <string name="key_power">Power</string>
+    <string name="key_up">Up</string>
+    <string name="key_down">Down</string>
+    <string name="key_left">Left</string>
+    <string name="key_right">Right</string>
+    <string name="key_ok">OK</string>
+    <string name="key_back">Back</string>
+    <string name="key_home">Home</string>
+    <string name="key_mute">Mute</string>
+    <string name="key_volume_up">Volume up</string>
+    <string name="key_volume_down">Volume down</string>
+    <string name="key_channel_up">Channel up</string>
+    <string name="key_channel_down">Channel down</string>
+    <string name="key_play_pause">Play or pause</string>
+    <string name="key_rewind">Rewind</string>
+    <string name="key_fast_forward">Fast forward</string>
+    <string name="digits_send">Confirm number</string>
+    <string name="result_unreachable">TV not reachable.</string>
+    <string name="result_pairing_required">The TV no longer accepts Elly. Pair it again on your phone.</string>
+    <string name="result_failed">The TV could not execute the command.</string>
+    <string name="result_wake_sent">Switch-on signal sent.</string>
+    <string name="tile_open_app">Open Elly</string>
+    <string name="short_power">Power</string>
+    <string name="short_mute">Mute</string>
+    <string name="short_play_pause">Play</string>
+    <string name="short_volume_down">Vol −</string>
+    <string name="short_volume_up">Vol +</string>
+    <string name="complication_power">Elly: Power</string>
+    <string name="complication_mute">Elly: Mute</string>
+    <string name="complication_play_pause">Elly: Play/Pause</string>
+    <string name="complication_volume_down">Elly: Volume down</string>
+    <string name="complication_volume_up">Elly: Volume up</string>
+    <string name="complication_home">Elly: Home</string>
+    <string name="status_connected">Connected to the TV</string>
+    <string name="status_disconnected">TV not reachable</string>
+    <string name="status_checking">Checking connection</string>
+    <string name="status_demo">Demo mode</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_haptics">Vibration</string>
+    <string name="settings_ring_gesture">Volume by circling the edge</string>
+    <string name="settings_light_effect">Light effect</string>
+    <string name="settings_tv">TV</string>
+    <string name="settings_open_app">Open Elly on phone</string>
+    <string name="settings_open_privacy">Open privacy policy on phone</string>
+    <string name="settings_version">Version %1$s</string>
+    <string name="key_more_actions">More actions</string>
+    <string name="key_live_tv">Live TV</string>
+    <string name="key_settings">TV settings</string>
+    <string name="key_guide">Guide</string>
+    <string name="key_red">Red</string>
+    <string name="key_green">Green</string>
+    <string name="key_yellow">Yellow</string>
+    <string name="key_blue">Blue</string>
+    <string name="key_play">Play</string>
+    <string name="key_pause">Pause</string>
+    <string name="key_record">Record</string>
+    <string name="key_stop">Stop</string>
+    <string name="key_screen_off">Screen off</string>
+    <string name="key_screen_on">Screen on</string>
+    <string name="key_digit">Digit %1$s</string>
+    <string name="key_app">Open %1$s</string>
+    <string name="key_label_more" translatable="false">•••</string>
+    <string name="key_label_guide" translatable="false">GUIDE</string>
+    <string name="pointer_hint">Hold and point, tap\u00A0=\u00A0click</string>
+    <string name="key_input">Input</string>
+    <string name="settings_pointer">Pointer</string>
+    <string name="settings_pointer_speed">Speed</string>
+    <string name="settings_pointer_inverted">Swap up and down</string>
+</resources>

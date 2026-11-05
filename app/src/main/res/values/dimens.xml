@@ -178,4 +178,31 @@
     <dimen name="onboarding_dot_size">8dp</dimen>
     <dimen name="onboarding_dot_active_width">22dp</dimen>
     <dimen name="onboarding_dot_spacing">6dp</dimen>
+    <item name="watch_preview_icon" format="float" type="dimen">0.085</item>
+    <dimen name="watch_tile_thumbnail_size">72dp</dimen>
+    <dimen name="watch_preview_text_padding">4dp</dimen>
+    <item name="watch_preview_key" format="float" type="dimen">0.25</item>
+    <item name="watch_preview_large_key" format="float" type="dimen">0.333</item>
+    <item name="watch_preview_nav_key_x" format="float" type="dimen">0.271</item>
+    <item name="watch_preview_nav_key_y" format="float" type="dimen">0.24</item>
+    <item name="watch_preview_dpad_y" format="float" type="dimen">-0.0625</item>
+    <item name="watch_preview_dpad_size" format="float" type="dimen">0.521</item>
+    <item name="watch_preview_dpad_center_size" format="float" type="dimen">0.271</item>
+    <item name="watch_preview_pointer_icon" format="float" type="dimen">0.25</item>
+    <item name="watch_preview_power_key_y" format="float" type="dimen">-0.323</item>
+    <item name="watch_preview_side_key_x" format="float" type="dimen">0.3125</item>
+    <item name="watch_preview_side_key_y" format="float" type="dimen">0.156</item>
+    <item name="watch_preview_digit_step" format="float" type="dimen">0.2</item>
+    <item name="watch_preview_digit_size" format="float" type="dimen">0.18</item>
+    <item name="watch_preview_media_y" format="float" type="dimen">0</item>
+    <item name="watch_preview_media_top_y" format="float" type="dimen">-0.33</item>
+    <item name="watch_preview_media_side_x" format="float" type="dimen">0.323</item>
+    <item name="watch_preview_media_nav_x" format="float" type="dimen">0.208</item>
+    <item name="watch_preview_media_nav_y" format="float" type="dimen">0.302</item>
+    <item name="watch_preview_tile_x" format="float" type="dimen">0.26</item>
+    <item name="watch_preview_tile_y" format="float" type="dimen">0.13</item>
+    <item name="watch_preview_tile_key" format="float" type="dimen">0.22</item>
+    <dimen name="watch_display_preview_size">96dp</dimen>
+    <dimen name="watch_display_preview_padding">12dp</dimen>
+    <dimen name="watch_display_preview_icon_size">24dp</dimen>
 </resources>

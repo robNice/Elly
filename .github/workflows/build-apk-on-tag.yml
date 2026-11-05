@@ -15,6 +15,11 @@ env:
   PLAY_TRACKS: |
     gt=alpha
     p=production
+  # The watch app goes to the Wear OS track of the same suffix. Closed testing tracks for Wear OS are created by hand
+  # in the Play Console; the name after "wear:" has to match the one there.
+  WEAR_TRACKS: |
+    gt=wear:alpha
+    p=wear:production
   PLAY_RELEASE_STATUS: completed
   STORE_DIR: store/playstore
 
@@ -39,8 +44,10 @@ jobs:
           version="${BASH_REMATCH[1]}"
           suffix="${BASH_REMATCH[3]}"
           track=""
+          wear_track=""
           if [ -n "$suffix" ]; then
             track="$(echo "$PLAY_TRACKS" | awk -F= -v s="$suffix" '$1==s {print $2}')"
+            wear_track="$(echo "$WEAR_TRACKS" | awk -F= -v s="$suffix" '$1==s {print $2}')"
             if [ -z "$track" ]; then
               echo "::error::Unknown track suffix '$suffix'. Known: $(echo "$PLAY_TRACKS" | cut -d= -f1 | xargs)"
               exit 1
@@ -52,6 +59,13 @@ jobs:
             echo "::error::Tag version $version does not match versionName $gradle_name in app/build.gradle.kts"
             exit 1
           fi
+          # The watch build carries the same versionName and the phone versionCode with a leading 9.
+          wear_name="$(grep -oP 'versionName\s*=\s*"\K[^"]+' wear/build.gradle.kts)"
+          wear_code="$(grep -oP 'versionCode\s*=\s*\K[0-9]+' wear/build.gradle.kts)"
+          if [ "$wear_name" != "$version" ] || [ "$wear_code" != "9$gradle_code" ]; then
+            echo "::error::wear/build.gradle.kts has $wear_name ($wear_code), expected $version (9$gradle_code)"
+            exit 1
+          fi
           if [ -n "$track" ] && [ ! -f "$STORE_DIR/release_notes_$version.txt" ]; then
             echo "::error::Release notes missing: $STORE_DIR/release_notes_$version.txt"
             exit 1
@@ -59,7 +73,9 @@ jobs:
           {
             echo "version=$version"
             echo "version_code=$gradle_code"
+            echo "wear_version_code=$wear_code"
             echo "track=$track"
+            echo "wear_track=$wear_track"
           } >> "$GITHUB_OUTPUT"
           echo "Version $version ($gradle_code) -> track ${track:-none (build only)}"
 
@@ -81,7 +97,8 @@ jobs:
         run: |
           python .github/scripts/play_publish.py check \
             --package "$PACKAGE_NAME" \
-            --version-code "${{ steps.tag.outputs.version_code }}"
+            --version-code "${{ steps.tag.outputs.version_code }}" \
+            --wear-version-code "${{ steps.tag.outputs.wear_version_code }}"
 
       - name: Set up JDK 17
         if: steps.play.outputs.bundle_exists != 'true'
@@ -107,13 +124,15 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-        run: ./gradlew --no-daemon :app:assembleRelease :app:bundleRelease
+        run: ./gradlew --no-daemon :app:assembleRelease :app:bundleRelease :wear:assembleRelease :wear:bundleRelease
 
       - name: Rename artifacts to include version
         if: steps.play.outputs.bundle_exists != 'true'
         run: |
           mv "app/build/outputs/apk/release/app-release.apk" "elly-v${{ steps.tag.outputs.version }}.apk"
           mv "app/build/outputs/bundle/release/app-release.aab" "elly-v${{ steps.tag.outputs.version }}.aab"
+          mv "wear/build/outputs/apk/release/wear-release.apk" "elly-wear-v${{ steps.tag.outputs.version }}.apk"
+          mv "wear/build/outputs/bundle/release/wear-release.aab" "elly-wear-v${{ steps.tag.outputs.version }}.aab"
 
       - name: Upload release artifacts
         if: steps.play.outputs.bundle_exists != 'true'
@@ -123,6 +142,8 @@ jobs:
           path: |
             elly-v${{ steps.tag.outputs.version }}.apk
             elly-v${{ steps.tag.outputs.version }}.aab
+            elly-wear-v${{ steps.tag.outputs.version }}.apk
+            elly-wear-v${{ steps.tag.outputs.version }}.aab
           if-no-files-found: error
 
       - name: Publish release artifacts to GitHub Release
@@ -135,6 +156,8 @@ jobs:
           files: |
             elly-v${{ steps.tag.outputs.version }}.apk
             elly-v${{ steps.tag.outputs.version }}.aab
+            elly-wear-v${{ steps.tag.outputs.version }}.apk
+            elly-wear-v${{ steps.tag.outputs.version }}.aab
 
       - name: Publish to Google Play
         if: steps.tag.outputs.track != ''
@@ -145,11 +168,16 @@ jobs:
           if [ "${{ steps.play.outputs.bundle_exists }}" != "true" ]; then
             aab_arg=(--aab "elly-v${{ steps.tag.outputs.version }}.aab")
           fi
+          if [ "${{ steps.play.outputs.bundle_exists }}" != "true" ] && [ "${{ steps.play.outputs.wear_bundle_exists }}" != "true" ]; then
+            aab_arg+=(--wear-aab "elly-wear-v${{ steps.tag.outputs.version }}.aab")
+          fi
           python .github/scripts/play_publish.py publish \
             --package "$PACKAGE_NAME" \
             --version-code "${{ steps.tag.outputs.version_code }}" \
             --version-name "${{ steps.tag.outputs.version }}" \
             --track "${{ steps.tag.outputs.track }}" \
+            --wear-version-code "${{ steps.tag.outputs.wear_version_code }}" \
+            --wear-track "${{ steps.tag.outputs.wear_track }}" \
             --status "$PLAY_RELEASE_STATUS" \
             --store-dir "$STORE_DIR" \
             "${aab_arg[@]}"

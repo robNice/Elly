@@ -15,6 +15,7 @@ import de.robnice.elly.data.BackupJson
 import de.robnice.elly.data.BackgroundImageStore
 import de.robnice.elly.data.ScreenLayoutRepository
 import de.robnice.elly.data.SettingsRepository
+import de.robnice.elly.data.WatchLayoutRepository
 import de.robnice.elly.data.model.AppBackground
 import de.robnice.elly.data.model.AppSlot
 import de.robnice.elly.data.model.AppSlots
@@ -34,6 +35,7 @@ import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenBackground
 import de.robnice.elly.data.model.ScreenLayout
 import de.robnice.elly.data.model.TouchStyle
+import de.robnice.elly.data.model.WatchLayout
 import de.robnice.elly.epg.EpgAccess
 import de.robnice.elly.epg.FavoriteList
 import de.robnice.elly.remote.RemoteControl
@@ -62,6 +64,7 @@ class SettingsViewModel(
     private val backgroundImageStore: BackgroundImageStore,
     private val remoteControl: RemoteControl,
     private val epgAccess: EpgAccess,
+    private val watchLayoutRepository: WatchLayoutRepository,
     val motionPointerAvailable: Boolean
 ) : ViewModel() {
 
@@ -96,6 +99,7 @@ class SettingsViewModel(
         .stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
     // Tabs shown when the settings or the add dialog open again, kept while the app runs.
+    // Ordinal of the last open settings tab.
     var lastTab = 0
     var lastPickerTab = 0
 
@@ -134,10 +138,11 @@ class SettingsViewModel(
     private val _backupMessage = MutableStateFlow<Int?>(null)
     val backupMessage: StateFlow<Int?> = _backupMessage.asStateFlow()
 
-    fun exportBackup(resolver: ContentResolver, uri: Uri, screens: Boolean, appearance: Boolean) = export(resolver, uri) {
+    fun exportBackup(resolver: ContentResolver, uri: Uri, screens: Boolean, appearance: Boolean, watch: Boolean) = export(resolver, uri) {
         BackupContent(
             screens = if (screens) screenLayoutRepository.activeBackup() else null,
-            appearance = if (appearance) appearanceBackup() else null
+            appearance = if (appearance) appearanceBackup() else null,
+            watch = if (watch) Backup.Watch(watchLayoutRepository.layout.first()) else null
         ).takeUnless { it.isEmpty }
     }
 
@@ -182,7 +187,7 @@ class SettingsViewModel(
             val backup = text?.let { BackupJson.decode(it) }
             // Screens belong to a TV, so without one only the appearance can be taken over.
             val usable = backup?.takeIf { it.screens == null || appSlotsRepository.activeOwner.first() != null }
-                ?: backup?.let { BackupContent(null, it.appearance) }
+                ?: backup?.let { BackupContent(null, it.appearance, it.watch) }
             when {
                 backup == null -> _backupMessage.value = R.string.settings_backup_invalid
                 usable == null || usable.isEmpty -> _backupMessage.value = R.string.settings_backup_no_tv
@@ -191,7 +196,7 @@ class SettingsViewModel(
         }
     }
 
-    fun confirmRestore(screens: Boolean, appearance: Boolean) {
+    fun confirmRestore(screens: Boolean, appearance: Boolean, watch: Boolean) {
         val backup = _backupToRestore.value ?: return
         _backupToRestore.value = null
         viewModelScope.launch {
@@ -205,7 +210,20 @@ class SettingsViewModel(
                 settingsRepository.setAppearance(it.palette, AppBackground(type, path), it.keyRounding, it.dpadRounding, it.lightEffect)
                 backgroundImageStore.deleteUnused(setOfNotNull(path))
             }
+            backup.watch?.takeIf { watch }?.let {
+                fetchWatchIcons(it.layout)
+                watchLayoutRepository.update { _ -> it.layout }
+            }
             _backupMessage.value = R.string.settings_backup_restored
+        }
+    }
+
+    // Before the layout changes, so the watch gets the icons with it.
+    private suspend fun fetchWatchIcons(layout: WatchLayout) {
+        val missing = layout.apps.filter { appSlotsRepository.cachedIcon(it.appId) == null }.map { it.appId }.toSet()
+        if (missing.isEmpty()) return
+        remoteControl.loadApps().apps.filter { it.id in missing }.forEach { app ->
+            app.iconUrl?.let { remoteControl.downloadAppIcon(it) }?.let { appSlotsRepository.storeIcon(app.id, it) }
         }
     }
 
@@ -531,6 +549,7 @@ class SettingsViewModel(
                     container.backgroundImageStore,
                     container.remoteControl,
                     container.epgAccess,
+                    container.watchLayoutRepository,
                     container.motionPointerAvailable
                 )
             }

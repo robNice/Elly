@@ -1,10 +1,10 @@
 ## 1. Allgemeines
-Elly dient als Fernbedienung für LG-Fernseher mit webOS im lokalen Netzwerk.
+Elly dient als Fernbedienung für LG-Fernseher mit webOS im lokalen Netzwerk, auf dem Handy und auf einer Wear-OS-Uhr.
 
 Der Entwickler dieser App erhebt, speichert oder verarbeitet keine personenbezogenen Daten. Die App benötigt kein Benutzerkonto.
 
 ## 2. Netzwerkkommunikation
-Die App kommuniziert ausschließlich innerhalb Ihres lokalen Netzwerks:
+Die App kommuniziert mit dem Fernseher ausschließlich innerhalb Ihres lokalen Netzwerks:
 
 - Suche nach Fernsehern: Anfrage per SSDP und Prüfung der Adressen Ihres lokalen Netzes auf die webOS-Ports 3000 und 3001.
 - Steuerung: verschlüsselte Verbindung zum gekoppelten Fernseher (ältere Fernseher ohne Verschlüsselung über Port 3000). Übertragen werden Steuerbefehle wie Tasten, Zeigerbewegungen, App-Starts, Eingangs- und Senderwechsel sowie Abfragen der installierten Apps, der Eingänge und der App-Symbole.
@@ -13,37 +13,59 @@ Die App kommuniziert ausschließlich innerhalb Ihres lokalen Netzwerks:
 
 Diese Kommunikation erfolgt direkt zwischen Ihrem Gerät und dem Fernseher. Es werden keine Daten an externe Server übertragen.
 
-## 3. Datenspeicherung
+## 3. Uhr (Wear OS)
+Die Uhr-App steuert den Fernseher wie das Handy direkt über Ihr WLAN (Steuerbefehle, Zeigerbewegungen, Einschalten per Wake-on-LAN, Öffnen der Quellenauswahl des Fernsehers).
+
+Damit Sie den Fernseher auf der Uhr nicht erneut koppeln müssen, überträgt das Handy folgende Daten an die gekoppelte Uhr, solange dort Elly installiert ist:
+
+- Name, Modell, IP-Adresse und MAC-Adresse gekoppelter Fernseher, ihr Pairing-Schlüssel und Zertifikats-Fingerabdruck
+- welcher Fernseher aktiv ist und ob der Demo-Modus an ist
+- die Seiten und Tastenbelegung der Uhr-App und die Symbole der Apps, die Tasten der Uhr öffnen
+
+Die Übertragung erfolgt über die Wearable-Schnittstelle der Google-Play-Dienste, die Handy und Uhr miteinander verbindet. Sind Handy und Uhr nicht direkt per Bluetooth oder WLAN verbunden, können die Google-Play-Dienste die Daten verschlüsselt über Server von Google zwischen Ihren Geräten übermitteln. Ist keine Uhr mit Elly mehr bekannt, löscht das Handy die Daten aus dieser Schnittstelle. Zugangsdaten für den Root-Zugang und die Programmübersicht werden nicht an die Uhr übertragen.
+
+## 4. Datenspeicherung
 Folgende Daten werden lokal auf Ihrem Gerät gespeichert:
 
 - Name, Modell, IP-Adresse und MAC-Adresse gekoppelter Fernseher
 - Pairing-Schlüssel und Zertifikats-Fingerabdruck des Fernsehers
-- Einstellungen der App (Screens, Design, App-Tasten, Zeiger, Vibration, Demo-Modus)
+- Einstellungen der App (Screens, Design, App-Tasten, Zeiger, Vibration, Demo-Modus, Seiten und Tasten der Uhr)
 - Kopien der Bilder, die Sie als Screen-Hintergrund wählen; die App erhält nur die Bilder, die Sie in der Android-Fotoauswahl auswählen
 - vom Fernseher geladene App-Symbole
 - für die Programmübersicht: SSH-Benutzer, Port und Fingerabdruck des SSH-Schlüssels des Fernsehers; das Root-Passwort des Fernsehers oder der von Ihnen eingegebene private SSH-Schlüssel (samt Passphrase), verschlüsselt mit einem Schlüssel, der im Android-Keystore liegt und nicht aus dem Gerät ausgelesen werden kann; die Programmdaten (Senderlisten und Sendungen der letzten 24 Stunden und bis zu 14 Tage im Voraus) und Senderlogos.
 
-Diese Daten verbleiben ausschließlich auf Ihrem Gerät, sind von der Android-Datensicherung ausgeschlossen und werden beim Deinstallieren der App gelöscht.
+Auf der Uhr speichert Elly die vom Handy übertragenen Daten (siehe Abschnitt 3) und die Einstellungen der Uhr (Vibration, Kreisgeste, Lichteffekt, Zeiger, gewählter Fernseher).
 
-## 4. Sensoren
-Im Bewegungsmodus des Zeigers nutzt die App das Gyroskop Ihres Geräts. Die Sensordaten werden nur verarbeitet, solange der Zeiger-Modus aktiv und die App sichtbar ist, direkt in Zeigerbewegungen umgerechnet und nicht gespeichert.
+Diese Daten verbleiben auf Ihren Geräten, sind von der Android-Datensicherung ausgeschlossen und werden beim Deinstallieren der App gelöscht.
 
-## 5. Berechtigungen
+## 5. Sensoren
+Im Bewegungsmodus des Zeigers nutzt die App das Gyroskop Ihres Geräts. Auf der Uhr nutzt die Zeigerseite das Gyroskop der Uhr, solange ein Finger auf dem Display liegt. Die Sensordaten werden nur dabei verarbeitet, direkt in Zeigerbewegungen umgerechnet und nicht gespeichert.
+
+## 6. Berechtigungen
+Auf dem Handy:
+
 - Internet: Verbindung zum Fernseher im lokalen Netzwerk (Android verlangt diese Berechtigung für jede Netzwerkverbindung)
 - Netzwerk- und WLAN-Status: Ermitteln des lokalen Netzes für die Suche
 - WLAN-Multicast: Empfang der Antworten bei der Suche nach Fernsehern
 - Vibration: kurze Rückmeldung beim Drücken einer Taste in einem Homescreen-Widget
 - Vordergrunddienst: Senden einer Taste, die in einem Homescreen-Widget gedrückt wurde, an den TV, auch wenn die App im Hintergrund ist
 
+Auf der Uhr:
+
+- Internet und Netzwerkstatus: Verbindung zum Fernseher im lokalen Netzwerk
+- Netzwerk ändern: die Uhr verbindet sich für die Steuerung mit Ihrem WLAN, statt die Verbindung über das Handy zu leiten
+- Vibration: Rückmeldung bei Tasten und beim Ändern der Lautstärke
+- Aktiv halten: hält das WLAN auf der Zeigerseite reaktionsschnell
+
 Es werden keine weiteren Berechtigungen verwendet, insbesondere kein Zugriff auf Standort, Mikrofon, Kamera oder Kontakte.
 
-## 6. Drittanbieter
-Diese App verwendet keine Drittanbieter-Dienste, keine Analyse-Tools und keine Werbung.
+## 7. Drittanbieter
+Diese App verwendet keine Analyse-Tools und keine Werbung. Für den Abgleich zwischen Handy und Uhr nutzt sie die Wearable-Schnittstelle der Google-Play-Dienste (siehe Abschnitt 3); dafür gelten zusätzlich die Datenschutzbestimmungen von Google.
 
-## 7. Änderungen dieser Datenschutzerklärung
+## 8. Änderungen dieser Datenschutzerklärung
 Diese Datenschutzerklärung kann bei Bedarf aktualisiert werden, um Änderungen der App oder rechtliche Anforderungen abzubilden.
 
-## 8. Kontakt
+## 9. Kontakt
 Bei Fragen zum Datenschutz können Sie den Entwickler kontaktieren.
 
 E-Mail: elly@robnice.de

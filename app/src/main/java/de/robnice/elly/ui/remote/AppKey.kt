@@ -98,7 +98,7 @@ fun appLabelColor(slot: AppSlot): Color {
 }
 
 @Composable
-private fun rememberAppIcon(path: String?): ImageBitmap? {
+internal fun rememberAppIcon(path: String?): ImageBitmap? {
     val bitmap by produceState<ImageBitmap?>(initialValue = null, path) {
         value = path?.let {
             withContext(Dispatchers.IO) {

@@ -153,7 +153,7 @@
     <string name="settings_light_effect">夏の長い夕暮れ</string>
     <string name="settings_light_effect_description">左上から低い光が差し込みます。キーは長い影を落とし、背景はその角から照らされます。</string>
     <string name="settings_backup">バックアップと復元</string>
-    <string name="settings_backup_description">スクリーンと外観は別々にも一緒にもバックアップできるため、相手の外観を変えずにスクリーンだけを渡せます。復元時には Elly がファイルの中身を表示し、取り込む項目を選べます。</string>
+    <string name="settings_backup_description">スクリーン、外観、ウォッチのレイアウトは別々にも一緒にもバックアップできるため、相手の外観を変えずにスクリーンだけを渡せます。復元時には Elly がファイルの中身を表示し、取り込む項目を選べます。</string>
     <string name="settings_backup_restore">ファイルから復元</string>
     <string name="settings_backup_save">バックアップ</string>
     <string name="settings_backup_save_title">何をバックアップしますか？</string>
@@ -502,7 +502,7 @@
     <string name="help_settings_title">設定</string>
     <string name="help_settings_elly">設定をいじってみよう！ どこに何があるか教えるね。</string>
     <string name="help_settings_tabs_title">設定の構成</string>
-    <string name="help_settings_tabs_body">上部バーの歯車で設定が開きます。設定には 3 つのタブがあり、スワイプでも切り替えられます。Elly は最後に開いたタブを覚えています。\n• テレビ: ペアリング済みのテレビ、検索、IP アドレス、デモモード。\n• 外観: スクリーン、カラーパレット、背景、角の丸み、光の効果、バックアップと復元。\n• 操作: ポインターと振動。</string>
+    <string name="help_settings_tabs_body">上部バーの歯車で設定が開きます。タブには記号が表示され、スワイプでも切り替えられます。Elly は最後に開いたタブを覚えています。\n• テレビ（画面）: ペアリング済みのテレビ、検索、IP アドレス、デモモード。\n• 外観（パレット）: スクリーン、カラーパレット、背景、角の丸み、光の効果。\n• 操作（マウス）: ポインターと振動。\n• ウォッチ（腕時計、ウォッチの接続中のみ）: ウォッチアプリとそのタイルのページとキー。\n• バックアップ（フロッピー）: スクリーン、外観、ウォッチのレイアウトをファイルに保存し、そこから復元します。</string>
     <string name="help_settings_tv_title">テレビの切り替え・削除</string>
     <string name="help_settings_tv_body">「テレビ」タブの上部に、ペアリング済みのテレビが一覧表示されます。タップすると使用中のテレビになります。「削除」を選ぶと、確認のあとペアリングを解除します。再び使うには、もう一度ペアリングが必要です。\nその下で、ほかのテレビを検索したり IP アドレスを入力したりできます。\nデモモードがオンの間は、タブにデモモードのスイッチだけが表示されます。テレビをペアリングしたり切り替えたりするには、オフにしてください。</string>
     <string name="help_settings_haptics_title">キー操作時に振動</string>
@@ -510,7 +510,7 @@
     <string name="help_privacy_title">プライバシー</string>
     <string name="help_privacy_elly">あなたのデータはあなたのもの。これがわたしの最終判決だよ、コケッ！</string>
     <string name="help_privacy_data_title">データの扱い</string>
-    <string name="help_privacy_data_body">Elly はローカルネットワーク内でテレビとだけ通信し、外部サーバーにデータを送ることはありません。ペアリング済みのテレビ、設定、スクリーンのレイアウト、アプリアイコンはスマホ内に保存され、アプリをアンインストールすると削除されます。 番組表のデータもスマホ内にのみ保存されます。</string>
+    <string name="help_privacy_data_body">Elly はローカルネットワーク内でテレビとだけ通信し、外部サーバーにデータを送ることはありません。ペアリング済みのテレビ、設定、スクリーンのレイアウト、アプリアイコン、番組表はスマホ内に保存され、アプリをアンインストールすると削除されます。ウォッチがある場合、スマホは Google Play 開発者サービスを通じてペアリング済みのテレビとウォッチのレイアウトをウォッチに渡します。詳しくはプライバシーポリシーをご覧ください。</string>
     <string name="help_privacy_policy_title">プライバシーポリシー</string>
     <string name="help_privacy_policy_body">プライバシーポリシーの全文は、設定の一番下、バージョン番号の横にある「プライバシー」から開けます。</string>
     <string name="help_privacy_link">プライバシーポリシー</string>
@@ -640,4 +640,54 @@
         <item>ねむいひよこ</item>
         <item>きいろいふわふわ</item>
     </string-array>
+    <string name="settings_tab_watch">ウォッチ</string>
+    <string name="watch_settings_intro">ウォッチアプリに表示するページと、キーの機能を選びます。十字キーと数字キーの機能は変わりません。</string>
+    <string name="watch_pages_title">ページ</string>
+    <string name="watch_tile">タイル</string>
+    <string name="watch_tile_description">アプリを開かずに使える 6 つのキー</string>
+    <string name="watch_edit_keys">キーを割り当てる</string>
+    <string name="watch_editor_hint">キーをタップすると機能を変更できます。</string>
+    <string name="watch_picker_title">機能</string>
+    <string name="watch_picker_app">アプリを開く</string>
+    <string name="watch_picker_keys">キー</string>
+    <string name="watch_picker_default">デフォルト</string>
+    <string name="watch_action_play_pause">再生と一時停止を交互に</string>
+    <string name="watch_install_title">Elly はまだウォッチに入っていません</string>
+    <string name="watch_install_body">ウォッチに Elly を入れると、手首からテレビを操作できます。インストール後、ページとキーはここで設定します。</string>
+    <string name="watch_install_button">ウォッチにインストール</string>
+    <string name="watch_install_opened">ウォッチで続けてください。</string>
+    <string name="watch_install_failed">ウォッチに接続できませんでした。</string>
+    <string name="watch_app_display">表示方法</string>
+    <string name="watch_app_display_icon">アイコン</string>
+    <string name="watch_app_display_text">名前</string>
+    <string name="watch_app_display_both">両方</string>
+    <string name="watch_app_display_change">%1$s の表示方法を変更</string>
+    <string name="watch_pointer_area">押したまま向ける</string>
+    <string name="watch_pages_description">ページをタップすると表示と非表示を切り替え、長押ししてドラッグすると順番を変えられます。鉛筆でキーを割り当て、矢印で元に戻します。少なくとも 1 ページは表示されたままです。</string>
+    <string name="watch_page_number">ページ %1$d</string>
+    <string name="watch_page_edit">ページ %1$d のキーを割り当てる</string>
+    <string name="watch_page_reset">ページ %1$d をリセット</string>
+    <string name="watch_tile_reset">タイルをリセット</string>
+    <string name="watch_reset_title">キーをリセットしますか？</string>
+    <string name="watch_reset_message">キーが元の機能に戻ります。</string>
+    <string name="settings_backup_part_watch">ウォッチ</string>
+    <string name="settings_backup_part_watch_description">ウォッチアプリとそのタイルのページとキー。</string>
+    <string name="settings_backup_watch_file">Elly-ウォッチ</string>
+    <string name="help_watch_title">ウォッチ</string>
+    <string name="help_watch_elly">リモコンにかえるまで、あなたのウォッチを温めているよ。約束する、すぐだからね！</string>
+    <string name="help_watch_devices_title">対応するウォッチ</string>
+    <string name="help_watch_devices_body">Elly は、Android スマホとペアリングされた Wear OS 3 以降のウォッチで動作します。たとえば Samsung Galaxy Watch 4 以降、Google Pixel Watch、その他の現行の Wear OS ウォッチです。ほかのシステムのウォッチ（Apple Watch、Tizen 搭載の古い Samsung ウォッチ、Garmin、Fitbit、Huawei）では動作しません。ウォッチにはテレビと同じネットワークの Wi-Fi と、ペアリング済みのテレビを届けるスマホの Elly アプリが必要です。</string>
+    <string name="help_watch_install_title">インストールと設定</string>
+    <string name="help_watch_install_body">ウォッチで Play ストアから Elly をインストールします。ウォッチに Elly がない間は、設定のウォッチタブからウォッチの Play ストアを開けます。インストール後、ウォッチはペアリング済みのテレビとデモモードをスマホから自動で引き継ぐので、ウォッチでテレビをもう一度ペアリングする必要はありません。ページとキーはスマホで設定します。ウォッチだけに関わる少しの設定はウォッチの最後のページにあります（「ウォッチの設定」を参照）。</string>
+    <string name="help_watch_use_title">ウォッチの使い方</string>
+    <string name="help_watch_use_body">左右にスワイプしてページを切り替え、最初のページで右にスワイプすると Elly を閉じます。リューズやベゼルを回すか、画面の縁に沿って円を描くと音量が変わります。時計回りで大きくなります。縁の光はコマンドが送られたことを示し、失敗したときは赤、テレビの応答に時間がかかっている間は回る弧になります。ウォッチはキーを押すたびに振動します。</string>
+    <string name="help_watch_layout_title">ページとキー</string>
+    <string name="help_watch_layout_body">設定のウォッチタブには、スマホのスクリーンと同じようにウォッチのページがプレビューで表示されます。ページをタップすると表示と非表示を切り替え、長押ししてドラッグすると順番を変えられます。鉛筆でページが大きく開きます。キーをタップして機能を選びます。リモコンの任意のキー、再生または一時停止、テレビの入力切替、またはアプリ（アイコン、名前、または両方で表示）です。十字キーと数字キーの機能は変わりません。</string>
+    <string name="help_watch_pointer_title">手首でポインター</string>
+    <string name="help_watch_pointer_body">ポインターのページで画面に指を置いたまま腕を動かすと、テレビのポインターがついてきます。短くタップするとクリック、リューズでスクロールします。画面から指を離すとポインターはその場にとどまります。速度と、右手首に着けたウォッチ向けの上下の入れ替えは、ウォッチの設定ページで変更します。</string>
+    <string name="help_watch_tile_title">タイルとコンプリケーション</string>
+    <string name="help_watch_tile_body">文字盤の横にある Elly のタイルには、アプリを開かずに使える 6 つのキーがあります。ページのキーと同じようにウォッチタブで選びます。ほかの文字盤には、消音や電源などのキーを 1 つずつコンプリケーションとして配置することもできます。</string>
+    <string name="help_watch_settings_title">ウォッチの設定</string>
+    <string name="help_watch_settings_body">ウォッチの最後のページにスワイプすると、ウォッチ独自の設定があります。\n• 振動: キーごとの短いクリックと、音量が変わる間のリズム。\n• 円で音量: 縁に沿ったジェスチャーのオンとオフ。邪魔なときなどに。\n• 光の効果: コマンドの後、テレビの応答待ちの間、音量が変わる間の縁の光。\n• ポインター、速度: 腕を動かしたときにポインターが動く量。\n• ポインター、上下を入れ替え: 右手首に着けたウォッチ向け。入れ替えないとポインターが逆に動きます。\n• テレビ: ペアリング済みのテレビが複数あるとき、ウォッチで操作するテレビ。スマホは独自の選択を保ちます。\nその下にはスマホで Elly やプライバシーポリシーを開く 2 つのキーと、ウォッチアプリのバージョンがあります。</string>
+    <string name="settings_tab_backup">バックアップ</string>
 </resources>

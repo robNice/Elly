@@ -1,5 +1,6 @@
 package de.robnice.elly.data
 
+import de.robnice.elly.data.model.AppDisplay
 import de.robnice.elly.data.model.AppSlot
 import de.robnice.elly.data.model.ColorPalette
 import de.robnice.elly.data.model.CustomElement
@@ -9,6 +10,10 @@ import de.robnice.elly.data.model.EpgConfig
 import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenBackground
 import de.robnice.elly.data.model.ScreenLayout
+import de.robnice.elly.data.model.WatchAction
+import de.robnice.elly.data.model.WatchLayout
+import de.robnice.elly.data.model.WatchPage
+import de.robnice.elly.data.model.WatchSlot
 import de.robnice.elly.remote.RemoteKey
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
@@ -58,6 +63,19 @@ class BackupJsonTest {
         assertEquals(0.3f, restored.keyRounding, 0.0001f)
         assertEquals(0.7f, restored.dpadRounding, 0.0001f)
         assertTrue(restored.lightEffect)
+    }
+
+    @Test
+    fun watchLayoutRoundTrip() {
+        val layout = WatchLayout()
+            .withVisible(WatchPage.NUMBERS, false)
+            .with(WatchSlot.TILE_2, WatchAction.App("netflix", "Netflix", AppDisplay.BOTH))
+
+        val restored = BackupJson.decode(BackupJson.encode(BackupContent(null, null, Backup.Watch(layout))))!!
+
+        assertEquals(layout, restored.watch!!.layout)
+        assertNull(restored.screens)
+        assertNull(restored.appearance)
     }
 
     @Test

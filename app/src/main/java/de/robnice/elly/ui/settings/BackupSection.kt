@@ -37,14 +37,15 @@ import de.robnice.elly.R
 import java.time.LocalDate
 
 @Composable
-fun BackupSection(viewModel: SettingsViewModel, screensAvailable: Boolean) {
+fun BackupSection(viewModel: SettingsViewModel, screensAvailable: Boolean, watchAvailable: Boolean) {
     val resolver = LocalContext.current.contentResolver
     val spacing = dimensionResource(R.dimen.setup_item_spacing)
     var choosing by remember { mutableStateOf(false) }
     var saveScreens by rememberSaveable { mutableStateOf(screensAvailable) }
     var saveAppearance by rememberSaveable { mutableStateOf(true) }
+    var saveWatch by rememberSaveable { mutableStateOf(watchAvailable) }
     val backupFile = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument(MIME_TYPE)) { uri ->
-        uri?.let { viewModel.exportBackup(resolver, it, saveScreens && screensAvailable, saveAppearance) }
+        uri?.let { viewModel.exportBackup(resolver, it, saveScreens && screensAvailable, saveAppearance, saveWatch && watchAvailable) }
     }
     val restoreFile = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         uri?.let { viewModel.readBackup(resolver, it) }
@@ -52,23 +53,30 @@ fun BackupSection(viewModel: SettingsViewModel, screensAvailable: Boolean) {
     val bothName = stringResource(R.string.settings_backup_file)
     val screensName = stringResource(R.string.settings_backup_screens_file)
     val appearanceName = stringResource(R.string.settings_backup_appearance_file)
+    val watchName = stringResource(R.string.settings_backup_watch_file)
 
     if (choosing) {
         val screens = saveScreens && screensAvailable
+        val watch = saveWatch && watchAvailable
         BackupPartsDialog(
             title = stringResource(R.string.settings_backup_save_title),
             message = null,
             screens = if (screensAvailable) screens else null,
             appearance = saveAppearance,
+            watch = if (watchAvailable) watch else null,
             onScreens = { saveScreens = it },
             onAppearance = { saveAppearance = it },
+            onWatch = { saveWatch = it },
             confirm = stringResource(R.string.settings_backup_save),
             onConfirm = {
                 choosing = false
-                val name = when {
-                    screens && saveAppearance -> bothName
-                    screens -> screensName
-                    else -> appearanceName
+                val name = when (listOf(screens, saveAppearance, watch).count { it }) {
+                    1 -> when {
+                        screens -> screensName
+                        watch -> watchName
+                        else -> appearanceName
+                    }
+                    else -> bothName
                 }
                 backupFile.launch(fileName(name))
             },
@@ -116,8 +124,10 @@ private fun BackupPartsDialog(
     message: String?,
     screens: Boolean?,
     appearance: Boolean?,
+    watch: Boolean?,
     onScreens: (Boolean) -> Unit,
     onAppearance: (Boolean) -> Unit,
+    onWatch: (Boolean) -> Unit,
     confirm: String,
     onConfirm: () -> Unit,
     onDismiss: () -> Unit
@@ -144,10 +154,18 @@ private fun BackupPartsDialog(
                         onCheckedChange = onAppearance
                     )
                 }
+                watch?.let {
+                    PartSwitch(
+                        title = stringResource(R.string.settings_backup_part_watch),
+                        description = stringResource(R.string.settings_backup_part_watch_description),
+                        checked = it,
+                        onCheckedChange = onWatch
+                    )
+                }
             }
         },
         confirmButton = {
-            TextButton(onClick = onConfirm, enabled = screens == true || appearance == true) { Text(confirm) }
+            TextButton(onClick = onConfirm, enabled = screens == true || appearance == true || watch == true) { Text(confirm) }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) { Text(stringResource(R.string.dialog_cancel)) }
@@ -180,15 +198,18 @@ fun BackupDialogs(viewModel: SettingsViewModel) {
     backup?.let { pending ->
         var screens by remember(pending) { mutableStateOf(pending.screens != null) }
         var appearance by remember(pending) { mutableStateOf(pending.appearance != null) }
+        var watch by remember(pending) { mutableStateOf(pending.watch != null) }
         BackupPartsDialog(
             title = stringResource(R.string.settings_backup_restore_title),
             message = stringResource(R.string.settings_backup_restore_message),
             screens = screens.takeIf { pending.screens != null },
             appearance = appearance.takeIf { pending.appearance != null },
+            watch = watch.takeIf { pending.watch != null },
             onScreens = { screens = it },
             onAppearance = { appearance = it },
+            onWatch = { watch = it },
             confirm = stringResource(R.string.settings_backup_restore_confirm),
-            onConfirm = { viewModel.confirmRestore(screens, appearance) },
+            onConfirm = { viewModel.confirmRestore(screens, appearance, watch) },
             onDismiss = viewModel::dismissRestore
         )
     }

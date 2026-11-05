@@ -22,6 +22,8 @@ class AppIconCache(context: Context) {
         }.getOrNull()
     }
 
+    suspend fun read(path: String): ByteArray? = withContext(Dispatchers.IO) { runCatching { File(path).readBytes() }.getOrNull() }
+
     suspend fun removeOwner(owner: String) = withContext(Dispatchers.IO) {
         File(root, safeName(owner)).deleteRecursively()
     }

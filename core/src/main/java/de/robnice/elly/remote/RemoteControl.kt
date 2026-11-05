@@ -33,6 +33,7 @@ class RemoteControl(
 ) {
 
     private val mutex = Mutex()
+    @Volatile
     private var session: TvSession? = null
     private val state = MutableStateFlow(ConnectionState.CHECKING)
     private val tvKeyboard = MutableStateFlow(false)
@@ -73,10 +74,31 @@ class RemoteControl(
                 it.connection.request(LAUNCH_APP, JSONObject().put("id", command.appId))
                 SendResult.SENT
             }
-            RemoteCommand.InputPicker, RemoteCommand.AudioTrackPicker, RemoteCommand.SubtitlePicker, RemoteCommand.TextInput,
+            // The phone shows its own list; the watch has no room for one and opens the TV's input picker.
+            RemoteCommand.InputPicker -> withSession(tv, report) { openInputPicker(it) }
+            RemoteCommand.AudioTrackPicker, RemoteCommand.SubtitlePicker, RemoteCommand.TextInput,
             RemoteCommand.Unsupported ->
                 SendResult.UNSUPPORTED
         }
+    }
+
+    // The input key of the LG remote shows a picker of the surface manager; older webOS versions have an app for it.
+    private suspend fun openInputPicker(session: TvSession): SendResult {
+        try {
+            session.connection.request(SHOW_INPUT_PICKER)
+            return SendResult.SENT
+        } catch (e: TvConnectionException.RequestFailed) {
+            Log.i(TAG, "Input picker of the surface manager not available: ${e.message}")
+        }
+        for (appId in INPUT_PICKER_APPS) {
+            try {
+                session.connection.request(LAUNCH_APP, JSONObject().put("id", appId))
+                return SendResult.SENT
+            } catch (e: TvConnectionException.RequestFailed) {
+                Log.i(TAG, "Input picker $appId not available: ${e.message}")
+            }
+        }
+        return SendResult.FAILED
     }
 
     suspend fun loadApps(): AppListResult {
@@ -182,7 +204,18 @@ class RemoteControl(
         return withSession(tv) { it.pointer.buttonDelivered(OK_BUTTON).toResult() }
     }
 
-    suspend fun movePointer(dx: Int, dy: Int): SendResult = pointerAction { it.pointer.move(dx, dy) }
+    // Moves come up to a hundred times a second. With an open pointer socket they go straight out, without the
+    // lookups and the lock, which made them arrive at uneven intervals and the pointer jump.
+    suspend fun movePointer(dx: Int, dy: Int): SendResult {
+        if (tryMovePointer(dx, dy)) return SendResult.SENT
+        return pointerAction { it.pointer.move(dx, dy) }
+    }
+
+    // For callers on a sensor thread: false when there is no open pointer socket yet and movePointer has to connect.
+    fun tryMovePointer(dx: Int, dy: Int): Boolean {
+        val pointer = session?.takeIf { it.connection.isOpen }?.pointer?.takeIf { it.isOpen } ?: return false
+        return pointer.move(dx, dy)
+    }
 
     suspend fun clickPointer(): SendResult = pointerAction { it.pointer.click() }
 
@@ -241,8 +274,10 @@ class RemoteControl(
         return withSession(tv) { action(it).toResult() }
     }
 
+    // A fresh connection is tried only once: a TV in standby can take the connection without answering, and a
+    // second try that succeeds after the TV was switched on another way would switch it off again.
     private suspend fun togglePower(tv: PairedTv, report: Boolean): SendResult {
-        val result = withSession(tv, report) {
+        val result = withSession(tv, report, retryFreshConnection = false) {
             it.connection.request(TURN_OFF)
             closeSession()
             SendResult.SENT
@@ -255,16 +290,22 @@ class RemoteControl(
     private suspend fun withSession(
         tv: PairedTv,
         report: Boolean = true,
+        retryFreshConnection: Boolean = true,
         action: suspend (TvSession) -> SendResult
     ): SendResult =
         mutex.withLock {
-            runWithRetries(tv, action).also { result ->
+            runWithRetries(tv, retryFreshConnection, action).also { result ->
                 if (report) ConnectionState.after(result)?.let { state.value = it }
             }
         }
 
-    private suspend fun runWithRetries(tv: PairedTv, action: suspend (TvSession) -> SendResult): SendResult {
+    private suspend fun runWithRetries(
+        tv: PairedTv,
+        retryFreshConnection: Boolean,
+        action: suspend (TvSession) -> SendResult
+    ): SendResult {
         repeat(ATTEMPTS) { attempt ->
+            val reused = session?.let { it.connection.isOpen && it.belongsTo(tv) } == true
             try {
                 return action(sessionFor(tv))
             } catch (e: CancellationException) {
@@ -276,7 +317,7 @@ class RemoteControl(
                     is TvConnectionException.CertificateChanged,
                     is TvConnectionException.PairingRejected -> return SendResult.PAIRING_REQUIRED
                     is TvConnectionException.RequestFailed -> return SendResult.FAILED
-                    else -> Unit
+                    else -> if (!reused && !retryFreshConnection) return SendResult.UNREACHABLE
                 }
             }
         }
@@ -296,7 +337,7 @@ class RemoteControl(
         val connection = connector.connect(tv.ipAddress, tv.certificatePin, allowInsecure = !tv.secure)
         try {
             Log.d(TAG, "Socket open after ${elapsedMillis(started)} ms")
-            connection.register(tv.clientKey, manifest.json) {
+            connection.register(tv.clientKey, manifest.json, REGISTER_TIMEOUT_MILLIS) {
                 throw TvConnectionException.PairingRejected("client key not accepted")
             }
             Log.d(TAG, "Registered after ${elapsedMillis(started)} ms")
@@ -337,7 +378,12 @@ class RemoteControl(
         const val TAG = "EllyRemote"
         const val HIDE_POINTER_BUTTON = "UP"
         const val ATTEMPTS = 2
+
+        // The TV knows the client key and answers at once; only a TV in standby keeps silent.
+        const val REGISTER_TIMEOUT_MILLIS = 5_000L
         const val LAUNCH_APP = "ssap://system.launcher/launch"
+        const val SHOW_INPUT_PICKER = "ssap://com.webos.surfacemanager/showInputPicker"
+        val INPUT_PICKER_APPS = listOf("com.webos.app.inputpicker", "com.webos.app.inputmgr")
         const val TURN_OFF = "ssap://system/turnOff"
         const val GET_INPUTS = "ssap://tv/getExternalInputList"
         const val LIST_LAUNCH_POINTS = "ssap://com.webos.applicationManager/listLaunchPoints"

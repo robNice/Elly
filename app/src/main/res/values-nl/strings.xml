@@ -152,7 +152,7 @@
     <string name="settings_light_effect">Lange zomeravonden</string>
     <string name="settings_light_effect_description">Laag licht van linksboven: de toetsen werpen lange schaduwen en de achtergrond wordt vanuit die hoek verlicht.</string>
     <string name="settings_backup">Back-up en terugzetten</string>
-    <string name="settings_backup_description">Schermen en weergave kun je apart of samen opslaan, zodat je je schermen kunt doorgeven zonder dat de ander zijn eigen weergave kwijtraakt. Bij het terugzetten toont Elly wat er in het bestand zit en kies jij wat je overneemt.</string>
+    <string name="settings_backup_description">Schermen, weergave en de indeling van het horloge kun je apart of samen opslaan, zodat je je schermen kunt doorgeven zonder dat de ander zijn eigen weergave kwijtraakt. Bij het terugzetten toont Elly wat er in het bestand zit en kies jij wat je overneemt.</string>
     <string name="settings_backup_restore">Terugzetten uit bestand</string>
     <string name="settings_backup_save">Back-up maken</string>
     <string name="settings_backup_save_title">Wat wil je opslaan?</string>
@@ -502,7 +502,7 @@
     <string name="help_settings_title">Instellingen</string>
     <string name="help_settings_elly">Laten we aan de instellingen sleutelen. Ik laat je zien waar je wat vindt.</string>
     <string name="help_settings_tabs_title">Hoe de instellingen zijn ingedeeld</string>
-    <string name="help_settings_tabs_body">Het tandwiel in de bovenbalk opent de instellingen. Ze hebben drie tabbladen, waartussen je ook kunt vegen; Elly onthoudt welk tabblad je het laatst opende.\n• Tv: gekoppelde tv\'s, zoeken, IP-adres, demomodus.\n• Weergave: schermen, kleurenpalet, achtergrond, afronding, lichteffect, back-up en terugzetten.\n• Bediening: aanwijzer en trillen.</string>
+    <string name="help_settings_tabs_body">Het tandwiel in de bovenbalk opent de instellingen. De tabbladen tonen symbolen; je kunt ook tussen ze vegen, en Elly onthoudt welk tabblad je het laatst opende.\n• Tv (scherm): gekoppelde tv\'s, zoeken, IP-adres, demomodus.\n• Weergave (palet): schermen, kleurenpalet, achtergrond, afronding, lichteffect.\n• Bediening (muis): aanwijzer en trillen.\n• Horloge (horloge, alleen zolang er een horloge verbonden is): pagina\'s en toetsen van de horloge-app en zijn tegel.\n• Back-up (diskette): schermen, weergave en de indeling van het horloge in een bestand opslaan en eruit terugzetten.</string>
     <string name="help_settings_tv_title">Een tv wisselen of verwijderen</string>
     <string name="help_settings_tv_body">Het tabblad “Tv” toont bovenaan je gekoppelde tv\'s: tik op een tv om hem actief te maken. “Verwijderen” ontkoppelt hem na een bevestiging; om de tv weer te gebruiken, moet je hem opnieuw koppelen.\nDaaronder kun je naar meer tv\'s zoeken of een IP-adres invoeren.\nZolang de demomodus aanstaat, toont het tabblad alleen de schakelaar daarvan; zet hem uit om tv\'s te koppelen of te wisselen.</string>
     <string name="help_settings_haptics_title">Trillen bij toetsdruk</string>
@@ -510,7 +510,7 @@
     <string name="help_privacy_title">Privacy</string>
     <string name="help_privacy_elly">Jouw gegevens zijn van jou. Dat is mijn oordeel, en daar kakel ik niet meer over!</string>
     <string name="help_privacy_data_title">Wat er met je gegevens gebeurt</string>
-    <string name="help_privacy_data_body">Elly praat alleen met je tv in het lokale netwerk, er worden geen gegevens naar externe servers gestuurd. Gekoppelde tv\'s, instellingen, schermindelingen en app-pictogrammen blijven op je telefoon en worden verwijderd als je de app verwijdert. Ook de programmagids blijft op je telefoon.</string>
+    <string name="help_privacy_data_body">Elly praat alleen met je tv in het lokale netwerk, er worden geen gegevens naar externe servers gestuurd. Gekoppelde tv\'s, instellingen, schermindelingen, app-pictogrammen en de programmagids blijven op je telefoon en worden verwijderd als je de app verwijdert. Met een horloge geeft de telefoon de gekoppelde tv\'s en de indeling van het horloge via Google Play-services aan het horloge door; het privacybeleid legt uit wat precies.</string>
     <string name="help_privacy_policy_title">Privacyverklaring</string>
     <string name="help_privacy_policy_body">De volledige privacyverklaring open je via “Privacy” onderaan de instellingen, naast het versienummer.</string>
     <string name="help_privacy_link">privacyverklaring</string>
@@ -640,4 +640,54 @@
         <item>Slaperige kuikens</item>
         <item>Geel pluis</item>
     </string-array>
+    <string name="settings_tab_watch">Horloge</string>
+    <string name="watch_settings_intro">Kies welke pagina\'s de horloge-app toont en wat de toetsen doen. De richtingstoetsen en de cijfers houden hun functie.</string>
+    <string name="watch_pages_title">Pagina\'s</string>
+    <string name="watch_tile">Tegel</string>
+    <string name="watch_tile_description">Zes toetsen die werken zonder de app te openen</string>
+    <string name="watch_edit_keys">Toetsen toewijzen</string>
+    <string name="watch_editor_hint">Tik op een toets om te wijzigen wat hij doet.</string>
+    <string name="watch_picker_title">Functie</string>
+    <string name="watch_picker_app">Een app openen</string>
+    <string name="watch_picker_keys">Toetsen</string>
+    <string name="watch_picker_default">Standaard</string>
+    <string name="watch_action_play_pause">Afspelen of pauzeren, afwisselend</string>
+    <string name="watch_install_title">Elly staat nog niet op je horloge</string>
+    <string name="watch_install_body">Met Elly op het horloge bedien je de tv vanaf je pols. Zodra het is geïnstalleerd, stel je hier de pagina\'s en toetsen in.</string>
+    <string name="watch_install_button">Op horloge installeren</string>
+    <string name="watch_install_opened">Ga verder op je horloge.</string>
+    <string name="watch_install_failed">Het horloge is niet bereikbaar.</string>
+    <string name="watch_app_display">Weergeven als</string>
+    <string name="watch_app_display_icon">Pictogram</string>
+    <string name="watch_app_display_text">Naam</string>
+    <string name="watch_app_display_both">Beide</string>
+    <string name="watch_app_display_change">Weergave van %1$s wijzigen</string>
+    <string name="watch_pointer_area">Vasthouden en richten</string>
+    <string name="watch_pages_description">Tik op een pagina om hem te tonen of te verbergen, houd hem vast en sleep om de volgorde te wijzigen. Met het potlood wijs je de toetsen toe, met de pijl zet je ze terug. Er blijft altijd minstens één pagina zichtbaar.</string>
+    <string name="watch_page_number">Pagina %1$d</string>
+    <string name="watch_page_edit">Toetsen van pagina %1$d toewijzen</string>
+    <string name="watch_page_reset">Pagina %1$d terugzetten</string>
+    <string name="watch_tile_reset">Tegel terugzetten</string>
+    <string name="watch_reset_title">Toetsen terugzetten?</string>
+    <string name="watch_reset_message">De toetsen krijgen hun oorspronkelijke functies terug.</string>
+    <string name="settings_backup_part_watch">Horloge</string>
+    <string name="settings_backup_part_watch_description">Pagina\'s en toetsen van de horloge-app en zijn tegel.</string>
+    <string name="settings_backup_watch_file">Elly-Horloge</string>
+    <string name="help_watch_title">Horloge</string>
+    <string name="help_watch_elly">Ik houd je horloge warm tot er een afstandsbediening uitkomt. Beloofd, het duurt maar even!</string>
+    <string name="help_watch_devices_title">Welke horloges werken</string>
+    <string name="help_watch_devices_body">Elly werkt op horloges met Wear OS 3 of nieuwer die met een Android-telefoon zijn gekoppeld, bijvoorbeeld de Samsung Galaxy Watch 4 en later, de Google Pixel Watch en andere actuele Wear OS-horloges. Horloges met andere systemen werken niet: Apple Watch, oudere Samsung-horloges met Tizen, Garmin, Fitbit en Huawei. Het horloge heeft wifi nodig in hetzelfde netwerk als de tv, en de Elly-app op de telefoon, die de gekoppelde tv\'s aanlevert.</string>
+    <string name="help_watch_install_title">Installeren en instellen</string>
+    <string name="help_watch_install_body">Installeer Elly via de Play Store op het horloge. Zolang Elly daar ontbreekt, biedt het tabblad Horloge in de instellingen aan om de Play Store op het horloge te openen. Na de installatie neemt het horloge de gekoppelde tv\'s en de demomodus vanzelf over van de telefoon, je koppelt de tv dus niet opnieuw op het horloge. Pagina\'s en toetsen stel je in op de telefoon; de paar instellingen die alleen het horloge betreffen staan op de laatste pagina ervan, zie Instellingen op het horloge.</string>
+    <string name="help_watch_use_title">Het horloge gebruiken</string>
+    <string name="help_watch_use_body">Veeg naar links en rechts om van pagina te wisselen; veeg op de eerste pagina naar rechts om Elly te sluiten. Draai aan de kroon of de rand om het volume te wijzigen, of beschrijf een cirkel langs de rand van het scherm: met de klok mee wordt het harder. Het licht langs de rand laat zien dat een opdracht is verstuurd, rood als het mislukte, en een lopende boog zolang de tv er de tijd voor neemt. Het horloge trilt bij elke toets.</string>
+    <string name="help_watch_layout_title">Pagina\'s en toetsen</string>
+    <string name="help_watch_layout_body">Het tabblad Horloge in de instellingen toont de pagina\'s van het horloge als voorbeelden, net als de schermen van de telefoon. Tik op een pagina om hem te tonen of te verbergen, houd hem vast en sleep om de volgorde te wijzigen. Het potlood opent de pagina groot: tik op een toets en kies wat hij doet, elke toets van de afstandsbediening, afspelen of pauzeren, de bronkeuze van de tv of een app, weergegeven met pictogram, naam of beide. De richtingstoetsen en de cijfers houden hun functie.</string>
+    <string name="help_watch_pointer_title">Aanwijzer aan de pols</string>
+    <string name="help_watch_pointer_body">Leg op de aanwijzerpagina een vinger op het scherm en beweeg je arm: de aanwijzer op de tv volgt. Kort tikken klikt, de kroon scrolt. Zonder vinger op het scherm blijft de aanwijzer staan. Snelheid en het omwisselen van omhoog en omlaag voor een horloge aan de rechterpols stel je in op het horloge, op de instellingenpagina ervan.</string>
+    <string name="help_watch_tile_title">Tegel en complicaties</string>
+    <string name="help_watch_tile_body">De Elly-tegel naast de wijzerplaat heeft zes toetsen die werken zonder de app te openen; kies ze in het tabblad Horloge zoals de toetsen van een pagina. Op andere wijzerplaten kun je ook losse toetsen als complicaties plaatsen, bijvoorbeeld dempen of aan/uit.</string>
+    <string name="help_watch_settings_title">Instellingen op het horloge</string>
+    <string name="help_watch_settings_body">Veeg naar de laatste pagina van het horloge voor de eigen instellingen:\n• Trillen: een korte klik bij elke toets en een ritme terwijl het volume verandert.\n• Volume met cirkelen: zet het gebaar langs de rand aan of uit, bijvoorbeeld als het in de weg zit.\n• Lichteffect: het licht langs de rand na een opdracht, zolang de tv er de tijd voor neemt en terwijl het volume verandert.\n• Aanwijzer, snelheid: hoe ver de aanwijzer beweegt als je je arm beweegt.\n• Aanwijzer, omhoog en omlaag omwisselen: voor een horloge aan de rechterpols, waar de aanwijzer anders de verkeerde kant op gaat.\n• Tv: bij meer dan één gekoppelde tv de tv die het horloge bedient; de telefoon houdt zijn eigen keuze.\nDaaronder openen twee toetsen Elly of het privacybeleid op de telefoon, en de versie van de horloge-app wordt getoond.</string>
+    <string name="settings_tab_backup">Back-up</string>
 </resources>

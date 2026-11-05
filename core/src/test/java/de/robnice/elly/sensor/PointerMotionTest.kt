@@ -92,4 +92,27 @@ class PointerMotionTest {
     fun smallRotations_areIgnored() {
         assertNull(PointerMotion.delta(floatArrayOf(0.001f, 0.001f, 0.001f), remoteGrip, 0.01f))
     }
+    // Forearm pointing at the TV with the watch face up: the crown side points along the arm.
+    private fun wrist(rate: FloatArray) = PointerMotion.delta(rate, remoteGrip, 0.01f, aim = PointerMotion.WRIST_AIM)!!
+
+    @Test
+    fun wrist_swingArmLeft_movesLeft() {
+        val (dx, dy) = wrist(floatArrayOf(0f, 0f, 1f))
+
+        assertTrue(dx < 0f)
+        assertEquals(0f, dy, 0.0001f)
+    }
+
+    @Test
+    fun wrist_raiseArm_movesUp() {
+        val (dx, dy) = wrist(floatArrayOf(0f, -1f, 0f))
+
+        assertTrue(dy < 0f)
+        assertEquals(0f, dx, 0.0001f)
+    }
+
+    @Test
+    fun wrist_turnForearm_isIgnored() {
+        assertNull(PointerMotion.delta(floatArrayOf(1f, 0f, 0f), remoteGrip, 0.01f, aim = PointerMotion.WRIST_AIM))
+    }
 }

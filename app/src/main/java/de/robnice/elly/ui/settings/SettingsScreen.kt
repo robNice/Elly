@@ -1,6 +1,7 @@
 package de.robnice.elly.ui.settings
 
 import androidx.activity.compose.BackHandler
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -33,6 +34,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
@@ -49,6 +51,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -61,6 +64,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.window.Dialog
@@ -92,15 +96,19 @@ import de.robnice.elly.data.model.PointerSettings
 import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.TouchStyle
 import de.robnice.elly.ui.onboarding.HelpButton
+import de.robnice.elly.sync.WatchPresence
 import de.robnice.elly.ui.setup.SetupViewModel
 import de.robnice.elly.ui.setup.TvConnectionSection
 import kotlin.math.roundToInt
 import kotlinx.coroutines.launch
 
-private enum class SettingsTab(@StringRes val title: Int) {
-    TV(R.string.settings_tab_tv),
-    SCREENS(R.string.settings_tab_screens),
-    CONTROL(R.string.settings_tab_control)
+// Icons instead of titles, so the tabs fit in every language; the titles are read out.
+private enum class SettingsTab(@StringRes val title: Int, @DrawableRes val icon: Int) {
+    TV(R.string.settings_tab_tv, R.drawable.ic_live_tv),
+    SCREENS(R.string.settings_tab_screens, R.drawable.ic_palette),
+    CONTROL(R.string.settings_tab_control, R.drawable.ic_pointer),
+    WATCH(R.string.settings_tab_watch, R.drawable.ic_watch),
+    BACKUP(R.string.settings_tab_backup, R.drawable.ic_backup)
 }
 
 @Composable
@@ -109,6 +117,7 @@ fun SettingsScreen(
     viewModel: SettingsViewModel,
     setupViewModel: SetupViewModel,
     rootAccessViewModel: RootAccessViewModel,
+    watchSettings: WatchSettingsViewModel,
     onClose: (() -> Unit)?,
     onOpenHelp: () -> Unit,
     onPaired: () -> Unit,
@@ -126,11 +135,20 @@ fun SettingsScreen(
     val pointerSettings by viewModel.pointerSettings.collectAsStateWithLifecycle()
     var showPrivacy by rememberSaveable { mutableStateOf(false) }
     var showLicenses by rememberSaveable { mutableStateOf(false) }
-    val startTab = if (onClose == null || openTvTab) SettingsTab.TV.ordinal else viewModel.lastTab
-    val pagerState = rememberPagerState(initialPage = startTab) { SettingsTab.entries.size }
+    val watchPresence by watchSettings.presence.collectAsStateWithLifecycle()
+    // The watch tab only with a watch connected. The open tab is kept by what it is, not by its position, so it
+    // stays open when the watch tab turns up once the watch is found.
+    val tabs = if (watchPresence != WatchPresence.NONE) SettingsTab.entries else SettingsTab.entries - SettingsTab.WATCH
+    val currentTabs by rememberUpdatedState(tabs)
+    val startTab = if (onClose == null || openTvTab) SettingsTab.TV else SettingsTab.entries[viewModel.lastTab]
+    val pagerState = rememberPagerState(initialPage = tabs.indexOf(startTab).coerceAtLeast(0)) { currentTabs.size }
     val scope = rememberCoroutineScope()
     LaunchedEffect(pagerState) {
-        snapshotFlow { pagerState.currentPage }.collect { viewModel.lastTab = it }
+        snapshotFlow { pagerState.settledPage }.collect { page -> currentTabs.getOrNull(page)?.let { viewModel.lastTab = it.ordinal } }
+    }
+    LaunchedEffect(tabs) {
+        val open = tabs.indexOf(SettingsTab.entries[viewModel.lastTab])
+        if (open >= 0 && open != pagerState.currentPage) pagerState.scrollToPage(open)
     }
     var editing by rememberSaveable { mutableStateOf<RemoteScreen?>(null) }
     var confirmReset by rememberSaveable { mutableStateOf<RemoteScreen?>(null) }
@@ -207,11 +225,12 @@ fun SettingsScreen(
             }
         }
         PrimaryTabRow(selectedTabIndex = pagerState.currentPage) {
-            SettingsTab.entries.forEach { entry ->
+            tabs.forEachIndexed { index, entry ->
                 Tab(
-                    selected = pagerState.currentPage == entry.ordinal,
-                    onClick = { scope.launch { pagerState.animateScrollToPage(entry.ordinal) } },
-                    text = { Text(stringResource(entry.title)) }
+                    selected = pagerState.currentPage == index,
+                    onClick = { scope.launch { pagerState.animateScrollToPage(index) } },
+                    unselectedContentColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    icon = { Icon(painterResource(entry.icon), contentDescription = stringResource(entry.title)) }
                 )
             }
         }
@@ -227,7 +246,7 @@ fun SettingsScreen(
                     .padding(dimensionResource(R.dimen.setup_padding)),
                 verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.setup_section_spacing))
             ) {
-                when (SettingsTab.entries[page]) {
+                when (tabs.getOrElse(page) { SettingsTab.TV }) {
                     SettingsTab.TV -> {
                         if (demoMode) {
                             Text(
@@ -305,8 +324,9 @@ fun SettingsScreen(
                                 onCheckedChange = viewModel::setLightEffect
                             )
                         }
-                        BackupSection(viewModel, screensAvailable)
                     }
+                    SettingsTab.WATCH -> WatchSection(watchSettings)
+                    SettingsTab.BACKUP -> BackupSection(viewModel, screensAvailable, watchAvailable = watchPresence != WatchPresence.NONE)
                     SettingsTab.CONTROL -> {
                         PointerSection(
                             settings = pointerSettings,
@@ -868,7 +888,7 @@ private fun AppDialogs(viewModel: SettingsViewModel) {
 }
 
 @Composable
-private fun AppPickerDialog(
+internal fun AppPickerDialog(
     state: AppPickerState,
     onSelect: (TvApp) -> Unit,
     onClear: () -> Unit,

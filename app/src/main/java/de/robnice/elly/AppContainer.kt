@@ -2,6 +2,7 @@ package de.robnice.elly
 
 import android.content.Context
 import de.robnice.elly.data.AppIconCache
+import de.robnice.elly.data.WatchLayoutRepository
 import de.robnice.elly.data.AppIconFiller
 import de.robnice.elly.data.BackgroundImageStore
 import de.robnice.elly.data.RootAccessRepository
@@ -19,6 +20,8 @@ import de.robnice.elly.epg.EpgRepository
 import de.robnice.elly.platform.DevicePlatform
 import de.robnice.elly.remote.RemoteControl
 import de.robnice.elly.sensor.MotionPointerSensor
+import de.robnice.elly.sync.WatchApp
+import de.robnice.elly.sync.WatchStatePublisher
 import de.robnice.elly.tv.connection.WebOsConnector
 import de.robnice.elly.tv.discovery.LocalNetworkInterfaces
 import de.robnice.elly.tv.discovery.SsdpDiscovery
@@ -102,7 +105,20 @@ class AppContainer(context: Context) {
         WidgetStore(appContext)
     )
 
+    val watchLayoutRepository = WatchLayoutRepository(appContext)
+
+    val watchApp = WatchApp(appContext)
+
+    val watchStatePublisher = WatchStatePublisher(
+        appContext,
+        tvRepository,
+        settingsRepository.demoMode,
+        watchLayoutRepository.layout,
+        appSlotsRepository::iconBytes
+    )
+
     init {
         applicationScope.launch { appSlotsRepository.clearLegacySlots() }
+        watchStatePublisher.start(applicationScope)
     }
 }

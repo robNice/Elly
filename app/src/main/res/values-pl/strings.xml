@@ -153,7 +153,7 @@
     <string name="settings_light_effect">Długie letnie wieczory</string>
     <string name="settings_light_effect_description">Niskie światło z lewego górnego rogu: przyciski rzucają długie cienie, a tło jest oświetlone od tego rogu.</string>
     <string name="settings_backup">Kopia zapasowa i przywracanie</string>
-    <string name="settings_backup_description">Strony i wygląd możesz zapisać osobno lub razem, więc przekażesz komuś swoje strony, a ta osoba nie straci własnego wyglądu. Przy przywracaniu Elly pokazuje, co jest w pliku, a ty wybierasz, co przejąć.</string>
+    <string name="settings_backup_description">Strony, wygląd i układ zegarka możesz zapisać osobno lub razem, więc przekażesz komuś swoje strony, a ta osoba nie straci własnego wyglądu. Przy przywracaniu Elly pokazuje, co jest w pliku, a ty wybierasz, co przejąć.</string>
     <string name="settings_backup_restore">Przywróć z pliku</string>
     <string name="settings_backup_save">Kopia zapasowa</string>
     <string name="settings_backup_save_title">Co zapisać?</string>
@@ -505,7 +505,7 @@
     <string name="help_settings_title">Ustawienia</string>
     <string name="help_settings_elly">Pogrzebmy trochę w ustawieniach. Pokażę Ci, gdzie co jest.</string>
     <string name="help_settings_tabs_title">Jak zorganizowane są ustawienia</string>
-    <string name="help_settings_tabs_body">Koło zębate na górnym pasku otwiera ustawienia. Mają trzy karty, między którymi możesz też przesuwać palcem; Elly zapamiętuje ostatnio otwartą kartę.\n• TV: sparowane telewizory, wyszukiwanie, adres IP, tryb demo.\n• Wygląd: strony, paleta kolorów, tło, zaokrąglenie, efekt światła, kopia zapasowa i przywracanie.\n• Sterowanie: wskaźnik i wibracja.</string>
+    <string name="help_settings_tabs_body">Koło zębate na górnym pasku otwiera ustawienia. Karty pokazują symbole; możesz też przesuwać między nimi palcem, a Elly zapamiętuje ostatnio otwartą kartę.\n• TV (ekran): sparowane telewizory, wyszukiwanie, adres IP, tryb demo.\n• Wygląd (paleta): strony, paleta kolorów, tło, zaokrąglenie, efekt światła.\n• Sterowanie (mysz): wskaźnik i wibracja.\n• Zegarek (zegarek, tylko gdy zegarek jest połączony): strony i przyciski aplikacji na zegarku i jej kafelka.\n• Kopia zapasowa (dyskietka): zapisz strony, wygląd i układ zegarka do pliku i przywróć je z niego.</string>
     <string name="help_settings_tv_title">Przełączanie lub usuwanie telewizora</string>
     <string name="help_settings_tv_body">Karta „TV” pokazuje na górze Twoje sparowane telewizory: dotknij jednego, aby stał się aktywny. „Usuń” po potwierdzeniu rozparowuje telewizor; aby znów go używać, trzeba go ponownie sparować.\nPoniżej możesz wyszukać kolejne telewizory albo wpisać adres IP.\nGdy tryb demo jest włączony, karta pokazuje tylko jego przełącznik; wyłącz go, aby parować lub przełączać telewizory.</string>
     <string name="help_settings_haptics_title">Wibracja przy naciśnięciu</string>
@@ -513,7 +513,7 @@
     <string name="help_privacy_title">Prywatność</string>
     <string name="help_privacy_elly">Twoje dane należą do Ciebie. Kura powiedziała – i koniec, kropka!</string>
     <string name="help_privacy_data_title">Co dzieje się z Twoimi danymi</string>
-    <string name="help_privacy_data_body">Elly rozmawia tylko z Twoim telewizorem w sieci lokalnej, żadne dane nie są wysyłane na zewnętrzne serwery. Sparowane telewizory, ustawienia, układy stron i ikony aplikacji zostają w telefonie i są usuwane po odinstalowaniu aplikacji. Przewodnik po programach również zostaje w twoim telefonie.</string>
+    <string name="help_privacy_data_body">Elly rozmawia tylko z Twoim telewizorem w sieci lokalnej, żadne dane nie są wysyłane na zewnętrzne serwery. Sparowane telewizory, ustawienia, układy stron, ikony aplikacji i przewodnik po programach zostają w telefonie i są usuwane po odinstalowaniu aplikacji. Z zegarkiem telefon przekazuje mu sparowane telewizory i układ zegarka przez usługi Google Play; polityka prywatności wyjaśnia, co dokładnie.</string>
     <string name="help_privacy_policy_title">Polityka prywatności</string>
     <string name="help_privacy_policy_body">Pełną politykę prywatności otworzysz przez „Prywatność” na dole ustawień, obok numeru wersji.</string>
     <string name="help_privacy_link">polityka prywatności</string>
@@ -643,4 +643,54 @@
         <item>Śpiące kurczaczki</item>
         <item>Żółty puch</item>
     </string-array>
+    <string name="settings_tab_watch">Zegarek</string>
+    <string name="watch_settings_intro">Wybierz, które strony pokazuje aplikacja na zegarku i co robią jej przyciski. Krzyżak i cyfry zachowują swoją funkcję.</string>
+    <string name="watch_pages_title">Strony</string>
+    <string name="watch_tile">Kafelek</string>
+    <string name="watch_tile_description">Sześć przycisków działających bez otwierania aplikacji</string>
+    <string name="watch_edit_keys">Przypisz przyciski</string>
+    <string name="watch_editor_hint">Dotknij przycisku, aby zmienić jego działanie.</string>
+    <string name="watch_picker_title">Funkcja</string>
+    <string name="watch_picker_app">Otwórz aplikację</string>
+    <string name="watch_picker_keys">Przyciski</string>
+    <string name="watch_picker_default">Domyślne</string>
+    <string name="watch_action_play_pause">Odtwarzanie lub pauza na zmianę</string>
+    <string name="watch_install_title">Elly nie ma jeszcze na Twoim zegarku</string>
+    <string name="watch_install_body">Z Elly na zegarku sterujesz telewizorem z nadgarstka. Po instalacji jej strony i przyciski ustawiasz tutaj.</string>
+    <string name="watch_install_button">Zainstaluj na zegarku</string>
+    <string name="watch_install_opened">Kontynuuj na zegarku.</string>
+    <string name="watch_install_failed">Nie udało się połączyć z zegarkiem.</string>
+    <string name="watch_app_display">Pokazuj jako</string>
+    <string name="watch_app_display_icon">Ikona</string>
+    <string name="watch_app_display_text">Nazwa</string>
+    <string name="watch_app_display_both">Oba</string>
+    <string name="watch_app_display_change">Zmień wyświetlanie %1$s</string>
+    <string name="watch_pointer_area">Przytrzymaj i celuj</string>
+    <string name="watch_pages_description">Dotknij strony, aby ją pokazać lub ukryć, przytrzymaj i przeciągnij, aby zmienić kolejność. Ołówek przypisuje jej przyciski, strzałka je resetuje. Co najmniej jedna strona pozostaje widoczna.</string>
+    <string name="watch_page_number">Strona %1$d</string>
+    <string name="watch_page_edit">Przypisz przyciski strony %1$d</string>
+    <string name="watch_page_reset">Resetuj stronę %1$d</string>
+    <string name="watch_tile_reset">Resetuj kafelek</string>
+    <string name="watch_reset_title">Zresetować przyciski?</string>
+    <string name="watch_reset_message">Przyciski odzyskają pierwotne funkcje.</string>
+    <string name="settings_backup_part_watch">Zegarek</string>
+    <string name="settings_backup_part_watch_description">Strony i przyciski aplikacji na zegarku i jej kafelka.</string>
+    <string name="settings_backup_watch_file">Elly-Zegarek</string>
+    <string name="help_watch_title">Zegarek</string>
+    <string name="help_watch_elly">Ogrzewam Twój zegarek, aż wykluje się z niego pilot. Obiecuję, to potrwa tylko chwilkę!</string>
+    <string name="help_watch_devices_title">Które zegarki działają</string>
+    <string name="help_watch_devices_body">Elly działa na zegarkach z Wear OS 3 lub nowszym sparowanych z telefonem z Androidem, na przykład Samsung Galaxy Watch 4 i nowszych, Google Pixel Watch i innych aktualnych zegarkach z Wear OS. Zegarki z innymi systemami nie działają: Apple Watch, starsze zegarki Samsung z Tizen, Garmin, Fitbit i Huawei. Zegarek potrzebuje Wi-Fi w tej samej sieci co telewizor oraz aplikacji Elly w telefonie, która przekazuje mu sparowane telewizory.</string>
+    <string name="help_watch_install_title">Instalacja i konfiguracja</string>
+    <string name="help_watch_install_body">Zainstaluj Elly na zegarku ze Sklepu Play. Dopóki Elly tam brakuje, karta Zegarek w ustawieniach proponuje otwarcie Sklepu Play na zegarku. Po instalacji zegarek sam przejmuje z telefonu sparowane telewizory i tryb demo, więc nie parujesz telewizora ponownie na zegarku. Strony i przyciski ustawiasz w telefonie; nieliczne ustawienia dotyczące tylko zegarka są na jego ostatniej stronie, zobacz Ustawienia na zegarku.</string>
+    <string name="help_watch_use_title">Korzystanie z zegarka</string>
+    <string name="help_watch_use_body">Przesuwaj w lewo i w prawo, aby zmieniać strony; przesuń w prawo na pierwszej stronie, aby zamknąć Elly. Obracaj koronkę lub pierścień, aby zmieniać głośność, albo zataczaj koło wzdłuż krawędzi ekranu: zgodnie z ruchem wskazówek zegara jest głośniej. Światło wzdłuż krawędzi pokazuje, że polecenie zostało wysłane, czerwone, gdy się nie udało, i biegnący łuk, gdy telewizor potrzebuje czasu. Zegarek wibruje przy każdym przycisku.</string>
+    <string name="help_watch_layout_title">Strony i przyciski</string>
+    <string name="help_watch_layout_body">Karta Zegarek w ustawieniach pokazuje strony zegarka jako podglądy, podobnie jak strony telefonu. Dotknij strony, aby ją pokazać lub ukryć, przytrzymaj i przeciągnij, aby zmienić kolejność. Ołówek otwiera stronę w dużym widoku: dotknij przycisku i wybierz, co robi, dowolny przycisk pilota, odtwarzanie lub pauzę, wybór źródła telewizora albo aplikację, pokazaną z ikoną, nazwą lub obiema. Krzyżak i cyfry zachowują swoją funkcję.</string>
+    <string name="help_watch_pointer_title">Wskaźnik na nadgarstku</string>
+    <string name="help_watch_pointer_body">Na stronie wskaźnika połóż palec na ekranie i poruszaj ręką: wskaźnik na telewizorze podąża za nią. Krótkie dotknięcie klika, koronka przewija. Bez palca na ekranie wskaźnik zostaje na miejscu. Szybkość i zamianę góry i dołu dla zegarka na prawym nadgarstku ustawiasz na zegarku, na jego stronie ustawień.</string>
+    <string name="help_watch_tile_title">Kafelek i komplikacje</string>
+    <string name="help_watch_tile_body">Kafelek Elly obok tarczy ma sześć przycisków działających bez otwierania aplikacji; wybierz je na karcie Zegarek tak jak przyciski strony. Na innych tarczach możesz też umieścić pojedyncze przyciski jako komplikacje, na przykład wyciszenie lub zasilanie.</string>
+    <string name="help_watch_settings_title">Ustawienia na zegarku</string>
+    <string name="help_watch_settings_body">Przesuń do ostatniej strony zegarka, aby otworzyć jego własne ustawienia:\n• Wibracja: krótkie kliknięcie przy każdym przycisku i rytm podczas zmiany głośności.\n• Głośność kołem: włącza lub wyłącza gest wzdłuż krawędzi, na przykład gdy przeszkadza.\n• Efekt światła: światło wzdłuż krawędzi po poleceniu, gdy telewizor potrzebuje czasu i podczas zmiany głośności.\n• Wskaźnik, szybkość: jak daleko przesuwa się wskaźnik, gdy poruszasz ręką.\n• Wskaźnik, zamień górę i dół: dla zegarka noszonego na prawym nadgarstku, gdzie wskaźnik poruszałby się w złą stronę.\n• TV: przy kilku sparowanych telewizorach ten, którym steruje zegarek; telefon zachowuje własny wybór.\nPoniżej dwa przyciski otwierają Elly lub politykę prywatności w telefonie, a także widać wersję aplikacji na zegarku.</string>
+    <string name="settings_tab_backup">Kopia zapasowa</string>
 </resources>

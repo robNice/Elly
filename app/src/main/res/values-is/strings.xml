@@ -153,7 +153,7 @@
     <string name="settings_light_effect">Löng sumarkvöld</string>
     <string name="settings_light_effect_description">Lágt ljós ofan frá vinstri: hnapparnir varpa löngum skuggum og bakgrunnurinn lýsist upp frá því horni.</string>
     <string name="settings_backup">Afrita og endurheimta</string>
-    <string name="settings_backup_description">Þú getur afritað síður og útlit hvort fyrir sig eða saman, svo þú getur deilt síðunum þínum án þess að hinn aðilinn tapi sínu eigin útliti. Við endurheimt sýnir Elly hvað er í skránni og þú velur hvað er tekið upp.</string>
+    <string name="settings_backup_description">Þú getur afritað síður, útlit og uppsetningu úrsins hvert fyrir sig eða saman, svo þú getur deilt síðunum þínum án þess að hinn aðilinn tapi sínu eigin útliti. Við endurheimt sýnir Elly hvað er í skránni og þú velur hvað er tekið upp.</string>
     <string name="settings_backup_restore">Endurheimta úr skrá</string>
     <string name="settings_backup_save">Afrita</string>
     <string name="settings_backup_save_title">Hvað á að afrita?</string>
@@ -503,7 +503,7 @@
     <string name="help_settings_title">Stillingar</string>
     <string name="help_settings_elly">Fiktum aðeins í stillingunum. Ég sýni þér hvar allt er að finna.</string>
     <string name="help_settings_tabs_title">Hvernig stillingarnar eru skipulagðar</string>
-    <string name="help_settings_tabs_body">Tannhjólið í efstu stikunni opnar stillingarnar. Þær eru með þrjá flipa sem þú getur líka strokið á milli; Elly man hvaða flipa þú opnaðir síðast.\n• Sjónvarp: pöruð sjónvörp, leit, IP-tala, prufuhamur.\n• Útlit: síður, litaspjald, bakgrunnur, rúnnun, ljósáhrif, afritun og endurheimt.\n• Stýring: bendill og titringur.</string>
+    <string name="help_settings_tabs_body">Tannhjólið í efstu stikunni opnar stillingarnar. Fliparnir sýna tákn; þú getur líka strokið á milli þeirra og Elly man hvaða flipa þú opnaðir síðast.\n• Sjónvarp (skjár): pöruð sjónvörp, leit, IP-tala, prufuhamur.\n• Útlit (litaspjald): síður, litaspjald, bakgrunnur, rúnnun, ljósáhrif.\n• Stýring (mús): bendill og titringur.\n• Úr (úr, aðeins meðan úr er tengt): síður og hnappar úraappsins og reits þess.\n• Afritun (disklingur): afrita síður, útlit og uppsetningu úrsins í skrá og endurheimta þau úr henni.</string>
     <string name="help_settings_tv_title">Skipt um sjónvarp eða það fjarlægt</string>
     <string name="help_settings_tv_body">Flipinn „Sjónvarp“ sýnir pöruðu sjónvörpin þín efst: ýttu á eitt til að gera það virkt. „Fjarlægja“ afparar það eftir staðfestingu; til að nota sjónvarpið aftur þarftu að para það upp á nýtt.\nFyrir neðan geturðu leitað að fleiri sjónvörpum eða slegið inn IP-tölu.\nMeðan kveikt er á prufuham sýnir flipinn aðeins rofann fyrir hann; slökktu á honum til að para eða skipta um sjónvarp.</string>
     <string name="help_settings_haptics_title">Titra við hnappaýtingu</string>
@@ -511,7 +511,7 @@
     <string name="help_privacy_title">Persónuvernd</string>
     <string name="help_privacy_elly">Gögnin þín eru þín. Þetta er úrskurður minn – hænan hefur talað!</string>
     <string name="help_privacy_data_title">Hvað verður um gögnin þín</string>
-    <string name="help_privacy_data_body">Elly talar aðeins við sjónvarpið þitt á staðarnetinu, engin gögn eru send á ytri netþjóna. Pöruð sjónvörp, stillingar, síðuuppsetningar og app-tákn verða eftir á símanum og eyðast þegar þú fjarlægir appið. Dagskrárvísirinn helst líka í símanum þínum.</string>
+    <string name="help_privacy_data_body">Elly talar aðeins við sjónvarpið þitt á staðarnetinu, engin gögn eru send á ytri netþjóna. Pöruð sjónvörp, stillingar, síðuuppsetningar, app-tákn og dagskrárvísirinn verða eftir á símanum og eyðast þegar þú fjarlægir appið. Með úri sendir síminn pöruðu sjónvörpin og uppsetningu úrsins til þess í gegnum Google Play-þjónustur; persónuverndarstefnan útskýrir hvað nákvæmlega.</string>
     <string name="help_privacy_policy_title">Persónuverndarstefna</string>
     <string name="help_privacy_policy_body">Persónuverndarstefnan í heild sinni opnast með „Persónuvernd“ neðst í stillingunum, við hliðina á útgáfunúmerinu.</string>
     <string name="help_privacy_link">persónuverndarstefna</string>
@@ -641,4 +641,54 @@
         <item>Syfjaðir ungar</item>
         <item>Gulur dúnn</item>
     </string-array>
+    <string name="settings_tab_watch">Úr</string>
+    <string name="watch_settings_intro">Veldu hvaða síður úraappið sýnir og hvað hnapparnir gera. Stefnuhnapparnir og tölustafirnir halda hlutverki sínu.</string>
+    <string name="watch_pages_title">Síður</string>
+    <string name="watch_tile">Reitur</string>
+    <string name="watch_tile_description">Sex hnappar sem virka án þess að opna appið</string>
+    <string name="watch_edit_keys">Úthluta hnöppum</string>
+    <string name="watch_editor_hint">Ýttu á hnapp til að breyta því hvað hann gerir.</string>
+    <string name="watch_picker_title">Aðgerð</string>
+    <string name="watch_picker_app">Opna app</string>
+    <string name="watch_picker_keys">Hnappar</string>
+    <string name="watch_picker_default">Sjálfgefið</string>
+    <string name="watch_action_play_pause">Spila eða gera hlé, til skiptis</string>
+    <string name="watch_install_title">Elly er ekki enn á úrinu þínu</string>
+    <string name="watch_install_body">Með Elly á úrinu stýrir þú sjónvarpinu frá úlnliðnum. Þegar það er uppsett eru síður þess og hnappar stilltir hér.</string>
+    <string name="watch_install_button">Setja upp á úrinu</string>
+    <string name="watch_install_opened">Haltu áfram á úrinu.</string>
+    <string name="watch_install_failed">Ekki náðist í úrið.</string>
+    <string name="watch_app_display">Birta sem</string>
+    <string name="watch_app_display_icon">Tákn</string>
+    <string name="watch_app_display_text">Heiti</string>
+    <string name="watch_app_display_both">Bæði</string>
+    <string name="watch_app_display_change">Breyta birtingu %1$s</string>
+    <string name="watch_pointer_area">Haltu og bentu</string>
+    <string name="watch_pages_description">Ýttu á síðu til að sýna hana eða fela, haltu henni og dragðu til að breyta röðinni. Blýanturinn úthlutar hnöppum hennar, örin endurstillir þá. Að minnsta kosti ein síða er alltaf sýnd.</string>
+    <string name="watch_page_number">Síða %1$d</string>
+    <string name="watch_page_edit">Úthluta hnöppum á síðu %1$d</string>
+    <string name="watch_page_reset">Endurstilla síðu %1$d</string>
+    <string name="watch_tile_reset">Endurstilla reit</string>
+    <string name="watch_reset_title">Endurstilla hnappa?</string>
+    <string name="watch_reset_message">Hnapparnir fá upprunalegu hlutverkin sín aftur.</string>
+    <string name="settings_backup_part_watch">Úr</string>
+    <string name="settings_backup_part_watch_description">Síður og hnappar úraappsins og reits þess.</string>
+    <string name="settings_backup_watch_file">Elly-Úr</string>
+    <string name="help_watch_title">Úr</string>
+    <string name="help_watch_elly">Ég held hita á úrinu þínu þar til það klekst út sem fjarstýring. Lofa, það tekur bara augnablik!</string>
+    <string name="help_watch_devices_title">Hvaða úr virka</string>
+    <string name="help_watch_devices_body">Elly virkar á úrum með Wear OS 3 eða nýrra sem eru pöruð við Android-síma, til dæmis Samsung Galaxy Watch 4 og nýrri, Google Pixel Watch og önnur núverandi Wear OS-úr. Úr með önnur kerfi virka ekki: Apple Watch, eldri Samsung-úr með Tizen, Garmin, Fitbit og Huawei. Úrið þarf Wi-Fi á sama neti og sjónvarpið og Elly-appið í símanum, sem færir því pöruðu sjónvörpin.</string>
+    <string name="help_watch_install_title">Uppsetning</string>
+    <string name="help_watch_install_body">Settu Elly upp úr Play Store á úrinu. Meðan Elly vantar þar býður flipinn Úr í stillingunum upp á að opna Play Store á úrinu. Þegar það er uppsett tekur úrið sjálft yfir pöruðu sjónvörpin og prufuhaminn úr símanum, svo þú parar sjónvarpið ekki aftur á úrinu. Síður og hnappar eru stillt í símanum; þær fáu stillingar sem varða aðeins úrið eru á síðustu síðu þess, sjá Stillingar á úrinu.</string>
+    <string name="help_watch_use_title">Notkun úrsins</string>
+    <string name="help_watch_use_body">Strjúktu til vinstri og hægri til að skipta um síðu; strjúktu til hægri á fyrstu síðu til að loka Elly. Snúðu krónunni eða hringnum til að breyta hljóðstyrknum, eða dragðu hring meðfram brún skjásins: réttsælis hækkar. Ljósið meðfram brúninni sýnir að skipun var send, rautt þegar hún mistókst, og hlaupandi bogi meðan sjónvarpið er að hugsa. Úrið titrar við hvern hnapp.</string>
+    <string name="help_watch_layout_title">Síður og hnappar</string>
+    <string name="help_watch_layout_body">Flipinn Úr í stillingunum sýnir síður úrsins sem forskoðanir, eins og síður símans. Ýttu á síðu til að sýna hana eða fela, haltu henni og dragðu til að breyta röðinni. Blýanturinn opnar síðuna stóra: ýttu á hnapp og veldu hvað hann gerir, hvaða hnapp fjarstýringarinnar sem er, spila eða hlé, inntaksval sjónvarpsins eða app, sýnt með tákni, heiti eða hvoru tveggja. Stefnuhnapparnir og tölustafirnir halda hlutverki sínu.</string>
+    <string name="help_watch_pointer_title">Bendill á úlnliðnum</string>
+    <string name="help_watch_pointer_body">Á bendilsíðunni leggurðu fingur á skjáinn og hreyfir handlegginn: bendillinn á sjónvarpinu fylgir. Stutt ýting smellir, krónan flettir. Án fingurs á skjánum helst bendillinn kyrr. Hraði og víxlun upp og niður fyrir úr á hægri úlnlið eru stillt á úrinu, á stillingasíðu þess.</string>
+    <string name="help_watch_tile_title">Reitur og flækjur</string>
+    <string name="help_watch_tile_body">Elly-reiturinn við hliðina á úrskífunni hefur sex hnappa sem virka án þess að opna appið; veldu þá í flipanum Úr eins og hnappa síðu. Á öðrum úrskífum geturðu líka sett staka hnappa sem flækjur, til dæmis hljóð af eða kveikja/slökkva.</string>
+    <string name="help_watch_settings_title">Stillingar á úrinu</string>
+    <string name="help_watch_settings_body">Strjúktu á síðustu síðu úrsins fyrir eigin stillingar þess:\n• Titringur: stutt smell við hvern hnapp og taktur meðan hljóðstyrkurinn breytist.\n• Hljóðstyrkur með hring: kveikir eða slekkur á hreyfingunni meðfram brúninni, til dæmis ef hún þvælist fyrir.\n• Ljósáhrif: ljósið meðfram brúninni eftir skipun, meðan sjónvarpið er að hugsa og meðan hljóðstyrkurinn breytist.\n• Bendill, hraði: hversu langt bendillinn færist þegar þú hreyfir handlegginn.\n• Bendill, víxla upp og niður: fyrir úr á hægri úlnlið, þar sem bendillinn færi annars í ranga átt.\n• Sjónvarp: með fleiri en eitt parað sjónvarp það sem úrið stýrir; síminn heldur sínu eigin vali.\nÞar fyrir neðan opna tveir hnappar Elly eða persónuverndarstefnuna í símanum og útgáfa úraappsins er sýnd.</string>
+    <string name="settings_tab_backup">Afritun</string>
 </resources>

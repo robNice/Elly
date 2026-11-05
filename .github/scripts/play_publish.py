@@ -14,7 +14,7 @@ from googleapiclient.http import MediaFileUpload
 SCOPES = ["https://www.googleapis.com/auth/androidpublisher"]
 LISTING_FIELDS = {"title": "title", "short_description": "shortDescription", "full_description": "fullDescription"}
 SINGLE_IMAGES = {"icon": "icon_512.png", "featureGraphic": "feature_graphic.png"}
-SCREENSHOT_PATTERN = re.compile(r"phone_(\d+)\.png$")
+SCREENSHOTS = {"phoneScreenshots": re.compile(r"phone_(\d+)\.png$"), "wearScreenshots": re.compile(r"wear_(\d+)\.png$")}
 
 
 class PlayPublisher:
@@ -76,6 +76,7 @@ class PlayPublisher:
                           media_body=MediaFileUpload(str(f), mimetype="image/png")).execute()
         return True
 
+    # Phone and watch releases go into one edit, so both appear on Play together.
     def set_track(self, track: str, version_code: int, version_name: str, status: str, notes: dict):
         release = {
             "name": version_name,
@@ -107,10 +108,11 @@ def sync_store(publisher: PlayPublisher, store_dir: Path):
         for image_type, name in SINGLE_IMAGES.items():
             if (folder / name).is_file() and publisher.sync_images(language, image_type, [folder / name]):
                 changes.append(image_type)
-        shots = sorted((f for f in folder.iterdir() if SCREENSHOT_PATTERN.match(f.name)),
-                       key=lambda f: int(SCREENSHOT_PATTERN.match(f.name).group(1)))
-        if publisher.sync_images(language, "phoneScreenshots", shots):
-            changes.append("phoneScreenshots")
+        for image_type, pattern in SCREENSHOTS.items():
+            shots = sorted((f for f in folder.iterdir() if pattern.match(f.name)),
+                           key=lambda f: int(pattern.match(f.name).group(1)))
+            if publisher.sync_images(language, image_type, shots):
+                changes.append(image_type)
         print(f"Store listing {language}: {', '.join(changes) if changes else 'unchanged'}")
 
 
@@ -131,6 +133,9 @@ def main():
     parser.add_argument("--track")
     parser.add_argument("--status", default="completed")
     parser.add_argument("--aab", type=Path)
+    parser.add_argument("--wear-version-code", type=int)
+    parser.add_argument("--wear-track")
+    parser.add_argument("--wear-aab", type=Path)
     parser.add_argument("--store-dir", type=Path)
     args = parser.parse_args()
 
@@ -138,6 +143,8 @@ def main():
 
     if args.command == "check":
         write_output("bundle_exists", str(publisher.has_bundle(args.version_code)).lower())
+        if args.wear_version_code:
+            write_output("wear_bundle_exists", str(publisher.has_bundle(args.wear_version_code)).lower())
         publisher.abort()
         return
 
@@ -151,6 +158,12 @@ def main():
     elif not publisher.has_bundle(args.version_code):
         publisher.abort()
         sys.exit(f"versionCode {args.version_code} is not on Play and no bundle was given")
+    if args.wear_aab:
+        uploaded = publisher.upload_bundle(args.wear_aab)
+        if uploaded != args.wear_version_code:
+            publisher.abort()
+            sys.exit(f"Uploaded watch bundle has versionCode {uploaded}, expected {args.wear_version_code}")
+        print(f"Uploaded watch bundle {uploaded}")
 
     sync_store(publisher, args.store_dir)
 
@@ -158,8 +171,11 @@ def main():
     skipped = sorted(set(notes) - languages)
     if skipped:
         print(f"Release notes skipped, no store listing in: {', '.join(skipped)}")
-    publisher.set_track(args.track, args.version_code, args.version_name, args.status,
-                        {lang: text for lang, text in notes.items() if lang in languages})
+    listed_notes = {lang: text for lang, text in notes.items() if lang in languages}
+    publisher.set_track(args.track, args.version_code, args.version_name, args.status, listed_notes)
+    if args.wear_track and args.wear_version_code and publisher.has_bundle(args.wear_version_code):
+        publisher.set_track(args.wear_track, args.wear_version_code, args.version_name, args.status, listed_notes)
+        print(f"Released watch {args.version_name} ({args.wear_version_code}) to track '{args.wear_track}'")
     publisher.commit()
     print(f"Released {args.version_name} ({args.version_code}) to track '{args.track}' with status '{args.status}'")
 

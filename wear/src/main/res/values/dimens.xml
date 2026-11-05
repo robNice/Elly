@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dpad_icon_size">24dp</dimen>
+    <dimen name="dpad_icon_inset">6dp</dimen>
+    <dimen name="dpad_gap">3dp</dimen>
+    <dimen name="key_icon_size">24dp</dimen>
+    <dimen name="mute_icon_size">36dp</dimen>
+    <dimen name="no_tv_image_size">64dp</dimen>
+    <dimen name="no_tv_spacing">8dp</dimen>
+    <dimen name="app_name_min_size">10sp</dimen>
+    <item name="pointer_hint_y" format="float" type="dimen">-0.12</item>
+    <dimen name="elly_peek_size">72dp</dimen>
+    <dimen name="elly_peek_visible">44dp</dimen>
+    <dimen name="settings_elly_size">40dp</dimen>
+    <dimen name="settings_section_spacing">8dp</dimen>
+    <dimen name="status_light_size">12dp</dimen>
+    <dimen name="page_dot_size">6dp</dimen>
+    <dimen name="page_dot_spacing">4dp</dimen>
+    <dimen name="page_dot_bottom">6dp</dimen>
+    <dimen name="status_light_spacing">6dp</dimen>
+    <dimen name="light_ring_width">4dp</dimen>
+    <dimen name="light_ring_glow">12dp</dimen>
+
+    <!-- Share of the radius where the ring for the volume gesture starts. -->
+    <item name="volume_ring_inner_radius" format="float" type="dimen">0.55</item>
+
+    <!-- Positions on the round display as fractions of its diameter, measured from the centre. They are worked
+         out for the smallest round display (192 dp): a key of 0.25 is 48 dp there, the minimum touch target, and
+         grows with larger displays. Nothing may reach past the edge of a 192 dp circle. -->
+    <item name="key_size" format="float" type="dimen">0.25</item>
+    <item name="large_key_size" format="float" type="dimen">0.333</item>
+
+    <item name="tv_name_y" format="float" type="dimen">-0.406</item>
+    <item name="tv_name_width" format="float" type="dimen">0.46</item>
+    <dimen name="tv_name_min_size">10sp</dimen>
+    <item name="dpad_y" format="float" type="dimen">-0.0625</item>
+    <item name="dpad_size" format="float" type="dimen">0.521</item>
+    <item name="dpad_center_size" format="float" type="dimen">0.271</item>
+    <item name="nav_key_x" format="float" type="dimen">0.271</item>
+    <item name="nav_key_y" format="float" type="dimen">0.24</item>
+
+    <item name="power_key_y" format="float" type="dimen">-0.323</item>
+    <item name="side_key_x" format="float" type="dimen">-0.3125</item>
+    <item name="side_key_y" format="float" type="dimen">0.156</item>
+
+    <item name="media_y" format="float" type="dimen">0</item>
+    <item name="media_top_key_y" format="float" type="dimen">-0.33</item>
+    <item name="media_side_key_x" format="float" type="dimen">0.323</item>
+    <item name="media_nav_key_x" format="float" type="dimen">0.208</item>
+    <item name="media_nav_key_y" format="float" type="dimen">0.302</item>
+
+    <item name="message_width" format="float" type="dimen">0.65</item>
+    <dimen name="message_padding_horizontal">12dp</dimen>
+    <dimen name="message_padding_vertical">6dp</dimen>
+    <dimen name="digit_key_spacing">4dp</dimen>
+    <dimen name="digit_key_size">52dp</dimen>
+</resources>

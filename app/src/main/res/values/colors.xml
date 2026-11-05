@@ -305,6 +305,8 @@
     <color name="elly_royal">#FF7B3FB5</color>
     <color name="elly_royal_shade">#FF5C2C8C</color>
     <color name="elly_jewel">#FFD9304A</color>
+    <color name="elly_watch_glow">#FF8FE3FF</color>
+    <color name="elly_watch_halo">#558FE3FF</color>
 
     <!-- Onboarding -->
     <color name="onboarding_bubble">#FF24272B</color>
@@ -318,4 +320,8 @@
     <color name="help_text">#FFE4DED2</color>
     <color name="help_accent">#FFFF8F7A</color>
     <color name="help_text_muted">#FFA9A294</color>
+    <color name="watch_preview_background">#FF000000</color>
+    <color name="watch_preview_key">#FF33313B</color>
+    <color name="watch_preview_key_content">#FFE6E0F0</color>
+    <color name="watch_preview_fixed">#FF55525E</color>
 </resources>

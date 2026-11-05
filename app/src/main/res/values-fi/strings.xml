@@ -152,7 +152,7 @@
     <string name="settings_light_effect">Pitkät kesäillat</string>
     <string name="settings_light_effect_description">Matala valo vasemmalta ylhäältä: painikkeet luovat pitkiä varjoja ja tausta valaistuu siitä kulmasta.</string>
     <string name="settings_backup">Varmuuskopiointi ja palautus</string>
-    <string name="settings_backup_description">Näkymät ja ulkoasun voi varmuuskopioida erikseen tai yhdessä, joten voit antaa näkymäsi toiselle ilman, että hän menettää oman ulkoasunsa. Palautettaessa Elly näyttää, mitä tiedostossa on, ja sinä valitset, mitä otetaan käyttöön.</string>
+    <string name="settings_backup_description">Näkymät, ulkoasun ja kellon asettelun voi varmuuskopioida erikseen tai yhdessä, joten voit antaa näkymäsi toiselle ilman, että hän menettää oman ulkoasunsa. Palautettaessa Elly näyttää, mitä tiedostossa on, ja sinä valitset, mitä otetaan käyttöön.</string>
     <string name="settings_backup_restore">Palauta tiedostosta</string>
     <string name="settings_backup_save">Varmuuskopioi</string>
     <string name="settings_backup_save_title">Mitä varmuuskopioidaan?</string>
@@ -501,7 +501,7 @@
     <string name="help_settings_title">Asetukset</string>
     <string name="help_settings_elly">Nyt näperrellään asetusten parissa! Näytän, mistä löydät mitäkin.</string>
     <string name="help_settings_tabs_title">Asetusten rakenne</string>
-    <string name="help_settings_tabs_body">Yläpalkin ratas avaa asetukset. Niissä on kolme välilehteä, joiden välillä voit myös pyyhkäistä; Elly muistaa viimeksi avaamasi.\n• TV: yhdistetyt TV:t, haku, IP-osoite, esittelytila.\n• Ulkoasu: näkymät, väripaletti, tausta, pyöristys, valotehoste, varmuuskopiointi ja palautus.\n• Ohjaus: osoitin ja värinä.</string>
+    <string name="help_settings_tabs_body">Yläpalkin ratas avaa asetukset. Niiden välilehdet näyttävät symboleja; voit myös pyyhkäistä niiden välillä, ja Elly muistaa viimeksi avaamasi.\n• TV (näyttö): yhdistetyt TV:t, haku, IP-osoite, esittelytila.\n• Ulkoasu (paletti): näkymät, väripaletti, tausta, pyöristys, valotehoste.\n• Ohjaus (hiiri): osoitin ja värinä.\n• Kello (kello, vain kun kello on yhdistetty): kellosovelluksen ja sen ruudun sivut ja painikkeet.\n• Varmuuskopio (levyke): näkymien, ulkoasun ja kellon asettelun varmuuskopiointi tiedostoon ja palautus siitä.</string>
     <string name="help_settings_tv_title">TV:n vaihtaminen tai poistaminen</string>
     <string name="help_settings_tv_body">”TV”-välilehden yläosassa ovat yhdistetyt TV:si: napauta yhtä tehdäksesi siitä aktiivisen. ”Poista” purkaa yhdistämisen vahvistuksen jälkeen; jotta voit käyttää TV:tä taas, se täytyy yhdistää uudelleen.\nAlempana voit hakea lisää TV:itä tai antaa IP-osoitteen.\nKun esittelytila on päällä, välilehdellä näkyy vain sen kytkin; kytke se pois, kun haluat yhdistää tai vaihtaa TV:n.</string>
     <string name="help_settings_haptics_title">Värinä painettaessa</string>
@@ -509,7 +509,7 @@
     <string name="help_privacy_title">Tietosuoja</string>
     <string name="help_privacy_elly">Tietosi kuuluvat sinulle. Se on minun tuomioni, eikä siitä kotkoteta!</string>
     <string name="help_privacy_data_title">Mitä tiedoillesi tapahtuu</string>
-    <string name="help_privacy_data_body">Elly keskustelee vain TV:si kanssa lähiverkossa, eikä tietoja lähetetä ulkoisille palvelimille. Yhdistetyt TV:t, asetukset, näkymäasettelut ja sovelluskuvakkeet pysyvät puhelimessasi ja poistetaan, kun poistat sovelluksen. Myös ohjelmaopas pysyy puhelimessasi.</string>
+    <string name="help_privacy_data_body">Elly keskustelee vain TV:si kanssa lähiverkossa, eikä tietoja lähetetä ulkoisille palvelimille. Yhdistetyt TV:t, asetukset, näkymäasettelut, sovelluskuvakkeet ja ohjelmaopas pysyvät puhelimessasi ja poistetaan, kun poistat sovelluksen. Kellon kanssa puhelin välittää sille yhdistetyt TV:t ja kellon asettelun Google Play -palveluiden kautta; tietosuojaselosteessa kerrotaan tarkemmin.</string>
     <string name="help_privacy_policy_title">Tietosuojaseloste</string>
     <string name="help_privacy_policy_body">Koko tietosuojaseloste avataan asetusten alareunasta kohdasta ”Tietosuoja” versionumeron vierestä.</string>
     <string name="help_privacy_link">tietosuojaseloste</string>
@@ -639,4 +639,54 @@
         <item>Uniset tiput</item>
         <item>Keltainen untuva</item>
     </string-array>
+    <string name="settings_tab_watch">Kello</string>
+    <string name="watch_settings_intro">Valitse, mitkä sivut kellosovellus näyttää ja mitä sen painikkeet tekevät. Suuntanäppäimet ja numerot säilyttävät toimintonsa.</string>
+    <string name="watch_pages_title">Sivut</string>
+    <string name="watch_tile">Ruutu</string>
+    <string name="watch_tile_description">Kuusi painiketta, jotka toimivat avaamatta sovellusta</string>
+    <string name="watch_edit_keys">Määritä painikkeet</string>
+    <string name="watch_editor_hint">Napauta painiketta muuttaaksesi sen toimintoa.</string>
+    <string name="watch_picker_title">Toiminto</string>
+    <string name="watch_picker_app">Avaa sovellus</string>
+    <string name="watch_picker_keys">Painikkeet</string>
+    <string name="watch_picker_default">Oletus</string>
+    <string name="watch_action_play_pause">Toista tai tauko vuorotellen</string>
+    <string name="watch_install_title">Elly ei ole vielä kellossasi</string>
+    <string name="watch_install_body">Kun Elly on kellossa, ohjaat TV:tä ranteestasi. Kun se on asennettu, sen sivut ja painikkeet määritetään täällä.</string>
+    <string name="watch_install_button">Asenna kelloon</string>
+    <string name="watch_install_opened">Jatka kellossasi.</string>
+    <string name="watch_install_failed">Kelloa ei tavoitettu.</string>
+    <string name="watch_app_display">Näytä</string>
+    <string name="watch_app_display_icon">Kuvake</string>
+    <string name="watch_app_display_text">Nimi</string>
+    <string name="watch_app_display_both">Molemmat</string>
+    <string name="watch_app_display_change">Muuta sovelluksen %1$s näyttötapaa</string>
+    <string name="watch_pointer_area">Pidä ja osoita</string>
+    <string name="watch_pages_description">Näytä tai piilota sivu napauttamalla, muuta järjestystä painamalla pitkään ja vetämällä. Kynä määrittää sivun painikkeet, nuoli palauttaa ne. Vähintään yksi sivu jää näkyviin.</string>
+    <string name="watch_page_number">Sivu %1$d</string>
+    <string name="watch_page_edit">Määritä sivun %1$d painikkeet</string>
+    <string name="watch_page_reset">Palauta sivu %1$d</string>
+    <string name="watch_tile_reset">Palauta ruutu</string>
+    <string name="watch_reset_title">Palautetaanko painikkeet?</string>
+    <string name="watch_reset_message">Painikkeet saavat alkuperäiset toimintonsa takaisin.</string>
+    <string name="settings_backup_part_watch">Kello</string>
+    <string name="settings_backup_part_watch_description">Kellosovelluksen ja sen ruudun sivut ja painikkeet.</string>
+    <string name="settings_backup_watch_file">Elly-Kello</string>
+    <string name="help_watch_title">Kello</string>
+    <string name="help_watch_elly">Pidän kellosi lämpimänä, kunnes siitä kuoriutuu kaukosäädin. Lupaan, se kestää vain hetken!</string>
+    <string name="help_watch_devices_title">Mitkä kellot toimivat</string>
+    <string name="help_watch_devices_body">Elly toimii kelloissa, joissa on Wear OS 3 tai uudempi ja jotka on yhdistetty Android-puhelimeen, esimerkiksi Samsung Galaxy Watch 4 ja uudemmat, Google Pixel Watch ja muut nykyiset Wear OS -kellot. Muita järjestelmiä käyttävät kellot eivät toimi: Apple Watch, vanhat Tizen-käyttöiset Samsung-kellot, Garmin, Fitbit ja Huawei. Kello tarvitsee Wi-Fin samassa verkossa kuin TV ja Elly-sovelluksen puhelimeen, joka tuo sille yhdistetyt TV:t.</string>
+    <string name="help_watch_install_title">Asennus ja käyttöönotto</string>
+    <string name="help_watch_install_body">Asenna Elly kelloon Play Kaupasta. Niin kauan kuin Elly puuttuu sieltä, asetusten Kello-välilehti tarjoaa Play Kaupan avaamista kellossa. Asennuksen jälkeen kello ottaa yhdistetyt TV:t ja esittelytilan puhelimesta itse, joten TV:tä ei tarvitse yhdistää uudelleen kelloon. Sivut ja painikkeet määritetään puhelimessa; ne harvat asetukset, jotka koskevat vain kelloa, ovat sen viimeisellä sivulla, katso Asetukset kellossa.</string>
+    <string name="help_watch_use_title">Kellon käyttö</string>
+    <string name="help_watch_use_body">Vaihda sivua pyyhkäisemällä vasemmalle ja oikealle; sulje Elly pyyhkäisemällä ensimmäisellä sivulla oikealle. Muuta äänenvoimakkuutta kiertämällä kruunua tai kehää tai piirtämällä ympyrää näytön reunaa pitkin: myötäpäivään on kovempaa. Reunan valo näyttää, että komento lähti, punaisena kun se epäonnistui, ja kiertävänä kaarena, kun TV:llä kestää. Kello värisee jokaisesta painikkeesta.</string>
+    <string name="help_watch_layout_title">Sivut ja painikkeet</string>
+    <string name="help_watch_layout_body">Asetusten Kello-välilehti näyttää kellon sivut esikatseluina samaan tapaan kuin puhelimen näkymät. Näytä tai piilota sivu napauttamalla, muuta järjestystä painamalla pitkään ja vetämällä. Kynä avaa sivun suurena: napauta painiketta ja valitse sen toiminto, mikä tahansa kaukosäätimen painike, toisto tai tauko, TV:n tulolähteen valinta tai sovellus kuvakkeella, nimellä tai molemmilla. Suuntanäppäimet ja numerot säilyttävät toimintonsa.</string>
+    <string name="help_watch_pointer_title">Osoitin ranteessa</string>
+    <string name="help_watch_pointer_body">Pidä osoitinsivulla sormea näytöllä ja liikuta kättäsi: TV:n osoitin seuraa. Lyhyt napautus klikkaa, kruunu vierittää. Ilman sormea näytöllä osoitin pysyy paikallaan. Nopeus ja ylös- ja alas-suunnan vaihto oikeassa ranteessa pidettävälle kellolle asetetaan kellossa, sen asetussivulla.</string>
+    <string name="help_watch_tile_title">Ruutu ja komplikaatiot</string>
+    <string name="help_watch_tile_body">Kellotaulun vieressä olevassa Elly-ruudussa on kuusi painiketta, jotka toimivat avaamatta sovellusta; valitse ne Kello-välilehdellä kuten sivun painikkeet. Muihin kellotauluihin voit myös sijoittaa yksittäisiä painikkeita komplikaatioina, esimerkiksi mykistyksen tai virran.</string>
+    <string name="help_watch_settings_title">Asetukset kellossa</string>
+    <string name="help_watch_settings_body">Pyyhkäise kellon viimeiselle sivulle sen omia asetuksia varten:\n• Värinä: lyhyt napsahdus jokaisesta painikkeesta ja tahti, kun äänenvoimakkuus muuttuu.\n• Äänenvoimakkuus ympyrällä: ottaa reunaeleen käyttöön tai pois, esimerkiksi jos se on tiellä.\n• Valotehoste: reunan valo komennon jälkeen, kun TV:llä kestää ja kun äänenvoimakkuus muuttuu.\n• Osoitin, nopeus: kuinka paljon osoitin liikkuu, kun liikutat kättä.\n• Osoitin, vaihda ylös ja alas: oikeassa ranteessa pidettävälle kellolle, jossa osoitin liikkuisi muuten väärään suuntaan.\n• TV: kun yhdistettyjä TV:itä on useampi, se jota kello ohjaa; puhelin säilyttää oman valintansa.\nAlla kaksi painiketta avaa Ellyn tai tietosuojaselosteen puhelimessa, ja kellosovelluksen versio näytetään.</string>
+    <string name="settings_tab_backup">Varmuuskopio</string>
 </resources>

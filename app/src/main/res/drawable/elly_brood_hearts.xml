@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_comb"
+        android:pathData="M80,20C73,15 74,9 80,12.5C86,9 87,15 80,20Z" />
+    <path
+        android:fillColor="@color/elly_bunny_inner"
+        android:pathData="M88,33C84,30 84.5,26.5 88,28.5C91.5,26.5 92,30 88,33Z" />
+</vector>

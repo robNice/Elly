@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_wood_shade"
+        android:pathData="M10,84C12,75 30,72 50,72C70,72 88,75 90,84Z" />
+    <path
+        android:pathData="M18,79L32,76 M40,75L58,74 M66,75L82,78 M24,82L42,78 M58,77L76,81"
+        android:strokeWidth="1.2"
+        android:strokeColor="@color/elly_wood"
+        android:strokeLineCap="round" />
+</vector>

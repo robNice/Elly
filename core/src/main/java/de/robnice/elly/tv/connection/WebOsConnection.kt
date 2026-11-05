@@ -49,14 +49,19 @@ class WebOsConnection internal constructor(
         subscriptions.clear()
     }
 
-    suspend fun register(clientKey: String?, manifest: JSONObject, onPrompt: () -> Unit): String {
+    suspend fun register(
+        clientKey: String?,
+        manifest: JSONObject,
+        timeoutMillis: Long = PAIRING_TIMEOUT_MILLIS,
+        onPrompt: () -> Unit
+    ): String {
         val payload = JSONObject()
             .put("forcePairing", false)
             .put("pairingType", "PROMPT")
             .put("manifest", manifest)
         if (clientKey != null) payload.put(CLIENT_KEY, clientKey)
 
-        return exchange(type = TYPE_REGISTER, uri = null, payload = payload, timeoutMillis = PAIRING_TIMEOUT_MILLIS) { message ->
+        return exchange(type = TYPE_REGISTER, uri = null, payload = payload, timeoutMillis = timeoutMillis) { message ->
             when (message.optString(TYPE)) {
                 TYPE_REGISTERED -> message.optJSONObject(PAYLOAD)?.optString(CLIENT_KEY)?.ifBlank { null }
                     ?: throw TvConnectionException.PairingRejected("missing client key")

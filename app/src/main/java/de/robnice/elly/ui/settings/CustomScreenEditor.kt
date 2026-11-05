@@ -806,7 +806,7 @@ private fun ButtonGroup.title(): Int = when (this) {
 private val PICKER_TABS = listOf(R.string.custom_picker_tab_single, R.string.custom_picker_tab_groups)
 
 @Composable
-private fun PickerRow(title: String, leading: @Composable () -> Unit, onClick: () -> Unit) {
+internal fun PickerRow(title: String, leading: @Composable () -> Unit, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -887,7 +887,7 @@ private fun RockerPreview(volume: Boolean, onClick: () -> Unit, horizontal: Bool
 
 // Icon of the key, or its label drawn like a small key, or the color of a color key.
 @Composable
-private fun KeyLeading(key: RemoteKey) {
+internal fun KeyLeading(key: RemoteKey) {
     val visual = KeyCatalog.visual(key)
     val icon = visual.icon
     val label = visual.label?.let { stringResource(it) } ?: visual.text
@@ -914,7 +914,7 @@ private fun KeyLeading(key: RemoteKey) {
 }
 
 @Composable
-private fun PickerIcon(icon: Int, tint: Color? = null) {
+internal fun PickerIcon(icon: Int, tint: Color? = null) {
     Icon(
         painter = painterResource(icon),
         contentDescription = null,

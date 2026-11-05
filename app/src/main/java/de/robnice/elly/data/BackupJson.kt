@@ -6,6 +6,7 @@ import de.robnice.elly.data.model.KeyRounding
 import de.robnice.elly.data.model.RemoteScreen
 import de.robnice.elly.data.model.ScreenBackground
 import de.robnice.elly.data.model.ScreenLayout
+import de.robnice.elly.data.model.WatchLayout
 import org.json.JSONObject
 import java.util.Base64
 
@@ -22,11 +23,14 @@ sealed interface Backup {
         val dpadRounding: Float,
         val lightEffect: Boolean
     ) : Backup
+
+    // Pages and key functions of the watch app; app icons are fetched from the TV again on restore.
+    data class Watch(val layout: WatchLayout) : Backup
 }
 
-// What a backup file holds: the screens, the appearance or both.
-class BackupContent(val screens: Backup.Screens?, val appearance: Backup.Appearance?) {
-    val isEmpty get() = screens == null && appearance == null
+// What a backup file holds: any of the screens, the appearance and the watch layout.
+class BackupContent(val screens: Backup.Screens?, val appearance: Backup.Appearance?, val watch: Backup.Watch? = null) {
+    val isEmpty get() = screens == null && appearance == null && watch == null
 }
 
 // A backup file holds the screens, the appearance or both, so one can be passed on without the other.
@@ -42,6 +46,7 @@ object BackupJson {
     private const val LAYOUT = "layout"
     private const val SCREENS = "screens"
     private const val APPEARANCE = "appearance"
+    private const val WATCH = "watch"
     private const val PALETTE = "palette"
     private const val BACKGROUND = "background"
     private const val IMAGE = "image"
@@ -53,6 +58,7 @@ object BackupJson {
         val json = JSONObject().put(FORMAT, BACKUP_FORMAT).put(VERSION, CURRENT_VERSION)
         content.screens?.let { json.put(SCREENS, encodeScreens(it)) }
         content.appearance?.let { json.put(APPEARANCE, encodeAppearance(it)) }
+        content.watch?.let { json.put(WATCH, JSONObject(WatchLayoutJson.encode(it.layout))) }
         return json.toString()
     }
 
@@ -61,7 +67,8 @@ object BackupJson {
         when (json.optString(FORMAT)) {
             BACKUP_FORMAT -> BackupContent(
                 screens = json.optJSONObject(SCREENS)?.let(::decodeScreens),
-                appearance = json.optJSONObject(APPEARANCE)?.let(::decodeAppearance)
+                appearance = json.optJSONObject(APPEARANCE)?.let(::decodeAppearance),
+                watch = json.optJSONObject(WATCH)?.let { Backup.Watch(WatchLayoutJson.decode(it.toString())) }
             ).takeUnless { it.isEmpty }
             SCREENS_FORMAT -> BackupContent(decodeScreens(json), null)
             APPEARANCE_FORMAT -> BackupContent(null, decodeAppearance(json))

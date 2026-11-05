@@ -38,6 +38,14 @@ class TvRepository(context: Context) {
         }
     }
 
+    // The watch takes over the phone's TVs as they are.
+    suspend fun replaceAll(tvs: List<PairedTv>, activeId: String?) {
+        dataStore.edit { preferences ->
+            preferences[PAIRED_TVS] = PairedTvJson.encode(tvs)
+            if (activeId != null) preferences[ACTIVE_TV_ID] = activeId else preferences.remove(ACTIVE_TV_ID)
+        }
+    }
+
     suspend fun setActive(id: String) {
         dataStore.edit { it[ACTIVE_TV_ID] = id }
     }

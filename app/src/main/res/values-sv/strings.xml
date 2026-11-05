@@ -152,7 +152,7 @@
     <string name="settings_light_effect">Långa sommarkvällar</string>
     <string name="settings_light_effect_description">Lågt ljus uppifrån vänster: knapparna kastar långa skuggor och bakgrunden lyses upp från det hörnet.</string>
     <string name="settings_backup">Säkerhetskopiera och återställ</string>
-    <string name="settings_backup_description">Skärmar och utseende kan säkerhetskopieras var för sig eller tillsammans, så att du kan ge dina skärmar vidare utan att den andra förlorar sitt eget utseende. Vid återställning visar Elly vad filen innehåller, och du väljer vad som ska tas över.</string>
+    <string name="settings_backup_description">Skärmar, utseende och klockans layout kan säkerhetskopieras var för sig eller tillsammans, så att du kan ge dina skärmar vidare utan att den andra förlorar sitt eget utseende. Vid återställning visar Elly vad filen innehåller, och du väljer vad som ska tas över.</string>
     <string name="settings_backup_restore">Återställ från fil</string>
     <string name="settings_backup_save">Säkerhetskopiera</string>
     <string name="settings_backup_save_title">Vad ska säkerhetskopieras?</string>
@@ -501,7 +501,7 @@
     <string name="help_settings_title">Inställningar</string>
     <string name="help_settings_elly">Nu pysslar vi med inställningarna! Jag visar var du hittar vad.</string>
     <string name="help_settings_tabs_title">Så är inställningarna ordnade</string>
-    <string name="help_settings_tabs_body">Kugghjulet i toppfältet öppnar inställningarna. De har tre flikar som du också kan svepa mellan; Elly kommer ihåg den du öppnade senast.\n• Tv: parkopplade tv-apparater, sökning, IP-adress, demoläge.\n• Utseende: skärmar, färgpalett, bakgrund, rundning, ljuseffekt, säkerhetskopiering och återställning.\n• Styrning: pekare och vibration.</string>
+    <string name="help_settings_tabs_body">Kugghjulet i toppfältet öppnar inställningarna. Flikarna visar symboler; du kan också svepa mellan dem, och Elly kommer ihåg den du öppnade senast.\n• Tv (skärm): parkopplade tv-apparater, sökning, IP-adress, demoläge.\n• Utseende (palett): skärmar, färgpalett, bakgrund, rundning, ljuseffekt.\n• Styrning (mus): pekare och vibration.\n• Klocka (klocka, bara medan en klocka är ansluten): sidor och knappar i klockappen och dess panel.\n• Säkerhetskopia (diskett): säkerhetskopiera skärmar, utseende och klockans layout till en fil och återställ dem från den.</string>
     <string name="help_settings_tv_title">Byta eller ta bort en tv</string>
     <string name="help_settings_tv_body">Fliken ”Tv” listar dina parkopplade tv-apparater överst: tryck på en för att göra den aktiv. ”Ta bort” tar bort parkopplingen efter en fråga; för att använda tv:n igen måste du parkoppla den på nytt.\nNedanför kan du söka efter fler tv-apparater eller ange en IP-adress.\nNär demoläget är på visar fliken bara dess reglage; stäng av det för att parkoppla eller byta tv.</string>
     <string name="help_settings_haptics_title">Vibrera vid knapptryck</string>
@@ -509,7 +509,7 @@
     <string name="help_privacy_title">Integritet</string>
     <string name="help_privacy_elly">Dina data tillhör dig. Det är mitt beslut, och det står jag fast vid!</string>
     <string name="help_privacy_data_title">Vad som händer med dina data</string>
-    <string name="help_privacy_data_body">Elly pratar bara med din tv i det lokala nätverket, inga data skickas till externa servrar. Parkopplade tv-apparater, inställningar, skärmlayouter och appikoner stannar på telefonen och raderas när du avinstallerar appen. Även programguiden stannar på din telefon.</string>
+    <string name="help_privacy_data_body">Elly pratar bara med din tv i det lokala nätverket, inga data skickas till externa servrar. Parkopplade tv-apparater, inställningar, skärmlayouter, appikoner och programguiden stannar på telefonen och raderas när du avinstallerar appen. Med en klocka skickar telefonen de parkopplade tv-apparaterna och klockans layout vidare till den via Google Play-tjänster; integritetspolicyn förklarar exakt vad.</string>
     <string name="help_privacy_policy_title">Integritetspolicy</string>
     <string name="help_privacy_policy_body">Hela integritetspolicyn öppnas via ”Integritet” längst ned i inställningarna, bredvid versionsnumret.</string>
     <string name="help_privacy_link">integritetspolicy</string>
@@ -639,4 +639,54 @@
         <item>Sömniga kycklingar</item>
         <item>Gult dun</item>
     </string-array>
+    <string name="settings_tab_watch">Klocka</string>
+    <string name="watch_settings_intro">Välj vilka sidor klockappen visar och vad dess knappar gör. Riktningsknapparna och siffrorna behåller sin funktion.</string>
+    <string name="watch_pages_title">Sidor</string>
+    <string name="watch_tile">Panel</string>
+    <string name="watch_tile_description">Sex knappar som fungerar utan att öppna appen</string>
+    <string name="watch_edit_keys">Tilldela knappar</string>
+    <string name="watch_editor_hint">Tryck på en knapp för att ändra vad den gör.</string>
+    <string name="watch_picker_title">Funktion</string>
+    <string name="watch_picker_app">Öppna en app</string>
+    <string name="watch_picker_keys">Knappar</string>
+    <string name="watch_picker_default">Standard</string>
+    <string name="watch_action_play_pause">Spela upp eller pausa, växelvis</string>
+    <string name="watch_install_title">Elly finns inte på din klocka ännu</string>
+    <string name="watch_install_body">Med Elly på klockan styr du tv:n från handleden. När den är installerad ställer du in dess sidor och knappar här.</string>
+    <string name="watch_install_button">Installera på klockan</string>
+    <string name="watch_install_opened">Fortsätt på din klocka.</string>
+    <string name="watch_install_failed">Klockan gick inte att nå.</string>
+    <string name="watch_app_display">Visas som</string>
+    <string name="watch_app_display_icon">Ikon</string>
+    <string name="watch_app_display_text">Namn</string>
+    <string name="watch_app_display_both">Båda</string>
+    <string name="watch_app_display_change">Ändra hur %1$s visas</string>
+    <string name="watch_pointer_area">Håll och peka</string>
+    <string name="watch_pages_description">Tryck på en sida för att visa eller dölja den, håll kvar och dra den för att ändra ordningen. Pennan tilldelar dess knappar, pilen återställer dem. Minst en sida förblir synlig.</string>
+    <string name="watch_page_number">Sida %1$d</string>
+    <string name="watch_page_edit">Tilldela knappar på sida %1$d</string>
+    <string name="watch_page_reset">Återställ sida %1$d</string>
+    <string name="watch_tile_reset">Återställ panel</string>
+    <string name="watch_reset_title">Återställa knappar?</string>
+    <string name="watch_reset_message">Knapparna får tillbaka sina ursprungliga funktioner.</string>
+    <string name="settings_backup_part_watch">Klocka</string>
+    <string name="settings_backup_part_watch_description">Sidor och knappar i klockappen och dess panel.</string>
+    <string name="settings_backup_watch_file">Elly-Klocka</string>
+    <string name="help_watch_title">Klocka</string>
+    <string name="help_watch_elly">Jag håller din klocka varm tills den kläcks till en fjärrkontroll. Jag lovar, det tar bara ett ögonblick!</string>
+    <string name="help_watch_devices_title">Vilka klockor fungerar</string>
+    <string name="help_watch_devices_body">Elly fungerar på klockor med Wear OS 3 eller senare som är parkopplade med en Android-telefon, till exempel Samsung Galaxy Watch 4 och senare, Google Pixel Watch och andra aktuella Wear OS-klockor. Klockor med andra system fungerar inte: Apple Watch, äldre Samsung-klockor med Tizen, Garmin, Fitbit och Huawei. Klockan behöver wifi i samma nätverk som tv:n och Elly-appen på telefonen, som ger den de parkopplade tv-apparaterna.</string>
+    <string name="help_watch_install_title">Installera och ställa in</string>
+    <string name="help_watch_install_body">Installera Elly från Play Butik på klockan. Så länge Elly saknas där erbjuder fliken Klocka i inställningarna att öppna Play Butik på klockan. När den är installerad tar klockan själv över de parkopplade tv-apparaterna och demoläget från telefonen, så du behöver inte parkoppla tv:n igen på klockan. Sidor och knappar ställs in på telefonen; de få inställningar som bara gäller klockan finns på dess sista sida, se Inställningar på klockan.</string>
+    <string name="help_watch_use_title">Använda klockan</string>
+    <string name="help_watch_use_body">Svep åt vänster och höger för att byta sida; svep åt höger på första sidan för att stänga Elly. Vrid på kronan eller ringen för att ändra volymen, eller dra en cirkel längs skärmens kant: medurs är högre. Ljuset längs kanten visar att ett kommando har skickats, rött när det misslyckades, och en löpande båge medan tv:n tar sin tid. Klockan vibrerar vid varje knapp.</string>
+    <string name="help_watch_layout_title">Sidor och knappar</string>
+    <string name="help_watch_layout_body">Fliken Klocka i inställningarna visar klockans sidor som förhandsvisningar, precis som telefonens skärmar. Tryck på en sida för att visa eller dölja den, håll kvar och dra den för att ändra ordningen. Pennan öppnar sidan i stort format: tryck på en knapp och välj vad den gör, valfri knapp på fjärrkontrollen, spela upp eller pausa, tv:ns källval eller en app, visad med ikon, namn eller båda. Riktningsknapparna och siffrorna behåller sin funktion.</string>
+    <string name="help_watch_pointer_title">Pekare på handleden</string>
+    <string name="help_watch_pointer_body">På pekarsidan lägger du ett finger på skärmen och rör armen: pekaren på tv:n följer med. Ett kort tryck klickar, kronan rullar. Utan finger på skärmen stannar pekaren där den är. Hastighet och byte av upp och ned för en klocka på höger handled ställs in på klockan, på dess inställningssida.</string>
+    <string name="help_watch_tile_title">Panel och komplikationer</string>
+    <string name="help_watch_tile_body">Elly-panelen bredvid urtavlan har sex knappar som fungerar utan att öppna appen; välj dem på fliken Klocka som knapparna på en sida. På andra urtavlor kan du också placera enskilda knappar som komplikationer, till exempel ljud av eller ström.</string>
+    <string name="help_watch_settings_title">Inställningar på klockan</string>
+    <string name="help_watch_settings_body">Svep till klockans sista sida för dess egna inställningar:\n• Vibration: ett kort klick vid varje knapp och en takt medan volymen ändras.\n• Volym med cirkel: slår på eller av gesten längs kanten, till exempel om den är i vägen.\n• Ljuseffekt: ljuset längs kanten efter ett kommando, medan tv:n tar sin tid och medan volymen ändras.\n• Pekare, hastighet: hur långt pekaren flyttas när du rör armen.\n• Pekare, byt upp och ned: för en klocka som bärs på höger handled, där pekaren annars skulle röra sig åt fel håll.\n• Tv: med fler än en parkopplad tv den som klockan styr; telefonen behåller sitt eget val.\nNedanför öppnar två knappar Elly eller integritetspolicyn på telefonen, och versionen av klockappen visas.</string>
+    <string name="settings_tab_backup">Säkerhetskopia</string>
 </resources>
