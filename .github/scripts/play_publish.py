@@ -15,6 +15,7 @@ SCOPES = ["https://www.googleapis.com/auth/androidpublisher"]
 LISTING_FIELDS = {"title": "title", "short_description": "shortDescription", "full_description": "fullDescription"}
 SINGLE_IMAGES = {"icon": "icon_512.png", "featureGraphic": "feature_graphic.png"}
 SCREENSHOTS = {"phoneScreenshots": re.compile(r"phone_(\d+)\.png$"), "wearScreenshots": re.compile(r"wear_(\d+)\.png$")}
+WEAR_FALLBACK_LANGUAGE = "en-US"
 
 
 class PlayPublisher:
@@ -99,6 +100,13 @@ def read_release_notes(path: Path) -> dict:
     return notes
 
 
+def find_screenshots(folder: Path, pattern) -> list:
+    if not folder.is_dir():
+        return []
+    return sorted((f for f in folder.iterdir() if pattern.match(f.name)),
+                  key=lambda f: int(pattern.match(f.name).group(1)))
+
+
 def sync_store(publisher: PlayPublisher, store_dir: Path):
     for folder in sorted(p for p in store_dir.iterdir() if (p / "listing.json").is_file()):
         language = folder.name
@@ -109,8 +117,10 @@ def sync_store(publisher: PlayPublisher, store_dir: Path):
             if (folder / name).is_file() and publisher.sync_images(language, image_type, [folder / name]):
                 changes.append(image_type)
         for image_type, pattern in SCREENSHOTS.items():
-            shots = sorted((f for f in folder.iterdir() if pattern.match(f.name)),
-                           key=lambda f: int(pattern.match(f.name).group(1)))
+            shots = find_screenshots(folder, pattern)
+            # Play wants watch screenshots in every listing; the watch UI barely has text, so English ones do.
+            if not shots and image_type == "wearScreenshots":
+                shots = find_screenshots(store_dir / WEAR_FALLBACK_LANGUAGE, pattern)
             if publisher.sync_images(language, image_type, shots):
                 changes.append(image_type)
         print(f"Store listing {language}: {', '.join(changes) if changes else 'unchanged'}")
