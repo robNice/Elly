@@ -3,6 +3,7 @@ package de.robnice.elly.ui.settings
 import androidx.activity.compose.BackHandler
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -35,6 +36,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.DividerDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
@@ -63,6 +65,7 @@ import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -371,6 +374,15 @@ fun SettingsScreen(
             }
             TextButton(onClick = { showPrivacy = true }) {
                 Text(text = stringResource(R.string.settings_privacy), style = MaterialTheme.typography.labelSmall)
+            }
+            val uriHandler = LocalUriHandler.current
+            val supportUrl = stringResource(R.string.settings_support_url)
+            IconButton(onClick = { uriHandler.openUri(supportUrl) }) {
+                Image(
+                    painter = painterResource(R.drawable.kofi_logo),
+                    contentDescription = stringResource(R.string.settings_support),
+                    modifier = Modifier.height(dimensionResource(R.dimen.settings_support_logo_height))
+                )
             }
         }
     }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <path
+        android:fillColor="@color/elly_cup_inner"
+        android:pathData="M19,56A29,8.8 0,0 0,77 56L75,57.5A27,7.6 0,0 1,21 57.5Z" />
+    <path
+        android:fillColor="@color/elly_coffee"
+        android:pathData="M21,57.5A27,7.6 0,0 0,75 57.5L67.4,55.5Q48,66.5 28.6,55.5Z" />
+    <path
+        android:pathData="M28.6,55.5Q48,66.5 67.4,55.5"
+        android:strokeWidth="1.5"
+        android:strokeColor="@color/elly_coffee_foam"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="@color/elly_cup"
+        android:pathData="M17,56C17,78 26,90 48,90C70,90 79,78 79,56A31,10 0,0 1,17 56Z" />
+    <path
+        android:fillColor="@color/elly_cup_shade"
+        android:pathData="M79,56C79,78 70,90 48,90C62,86 71,76 72,62.3C75.5,61 78,59 79,56Z" />
+    <path
+        android:fillColor="@color/elly_cup_glare"
+        android:pathData="M22,64C22,73 25,79 29,82C27,76 26,70 26,64.6C24.5,64.5 23,64.3 22,64Z" />
+    <path
+        android:fillColor="@color/elly_comb"
+        android:pathData="M48,85C38,79 40,70 48,75C56,70 58,79 48,85Z" />
+</vector>

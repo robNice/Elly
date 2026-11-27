@@ -299,6 +299,7 @@
     <string name="privacy_title">Tietosuojaseloste</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Lisenssit</string>
+    <string name="settings_support">Tue Ellyä Ko-fissa</string>
     <string name="licenses_title">Avoimen lähdekoodin lisenssit</string>
     <string name="licenses_intro">Elly on vapaa ohjelmisto ja käyttää näitä avoimen lähdekoodin komponentteja.</string>
     <string name="licenses_show">Näytä lisenssiteksti</string>
@@ -378,7 +379,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Seuraavaksi: %1$s</string>
     <string name="help_nav_previous">Edellinen luku</string>
-    <string name="help_nav_home">Ohjeen yleiskatsaus</string>
+    <string name="help_nav_exit">Sulje ohje</string>
     <string name="help_nav_next">Seuraava luku</string>
     <plurals name="help_elly_results">
         <item quantity="one">Löysin yhden osuman.</item>
@@ -513,6 +514,14 @@
     <string name="help_privacy_policy_title">Tietosuojaseloste</string>
     <string name="help_privacy_policy_body">Koko tietosuojaseloste avataan asetusten alareunasta kohdasta ”Tietosuoja” versionumeron vierestä.</string>
     <string name="help_privacy_link">tietosuojaseloste</string>
+    <string name="help_support_title">Tukea sinulle, tukea minulle</string>
+    <string name="help_support_elly">Aah, kahvikylpy! Sillä aikaa kun rentoudun, saat täältä tietää, mistä saat apua ja miten voit kaataa minulle seuraavan kupillisen.</string>
+    <string name="help_support_you_title">Tukea sinulle</string>
+    <string name="help_support_you_body">Kysymyksiä, ongelmia tai ideoita? Autan mielelläni.\n• Virheet ja toiveet: https://github.com/robNice/Elly/issues\n• Sähköposti: Elly@robnice.de</string>
+    <string name="help_support_me_title">Tukea minulle</string>
+    <string name="help_support_me_body">Haluaisitko tarjota minulle kahvit?\nKehitän tätä sovellusta vapaa-ajallani, yksinkertaisesti koska nautin siitä ja uskon, ettei hyödyllisellä ohjelmistolla aina tarvitse olla hintalappua.\nVapaaehtoinen tukesi on ihana osoitus arvostuksesta sitä aikaa ja vaivaa kohtaan, joka tähän projektiin menee. Se merkitsee minulle todella paljon.</string>
+    <string name="help_support_me_button">Tarjoa minulle kahvit</string>
+    <string name="help_support_me_closing">Nauti Ellystä ja mukavia kanavanvaihtoja!</string>
     <string name="settings_root_ssh">Root-oikeudet ja SSH määritetty?</string>
     <string name="settings_root_ssh_description">Rootatuille televisioille, joissa on Homebrew Channel ja SSH-palvelin päällä. Tarvitaan ohjelmaopasta varten.</string>
     <string name="settings_root_ssh_check">Tarkista</string>

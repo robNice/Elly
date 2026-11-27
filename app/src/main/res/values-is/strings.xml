@@ -300,6 +300,7 @@
     <string name="privacy_title">Persónuverndarstefna</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Leyfi</string>
+    <string name="settings_support">Styddu Elly á Ko-fi</string>
     <string name="licenses_title">Leyfi opins hugbúnaðar</string>
     <string name="licenses_intro">Elly er frjáls hugbúnaður og notar þessa opnu hugbúnaðarhluta.</string>
     <string name="licenses_show">Sýna leyfistexta</string>
@@ -380,7 +381,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Næst: %1$s</string>
     <string name="help_nav_previous">Fyrri kafli</string>
-    <string name="help_nav_home">Yfirlit hjálpar</string>
+    <string name="help_nav_exit">Loka hjálpinni</string>
     <string name="help_nav_next">Næsti kafli</string>
     <plurals name="help_elly_results">
         <item quantity="one">Ég fann %d niðurstöðu.</item>
@@ -515,6 +516,14 @@
     <string name="help_privacy_policy_title">Persónuverndarstefna</string>
     <string name="help_privacy_policy_body">Persónuverndarstefnan í heild sinni opnast með „Persónuvernd“ neðst í stillingunum, við hliðina á útgáfunúmerinu.</string>
     <string name="help_privacy_link">persónuverndarstefna</string>
+    <string name="help_support_title">Stuðningur fyrir þig, stuðningur fyrir mig</string>
+    <string name="help_support_elly">Aah, kaffibað! Á meðan ég slaka á kemstu að því hér hvar þú færð aðstoð og hvernig þú getur hellt í næsta bolla fyrir mig.</string>
+    <string name="help_support_you_title">Stuðningur fyrir þig</string>
+    <string name="help_support_you_body">Spurningar, vandamál eða hugmyndir? Ég hjálpa gjarnan.\n• Villur og óskir: https://github.com/robNice/Elly/issues\n• Netfang: Elly@robnice.de</string>
+    <string name="help_support_me_title">Stuðningur fyrir mig</string>
+    <string name="help_support_me_body">Langar þig að bjóða mér upp á kaffi?\nÉg þróa þetta app í frítíma mínum, einfaldlega af því að mér finnst það gaman og ég trúi því að gagnlegur hugbúnaður þurfi ekki alltaf að kosta.\nFrjáls stuðningur þinn er fallegt merki um þakklæti fyrir tímann og vinnuna sem fer í þetta verkefni. Hann skiptir mig virkilega miklu.</string>
+    <string name="help_support_me_button">Bjóddu mér upp á kaffi</string>
+    <string name="help_support_me_closing">Njóttu Elly og góða skemmtun við að skipta um rás!</string>
     <string name="settings_root_ssh">Rótaraðgangur og SSH uppsett?</string>
     <string name="settings_root_ssh_description">Fyrir sjónvörp með rótaraðgangi, Homebrew Channel og kveikt á SSH-þjóni. Nauðsynlegt fyrir dagskrárvísinn.</string>
     <string name="settings_root_ssh_check">Athuga</string>

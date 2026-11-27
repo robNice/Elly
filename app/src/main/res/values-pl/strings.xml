@@ -300,6 +300,7 @@
     <string name="privacy_title">Polityka prywatności</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Licencje</string>
+    <string name="settings_support">Wesprzyj Elly na Ko-fi</string>
     <string name="licenses_title">Licencje open source</string>
     <string name="licenses_intro">Elly to wolne oprogramowanie i korzysta z tych komponentów open source.</string>
     <string name="licenses_show">Pokaż tekst licencji</string>
@@ -380,7 +381,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Dalej: %1$s</string>
     <string name="help_nav_previous">Poprzedni rozdział</string>
-    <string name="help_nav_home">Przegląd pomocy</string>
+    <string name="help_nav_exit">Zamknij pomoc</string>
     <string name="help_nav_next">Następny rozdział</string>
     <plurals name="help_elly_results">
         <item quantity="one">Znalazłam jedno trafienie.</item>
@@ -517,6 +518,14 @@
     <string name="help_privacy_policy_title">Polityka prywatności</string>
     <string name="help_privacy_policy_body">Pełną politykę prywatności otworzysz przez „Prywatność” na dole ustawień, obok numeru wersji.</string>
     <string name="help_privacy_link">polityka prywatności</string>
+    <string name="help_support_title">Wsparcie dla Ciebie, wsparcie dla mnie</string>
+    <string name="help_support_elly">Ach, kąpiel w kawie! Kiedy odpoczywam, dowiesz się tutaj, gdzie szukać pomocy i jak nalać mi następną filiżankę.</string>
+    <string name="help_support_you_title">Wsparcie dla Ciebie</string>
+    <string name="help_support_you_body">Pytania, problemy lub pomysły? Chętnie pomogę.\n• Błędy i sugestie: https://github.com/robNice/Elly/issues\n• E-mail: Elly@robnice.de</string>
+    <string name="help_support_me_title">Wsparcie dla mnie</string>
+    <string name="help_support_me_body">Masz ochotę postawić mi kawę?\nRozwijam tę aplikację w wolnym czasie, po prostu dlatego, że sprawia mi to przyjemność i uważam, że przydatne oprogramowanie nie zawsze potrzebuje metki z ceną.\nTwoje dobrowolne wsparcie to piękny znak uznania dla czasu i wysiłku włożonego w ten projekt. Naprawdę wiele dla mnie znaczy.</string>
+    <string name="help_support_me_button">Postaw mi kawę</string>
+    <string name="help_support_me_closing">Miłego korzystania z Elly i udanego przełączania!</string>
     <string name="settings_root_ssh">Dostęp root i SSH skonfigurowane?</string>
     <string name="settings_root_ssh_description">Dla telewizorów z rootem, Homebrew Channel i włączonym serwerem SSH. Potrzebne do przewodnika po programach.</string>
     <string name="settings_root_ssh_check">Sprawdź</string>

@@ -25,6 +25,9 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -43,8 +46,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalResources
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -129,13 +134,15 @@ fun HelpScreen(onClose: () -> Unit, onStartTour: () -> Unit, onOpenPrivacy: () -
                 HelpChapterContent(current, if (current == topicChapter) topic else 0, terms, onOpenPrivacy) { open(it, 0) }
             }
         }
-        HelpNavigation(chapter, onHome = { open(null, 0) }) { open(it, 0) }
+        HelpNavigation(chapter, onHome = { open(null, 0) }, onClose = onClose) { open(it, 0) }
     }
 }
 
 @Composable
-private fun HelpNavigation(chapter: Int?, onHome: () -> Unit, onOpen: (Int) -> Unit) {
-    val last = HelpContent.chapters.lastIndex
+private fun HelpNavigation(chapter: Int?, onHome: () -> Unit, onClose: () -> Unit, onOpen: (Int) -> Unit) {
+    val chapters = HelpContent.chapters
+    val last = chapters.lastIndex
+    var showContents by remember { mutableStateOf(false) }
     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
     Row(
         modifier = Modifier
@@ -147,8 +154,36 @@ private fun HelpNavigation(chapter: Int?, onHome: () -> Unit, onOpen: (Int) -> U
         IconButton(onClick = { if (chapter == 0) onHome() else chapter?.let { onOpen(it - 1) } }, enabled = chapter != null) {
             Icon(painterResource(R.drawable.ic_chevron_left), contentDescription = stringResource(R.string.help_nav_previous))
         }
-        IconButton(onClick = onHome, enabled = chapter != null) {
-            Icon(painterResource(R.drawable.ic_home), contentDescription = stringResource(R.string.help_nav_home))
+        Box {
+            IconButton(onClick = { showContents = true }) {
+                Icon(painterResource(R.drawable.ic_toc), contentDescription = stringResource(R.string.help_contents))
+            }
+            DropdownMenu(expanded = showContents, onDismissRequest = { showContents = false }) {
+                chapters.forEachIndexed { c, ch ->
+                    DropdownMenuItem(
+                        text = {
+                            Text(
+                                text = stringResource(R.string.help_chapter_number, c + 1, stringResource(ch.title)),
+                                color = if (c == chapter) colorResource(R.color.help_accent) else Color.Unspecified
+                            )
+                        },
+                        leadingIcon = { Icon(painterResource(ch.icon), contentDescription = null) },
+                        onClick = {
+                            showContents = false
+                            onOpen(c)
+                        }
+                    )
+                }
+                HorizontalDivider()
+                DropdownMenuItem(
+                    text = { Text(stringResource(R.string.help_nav_exit)) },
+                    leadingIcon = { Icon(painterResource(R.drawable.ic_close), contentDescription = null) },
+                    onClick = {
+                        showContents = false
+                        onClose()
+                    }
+                )
+            }
         }
         IconButton(onClick = { onOpen(chapter?.plus(1) ?: 0) }, enabled = chapter == null || chapter < last) {
             Icon(painterResource(R.drawable.ic_chevron_right), contentDescription = stringResource(R.string.help_nav_next))
@@ -264,6 +299,11 @@ private fun HelpChapterContent(
                 Spacer(modifier = Modifier.height(dimensionResource(R.dimen.help_item_spacing)))
                 HelpBody(stringResource(tp.body), terms, onOpenPrivacy)
                 tp.image?.let { HelpImage(it, stringResource(tp.title)) }
+                tp.button?.let { HelpLinkButton(it) }
+                tp.closing?.let {
+                    Spacer(modifier = Modifier.height(dimensionResource(R.dimen.help_spacing)))
+                    HelpBody(stringResource(it), terms, onOpenPrivacy)
+                }
             }
         }
         if (chapter < chapters.lastIndex) {
@@ -290,6 +330,24 @@ private fun HelpImage(@DrawableRes image: Int, description: String) {
                 .clip(shape)
                 .border(dimensionResource(R.dimen.help_image_border), MaterialTheme.colorScheme.outlineVariant, shape)
         )
+    }
+}
+
+@Composable
+private fun HelpLinkButton(button: HelpButton) {
+    val uriHandler = LocalUriHandler.current
+    val url = stringResource(button.url)
+    Button(
+        onClick = { uriHandler.openUri(url) },
+        modifier = Modifier.padding(top = dimensionResource(R.dimen.help_spacing))
+    ) {
+        Image(
+            painter = painterResource(button.icon),
+            contentDescription = null,
+            modifier = Modifier.height(dimensionResource(R.dimen.help_button_icon_height))
+        )
+        Spacer(modifier = Modifier.width(dimensionResource(R.dimen.help_item_spacing)))
+        Text(stringResource(button.label))
     }
 }
 
@@ -335,6 +393,10 @@ private fun highlighted(
                 addLink(LinkAnnotation.Clickable(PRIVACY_LINK_TAG, linkStyle) { onOpenPrivacy() }, start, start + privacyLink.length)
                 start = text.indexOf(privacyLink, start + privacyLink.length, ignoreCase = true)
             }
+            WEB_LINK.findAll(text).forEach {
+                val url = if (it.value.contains('@')) "mailto:${it.value}" else it.value
+                addLink(LinkAnnotation.Url(url, linkStyle), it.range.first, it.range.last + 1)
+            }
         }
     }
 }
@@ -343,3 +405,4 @@ private const val BULLET = "• "
 private const val HELP_IMAGE_WIDTH = 0.62f
 private const val PRIVACY_LINK_TAG = "privacy"
 private const val BOLD_LEAD_MAX = 45
+private val WEB_LINK = Regex("""https://[^\s]*[^\s.,;:!?)]|[\w.+-]+@[\w-]+(\.[\w-]+)+""")

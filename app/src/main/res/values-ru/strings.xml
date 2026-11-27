@@ -300,6 +300,7 @@
     <string name="privacy_title">Политика конфиденциальности</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Лицензии</string>
+    <string name="settings_support">Поддержать Elly на Ko-fi</string>
     <string name="licenses_title">Лицензии открытого ПО</string>
     <string name="licenses_intro">Elly — свободное ПО и использует эти компоненты с открытым исходным кодом.</string>
     <string name="licenses_show">Показать текст лицензии</string>
@@ -380,7 +381,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Далее: %1$s</string>
     <string name="help_nav_previous">Предыдущая глава</string>
-    <string name="help_nav_home">Обзор справки</string>
+    <string name="help_nav_exit">Закрыть справку</string>
     <string name="help_nav_next">Следующая глава</string>
     <plurals name="help_elly_results">
         <item quantity="one">Я нашла %d совпадение.</item>
@@ -517,6 +518,14 @@
     <string name="help_privacy_policy_title">Политика конфиденциальности</string>
     <string name="help_privacy_policy_body">Полную политику конфиденциальности можно открыть через «Конфиденциальность» внизу настроек, рядом с номером версии.</string>
     <string name="help_privacy_link">политика конфиденциальности</string>
+    <string name="help_support_title">Поддержка для тебя, поддержка для меня</string>
+    <string name="help_support_elly">Ах, кофейная ванна! Пока я расслабляюсь, здесь ты узнаешь, где получить помощь и как налить мне следующую чашку.</string>
+    <string name="help_support_you_title">Поддержка для тебя</string>
+    <string name="help_support_you_body">Вопросы, проблемы или идеи? Я с радостью помогу.\n• Ошибки и пожелания: https://github.com/robNice/Elly/issues\n• Эл. почта: Elly@robnice.de</string>
+    <string name="help_support_me_title">Поддержка для меня</string>
+    <string name="help_support_me_body">Хочешь угостить меня чашкой кофе?\nЯ разрабатываю это приложение в свободное время, просто потому что мне это нравится и я считаю, что полезным программам не всегда нужен ценник.\nТвоя добровольная поддержка — прекрасный знак признательности за время и силы, вложенные в этот проект. Для меня это действительно очень много значит.</string>
+    <string name="help_support_me_button">Угостить меня кофе</string>
+    <string name="help_support_me_closing">Наслаждайся Elly, и приятного переключения!</string>
     <string name="settings_root_ssh">Root-доступ и SSH настроены?</string>
     <string name="settings_root_ssh_description">Для телевизоров с root-доступом, Homebrew Channel и включённым SSH-сервером. Нужно для телепрограммы.</string>
     <string name="settings_root_ssh_check">Проверить</string>

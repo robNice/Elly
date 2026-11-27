@@ -147,6 +147,21 @@ object HelpContent {
                 HelpTopic(R.string.help_privacy_data_title, R.string.help_privacy_data_body),
                 HelpTopic(R.string.help_privacy_policy_title, R.string.help_privacy_policy_body)
             )
+        ),
+        HelpChapter(
+            title = R.string.help_support_title,
+            ellyIntro = R.string.help_support_elly,
+            icon = R.drawable.ic_coffee,
+            elly = EllyPoses.CoffeeBath,
+            topics = listOf(
+                HelpTopic(R.string.help_support_you_title, R.string.help_support_you_body),
+                HelpTopic(
+                    R.string.help_support_me_title,
+                    R.string.help_support_me_body,
+                    button = HelpButton(R.string.help_support_me_button, R.string.settings_support_url, R.drawable.kofi_logo),
+                    closing = R.string.help_support_me_closing
+                )
+            )
         )
     )
 }

@@ -15,8 +15,8 @@ android {
         applicationId = "de.robnice.elly"
         minSdk = 30
         targetSdk = 36
-        versionCode = 910001054
-        versionName = "1.1.54"
+        versionCode = 910001055
+        versionName = "1.1.55"
     }
 
     val keystorePath: String? = System.getenv("KEYSTORE_PATH")

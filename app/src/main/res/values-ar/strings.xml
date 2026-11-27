@@ -299,6 +299,7 @@
     <string name="privacy_title">سياسة الخصوصية</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">التراخيص</string>
+    <string name="settings_support">ادعم Elly على Ko-fi</string>
     <string name="licenses_title">تراخيص المصادر المفتوحة</string>
     <string name="licenses_intro">Elly برنامج حر ويستخدم مكونات المصادر المفتوحة التالية.</string>
     <string name="licenses_show">إظهار نص الترخيص</string>
@@ -379,7 +380,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">التالي: %1$s</string>
     <string name="help_nav_previous">الفصل السابق</string>
-    <string name="help_nav_home">نظرة عامة على المساعدة</string>
+    <string name="help_nav_exit">الخروج من المساعدة</string>
     <string name="help_nav_next">الفصل التالي</string>
     <plurals name="help_elly_results">
         <item quantity="zero">لم أجد أي نتيجة.</item>
@@ -518,6 +519,14 @@
     <string name="help_privacy_policy_title">سياسة الخصوصية</string>
     <string name="help_privacy_policy_body">تُفتح سياسة الخصوصية الكاملة عبر «الخصوصية» أسفل الإعدادات، بجانب رقم الإصدار.</string>
     <string name="help_privacy_link">سياسة الخصوصية</string>
+    <string name="help_support_title">ادعمك، وادعمني</string>
+    <string name="help_support_elly">آه، حمّام قهوة! بينما أسترخي، ستعرف هنا أين تجد المساعدة وكيف تصبّ لي الفنجان التالي.</string>
+    <string name="help_support_you_title">دعم لك</string>
+    <string name="help_support_you_body">أسئلة أو مشكلات أو أفكار؟ يسعدني أن أساعدك.\n• الأخطاء والاقتراحات: https://github.com/robNice/Elly/issues\n• البريد الإلكتروني: Elly@robnice.de</string>
+    <string name="help_support_me_title">ادعمني</string>
+    <string name="help_support_me_body">هل تودّ أن تدعوني إلى فنجان قهوة؟\nأطوّر هذا التطبيق في وقت فراغي، لأنني أستمتع بذلك ببساطة، ولأنني أؤمن بأن البرامج المفيدة لا تحتاج دائمًا إلى ثمن.\nدعمك الطوعي علامة جميلة على تقدير الوقت والجهد المبذولين في هذا المشروع. إنه يعني لي الكثير حقًا.</string>
+    <string name="help_support_me_button">اشترِ لي قهوة</string>
+    <string name="help_support_me_closing">استمتع بـ Elly، وتنقّلًا سعيدًا بين القنوات!</string>
     <string name="settings_root_ssh">هل تم إعداد الوصول بصلاحيات الجذر وSSH؟</string>
     <string name="settings_root_ssh_description">لأجهزة التلفاز التي مُنحت صلاحيات الجذر والمزوّدة بـ Homebrew Channel مع تشغيل خادم SSH فيه. مطلوب لدليل البرامج.</string>
     <string name="settings_root_ssh_check">فحص</string>

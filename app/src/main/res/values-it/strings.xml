@@ -300,6 +300,7 @@
     <string name="privacy_title">Informativa sulla privacy</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Licenze</string>
+    <string name="settings_support">Sostieni Elly su Ko-fi</string>
     <string name="licenses_title">Licenze open source</string>
     <string name="licenses_intro">Elly è software libero e usa questi componenti open source.</string>
     <string name="licenses_show">Mostra testo della licenza</string>
@@ -380,7 +381,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Avanti: %1$s</string>
     <string name="help_nav_previous">Capitolo precedente</string>
-    <string name="help_nav_home">Panoramica dell\'aiuto</string>
+    <string name="help_nav_exit">Esci dall\'aiuto</string>
     <string name="help_nav_next">Capitolo successivo</string>
     <plurals name="help_elly_results">
         <item quantity="one">Ho trovato un risultato.</item>
@@ -515,6 +516,14 @@
     <string name="help_privacy_policy_title">Informativa sulla privacy</string>
     <string name="help_privacy_policy_body">L\'informativa sulla privacy completa si apre da «Privacy», in fondo alle impostazioni, accanto al numero di versione.</string>
     <string name="help_privacy_link">informativa sulla privacy</string>
+    <string name="help_support_title">Supporto per te, supporto per me</string>
+    <string name="help_support_elly">Ahh, un bagno nel caffè! Mentre mi rilasso, qui scopri dove trovare aiuto e come versarmi la prossima tazza.</string>
+    <string name="help_support_you_title">Supporto per te</string>
+    <string name="help_support_you_body">Domande, problemi o idee? Ti aiuto volentieri.\n• Bug e suggerimenti: https://github.com/robNice/Elly/issues\n• E-mail: Elly@robnice.de</string>
+    <string name="help_support_me_title">Supporto per me</string>
+    <string name="help_support_me_body">Ti va di offrirmi un caffè?\nSviluppo questa app nel mio tempo libero, semplicemente perché mi piace e credo che un software utile non debba sempre avere un cartellino del prezzo.\nIl tuo sostegno volontario è un bellissimo segno di apprezzamento per il tempo e l\'impegno dedicati a questo progetto. Significa davvero molto per me.</string>
+    <string name="help_support_me_button">Offrimi un caffè</string>
+    <string name="help_support_me_closing">Goditi Elly e buono zapping!</string>
     <string name="settings_root_ssh">Accesso root e SSH configurati?</string>
     <string name="settings_root_ssh_description">Per TV con root, Homebrew Channel e il relativo server SSH attivato. Necessario per la guida programmi.</string>
     <string name="settings_root_ssh_check">Verifica</string>

@@ -300,6 +300,7 @@
     <string name="privacy_title">プライバシーポリシー</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">ライセンス</string>
+    <string name="settings_support">Ko-fi で Elly を応援する</string>
     <string name="licenses_title">オープンソースライセンス</string>
     <string name="licenses_intro">Elly はフリーソフトウェアで、以下のオープンソースコンポーネントを使用しています。</string>
     <string name="licenses_show">ライセンス本文を表示</string>
@@ -380,7 +381,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">次へ: %1$s</string>
     <string name="help_nav_previous">前の章</string>
-    <string name="help_nav_home">ヘルプの概要</string>
+    <string name="help_nav_exit">ヘルプを終了</string>
     <string name="help_nav_next">次の章</string>
     <plurals name="help_elly_results">
         <item quantity="other">%d 件見つかったよ！</item>
@@ -514,6 +515,14 @@
     <string name="help_privacy_policy_title">プライバシーポリシー</string>
     <string name="help_privacy_policy_body">プライバシーポリシーの全文は、設定の一番下、バージョン番号の横にある「プライバシー」から開けます。</string>
     <string name="help_privacy_link">プライバシーポリシー</string>
+    <string name="help_support_title">あなたへのサポート、わたしへのサポート</string>
+    <string name="help_support_elly">はぁ〜、コーヒー風呂！ のんびりしている間に、困ったときの相談先と、次の一杯を注いでくれる方法をここで紹介するね。</string>
+    <string name="help_support_you_title">あなたへのサポート</string>
+    <string name="help_support_you_body">質問、トラブル、アイデアはある？ よろこんでお手伝いします。\n• 不具合と要望: https://github.com/robNice/Elly/issues\n• メール: Elly@robnice.de</string>
+    <string name="help_support_me_title">わたしへのサポート</string>
+    <string name="help_support_me_body">コーヒーを一杯ごちそうしてくれませんか？\nこのアプリは空いた時間に開発しています。単純に楽しいからであり、役に立つソフトウェアにいつも値札が必要だとは思わないからです。\n任意のご支援は、このプロジェクトに注いだ時間と労力への素敵な感謝のしるしです。本当にうれしく思います。</string>
+    <string name="help_support_me_button">コーヒーをおごる</string>
+    <string name="help_support_me_closing">Elly を楽しんで、快適なチャンネル切り替えを！</string>
     <string name="settings_root_ssh">root 化と SSH の設定は完了していますか？</string>
     <string name="settings_root_ssh_description">Homebrew Channel を導入し SSH サーバーをオンにした root 化済みテレビ向けです。番組表に必要です。</string>
     <string name="settings_root_ssh_check">確認</string>

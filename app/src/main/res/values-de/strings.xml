@@ -417,6 +417,7 @@
     <string name="privacy_title">Datenschutzerklärung</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Lizenzen</string>
+    <string name="settings_support">Elly auf Ko-fi unterstützen</string>
     <string name="licenses_title">Open-Source-Lizenzen</string>
     <string name="licenses_intro">Elly ist freie Software und nutzt diese Open-Source-Komponenten.</string>
     <string name="licenses_show">Lizenztext anzeigen</string>
@@ -497,7 +498,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Weiter: %1$s</string>
     <string name="help_nav_previous">Vorheriges Kapitel</string>
-    <string name="help_nav_home">Hilfe-Übersicht</string>
+    <string name="help_nav_exit">Hilfe beenden</string>
     <string name="help_nav_next">Nächstes Kapitel</string>
     <plurals name="help_elly_results">
         <item quantity="one">Ich habe einen Treffer gefunden.</item>
@@ -640,6 +641,14 @@
     <string name="help_privacy_policy_title">Datenschutzerklärung</string>
     <string name="help_privacy_policy_body">Die vollständige Datenschutzerklärung öffnest du unten in den Einstellungen über „Datenschutz“, daneben steht die Versionsnummer.</string>
     <string name="help_privacy_link">Datenschutzerklärung</string>
+    <string name="help_support_title">Support für dich, Support für mich</string>
+    <string name="help_support_elly">Ahh, ein Kaffeebad! Während ich entspanne, erfährst du hier, wo du Hilfe bekommst und wie du mir die nächste Tasse einschenken kannst.</string>
+    <string name="help_support_you_title">Support für dich</string>
+    <string name="help_support_you_body">Fragen, Probleme oder Ideen? Ich helfe gern weiter.\n• Fehler und Wünsche: https://github.com/robNice/Elly/issues\n• E-Mail: Elly@robnice.de</string>
+    <string name="help_support_me_title">Support für mich</string>
+    <string name="help_support_me_body">Lust, mir einen Kaffee auszugeben?\nIch entwickle diese App in meiner Freizeit, einfach weil es mir Spaß macht und weil ich finde, dass nützliche Software nicht immer ein Preisschild braucht.\nDeine freiwillige Unterstützung ist ein schönes Zeichen der Wertschätzung für die Zeit und Mühe, die in dieses Projekt fließen. Sie bedeutet mir wirklich viel.</string>
+    <string name="help_support_me_button">Spendier mir einen Kaffee</string>
+    <string name="help_support_me_closing">Viel Spaß mit Elly und frohes Umschalten!</string>
     <string name="settings_tab_watch">Uhr</string>
     <string name="watch_settings_intro">Lege fest, welche Seiten die Uhr-App zeigt und was ihre Tasten tun. Steuerkreuz und Ziffern behalten ihre Funktion.</string>
     <string name="watch_pages_title">Seiten</string>

@@ -300,6 +300,7 @@
     <string name="privacy_title">Privatlivspolitik</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Licenser</string>
+    <string name="settings_support">Støt Elly på Ko-fi</string>
     <string name="licenses_title">Open source-licenser</string>
     <string name="licenses_intro">Elly er fri software og bruger disse open source-komponenter.</string>
     <string name="licenses_show">Vis licenstekst</string>
@@ -379,7 +380,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Næste: %1$s</string>
     <string name="help_nav_previous">Forrige kapitel</string>
-    <string name="help_nav_home">Oversigt over hjælpen</string>
+    <string name="help_nav_exit">Afslut hjælpen</string>
     <string name="help_nav_next">Næste kapitel</string>
     <plurals name="help_elly_results">
         <item quantity="one">Jeg fandt ét resultat.</item>
@@ -514,6 +515,14 @@
     <string name="help_privacy_policy_title">Privatlivspolitik</string>
     <string name="help_privacy_policy_body">Den fulde privatlivspolitik åbnes via »Privatliv« nederst i indstillingerne ved siden af versionsnummeret.</string>
     <string name="help_privacy_link">privatlivspolitik</string>
+    <string name="help_support_title">Support til dig, support til mig</string>
+    <string name="help_support_elly">Ahh, et kaffebad! Mens jeg slapper af, finder du her ud af, hvor du får hjælp, og hvordan du kan skænke min næste kop.</string>
+    <string name="help_support_you_title">Support til dig</string>
+    <string name="help_support_you_body">Spørgsmål, problemer eller idéer? Jeg hjælper gerne.\n• Fejl og ønsker: https://github.com/robNice/Elly/issues\n• E-mail: Elly@robnice.de</string>
+    <string name="help_support_me_title">Support til mig</string>
+    <string name="help_support_me_body">Har du lyst til at give mig en kop kaffe?\nJeg udvikler denne app i min fritid, simpelthen fordi jeg nyder det og mener, at nyttig software ikke altid behøver et prisskilt.\nDin frivillige støtte er et dejligt tegn på anerkendelse af den tid og indsats, der ligger i dette projekt. Den betyder virkelig meget for mig.</string>
+    <string name="help_support_me_button">Giv mig en kop kaffe</string>
+    <string name="help_support_me_closing">God fornøjelse med Elly, og god zapping!</string>
     <string name="settings_root_ssh">Rootadgang og SSH konfigureret?</string>
     <string name="settings_root_ssh_description">Til rootede tv med Homebrew Channel og dens SSH-server slået til. Kræves til programguiden.</string>
     <string name="settings_root_ssh_check">Kontrollér</string>

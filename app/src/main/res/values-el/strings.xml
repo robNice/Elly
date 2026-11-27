@@ -300,6 +300,7 @@
     <string name="privacy_title">Πολιτική απορρήτου</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Άδειες</string>
+    <string name="settings_support">Υποστήριξε το Elly στο Ko-fi</string>
     <string name="licenses_title">Άδειες ανοιχτού κώδικα</string>
     <string name="licenses_intro">Η Elly είναι ελεύθερο λογισμικό και χρησιμοποιεί αυτά τα στοιχεία ανοιχτού κώδικα.</string>
     <string name="licenses_show">Εμφάνιση κειμένου άδειας</string>
@@ -380,7 +381,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Επόμενο: %1$s</string>
     <string name="help_nav_previous">Προηγούμενο κεφάλαιο</string>
-    <string name="help_nav_home">Επισκόπηση βοήθειας</string>
+    <string name="help_nav_exit">Έξοδος από τη βοήθεια</string>
     <string name="help_nav_next">Επόμενο κεφάλαιο</string>
     <plurals name="help_elly_results">
         <item quantity="one">Βρήκα ένα αποτέλεσμα.</item>
@@ -515,6 +516,14 @@
     <string name="help_privacy_policy_title">Πολιτική απορρήτου</string>
     <string name="help_privacy_policy_body">Την πλήρη πολιτική απορρήτου την ανοίγεις από το «Απόρρητο» στο κάτω μέρος των ρυθμίσεων, δίπλα στον αριθμό έκδοσης.</string>
     <string name="help_privacy_link">πολιτική απορρήτου</string>
+    <string name="help_support_title">Υποστήριξη για σένα, υποστήριξη για μένα</string>
+    <string name="help_support_elly">Αχ, ένα μπάνιο σε καφέ! Όσο χαλαρώνω, εδώ θα βρεις πού να ζητήσεις βοήθεια και πώς να μου βάλεις το επόμενο φλιτζάνι.</string>
+    <string name="help_support_you_title">Υποστήριξη για σένα</string>
+    <string name="help_support_you_body">Ερωτήσεις, προβλήματα ή ιδέες; Θα σε βοηθήσω με χαρά.\n• Σφάλματα και προτάσεις: https://github.com/robNice/Elly/issues\n• E-mail: Elly@robnice.de</string>
+    <string name="help_support_me_title">Υποστήριξη για μένα</string>
+    <string name="help_support_me_body">Θέλεις να με κεράσεις έναν καφέ;\nΑναπτύσσω αυτή την εφαρμογή στον ελεύθερο χρόνο μου, απλώς επειδή το απολαμβάνω και πιστεύω ότι το χρήσιμο λογισμικό δεν χρειάζεται πάντα ετικέτα τιμής.\nΗ εθελοντική σου υποστήριξη είναι ένα υπέροχο σημάδι εκτίμησης για τον χρόνο και τον κόπο που μπαίνουν σε αυτό το έργο. Σημαίνει πραγματικά πολλά για μένα.</string>
+    <string name="help_support_me_button">Κέρασέ με έναν καφέ</string>
+    <string name="help_support_me_closing">Απόλαυσε το Elly και καλό ζάπινγκ!</string>
     <string name="settings_root_ssh">Πρόσβαση root και SSH ρυθμισμένα;</string>
     <string name="settings_root_ssh_description">Για τηλεοράσεις με root, Homebrew Channel και ενεργό διακομιστή SSH. Απαιτείται για τον οδηγό προγράμματος.</string>
     <string name="settings_root_ssh_check">Έλεγχος</string>

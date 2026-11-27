@@ -299,6 +299,7 @@
     <string name="privacy_title">Integritetspolicy</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Licenser</string>
+    <string name="settings_support">Stöd Elly på Ko-fi</string>
     <string name="licenses_title">Licenser för öppen källkod</string>
     <string name="licenses_intro">Elly är fri programvara och använder de här komponenterna med öppen källkod.</string>
     <string name="licenses_show">Visa licenstext</string>
@@ -378,7 +379,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Nästa: %1$s</string>
     <string name="help_nav_previous">Föregående kapitel</string>
-    <string name="help_nav_home">Hjälpöversikt</string>
+    <string name="help_nav_exit">Avsluta hjälpen</string>
     <string name="help_nav_next">Nästa kapitel</string>
     <plurals name="help_elly_results">
         <item quantity="one">Jag hittade en träff.</item>
@@ -513,6 +514,14 @@
     <string name="help_privacy_policy_title">Integritetspolicy</string>
     <string name="help_privacy_policy_body">Hela integritetspolicyn öppnas via ”Integritet” längst ned i inställningarna, bredvid versionsnumret.</string>
     <string name="help_privacy_link">integritetspolicy</string>
+    <string name="help_support_title">Support för dig, stöd för mig</string>
+    <string name="help_support_elly">Ahh, ett kaffebad! Medan jag kopplar av får du här veta var du får hjälp och hur du kan hälla upp min nästa kopp.</string>
+    <string name="help_support_you_title">Support för dig</string>
+    <string name="help_support_you_body">Frågor, problem eller idéer? Jag hjälper gärna till.\n• Buggar och önskemål: https://github.com/robNice/Elly/issues\n• E-post: Elly@robnice.de</string>
+    <string name="help_support_me_title">Stöd för mig</string>
+    <string name="help_support_me_body">Vill du bjuda mig på en kopp kaffe?\nJag utvecklar den här appen på min fritid, helt enkelt för att jag tycker om det och anser att användbar programvara inte alltid behöver en prislapp.\nDitt frivilliga stöd är ett fint tecken på uppskattning för den tid och möda som läggs på projektet. Det betyder verkligen mycket för mig.</string>
+    <string name="help_support_me_button">Bjud mig på en kaffe</string>
+    <string name="help_support_me_closing">Ha det kul med Elly, och trevligt zappande!</string>
     <string name="settings_root_ssh">Root-åtkomst och SSH konfigurerade?</string>
     <string name="settings_root_ssh_description">För rootade tv-apparater med Homebrew Channel och SSH-servern påslagen. Behövs för programguiden.</string>
     <string name="settings_root_ssh_check">Kontrollera</string>

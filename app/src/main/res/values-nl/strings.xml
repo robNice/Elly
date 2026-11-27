@@ -299,6 +299,7 @@
     <string name="privacy_title">Privacyverklaring</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Licenties</string>
+    <string name="settings_support">Steun Elly op Ko-fi</string>
     <string name="licenses_title">Opensourcelicenties</string>
     <string name="licenses_intro">Elly is vrije software en gebruikt deze opensourcecomponenten.</string>
     <string name="licenses_show">Licentietekst tonen</string>
@@ -379,7 +380,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Volgende: %1$s</string>
     <string name="help_nav_previous">Vorig hoofdstuk</string>
-    <string name="help_nav_home">Helpoverzicht</string>
+    <string name="help_nav_exit">Help afsluiten</string>
     <string name="help_nav_next">Volgend hoofdstuk</string>
     <plurals name="help_elly_results">
         <item quantity="one">Ik heb één resultaat opgepikt.</item>
@@ -514,6 +515,14 @@
     <string name="help_privacy_policy_title">Privacyverklaring</string>
     <string name="help_privacy_policy_body">De volledige privacyverklaring open je via “Privacy” onderaan de instellingen, naast het versienummer.</string>
     <string name="help_privacy_link">privacyverklaring</string>
+    <string name="help_support_title">Support voor jou, steun voor mij</string>
+    <string name="help_support_elly">Ahh, een koffiebad! Terwijl ik ontspan, lees je hier waar je hulp krijgt en hoe je mijn volgende kopje kunt inschenken.</string>
+    <string name="help_support_you_title">Support voor jou</string>
+    <string name="help_support_you_body">Vragen, problemen of ideeën? Ik help je graag.\n• Bugs en wensen: https://github.com/robNice/Elly/issues\n• E-mail: Elly@robnice.de</string>
+    <string name="help_support_me_title">Steun voor mij</string>
+    <string name="help_support_me_body">Zin om me een kopje koffie te trakteren?\nIk ontwikkel deze app in mijn vrije tijd, gewoon omdat ik het leuk vind en omdat ik vind dat nuttige software niet altijd een prijskaartje nodig heeft.\nJe vrijwillige steun is een mooi teken van waardering voor de tijd en moeite die in dit project zitten. Het betekent echt veel voor me.</string>
+    <string name="help_support_me_button">Trakteer me op koffie</string>
+    <string name="help_support_me_closing">Veel plezier met Elly en fijn zappen!</string>
     <string name="settings_root_ssh">Roottoegang en SSH ingesteld?</string>
     <string name="settings_root_ssh_description">Voor geroote tv\'s met het Homebrew Channel en ingeschakelde SSH-server. Nodig voor de programmagids.</string>
     <string name="settings_root_ssh_check">Controleren</string>

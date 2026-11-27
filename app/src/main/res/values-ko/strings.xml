@@ -300,6 +300,7 @@
     <string name="privacy_title">개인정보 처리방침</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">라이선스</string>
+    <string name="settings_support">Ko-fi에서 Elly 후원하기</string>
     <string name="licenses_title">오픈소스 라이선스</string>
     <string name="licenses_intro">Elly는 자유 소프트웨어이며, 다음 오픈소스 구성 요소를 사용해요.</string>
     <string name="licenses_show">라이선스 전문 보기</string>
@@ -380,7 +381,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">다음: %1$s</string>
     <string name="help_nav_previous">이전 장</string>
-    <string name="help_nav_home">도움말 개요</string>
+    <string name="help_nav_exit">도움말 닫기</string>
     <string name="help_nav_next">다음 장</string>
     <plurals name="help_elly_results">
         <item quantity="other">%d개를 찾았어요!</item>
@@ -514,6 +515,14 @@
     <string name="help_privacy_policy_title">개인정보 처리방침</string>
     <string name="help_privacy_policy_body">개인정보 처리방침 전문은 설정 맨 아래, 버전 번호 옆의 ‘개인정보 보호’에서 열 수 있어요.</string>
     <string name="help_privacy_link">개인정보 처리방침</string>
+    <string name="help_support_title">당신을 위한 지원, 나를 위한 응원</string>
+    <string name="help_support_elly">아~ 커피 목욕! 제가 쉬는 동안, 여기서 도움을 받을 곳과 제게 다음 한 잔을 따라 줄 방법을 알아보세요.</string>
+    <string name="help_support_you_title">당신을 위한 지원</string>
+    <string name="help_support_you_body">질문, 문제, 아이디어가 있나요? 기꺼이 도와드릴게요.\n• 버그와 제안: https://github.com/robNice/Elly/issues\n• 이메일: Elly@robnice.de</string>
+    <string name="help_support_me_title">나를 위한 응원</string>
+    <string name="help_support_me_body">커피 한 잔 사 주실래요?\n저는 이 앱을 여가 시간에 개발하고 있어요. 그저 즐겁기 때문이고, 유용한 소프트웨어에 항상 가격표가 필요하지는 않다고 믿기 때문이에요.\n자발적인 후원은 이 프로젝트에 들인 시간과 노력에 대한 멋진 감사의 표시예요. 저에게 정말 큰 의미가 있어요.</string>
+    <string name="help_support_me_button">커피 한 잔 사 주기</string>
+    <string name="help_support_me_closing">Elly와 함께 즐겁게 채널을 돌려 보세요!</string>
     <string name="settings_root_ssh">루트 권한과 SSH가 설정되어 있나요?</string>
     <string name="settings_root_ssh_description">Homebrew Channel이 설치되고 SSH 서버가 켜진 루팅된 TV용이에요. 프로그램 가이드에 필요해요.</string>
     <string name="settings_root_ssh_check">확인</string>

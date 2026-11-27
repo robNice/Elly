@@ -39,6 +39,7 @@
     <dimen name="pointer_mascot_side_gap">8dp</dimen>
     <dimen name="pointer_hint_spacing">12dp</dimen>
     <dimen name="settings_footer_padding">12dp</dimen>
+    <dimen name="settings_support_logo_height">20dp</dimen>
     <dimen name="status_light_size">16dp</dimen>
     <dimen name="status_light_spacing">8dp</dimen>
     <dimen name="privacy_block_spacing">6dp</dimen>
@@ -154,6 +155,7 @@
     <dimen name="onboarding_mascot_size_small">84dp</dimen>
     <dimen name="onboarding_fade_height">48dp</dimen>
     <dimen name="help_mascot_size">64dp</dimen>
+    <dimen name="help_button_icon_height">18dp</dimen>
     <dimen name="elly_note_mascot_size">64dp</dimen>
     <dimen name="elly_dialog_mascot_size">72dp</dimen>
     <dimen name="elly_dialog_spacing">16dp</dimen>

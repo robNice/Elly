@@ -154,6 +154,16 @@ object EllyPoses {
             EllyLayer(R.drawable.elly_brood_hearts, EllyMotion.DRIFT, pivotX = 0.84f, pivotY = 0.22f)
         )
     )
+    val CoffeeBath = EllyPose(
+        listOf(
+            EllyLayer(R.drawable.elly_coffee_cup_back, EllyMotion.NONE),
+            EllyLayer(R.drawable.elly_coffee_elly, EllyMotion.BREATHE, pivotY = 0.6f),
+            EllyLayer(R.drawable.elly_coffee_cup_front, EllyMotion.NONE),
+            EllyLayer(R.drawable.elly_coffee_wings, EllyMotion.NONE),
+            EllyLayer(R.drawable.elly_coffee_bubbles, EllyMotion.DRIFT, phase = 0.4f, pivotY = 0.55f),
+            EllyLayer(R.drawable.elly_coffee_steam, EllyMotion.DRIFT, pivotY = 0.46f)
+        )
+    )
     val Judge = EllyPose(
         listOf(
             EllyLayer(R.drawable.elly_judge_elly, EllyMotion.BREATHE, pivotY = 0.85f),

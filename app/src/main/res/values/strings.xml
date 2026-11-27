@@ -427,6 +427,8 @@
     <string name="privacy_title">Privacy policy</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Licenses</string>
+    <string name="settings_support">Support Elly on Ko-fi</string>
+    <string name="settings_support_url" translatable="false">https://ko-fi.com/robnice</string>
     <string name="licenses_title">Open source licenses</string>
     <string name="licenses_intro">Elly is free software and uses these open source components.</string>
     <string name="licenses_show">Show license text</string>
@@ -523,7 +525,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Next: %1$s</string>
     <string name="help_nav_previous">Previous chapter</string>
-    <string name="help_nav_home">Help overview</string>
+    <string name="help_nav_exit">Exit help</string>
     <string name="help_nav_next">Next chapter</string>
     <plurals name="help_elly_results">
         <item quantity="one">I found one match.</item>
@@ -666,6 +668,14 @@
     <string name="help_privacy_policy_title">Privacy policy</string>
     <string name="help_privacy_policy_body">The full privacy policy is opened via “Privacy” at the bottom of the settings, next to the version number.</string>
     <string name="help_privacy_link">privacy policy</string>
+    <string name="help_support_title">Support you, Support me</string>
+    <string name="help_support_elly">Ahh, a coffee bath! While I soak, you\'ll find out here where to get help and how to pour me the next cup.</string>
+    <string name="help_support_you_title">Support you</string>
+    <string name="help_support_you_body">Questions, problems or ideas? I\'m happy to help.\n• Bugs and feature requests: https://github.com/robNice/Elly/issues\n• E-mail: Elly@robnice.de</string>
+    <string name="help_support_me_title">Support me</string>
+    <string name="help_support_me_body">Want to buy me a coffee?\nI develop this app in my spare time, simply because I enjoy it and believe that useful software doesn\'t always need a price tag.\nYour voluntary support is a wonderful sign of appreciation for the time and effort that goes into this project. It really means a lot to me.</string>
+    <string name="help_support_me_button">Buy me a coffee</string>
+    <string name="help_support_me_closing">Enjoy Elly, and happy switching!</string>
     <string name="settings_tab_watch">Watch</string>
     <string name="watch_settings_intro">Choose which pages the watch app shows and what its keys do. The directional pad and the digits keep their function.</string>
     <string name="watch_pages_title">Pages</string>

@@ -300,6 +300,7 @@
     <string name="privacy_title">Політика конфіденційності</string>
     <string name="privacy_bullet">•  %1$s</string>
     <string name="settings_licenses">Ліцензії</string>
+    <string name="settings_support">Підтримати Elly на Ko-fi</string>
     <string name="licenses_title">Ліцензії відкритого ПЗ</string>
     <string name="licenses_intro">Elly — вільне ПЗ і використовує ці компоненти з відкритим кодом.</string>
     <string name="licenses_show">Показати текст ліцензії</string>
@@ -380,7 +381,7 @@
     <string name="help_chapter_number">%1$d. %2$s</string>
     <string name="help_next_chapter">Далі: %1$s</string>
     <string name="help_nav_previous">Попередній розділ</string>
-    <string name="help_nav_home">Огляд довідки</string>
+    <string name="help_nav_exit">Закрити довідку</string>
     <string name="help_nav_next">Наступний розділ</string>
     <plurals name="help_elly_results">
         <item quantity="one">Я знайшла %d збіг.</item>
@@ -517,6 +518,14 @@
     <string name="help_privacy_policy_title">Політика конфіденційності</string>
     <string name="help_privacy_policy_body">Повну політику конфіденційності можна відкрити через «Конфіденційність» унизу налаштувань, поруч із номером версії.</string>
     <string name="help_privacy_link">політика конфіденційності</string>
+    <string name="help_support_title">Підтримка для тебе, підтримка для мене</string>
+    <string name="help_support_elly">Ах, кавова ванна! Поки я відпочиваю, тут ти дізнаєшся, де отримати допомогу і як налити мені наступну чашку.</string>
+    <string name="help_support_you_title">Підтримка для тебе</string>
+    <string name="help_support_you_body">Питання, проблеми чи ідеї? Я з радістю допоможу.\n• Помилки та побажання: https://github.com/robNice/Elly/issues\n• Ел. пошта: Elly@robnice.de</string>
+    <string name="help_support_me_title">Підтримка для мене</string>
+    <string name="help_support_me_body">Хочеш пригостити мене кавою?\nЯ розробляю цей застосунок у вільний час, просто тому що мені це подобається і я вважаю, що корисним програмам не завжди потрібен цінник.\nТвоя добровільна підтримка — чудовий знак вдячності за час і зусилля, вкладені в цей проєкт. Для мене це справді дуже багато значить.</string>
+    <string name="help_support_me_button">Пригостити мене кавою</string>
+    <string name="help_support_me_closing">Насолоджуйся Elly, і приємного перемикання!</string>
     <string name="settings_root_ssh">Root-доступ і SSH налаштовано?</string>
     <string name="settings_root_ssh_description">Для телевізорів із root-доступом, Homebrew Channel і ввімкненим SSH-сервером. Потрібно для телепрограми.</string>
     <string name="settings_root_ssh_check">Перевірити</string>
