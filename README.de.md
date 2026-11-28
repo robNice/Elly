@@ -24,34 +24,35 @@ Elly macht dein Android-Handy zur Fernbedienung für LG-Fernseher mit webOS. Die
 
 1. [Funktionen im Überblick](#1-funktionen-im-ueberblick)
 2. [Voraussetzungen](#2-voraussetzungen)
-3. [Erste Schritte](#3-erste-schritte)
-   - [3.1 Schnelleinstieg](#31-schnelleinstieg)
-   - [3.2 Fernseher verbinden](#32-fernseher-verbinden)
-4. [Die Fernbedienung](#4-die-fernbedienung)
-   - [4.1 Kopfleiste](#41-kopfleiste)
-   - [4.2 Screen 1](#42-screen-1)
-   - [4.3 Screen 2](#43-screen-2)
-   - [4.4 Screen 3](#44-screen-3)
-   - [4.5 Screen 4](#45-screen-4)
-   - [4.6 Texteingabe](#46-texteingabe)
-   - [4.7 Programmübersicht](#47-programmuebersicht)
-   - [4.8 Tonspur](#48-tonspur)
-   - [4.9 Untertitel](#49-untertitel)
-5. [Zeiger](#5-zeiger)
-   - [5.1 Bewegungsmodus](#51-bewegungsmodus)
-   - [5.2 Touchpad-Modus](#52-touchpad-modus)
-6. [Screens bearbeiten](#6-screens-bearbeiten)
-   - [6.1 Editor](#61-editor)
-   - [6.2 Tastengruppen](#62-tastengruppen)
-   - [6.3 App-Tasten](#63-app-tasten)
-7. [Darstellung](#7-darstellung)
-8. [Widgets](#8-widgets)
-9. [Einstellungen](#9-einstellungen)
-10. [Hilfe](#10-hilfe)
-11. [Datenschutz](#11-datenschutz)
-12. [Bauen](#12-bauen)
-13. [Releases](#13-releases)
-14. [Lizenz](#14-lizenz)
+3. [Installation](#3-installation)
+4. [Erste Schritte](#4-erste-schritte)
+   - [4.1 Schnelleinstieg](#41-schnelleinstieg)
+   - [4.2 Fernseher verbinden](#42-fernseher-verbinden)
+5. [Die Fernbedienung](#5-die-fernbedienung)
+   - [5.1 Kopfleiste](#51-kopfleiste)
+   - [5.2 Screen 1](#52-screen-1)
+   - [5.3 Screen 2](#53-screen-2)
+   - [5.4 Screen 3](#54-screen-3)
+   - [5.5 Screen 4](#55-screen-4)
+   - [5.6 Texteingabe](#56-texteingabe)
+   - [5.7 Programmübersicht](#57-programmuebersicht)
+   - [5.8 Tonspur](#58-tonspur)
+   - [5.9 Untertitel](#59-untertitel)
+6. [Zeiger](#6-zeiger)
+   - [6.1 Bewegungsmodus](#61-bewegungsmodus)
+   - [6.2 Touchpad-Modus](#62-touchpad-modus)
+7. [Screens bearbeiten](#7-screens-bearbeiten)
+   - [7.1 Editor](#71-editor)
+   - [7.2 Tastengruppen](#72-tastengruppen)
+   - [7.3 App-Tasten](#73-app-tasten)
+8. [Darstellung](#8-darstellung)
+9. [Widgets](#9-widgets)
+10. [Einstellungen](#10-einstellungen)
+11. [Hilfe](#11-hilfe)
+12. [Datenschutz](#12-datenschutz)
+13. [Bauen](#13-bauen)
+14. [Releases](#14-releases)
+15. [Lizenz](#15-lizenz)
 
 ## 1 Funktionen im Ueberblick
 
@@ -80,15 +81,24 @@ Elly macht dein Android-Handy zur Fernbedienung für LG-Fernseher mit webOS. Die
 - LG-Fernseher mit webOS im selben Netzwerk wie das Handy.
 - Zum Einschalten des Fernsehers: Am Fernseher muss die Option „Über WLAN einschalten“ (bei manchen Modellen „Mobile TV On“) aktiviert sein.
 
-## 3 Erste Schritte
+## 3 Installation
 
-### 3.1 Schnelleinstieg
+<a href="https://play.google.com/store/apps/details?id=de.robnice.elly"><img src="https://play.google.com/intl/de_de/badges/static/images/badges/de_badge_web_generic.png" width="220" alt="Jetzt bei Google Play"></a>
+
+- **Google Play:** Elly lässt sich über [Google Play](https://play.google.com/store/apps/details?id=de.robnice.elly) installieren; Updates kommen dann automatisch.
+- **GitHub:** Jede Version steht als signiertes APK auf der [Release-Seite](https://github.com/robNice/Elly/releases) bereit (siehe [Releases](#14-releases)).
+
+> Google Play und das Google-Play-Logo sind Marken von Google LLC.
+
+## 4 Erste Schritte
+
+### 4.1 Schnelleinstieg
 
 <img src="docs/de/onboarding.png" width="270" alt="Schnelleinstieg">
 
-Beim ersten Start stellt sich Elly vor und zeigt in sechs kurzen Seiten das Wichtigste: Fernseher verbinden, Screens und Kopfleiste, Einstellungen und eigene Screens sowie den Zeiger. Mit **Überspringen** geht es direkt los. Der Schnelleinstieg lässt sich jederzeit über die [Hilfe](#10-hilfe) erneut starten.
+Beim ersten Start stellt sich Elly vor und zeigt in sechs kurzen Seiten das Wichtigste: Fernseher verbinden, Screens und Kopfleiste, Einstellungen und eigene Screens sowie den Zeiger. Mit **Überspringen** geht es direkt los. Der Schnelleinstieg lässt sich jederzeit über die [Hilfe](#11-hilfe) erneut starten.
 
-### 3.2 Fernseher verbinden
+### 4.2 Fernseher verbinden
 
 <img src="docs/de/settings_tv.png" width="270" alt="Einstellungen, Reiter TV">
 
@@ -100,22 +110,22 @@ Ist noch kein Fernseher gekoppelt, öffnet Elly die Einstellungen im Reiter **TV
 
 Es lassen sich mehrere Fernseher koppeln. Sie stehen oben im Reiter unter **Gekoppelte Fernseher**: Antippen macht einen Fernseher zum aktiven, **Entfernen** löst die Kopplung nach einer Rückfrage. Elly merkt sich außerdem die Netzwerkadresse (MAC) des Fernsehers, um ihn später einschalten zu können. Den Reiter **TV** erreichst du jederzeit über den Fernseher-Namen in der Kopfleiste. Solange der Demo-Modus an ist, zeigt der Reiter nur den Schalter für den Demo-Modus.
 
-## 4 Die Fernbedienung
+## 5 Die Fernbedienung
 
-Die folgenden Abschnitte beschreiben die Standardbelegung. Jeder Screen lässt sich im [Editor](#61-editor) frei umgestalten.
+Die folgenden Abschnitte beschreiben die Standardbelegung. Jeder Screen lässt sich im [Editor](#71-editor) frei umgestalten.
 
-### 4.1 Kopfleiste
+### 5.1 Kopfleiste
 
 Die Kopfleiste ist auf jedem Screen sichtbar:
 
 - **Statusleuchte und Name des Fernsehers** – die Leuchte zeigt den Verbindungszustand: grün verbunden, rot nicht erreichbar, grau wird geprüft, gelb Demo-Modus. Solange die App sichtbar ist, wird die Verbindung alle 10 Sekunden geprüft, außerdem nach jedem Befehl. Ein Tippen auf den Namen öffnet die Einstellungen im Reiter **TV**.
-- **Zeiger-Taste** (Maus-Symbol) – öffnet den [Zeiger](#5-zeiger). Solange er aktiv ist, ist das Symbol blau. Es lässt sich in den Einstellungen ausblenden.
-- **Zahnrad** – öffnet die [Einstellungen](#9-einstellungen).
-- **Elly** ganz rechts – öffnet die [Hilfe](#10-hilfe). Zu Weihnachten (24.12. bis 06.01.), zu Ostern (Palmsonntag bis zum Sonntag nach Ostern) und vor Halloween (24. bis 31.10.) trägt sie ein passendes Kostüm.
+- **Zeiger-Taste** (Maus-Symbol) – öffnet den [Zeiger](#6-zeiger). Solange er aktiv ist, ist das Symbol blau. Es lässt sich in den Einstellungen ausblenden.
+- **Zahnrad** – öffnet die [Einstellungen](#10-einstellungen).
+- **Elly** ganz rechts – öffnet die [Hilfe](#11-hilfe). Zu Weihnachten (24.12. bis 06.01.), zu Ostern (Palmsonntag bis zum Sonntag nach Ostern) und vor Halloween (24. bis 31.10.) trägt sie ein passendes Kostüm.
 
 Die Vorschauen unten zeigen den aktuellen Screen; gewechselt wird durch Wischen nach links oder rechts oder durch Antippen einer Vorschau, die direkt zu ihrem Screen springt. Tasten lösen erst beim Loslassen aus – ein Wisch, der auf einer Taste beginnt, sendet also nichts. Lautstärke, Kanal und das Steuerkreuz wiederholen beim Gedrückthalten.
 
-### 4.2 Screen 1
+### 5.2 Screen 1
 
 <img src="docs/de/remote_screen1.png" width="270" alt="Screen 1">
 
@@ -133,7 +143,7 @@ Die Vorschauen unten zeigen den aktuellen Screen; gewechselt wird durch Wischen 
 | Zurück | Einen Schritt zurück. |
 | Farbtasten | Rot, Grün, Gelb, Blau. |
 
-### 4.3 Screen 2
+### 5.3 Screen 2
 
 <p>
   <img src="docs/de/remote_screen2.png" width="270" alt="Screen 2">
@@ -152,7 +162,7 @@ Die Vorschauen unten zeigen den aktuellen Screen; gewechselt wird durch Wischen 
 | Eingang | Öffnet eine Liste der Eingänge des Fernsehers (z. B. HDMI 1, HDMI 2) und schaltet auf den gewählten um. Eingänge ohne angeschlossenes Gerät sind gekennzeichnet. |
 | Farbtasten | Rot, Grün, Gelb, Blau. |
 
-### 4.4 Screen 3
+### 5.4 Screen 3
 
 <img src="docs/de/remote_screen3.png" width="270" alt="Screen 3">
 
@@ -162,17 +172,17 @@ Die Vorschauen unten zeigen den aktuellen Screen; gewechselt wird durch Wischen 
 | Zurückspulen, Pause, Wiedergabe, Vorspulen | Steuerung der Wiedergabe. |
 | Steuerkreuz, Zurück | Navigation wie auf Screen 1. |
 | Farbtasten | Rot, Grün, Gelb, Blau. |
-| App-Tasten | Öffnen eine App am Fernseher, vorbelegt mit Netflix, Prime Video und Rakuten TV, siehe [App-Tasten](#63-app-tasten). |
+| App-Tasten | Öffnen eine App am Fernseher, vorbelegt mit Netflix, Prime Video und Rakuten TV, siehe [App-Tasten](#73-app-tasten). |
 
-### 4.5 Screen 4
+### 5.5 Screen 4
 
-Der vierte Screen ist zunächst leer und ausgeblendet. Er wird in den Einstellungen unter **Darstellung → Screens** eingeblendet und im [Editor](#61-editor) belegt. Solange ein Screen leer ist, steht Elly dort an ihrer Staffelei und erklärt, wie Tasten hinzukommen.
+Der vierte Screen ist zunächst leer und ausgeblendet. Er wird in den Einstellungen unter **Darstellung → Screens** eingeblendet und im [Editor](#71-editor) belegt. Solange ein Screen leer ist, steht Elly dort an ihrer Staffelei und erklärt, wie Tasten hinzukommen.
 
-### 4.6 Texteingabe
+### 5.6 Texteingabe
 
 Ist am Fernseher ein Eingabefeld aktiv (z. B. eine Suche), öffnet sich auf dem Handy automatisch ein Textfeld mit der Tastatur des Handys. Der Text wird während des Tippens übertragen, die Senden-Taste wirkt wie Enter. Über die Taste **Tastatur**, die sich im Editor auf einen Screen legen lässt, öffnest du das Textfeld auch von Hand. Apps mit eigener Bildschirmtastatur (z. B. manche Streaming-Apps) nehmen keinen Text vom Handy an.
 
-### 4.7 Programmuebersicht
+### 5.7 Programmuebersicht
 
 <p>
   <img src="docs/de/guide.png" width="270" alt="Screen mit Programmübersicht">
@@ -180,27 +190,27 @@ Ist am Fernseher ein Eingabefeld aktiv (z. B. eine Suche), öffnet sich auf dem 
   <img src="docs/de/guide_info.png" width="270" alt="Infofenster einer Sendung">
 </p>
 
-Mit einem **gerooteten** LG-Fernseher kann ein Screen die Programmübersicht zeigen, aufgebaut wie der Guide am Fernseher. Voraussetzung ist der Homebrew Channel mit eingeschaltetem SSH-Server; eingerichtet wird der Zugang unter [Einstellungen → TV](#9-einstellungen). Im Demo-Modus zeigt Elly erfundene Sender und Sendungen.
+Mit einem **gerooteten** LG-Fernseher kann ein Screen die Programmübersicht zeigen, aufgebaut wie der Guide am Fernseher. Voraussetzung ist der Homebrew Channel mit eingeschaltetem SSH-Server; eingerichtet wird der Zugang unter [Einstellungen → TV](#10-einstellungen). Im Demo-Modus zeigt Elly erfundene Sender und Sendungen.
 
-- **Einfügen:** Im [Editor](#61-editor) unter „+ Element“ → „Programmübersicht“, danach die Favoritenliste des Fernsehers wählen. Das Element ist anfangs so breit wie der Screen und halb so hoch und lässt sich wie jedes andere verschieben und skalieren; Gedrückthalten ändert die Liste. Mehrere Übersichten mit verschiedenen Listen sind möglich.
+- **Einfügen:** Im [Editor](#71-editor) unter „+ Element“ → „Programmübersicht“, danach die Favoritenliste des Fernsehers wählen. Das Element ist anfangs so breit wie der Screen und halb so hoch und lässt sich wie jedes andere verschieben und skalieren; Gedrückthalten ändert die Liste. Mehrere Übersichten mit verschiedenen Listen sind möglich.
 - **Anzeige:** oben die Uhrzeiten im Halbstundentakt mit mitlaufendem Datum und einer Linie an jedem Tageswechsel, links die Senderlogos, rechts die Sendungen. Die orange Linie zeigt die aktuelle Uhrzeit, die Zeile des laufenden Senders ist orange hinterlegt und seine laufende Sendung orange gerahmt, „Jetzt“ springt zurück. Beim Anzeigen des Screens, bei der Rückkehr in die App und beim Start springt die Übersicht zu „Jetzt“ und stellt den laufenden Sender in die Mitte. Gescrollt wird in alle Richtungen, zurück bis zu 24 Stunden, voraus so weit, wie der Fernseher Daten hat (höchstens 14 Tage).
-- **Bedienung:** Sender antippen schaltet um. Sendung antippen öffnet die Infos (Sender, Uhrzeit, Fortschritt, Staffel und Folge, Genre, Kennzeichen wie HD, Untertitel oder Altersfreigabe, Beschreibung und bei vielen Sendungen ein Bild, das sich per Antippen vergrößert) mit **Erinnern** und **Aufnehmen** – beides übernimmt der Fernseher selbst, auch wenn das Handy aus ist. Laufende Aufnahmen lassen sich beenden. Bei der laufenden Sendung des Senders, der gerade am Fernseher läuft, öffnet **Tonspur wählen** die [Tonspur-Auswahl](#48-tonspur) und **Untertitel wählen** die [Untertitel](#49-untertitel). Geplante Erinnerungen tragen eine Glocke, Aufnahmen einen roten Punkt.
+- **Bedienung:** Sender antippen schaltet um. Sendung antippen öffnet die Infos (Sender, Uhrzeit, Fortschritt, Staffel und Folge, Genre, Kennzeichen wie HD, Untertitel oder Altersfreigabe, Beschreibung und bei vielen Sendungen ein Bild, das sich per Antippen vergrößert) mit **Erinnern** und **Aufnehmen** – beides übernimmt der Fernseher selbst, auch wenn das Handy aus ist. Laufende Aufnahmen lassen sich beenden. Bei der laufenden Sendung des Senders, der gerade am Fernseher läuft, öffnet **Tonspur wählen** die [Tonspur-Auswahl](#58-tonspur) und **Untertitel wählen** die [Untertitel](#59-untertitel). Geplante Erinnerungen tragen eine Glocke, Aufnahmen einen roten Punkt.
 - **Daten:** Elly holt das Programm per SSH vom Fernseher, speichert es auf dem Handy und aktualisiert es, solange die Fernbedienung offen ist. Bilder, Staffel, Folge, feinere Genres und Altersfreigaben stammen aus den Online-Programmdaten von LG und fehlen daher bei manchen Sendungen; die Bilder lädt der Fernseher selbst vom Server von LG, das Handy stellt keine Verbindung zu externen Servern her. Waagerechtes Wischen in der Übersicht wechselt nie den Screen; dafür wischst du über die Vorschauen unten oder tippst eine an. Gibt es noch keine Daten oder schlägt das Laden fehl, zeigt eine ausreichend große Übersicht Elly mit dem Grund.
 
-### 4.8 Tonspur
+### 5.8 Tonspur
 
 <img src="docs/de/audio_tracks.png" width="270" alt="Fenster Tonspur wählen">
 
-Mit einem **gerooteten** Fernseher (Zugang wie bei der [Programmübersicht](#47-programmuebersicht)) lässt sich die Taste **Tonspur** im [Editor](#61-editor) auf einen Screen legen. Sie öffnet die Tonspuren des laufenden Senders mit Sprache und Kennzeichen wie Audiobeschreibung, für Hörgeschädigte oder Dolby; ein Häkchen markiert die aktive. Antippen schaltet am Fernseher um, das Fenster bleibt offen. Dasselbe Fenster öffnet sich auch aus dem Infofenster der Programmübersicht.
+Mit einem **gerooteten** Fernseher (Zugang wie bei der [Programmübersicht](#57-programmuebersicht)) lässt sich die Taste **Tonspur** im [Editor](#71-editor) auf einen Screen legen. Sie öffnet die Tonspuren des laufenden Senders mit Sprache und Kennzeichen wie Audiobeschreibung, für Hörgeschädigte oder Dolby; ein Häkchen markiert die aktive. Antippen schaltet am Fernseher um, das Fenster bleibt offen. Dasselbe Fenster öffnet sich auch aus dem Infofenster der Programmübersicht.
 
 - **Audiobeschreibung bei allen Sendern** schaltet die Einstellung des Fernsehers um: Ist sie an, wählt der Fernseher bei jeder Sendung mit Audiobeschreibung selbst diese Spur, auch nach einem Senderwechsel.
 - Tonspuren gibt es nur, solange der Fernseher ein Fernsehprogramm zeigt. Wechselt jemand zwischendurch den Sender, schaltet Elly nichts um und zeigt die Spuren des neuen Senders.
 
-### 4.9 Untertitel
+### 5.9 Untertitel
 
-Mit demselben Root-Zugang lässt sich die Taste **Untertitel** im [Editor](#61-editor) auf einen Screen legen. Sie öffnet die Untertitel des laufenden Senders mit Sprache und Art, z. B. Videotext; ein Häkchen markiert die aktiven, **Aus** schaltet sie ab. Dasselbe Fenster öffnet sich auch aus dem Infofenster der Programmübersicht. Untertitel lassen sich nur wählen, solange der Fernseher ein Fernsehprogramm zeigt; wurde zwischendurch der Sender gewechselt, bittet Elly, neu zu wählen.
+Mit demselben Root-Zugang lässt sich die Taste **Untertitel** im [Editor](#71-editor) auf einen Screen legen. Sie öffnet die Untertitel des laufenden Senders mit Sprache und Art, z. B. Videotext; ein Häkchen markiert die aktiven, **Aus** schaltet sie ab. Dasselbe Fenster öffnet sich auch aus dem Infofenster der Programmübersicht. Untertitel lassen sich nur wählen, solange der Fernseher ein Fernsehprogramm zeigt; wurde zwischendurch der Sender gewechselt, bittet Elly, neu zu wählen.
 
-## 5 Zeiger
+## 6 Zeiger
 
 Der Zeiger öffnet sich als Overlay über dem aktuellen Screen – am Fernseher erscheint der Cursor der Magic Remote. Geöffnet wird er auf drei Wegen, die du im Reiter **Bedienung** einzeln einschaltest (auch mehrere zugleich) und die in beiden Modi gelten:
 
@@ -218,7 +228,7 @@ Den Modus und alle Feineinstellungen wählst du in den Einstellungen im Reiter *
 
 <img src="docs/de/settings_controls.png" width="270" alt="Einstellungen, Reiter Bedienung">
 
-### 5.1 Bewegungsmodus
+### 6.1 Bewegungsmodus
 
 <img src="docs/de/pointer_motion.png" width="270" alt="Zeiger im Bewegungsmodus">
 
@@ -229,7 +239,7 @@ Der Zeiger folgt den Bewegungen des Handys – wie beim Zielen mit der Magic Rem
 
 Ein Verdrehen des Handys um die Zeigerichtung wird ignoriert, damit der Cursor ruhig bleibt. *Empfindlichkeit* (0,3× bis 3,0×) und *Beschleunigung* (0× bis 4×) lassen sich einstellen. Auf der **Scroll-Fläche** wird durch Wischen nach oben oder unten gescrollt. Der Bewegungsmodus braucht ein Gyroskop im Handy.
 
-### 5.2 Touchpad-Modus
+### 6.2 Touchpad-Modus
 
 <img src="docs/de/pointer_joystick.png" width="270" alt="Zeiger im Touchpad-Modus mit fixiertem Joystick">
 
@@ -240,7 +250,7 @@ Der Zeiger wird über eine Touch-Fläche gesteuert, ein kurzes Tippen klickt. Zw
 
 Der OK-Button lässt sich unten (Standard) oder oben platzieren.
 
-## 6 Screens bearbeiten
+## 7 Screens bearbeiten
 
 <img src="docs/de/settings_appearance.png" width="270" alt="Einstellungen, Reiter Darstellung mit den Screens">
 
@@ -248,11 +258,11 @@ In den Einstellungen unter **Darstellung → Screens** werden die vier Screens a
 
 - **Antippen** blendet einen Screen ein oder aus; mindestens einer bleibt aktiv. Ist nur ein Screen aktiv, verschwinden die Vorschauen unten.
 - **Gedrückt halten und ziehen** ändert die Reihenfolge.
-- **Stift** öffnet den [Editor](#61-editor), **Pfeil** setzt den Screen nach einer Rückfrage auf seine Standardbelegung zurück.
+- **Stift** öffnet den [Editor](#71-editor), **Pfeil** setzt den Screen nach einer Rückfrage auf seine Standardbelegung zurück.
 
 Auswahl und Belegung werden pro Fernseher gespeichert; der Demo-Modus hat eigene.
 
-### 6.1 Editor
+### 7.1 Editor
 
 <p>
   <img src="docs/de/editor.png" width="270" alt="Editor mit ausgewähltem Steuerkreuz">
@@ -262,20 +272,20 @@ Auswahl und Belegung werden pro Fernseher gespeichert; der Demo-Modus hat eigene
 
 Der Editor zeigt das Raster des Screens (24 × 48 Felder) in den Proportionen des Fernbedienungs-Screens. **Anleitung** oben links erklärt die Bedienung in Bildern.
 
-- **Element** fügt eine einzelne Taste, eine Wippe, das Steuerkreuz, eine App-Taste oder eine [Tastengruppe](#62-tastengruppen) hinzu; sie landet auf dem ersten freien Platz.
+- **Element** fügt eine einzelne Taste, eine Wippe, das Steuerkreuz, eine App-Taste oder eine [Tastengruppe](#72-tastengruppen) hinzu; sie landet auf dem ersten freien Platz.
 - **Ziehen** verschiebt ein Element, **auf den Papierkorb ziehen** entfernt es.
 - **Antippen** wählt ein Element aus; dann ändert der Griff an der Ecke die Größe.
 - **Rahmen ziehen** auf freier Fläche wählt mehrere Elemente aus, die sich gemeinsam verschieben oder gemeinsam entfernen lassen.
 - **Rückgängig** nimmt Hinzufügen, Verschieben, Größe, Entfernen, App-Tasten-Änderungen und Zurücksetzen Schritt für Schritt zurück (bis zu 50 Schritte; der Verlauf beginnt bei jedem Öffnen neu).
 - **Zurücksetzen** stellt nach einer Rückfrage die Standardbelegung wieder her, **Fertig** speichert und schließt.
 
-### 6.2 Tastengruppen
+### 7.2 Tastengruppen
 
 <img src="docs/de/editor_groups.png" width="270" alt="Element hinzufügen, Reiter Tastengruppen">
 
 Im Reiter **Tastengruppen** fügst du mehrere Tasten auf einmal ein: Programmtasten (Ziffernblock), Apps, Videosteuerung, Farbtasten, Lautstärke + Kanal, Steuerkreuz + Zurück/Home sowie Ein/Aus + Bildschirm. Die Tasten haben die Größe einzelner Tasten, landen danach als einzelne Elemente auf dem Screen und lassen sich mittig setzen.
 
-### 6.3 App-Tasten
+### 7.3 App-Tasten
 
 <img src="docs/de/app_key.png" width="270" alt="Fenster App-Taste">
 
@@ -286,7 +296,7 @@ Eine App-Taste im Editor **2 Sekunden gedrückt halten** öffnet das Fenster „
 
 Fehlt einer App-Taste das Icon, lädt Elly es nach, sobald eine Verbindung zum Fernseher besteht.
 
-## 7 Darstellung
+## 8 Darstellung
 
 <img src="docs/de/settings_appearance_more.png" width="270" alt="Hintergründe, Rundung und Lichteffekt">
 
@@ -298,7 +308,7 @@ Im Reiter **Darstellung** der Einstellungen stehen **Farbpalette** und **Hinterg
 - **Lange Sommerabende** – flaches Licht von links oben; die Tasten werfen lange, weiche Schatten nach rechts unten, der Hintergrund wird von dieser Ecke her aufgehellt (ab Android 12). Die Programmübersicht selbst wirft keinen Schatten.
 - **Sichern und einspielen** – **Sichern** fragt, was gespeichert wird: **Screens** (Reihenfolge, angezeigte Screens und Belegungen des aktiven Fernsehers), **Darstellung** (Farbpalette, Hintergrund samt eigenem Bild, Rundung und Lichteffekt) oder beides zusammen in einer Datei. **Aus Datei einspielen** zeigt, was in der Datei steckt, lässt dich wählen und ersetzt nach einer Rückfrage nur diese Teile. So gibst du deine Screens weiter, ohne die Optik des anderen zu ändern. Ältere Sicherungen mit nur Screens oder nur Darstellung lassen sich weiterhin einspielen.
 
-## 8 Widgets
+## 9 Widgets
 
 <img src="docs/de/widgets.png" width="270" alt="Homescreen mit Elly-Widgets">
 
@@ -319,17 +329,17 @@ Elly bringt sieben Homescreen-Widgets mit:
 - Die App muss nicht geöffnet sein. Ein Tastendruck vibriert, wenn Vibration eingeschaltet ist; ist der Fernseher nicht erreichbar, erscheint ein Hinweis.
 - Ab Android 12 übernehmen die Widgets die Farben des Hintergrundbilds und passen sich dem hellen und dunklen Design an.
 
-## 9 Einstellungen
+## 10 Einstellungen
 
 Das Zahnrad in der Kopfleiste öffnet die Einstellungen. Sie haben drei Reiter, zwischen denen du auch wischen kannst; Elly merkt sich den zuletzt geöffneten.
 
-- **TV** – gekoppelte Fernseher, Suche, IP-Adresse und **Demo-Modus**: Er simuliert einen verbundenen Fernseher („Demo-TV“, gelbe Statusleuchte), alle Screens sind ohne LG-Fernseher nutzbar und es werden keine Befehle gesendet. Siehe [Fernseher verbinden](#32-fernseher-verbinden). Für gerootete Fernseher richtet **Root-Zugang und SSH eingerichtet?** den Zugang für die [Programmübersicht](#47-programmuebersicht), die [Tonspur](#48-tonspur) und die [Untertitel](#49-untertitel) ein: Benutzer, Port und die Anmeldung, wie der Fernseher sie erwartet – mit dem **Root-Passwort** oder, wenn auf dem Fernseher SSH-Schlüssel eingerichtet sind, mit deinem **SSH-Schlüssel** (eingefügt oder aus einer Datei geladen). Elly speichert beides verschlüsselt auf dem Handy und verändert am Fernseher nichts.
-- **Darstellung** – Screens, Farbpalette, Hintergrund, Rundung, Lichteffekt, Sichern und einspielen. Siehe [Screens bearbeiten](#6-screens-bearbeiten) und [Darstellung](#7-darstellung).
-- **Bedienung** – Zeigersteuerung, die Wege zum Öffnen und Feineinstellungen (siehe [Zeiger](#5-zeiger)) sowie **Vibration bei Tastendruck**.
+- **TV** – gekoppelte Fernseher, Suche, IP-Adresse und **Demo-Modus**: Er simuliert einen verbundenen Fernseher („Demo-TV“, gelbe Statusleuchte), alle Screens sind ohne LG-Fernseher nutzbar und es werden keine Befehle gesendet. Siehe [Fernseher verbinden](#42-fernseher-verbinden). Für gerootete Fernseher richtet **Root-Zugang und SSH eingerichtet?** den Zugang für die [Programmübersicht](#57-programmuebersicht), die [Tonspur](#58-tonspur) und die [Untertitel](#59-untertitel) ein: Benutzer, Port und die Anmeldung, wie der Fernseher sie erwartet – mit dem **Root-Passwort** oder, wenn auf dem Fernseher SSH-Schlüssel eingerichtet sind, mit deinem **SSH-Schlüssel** (eingefügt oder aus einer Datei geladen). Elly speichert beides verschlüsselt auf dem Handy und verändert am Fernseher nichts.
+- **Darstellung** – Screens, Farbpalette, Hintergrund, Rundung, Lichteffekt, Sichern und einspielen. Siehe [Screens bearbeiten](#7-screens-bearbeiten) und [Darstellung](#8-darstellung).
+- **Bedienung** – Zeigersteuerung, die Wege zum Öffnen und Feineinstellungen (siehe [Zeiger](#6-zeiger)) sowie **Vibration bei Tastendruck**.
 
 Am unteren Rand stehen fest die Versionsnummer sowie die Links **Lizenzen** (alle verwendeten Open-Source-Komponenten) und **Datenschutz**. Oben rechts öffnet Elly die Hilfe.
 
-## 10 Hilfe
+## 11 Hilfe
 
 <img src="docs/de/help.png" width="270" alt="Hilfe mit Inhaltsverzeichnis">
 
@@ -341,11 +351,11 @@ Elly ganz rechts in der Kopfleiste öffnet die Hilfe. Sie bietet:
 
 Zwischen Übersicht und Kapiteln wechselst du per Wischen oder über die feste Fußleiste (vorheriges Kapitel, Übersicht, nächstes Kapitel). In jedem Kapitel begrüßt dich Elly in einer eigenen, animierten Szene – vom Lesen im Buch über die Malerin an der Staffelei bis zur Richterin im Kapitel Datenschutz. Erwähnungen der Datenschutzerklärung sind Links.
 
-## 11 Datenschutz
+## 12 Datenschutz
 
 Elly spricht nur mit deinem Fernseher im lokalen Netzwerk; es werden keine Daten an externe Server übertragen. Gekoppelte Fernseher, Einstellungen, Screen-Belegungen, App-Icons und die Programmübersicht bleiben auf dem Handy und werden beim Deinstallieren gelöscht. Die vollständige Datenschutzerklärung steht in der App unter **Einstellungen → Datenschutz**.
 
-## 12 Bauen
+## 13 Bauen
 
 ```
 ./gradlew :app:assembleDebug
@@ -353,13 +363,13 @@ Elly spricht nur mit deinem Fernseher im lokalen Netzwerk; es werden keine Daten
 
 Benötigt JDK 17 oder neuer und das Android SDK.
 
-## 13 Releases
+## 14 Releases
 
 APKs werden automatisch auf GitHub gebaut:
 
 - Tag `v*` → signiertes Release-APK und App Bundle, veröffentlicht als GitHub-Release.
 - Tag `devbuild` → signiertes APK als Build-Artefakt.
 
-## 14 Lizenz
+## 15 Lizenz
 
 Elly steht unter der [MIT-Lizenz](LICENSE). Die Schrift [Fredoka](https://github.com/hafontia/Fredoka-One) steht unter der SIL Open Font License 1.1; AndroidX, Jetpack Compose, Kotlin, kotlinx.coroutines und OkHttp stehen unter der Apache License 2.0. Alle Lizenztexte sind in der App unter **Einstellungen → Lizenzen** einsehbar.
